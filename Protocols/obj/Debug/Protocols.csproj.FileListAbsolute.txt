@@ -1,0 +1,11 @@
+C:\Users\BMcCulley\Source\toxxwinapp\ProtocolsWF\Protocols\bin\Debug\Protocols.exe.config
+C:\Users\BMcCulley\Source\toxxwinapp\ProtocolsWF\Protocols\obj\Debug\Protocols.csprojResolveAssemblyReference.cache
+C:\Users\BMcCulley\Source\toxxwinapp\ProtocolsWF\Protocols\obj\Debug\Protocols.Properties.Resources.resources
+C:\Users\BMcCulley\Source\toxxwinapp\ProtocolsWF\Protocols\obj\Debug\Protocols.csproj.GenerateResource.Cache
+C:\Users\BMcCulley\Source\toxxwinapp\ProtocolsWF\Protocols\obj\Debug\Protocols.Views.MainView.resources
+C:\Users\BMcCulley\Source\toxxwinapp\ProtocolsWF\Protocols\obj\Debug\Protocols.Views.ProtocolRequestDetailView.resources
+C:\Users\BMcCulley\Source\toxxwinapp\ProtocolsWF\Protocols\obj\Debug\Protocols.Views.ProtocolRequestAddView.resources
+C:\Users\BMcCulley\Source\toxxwinapp\ProtocolsWF\Protocols\bin\Debug\Protocols.exe
+C:\Users\BMcCulley\Source\toxxwinapp\ProtocolsWF\Protocols\bin\Debug\Protocols.pdb
+C:\Users\BMcCulley\Source\toxxwinapp\ProtocolsWF\Protocols\obj\Debug\Protocols.exe
+C:\Users\BMcCulley\Source\toxxwinapp\ProtocolsWF\Protocols\obj\Debug\Protocols.pdb
