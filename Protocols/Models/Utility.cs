@@ -20,5 +20,29 @@ namespace Protocols.Models
             }
             return result;
         }
+
+        internal static string GetTMSConnectionString()
+        {
+            string result = "";
+            ConnectionStringSettings settings =
+                ConfigurationManager.ConnectionStrings["Protocols.Properties.Settings.TMSConnectionString"];
+            if (settings != null)
+            {
+                result = settings.ConnectionString;
+            }
+            return result;
+        }
+
+        internal static string GetTPMConnectionString()
+        {
+            string result = "";
+            ConnectionStringSettings settings =
+                ConfigurationManager.ConnectionStrings["Protocols.Properties.Settings.TPMTestConnectionString"];
+            if (settings != null)
+            {
+                result = settings.ConnectionString;
+            }
+            return result;
+        }
     }
 }

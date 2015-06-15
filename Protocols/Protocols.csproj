@@ -46,12 +46,42 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controllers\DepartmentEditController.cs" />
+    <Compile Include="Controllers\DepartmentListController.cs" />
     <Compile Include="Controllers\MainViewController.cs" />
     <Compile Include="Controllers\ProtocolRequestAddController.cs" />
     <Compile Include="Controllers\ProtocolRequestDetailController.cs" />
+    <Compile Include="Controllers\RequestDashboardController.cs" />
+    <Compile Include="Controllers\RoleEditController.cs" />
+    <Compile Include="Controllers\RoleListController.cs" />
+    <Compile Include="Controllers\UserEditController.cs" />
+    <Compile Include="Controllers\UserListController.cs" />
+    <Compile Include="Interfaces\IDepartmentEditView.cs" />
+    <Compile Include="Interfaces\IDepartmentListView.cs" />
     <Compile Include="Interfaces\IMainView.cs" />
+    <Compile Include="Interfaces\IProtocolRequestDashboard.cs" />
+    <Compile Include="Interfaces\IRoleEditView.cs" />
+    <Compile Include="Interfaces\IRoleListView.cs" />
+    <Compile Include="Interfaces\IUserEditView.cs" />
+    <Compile Include="Interfaces\IUserListView.cs" />
     <Compile Include="Models\RequestStatuses.cs" />
-    <Compile Include="Queries\MistoQueries.cs" />
+    <Compile Include="Queries\QProtocolRequests.cs" />
+    <Compile Include="Queries\QDepartments.cs" />
+    <Compile Include="Queries\QRoles.cs" />
+    <Compile Include="Queries\QUsers.cs" />
+    <Compile Include="Queries\QTMS.cs" />
+    <Compile Include="Views\DepartmentEditView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\DepartmentEditView.Designer.cs">
+      <DependentUpon>DepartmentEditView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\DepartmentListView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\DepartmentListView.Designer.cs">
+      <DependentUpon>DepartmentListView.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\MainView.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -69,7 +99,7 @@
     <Compile Include="Models\Utility.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Queries\MatrixQueries.cs" />
+    <Compile Include="Queries\QMatrix.cs" />
     <Compile Include="Views\ProtocolRequestDetailView.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -82,6 +112,30 @@
     <Compile Include="Views\ProtocolRequestAddView.Designer.cs">
       <DependentUpon>ProtocolRequestAddView.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\RoleEditView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\RoleEditView.Designer.cs">
+      <DependentUpon>RoleEditView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\RoleListView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\RoleListView.Designer.cs">
+      <DependentUpon>RoleListView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\UserEditView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\UserEditView.Designer.cs">
+      <DependentUpon>UserEditView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\UserListView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\UserListView.Designer.cs">
+      <DependentUpon>UserListView.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -91,6 +145,12 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Views\DepartmentEditView.resx">
+      <DependentUpon>DepartmentEditView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\DepartmentListView.resx">
+      <DependentUpon>DepartmentListView.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\MainView.resx">
       <DependentUpon>MainView.cs</DependentUpon>
     </EmbeddedResource>
@@ -99,6 +159,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\ProtocolRequestAddView.resx">
       <DependentUpon>ProtocolRequestAddView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\RoleEditView.resx">
+      <DependentUpon>RoleEditView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\RoleListView.resx">
+      <DependentUpon>RoleListView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\UserEditView.resx">
+      <DependentUpon>UserEditView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\UserListView.resx">
+      <DependentUpon>UserListView.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

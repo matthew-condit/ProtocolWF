@@ -45,7 +45,7 @@ namespace Protocols.Controllers
             }
             else
             {
-                sponsors = MatrixQueries.GetSponsorInfo(this.view.SearchSponsorName);
+                sponsors = QMatrix.GetSponsorInfo(this.view.SearchSponsorName);
                 if(sponsors.Count == 0)
                 {
                     MessageBox.Show("No record found.");

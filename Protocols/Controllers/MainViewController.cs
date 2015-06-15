@@ -31,5 +31,32 @@ namespace Protocols.Controllers
 
             this.view.AddControlToMainPanel(subView);
         }
+
+        public void LoadDepartmentListView()
+        {
+            DepartmentListView subView = new DepartmentListView();
+            DepartmentListController subViewController = new DepartmentListController(subView);
+            subViewController.LoadView();
+
+            view.AddControlToMainPanel(subView);
+        }
+
+        public void LoadRoleListView()
+        {
+            RoleListView subView = new RoleListView();
+            RoleListController subViewController = new RoleListController(subView);
+            subViewController.LoadView();
+
+            view.AddControlToMainPanel(subView);
+        }
+
+        public void LoadUserListView()
+        {
+            UserListView subView = new UserListView();
+            UserListController subViewController = new UserListController(subView);
+            subViewController.LoadView();
+
+            view.AddControlToMainPanel(subView);
+        }
     }
 }

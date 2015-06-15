@@ -33,5 +33,27 @@ namespace Protocols.Properties {
                 return ((string)(this["LIMSConnectionString"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=TOXBI\\BOE140;Initial Catalog=TMS;Persist Security Info=True;User ID=t" +
+            "msdbreader;Password=T0xSuperUser")]
+        public string TMSConnectionString {
+            get {
+                return ((string)(this["TMSConnectionString"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=TOXX\\DB1TOXX;Initial Catalog=TPMTest;Persist Security Info=True;User " +
+            "ID=TPMUser;Password=Misto0615")]
+        public string TPMTestConnectionString {
+            get {
+                return ((string)(this["TPMTestConnectionString"]));
+            }
+        }
     }
 }

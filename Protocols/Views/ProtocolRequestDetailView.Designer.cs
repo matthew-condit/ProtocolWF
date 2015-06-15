@@ -138,8 +138,8 @@
             this.tableLayoutPanel1.ColumnCount = 4;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 115F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 265F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 79F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 337F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 113F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 304F));
             this.tableLayoutPanel1.Controls.Add(this.CommentTextBox, 1, 8);
             this.tableLayoutPanel1.Controls.Add(this.label15, 0, 8);
             this.tableLayoutPanel1.Controls.Add(this.BillToTextBox, 1, 7);
@@ -308,7 +308,7 @@
             // EmailLabel
             // 
             this.EmailLabel.AutoSize = true;
-            this.EmailLabel.Location = new System.Drawing.Point(466, 32);
+            this.EmailLabel.Location = new System.Drawing.Point(500, 32);
             this.EmailLabel.Name = "EmailLabel";
             this.EmailLabel.Padding = new System.Windows.Forms.Padding(0, 5, 0, 5);
             this.EmailLabel.Size = new System.Drawing.Size(39, 27);
@@ -321,14 +321,14 @@
             this.label4.Location = new System.Drawing.Point(386, 1);
             this.label4.Name = "label4";
             this.label4.Padding = new System.Windows.Forms.Padding(0, 5, 0, 5);
-            this.label4.Size = new System.Drawing.Size(56, 30);
+            this.label4.Size = new System.Drawing.Size(98, 27);
             this.label4.TabIndex = 19;
             this.label4.Text = "Contact Name: ";
             // 
             // SponsorContactLabel
             // 
             this.SponsorContactLabel.AutoSize = true;
-            this.SponsorContactLabel.Location = new System.Drawing.Point(466, 1);
+            this.SponsorContactLabel.Location = new System.Drawing.Point(500, 1);
             this.SponsorContactLabel.Name = "SponsorContactLabel";
             this.SponsorContactLabel.Padding = new System.Windows.Forms.Padding(0, 5, 0, 5);
             this.SponsorContactLabel.Size = new System.Drawing.Size(52, 27);
@@ -348,7 +348,7 @@
             // SponsorNameLabel
             // 
             this.SponsorNameLabel.AutoSize = true;
-            this.SponsorNameLabel.Location = new System.Drawing.Point(466, 63);
+            this.SponsorNameLabel.Location = new System.Drawing.Point(500, 63);
             this.SponsorNameLabel.Name = "SponsorNameLabel";
             this.SponsorNameLabel.Padding = new System.Windows.Forms.Padding(0, 5, 0, 5);
             this.SponsorNameLabel.Size = new System.Drawing.Size(57, 27);
@@ -368,7 +368,7 @@
             // AddressLabel
             // 
             this.AddressLabel.AutoSize = true;
-            this.AddressLabel.Location = new System.Drawing.Point(466, 94);
+            this.AddressLabel.Location = new System.Drawing.Point(500, 94);
             this.AddressLabel.Name = "AddressLabel";
             this.AddressLabel.Padding = new System.Windows.Forms.Padding(0, 5, 0, 5);
             this.AddressLabel.Size = new System.Drawing.Size(56, 27);
@@ -412,7 +412,7 @@
             // StateLabel
             // 
             this.StateLabel.AutoSize = true;
-            this.StateLabel.Location = new System.Drawing.Point(466, 156);
+            this.StateLabel.Location = new System.Drawing.Point(500, 156);
             this.StateLabel.Name = "StateLabel";
             this.StateLabel.Padding = new System.Windows.Forms.Padding(0, 5, 0, 5);
             this.StateLabel.Size = new System.Drawing.Size(37, 27);
@@ -432,7 +432,7 @@
             // CityLabel
             // 
             this.CityLabel.AutoSize = true;
-            this.CityLabel.Location = new System.Drawing.Point(466, 125);
+            this.CityLabel.Location = new System.Drawing.Point(500, 125);
             this.CityLabel.Name = "CityLabel";
             this.CityLabel.Padding = new System.Windows.Forms.Padding(0, 5, 0, 5);
             this.CityLabel.Size = new System.Drawing.Size(29, 27);
@@ -469,7 +469,7 @@
             // POLabel
             // 
             this.POLabel.AutoSize = true;
-            this.POLabel.Location = new System.Drawing.Point(466, 280);
+            this.POLabel.Location = new System.Drawing.Point(500, 280);
             this.POLabel.Name = "POLabel";
             this.POLabel.Padding = new System.Windows.Forms.Padding(0, 5, 0, 5);
             this.POLabel.Size = new System.Drawing.Size(25, 27);
@@ -489,7 +489,7 @@
             // FaxNumberLabel
             // 
             this.FaxNumberLabel.AutoSize = true;
-            this.FaxNumberLabel.Location = new System.Drawing.Point(466, 249);
+            this.FaxNumberLabel.Location = new System.Drawing.Point(500, 249);
             this.FaxNumberLabel.Name = "FaxNumberLabel";
             this.FaxNumberLabel.Padding = new System.Windows.Forms.Padding(0, 5, 0, 5);
             this.FaxNumberLabel.Size = new System.Drawing.Size(27, 27);
@@ -502,14 +502,14 @@
             this.label9.Location = new System.Drawing.Point(386, 218);
             this.label9.Name = "label9";
             this.label9.Padding = new System.Windows.Forms.Padding(0, 5, 0, 5);
-            this.label9.Size = new System.Drawing.Size(63, 30);
+            this.label9.Size = new System.Drawing.Size(103, 27);
             this.label9.TabIndex = 33;
             this.label9.Text = "Phone Number: ";
             // 
             // PhoneNumberLabel
             // 
             this.PhoneNumberLabel.AutoSize = true;
-            this.PhoneNumberLabel.Location = new System.Drawing.Point(466, 218);
+            this.PhoneNumberLabel.Location = new System.Drawing.Point(500, 218);
             this.PhoneNumberLabel.Name = "PhoneNumberLabel";
             this.PhoneNumberLabel.Padding = new System.Windows.Forms.Padding(0, 5, 0, 5);
             this.PhoneNumberLabel.Size = new System.Drawing.Size(96, 27);
@@ -539,7 +539,7 @@
             // ZipCodeLabel
             // 
             this.ZipCodeLabel.AutoSize = true;
-            this.ZipCodeLabel.Location = new System.Drawing.Point(466, 187);
+            this.ZipCodeLabel.Location = new System.Drawing.Point(500, 187);
             this.ZipCodeLabel.Name = "ZipCodeLabel";
             this.ZipCodeLabel.Padding = new System.Windows.Forms.Padding(0, 5, 0, 5);
             this.ZipCodeLabel.Size = new System.Drawing.Size(61, 27);

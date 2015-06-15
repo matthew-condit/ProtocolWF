@@ -32,5 +32,20 @@ namespace Protocols.Views
             control.Dock = DockStyle.Fill;
             this.MainPanel.Controls.Add(control);
         }
+
+        private void AdminDepartmentsMenuItem_Click(object sender, EventArgs e)
+        {
+            this.controller.LoadDepartmentListView();
+        }
+
+        private void AdminRolesMenuItem_Click(object sender, EventArgs e)
+        {
+            this.controller.LoadRoleListView();
+        }
+
+        private void AdminUsersMenuItem_Click(object sender, EventArgs e)
+        {
+            this.controller.LoadUserListView();
+        }
     }
 }

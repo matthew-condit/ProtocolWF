@@ -9,3 +9,9 @@ C:\Users\BMcCulley\Source\toxxwinapp\ProtocolsWF\Protocols\bin\Debug\Protocols.e
 C:\Users\BMcCulley\Source\toxxwinapp\ProtocolsWF\Protocols\bin\Debug\Protocols.pdb
 C:\Users\BMcCulley\Source\toxxwinapp\ProtocolsWF\Protocols\obj\Debug\Protocols.exe
 C:\Users\BMcCulley\Source\toxxwinapp\ProtocolsWF\Protocols\obj\Debug\Protocols.pdb
+C:\Users\BMcCulley\Source\toxxwinapp\ProtocolsWF\Protocols\obj\Debug\Protocols.Views.DepartmentEditView.resources
+C:\Users\BMcCulley\Source\toxxwinapp\ProtocolsWF\Protocols\obj\Debug\Protocols.Views.DepartmentListView.resources
+C:\Users\BMcCulley\Source\toxxwinapp\ProtocolsWF\Protocols\obj\Debug\Protocols.Views.RoleEditView.resources
+C:\Users\BMcCulley\Source\toxxwinapp\ProtocolsWF\Protocols\obj\Debug\Protocols.Views.RoleListView.resources
+C:\Users\BMcCulley\Source\toxxwinapp\ProtocolsWF\Protocols\obj\Debug\Protocols.Views.UserEditView.resources
+C:\Users\BMcCulley\Source\toxxwinapp\ProtocolsWF\Protocols\obj\Debug\Protocols.Views.UserListView.resources

@@ -120,21 +120,22 @@
   <metadata name="toolStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
-  <metadata name="TitleCol.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="SubmitButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="NewButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAADlSURBVDhPnZOxDYNADEVvlOzAQhmBASgoWSGLpIqEFIma
-        EdLRIkUCyss9YqM7MATlS7+x/b99xrg1pmm6DsNQj+PoYxIjJ2VbhOQlFLbNq/H5PffZLUtIjBw11Irs
-        CxH3xaPYCNesnhUmfWKCKwlLYFFM2lnMuxjNKlSWdelB9+6WGBq0juVYb46JEGCkMTRoGT8pXtPqrkT7
-        08DqrjQNYsFRd2gaxKKj7nA2sJaoQrDXfVmi9Rl1CrDXffmMIIzSnrlCZXJIgLMMgf7MNZqnDMTkv58p
-        Bu9iOaFw3rKSGDkpEzj3AXSBWCWFjA8lAAAAAElFTkSuQmCC
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAABkSURBVDhP7c0xDoAgDIVhD+XA3ON5WWHpiin6klJKQMMo
+        yZeYNO93w2Pm/MUzvwPh2Av5JqKhEkDJBsAbgtyrP1tyi2dqrA+AHsIwgGcD3hC6Ac0bQjeAgzfS/sBE
+        YNb6wHucLyVdxRUQosYjAAAAAElFTkSuQmCC
 </value>
   </data>
-  <metadata name="TitleCol.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
+  <data name="UpdateButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAACMSURBVDhPzZGxDcAgDASZjZ4tmIIBWCNLsQMFBRW0Di9h
+        ySIp7FR5yYWF7wDZWTLnpDHGtVtbWmuUUqJSil0COMZI3nsKIdgk69ldCkySWmsHmHOmU4LvQL5Hn2GY
+        ASlBmWApwSY+wajPN/8cxuG5IjWMrIHXPatgBAIApj3LsIAl6NUwsgFZetg5dwP1YDqz6z6UkAAAAABJ
+        RU5ErkJggg==
+</value>
+  </data>
 </root>
