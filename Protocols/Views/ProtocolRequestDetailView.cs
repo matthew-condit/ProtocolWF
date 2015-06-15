@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using Protocols.Interfaces;
 using Protocols.Controllers;
 using System.Diagnostics;
+using Protocols.Models;
 
 namespace Protocols.Views
 {
@@ -25,6 +26,11 @@ namespace Protocols.Views
         public void SetController(ProtocolRequestDetailController controller)
         {
             this.controller = controller;
+        }
+
+        public Control ParentControl
+        {
+            get { return this.ParentForm; }
         }
 
         public void ClearView()
@@ -179,5 +185,11 @@ namespace Protocols.Views
         {
             this.controller.SubmitButtonClicked();
         }
+
+        private void OpenGuidelinesOptions_Click(object sender, EventArgs e)
+        {
+            this.controller.OpenCheckBoxOptions(ListNames.Guidelines);
+        }
+       
     }
 }

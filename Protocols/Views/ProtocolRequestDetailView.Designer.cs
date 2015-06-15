@@ -55,14 +55,11 @@
             this.label5 = new System.Windows.Forms.Label();
             this.AddressLabel = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
-            this.GuidelinesTextBox = new System.Windows.Forms.TextBox();
-            this.ComplianceTextBox = new System.Windows.Forms.TextBox();
             this.label18 = new System.Windows.Forms.Label();
             this.StateLabel = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.CityLabel = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
-            this.ProtocolTypeTextBox = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
             this.POLabel = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
@@ -73,10 +70,22 @@
             this.label8 = new System.Windows.Forms.Label();
             this.ZipCodeLabel = new System.Windows.Forms.Label();
             this.SendViaTextBox = new System.Windows.Forms.TextBox();
+            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.GuidelinesTextBox = new System.Windows.Forms.TextBox();
+            this.OpenGuidelinesOptions = new System.Windows.Forms.Button();
+            this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
+            this.ComplianceTextBox = new System.Windows.Forms.TextBox();
+            this.OpenComplianceOptions = new System.Windows.Forms.Button();
+            this.flowLayoutPanel3 = new System.Windows.Forms.FlowLayoutPanel();
+            this.ProtocolTypeTextBox = new System.Windows.Forms.TextBox();
+            this.OpenProtocolTypeOptions = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.TitleDataGridView)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
+            this.flowLayoutPanel1.SuspendLayout();
+            this.flowLayoutPanel2.SuspendLayout();
+            this.flowLayoutPanel3.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -139,7 +148,7 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 115F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 265F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 113F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 304F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 308F));
             this.tableLayoutPanel1.Controls.Add(this.CommentTextBox, 1, 8);
             this.tableLayoutPanel1.Controls.Add(this.label15, 0, 8);
             this.tableLayoutPanel1.Controls.Add(this.BillToTextBox, 1, 7);
@@ -160,14 +169,11 @@
             this.tableLayoutPanel1.Controls.Add(this.label5, 2, 3);
             this.tableLayoutPanel1.Controls.Add(this.AddressLabel, 3, 3);
             this.tableLayoutPanel1.Controls.Add(this.label17, 0, 2);
-            this.tableLayoutPanel1.Controls.Add(this.GuidelinesTextBox, 1, 2);
-            this.tableLayoutPanel1.Controls.Add(this.ComplianceTextBox, 1, 3);
             this.tableLayoutPanel1.Controls.Add(this.label18, 0, 3);
             this.tableLayoutPanel1.Controls.Add(this.StateLabel, 3, 5);
             this.tableLayoutPanel1.Controls.Add(this.label6, 2, 4);
             this.tableLayoutPanel1.Controls.Add(this.CityLabel, 3, 4);
             this.tableLayoutPanel1.Controls.Add(this.label19, 0, 4);
-            this.tableLayoutPanel1.Controls.Add(this.ProtocolTypeTextBox, 1, 4);
             this.tableLayoutPanel1.Controls.Add(this.label11, 2, 9);
             this.tableLayoutPanel1.Controls.Add(this.POLabel, 3, 9);
             this.tableLayoutPanel1.Controls.Add(this.label10, 2, 8);
@@ -178,6 +184,9 @@
             this.tableLayoutPanel1.Controls.Add(this.label8, 2, 6);
             this.tableLayoutPanel1.Controls.Add(this.ZipCodeLabel, 3, 6);
             this.tableLayoutPanel1.Controls.Add(this.SendViaTextBox, 1, 6);
+            this.tableLayoutPanel1.Controls.Add(this.flowLayoutPanel1, 1, 2);
+            this.tableLayoutPanel1.Controls.Add(this.flowLayoutPanel2, 1, 3);
+            this.tableLayoutPanel1.Controls.Add(this.flowLayoutPanel3, 1, 4);
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 47);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 10;
@@ -385,20 +394,6 @@
             this.label17.TabIndex = 4;
             this.label17.Text = "Guidelines:";
             // 
-            // GuidelinesTextBox
-            // 
-            this.GuidelinesTextBox.Location = new System.Drawing.Point(120, 66);
-            this.GuidelinesTextBox.Name = "GuidelinesTextBox";
-            this.GuidelinesTextBox.Size = new System.Drawing.Size(190, 25);
-            this.GuidelinesTextBox.TabIndex = 5;
-            // 
-            // ComplianceTextBox
-            // 
-            this.ComplianceTextBox.Location = new System.Drawing.Point(120, 97);
-            this.ComplianceTextBox.Name = "ComplianceTextBox";
-            this.ComplianceTextBox.Size = new System.Drawing.Size(190, 25);
-            this.ComplianceTextBox.TabIndex = 7;
-            // 
             // label18
             // 
             this.label18.AutoSize = true;
@@ -448,13 +443,6 @@
             this.label19.Size = new System.Drawing.Size(96, 27);
             this.label19.TabIndex = 8;
             this.label19.Text = "Protocol Type: ";
-            // 
-            // ProtocolTypeTextBox
-            // 
-            this.ProtocolTypeTextBox.Location = new System.Drawing.Point(120, 128);
-            this.ProtocolTypeTextBox.Name = "ProtocolTypeTextBox";
-            this.ProtocolTypeTextBox.Size = new System.Drawing.Size(190, 25);
-            this.ProtocolTypeTextBox.TabIndex = 9;
             // 
             // label11
             // 
@@ -553,6 +541,94 @@
             this.SendViaTextBox.Size = new System.Drawing.Size(125, 25);
             this.SendViaTextBox.TabIndex = 13;
             // 
+            // flowLayoutPanel1
+            // 
+            this.flowLayoutPanel1.Controls.Add(this.GuidelinesTextBox);
+            this.flowLayoutPanel1.Controls.Add(this.OpenGuidelinesOptions);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(117, 63);
+            this.flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(0);
+            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(259, 28);
+            this.flowLayoutPanel1.TabIndex = 45;
+            // 
+            // GuidelinesTextBox
+            // 
+            this.GuidelinesTextBox.Location = new System.Drawing.Point(3, 3);
+            this.GuidelinesTextBox.Name = "GuidelinesTextBox";
+            this.GuidelinesTextBox.ReadOnly = true;
+            this.GuidelinesTextBox.Size = new System.Drawing.Size(232, 25);
+            this.GuidelinesTextBox.TabIndex = 0;
+            // 
+            // OpenGuidelinesOptions
+            // 
+            this.OpenGuidelinesOptions.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("OpenGuidelinesOptions.BackgroundImage")));
+            this.OpenGuidelinesOptions.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.OpenGuidelinesOptions.Location = new System.Drawing.Point(238, 5);
+            this.OpenGuidelinesOptions.Margin = new System.Windows.Forms.Padding(0, 5, 0, 0);
+            this.OpenGuidelinesOptions.Name = "OpenGuidelinesOptions";
+            this.OpenGuidelinesOptions.Size = new System.Drawing.Size(20, 20);
+            this.OpenGuidelinesOptions.TabIndex = 1;
+            this.OpenGuidelinesOptions.UseVisualStyleBackColor = true;
+            this.OpenGuidelinesOptions.Click += new System.EventHandler(this.OpenGuidelinesOptions_Click);
+            // 
+            // flowLayoutPanel2
+            // 
+            this.flowLayoutPanel2.Controls.Add(this.ComplianceTextBox);
+            this.flowLayoutPanel2.Controls.Add(this.OpenComplianceOptions);
+            this.flowLayoutPanel2.Location = new System.Drawing.Point(117, 94);
+            this.flowLayoutPanel2.Margin = new System.Windows.Forms.Padding(0);
+            this.flowLayoutPanel2.Name = "flowLayoutPanel2";
+            this.flowLayoutPanel2.Size = new System.Drawing.Size(259, 30);
+            this.flowLayoutPanel2.TabIndex = 46;
+            // 
+            // ComplianceTextBox
+            // 
+            this.ComplianceTextBox.Location = new System.Drawing.Point(3, 3);
+            this.ComplianceTextBox.Name = "ComplianceTextBox";
+            this.ComplianceTextBox.ReadOnly = true;
+            this.ComplianceTextBox.Size = new System.Drawing.Size(232, 25);
+            this.ComplianceTextBox.TabIndex = 44;
+            // 
+            // OpenComplianceOptions
+            // 
+            this.OpenComplianceOptions.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("OpenComplianceOptions.BackgroundImage")));
+            this.OpenComplianceOptions.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.OpenComplianceOptions.Location = new System.Drawing.Point(238, 5);
+            this.OpenComplianceOptions.Margin = new System.Windows.Forms.Padding(0, 5, 0, 0);
+            this.OpenComplianceOptions.Name = "OpenComplianceOptions";
+            this.OpenComplianceOptions.Size = new System.Drawing.Size(20, 20);
+            this.OpenComplianceOptions.TabIndex = 45;
+            this.OpenComplianceOptions.UseVisualStyleBackColor = true;
+            // 
+            // flowLayoutPanel3
+            // 
+            this.flowLayoutPanel3.Controls.Add(this.ProtocolTypeTextBox);
+            this.flowLayoutPanel3.Controls.Add(this.OpenProtocolTypeOptions);
+            this.flowLayoutPanel3.Location = new System.Drawing.Point(117, 125);
+            this.flowLayoutPanel3.Margin = new System.Windows.Forms.Padding(0);
+            this.flowLayoutPanel3.Name = "flowLayoutPanel3";
+            this.flowLayoutPanel3.Size = new System.Drawing.Size(255, 30);
+            this.flowLayoutPanel3.TabIndex = 47;
+            // 
+            // ProtocolTypeTextBox
+            // 
+            this.ProtocolTypeTextBox.Location = new System.Drawing.Point(3, 3);
+            this.ProtocolTypeTextBox.Name = "ProtocolTypeTextBox";
+            this.ProtocolTypeTextBox.ReadOnly = true;
+            this.ProtocolTypeTextBox.Size = new System.Drawing.Size(125, 25);
+            this.ProtocolTypeTextBox.TabIndex = 45;
+            // 
+            // OpenProtocolTypeOptions
+            // 
+            this.OpenProtocolTypeOptions.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("OpenProtocolTypeOptions.BackgroundImage")));
+            this.OpenProtocolTypeOptions.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.OpenProtocolTypeOptions.Location = new System.Drawing.Point(131, 5);
+            this.OpenProtocolTypeOptions.Margin = new System.Windows.Forms.Padding(0, 5, 0, 0);
+            this.OpenProtocolTypeOptions.Name = "OpenProtocolTypeOptions";
+            this.OpenProtocolTypeOptions.Size = new System.Drawing.Size(20, 20);
+            this.OpenProtocolTypeOptions.TabIndex = 46;
+            this.OpenProtocolTypeOptions.UseVisualStyleBackColor = true;
+            // 
             // ProtocolRequestDetailView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
@@ -570,6 +646,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.TitleDataGridView)).EndInit();
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
+            this.flowLayoutPanel1.ResumeLayout(false);
+            this.flowLayoutPanel1.PerformLayout();
+            this.flowLayoutPanel2.ResumeLayout(false);
+            this.flowLayoutPanel2.PerformLayout();
+            this.flowLayoutPanel3.ResumeLayout(false);
+            this.flowLayoutPanel3.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -615,10 +697,16 @@
         private System.Windows.Forms.ToolStrip toolStrip1;
         private System.Windows.Forms.ToolStripButton SubmitButton;
         private System.Windows.Forms.Label label17;
-        private System.Windows.Forms.TextBox GuidelinesTextBox;
         private System.Windows.Forms.Label label18;
-        private System.Windows.Forms.TextBox ComplianceTextBox;
         private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
+        private System.Windows.Forms.TextBox GuidelinesTextBox;
+        private System.Windows.Forms.Button OpenGuidelinesOptions;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;
+        private System.Windows.Forms.TextBox ComplianceTextBox;
+        private System.Windows.Forms.Button OpenComplianceOptions;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel3;
         private System.Windows.Forms.TextBox ProtocolTypeTextBox;
+        private System.Windows.Forms.Button OpenProtocolTypeOptions;
     }
 }

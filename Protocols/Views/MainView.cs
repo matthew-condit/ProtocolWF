@@ -47,5 +47,10 @@ namespace Protocols.Views
         {
             this.controller.LoadUserListView();
         }
+
+        private void ListItemsMenuItem_Click(object sender, EventArgs e)
+        {
+            this.controller.LoadListItemsView();
+        }
     }
 }

@@ -131,31 +131,4 @@
         Bu9iOaFw3rKSGDkpEzj3AXSBWCWFjA8lAAAAAElFTkSuQmCC
 </value>
   </data>
-  <metadata name="TitleCol.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <data name="OpenGuidelinesOptions.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsEAAA7BAbiRa+0AAABMSURBVDhPzY0xCgAwCAN9m/9/j2uLJHRwsYFCPchg4KI9
-        IyKWGqogC3c/ubmpghkDaqiCLOqH7qYKZgyooQqyqB+6myqYMaCG6lfMNiDL5L0uTmNzAAAAAElFTkSu
-        QmCC
-</value>
-  </data>
-  <data name="OpenComplianceOptions.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsAAAA7AAWrWiQkAAABMSURBVDhPzY0xCgAwCAN9m/9/j2uLJHRwsYFCPchg4KI9
-        IyKWGqogC3c/ubmpghkDaqiCLOqH7qYKZgyooQqyqB+6myqYMaCG6lfMNiDL5L0uTmNzAAAAAElFTkSu
-        QmCC
-</value>
-  </data>
-  <data name="OpenProtocolTypeOptions.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADr8AAA6/ATgFUyQAAABMSURBVDhPzY0xCgAwCAN9m/9/j2uLJHRwsYFCPchg4KI9
-        IyKWGqogC3c/ubmpghkDaqiCLOqH7qYKZgyooQqyqB+6myqYMaCG6lfMNiDL5L0uTmNzAAAAAElFTkSu
-        QmCC
-</value>
-  </data>
 </root>

@@ -57,7 +57,7 @@ namespace Protocols.Queries
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
                     connection.Open();
-                    using (SqlCommand command = new SqlCommand("InsertProtocolRequestTitles", connection))
+                    using (SqlCommand command = new SqlCommand("ProtocolRequestTitlesInsert", connection))
                     {
                         command.CommandType = CommandType.StoredProcedure;
 
@@ -88,7 +88,7 @@ namespace Protocols.Queries
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
                     connection.Open();
-                    using (SqlCommand command = new SqlCommand("InsertProtocolRequestComments", connection))
+                    using (SqlCommand command = new SqlCommand("ProtocolRequestCommentsInsert", connection))
                     {
                         command.CommandType = CommandType.StoredProcedure;
 

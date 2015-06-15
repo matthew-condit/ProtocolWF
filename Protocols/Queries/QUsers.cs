@@ -78,6 +78,45 @@ namespace Protocols.Queries
             return results;
         }
 
+        public static User GetUser(string username)
+        {
+            User user = new User();
+            using (SqlConnection connection = new SqlConnection(CONNECTION_STRING))
+            {
+                connection.Open();
+                string query = @"SELECT Users.UserName, Users.FirstName, Users.LastName,
+                                        Users.FullName, Users.EmailAddress, 
+                                        Users.DepartmentID, Departments.DepartmentName, 
+                                        Users.RoleID, Roles.RoleName, Users.IsActive
+	                             FROM Users
+	                             INNER JOIN Departments
+	                             ON Users.DepartmentID = Departments.ID
+	                             INNER JOIN Roles
+	                             ON Users.RoleID = Roles.ID
+                                 WHERE Users.UserName = @UserName
+                                 AND Users.IsActive = 1";
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    command.CommandType = CommandType.Text;
+                    command.Parameters.Add("@UserName", SqlDbType.NVarChar).Value = username;
+                    SqlDataReader reader = command.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        user.UserName = reader[0].ToString();
+                        user.FirstName = reader[1].ToString();
+                        user.LastName = reader[2].ToString();
+                        user.FullName = reader[3].ToString();
+                        user.EmailAddress = reader[4].ToString();
+                        user.Department.SetDepartment(reader[5].ToString(), reader[6].ToString());
+                        user.Role.SetRole(reader[7].ToString(), reader[8].ToString());
+                        user.IsActive = Convert.ToBoolean(reader[9].ToString());
+                    }
+                }
+            }
+
+            return user;
+        }
+
         public static void UpdateUser(User user, string userName)
         {
             using (SqlConnection connection = new SqlConnection(CONNECTION_STRING))

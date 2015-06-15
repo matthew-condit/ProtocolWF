@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Protocols.Queries;
+using System;
 using System.Collections.Generic;
 using System.DirectoryServices.AccountManagement;
 using System.Linq;
@@ -15,10 +16,11 @@ namespace Protocols.Models
 
         private LoginInfo()
         {
-            //user = UserQueries.GetUser();
             user = new User();
-            user.UserName = Environment.UserName;
-            user.FullName = UserPrincipal.Current.DisplayName;
+            user = QUsers.GetUser(Environment.UserName);
+            
+            //user.UserName = Environment.UserName;
+            //user.FullName = UserPrincipal.Current.DisplayName;
         }
 
         public static LoginInfo GetInstance()

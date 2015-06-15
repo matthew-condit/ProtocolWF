@@ -30,12 +30,13 @@
         {
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.mENUToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.MainPanel = new System.Windows.Forms.Panel();
             this.pROTOCOLREQUESTToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.AdminMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.AdminDepartmentsMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.AdminRolesMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.AdminUsersMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.MainPanel = new System.Windows.Forms.Panel();
+            this.ListItemsMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -61,14 +62,6 @@
             this.mENUToolStripMenuItem.Size = new System.Drawing.Size(95, 21);
             this.mENUToolStripMenuItem.Text = "DASHBOARD";
             // 
-            // MainPanel
-            // 
-            this.MainPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.MainPanel.Location = new System.Drawing.Point(0, 41);
-            this.MainPanel.Name = "MainPanel";
-            this.MainPanel.Size = new System.Drawing.Size(809, 771);
-            this.MainPanel.TabIndex = 1;
-            // 
             // pROTOCOLREQUESTToolStripMenuItem
             // 
             this.pROTOCOLREQUESTToolStripMenuItem.Name = "pROTOCOLREQUESTToolStripMenuItem";
@@ -80,7 +73,8 @@
             this.AdminMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.AdminDepartmentsMenuItem,
             this.AdminRolesMenuItem,
-            this.AdminUsersMenuItem});
+            this.AdminUsersMenuItem,
+            this.ListItemsMenuItem});
             this.AdminMenuItem.Name = "AdminMenuItem";
             this.AdminMenuItem.Size = new System.Drawing.Size(62, 21);
             this.AdminMenuItem.Text = "ADMIN";
@@ -105,6 +99,21 @@
             this.AdminUsersMenuItem.Size = new System.Drawing.Size(152, 22);
             this.AdminUsersMenuItem.Text = "Users";
             this.AdminUsersMenuItem.Click += new System.EventHandler(this.AdminUsersMenuItem_Click);
+            // 
+            // MainPanel
+            // 
+            this.MainPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.MainPanel.Location = new System.Drawing.Point(0, 41);
+            this.MainPanel.Name = "MainPanel";
+            this.MainPanel.Size = new System.Drawing.Size(809, 771);
+            this.MainPanel.TabIndex = 1;
+            // 
+            // ListItemsMenuItem
+            // 
+            this.ListItemsMenuItem.Name = "ListItemsMenuItem";
+            this.ListItemsMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.ListItemsMenuItem.Text = "List Items";
+            this.ListItemsMenuItem.Click += new System.EventHandler(this.ListItemsMenuItem_Click);
             // 
             // MainView
             // 
@@ -137,6 +146,7 @@
         private System.Windows.Forms.ToolStripMenuItem AdminDepartmentsMenuItem;
         private System.Windows.Forms.ToolStripMenuItem AdminRolesMenuItem;
         private System.Windows.Forms.ToolStripMenuItem AdminUsersMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem ListItemsMenuItem;
     }
 }
 

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace Protocols.Interfaces
 {
@@ -32,5 +33,7 @@ namespace Protocols.Interfaces
         string BillTo { get; set; }
         string Comments { get; set; }
         List<string> Titles { get; set; }
+
+        Control ParentControl { get; }
     }
 }

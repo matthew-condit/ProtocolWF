@@ -1,5 +1,7 @@
 ﻿using Protocols.Interfaces;
 using Protocols.Models;
+using Protocols.Queries;
+using Protocols.Views;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -15,6 +17,9 @@ namespace Protocols.Controllers
         IProtocolRequestDetailView view;
         Sponsor sponsor;
         ProtocolRequest protocolRequest;
+        IList guildlinesList;
+        IList complianceList;
+        IList protocolTypeList;
 
         public delegate void SubmitButtonClick();
         public SubmitButtonClick SubmitButtonClickDelegate;
@@ -24,6 +29,13 @@ namespace Protocols.Controllers
             this.view = view;
             this.view.SetController(this);
             InitProtocolRequest();
+
+            this.guildlinesList = new ArrayList();
+            this.guildlinesList = QListItems.GetListItems(ListNames.Guidelines);
+            this.complianceList = new ArrayList();
+            this.complianceList = QListItems.GetListItems(ListNames.Compliance);
+            this.protocolTypeList = new ArrayList();
+            this.protocolTypeList = QListItems.GetListItems(ListNames.ProtocolType);
         }
 
         private void InitProtocolRequest()
@@ -129,5 +141,41 @@ namespace Protocols.Controllers
             
         }
 
+        public void OpenCheckBoxOptions(string listName)
+        {
+            IList items = QListItems.GetListItems(listName);
+            CheckBoxOptionsView popup = new CheckBoxOptionsView();
+            CheckBoxOptionsController popupController = new CheckBoxOptionsController(popup, items);
+            popupController.LoadView();
+
+            DialogResult dialogResult = popup.ShowDialog(this.view.ParentControl);
+            if(dialogResult == DialogResult.OK)
+            {
+                string itemsString = String.Join(", ", popupController.SelectedItems);
+                AssignCheckBoxOptionsSelectedItems(listName, itemsString);
+            }
+            popup.Dispose();
+        }
+
+        private void AssignCheckBoxOptionsSelectedItems(string listName, string items)
+        {
+            switch(listName)
+            {
+                case ListNames.Guidelines:
+                    this.protocolRequest.Guidelines = items;
+                    this.view.Guidelines = items;
+                    break;
+                case ListNames.Compliance:
+                    this.protocolRequest.Compliance = items;
+                    this.view.Compliance = items;
+                    break;
+                case ListNames.ProtocolType:
+                    this.protocolRequest.ProtocolType = items;
+                    this.view.ProtocolType = items;
+                    break;
+                default:
+                    break;
+            }
+        }
     }
 }

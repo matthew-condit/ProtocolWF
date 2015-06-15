@@ -46,8 +46,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controllers\CheckBoxOptionsController.cs" />
     <Compile Include="Controllers\DepartmentEditController.cs" />
     <Compile Include="Controllers\DepartmentListController.cs" />
+    <Compile Include="Controllers\ListItemsController.cs" />
     <Compile Include="Controllers\MainViewController.cs" />
     <Compile Include="Controllers\ProtocolRequestAddController.cs" />
     <Compile Include="Controllers\ProtocolRequestDetailController.cs" />
@@ -56,20 +58,31 @@
     <Compile Include="Controllers\RoleListController.cs" />
     <Compile Include="Controllers\UserEditController.cs" />
     <Compile Include="Controllers\UserListController.cs" />
+    <Compile Include="Interfaces\ICheckBoxOptionsView.cs" />
     <Compile Include="Interfaces\IDepartmentEditView.cs" />
     <Compile Include="Interfaces\IDepartmentListView.cs" />
+    <Compile Include="Interfaces\IListItemsView.cs" />
     <Compile Include="Interfaces\IMainView.cs" />
     <Compile Include="Interfaces\IProtocolRequestDashboard.cs" />
     <Compile Include="Interfaces\IRoleEditView.cs" />
     <Compile Include="Interfaces\IRoleListView.cs" />
     <Compile Include="Interfaces\IUserEditView.cs" />
     <Compile Include="Interfaces\IUserListView.cs" />
+    <Compile Include="Models\ListItem.cs" />
+    <Compile Include="Models\ListNames.cs" />
     <Compile Include="Models\RequestStatuses.cs" />
+    <Compile Include="Queries\QListItems.cs" />
     <Compile Include="Queries\QProtocolRequests.cs" />
     <Compile Include="Queries\QDepartments.cs" />
     <Compile Include="Queries\QRoles.cs" />
     <Compile Include="Queries\QUsers.cs" />
     <Compile Include="Queries\QTMS.cs" />
+    <Compile Include="Views\CheckBoxOptionsView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\CheckBoxOptionsView.Designer.cs">
+      <DependentUpon>CheckBoxOptionsView.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\DepartmentEditView.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -81,6 +94,12 @@
     </Compile>
     <Compile Include="Views\DepartmentListView.Designer.cs">
       <DependentUpon>DepartmentListView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ListItemsView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\ListItemsView.Designer.cs">
+      <DependentUpon>ListItemsView.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\MainView.cs">
       <SubType>Form</SubType>
@@ -145,11 +164,17 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Views\CheckBoxOptionsView.resx">
+      <DependentUpon>CheckBoxOptionsView.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\DepartmentEditView.resx">
       <DependentUpon>DepartmentEditView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\DepartmentListView.resx">
       <DependentUpon>DepartmentListView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\ListItemsView.resx">
+      <DependentUpon>ListItemsView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\MainView.resx">
       <DependentUpon>MainView.cs</DependentUpon>

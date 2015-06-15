@@ -58,5 +58,14 @@ namespace Protocols.Controllers
 
             view.AddControlToMainPanel(subView);
         }
+
+        public void LoadListItemsView()
+        {
+            ListItemsView subView = new ListItemsView();
+            ListItemsController subViewController = new ListItemsController(subView);
+            subViewController.LoadView();
+
+            view.AddControlToMainPanel(subView);
+        }
     }
 }
