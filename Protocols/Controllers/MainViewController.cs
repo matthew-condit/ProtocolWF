@@ -1,4 +1,5 @@
 ﻿using Protocols.Interfaces;
+using Protocols.Models;
 using Protocols.Views;
 using System;
 using System.Collections.Generic;
@@ -64,6 +65,24 @@ namespace Protocols.Controllers
             ListItemsView subView = new ListItemsView();
             ListItemsController subViewController = new ListItemsController(subView);
             subViewController.LoadView();
+
+            view.AddControlToMainPanel(subView);
+        }
+
+        public void LoadDashboardView()
+        {
+            DashboardView subView = new DashboardView();
+            DashboardController subViewController = new DashboardController(subView);
+            subViewController.LoadView();
+
+            view.AddControlToMainPanel(subView);
+        }
+
+        public void LoadProtocolRequestEditView(Sponsor sponsor)
+        {
+            ProtocolRequestEditView subView = new ProtocolRequestEditView();
+            ProtocolRequestDetailController subViewController = new ProtocolRequestDetailController(subView);
+            subViewController.LoadView(sponsor);
 
             view.AddControlToMainPanel(subView);
         }

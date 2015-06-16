@@ -56,7 +56,7 @@ namespace Protocols.Controllers
         public void LoadView(Sponsor sponsor)
         {
             this.sponsor = new Sponsor(sponsor);
-            protocolRequest.MatrixSponsorCode = sponsor.SponsorCode;
+            protocolRequest.SponsorCode = sponsor.SponsorCode;
             UpdateViewWithProtocolRequest();
             UpdateViewWithSponsor();
         }
@@ -82,21 +82,74 @@ namespace Protocols.Controllers
             this.view.PONumber = sponsor.PONumber;
         }
 
+        public void OpenCheckBoxOptions(string listName)
+        {
+            IList items = QListItems.GetListItems(listName);
+            CheckBoxOptionsView popup = new CheckBoxOptionsView();
+            CheckBoxOptionsController popupController = new CheckBoxOptionsController(popup, items);
+            popupController.LoadView();
+
+            DialogResult dialogResult = popup.ShowDialog(this.view.ParentControl);
+            if(dialogResult == DialogResult.OK)
+            {
+                string itemsString = String.Join(", ", popupController.SelectedItems);
+                SetListSelectedItems(listName, itemsString);
+            }
+            popup.Dispose();
+        }
+
+        public void OpenListBoxOptions(string listName)
+        {
+            IList items = QListItems.GetListItems(listName);
+            ListBoxOptionsView popup = new ListBoxOptionsView();
+            ListBoxOptionsController popupController = new ListBoxOptionsController(popup, items);
+            popupController.LoadView();
+
+            DialogResult dialogResult = popup.ShowDialog(this.view.ParentControl);
+            if(dialogResult == DialogResult.OK)
+            {
+                SetListSelectedItems(listName, popupController.SelectedItem);
+            }
+            popup.Dispose();
+        }
+
+        private void SetListSelectedItems(string listName, string items)
+        {
+            switch(listName)
+            {
+                case ListNames.Guidelines:
+                    this.protocolRequest.Guidelines = items;
+                    this.view.Guidelines = items;
+                    break;
+                case ListNames.Compliance:
+                    this.protocolRequest.Compliance = items;
+                    this.view.Compliance = items;
+                    break;
+                case ListNames.ProtocolType:
+                    this.protocolRequest.ProtocolType = items;
+                    this.view.ProtocolType = items;
+                    break;
+                default:
+                    break;
+            }
+        }
+
         public void SubmitButtonClicked()
         {
-            if(this.protocolRequest.MatrixSponsorCode == String.Empty)
+            if (this.protocolRequest.SponsorCode == String.Empty)
             {
                 MessageBox.Show("No sponsor selected.");
             }
             else
             {
                 DialogResult dialogResult = ShowConfirmation();
-                if(dialogResult == DialogResult.Yes)
+                if (dialogResult == DialogResult.Yes)
                 {
                     SubmitForm();
                     ClearForm();
+                    MessageBox.Show("Submitted!");
                 }
-                
+
             }
         }
 
@@ -117,6 +170,7 @@ namespace Protocols.Controllers
         private void ClearForm()
         {
             InitProtocolRequest();
+            this.view.ClearView();
             if (SubmitButtonClickDelegate != null)
             {
                 this.SubmitButtonClickDelegate();
@@ -138,43 +192,16 @@ namespace Protocols.Controllers
 
         private void SubmitProtocolRequestToDatabase()
         {
-            
-        }
-
-        public void OpenCheckBoxOptions(string listName)
-        {
-            IList items = QListItems.GetListItems(listName);
-            CheckBoxOptionsView popup = new CheckBoxOptionsView();
-            CheckBoxOptionsController popupController = new CheckBoxOptionsController(popup, items);
-            popupController.LoadView();
-
-            DialogResult dialogResult = popup.ShowDialog(this.view.ParentControl);
-            if(dialogResult == DialogResult.OK)
+            LoginInfo loginIfo = LoginInfo.GetInstance();
+            this.protocolRequest.ID = QProtocolRequests.InsertProtocolRequest(this.protocolRequest,
+                                      loginIfo.UserName);
+            if(this.protocolRequest.Titles.Count > 0)
             {
-                string itemsString = String.Join(", ", popupController.SelectedItems);
-                AssignCheckBoxOptionsSelectedItems(listName, itemsString);
+                QProtocolRequests.InsertProtocolRequestTitles(this.protocolRequest, loginIfo.UserName);
             }
-            popup.Dispose();
-        }
-
-        private void AssignCheckBoxOptionsSelectedItems(string listName, string items)
-        {
-            switch(listName)
+            if(this.protocolRequest.Comments.Count > 0)
             {
-                case ListNames.Guidelines:
-                    this.protocolRequest.Guidelines = items;
-                    this.view.Guidelines = items;
-                    break;
-                case ListNames.Compliance:
-                    this.protocolRequest.Compliance = items;
-                    this.view.Compliance = items;
-                    break;
-                case ListNames.ProtocolType:
-                    this.protocolRequest.ProtocolType = items;
-                    this.view.ProtocolType = items;
-                    break;
-                default:
-                    break;
+                QProtocolRequests.InsertProtocolRequestComments(this.protocolRequest, loginIfo.UserName);
             }
         }
     }

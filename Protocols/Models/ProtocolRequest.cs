@@ -1,6 +1,8 @@
-﻿using System;
+﻿using Protocols.Queries;
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,7 +14,8 @@ namespace Protocols.Models
         public int ID { get; set; }
         public string RequestedBy { get; set; }
         public DateTime RequestedDate { get; set; }
-        public string MatrixSponsorCode { get; set; }
+        public string SponsorCode { get; set; }
+        public Sponsor Sponsor { get; private set; }
         public string Guidelines { get; set; }
         public string Compliance { get; set; }
         public string ProtocolType { get; set; }
@@ -37,7 +40,8 @@ namespace Protocols.Models
         {
             RequestedBy = "";
             RequestedDate = DateTime.Now;
-            MatrixSponsorCode = "";
+            SponsorCode = "";
+            this.Sponsor = new Models.Sponsor();
             Guidelines = "";
             Compliance = "";
             ProtocolType = "";
@@ -51,6 +55,34 @@ namespace Protocols.Models
             EffectiveDate = DateTime.Now;
             ProtocolNumber = "";
             RequestStatus = "";
+        }
+
+        public void SetSponsor()
+        {
+            this.Sponsor = QMatrix.GetSponsorBySponsorCode(this.SponsorCode);
+        }
+
+        public Image RequestStatusImage()
+        {
+            Image result = null;
+            switch (this.RequestStatus)
+            {
+                case RequestStatuses.New:
+                    result = Properties.Resources.NGreen;
+                    break;
+                case RequestStatuses.Received:
+                    result = Properties.Resources.RGreen;
+                    break;
+                case RequestStatuses.InProcess:
+                    result = Properties.Resources.IGreen;
+                    break;
+                case RequestStatuses.Complete:
+                    result = Properties.Resources.CGreen;
+                    break;
+                default:
+                    break;
+            }
+            return result;
         }
     }
 }

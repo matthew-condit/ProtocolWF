@@ -33,6 +33,25 @@ namespace Protocols.Queries
             WHERE Submitters.SubmitterName LIKE @SponsorName
             AND Submitters.RecordStatus = 1";
 
+        private const string SponsorInfoBySponsorCode = @"
+            SELECT Submitters.SubmitterCode,
+	               Submitters.SubmitterName AS SponsorName,
+	               ISNULL(Submitters.SubmitterText2, '') + ' ' +
+	               ISNULL(Submitters.SubmitterText3, '') AS ContactName,
+	               ISNULL(Submitters.SubmitterAddress1, '') + 
+	               ISNULL(Submitters.SubmitterAddress2, '') AS PostalAddress,
+	               Submitters.SubmitterAddress4 AS City,
+	               Submitters.SubmitterAddress5 AS State,
+	               Submitters.SubmitterPostCode,
+	               Submitters.SubmitterAddress3 AS Country,
+	               Submitters.SubmitterTelephone AS PhoneNumber,
+	               Submitters.SubmitterFax AS Fax,
+	               Submitters.SubmitterClass,
+                   Submitters.SubmitterTelex AS Email
+            FROM Submitters
+            WHERE Submitters.SubmitterCode = @SponsorCode
+            AND Submitters.RecordStatus = 1";
+
         public static IList GetSponsorInfo(string sponsorName)
         {
             IList results = new ArrayList();
@@ -61,6 +80,34 @@ namespace Protocols.Queries
                 Debug.WriteLine(sqlEx.ToString());
             }
             return results;
+        }
+
+        public static Sponsor GetSponsorBySponsorCode(string sponsorCode)
+        {
+            Sponsor result = new Sponsor();
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(CONNECTION_STRING))
+                {
+                    connection.Open();
+                    using (SqlCommand command = new SqlCommand(SponsorInfoBySponsorCode, connection))
+                    {
+                        command.CommandType = CommandType.Text;
+                        command.Parameters.Add("@SponsorCode", SqlDbType.NVarChar).Value = sponsorCode;
+
+                        SqlDataReader reader = command.ExecuteReader();
+                        while (reader.Read())
+                        {
+                            result = CreateNewSponsor(reader);
+                        }
+                    }
+                }
+            }
+            catch (SqlException sqlEx)
+            {
+                Debug.WriteLine(sqlEx.ToString());
+            }
+            return result;
         }
 
         private static Sponsor CreateNewSponsor(SqlDataReader reader)

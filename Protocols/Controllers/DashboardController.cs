@@ -1,0 +1,66 @@
+﻿using Protocols.Interfaces;
+using Protocols.Models;
+using Protocols.Queries;
+using Protocols.Views;
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Protocols.Controllers
+{
+    public class DashboardController
+    {
+        IDashboardView view;
+        IList protocolRequests;
+
+        public DashboardController(IDashboardView view)
+        {
+            this.view = view;
+            this.view.SetController(this);
+            this.protocolRequests = new ArrayList();
+        }
+
+        public void LoadView()
+        {
+            this.protocolRequests = QProtocolRequests.GetActiveProtocolRequests();
+            LoadRequestTitles();
+            LoadRequestComments();
+            AddProtocolRequestsToView();
+        }
+
+        private void LoadRequestTitles()
+        {
+            foreach (ProtocolRequest request in protocolRequests)
+            {
+                request.Titles = (List<string>)QProtocolRequests.GetProtocolRequestTitles(request.ID);
+            }
+        }
+
+        private void LoadRequestComments()
+        {
+            foreach(ProtocolRequest request in protocolRequests)
+            {
+                request.Comments = (List<string>)QProtocolRequests.GetProtocolRequestComments(request.ID);
+            }
+        }
+
+        private void AddProtocolRequestsToView()
+        {
+            foreach(ProtocolRequest request in protocolRequests)
+            {
+                this.view.AddProtocolRequestToView(request);
+            }
+        }
+
+        public void RequestDataGridViewCellDoubleClicked(int selectedIndex)
+        {
+            ProtocolRequest request = (ProtocolRequest)this.protocolRequests[selectedIndex];
+
+            MainView mainView = (MainView)this.view.ParentControl;
+            mainView.Invoke(mainView.LoadProtocolRequestViewDelegate(request.Sponsor));
+        }
+    }
+}

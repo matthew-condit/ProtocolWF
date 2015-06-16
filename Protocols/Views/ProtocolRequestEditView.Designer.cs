@@ -1,6 +1,6 @@
 ﻿namespace Protocols.Views
 {
-    partial class ProtocolRequestDetailView
+    partial class ProtocolRequestEditView
     {
         /// <summary> 
         /// Required designer variable.
@@ -28,15 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ProtocolRequestDetailView));
-            this.panel1 = new System.Windows.Forms.Panel();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ProtocolRequestEditView));
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.SubmitButton = new System.Windows.Forms.ToolStripButton();
-            this.TitleDataGridView = new System.Windows.Forms.DataGridView();
-            this.TitleCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.CommentTextBox = new System.Windows.Forms.TextBox();
-            this.label15 = new System.Windows.Forms.Label();
             this.BillToTextBox = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
@@ -72,85 +66,50 @@
             this.SendViaTextBox = new System.Windows.Forms.TextBox();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.GuidelinesTextBox = new System.Windows.Forms.TextBox();
-            this.OpenGuidelinesOptions = new System.Windows.Forms.Button();
             this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
             this.ComplianceTextBox = new System.Windows.Forms.TextBox();
-            this.OpenComplianceOptions = new System.Windows.Forms.Button();
             this.flowLayoutPanel3 = new System.Windows.Forms.FlowLayoutPanel();
             this.ProtocolTypeTextBox = new System.Windows.Forms.TextBox();
+            this.TitleDataGridView = new System.Windows.Forms.DataGridView();
+            this.TitleCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CommentsListView = new System.Windows.Forms.ListView();
+            this.DateCol = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.UserCol = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.CommentsCol = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.OpenGuidelinesOptions = new System.Windows.Forms.Button();
+            this.OpenComplianceOptions = new System.Windows.Forms.Button();
             this.OpenProtocolTypeOptions = new System.Windows.Forms.Button();
-            this.panel1.SuspendLayout();
+            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
+            this.AddCommentButton = new System.Windows.Forms.ToolStripButton();
+            this.label15 = new System.Windows.Forms.Label();
             this.toolStrip1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.TitleDataGridView)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
             this.flowLayoutPanel2.SuspendLayout();
             this.flowLayoutPanel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.TitleDataGridView)).BeginInit();
             this.SuspendLayout();
-            // 
-            // panel1
-            // 
-            this.panel1.BackColor = System.Drawing.SystemColors.Control;
-            this.panel1.Controls.Add(this.toolStrip1);
-            this.panel1.Controls.Add(this.TitleDataGridView);
-            this.panel1.Controls.Add(this.tableLayoutPanel1);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(0, 10);
-            this.panel1.Name = "panel1";
-            this.panel1.Padding = new System.Windows.Forms.Padding(0, 0, 0, 10);
-            this.panel1.Size = new System.Drawing.Size(800, 554);
-            this.panel1.TabIndex = 4;
             // 
             // toolStrip1
             // 
+            this.toolStrip1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.SubmitButton});
+            this.toolStripButton1,
+            this.AddCommentButton});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Padding = new System.Windows.Forms.Padding(0, 10, 1, 10);
-            this.toolStrip1.Size = new System.Drawing.Size(800, 44);
-            this.toolStrip1.TabIndex = 3;
+            this.toolStrip1.Size = new System.Drawing.Size(800, 25);
+            this.toolStrip1.TabIndex = 0;
             this.toolStrip1.Text = "toolStrip1";
-            // 
-            // SubmitButton
-            // 
-            this.SubmitButton.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.SubmitButton.Image = ((System.Drawing.Image)(resources.GetObject("SubmitButton.Image")));
-            this.SubmitButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.SubmitButton.Name = "SubmitButton";
-            this.SubmitButton.Size = new System.Drawing.Size(71, 21);
-            this.SubmitButton.Text = "Submit";
-            this.SubmitButton.Click += new System.EventHandler(this.SubmitButton_Click);
-            // 
-            // TitleDataGridView
-            // 
-            this.TitleDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.TitleDataGridView.BackgroundColor = System.Drawing.Color.White;
-            this.TitleDataGridView.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.TitleDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.TitleDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.TitleCol});
-            this.TitleDataGridView.Location = new System.Drawing.Point(3, 380);
-            this.TitleDataGridView.MultiSelect = false;
-            this.TitleDataGridView.Name = "TitleDataGridView";
-            this.TitleDataGridView.Size = new System.Drawing.Size(794, 161);
-            this.TitleDataGridView.TabIndex = 41;
-            // 
-            // TitleCol
-            // 
-            this.TitleCol.HeaderText = "Titles";
-            this.TitleCol.Name = "TitleCol";
             // 
             // tableLayoutPanel1
             // 
             this.tableLayoutPanel1.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
             this.tableLayoutPanel1.ColumnCount = 4;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 115F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 265F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 113F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 315F));
-            this.tableLayoutPanel1.Controls.Add(this.CommentTextBox, 1, 8);
-            this.tableLayoutPanel1.Controls.Add(this.label15, 0, 8);
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 120F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 266F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 107F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 316F));
             this.tableLayoutPanel1.Controls.Add(this.BillToTextBox, 1, 7);
             this.tableLayoutPanel1.Controls.Add(this.label14, 0, 7);
             this.tableLayoutPanel1.Controls.Add(this.label13, 0, 6);
@@ -187,7 +146,8 @@
             this.tableLayoutPanel1.Controls.Add(this.flowLayoutPanel1, 1, 2);
             this.tableLayoutPanel1.Controls.Add(this.flowLayoutPanel2, 1, 3);
             this.tableLayoutPanel1.Controls.Add(this.flowLayoutPanel3, 1, 4);
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 47);
+            this.tableLayoutPanel1.Controls.Add(this.label15, 0, 8);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 28);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 10;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
@@ -200,28 +160,12 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(800, 327);
-            this.tableLayoutPanel1.TabIndex = 0;
-            // 
-            // CommentTextBox
-            // 
-            this.CommentTextBox.Location = new System.Drawing.Point(120, 252);
-            this.CommentTextBox.Name = "CommentTextBox";
-            this.CommentTextBox.Size = new System.Drawing.Size(259, 25);
-            this.CommentTextBox.TabIndex = 20;
-            // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(4, 249);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(77, 17);
-            this.label15.TabIndex = 19;
-            this.label15.Text = "Comments: ";
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(794, 327);
+            this.tableLayoutPanel1.TabIndex = 1;
             // 
             // BillToTextBox
             // 
-            this.BillToTextBox.Location = new System.Drawing.Point(120, 221);
+            this.BillToTextBox.Location = new System.Drawing.Point(125, 221);
             this.BillToTextBox.Name = "BillToTextBox";
             this.BillToTextBox.Size = new System.Drawing.Size(125, 25);
             this.BillToTextBox.TabIndex = 18;
@@ -249,7 +193,7 @@
             // DueDateDateTimePicker
             // 
             this.DueDateDateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.DueDateDateTimePicker.Location = new System.Drawing.Point(120, 159);
+            this.DueDateDateTimePicker.Location = new System.Drawing.Point(125, 159);
             this.DueDateDateTimePicker.Name = "DueDateDateTimePicker";
             this.DueDateDateTimePicker.Size = new System.Drawing.Size(125, 25);
             this.DueDateDateTimePicker.TabIndex = 14;
@@ -277,7 +221,7 @@
             // RequestedDateLabel
             // 
             this.RequestedDateLabel.AutoSize = true;
-            this.RequestedDateLabel.Location = new System.Drawing.Point(120, 1);
+            this.RequestedDateLabel.Location = new System.Drawing.Point(125, 1);
             this.RequestedDateLabel.Name = "RequestedDateLabel";
             this.RequestedDateLabel.Padding = new System.Windows.Forms.Padding(0, 5, 0, 5);
             this.RequestedDateLabel.Size = new System.Drawing.Size(101, 27);
@@ -287,7 +231,7 @@
             // RequestedByLabel
             // 
             this.RequestedByLabel.AutoSize = true;
-            this.RequestedByLabel.Location = new System.Drawing.Point(120, 32);
+            this.RequestedByLabel.Location = new System.Drawing.Point(125, 32);
             this.RequestedByLabel.Name = "RequestedByLabel";
             this.RequestedByLabel.Padding = new System.Windows.Forms.Padding(0, 5, 0, 5);
             this.RequestedByLabel.Size = new System.Drawing.Size(87, 27);
@@ -307,7 +251,7 @@
             // label16
             // 
             this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(386, 32);
+            this.label16.Location = new System.Drawing.Point(392, 32);
             this.label16.Name = "label16";
             this.label16.Padding = new System.Windows.Forms.Padding(0, 5, 0, 5);
             this.label16.Size = new System.Drawing.Size(46, 27);
@@ -327,7 +271,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(386, 1);
+            this.label4.Location = new System.Drawing.Point(392, 1);
             this.label4.Name = "label4";
             this.label4.Padding = new System.Windows.Forms.Padding(0, 5, 0, 5);
             this.label4.Size = new System.Drawing.Size(98, 27);
@@ -347,7 +291,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(386, 63);
+            this.label3.Location = new System.Drawing.Point(392, 63);
             this.label3.Name = "label3";
             this.label3.Padding = new System.Windows.Forms.Padding(0, 5, 0, 5);
             this.label3.Size = new System.Drawing.Size(64, 27);
@@ -367,7 +311,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(386, 94);
+            this.label5.Location = new System.Drawing.Point(392, 94);
             this.label5.Name = "label5";
             this.label5.Padding = new System.Windows.Forms.Padding(0, 5, 0, 5);
             this.label5.Size = new System.Drawing.Size(63, 27);
@@ -417,7 +361,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(386, 125);
+            this.label6.Location = new System.Drawing.Point(392, 125);
             this.label6.Name = "label6";
             this.label6.Padding = new System.Windows.Forms.Padding(0, 5, 0, 5);
             this.label6.Size = new System.Drawing.Size(36, 27);
@@ -447,7 +391,7 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(386, 280);
+            this.label11.Location = new System.Drawing.Point(392, 280);
             this.label11.Name = "label11";
             this.label11.Padding = new System.Windows.Forms.Padding(0, 5, 0, 5);
             this.label11.Size = new System.Drawing.Size(32, 27);
@@ -467,7 +411,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(386, 249);
+            this.label10.Location = new System.Drawing.Point(392, 249);
             this.label10.Name = "label10";
             this.label10.Padding = new System.Windows.Forms.Padding(0, 5, 0, 5);
             this.label10.Size = new System.Drawing.Size(34, 27);
@@ -487,10 +431,10 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(386, 218);
+            this.label9.Location = new System.Drawing.Point(392, 218);
             this.label9.Name = "label9";
             this.label9.Padding = new System.Windows.Forms.Padding(0, 5, 0, 5);
-            this.label9.Size = new System.Drawing.Size(103, 27);
+            this.label9.Size = new System.Drawing.Size(99, 27);
             this.label9.TabIndex = 35;
             this.label9.Text = "Phone Number: ";
             // 
@@ -507,7 +451,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(386, 156);
+            this.label7.Location = new System.Drawing.Point(392, 156);
             this.label7.Name = "label7";
             this.label7.Padding = new System.Windows.Forms.Padding(0, 5, 0, 5);
             this.label7.Size = new System.Drawing.Size(44, 27);
@@ -517,7 +461,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(386, 187);
+            this.label8.Location = new System.Drawing.Point(392, 187);
             this.label8.Name = "label8";
             this.label8.Padding = new System.Windows.Forms.Padding(0, 5, 0, 5);
             this.label8.Size = new System.Drawing.Size(68, 27);
@@ -536,7 +480,7 @@
             // 
             // SendViaTextBox
             // 
-            this.SendViaTextBox.Location = new System.Drawing.Point(120, 190);
+            this.SendViaTextBox.Location = new System.Drawing.Point(125, 190);
             this.SendViaTextBox.Name = "SendViaTextBox";
             this.SendViaTextBox.Size = new System.Drawing.Size(125, 25);
             this.SendViaTextBox.TabIndex = 16;
@@ -545,7 +489,7 @@
             // 
             this.flowLayoutPanel1.Controls.Add(this.GuidelinesTextBox);
             this.flowLayoutPanel1.Controls.Add(this.OpenGuidelinesOptions);
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(117, 63);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(122, 63);
             this.flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(0);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             this.flowLayoutPanel1.Size = new System.Drawing.Size(259, 28);
@@ -559,23 +503,11 @@
             this.GuidelinesTextBox.Size = new System.Drawing.Size(232, 25);
             this.GuidelinesTextBox.TabIndex = 5;
             // 
-            // OpenGuidelinesOptions
-            // 
-            this.OpenGuidelinesOptions.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("OpenGuidelinesOptions.BackgroundImage")));
-            this.OpenGuidelinesOptions.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.OpenGuidelinesOptions.Location = new System.Drawing.Point(238, 5);
-            this.OpenGuidelinesOptions.Margin = new System.Windows.Forms.Padding(0, 5, 0, 0);
-            this.OpenGuidelinesOptions.Name = "OpenGuidelinesOptions";
-            this.OpenGuidelinesOptions.Size = new System.Drawing.Size(20, 20);
-            this.OpenGuidelinesOptions.TabIndex = 6;
-            this.OpenGuidelinesOptions.UseVisualStyleBackColor = true;
-            this.OpenGuidelinesOptions.Click += new System.EventHandler(this.OpenGuidelinesOptions_Click);
-            // 
             // flowLayoutPanel2
             // 
             this.flowLayoutPanel2.Controls.Add(this.ComplianceTextBox);
             this.flowLayoutPanel2.Controls.Add(this.OpenComplianceOptions);
-            this.flowLayoutPanel2.Location = new System.Drawing.Point(117, 94);
+            this.flowLayoutPanel2.Location = new System.Drawing.Point(122, 94);
             this.flowLayoutPanel2.Margin = new System.Windows.Forms.Padding(0);
             this.flowLayoutPanel2.Name = "flowLayoutPanel2";
             this.flowLayoutPanel2.Size = new System.Drawing.Size(259, 30);
@@ -589,6 +521,85 @@
             this.ComplianceTextBox.Size = new System.Drawing.Size(232, 25);
             this.ComplianceTextBox.TabIndex = 8;
             // 
+            // flowLayoutPanel3
+            // 
+            this.flowLayoutPanel3.Controls.Add(this.ProtocolTypeTextBox);
+            this.flowLayoutPanel3.Controls.Add(this.OpenProtocolTypeOptions);
+            this.flowLayoutPanel3.Location = new System.Drawing.Point(122, 125);
+            this.flowLayoutPanel3.Margin = new System.Windows.Forms.Padding(0);
+            this.flowLayoutPanel3.Name = "flowLayoutPanel3";
+            this.flowLayoutPanel3.Size = new System.Drawing.Size(258, 30);
+            this.flowLayoutPanel3.TabIndex = 47;
+            // 
+            // ProtocolTypeTextBox
+            // 
+            this.ProtocolTypeTextBox.Location = new System.Drawing.Point(3, 3);
+            this.ProtocolTypeTextBox.Name = "ProtocolTypeTextBox";
+            this.ProtocolTypeTextBox.ReadOnly = true;
+            this.ProtocolTypeTextBox.Size = new System.Drawing.Size(125, 25);
+            this.ProtocolTypeTextBox.TabIndex = 11;
+            // 
+            // TitleDataGridView
+            // 
+            this.TitleDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.TitleDataGridView.BackgroundColor = System.Drawing.Color.White;
+            this.TitleDataGridView.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.TitleDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.TitleDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.TitleCol});
+            this.TitleDataGridView.Location = new System.Drawing.Point(3, 361);
+            this.TitleDataGridView.MultiSelect = false;
+            this.TitleDataGridView.Name = "TitleDataGridView";
+            this.TitleDataGridView.Size = new System.Drawing.Size(794, 161);
+            this.TitleDataGridView.TabIndex = 42;
+            // 
+            // TitleCol
+            // 
+            this.TitleCol.HeaderText = "Titles";
+            this.TitleCol.Name = "TitleCol";
+            // 
+            // CommentsListView
+            // 
+            this.CommentsListView.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.CommentsListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.DateCol,
+            this.UserCol,
+            this.CommentsCol});
+            this.CommentsListView.GridLines = true;
+            this.CommentsListView.Location = new System.Drawing.Point(4, 528);
+            this.CommentsListView.Name = "CommentsListView";
+            this.CommentsListView.Size = new System.Drawing.Size(793, 229);
+            this.CommentsListView.TabIndex = 43;
+            this.CommentsListView.UseCompatibleStateImageBehavior = false;
+            this.CommentsListView.View = System.Windows.Forms.View.Details;
+            // 
+            // DateCol
+            // 
+            this.DateCol.Text = "Date";
+            this.DateCol.Width = 78;
+            // 
+            // UserCol
+            // 
+            this.UserCol.Text = "User";
+            this.UserCol.Width = 103;
+            // 
+            // CommentsCol
+            // 
+            this.CommentsCol.Text = "Comments";
+            this.CommentsCol.Width = 578;
+            // 
+            // OpenGuidelinesOptions
+            // 
+            this.OpenGuidelinesOptions.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("OpenGuidelinesOptions.BackgroundImage")));
+            this.OpenGuidelinesOptions.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.OpenGuidelinesOptions.Location = new System.Drawing.Point(238, 5);
+            this.OpenGuidelinesOptions.Margin = new System.Windows.Forms.Padding(0, 5, 0, 0);
+            this.OpenGuidelinesOptions.Name = "OpenGuidelinesOptions";
+            this.OpenGuidelinesOptions.Size = new System.Drawing.Size(20, 20);
+            this.OpenGuidelinesOptions.TabIndex = 6;
+            this.OpenGuidelinesOptions.UseVisualStyleBackColor = true;
+            // 
             // OpenComplianceOptions
             // 
             this.OpenComplianceOptions.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("OpenComplianceOptions.BackgroundImage")));
@@ -599,25 +610,6 @@
             this.OpenComplianceOptions.Size = new System.Drawing.Size(20, 20);
             this.OpenComplianceOptions.TabIndex = 9;
             this.OpenComplianceOptions.UseVisualStyleBackColor = true;
-            this.OpenComplianceOptions.Click += new System.EventHandler(this.OpenComplianceOptions_Click);
-            // 
-            // flowLayoutPanel3
-            // 
-            this.flowLayoutPanel3.Controls.Add(this.ProtocolTypeTextBox);
-            this.flowLayoutPanel3.Controls.Add(this.OpenProtocolTypeOptions);
-            this.flowLayoutPanel3.Location = new System.Drawing.Point(117, 125);
-            this.flowLayoutPanel3.Margin = new System.Windows.Forms.Padding(0);
-            this.flowLayoutPanel3.Name = "flowLayoutPanel3";
-            this.flowLayoutPanel3.Size = new System.Drawing.Size(255, 30);
-            this.flowLayoutPanel3.TabIndex = 47;
-            // 
-            // ProtocolTypeTextBox
-            // 
-            this.ProtocolTypeTextBox.Location = new System.Drawing.Point(3, 3);
-            this.ProtocolTypeTextBox.Name = "ProtocolTypeTextBox";
-            this.ProtocolTypeTextBox.ReadOnly = true;
-            this.ProtocolTypeTextBox.Size = new System.Drawing.Size(125, 25);
-            this.ProtocolTypeTextBox.TabIndex = 11;
             // 
             // OpenProtocolTypeOptions
             // 
@@ -629,23 +621,46 @@
             this.OpenProtocolTypeOptions.Size = new System.Drawing.Size(20, 20);
             this.OpenProtocolTypeOptions.TabIndex = 12;
             this.OpenProtocolTypeOptions.UseVisualStyleBackColor = true;
-            this.OpenProtocolTypeOptions.Click += new System.EventHandler(this.OpenProtocolTypeOptions_Click);
             // 
-            // ProtocolRequestDetailView
+            // toolStripButton1
+            // 
+            this.toolStripButton1.Image = global::Protocols.Properties.Resources.save_16xLG;
+            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton1.Name = "toolStripButton1";
+            this.toolStripButton1.Size = new System.Drawing.Size(109, 22);
+            this.toolStripButton1.Text = "Save Changes";
+            // 
+            // AddCommentButton
+            // 
+            this.AddCommentButton.Image = global::Protocols.Properties.Resources.action_add_16xLG;
+            this.AddCommentButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.AddCommentButton.Name = "AddCommentButton";
+            this.AddCommentButton.Size = new System.Drawing.Size(118, 22);
+            this.AddCommentButton.Text = "Add Comments";
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(4, 249);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(112, 17);
+            this.label15.TabIndex = 48;
+            this.label15.Text = "Protocol Number: ";
+            // 
+            // ProtocolRequestEditView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.CommentsListView);
+            this.Controls.Add(this.TitleDataGridView);
+            this.Controls.Add(this.tableLayoutPanel1);
+            this.Controls.Add(this.toolStrip1);
             this.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.Name = "ProtocolRequestDetailView";
-            this.Padding = new System.Windows.Forms.Padding(0, 10, 0, 10);
-            this.Size = new System.Drawing.Size(800, 574);
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
+            this.Name = "ProtocolRequestEditView";
+            this.Size = new System.Drawing.Size(800, 760);
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.TitleDataGridView)).EndInit();
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             this.flowLayoutPanel1.ResumeLayout(false);
@@ -654,53 +669,50 @@
             this.flowLayoutPanel2.PerformLayout();
             this.flowLayoutPanel3.ResumeLayout(false);
             this.flowLayoutPanel3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.TitleDataGridView)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
 
+        private System.Windows.Forms.ToolStrip toolStrip1;
+        private System.Windows.Forms.ToolStripButton toolStripButton1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        private System.Windows.Forms.TextBox BillToTextBox;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.DateTimePicker DueDateDateTimePicker;
+        private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label RequestedDateLabel;
-        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label RequestedByLabel;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label SponsorNameLabel;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label SponsorContactLabel;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label AddressLabel;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label CityLabel;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label StateLabel;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Label ZipCodeLabel;
-        private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Label PhoneNumberLabel;
-        private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.Label FaxNumberLabel;
-        private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.Label POLabel;
-        private System.Windows.Forms.DataGridView TitleDataGridView;
-        private System.Windows.Forms.DataGridViewTextBoxColumn TitleCol;
-        private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.DateTimePicker DueDateDateTimePicker;
-        private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.TextBox SendViaTextBox;
-        private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.TextBox BillToTextBox;
-        private System.Windows.Forms.Label label15;
-        private System.Windows.Forms.TextBox CommentTextBox;
-        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Label EmailLabel;
-        private System.Windows.Forms.ToolStrip toolStrip1;
-        private System.Windows.Forms.ToolStripButton SubmitButton;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label SponsorContactLabel;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label SponsorNameLabel;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label AddressLabel;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.Label StateLabel;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label CityLabel;
         private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label POLabel;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label FaxNumberLabel;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label PhoneNumberLabel;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label ZipCodeLabel;
+        private System.Windows.Forms.TextBox SendViaTextBox;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private System.Windows.Forms.TextBox GuidelinesTextBox;
         private System.Windows.Forms.Button OpenGuidelinesOptions;
@@ -710,5 +722,13 @@
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel3;
         private System.Windows.Forms.TextBox ProtocolTypeTextBox;
         private System.Windows.Forms.Button OpenProtocolTypeOptions;
+        private System.Windows.Forms.DataGridView TitleDataGridView;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TitleCol;
+        private System.Windows.Forms.ListView CommentsListView;
+        private System.Windows.Forms.ColumnHeader DateCol;
+        private System.Windows.Forms.ColumnHeader UserCol;
+        private System.Windows.Forms.ColumnHeader CommentsCol;
+        private System.Windows.Forms.ToolStripButton AddCommentButton;
+        private System.Windows.Forms.Label label15;
     }
 }

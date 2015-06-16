@@ -1,6 +1,6 @@
 ﻿namespace Protocols.Views
 {
-    partial class CheckBoxOptionsView
+    partial class ListBoxOptionsView
     {
         /// <summary>
         /// Required designer variable.
@@ -28,23 +28,23 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CheckBoxOptionsView));
-            this.OptionsCheckedListBox = new System.Windows.Forms.CheckedListBox();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ListBoxOptionsView));
+            this.MainListBox = new System.Windows.Forms.ListBox();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.SubmitButton = new System.Windows.Forms.ToolStripButton();
             this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // OptionsCheckedListBox
+            // MainListBox
             // 
-            this.OptionsCheckedListBox.CheckOnClick = true;
-            this.OptionsCheckedListBox.Dock = System.Windows.Forms.DockStyle.Top;
-            this.OptionsCheckedListBox.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.OptionsCheckedListBox.FormattingEnabled = true;
-            this.OptionsCheckedListBox.Location = new System.Drawing.Point(0, 0);
-            this.OptionsCheckedListBox.Name = "OptionsCheckedListBox";
-            this.OptionsCheckedListBox.Size = new System.Drawing.Size(284, 224);
-            this.OptionsCheckedListBox.TabIndex = 0;
+            this.MainListBox.Dock = System.Windows.Forms.DockStyle.Top;
+            this.MainListBox.FormattingEnabled = true;
+            this.MainListBox.ItemHeight = 17;
+            this.MainListBox.Location = new System.Drawing.Point(0, 0);
+            this.MainListBox.Name = "MainListBox";
+            this.MainListBox.Size = new System.Drawing.Size(284, 225);
+            this.MainListBox.TabIndex = 0;
+            this.MainListBox.SelectedIndexChanged += new System.EventHandler(this.MainListBox_SelectedIndexChanged);
             // 
             // toolStrip1
             // 
@@ -69,17 +69,21 @@
             this.SubmitButton.Text = "Submit";
             this.SubmitButton.Click += new System.EventHandler(this.SubmitButton_Click);
             // 
-            // CheckBoxOptionsView
+            // ListBoxOptionsView
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(284, 262);
             this.Controls.Add(this.toolStrip1);
-            this.Controls.Add(this.OptionsCheckedListBox);
-            this.Name = "CheckBoxOptionsView";
+            this.Controls.Add(this.MainListBox);
+            this.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.MinimizeBox = false;
+            this.Name = "ListBoxOptionsView";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Options";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.CheckBoxOptionsView_FormClosing);
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ListBoxOptionsView_FormClosing);
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
             this.ResumeLayout(false);
@@ -89,7 +93,7 @@
 
         #endregion
 
-        private System.Windows.Forms.CheckedListBox OptionsCheckedListBox;
+        private System.Windows.Forms.ListBox MainListBox;
         private System.Windows.Forms.ToolStrip toolStrip1;
         private System.Windows.Forms.ToolStripButton SubmitButton;
     }

@@ -14,11 +14,11 @@ using Protocols.Models;
 
 namespace Protocols.Views
 {
-    public partial class ProtocolRequestDetailView : UserControl, IProtocolRequestDetailView
+    public partial class ProtocolRequestEditView : UserControl, IProtocolRequestDetailView
     {
         ProtocolRequestDetailController controller;
 
-        public ProtocolRequestDetailView()
+        public ProtocolRequestEditView()
         {
             InitializeComponent();
         }
@@ -55,7 +55,7 @@ namespace Protocols.Views
             this.TitleDataGridView.Rows.Clear();
         }
 
-        public string RequestedBy 
+        public string RequestedBy
         {
             get { return this.RequestedByLabel.Text; }
             set { this.RequestedByLabel.Text = value; }
@@ -130,7 +130,7 @@ namespace Protocols.Views
             get { return this.ProtocolTypeTextBox.Text; }
             set { this.ProtocolTypeTextBox.Text = value; }
         }
-        public DateTime DueDate 
+        public DateTime DueDate
         {
             get { return this.DueDateDateTimePicker.Value; }
             set { this.DueDateDateTimePicker.Value = value; }
@@ -145,14 +145,10 @@ namespace Protocols.Views
             get { return this.BillToTextBox.Text; }
             set { this.BillToTextBox.Text = value; }
         }
-        public string Comments
-        {
-            get { return this.CommentTextBox.Text; }
-            set { this.CommentTextBox.Text = value; }
-        }
+        public string Comments { get; set; }
         public List<string> Titles
         {
-            get 
+            get
             {
                 List<string> results = new List<string>();
                 try
@@ -161,17 +157,17 @@ namespace Protocols.Views
                     {
                         DataGridViewCell cell = row.Cells[0];
                         string cellValue = cell.EditedFormattedValue.ToString().Trim();
-                        if(cellValue != String.Empty)
+                        if (cellValue != String.Empty)
                         {
                             results.Add(cellValue);
                         }
                     }
                 }
-                catch(NullReferenceException e)
+                catch (NullReferenceException e)
                 {
                     Debug.WriteLine(e.ToString());
                 }
-                
+
                 return results;
             }
             set
@@ -200,6 +196,5 @@ namespace Protocols.Views
         {
             this.controller.OpenListBoxOptions(ListNames.ProtocolType);
         }
-       
     }
 }
