@@ -73,6 +73,16 @@ namespace Protocols.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Bubble_16xLG {
+            get {
+                object obj = ResourceManager.GetObject("Bubble_16xLG", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap CGreen {
             get {
                 object obj = ResourceManager.GetObject("CGreen", resourceCulture);
@@ -96,6 +106,16 @@ namespace Protocols.Properties {
         internal static System.Drawing.Bitmap NGreen {
             get {
                 object obj = ResourceManager.GetObject("NGreen", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap PencilAngled_16xLG_color {
+            get {
+                object obj = ResourceManager.GetObject("PencilAngled_16xLG_color", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

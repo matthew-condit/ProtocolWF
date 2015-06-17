@@ -15,20 +15,24 @@ namespace Protocols.Controllers
     {
         IDashboardView view;
         IList protocolRequests;
+        IList protocols;
 
         public DashboardController(IDashboardView view)
         {
             this.view = view;
             this.view.SetController(this);
             this.protocolRequests = new ArrayList();
+            this.protocols = new ArrayList();
         }
 
         public void LoadView()
         {
             this.protocolRequests = QProtocolRequests.GetActiveProtocolRequests();
-            LoadRequestTitles();
-            LoadRequestComments();
-            AddProtocolRequestsToView();
+            this.protocols = QProtocols.GetInProcessProtocols();
+            //LoadRequestTitles();
+            //LoadRequestComments();
+            //AddProtocolRequestsToView();
+            AddProtocolsToView();
         }
 
         private void LoadRequestTitles()
@@ -43,7 +47,7 @@ namespace Protocols.Controllers
         {
             foreach(ProtocolRequest request in protocolRequests)
             {
-                request.Comments = (List<string>)QProtocolRequests.GetProtocolRequestComments(request.ID);
+                request.Comments = (List<Comment>)QProtocolRequests.GetProtocolRequestComments(request.ID);
             }
         }
 
@@ -51,7 +55,15 @@ namespace Protocols.Controllers
         {
             foreach(ProtocolRequest request in protocolRequests)
             {
-                this.view.AddProtocolRequestToView(request);
+                //this.view.AddProtocolRequestToView(request);
+            }
+        }
+
+        private void AddProtocolsToView()
+        {
+            foreach(Protocol protocol in protocols)
+            {
+                this.view.AddProtocolToView(protocol);
             }
         }
 
@@ -60,7 +72,7 @@ namespace Protocols.Controllers
             ProtocolRequest request = (ProtocolRequest)this.protocolRequests[selectedIndex];
 
             MainView mainView = (MainView)this.view.ParentControl;
-            mainView.Invoke(mainView.LoadProtocolRequestViewDelegate(request.Sponsor));
+            mainView.Invoke(mainView.LoadProtocolRequestViewDelegate, new object[] { request });
         }
     }
 }

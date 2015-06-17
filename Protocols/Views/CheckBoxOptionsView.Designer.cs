@@ -76,6 +76,8 @@
             this.ClientSize = new System.Drawing.Size(284, 262);
             this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.OptionsCheckedListBox);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "CheckBoxOptionsView";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Options";

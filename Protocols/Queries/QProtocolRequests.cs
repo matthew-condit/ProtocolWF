@@ -148,11 +148,17 @@ namespace Protocols.Queries
             IList results = new ArrayList();
             try
             {
-                string query = @"SELECT ID, SponsorCode, Guidelines, Compliance, ProtocolType,
-		                                DueDate, SendVia, BillTo, RequestStatus, RequestedBy,
-		                                RequestedDate, UpdatedBy, UpdatedDate
+                string query = @"SELECT ProtocolRequests.ID, ProtocolRequests.SponsorCode, 
+                                        ProtocolRequests.Guidelines, ProtocolRequests.Compliance, 
+                                        ProtocolRequests.ProtocolType, ProtocolRequests.DueDate, 
+                                        ProtocolRequests.SendVia, ProtocolRequests.BillTo, 
+                                        ProtocolRequests.RequestStatus, Users.FullName,
+		                                ProtocolRequests.RequestedDate, ProtocolRequests.UpdatedBy, 
+                                        ProtocolRequests.UpdatedDate
 	                             FROM ProtocolRequests
-	                             WHERE IsActive = 1";
+                                 INNER JOIN Users
+                                 ON ProtocolRequests.RequestedBy = Users.UserName
+	                             WHERE ProtocolRequests.IsActive = 1";
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
                     connection.Open();
@@ -232,7 +238,7 @@ namespace Protocols.Queries
 
         public static IList GetProtocolRequestComments(int protocolRequestID)
         {
-            IList results = new List<string>() { };
+            IList results = new List<Comment>() { };
             try
             {
                 using (SqlConnection connection = new SqlConnection(connectionString))
@@ -245,8 +251,11 @@ namespace Protocols.Queries
                         SqlDataReader reader = command.ExecuteReader();
                         while (reader.Read())
                         {
-                            string comments = reader[1].ToString();
-                            results.Add(comments);
+                            Comment comment = new Comment();
+                            comment.Content = reader[1].ToString();
+                            comment.AddedBy = reader[3].ToString();
+                            comment.AddedDate = Convert.ToDateTime(reader[4].ToString());
+                            results.Add(comment);
                         }
                     }
                 }

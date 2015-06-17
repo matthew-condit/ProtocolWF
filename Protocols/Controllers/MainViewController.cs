@@ -78,11 +78,11 @@ namespace Protocols.Controllers
             view.AddControlToMainPanel(subView);
         }
 
-        public void LoadProtocolRequestEditView(Sponsor sponsor)
+        public void LoadProtocolRequestEditView(ProtocolRequest request)
         {
             ProtocolRequestEditView subView = new ProtocolRequestEditView();
             ProtocolRequestDetailController subViewController = new ProtocolRequestDetailController(subView);
-            subViewController.LoadView(sponsor);
+            subViewController.LoadView(request);
 
             view.AddControlToMainPanel(subView);
         }

@@ -42,7 +42,7 @@
             // 
             // menuStrip1
             // 
-            this.menuStrip1.BackColor = System.Drawing.SystemColors.Control;
+            this.menuStrip1.BackColor = System.Drawing.Color.DarkSlateGray;
             this.menuStrip1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.DashboardMenuItem,
@@ -57,7 +57,7 @@
             // 
             // DashboardMenuItem
             // 
-            this.DashboardMenuItem.ForeColor = System.Drawing.Color.Black;
+            this.DashboardMenuItem.ForeColor = System.Drawing.Color.White;
             this.DashboardMenuItem.Name = "DashboardMenuItem";
             this.DashboardMenuItem.Size = new System.Drawing.Size(95, 21);
             this.DashboardMenuItem.Text = "DASHBOARD";
@@ -65,6 +65,7 @@
             // 
             // ProtocolRequestMenuItem
             // 
+            this.ProtocolRequestMenuItem.ForeColor = System.Drawing.Color.White;
             this.ProtocolRequestMenuItem.Name = "ProtocolRequestMenuItem";
             this.ProtocolRequestMenuItem.Size = new System.Drawing.Size(145, 21);
             this.ProtocolRequestMenuItem.Text = "PROTOCOL REQUEST";
@@ -77,6 +78,7 @@
             this.AdminRolesMenuItem,
             this.AdminUsersMenuItem,
             this.ListItemsMenuItem});
+            this.AdminMenuItem.ForeColor = System.Drawing.Color.White;
             this.AdminMenuItem.Name = "AdminMenuItem";
             this.AdminMenuItem.Size = new System.Drawing.Size(62, 21);
             this.AdminMenuItem.Text = "ADMIN";
@@ -84,28 +86,28 @@
             // AdminDepartmentsMenuItem
             // 
             this.AdminDepartmentsMenuItem.Name = "AdminDepartmentsMenuItem";
-            this.AdminDepartmentsMenuItem.Size = new System.Drawing.Size(151, 22);
+            this.AdminDepartmentsMenuItem.Size = new System.Drawing.Size(152, 22);
             this.AdminDepartmentsMenuItem.Text = "Departments";
             this.AdminDepartmentsMenuItem.Click += new System.EventHandler(this.AdminDepartmentsMenuItem_Click);
             // 
             // AdminRolesMenuItem
             // 
             this.AdminRolesMenuItem.Name = "AdminRolesMenuItem";
-            this.AdminRolesMenuItem.Size = new System.Drawing.Size(151, 22);
+            this.AdminRolesMenuItem.Size = new System.Drawing.Size(152, 22);
             this.AdminRolesMenuItem.Text = "Roles";
             this.AdminRolesMenuItem.Click += new System.EventHandler(this.AdminRolesMenuItem_Click);
             // 
             // AdminUsersMenuItem
             // 
             this.AdminUsersMenuItem.Name = "AdminUsersMenuItem";
-            this.AdminUsersMenuItem.Size = new System.Drawing.Size(151, 22);
+            this.AdminUsersMenuItem.Size = new System.Drawing.Size(152, 22);
             this.AdminUsersMenuItem.Text = "Users";
             this.AdminUsersMenuItem.Click += new System.EventHandler(this.AdminUsersMenuItem_Click);
             // 
             // ListItemsMenuItem
             // 
             this.ListItemsMenuItem.Name = "ListItemsMenuItem";
-            this.ListItemsMenuItem.Size = new System.Drawing.Size(151, 22);
+            this.ListItemsMenuItem.Size = new System.Drawing.Size(152, 22);
             this.ListItemsMenuItem.Text = "List Items";
             this.ListItemsMenuItem.Click += new System.EventHandler(this.ListItemsMenuItem_Click);
             // 

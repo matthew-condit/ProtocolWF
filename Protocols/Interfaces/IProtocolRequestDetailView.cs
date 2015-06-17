@@ -1,4 +1,5 @@
 ﻿using Protocols.Controllers;
+using Protocols.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -31,7 +32,7 @@ namespace Protocols.Interfaces
         DateTime DueDate { get; set; }
         string SendVia { get; set; }
         string BillTo { get; set; }
-        string Comments { get; set; }
+        List<Comment> Comments { set; }
         List<string> Titles { get; set; }
 
         Control ParentControl { get; }

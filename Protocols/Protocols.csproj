@@ -53,6 +53,7 @@
     <Compile Include="Controllers\ListBoxOptionsController.cs" />
     <Compile Include="Controllers\ListItemsController.cs" />
     <Compile Include="Controllers\MainViewController.cs" />
+    <Compile Include="Controllers\ProtocolDashboardController.cs" />
     <Compile Include="Controllers\ProtocolRequestAddController.cs" />
     <Compile Include="Controllers\ProtocolRequestDetailController.cs" />
     <Compile Include="Controllers\RequestDashboardController.cs" />
@@ -67,17 +68,24 @@
     <Compile Include="Interfaces\IListBoxOptionsView.cs" />
     <Compile Include="Interfaces\IListItemsView.cs" />
     <Compile Include="Interfaces\IMainView.cs" />
+    <Compile Include="Interfaces\IProtocolDashboardView.cs" />
     <Compile Include="Interfaces\IProtocolRequestDashboard.cs" />
     <Compile Include="Interfaces\IRoleEditView.cs" />
     <Compile Include="Interfaces\IRoleListView.cs" />
     <Compile Include="Interfaces\IUserEditView.cs" />
     <Compile Include="Interfaces\IUserListView.cs" />
+    <Compile Include="Models\Comment.cs" />
+    <Compile Include="Models\DraftWorkflow.cs" />
     <Compile Include="Models\ListItem.cs" />
     <Compile Include="Models\ListNames.cs" />
+    <Compile Include="Models\Protocol.cs" />
+    <Compile Include="Models\ProtocolWorkflow.cs" />
     <Compile Include="Models\RequestStatuses.cs" />
+    <Compile Include="Models\WorkflowTypes.cs" />
     <Compile Include="Queries\QListItems.cs" />
     <Compile Include="Queries\QProtocolRequests.cs" />
     <Compile Include="Queries\QDepartments.cs" />
+    <Compile Include="Queries\QProtocols.cs" />
     <Compile Include="Queries\QRoles.cs" />
     <Compile Include="Queries\QUsers.cs" />
     <Compile Include="Queries\QTMS.cs" />
@@ -104,6 +112,12 @@
     </Compile>
     <Compile Include="Views\DepartmentListView.Designer.cs">
       <DependentUpon>DepartmentListView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\DraftWorkflowRow.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\DraftWorkflowRow.Designer.cs">
+      <DependentUpon>DraftWorkflowRow.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\ListBoxOptionsView.cs">
       <SubType>Form</SubType>
@@ -135,6 +149,12 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Queries\QMatrix.cs" />
+    <Compile Include="Views\ProtocolWorkflowRow.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\ProtocolWorkflowRow.Designer.cs">
+      <DependentUpon>ProtocolWorkflowRow.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\ProtocolRequestDetailView.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -199,6 +219,9 @@
     <EmbeddedResource Include="Views\DepartmentListView.resx">
       <DependentUpon>DepartmentListView.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Views\DraftWorkflowRow.resx">
+      <DependentUpon>DraftWorkflowRow.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\ListBoxOptionsView.resx">
       <DependentUpon>ListBoxOptionsView.cs</DependentUpon>
     </EmbeddedResource>
@@ -207,6 +230,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\MainView.resx">
       <DependentUpon>MainView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\ProtocolWorkflowRow.resx">
+      <DependentUpon>ProtocolWorkflowRow.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\ProtocolRequestDetailView.resx">
       <DependentUpon>ProtocolRequestDetailView.cs</DependentUpon>
@@ -243,11 +269,13 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\PencilAngled_16xLG_color.png" />
     <None Include="Resources\save_16xLG.png" />
     <None Include="Resources\RGreen.png" />
     <None Include="Resources\IGreen.png" />
     <None Include="Resources\CGreen.png" />
     <None Include="Resources\action_add_16xLG.png" />
+    <None Include="Resources\Bubble_16xLG.png" />
     <Content Include="Resources\Images\CGray.png" />
     <Content Include="Resources\Images\CGreen.png" />
     <Content Include="Resources\Images\CRed.png" />

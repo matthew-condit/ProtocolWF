@@ -32,13 +32,29 @@ namespace Protocols.Views
             get { return this.ParentForm; }
         }
 
-        public void AddProtocolRequestToView(ProtocolRequest request)
+        /*public void AddProtocolRequestToView(ProtocolRequest request)
         {
             this.RequestDataGridView.Rows.Add(request.RequestedDate.ToString("MM/dd/yyyy"),
                  request.RequestedBy, 
                  request.Sponsor.SponsorName, 
                  request.RequestStatusImage(),
                  request.Comments.Count.ToString());
+        }*/
+
+        public void AddProtocolToView(Protocol protocol)
+        {
+            if (protocol.WorkflowType == WorkflowTypes.Protocol)
+            {
+                ProtocolWorkflowRow prow = new ProtocolWorkflowRow();
+                prow.SetProtocol(protocol);
+                this.ProtocolFlowLayoutPanel.Controls.Add(prow);
+                prow.Width = 795;
+                prow.Height = 71;
+            }
+            else if(protocol.WorkflowType == WorkflowTypes.Draft)
+            {
+                DraftWorkflowRow drow = new DraftWorkflowRow();
+            }
         }
 
         private void RequestDataGridView_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)

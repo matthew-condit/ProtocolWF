@@ -51,7 +51,7 @@ namespace Protocols.Views
             this.DueDate = DateTime.Now;
             this.SendVia = "";
             this.BillTo = "Toxikon";
-            this.Comments = "";
+            this.CommentTextBox.Text = "";
             this.TitleDataGridView.Rows.Clear();
         }
 
@@ -145,10 +145,16 @@ namespace Protocols.Views
             get { return this.BillToTextBox.Text; }
             set { this.BillToTextBox.Text = value; }
         }
-        public string Comments
+        public List<Comment> Comments
         {
-            get { return this.CommentTextBox.Text; }
-            set { this.CommentTextBox.Text = value; }
+            set 
+            {
+                IList<Comment> list = value;
+                if(list != null && list.Count > 0)
+                {
+                    this.CommentTextBox.Text = list[0].Content;
+                }
+            }
         }
         public List<string> Titles
         {

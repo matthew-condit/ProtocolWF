@@ -8,9 +8,9 @@ namespace Protocols.Models
 {
     public class RequestStatuses
     {
-        public const string New = "New";
+        public const string Submitted = "Submitted";
         public const string Received = "Received";
-        public const string InProcess = "In Process";
-        public const string Complete = "Complete";
+        public const string PutUp = "Put Up";
+        public const string AssignedWorkflow = "Assigned WorkFlow";
     }
 }

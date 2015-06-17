@@ -20,6 +20,7 @@ namespace Protocols.Controllers
         IList guildlinesList;
         IList complianceList;
         IList protocolTypeList;
+        List<Comment> comments;
 
         public delegate void SubmitButtonClick();
         public SubmitButtonClick SubmitButtonClickDelegate;
@@ -36,6 +37,7 @@ namespace Protocols.Controllers
             this.complianceList = QListItems.GetListItems(ListNames.Compliance);
             this.protocolTypeList = new ArrayList();
             this.protocolTypeList = QListItems.GetListItems(ListNames.ProtocolType);
+            this.comments = new List<Comment>() { };
         }
 
         private void InitProtocolRequest()
@@ -61,11 +63,26 @@ namespace Protocols.Controllers
             UpdateViewWithSponsor();
         }
 
+        public void LoadView(ProtocolRequest protocolRequest)
+        {
+            this.protocolRequest = protocolRequest;
+            this.sponsor = protocolRequest.Sponsor;
+            UpdateViewWithProtocolRequest();
+            UpdateViewWithSponsor();
+        }
+
         private void UpdateViewWithProtocolRequest()
         {
             this.view.RequestedBy = protocolRequest.RequestedBy;
             this.view.RequestedDate = protocolRequest.RequestedDate.ToString("MM/dd/yyyy");
+            this.view.Guidelines = protocolRequest.Guidelines;
+            this.view.Compliance = protocolRequest.Compliance;
+            this.view.ProtocolType = protocolRequest.ProtocolType;
             this.view.BillTo = protocolRequest.BillTo;
+            this.view.SendVia = protocolRequest.SendMethod;
+            this.view.DueDate = protocolRequest.DueDate;
+            this.view.Titles = protocolRequest.Titles;
+            this.view.Comments = protocolRequest.Comments;
         }
 
         private void UpdateViewWithSponsor()
@@ -179,14 +196,13 @@ namespace Protocols.Controllers
 
         private void UpdateProtocolRequestWithViewValues()
         {
-            this.protocolRequest.RequestStatus = RequestStatuses.New;
+            this.protocolRequest.RequestStatus = RequestStatuses.Submitted;
             this.protocolRequest.Guidelines = this.view.Guidelines;
             this.protocolRequest.Compliance = this.view.Compliance;
             this.protocolRequest.ProtocolType = this.view.ProtocolType;
             this.protocolRequest.DueDate = this.view.DueDate;
             this.protocolRequest.SendMethod = this.view.SendVia;
             this.protocolRequest.BillTo = this.view.BillTo;
-            this.protocolRequest.Comments.Add(this.view.Comments);
             this.protocolRequest.Titles = new List<string>(this.view.Titles);
         }
 

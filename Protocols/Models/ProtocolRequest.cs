@@ -23,7 +23,7 @@ namespace Protocols.Models
         public DateTime DueDate { get; set; }
         public string SendMethod { get; set; }
         public string BillTo { get; set; }
-        public List<string> Comments { get; set; }
+        public List<Comment> Comments { get; set; }
 
         public string ReceivedBy { get; set; }
         public DateTime ReceivedDate { get; set; }
@@ -38,6 +38,7 @@ namespace Protocols.Models
 
         public void Refresh()
         {
+            this.ID = 0;
             RequestedBy = "";
             RequestedDate = DateTime.Now;
             SponsorCode = "";
@@ -48,7 +49,7 @@ namespace Protocols.Models
             Titles = new List<string>() { };
             DueDate = DateTime.Now;
             BillTo = "Toxikon";
-            Comments = new List<string>() { };
+            Comments = new List<Comment>() { };
 
             ReceivedBy = "";
             ReceivedDate = DateTime.Now;
@@ -67,16 +68,16 @@ namespace Protocols.Models
             Image result = null;
             switch (this.RequestStatus)
             {
-                case RequestStatuses.New:
+                case RequestStatuses.Submitted:
                     result = Properties.Resources.NGreen;
                     break;
                 case RequestStatuses.Received:
                     result = Properties.Resources.RGreen;
                     break;
-                case RequestStatuses.InProcess:
+                case RequestStatuses.PutUp:
                     result = Properties.Resources.IGreen;
                     break;
-                case RequestStatuses.Complete:
+                case RequestStatuses.AssignedWorkflow:
                     result = Properties.Resources.CGreen;
                     break;
                 default:

@@ -1,4 +1,5 @@
-﻿namespace Protocols.Views
+﻿using Protocols.Models;
+namespace Protocols.Views
 {
     partial class ProtocolRequestAddView
     {
@@ -52,7 +53,8 @@
             this.SearchButton});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(800, 25);
+            this.toolStrip1.Padding = new System.Windows.Forms.Padding(0, 10, 1, 10);
+            this.toolStrip1.Size = new System.Drawing.Size(800, 45);
             this.toolStrip1.TabIndex = 0;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -85,12 +87,12 @@
             this.tableLayoutPanel1.Controls.Add(this.SponsorListView, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.ProtocolRequestDetailView, 0, 1);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 25);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 45);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 2;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 80F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(800, 735);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(800, 715);
             this.tableLayoutPanel1.TabIndex = 1;
             // 
             // SponsorListView
@@ -105,7 +107,7 @@
             this.SponsorListView.Location = new System.Drawing.Point(3, 3);
             this.SponsorListView.MultiSelect = false;
             this.SponsorListView.Name = "SponsorListView";
-            this.SponsorListView.Size = new System.Drawing.Size(794, 141);
+            this.SponsorListView.Size = new System.Drawing.Size(794, 137);
             this.SponsorListView.TabIndex = 0;
             this.SponsorListView.UseCompatibleStateImageBehavior = false;
             this.SponsorListView.View = System.Windows.Forms.View.Details;
@@ -129,29 +131,31 @@
             // ProtocolRequestDetailView
             // 
             this.ProtocolRequestDetailView.Address = "Address";
-            this.ProtocolRequestDetailView.BillTo = null;
+            this.ProtocolRequestDetailView.BillTo = "";
             this.ProtocolRequestDetailView.City = "City";
-            this.ProtocolRequestDetailView.Comments = null;
-            this.ProtocolRequestDetailView.Compliance = null;
+            this.ProtocolRequestDetailView.Compliance = "";
             this.ProtocolRequestDetailView.ContactName = "Contact";
             this.ProtocolRequestDetailView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ProtocolRequestDetailView.DueDate = new System.DateTime(2015, 6, 17, 8, 49, 5, 763);
             this.ProtocolRequestDetailView.Email = "Email";
             this.ProtocolRequestDetailView.FaxNumber = "Fax";
             this.ProtocolRequestDetailView.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ProtocolRequestDetailView.Guidelines = null;
-            this.ProtocolRequestDetailView.Location = new System.Drawing.Point(3, 151);
+            this.ProtocolRequestDetailView.Guidelines = "";
+            this.ProtocolRequestDetailView.Location = new System.Drawing.Point(3, 147);
             this.ProtocolRequestDetailView.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.ProtocolRequestDetailView.Name = "ProtocolRequestDetailView";
+            this.ProtocolRequestDetailView.Padding = new System.Windows.Forms.Padding(0, 10, 0, 10);
             this.ProtocolRequestDetailView.PhoneNumber = "Phone";
             this.ProtocolRequestDetailView.PONumber = "PO";
-            this.ProtocolRequestDetailView.ProtocolType = null;
+            this.ProtocolRequestDetailView.ProtocolType = "";
             this.ProtocolRequestDetailView.RequestedBy = "Requested By";
             this.ProtocolRequestDetailView.RequestedDate = "Requested Date";
-            this.ProtocolRequestDetailView.SendVia = null;
-            this.ProtocolRequestDetailView.Size = new System.Drawing.Size(794, 580);
+            this.ProtocolRequestDetailView.SendVia = "";
+            this.ProtocolRequestDetailView.Size = new System.Drawing.Size(794, 564);
             this.ProtocolRequestDetailView.SponsorName = "Sponsor";
             this.ProtocolRequestDetailView.State = "State";
             this.ProtocolRequestDetailView.TabIndex = 1;
+            this.ProtocolRequestDetailView.Titles = ((System.Collections.Generic.List<string>)(resources.GetObject("ProtocolRequestDetailView.Titles")));
             this.ProtocolRequestDetailView.ZipCode = "Zip Code";
             // 
             // ProtocolRequestAddView

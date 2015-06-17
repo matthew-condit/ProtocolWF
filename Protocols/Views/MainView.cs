@@ -16,12 +16,46 @@ namespace Protocols.Views
     public partial class MainView : Form, IMainView
     {
         MainViewController controller;
-        public delegate void LoadProtocolRequestEditView(Sponsor sponsor);
+        public delegate void LoadProtocolRequestEditView(ProtocolRequest request);
         public LoadProtocolRequestEditView LoadProtocolRequestViewDelegate;
 
         public MainView()
         {
             InitializeComponent();
+            this.menuStrip1.Renderer = new MyRenderer();
+        }
+
+        private class MyRenderer : ToolStripProfessionalRenderer
+        {
+            public MyRenderer() : base(new MyColors()) { }
+        }
+
+        private class MyColors : ProfessionalColorTable
+        {
+            public override Color MenuItemSelected
+            {
+                get { return Color.Gray; }
+            }
+            public override Color MenuItemSelectedGradientBegin
+            {
+                get { return Color.DarkGray; }
+            }
+            public override Color MenuItemSelectedGradientEnd
+            {
+                get { return Color.Gray; }
+            }
+            public override Color MenuItemBorder
+            {
+                get { return Color.Gray; }
+            }
+            public override Color MenuItemPressedGradientBegin
+            {
+                get { return Color.DarkGray; }
+            }
+            public override Color MenuItemPressedGradientEnd
+            {
+                get { return Color.Gray; }
+            }
         }
 
         public void SetController(MainViewController controller)

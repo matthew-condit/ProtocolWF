@@ -12,7 +12,8 @@ namespace Protocols.Interfaces
     public interface IDashboardView
     {
         void SetController(DashboardController controller);
-        void AddProtocolRequestToView(ProtocolRequest request);
+        //void AddProtocolRequestToView(ProtocolRequest request);
+        void AddProtocolToView(Protocol protocol);
         Control ParentControl { get; }
     }
 }
