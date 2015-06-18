@@ -37,17 +37,7 @@
             this.QALabel = new System.Windows.Forms.Label();
             this.ActivatedLabel = new System.Windows.Forms.Label();
             this.LogInLabel = new System.Windows.Forms.Label();
-            this.ProtocolToolStrip = new System.Windows.Forms.ToolStrip();
-            this.RequestedDateLabel = new System.Windows.Forms.ToolStripLabel();
-            this.RequestedByLabel = new System.Windows.Forms.ToolStripLabel();
-            this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
-            this.ProtocolTitleLabel = new System.Windows.Forms.Label();
-            this.ProtocolNumberLabel = new System.Windows.Forms.Label();
-            this.AddCommentButton = new System.Windows.Forms.ToolStripButton();
-            this.EditButton = new System.Windows.Forms.ToolStripButton();
             this.flowLayoutPanel1.SuspendLayout();
-            this.ProtocolToolStrip.SuspendLayout();
-            this.flowLayoutPanel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // flowLayoutPanel1
@@ -61,9 +51,9 @@
             this.flowLayoutPanel1.Controls.Add(this.QALabel);
             this.flowLayoutPanel1.Controls.Add(this.ActivatedLabel);
             this.flowLayoutPanel1.Controls.Add(this.LogInLabel);
-            this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.flowLayoutPanel1.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 52);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             this.flowLayoutPanel1.Padding = new System.Windows.Forms.Padding(0, 2, 0, 0);
             this.flowLayoutPanel1.Size = new System.Drawing.Size(714, 19);
@@ -149,108 +139,18 @@
             this.LogInLabel.TabIndex = 7;
             this.LogInLabel.Text = "Log In";
             // 
-            // ProtocolToolStrip
-            // 
-            this.ProtocolToolStrip.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ProtocolToolStrip.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
-            this.ProtocolToolStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.RequestedByLabel,
-            this.RequestedDateLabel,
-            this.AddCommentButton,
-            this.EditButton});
-            this.ProtocolToolStrip.Location = new System.Drawing.Point(0, 0);
-            this.ProtocolToolStrip.Name = "ProtocolToolStrip";
-            this.ProtocolToolStrip.Size = new System.Drawing.Size(714, 25);
-            this.ProtocolToolStrip.TabIndex = 2;
-            this.ProtocolToolStrip.Text = "Protocol Title";
-            // 
-            // RequestedDateLabel
-            // 
-            this.RequestedDateLabel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.RequestedDateLabel.Name = "RequestedDateLabel";
-            this.RequestedDateLabel.Size = new System.Drawing.Size(89, 22);
-            this.RequestedDateLabel.Text = "Requested Date";
-            // 
-            // RequestedByLabel
-            // 
-            this.RequestedByLabel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.RequestedByLabel.Name = "RequestedByLabel";
-            this.RequestedByLabel.Size = new System.Drawing.Size(78, 22);
-            this.RequestedByLabel.Text = "Requested By";
-            // 
-            // flowLayoutPanel2
-            // 
-            this.flowLayoutPanel2.BackColor = System.Drawing.Color.White;
-            this.flowLayoutPanel2.Controls.Add(this.ProtocolTitleLabel);
-            this.flowLayoutPanel2.Controls.Add(this.ProtocolNumberLabel);
-            this.flowLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flowLayoutPanel2.Location = new System.Drawing.Point(0, 25);
-            this.flowLayoutPanel2.Name = "flowLayoutPanel2";
-            this.flowLayoutPanel2.Padding = new System.Windows.Forms.Padding(0, 2, 0, 0);
-            this.flowLayoutPanel2.Size = new System.Drawing.Size(714, 27);
-            this.flowLayoutPanel2.TabIndex = 3;
-            // 
-            // ProtocolTitleLabel
-            // 
-            this.ProtocolTitleLabel.AutoSize = true;
-            this.ProtocolTitleLabel.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold);
-            this.ProtocolTitleLabel.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.ProtocolTitleLabel.Location = new System.Drawing.Point(3, 2);
-            this.ProtocolTitleLabel.Name = "ProtocolTitleLabel";
-            this.ProtocolTitleLabel.Size = new System.Drawing.Size(30, 15);
-            this.ProtocolTitleLabel.TabIndex = 1;
-            this.ProtocolTitleLabel.Text = "Title";
-            // 
-            // ProtocolNumberLabel
-            // 
-            this.ProtocolNumberLabel.AutoSize = true;
-            this.ProtocolNumberLabel.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold);
-            this.ProtocolNumberLabel.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.ProtocolNumberLabel.Location = new System.Drawing.Point(39, 2);
-            this.ProtocolNumberLabel.Name = "ProtocolNumberLabel";
-            this.ProtocolNumberLabel.Size = new System.Drawing.Size(96, 15);
-            this.ProtocolNumberLabel.TabIndex = 2;
-            this.ProtocolNumberLabel.Text = "ProtocolNumber";
-            // 
-            // AddCommentButton
-            // 
-            this.AddCommentButton.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.AddCommentButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.AddCommentButton.Image = global::Protocols.Properties.Resources.Bubble_16xLG;
-            this.AddCommentButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.AddCommentButton.Name = "AddCommentButton";
-            this.AddCommentButton.Size = new System.Drawing.Size(23, 22);
-            this.AddCommentButton.Text = "Comments";
-            // 
-            // EditButton
-            // 
-            this.EditButton.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.EditButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.EditButton.Image = global::Protocols.Properties.Resources.PencilAngled_16xLG_color;
-            this.EditButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.EditButton.Name = "EditButton";
-            this.EditButton.Size = new System.Drawing.Size(23, 22);
-            this.EditButton.Text = "Edit";
-            // 
             // ProtocolWorkflowRow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.Controls.Add(this.flowLayoutPanel2);
-            this.Controls.Add(this.ProtocolToolStrip);
             this.Controls.Add(this.flowLayoutPanel1);
             this.Name = "ProtocolWorkflowRow";
-            this.Size = new System.Drawing.Size(714, 71);
+            this.Size = new System.Drawing.Size(714, 22);
             this.flowLayoutPanel1.ResumeLayout(false);
             this.flowLayoutPanel1.PerformLayout();
-            this.ProtocolToolStrip.ResumeLayout(false);
-            this.ProtocolToolStrip.PerformLayout();
-            this.flowLayoutPanel2.ResumeLayout(false);
-            this.flowLayoutPanel2.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -265,13 +165,5 @@
         private System.Windows.Forms.Label QALabel;
         private System.Windows.Forms.Label ActivatedLabel;
         private System.Windows.Forms.Label LogInLabel;
-        private System.Windows.Forms.ToolStrip ProtocolToolStrip;
-        private System.Windows.Forms.ToolStripLabel RequestedByLabel;
-        private System.Windows.Forms.ToolStripLabel RequestedDateLabel;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;
-        private System.Windows.Forms.Label ProtocolTitleLabel;
-        private System.Windows.Forms.Label ProtocolNumberLabel;
-        private System.Windows.Forms.ToolStripButton AddCommentButton;
-        private System.Windows.Forms.ToolStripButton EditButton;
     }
 }

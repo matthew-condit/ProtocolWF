@@ -20,9 +20,6 @@ namespace Protocols.Views
 
         public void SetProtocol(Protocol protocol)
         {
-            this.ProtocolTitleLabel.Text = protocol.Title;
-            this.RequestedByLabel.Text = protocol.RequestedBy;
-            this.RequestedDateLabel.Text = protocol.RequestedDate.ToString("MM/dd/yyyy");
             this.SetProtocolWorkflow(protocol.ProtocolWorkflow);
         }
 

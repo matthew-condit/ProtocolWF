@@ -25,11 +25,8 @@ namespace Protocols.Models
         public string BillTo { get; set; }
         public List<Comment> Comments { get; set; }
 
-        public string ReceivedBy { get; set; }
-        public DateTime ReceivedDate { get; set; }
-        public DateTime EffectiveDate { get; set; }
-        public string ProtocolNumber { get; set; }
         public string RequestStatus { get; set; }
+        public ProtocolRequestWorkflow Workflow { get; set; }
 
         public ProtocolRequest()
         {
@@ -50,12 +47,7 @@ namespace Protocols.Models
             DueDate = DateTime.Now;
             BillTo = "Toxikon";
             Comments = new List<Comment>() { };
-
-            ReceivedBy = "";
-            ReceivedDate = DateTime.Now;
-            EffectiveDate = DateTime.Now;
-            ProtocolNumber = "";
-            RequestStatus = "";
+            Workflow = new ProtocolRequestWorkflow();
         }
 
         public void SetSponsor()
@@ -68,7 +60,7 @@ namespace Protocols.Models
             Image result = null;
             switch (this.RequestStatus)
             {
-                case RequestStatuses.Submitted:
+                case RequestStatuses.New:
                     result = Properties.Resources.NGreen;
                     break;
                 case RequestStatuses.Received:

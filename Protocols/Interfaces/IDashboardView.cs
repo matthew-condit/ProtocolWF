@@ -12,8 +12,9 @@ namespace Protocols.Interfaces
     public interface IDashboardView
     {
         void SetController(DashboardController controller);
-        //void AddProtocolRequestToView(ProtocolRequest request);
+        void AddProtocolRequestToView(ProtocolRequest request);
         void AddProtocolToView(Protocol protocol);
+        void SetDataGridViewCheckBoxCell_BackColor(ProtocolRequest request, int rowIndex);
         Control ParentControl { get; }
     }
 }

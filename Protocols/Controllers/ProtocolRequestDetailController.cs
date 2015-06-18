@@ -196,7 +196,7 @@ namespace Protocols.Controllers
 
         private void UpdateProtocolRequestWithViewValues()
         {
-            this.protocolRequest.RequestStatus = RequestStatuses.Submitted;
+            this.protocolRequest.RequestStatus = RequestStatuses.New;
             this.protocolRequest.Guidelines = this.view.Guidelines;
             this.protocolRequest.Compliance = this.view.Compliance;
             this.protocolRequest.ProtocolType = this.view.ProtocolType;

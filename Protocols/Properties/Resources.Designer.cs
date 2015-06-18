@@ -93,6 +93,26 @@ namespace Protocols.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap checkbox_16xLG {
+            get {
+                object obj = ResourceManager.GetObject("checkbox_16xLG", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap color_wheel_16xLG {
+            get {
+                object obj = ResourceManager.GetObject("color_wheel_16xLG", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap IGreen {
             get {
                 object obj = ResourceManager.GetObject("IGreen", resourceCulture);
@@ -136,6 +156,16 @@ namespace Protocols.Properties {
         internal static System.Drawing.Bitmap save_16xLG {
             get {
                 object obj = ResourceManager.GetObject("save_16xLG", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap StatusAnnotations_Complete_and_ok_16xLG_color {
+            get {
+                object obj = ResourceManager.GetObject("StatusAnnotations_Complete_and_ok_16xLG_color", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

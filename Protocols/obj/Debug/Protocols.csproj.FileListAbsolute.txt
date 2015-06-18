@@ -6,11 +6,15 @@ C:\Users\BMcCulley\Source\toxxwinapp\ProtocolsWF\Protocols\obj\Debug\Protocols.V
 C:\Users\BMcCulley\Source\toxxwinapp\ProtocolsWF\Protocols\obj\Debug\Protocols.Views.DashboardView.resources
 C:\Users\BMcCulley\Source\toxxwinapp\ProtocolsWF\Protocols\obj\Debug\Protocols.Views.DepartmentEditView.resources
 C:\Users\BMcCulley\Source\toxxwinapp\ProtocolsWF\Protocols\obj\Debug\Protocols.Views.DepartmentListView.resources
+C:\Users\BMcCulley\Source\toxxwinapp\ProtocolsWF\Protocols\obj\Debug\Protocols.Views.DraftWorkflowRow.resources
 C:\Users\BMcCulley\Source\toxxwinapp\ProtocolsWF\Protocols\obj\Debug\Protocols.Views.ListBoxOptionsView.resources
 C:\Users\BMcCulley\Source\toxxwinapp\ProtocolsWF\Protocols\obj\Debug\Protocols.Views.ListItemsView.resources
 C:\Users\BMcCulley\Source\toxxwinapp\ProtocolsWF\Protocols\obj\Debug\Protocols.Views.MainView.resources
+C:\Users\BMcCulley\Source\toxxwinapp\ProtocolsWF\Protocols\obj\Debug\Protocols.Views.ProtocolRequestWorkflowView.resources
+C:\Users\BMcCulley\Source\toxxwinapp\ProtocolsWF\Protocols\obj\Debug\Protocols.Views.ProtocolWorkflowRow.resources
 C:\Users\BMcCulley\Source\toxxwinapp\ProtocolsWF\Protocols\obj\Debug\Protocols.Views.ProtocolRequestDetailView.resources
 C:\Users\BMcCulley\Source\toxxwinapp\ProtocolsWF\Protocols\obj\Debug\Protocols.Views.ProtocolRequestAddView.resources
+C:\Users\BMcCulley\Source\toxxwinapp\ProtocolsWF\Protocols\obj\Debug\Protocols.Views.ProtocolRequestEditView.resources
 C:\Users\BMcCulley\Source\toxxwinapp\ProtocolsWF\Protocols\obj\Debug\Protocols.Views.RoleEditView.resources
 C:\Users\BMcCulley\Source\toxxwinapp\ProtocolsWF\Protocols\obj\Debug\Protocols.Views.RoleListView.resources
 C:\Users\BMcCulley\Source\toxxwinapp\ProtocolsWF\Protocols\obj\Debug\Protocols.Views.UserEditView.resources
@@ -19,6 +23,3 @@ C:\Users\BMcCulley\Source\toxxwinapp\ProtocolsWF\Protocols\obj\Debug\Protocols.c
 C:\Users\BMcCulley\Source\toxxwinapp\ProtocolsWF\Protocols\obj\Debug\Protocols.exe
 C:\Users\BMcCulley\Source\toxxwinapp\ProtocolsWF\Protocols\obj\Debug\Protocols.pdb
 C:\Users\BMcCulley\Source\toxxwinapp\ProtocolsWF\Protocols\obj\Debug\Protocols.csprojResolveAssemblyReference.cache
-C:\Users\BMcCulley\Source\toxxwinapp\ProtocolsWF\Protocols\obj\Debug\Protocols.Views.ProtocolRequestEditView.resources
-C:\Users\BMcCulley\Source\toxxwinapp\ProtocolsWF\Protocols\obj\Debug\Protocols.Views.DraftWorkflowRow.resources
-C:\Users\BMcCulley\Source\toxxwinapp\ProtocolsWF\Protocols\obj\Debug\Protocols.Views.ProtocolWorkflowRow.resources

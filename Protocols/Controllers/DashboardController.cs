@@ -31,8 +31,8 @@ namespace Protocols.Controllers
             this.protocols = QProtocols.GetInProcessProtocols();
             //LoadRequestTitles();
             //LoadRequestComments();
-            //AddProtocolRequestsToView();
-            AddProtocolsToView();
+            AddProtocolRequestsToView();
+            //AddProtocolsToView();
         }
 
         private void LoadRequestTitles()
@@ -55,7 +55,7 @@ namespace Protocols.Controllers
         {
             foreach(ProtocolRequest request in protocolRequests)
             {
-                //this.view.AddProtocolRequestToView(request);
+                this.view.AddProtocolRequestToView(request);
             }
         }
 
@@ -73,6 +73,29 @@ namespace Protocols.Controllers
 
             MainView mainView = (MainView)this.view.ParentControl;
             mainView.Invoke(mainView.LoadProtocolRequestViewDelegate, new object[] { request });
+        }
+
+        public void CheckBoxCellClicked(string colName, int rowIndex, bool isChecked)
+        {
+            ProtocolRequest request = this.protocolRequests[rowIndex] as ProtocolRequest;
+            switch(colName)
+            {
+                case "ReceivedCol":
+                    request.Workflow.Received = isChecked;
+                    break;
+                case "InProcessCol":
+                    request.Workflow.InProcess = isChecked;
+                    break;
+                case "CompletedCol":
+                    request.Workflow.Completed = isChecked;
+                    break;
+                case "CancelledCol":
+                    request.Workflow.Cancelled = isChecked;
+                    break;
+                default:
+                    break;
+            }
+            this.view.SetDataGridViewCheckBoxCell_BackColor(request, rowIndex);
         }
     }
 }
