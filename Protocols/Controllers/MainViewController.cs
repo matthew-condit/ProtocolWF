@@ -86,5 +86,14 @@ namespace Protocols.Controllers
 
             view.AddControlToMainPanel(subView);
         }
+
+        public void LoadProtocolEventsView()
+        {
+            ProtocolEventsView subView = new ProtocolEventsView();
+            ProtocolEventsController subViewController = new ProtocolEventsController(subView);
+            subViewController.LoadView();
+
+            view.AddControlToMainPanel(subView);
+        }
     }
 }

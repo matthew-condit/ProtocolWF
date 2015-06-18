@@ -24,6 +24,8 @@ namespace Protocols.Models
         public string SendMethod { get; set; }
         public string BillTo { get; set; }
         public List<Comment> Comments { get; set; }
+        public string AssignedTo { get; set; }
+        public string Priority { get; set; }
 
         public string RequestStatus { get; set; }
         public ProtocolRequestWorkflow Workflow { get; set; }
@@ -48,6 +50,7 @@ namespace Protocols.Models
             BillTo = "Toxikon";
             Comments = new List<Comment>() { };
             Workflow = new ProtocolRequestWorkflow();
+            this.AssignedTo = "";
         }
 
         public void SetSponsor()

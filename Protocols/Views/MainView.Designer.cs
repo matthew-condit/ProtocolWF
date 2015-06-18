@@ -37,6 +37,7 @@
             this.AdminUsersMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ListItemsMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.MainPanel = new System.Windows.Forms.Panel();
+            this.AdminProtocolEventsButton = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -77,7 +78,8 @@
             this.AdminDepartmentsMenuItem,
             this.AdminRolesMenuItem,
             this.AdminUsersMenuItem,
-            this.ListItemsMenuItem});
+            this.ListItemsMenuItem,
+            this.AdminProtocolEventsButton});
             this.AdminMenuItem.ForeColor = System.Drawing.Color.White;
             this.AdminMenuItem.Name = "AdminMenuItem";
             this.AdminMenuItem.Size = new System.Drawing.Size(62, 21);
@@ -86,28 +88,28 @@
             // AdminDepartmentsMenuItem
             // 
             this.AdminDepartmentsMenuItem.Name = "AdminDepartmentsMenuItem";
-            this.AdminDepartmentsMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.AdminDepartmentsMenuItem.Size = new System.Drawing.Size(166, 22);
             this.AdminDepartmentsMenuItem.Text = "Departments";
             this.AdminDepartmentsMenuItem.Click += new System.EventHandler(this.AdminDepartmentsMenuItem_Click);
             // 
             // AdminRolesMenuItem
             // 
             this.AdminRolesMenuItem.Name = "AdminRolesMenuItem";
-            this.AdminRolesMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.AdminRolesMenuItem.Size = new System.Drawing.Size(166, 22);
             this.AdminRolesMenuItem.Text = "Roles";
             this.AdminRolesMenuItem.Click += new System.EventHandler(this.AdminRolesMenuItem_Click);
             // 
             // AdminUsersMenuItem
             // 
             this.AdminUsersMenuItem.Name = "AdminUsersMenuItem";
-            this.AdminUsersMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.AdminUsersMenuItem.Size = new System.Drawing.Size(166, 22);
             this.AdminUsersMenuItem.Text = "Users";
             this.AdminUsersMenuItem.Click += new System.EventHandler(this.AdminUsersMenuItem_Click);
             // 
             // ListItemsMenuItem
             // 
             this.ListItemsMenuItem.Name = "ListItemsMenuItem";
-            this.ListItemsMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.ListItemsMenuItem.Size = new System.Drawing.Size(166, 22);
             this.ListItemsMenuItem.Text = "List Items";
             this.ListItemsMenuItem.Click += new System.EventHandler(this.ListItemsMenuItem_Click);
             // 
@@ -118,6 +120,13 @@
             this.MainPanel.Name = "MainPanel";
             this.MainPanel.Size = new System.Drawing.Size(809, 771);
             this.MainPanel.TabIndex = 1;
+            // 
+            // AdminProtocolEventsButton
+            // 
+            this.AdminProtocolEventsButton.Name = "AdminProtocolEventsButton";
+            this.AdminProtocolEventsButton.Size = new System.Drawing.Size(166, 22);
+            this.AdminProtocolEventsButton.Text = "Protocol Events";
+            this.AdminProtocolEventsButton.Click += new System.EventHandler(this.AdminProtocolEventsButton_Click);
             // 
             // MainView
             // 
@@ -151,6 +160,7 @@
         private System.Windows.Forms.ToolStripMenuItem AdminRolesMenuItem;
         private System.Windows.Forms.ToolStripMenuItem AdminUsersMenuItem;
         private System.Windows.Forms.ToolStripMenuItem ListItemsMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem AdminProtocolEventsButton;
     }
 }
 

@@ -101,5 +101,10 @@ namespace Protocols.Views
         {
             this.controller.LoadProtocolRequestAddView();
         }
+
+        private void AdminProtocolEventsButton_Click(object sender, EventArgs e)
+        {
+            this.controller.LoadProtocolEventsView();
+        }
     }
 }
