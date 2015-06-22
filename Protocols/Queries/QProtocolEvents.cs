@@ -57,6 +57,34 @@ namespace Protocols.Queries
             return results;
         }
 
+        public static IList SelectProtocolEventsByType(string eventType)
+        {
+            IList results = new ArrayList();
+            string query = @"SELECT ID, EventType, EventDescription, IsActive
+                             FROM ProtocolEvents
+                             WHERE EventType = @EventType";
+            using (SqlConnection connection = new SqlConnection(CONNECTION_STRING))
+            {
+                connection.Open();
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    command.CommandType = CommandType.Text;
+                    command.Parameters.Add("@EventType", SqlDbType.NVarChar).Value = eventType;
+                    SqlDataReader reader = command.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        ProtocolEvent protocolEvent = new ProtocolEvent();
+                        protocolEvent.ID = Convert.ToInt32(reader[0].ToString());
+                        protocolEvent.Type = reader[1].ToString();
+                        protocolEvent.Description = reader[2].ToString();
+                        protocolEvent.IsActive = Convert.ToBoolean(reader[3].ToString());
+                        results.Add(protocolEvent);
+                    }
+                }
+            }
+            return results;
+        }
+
         public static void UpdateProtocolEvent(ProtocolEvent protocolEvent, string userName)
         {
             using (SqlConnection connection = new SqlConnection(CONNECTION_STRING))

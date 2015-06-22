@@ -29,7 +29,7 @@ namespace Protocols.Controllers
         {
             this.protocolRequests = QProtocolRequests.GetActiveProtocolRequests();
             this.protocols = QProtocols.GetInProcessProtocols();
-            //LoadRequestTitles();
+            LoadRequestTitles();
             //LoadRequestComments();
             AddProtocolRequestsToView();
             //AddProtocolsToView();
@@ -39,7 +39,7 @@ namespace Protocols.Controllers
         {
             foreach (ProtocolRequest request in protocolRequests)
             {
-                request.Titles = (List<string>)QProtocolRequests.GetProtocolRequestTitles(request.ID);
+                request.SetTitles((List<ProtocolTitle>)QProtocolRequests.GetProtocolRequestTitles(request.ID));
             }
         }
 

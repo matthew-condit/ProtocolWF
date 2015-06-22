@@ -28,23 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             this.RequestDataGridView = new System.Windows.Forms.DataGridView();
-            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
             this.RequestedDateCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.RequestedByCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SponsorCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SubmittedCol = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.ReceivedCol = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.InProcessCol = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.CompletedCol = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.CancelledCol = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
             ((System.ComponentModel.ISupportInitialize)(this.RequestDataGridView)).BeginInit();
             this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -62,26 +52,40 @@
             this.RequestDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.RequestedDateCol,
             this.RequestedByCol,
-            this.SponsorCol,
-            this.SubmittedCol,
-            this.ReceivedCol,
-            this.InProcessCol,
-            this.CompletedCol,
-            this.CancelledCol});
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.Gainsboro;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.RequestDataGridView.DefaultCellStyle = dataGridViewCellStyle6;
+            this.SponsorCol});
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.Gainsboro;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.RequestDataGridView.DefaultCellStyle = dataGridViewCellStyle1;
             this.RequestDataGridView.Location = new System.Drawing.Point(4, 38);
             this.RequestDataGridView.Name = "RequestDataGridView";
-            this.RequestDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
+            this.RequestDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.RequestDataGridView.Size = new System.Drawing.Size(654, 469);
             this.RequestDataGridView.TabIndex = 6;
+            this.RequestDataGridView.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.RequestDataGridView_CellContentDoubleClick);
             this.RequestDataGridView.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.RequestDataGridView_CellValueChanged);
+            // 
+            // RequestedDateCol
+            // 
+            this.RequestedDateCol.HeaderText = "Requested Date";
+            this.RequestedDateCol.Name = "RequestedDateCol";
+            this.RequestedDateCol.ReadOnly = true;
+            // 
+            // RequestedByCol
+            // 
+            this.RequestedByCol.HeaderText = "Requested By";
+            this.RequestedByCol.Name = "RequestedByCol";
+            this.RequestedByCol.ReadOnly = true;
+            // 
+            // SponsorCol
+            // 
+            this.SponsorCol.HeaderText = "Sponsor";
+            this.SponsorCol.Name = "SponsorCol";
+            this.SponsorCol.ReadOnly = true;
             // 
             // toolStrip1
             // 
@@ -102,72 +106,6 @@
             this.toolStripLabel1.Name = "toolStripLabel1";
             this.toolStripLabel1.Size = new System.Drawing.Size(188, 22);
             this.toolStripLabel1.Text = "Protocol Requests Dashboard";
-            // 
-            // RequestedDateCol
-            // 
-            this.RequestedDateCol.HeaderText = "Requested Date";
-            this.RequestedDateCol.Name = "RequestedDateCol";
-            this.RequestedDateCol.ReadOnly = true;
-            // 
-            // RequestedByCol
-            // 
-            this.RequestedByCol.HeaderText = "Requested By";
-            this.RequestedByCol.Name = "RequestedByCol";
-            this.RequestedByCol.ReadOnly = true;
-            // 
-            // SponsorCol
-            // 
-            this.SponsorCol.HeaderText = "Sponsor";
-            this.SponsorCol.Name = "SponsorCol";
-            this.SponsorCol.ReadOnly = true;
-            // 
-            // SubmittedCol
-            // 
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle1.NullValue = false;
-            this.SubmittedCol.DefaultCellStyle = dataGridViewCellStyle1;
-            this.SubmittedCol.HeaderText = "Submitted";
-            this.SubmittedCol.Name = "SubmittedCol";
-            this.SubmittedCol.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            // 
-            // ReceivedCol
-            // 
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.NullValue = false;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.LemonChiffon;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
-            this.ReceivedCol.DefaultCellStyle = dataGridViewCellStyle2;
-            this.ReceivedCol.HeaderText = "Received";
-            this.ReceivedCol.Name = "ReceivedCol";
-            // 
-            // InProcessCol
-            // 
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.NullValue = false;
-            this.InProcessCol.DefaultCellStyle = dataGridViewCellStyle3;
-            this.InProcessCol.HeaderText = "In Process";
-            this.InProcessCol.Name = "InProcessCol";
-            // 
-            // CompletedCol
-            // 
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle4.NullValue = false;
-            this.CompletedCol.DefaultCellStyle = dataGridViewCellStyle4;
-            this.CompletedCol.HeaderText = "Completed";
-            this.CompletedCol.Name = "CompletedCol";
-            // 
-            // CancelledCol
-            // 
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle5.NullValue = false;
-            this.CancelledCol.DefaultCellStyle = dataGridViewCellStyle5;
-            this.CancelledCol.HeaderText = "Cancelled";
-            this.CancelledCol.Name = "CancelledCol";
             // 
             // DashboardView
             // 
@@ -197,10 +135,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn RequestedDateCol;
         private System.Windows.Forms.DataGridViewTextBoxColumn RequestedByCol;
         private System.Windows.Forms.DataGridViewTextBoxColumn SponsorCol;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn SubmittedCol;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn ReceivedCol;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn InProcessCol;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn CompletedCol;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn CancelledCol;
     }
 }

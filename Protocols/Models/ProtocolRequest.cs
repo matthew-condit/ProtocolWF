@@ -19,7 +19,7 @@ namespace Protocols.Models
         public string Guidelines { get; set; }
         public string Compliance { get; set; }
         public string ProtocolType { get; set; }
-        public List<string> Titles { get; set; }
+        public List<ProtocolTitle> Titles { get; private set; }
         public DateTime DueDate { get; set; }
         public string SendMethod { get; set; }
         public string BillTo { get; set; }
@@ -45,7 +45,7 @@ namespace Protocols.Models
             Guidelines = "";
             Compliance = "";
             ProtocolType = "";
-            Titles = new List<string>() { };
+            Titles = new List<ProtocolTitle>() { };
             DueDate = DateTime.Now;
             BillTo = "Toxikon";
             Comments = new List<Comment>() { };
@@ -56,6 +56,28 @@ namespace Protocols.Models
         public void SetSponsor()
         {
             this.Sponsor = QMatrix.GetSponsorBySponsorCode(this.SponsorCode);
+        }
+
+        public void SetTitles(List<string> titleDescriptions)
+        {
+            foreach(string item in titleDescriptions)
+            {
+                ProtocolTitle protocolTitle = new ProtocolTitle();
+                protocolTitle.Description = item;
+                this.Titles.Add(protocolTitle);
+            }
+        }
+
+        public void SetTitles(List<ProtocolTitle> items)
+        {
+            this.Titles = new List<ProtocolTitle>(items);
+        }
+
+        public void RefreshProtocolTitles()
+        {
+            this.Titles.Clear();
+            this.Titles = new List<ProtocolTitle>((List<ProtocolTitle>)
+                          QProtocolRequests.GetProtocolRequestTitles(this.ID));
         }
 
         public Image RequestStatusImage()
@@ -79,6 +101,16 @@ namespace Protocols.Models
                     break;
             }
             return result;
+        }
+
+        public List<string> TitleDescriptions
+        {
+            get
+            {
+                List<string> results = new List<string>() { };
+                results = this.Titles.Select(protocolTitle => protocolTitle.Description).ToList();
+                return results;
+            }
         }
     }
 }

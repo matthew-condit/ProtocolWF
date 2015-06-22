@@ -36,8 +36,8 @@
             this.AdminRolesMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.AdminUsersMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ListItemsMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.MainPanel = new System.Windows.Forms.Panel();
             this.AdminProtocolEventsButton = new System.Windows.Forms.ToolStripMenuItem();
+            this.MainPanel = new System.Windows.Forms.Panel();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -113,6 +113,13 @@
             this.ListItemsMenuItem.Text = "List Items";
             this.ListItemsMenuItem.Click += new System.EventHandler(this.ListItemsMenuItem_Click);
             // 
+            // AdminProtocolEventsButton
+            // 
+            this.AdminProtocolEventsButton.Name = "AdminProtocolEventsButton";
+            this.AdminProtocolEventsButton.Size = new System.Drawing.Size(166, 22);
+            this.AdminProtocolEventsButton.Text = "Protocol Events";
+            this.AdminProtocolEventsButton.Click += new System.EventHandler(this.AdminProtocolEventsButton_Click);
+            // 
             // MainPanel
             // 
             this.MainPanel.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -120,13 +127,6 @@
             this.MainPanel.Name = "MainPanel";
             this.MainPanel.Size = new System.Drawing.Size(809, 771);
             this.MainPanel.TabIndex = 1;
-            // 
-            // AdminProtocolEventsButton
-            // 
-            this.AdminProtocolEventsButton.Name = "AdminProtocolEventsButton";
-            this.AdminProtocolEventsButton.Size = new System.Drawing.Size(166, 22);
-            this.AdminProtocolEventsButton.Text = "Protocol Events";
-            this.AdminProtocolEventsButton.Click += new System.EventHandler(this.AdminProtocolEventsButton_Click);
             // 
             // MainView
             // 
@@ -136,8 +136,6 @@
             this.Controls.Add(this.MainPanel);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
-            this.MaximizeBox = false;
-            this.MaximumSize = new System.Drawing.Size(825, 850);
             this.MinimumSize = new System.Drawing.Size(825, 850);
             this.Name = "MainView";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

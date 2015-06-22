@@ -11,19 +11,20 @@ using Protocols.Interfaces;
 using Protocols.Controllers;
 using System.Diagnostics;
 using Protocols.Models;
+using System.Collections;
 
 namespace Protocols.Views
 {
-    public partial class ProtocolRequestEditView : UserControl, IProtocolRequestDetailView
+    public partial class ProtocolRequestEditView : UserControl, IProtocolRequestEditView
     {
-        ProtocolRequestDetailController controller;
+        ProtocolRequestEditController controller;
 
         public ProtocolRequestEditView()
         {
             InitializeComponent();
         }
 
-        public void SetController(ProtocolRequestDetailController controller)
+        public void SetController(ProtocolRequestEditController controller)
         {
             this.controller = controller;
         }
@@ -51,8 +52,7 @@ namespace Protocols.Views
             this.DueDate = DateTime.Now;
             this.SendVia = "";
             this.BillTo = "Toxikon";
-            this.CommentsListView.Items.Clear();
-            this.TitleDataGridView.Rows.Clear();
+            this.TitlesListView.Items.Clear();
         }
 
         public string RequestedBy
@@ -145,53 +145,31 @@ namespace Protocols.Views
             get { return this.BillToTextBox.Text; }
             set { this.BillToTextBox.Text = value; }
         }
-        public List<Comment> Comments 
-        {
-            set
-            {
-                foreach(Comment item in value)
-                {
-                    ListViewItem listViewItem = this.CommentsListView.Items.Add(
-                                 item.AddedDate.ToString("MM/dd/yyyy"));
-                    listViewItem.SubItems.Add(item.AddedBy);
-                    listViewItem.SubItems.Add(item.Content);
-                }
-            }
-        }
-        public List<string> Titles
+
+        public IList SelectedTitleIndexes
         {
             get
             {
-                List<string> results = new List<string>();
-                try
+                IList results = new ArrayList();
+                if(this.TitlesListView.SelectedIndices.Count != 0)
                 {
-                    foreach (DataGridViewRow row in this.TitleDataGridView.Rows)
-                    {
-                        DataGridViewCell cell = row.Cells[0];
-                        string cellValue = cell.EditedFormattedValue.ToString().Trim();
-                        if (cellValue != String.Empty)
-                        {
-                            results.Add(cellValue);
-                        }
-                    }
+                    results = this.TitlesListView.SelectedIndices;
                 }
-                catch (NullReferenceException e)
-                {
-                    Debug.WriteLine(e.ToString());
-                }
-
                 return results;
-            }
-            set
-            {
-                IList<string> list = value;
-                this.TitleDataGridView.DataSource = list.Select(x => new { Titles = x }).ToList();
             }
         }
 
-        private void SubmitButton_Click(object sender, EventArgs e)
+        public void AddTitleToView(ProtocolTitle title)
         {
-            this.controller.SubmitButtonClicked();
+            ListViewItem item = this.TitlesListView.Items.Add(title.Description);
+            item.SubItems.Add(title.LatestActivity.ProtocolEvent.Description);
+            item.SubItems.Add(title.LatestActivity.CreatedDate.ToString("MM/dd/yyyy"));
+            item.SubItems.Add(title.LatestActivity.CreatedBy);
+        }
+
+        public void ClearProtocolTitleListView()
+        {
+            this.TitlesListView.Items.Clear();
         }
 
         private void OpenGuidelinesOptions_Click(object sender, EventArgs e)
@@ -207,6 +185,21 @@ namespace Protocols.Views
         private void OpenProtocolTypeOptions_Click(object sender, EventArgs e)
         {
             this.controller.OpenListBoxOptions(ListNames.ProtocolType);
+        }
+
+        private void AddEventButton_Click(object sender, EventArgs e)
+        {
+            this.controller.AddEventButtonClicked();
+        }
+
+        private void AddTitleButton_Click(object sender, EventArgs e)
+        {
+            this.controller.AddTitleButtonClicked();
+        }
+
+        private void EditTitleButton_Click(object sender, EventArgs e)
+        {
+            this.controller.EditTitleButtonClicked();
         }
     }
 }

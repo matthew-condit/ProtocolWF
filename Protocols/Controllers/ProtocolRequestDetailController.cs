@@ -81,7 +81,7 @@ namespace Protocols.Controllers
             this.view.BillTo = protocolRequest.BillTo;
             this.view.SendVia = protocolRequest.SendMethod;
             this.view.DueDate = protocolRequest.DueDate;
-            this.view.Titles = protocolRequest.Titles;
+            this.view.Titles = protocolRequest.TitleDescriptions;
             this.view.Comments = protocolRequest.Comments;
         }
 
@@ -203,7 +203,7 @@ namespace Protocols.Controllers
             this.protocolRequest.DueDate = this.view.DueDate;
             this.protocolRequest.SendMethod = this.view.SendVia;
             this.protocolRequest.BillTo = this.view.BillTo;
-            this.protocolRequest.Titles = new List<string>(this.view.Titles);
+            this.protocolRequest.SetTitles(this.view.Titles);
         }
 
         private void SubmitProtocolRequestToDatabase()

@@ -41,7 +41,7 @@ namespace Protocols.Queries
                         while (reader.Read())
                         {
                             Protocol protocol = CreateNewProtocol(reader);
-                            protocol.WorkflowType = WorkflowTypes.Protocol;
+                            protocol.WorkflowType = ProtocolEventTypes.Protocol;
                             results.Add(protocol);
                         }
                     }

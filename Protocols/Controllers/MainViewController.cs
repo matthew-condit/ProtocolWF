@@ -81,7 +81,7 @@ namespace Protocols.Controllers
         public void LoadProtocolRequestEditView(ProtocolRequest request)
         {
             ProtocolRequestEditView subView = new ProtocolRequestEditView();
-            ProtocolRequestDetailController subViewController = new ProtocolRequestDetailController(subView);
+            ProtocolRequestEditController subViewController = new ProtocolRequestEditController(subView);
             subViewController.LoadView(request);
 
             view.AddControlToMainPanel(subView);

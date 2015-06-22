@@ -35,16 +35,11 @@ namespace Protocols.Views
         public void AddProtocolRequestToView(ProtocolRequest request)
         {
             int rowIndex = this.RequestDataGridView.Rows.Add(request.RequestedDate.ToString("MM/dd/yyyy"),
-                 request.RequestedBy, 
-                 request.Sponsor.SponsorName, 
-                 request.Workflow.Submitted,
-                 request.Workflow.Received,
-                 request.Workflow.InProcess,
-                 request.Workflow.Completed,
-                 request.Workflow.Cancelled);
-            DataGridViewRow row = this.RequestDataGridView.Rows[rowIndex];
+                 request.RequestedBy,
+                 request.Sponsor.SponsorName);
+            /*DataGridViewRow row = this.RequestDataGridView.Rows[rowIndex];
             row.Height = 40;
-            SetDataGridViewCheckBoxCell_BackColor(request, rowIndex);
+            SetDataGridViewCheckBoxCell_BackColor(request, rowIndex);*/
         }
 
         public void SetDataGridViewCheckBoxCell_BackColor(ProtocolRequest request, int rowIndex)
@@ -79,14 +74,14 @@ namespace Protocols.Views
 
         public void AddProtocolToView(Protocol protocol)
         {
-            if (protocol.WorkflowType == WorkflowTypes.Protocol)
+            if (protocol.WorkflowType == ProtocolEventTypes.Protocol)
             {
                 ProtocolWorkflowRow prow = new ProtocolWorkflowRow();
                 prow.SetProtocol(protocol);
                 //this.ProtocolFlowLayoutPanel.Controls.Add(prow);
                 prow.Anchor = (AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right);
             }
-            else if(protocol.WorkflowType == WorkflowTypes.Draft)
+            else if(protocol.WorkflowType == ProtocolEventTypes.Draft)
             {
                 DraftWorkflowRow drow = new DraftWorkflowRow();
             }

@@ -12,5 +12,13 @@ namespace Protocols.Models
         public string Type { get; set; }
         public string Description { get; set; }
         public bool IsActive { get; set; }
+
+        public ProtocolEvent()
+        {
+            ID = -1;
+            Type = "";
+            Description = "";
+            IsActive = false;
+        }
     }
 }
