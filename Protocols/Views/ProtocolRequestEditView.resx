@@ -130,12 +130,29 @@
         aPoGnpgteu5Hk+b/ADT9iQqc9TzIGtT03c1/RAhPM4LovU+7z2wAAAAASUVORK5CYII=
 </value>
   </data>
+  <data name="AddProtocolNumber.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAACqSURBVFhH7ZZLDoAgEEM5G/e/i7phqyHpRDIySvg5oE3e
+        wtBpu9QMIefcngPOyxULTwHn5aJAa20S8w9Yly3KP+A7A56YdwCHF3JwXq5YuKfbAC4q4APw3F7NBlBQ
+        KnxAKqi7Kma+o9kACq7NeAPoWyLXh7qrpAOJXB/qToVmT26whORDvaIBZOSERzV9qFc4QPrBqO1DvcIB
+        HHqv7UO9ogG9Qb2CAe/JmAOJc7d+3lIefAAAAABJRU5ErkJggg==
+</value>
+  </data>
   <data name="ViewCommentsButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
         YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAABOSURBVDhPY6AK+Pbt239yMdwAJycnkvGoAaMGgDCKAegY
         WeHmzZsx5GEYbAA6AEmgaT7//v17Aag0YQAzgCzNIAAygGzNIAAygDjNDAwA7Wa6fwUqAXgAAAAASUVO
         RK5CYII=
+</value>
+  </data>
+  <data name="OpenAssignedToOptions.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADrwAAA68AZW8ckkAAABMSURBVDhPzY0xCgAwCAN9m/9/j2uLJHRwsYFCPchg4KI9
+        IyKWGqogC3c/ubmpghkDaqiCLOqH7qYKZgyooQqyqB+6myqYMaCG6lfMNiDL5L0uTmNzAAAAAElFTkSu
+        QmCC
 </value>
   </data>
   <data name="OpenGuidelinesOptions.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
@@ -162,6 +179,9 @@
         QmCC
 </value>
   </data>
+  <metadata name="toolStrip2.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>122, 17</value>
+  </metadata>
   <metadata name="toolStrip2.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>122, 17</value>
   </metadata>

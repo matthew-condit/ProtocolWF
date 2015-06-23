@@ -12,6 +12,7 @@ using Protocols.Controllers;
 using System.Diagnostics;
 using Protocols.Models;
 using System.Collections;
+using Protocols.Queries;
 
 namespace Protocols.Views
 {
@@ -152,6 +153,12 @@ namespace Protocols.Views
             set { this.CommentsLabel.Text = value; }
         }
 
+        public string AssignedTo
+        {
+            get { return this.AssignedToTextBox.Text; }
+            set { this.AssignedToTextBox.Text = value; }
+        }
+
         public IList SelectedTitleIndexes
         {
             get
@@ -172,6 +179,7 @@ namespace Protocols.Views
             item.SubItems.Add(title.LatestActivity.CreatedDate.ToString("MM/dd/yyyy"));
             item.SubItems.Add(title.LatestActivity.CreatedBy);
             item.SubItems.Add(title.CommentsCount.ToString());
+            item.SubItems.Add(title.ProtocolNumber);
         }
 
         public void SetListViewAutoResizeColumns()
@@ -181,6 +189,7 @@ namespace Protocols.Views
             this.TitlesListView.Columns[2].AutoResize(ColumnHeaderAutoResizeStyle.HeaderSize);
             this.TitlesListView.Columns[3].AutoResize(ColumnHeaderAutoResizeStyle.HeaderSize);
             this.TitlesListView.Columns[4].AutoResize(ColumnHeaderAutoResizeStyle.HeaderSize);
+            this.TitlesListView.Columns[5].AutoResize(ColumnHeaderAutoResizeStyle.HeaderSize);
         }
 
         public void ClearProtocolTitleListView()
@@ -190,17 +199,20 @@ namespace Protocols.Views
 
         private void OpenGuidelinesOptions_Click(object sender, EventArgs e)
         {
-            this.controller.OpenCheckBoxOptions(ListNames.Guidelines);
+            IList items = QListItems.GetListItems(ListNames.Guidelines);
+            this.controller.OpenCheckBoxOptions(ListNames.Guidelines, items);
         }
 
         private void OpenComplianceOptions_Click(object sender, EventArgs e)
         {
-            this.controller.OpenListBoxOptions(ListNames.Compliance);
+            IList items = QListItems.GetListItems(ListNames.Compliance);
+            this.controller.OpenListBoxOptions(ListNames.Compliance, items);
         }
 
         private void OpenProtocolTypeOptions_Click(object sender, EventArgs e)
         {
-            this.controller.OpenListBoxOptions(ListNames.ProtocolType);
+            IList items = QListItems.GetListItems(ListNames.ProtocolType);
+            this.controller.OpenListBoxOptions(ListNames.ProtocolType, items);
         }
 
         private void AddEventButton_Click(object sender, EventArgs e)
@@ -231,6 +243,27 @@ namespace Protocols.Views
         private void ViewEventsButton_Click(object sender, EventArgs e)
         {
             this.controller.ViewEventsButtonClicked();
+        }
+
+        private void OpenAssignedToOptions_Click(object sender, EventArgs e)
+        {
+            IList items = QUsers.GetAssignedToUsers();
+            this.controller.OpenListBoxOptions(ListNames.AssignedTo, items);
+        }
+
+        private void SaveChangesButton_Click(object sender, EventArgs e)
+        {
+            this.controller.SaveChangedButtonClicked();
+        }
+
+        private void AddProtocolNumber_Click(object sender, EventArgs e)
+        {
+            this.controller.AddProtocolNumberButtonClicked();
+        }
+
+        private void RevisedProtocolButton_Click(object sender, EventArgs e)
+        {
+            this.controller.RevisedProtocolButtonClicked();
         }
     }
 }

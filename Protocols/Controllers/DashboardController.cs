@@ -15,24 +15,38 @@ namespace Protocols.Controllers
     {
         IDashboardView view;
         IList protocolRequests;
-        IList protocols;
 
         public DashboardController(IDashboardView view)
         {
             this.view = view;
             this.view.SetController(this);
             this.protocolRequests = new ArrayList();
-            this.protocols = new ArrayList();
         }
 
         public void LoadView()
         {
-            this.protocolRequests = QProtocolRequests.GetActiveProtocolRequests();
-            //this.protocols = QProtocols.GetInProcessProtocols();
+            LoadProtocolRequestsByUserRole();
             LoadProtocolTitles();
-            //LoadRequestComments();
             AddProtocolRequestsToView();
-            //AddProtocolsToView();
+        }
+
+        private void LoadProtocolRequestsByUserRole()
+        {
+            LoginInfo loginInfo = LoginInfo.GetInstance();
+            switch(loginInfo.Role.RoleID)
+            {
+                case 1:
+                    this.protocolRequests = QProtocolRequests.GetActiveProtocolRequests();
+                    break;
+                case 2:
+                    this.protocolRequests = QProtocolRequests.SelectProtocolRequestByRequestedBy(loginInfo.UserName);
+                    break;
+                case 3:
+                    this.protocolRequests = QProtocolRequests.SelectProtocolRequestByAssignedTo(loginInfo.UserName);
+                    break;
+                default:
+                    break;
+            }
         }
 
         private void LoadProtocolTitles()
@@ -48,14 +62,6 @@ namespace Protocols.Controllers
             foreach(ProtocolRequest request in protocolRequests)
             {
                 this.view.AddProtocolRequestToView(request);
-            }
-        }
-
-        private void AddProtocolsToView()
-        {
-            foreach(Protocol protocol in protocols)
-            {
-                this.view.AddProtocolToView(protocol);
             }
         }
 

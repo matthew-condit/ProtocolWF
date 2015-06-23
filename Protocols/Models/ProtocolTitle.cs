@@ -14,6 +14,7 @@ namespace Protocols.Models
         public bool IsActive { get; set; }
         public ProtocolActivity LatestActivity { get; set; }
         public int CommentsCount { get; set; }
+        public string ProtocolNumber { get; set; }
 
         public ProtocolTitle()
         {
@@ -23,6 +24,7 @@ namespace Protocols.Models
             this.IsActive = false;
             this.LatestActivity = new ProtocolActivity();
             this.CommentsCount = 0;
+            this.ProtocolNumber = "";
         }
     }
 }

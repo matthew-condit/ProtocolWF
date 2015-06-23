@@ -38,6 +38,7 @@ namespace Protocols.Interfaces
         string SendVia { get; set; }
         string BillTo { get; set; }
         string Comments { get; set; }
+        string AssignedTo { get; set; }
 
         IList SelectedTitleIndexes { get; }
 

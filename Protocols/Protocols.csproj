@@ -95,6 +95,7 @@
     <Compile Include="Models\Protocol.cs" />
     <Compile Include="Models\ProtocolActivity.cs" />
     <Compile Include="Models\ProtocolEvent.cs" />
+    <Compile Include="Models\ProtocolNumber.cs" />
     <Compile Include="Models\ProtocolRequestWorkflow.cs" />
     <Compile Include="Models\ProtocolTitle.cs" />
     <Compile Include="Models\ProtocolWorkflow.cs" />
@@ -104,6 +105,7 @@
     <Compile Include="Queries\QProtocolActivities.cs" />
     <Compile Include="Queries\QProtocolComments.cs" />
     <Compile Include="Queries\QProtocolEvents.cs" />
+    <Compile Include="Queries\QProtocolNumbers.cs" />
     <Compile Include="Queries\QProtocolRequests.cs" />
     <Compile Include="Queries\QDepartments.cs" />
     <Compile Include="Queries\QProtocols.cs" />

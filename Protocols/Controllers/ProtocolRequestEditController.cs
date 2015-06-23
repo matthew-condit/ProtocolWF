@@ -18,6 +18,7 @@ namespace Protocols.Controllers
         ProtocolRequest protocolRequest;
         Sponsor sponsor;
         LoginInfo loginInfo;
+        string SelectOneMessage = "Please select one title and try it again.";
 
         public ProtocolRequestEditController(IProtocolRequestEditView view)
         {
@@ -46,6 +47,7 @@ namespace Protocols.Controllers
             this.view.SendVia = protocolRequest.SendMethod;
             this.view.DueDate = protocolRequest.DueDate;
             this.view.Comments = protocolRequest.Comments;
+            this.view.AssignedTo = protocolRequest.AssignedTo;
         }
 
         private void AddTilesToView()
@@ -71,9 +73,8 @@ namespace Protocols.Controllers
             this.view.PONumber = sponsor.PONumber;
         }
 
-        public void OpenCheckBoxOptions(string listName)
+        public void OpenCheckBoxOptions(string listName, IList items)
         {
-            IList items = QListItems.GetListItems(listName);
             CheckBoxOptionsView popup = new CheckBoxOptionsView();
             CheckBoxOptionsController popupController = new CheckBoxOptionsController(popup, items);
             popupController.LoadView();
@@ -87,9 +88,8 @@ namespace Protocols.Controllers
             popup.Dispose();
         }
 
-        public void OpenListBoxOptions(string listName)
+        public void OpenListBoxOptions(string listName, IList items)
         {
-            IList items = QListItems.GetListItems(listName);
             ListBoxOptionsView popup = new ListBoxOptionsView();
             ListBoxOptionsController popupController = new ListBoxOptionsController(popup, items);
             popupController.LoadView();
@@ -117,6 +117,10 @@ namespace Protocols.Controllers
                 case ListNames.ProtocolType:
                     this.protocolRequest.ProtocolType = items;
                     this.view.ProtocolType = items;
+                    break;
+                case ListNames.AssignedTo:
+                    this.protocolRequest.AssignedTo = items;
+                    this.view.AssignedTo = items;
                     break;
                 default:
                     break;
@@ -217,7 +221,7 @@ namespace Protocols.Controllers
             }
             else
             {
-                MessageBox.Show("Please select 1 title and try it again.");
+                MessageBox.Show(this.SelectOneMessage);
             }
         }
 
@@ -240,7 +244,7 @@ namespace Protocols.Controllers
             }
             else
             {
-                MessageBox.Show("Please select at least 1 title and try it again.");
+                MessageBox.Show("Please select at least one title and try it again.");
             }
         }
 
@@ -273,7 +277,7 @@ namespace Protocols.Controllers
             }
             else
             {
-                MessageBox.Show("Please select 1 title and try it again.");
+                MessageBox.Show(this.SelectOneMessage);
             }
         }
 
@@ -291,7 +295,7 @@ namespace Protocols.Controllers
             }
             else
             {
-                MessageBox.Show("Please select 1 title and try it again.");
+                MessageBox.Show(this.SelectOneMessage);
             }
         }
 
@@ -313,15 +317,90 @@ namespace Protocols.Controllers
             }
             else
             {
-                MessageBox.Show("Please select 1 title and try it again.");
+                MessageBox.Show(this.SelectOneMessage);
             }
         }
 
         /**************************** SAVE CHANGES *************************/
         public void SaveChangedButtonClicked()
         {
-
+            UpdateProtocolRequestWithViewValues();
+            QProtocolRequests.Update(this.protocolRequest, loginInfo.UserName);
+            MessageBox.Show("Updated!");
         }
 
+        private void UpdateProtocolRequestWithViewValues()
+        {
+            this.protocolRequest.Guidelines = this.view.Guidelines;
+            this.protocolRequest.Compliance = this.view.Compliance;
+            this.protocolRequest.ProtocolType = this.view.ProtocolType;
+            this.protocolRequest.DueDate = this.view.DueDate;
+            this.protocolRequest.SendMethod = this.view.SendVia;
+            this.protocolRequest.BillTo = this.view.BillTo;
+            this.protocolRequest.AssignedTo = this.view.AssignedTo;
+        }
+
+        /*************************** PROTOCOL NUMBERS *************************/
+        public void AddProtocolNumberButtonClicked()
+        {
+            if(this.view.SelectedTitleIndexes.Count == 1)
+            {
+                ProtocolNumber protocolNumber = CreateNewProtocolNumber();
+                QProtocolNumbers.InsertProtocolNumber(protocolNumber, loginInfo.UserName);
+                this.RefreshTitleListView();
+            }
+            else
+            {
+                MessageBox.Show(this.SelectOneMessage);
+            }
+        }
+
+        private ProtocolNumber CreateNewProtocolNumber()
+        {
+            int selectedIndex = Convert.ToInt32(this.view.SelectedTitleIndexes[0]);
+            ProtocolTitle title = this.protocolRequest.Titles[selectedIndex];
+            ProtocolNumber protocolNumber = new ProtocolNumber();
+            protocolNumber.SequenceNumber = QProtocolNumbers.InsertLastSequenceNumber();
+            protocolNumber.ProtocolRequestID = this.protocolRequest.ID;
+            protocolNumber.ProtocolTitleID = title.ID;
+            protocolNumber.ProtocolType = this.protocolRequest.ProtocolType == "File Copy" ? "A" : "B";
+            protocolNumber.RevisedNumber = 0;
+            protocolNumber.IsActive = true;
+            protocolNumber.SetFullCode();
+            
+            return protocolNumber;
+        }
+
+        public void RevisedProtocolButtonClicked()
+        {
+            if (this.view.SelectedTitleIndexes.Count == 1)
+            {
+                int selectedIndex = Convert.ToInt32(this.view.SelectedTitleIndexes[0]);
+                ProtocolTitle title = this.protocolRequest.Titles[selectedIndex];
+                if(title.ProtocolNumber != String.Empty)
+                {
+                    UpdateProtocolNumber(title);
+                    this.RefreshTitleListView();
+                    MessageBox.Show("Updated!");
+                }
+                else
+                {
+                    MessageBox.Show("Invalid Protocol Number.");
+                }
+            }
+            else
+            {
+                MessageBox.Show(this.SelectOneMessage);
+            }
+        }
+
+        private void UpdateProtocolNumber(ProtocolTitle title)
+        {
+            ProtocolNumber protocolNumber = QProtocolNumbers.SelectProtocolNumber(this.protocolRequest.ID,
+                               title.ID, title.ProtocolNumber);
+            protocolNumber.RevisedNumber += 1;
+            protocolNumber.SetFullCode();
+            QProtocolNumbers.UpdateProtocolNumber(protocolNumber, loginInfo.UserName);
+        }
     }
 }

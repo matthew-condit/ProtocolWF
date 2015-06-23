@@ -131,6 +131,98 @@ namespace Protocols.Queries
             return results;
         }
 
+        public static IList SelectProtocolRequestByRequestedBy(string userName)
+        {
+            IList results = new ArrayList();
+            try
+            {
+                string query = @"SELECT ProtocolRequests.ID, ProtocolRequests.SponsorCode, 
+                                        ProtocolRequests.Guidelines, ProtocolRequests.Compliance, 
+                                        ProtocolRequests.ProtocolType, ProtocolRequests.DueDate, 
+                                        ProtocolRequests.SendVia, ProtocolRequests.BillTo,
+                                        ProtocolRequests.Comments,
+                                        ProtocolRequests.AssignedTo, 
+                                        ProtocolRequests.RequestStatus, Users.FullName,
+		                                ProtocolRequests.RequestedDate, ProtocolRequests.UpdatedBy, 
+                                        ProtocolRequests.UpdatedDate
+	                             FROM ProtocolRequests
+                                 INNER JOIN Users
+                                 ON ProtocolRequests.RequestedBy = Users.UserName
+	                             WHERE ProtocolRequests.IsActive = 1
+                                 AND ProtocolRequests.RequestedBy = @RequestedBy";
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    connection.Open();
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    {
+                        command.CommandType = CommandType.Text;
+                        command.Parameters.Add("@RequestedBy", SqlDbType.NVarChar).Value = userName;
+                        SqlDataReader reader = command.ExecuteReader();
+                        while (reader.Read())
+                        {
+                            ProtocolRequest request = CreateNewProtocolRequest(reader);
+                            results.Add(request);
+                        }
+                    }
+                }
+            }
+            catch (InvalidOperationException ioe)
+            {
+                Debug.WriteLine(ioe.ToString());
+            }
+            catch (SqlException e)
+            {
+                Debug.WriteLine(e.ToString());
+            }
+            return results;
+        }
+
+        public static IList SelectProtocolRequestByAssignedTo(string userName)
+        {
+            IList results = new ArrayList();
+            try
+            {
+                string query = @"SELECT ProtocolRequests.ID, ProtocolRequests.SponsorCode, 
+                                        ProtocolRequests.Guidelines, ProtocolRequests.Compliance, 
+                                        ProtocolRequests.ProtocolType, ProtocolRequests.DueDate, 
+                                        ProtocolRequests.SendVia, ProtocolRequests.BillTo,
+                                        ProtocolRequests.Comments,
+                                        ProtocolRequests.AssignedTo, 
+                                        ProtocolRequests.RequestStatus, Users.FullName,
+		                                ProtocolRequests.RequestedDate, ProtocolRequests.UpdatedBy, 
+                                        ProtocolRequests.UpdatedDate
+	                             FROM ProtocolRequests
+                                 INNER JOIN Users
+                                 ON ProtocolRequests.RequestedBy = Users.UserName
+	                             WHERE ProtocolRequests.IsActive = 1
+                                 AND ProtocolRequests.AssignedTo = @UserName";
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    connection.Open();
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    {
+                        command.CommandType = CommandType.Text;
+                        command.Parameters.Add("@UserName", SqlDbType.NVarChar).Value = userName;
+                        SqlDataReader reader = command.ExecuteReader();
+                        while (reader.Read())
+                        {
+                            ProtocolRequest request = CreateNewProtocolRequest(reader);
+                            results.Add(request);
+                        }
+                    }
+                }
+            }
+            catch (InvalidOperationException ioe)
+            {
+                Debug.WriteLine(ioe.ToString());
+            }
+            catch (SqlException e)
+            {
+                Debug.WriteLine(e.ToString());
+            }
+            return results;
+        }
+
         public static ProtocolRequest CreateNewProtocolRequest(SqlDataReader reader)
         {
             ProtocolRequest request = new ProtocolRequest();
@@ -149,6 +241,30 @@ namespace Protocols.Queries
             request.RequestedBy = reader[11].ToString();
             request.RequestedDate = Convert.ToDateTime(reader[12].ToString());
             return request;
+        }
+
+        public static void Update(ProtocolRequest request, string userName)
+        {
+            using(SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+                using(SqlCommand command = new SqlCommand("ProtocolRequestsUpdate", connection))
+                {
+                    command.CommandType = CommandType.StoredProcedure;
+                    command.Parameters.Add("@ProtocolRequestID", SqlDbType.Int).Value = request.ID;
+                    command.Parameters.Add("@SponsorCode", SqlDbType.NVarChar).Value = request.SponsorCode;
+                    command.Parameters.Add("@Guidelines", SqlDbType.NVarChar).Value = request.Guidelines;
+                    command.Parameters.Add("@Compliance", SqlDbType.NVarChar).Value = request.Compliance;
+                    command.Parameters.Add("@ProtocolType", SqlDbType.NVarChar).Value = request.ProtocolType;
+                    command.Parameters.Add("@DueDate", SqlDbType.NVarChar).Value = request.DueDate;
+                    command.Parameters.Add("@SendVia", SqlDbType.NVarChar).Value = request.SendMethod;
+                    command.Parameters.Add("@BillTo", SqlDbType.NVarChar).Value = request.BillTo;
+                    command.Parameters.Add("@AssignedTo", SqlDbType.NVarChar).Value = request.AssignedTo;
+                    command.Parameters.Add("@UpdatedBy", SqlDbType.NVarChar).Value = userName;
+
+                    int result = command.ExecuteNonQuery();
+                }
+            }
         }
     }
 }

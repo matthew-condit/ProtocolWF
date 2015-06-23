@@ -42,6 +42,9 @@
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.ViewCommentsButton = new System.Windows.Forms.ToolStripButton();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.flowLayoutPanel4 = new System.Windows.Forms.FlowLayoutPanel();
+            this.AssignedToTextBox = new System.Windows.Forms.TextBox();
+            this.OpenAssignedToOptions = new System.Windows.Forms.Button();
             this.BillToTextBox = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
@@ -84,6 +87,9 @@
             this.flowLayoutPanel3 = new System.Windows.Forms.FlowLayoutPanel();
             this.ProtocolTypeTextBox = new System.Windows.Forms.TextBox();
             this.OpenProtocolTypeOptions = new System.Windows.Forms.Button();
+            this.label15 = new System.Windows.Forms.Label();
+            this.CommentsLabel = new System.Windows.Forms.Label();
+            this.label20 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.BottomPanel = new System.Windows.Forms.Panel();
             this.toolStrip2 = new System.Windows.Forms.ToolStrip();
@@ -94,10 +100,14 @@
             this.StatusDate = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.UserNameCol = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.CommentsCol = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.label15 = new System.Windows.Forms.Label();
-            this.CommentsLabel = new System.Windows.Forms.Label();
+            this.AddProtocolNumber = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
+            this.ProtocolNumberCol = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.RevisedProtocolButton = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator7 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStrip1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
+            this.flowLayoutPanel4.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
             this.flowLayoutPanel2.SuspendLayout();
             this.flowLayoutPanel3.SuspendLayout();
@@ -120,6 +130,10 @@
             this.toolStripSeparator2,
             this.AddCommentButton,
             this.toolStripSeparator5,
+            this.AddProtocolNumber,
+            this.toolStripSeparator7,
+            this.RevisedProtocolButton,
+            this.toolStripSeparator6,
             this.ViewEventsButton,
             this.toolStripSeparator3,
             this.ViewCommentsButton});
@@ -223,7 +237,8 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 120F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 266F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 107F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 345F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 348F));
+            this.tableLayoutPanel1.Controls.Add(this.flowLayoutPanel4, 1, 9);
             this.tableLayoutPanel1.Controls.Add(this.BillToTextBox, 1, 7);
             this.tableLayoutPanel1.Controls.Add(this.label14, 0, 7);
             this.tableLayoutPanel1.Controls.Add(this.label13, 0, 6);
@@ -262,6 +277,7 @@
             this.tableLayoutPanel1.Controls.Add(this.flowLayoutPanel3, 1, 4);
             this.tableLayoutPanel1.Controls.Add(this.label15, 0, 8);
             this.tableLayoutPanel1.Controls.Add(this.CommentsLabel, 1, 8);
+            this.tableLayoutPanel1.Controls.Add(this.label20, 0, 9);
             this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 41);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 10;
@@ -277,6 +293,36 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(790, 311);
             this.tableLayoutPanel1.TabIndex = 1;
+            // 
+            // flowLayoutPanel4
+            // 
+            this.flowLayoutPanel4.Controls.Add(this.AssignedToTextBox);
+            this.flowLayoutPanel4.Controls.Add(this.OpenAssignedToOptions);
+            this.flowLayoutPanel4.Location = new System.Drawing.Point(122, 280);
+            this.flowLayoutPanel4.Margin = new System.Windows.Forms.Padding(0);
+            this.flowLayoutPanel4.Name = "flowLayoutPanel4";
+            this.flowLayoutPanel4.Size = new System.Drawing.Size(259, 28);
+            this.flowLayoutPanel4.TabIndex = 51;
+            // 
+            // AssignedToTextBox
+            // 
+            this.AssignedToTextBox.Location = new System.Drawing.Point(3, 3);
+            this.AssignedToTextBox.Name = "AssignedToTextBox";
+            this.AssignedToTextBox.ReadOnly = true;
+            this.AssignedToTextBox.Size = new System.Drawing.Size(232, 25);
+            this.AssignedToTextBox.TabIndex = 5;
+            // 
+            // OpenAssignedToOptions
+            // 
+            this.OpenAssignedToOptions.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("OpenAssignedToOptions.BackgroundImage")));
+            this.OpenAssignedToOptions.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.OpenAssignedToOptions.Location = new System.Drawing.Point(238, 5);
+            this.OpenAssignedToOptions.Margin = new System.Windows.Forms.Padding(0, 5, 0, 0);
+            this.OpenAssignedToOptions.Name = "OpenAssignedToOptions";
+            this.OpenAssignedToOptions.Size = new System.Drawing.Size(20, 20);
+            this.OpenAssignedToOptions.TabIndex = 6;
+            this.OpenAssignedToOptions.UseVisualStyleBackColor = true;
+            this.OpenAssignedToOptions.Click += new System.EventHandler(this.OpenAssignedToOptions_Click);
             // 
             // BillToTextBox
             // 
@@ -690,6 +736,36 @@
             this.OpenProtocolTypeOptions.UseVisualStyleBackColor = true;
             this.OpenProtocolTypeOptions.Click += new System.EventHandler(this.OpenProtocolTypeOptions_Click);
             // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(4, 249);
+            this.label15.Name = "label15";
+            this.label15.Padding = new System.Windows.Forms.Padding(0, 5, 0, 5);
+            this.label15.Size = new System.Drawing.Size(77, 27);
+            this.label15.TabIndex = 48;
+            this.label15.Text = "Comments: ";
+            // 
+            // CommentsLabel
+            // 
+            this.CommentsLabel.AutoSize = true;
+            this.CommentsLabel.Location = new System.Drawing.Point(125, 249);
+            this.CommentsLabel.Name = "CommentsLabel";
+            this.CommentsLabel.Padding = new System.Windows.Forms.Padding(0, 5, 0, 5);
+            this.CommentsLabel.Size = new System.Drawing.Size(70, 27);
+            this.CommentsLabel.TabIndex = 49;
+            this.CommentsLabel.Text = "Comments";
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Location = new System.Drawing.Point(4, 280);
+            this.label20.Name = "label20";
+            this.label20.Padding = new System.Windows.Forms.Padding(0, 5, 0, 5);
+            this.label20.Size = new System.Drawing.Size(87, 27);
+            this.label20.TabIndex = 50;
+            this.label20.Text = "Assigned To: ";
+            // 
             // panel1
             // 
             this.panel1.Controls.Add(this.BottomPanel);
@@ -733,6 +809,7 @@
             this.SaveChangesButton.Size = new System.Drawing.Size(84, 35);
             this.SaveChangesButton.Text = "Save Changes";
             this.SaveChangesButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.SaveChangesButton.Click += new System.EventHandler(this.SaveChangesButton_Click);
             // 
             // TitlesListView
             // 
@@ -743,7 +820,8 @@
             this.StatusCol,
             this.StatusDate,
             this.UserNameCol,
-            this.CommentsCol});
+            this.CommentsCol,
+            this.ProtocolNumberCol});
             this.TitlesListView.FullRowSelect = true;
             this.TitlesListView.GridLines = true;
             this.TitlesListView.Location = new System.Drawing.Point(3, 9);
@@ -777,25 +855,39 @@
             // 
             this.CommentsCol.Text = "Total Comments";
             // 
-            // label15
+            // AddProtocolNumber
             // 
-            this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(4, 249);
-            this.label15.Name = "label15";
-            this.label15.Padding = new System.Windows.Forms.Padding(0, 5, 0, 5);
-            this.label15.Size = new System.Drawing.Size(77, 27);
-            this.label15.TabIndex = 48;
-            this.label15.Text = "Comments: ";
+            this.AddProtocolNumber.Image = ((System.Drawing.Image)(resources.GetObject("AddProtocolNumber.Image")));
+            this.AddProtocolNumber.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.AddProtocolNumber.Name = "AddProtocolNumber";
+            this.AddProtocolNumber.Size = new System.Drawing.Size(128, 35);
+            this.AddProtocolNumber.Text = "Add Protocol Number";
+            this.AddProtocolNumber.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.AddProtocolNumber.Click += new System.EventHandler(this.AddProtocolNumber_Click);
             // 
-            // CommentsLabel
+            // toolStripSeparator6
             // 
-            this.CommentsLabel.AutoSize = true;
-            this.CommentsLabel.Location = new System.Drawing.Point(125, 249);
-            this.CommentsLabel.Name = "CommentsLabel";
-            this.CommentsLabel.Padding = new System.Windows.Forms.Padding(0, 5, 0, 5);
-            this.CommentsLabel.Size = new System.Drawing.Size(70, 27);
-            this.CommentsLabel.TabIndex = 49;
-            this.CommentsLabel.Text = "Comments";
+            this.toolStripSeparator6.Name = "toolStripSeparator6";
+            this.toolStripSeparator6.Size = new System.Drawing.Size(6, 38);
+            // 
+            // ProtocolNumberCol
+            // 
+            this.ProtocolNumberCol.Text = "Protocol Number";
+            // 
+            // RevisedProtocolButton
+            // 
+            this.RevisedProtocolButton.Image = global::Protocols.Properties.Resources.color_wheel_16xLG;
+            this.RevisedProtocolButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.RevisedProtocolButton.Name = "RevisedProtocolButton";
+            this.RevisedProtocolButton.Size = new System.Drawing.Size(99, 35);
+            this.RevisedProtocolButton.Text = "Revised Protocol";
+            this.RevisedProtocolButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.RevisedProtocolButton.Click += new System.EventHandler(this.RevisedProtocolButton_Click);
+            // 
+            // toolStripSeparator7
+            // 
+            this.toolStripSeparator7.Name = "toolStripSeparator7";
+            this.toolStripSeparator7.Size = new System.Drawing.Size(6, 38);
             // 
             // ProtocolRequestEditView
             // 
@@ -811,6 +903,8 @@
             this.toolStrip1.PerformLayout();
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
+            this.flowLayoutPanel4.ResumeLayout(false);
+            this.flowLayoutPanel4.PerformLayout();
             this.flowLayoutPanel1.ResumeLayout(false);
             this.flowLayoutPanel1.PerformLayout();
             this.flowLayoutPanel2.ResumeLayout(false);
@@ -896,5 +990,14 @@
         private System.Windows.Forms.ColumnHeader CommentsCol;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Label CommentsLabel;
+        private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel4;
+        private System.Windows.Forms.TextBox AssignedToTextBox;
+        private System.Windows.Forms.Button OpenAssignedToOptions;
+        private System.Windows.Forms.ToolStripButton AddProtocolNumber;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator6;
+        private System.Windows.Forms.ColumnHeader ProtocolNumberCol;
+        private System.Windows.Forms.ToolStripButton RevisedProtocolButton;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator7;
     }
 }

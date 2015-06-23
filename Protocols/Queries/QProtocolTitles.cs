@@ -130,6 +130,7 @@ namespace Protocols.Queries
                                                                Convert.ToDateTime(reader[4].ToString());
                             title.CommentsCount = reader[5].ToString() == "" ? 0 :
                                                   Convert.ToInt32(reader[5].ToString());
+                            title.ProtocolNumber = reader[6].ToString();
                             results.Add(title);
                         }
                     }
