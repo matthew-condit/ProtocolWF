@@ -8,14 +8,14 @@ namespace Protocols.Models
 {
     public class Comment
     {
-        public DateTime AddedDate { get; set; }
-        public string AddedBy { get; set; }
+        public DateTime CreatedDate { get; set; }
+        public string CreatedBy { get; set; }
         public string Content { get; set; }
 
         public Comment()
         {
-            this.AddedDate = DateTime.Now;
-            this.AddedBy = "";
+            this.CreatedDate = DateTime.Now;
+            this.CreatedBy = "";
             this.Content = "";
         }
     }

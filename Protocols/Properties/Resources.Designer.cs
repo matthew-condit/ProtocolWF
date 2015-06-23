@@ -113,6 +113,16 @@ namespace Protocols.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap house_16xLG {
+            get {
+                object obj = ResourceManager.GetObject("house_16xLG", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap IGreen {
             get {
                 object obj = ResourceManager.GetObject("IGreen", resourceCulture);
@@ -153,6 +163,16 @@ namespace Protocols.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap RSReport_16xLG {
+            get {
+                object obj = ResourceManager.GetObject("RSReport_16xLG", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap save_16xLG {
             get {
                 object obj = ResourceManager.GetObject("save_16xLG", resourceCulture);
@@ -166,6 +186,26 @@ namespace Protocols.Properties {
         internal static System.Drawing.Bitmap StatusAnnotations_Complete_and_ok_16xLG_color {
             get {
                 object obj = ResourceManager.GetObject("StatusAnnotations_Complete_and_ok_16xLG_color", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap StatusAnnotations_Information_16xLG_color {
+            get {
+                object obj = ResourceManager.GetObject("StatusAnnotations_Information_16xLG_color", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap StatusAnnotations_Required_16xLG_color {
+            get {
+                object obj = ResourceManager.GetObject("StatusAnnotations_Required_16xLG_color", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

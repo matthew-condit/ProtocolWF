@@ -31,6 +31,7 @@ namespace Protocols.Controllers
             this.protocolRequest = protocolRequest;
             this.sponsor = protocolRequest.Sponsor;
             UpdateViewWithProtocolRequest();
+            this.RefreshTitleListView();
             UpdateViewWithSponsor();
         }
 
@@ -44,7 +45,7 @@ namespace Protocols.Controllers
             this.view.BillTo = protocolRequest.BillTo;
             this.view.SendVia = protocolRequest.SendMethod;
             this.view.DueDate = protocolRequest.DueDate;
-            AddTilesToView();
+            this.view.Comments = protocolRequest.Comments;
         }
 
         private void AddTilesToView()
@@ -126,23 +127,52 @@ namespace Protocols.Controllers
         {
             this.protocolRequest.RefreshProtocolTitles();
             AddTilesToView();
+            this.view.SetListViewAutoResizeColumns();
+        }
+
+        public string ShowOneTextBoxPopup(string textBoxLabel, string textBoxValue)
+        {
+            string result = "";
+            OneTextBoxFormView popup = new OneTextBoxFormView();
+            OneTextBoxFormController popupController = new OneTextBoxFormController(popup, textBoxLabel);
+            popupController.TextBoxValue = textBoxValue;
+            popupController.LoadView();
+
+            DialogResult dialogResult = popup.ShowDialog(this.view.ParentControl);
+            if (dialogResult == DialogResult.OK)
+            {
+                result = popupController.TextBoxValue;
+            }
+            popup.Dispose();
+            return result;
+        }
+
+        public void ShowListViewPopup(string itemType, IList items)
+        {
+            if(items.Count != 0)
+            {
+                ListViewPopup popup = new ListViewPopup();
+                ListViewPopupController popupController = new ListViewPopupController(popup, itemType, items);
+                popupController.LoadView();
+                DialogResult dialogResult = popup.ShowDialog(this.view.ParentControl);
+                popup.Dispose();
+            }
+            else
+            {
+                MessageBox.Show("No records found.");
+            }
         }
 
         /************************** PROTOCOL TITLE EVENTS ***************************/
         public void AddTitleButtonClicked()
         {
-            OneTextBoxFormView popup = new OneTextBoxFormView();
-            OneTextBoxFormController popupController = new OneTextBoxFormController(popup, "Title: ");
-            popupController.LoadView();
-
-            DialogResult dialogResult = popup.ShowDialog(this.view.ParentControl);
-            if(dialogResult == DialogResult.OK)
+            string popupResult = ShowOneTextBoxPopup("Title: ", "");
+            if(popupResult != String.Empty)
             {
-                ProtocolTitle title = CreateNewProtocolTitle(popupController.TextBoxValue);
+                ProtocolTitle title = CreateNewProtocolTitle(popupResult);
                 SubmitNewProtocolTitleToDB(title);
                 RefreshTitleListView();
-            }
-            popup.Dispose();
+            }           
         }
 
         private ProtocolTitle CreateNewProtocolTitle(string description)
@@ -156,7 +186,7 @@ namespace Protocols.Controllers
         private void SubmitNewProtocolTitleToDB(ProtocolTitle title)
         {
             LoginInfo loginInfo = LoginInfo.GetInstance();
-            title.ID = QProtocolRequests.InsertProtocolTitle(title, loginInfo.UserName);
+            title.ID = QProtocolTitles.Insert(title, loginInfo.UserName);
             SubmitProtocolActivityToDB(title.ID);
         }
 
@@ -177,19 +207,13 @@ namespace Protocols.Controllers
             {
                 int selectedIndex = Convert.ToInt32(this.view.SelectedTitleIndexes[0]);
                 ProtocolTitle title = this.protocolRequest.Titles[selectedIndex];
-                OneTextBoxFormView popup = new OneTextBoxFormView();
-                OneTextBoxFormController popupController = new OneTextBoxFormController(popup, "Title: ");
-                popupController.TextBoxValue = title.Description;
-                popupController.LoadView();
-
-                DialogResult dialogResult = popup.ShowDialog(this.view.ParentControl);
-                if (dialogResult == DialogResult.OK)
+                string popupResult = ShowOneTextBoxPopup("Title: ", title.Description);
+                if (popupResult != String.Empty)
                 {
-                    title.Description = popupController.TextBoxValue;
-                    QProtocolTitles.UpdateProtocolTitle(title, loginInfo.UserName);
+                    title.Description = popupResult;
+                    QProtocolTitles.Update(title, loginInfo.UserName);
                     RefreshTitleListView();
                 }
-                popup.Dispose();
             }
             else
             {
@@ -237,5 +261,67 @@ namespace Protocols.Controllers
             }
             QProtocolActivities.InsertProtocolActivities(protocolActivities);
         }
+
+        public void ViewEventsButtonClicked()
+        {
+            if (this.view.SelectedTitleIndexes.Count == 1)
+            {
+                int selectedIndex = Convert.ToInt32(this.view.SelectedTitleIndexes[0]);
+                ProtocolTitle title = this.protocolRequest.Titles[selectedIndex];
+                IList events = QProtocolActivities.SelectProtocolActivity(this.protocolRequest.ID, title.ID);
+                ShowListViewPopup(ListViewPopupItemTypes.ProtocolEvent, events);
+            }
+            else
+            {
+                MessageBox.Show("Please select 1 title and try it again.");
+            }
+        }
+
+        /*************************** COMMENTS EVENTS ***************************/
+        public void AddCommentsButtonClicked()
+        {
+            if(this.view.SelectedTitleIndexes.Count == 1)
+            {
+                string popupResult = ShowOneTextBoxPopup("Comments: ", "");
+                if(popupResult != String.Empty)
+                {
+                    InsertProtocolCommentsIntoDB(popupResult);
+                    RefreshTitleListView();
+                }
+            }
+            else
+            {
+                MessageBox.Show("Please select 1 title and try it again.");
+            }
+        }
+
+        private void InsertProtocolCommentsIntoDB(string comments)
+        {
+            int selectedIndex = Convert.ToInt32(this.view.SelectedTitleIndexes[0]);
+            ProtocolTitle title = this.protocolRequest.Titles[selectedIndex];
+            QProtocolComments.InsertProtocolComments(title, comments, loginInfo.UserName);
+        }
+
+        public void ViewCommentsButtonClicked()
+        {
+            if(this.view.SelectedTitleIndexes.Count == 1)
+            {
+                int selectedIndex = Convert.ToInt32(this.view.SelectedTitleIndexes[0]);
+                ProtocolTitle title = this.protocolRequest.Titles[selectedIndex];
+                IList comments = QProtocolComments.SelectProtocolComments(title);
+                ShowListViewPopup(ListViewPopupItemTypes.ProtocolComment, comments);
+            }
+            else
+            {
+                MessageBox.Show("Please select 1 title and try it again.");
+            }
+        }
+
+        /**************************** SAVE CHANGES *************************/
+        public void SaveChangedButtonClicked()
+        {
+
+        }
+
     }
 }

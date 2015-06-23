@@ -17,10 +17,6 @@ namespace Protocols.Controllers
         IProtocolRequestDetailView view;
         Sponsor sponsor;
         ProtocolRequest protocolRequest;
-        IList guildlinesList;
-        IList complianceList;
-        IList protocolTypeList;
-        List<Comment> comments;
 
         public delegate void SubmitButtonClick();
         public SubmitButtonClick SubmitButtonClickDelegate;
@@ -30,14 +26,6 @@ namespace Protocols.Controllers
             this.view = view;
             this.view.SetController(this);
             InitProtocolRequest();
-
-            this.guildlinesList = new ArrayList();
-            this.guildlinesList = QListItems.GetListItems(ListNames.Guidelines);
-            this.complianceList = new ArrayList();
-            this.complianceList = QListItems.GetListItems(ListNames.Compliance);
-            this.protocolTypeList = new ArrayList();
-            this.protocolTypeList = QListItems.GetListItems(ListNames.ProtocolType);
-            this.comments = new List<Comment>() { };
         }
 
         private void InitProtocolRequest()
@@ -81,8 +69,6 @@ namespace Protocols.Controllers
             this.view.BillTo = protocolRequest.BillTo;
             this.view.SendVia = protocolRequest.SendMethod;
             this.view.DueDate = protocolRequest.DueDate;
-            this.view.Titles = protocolRequest.TitleDescriptions;
-            this.view.Comments = protocolRequest.Comments;
         }
 
         private void UpdateViewWithSponsor()
@@ -99,9 +85,8 @@ namespace Protocols.Controllers
             this.view.PONumber = sponsor.PONumber;
         }
 
-        public void OpenCheckBoxOptions(string listName)
+        public void OpenCheckBoxOptions(string listName, IList items)
         {
-            IList items = QListItems.GetListItems(listName);
             CheckBoxOptionsView popup = new CheckBoxOptionsView();
             CheckBoxOptionsController popupController = new CheckBoxOptionsController(popup, items);
             popupController.LoadView();
@@ -115,9 +100,8 @@ namespace Protocols.Controllers
             popup.Dispose();
         }
 
-        public void OpenListBoxOptions(string listName)
+        public void OpenListBoxOptions(string listName, IList items)
         {
-            IList items = QListItems.GetListItems(listName);
             ListBoxOptionsView popup = new ListBoxOptionsView();
             ListBoxOptionsController popupController = new ListBoxOptionsController(popup, items);
             popupController.LoadView();
@@ -146,6 +130,10 @@ namespace Protocols.Controllers
                     this.protocolRequest.ProtocolType = items;
                     this.view.ProtocolType = items;
                     break;
+                case ListNames.AssignedTo:
+                    this.protocolRequest.AssignedTo = items;
+                    this.view.AssignedTo = items;
+                    break;
                 default:
                     break;
             }
@@ -156,6 +144,10 @@ namespace Protocols.Controllers
             if (this.protocolRequest.SponsorCode == String.Empty)
             {
                 MessageBox.Show("No sponsor selected.");
+            }
+            else if(this.view.AssignedTo == String.Empty)
+            {
+                MessageBox.Show("Please fill in all required fields.");
             }
             else
             {
@@ -203,6 +195,7 @@ namespace Protocols.Controllers
             this.protocolRequest.DueDate = this.view.DueDate;
             this.protocolRequest.SendMethod = this.view.SendVia;
             this.protocolRequest.BillTo = this.view.BillTo;
+            this.protocolRequest.Comments = this.view.Comments;
             this.protocolRequest.SetTitles(this.view.Titles);
         }
 
@@ -213,11 +206,8 @@ namespace Protocols.Controllers
                                       loginIfo.UserName);
             if(this.protocolRequest.Titles.Count > 0)
             {
-                QProtocolRequests.InsertProtocolRequestTitles(this.protocolRequest, loginIfo.UserName);
-            }
-            if(this.protocolRequest.Comments.Count > 0)
-            {
-                QProtocolRequests.InsertProtocolRequestComments(this.protocolRequest, loginIfo.UserName);
+                QProtocolTitles.InsertFromProtocolRequest(this.protocolRequest, loginIfo.UserName);
+                QProtocolActivities.InsertFromProtocolRequest(this.protocolRequest, loginIfo.UserName);
             }
         }
     }

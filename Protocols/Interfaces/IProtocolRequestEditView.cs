@@ -14,6 +14,7 @@ namespace Protocols.Interfaces
     {
         void SetController(ProtocolRequestEditController controller);
         void AddTitleToView(ProtocolTitle title);
+        void SetListViewAutoResizeColumns();
         void ClearProtocolTitleListView();
         void ClearView();
 
@@ -36,6 +37,7 @@ namespace Protocols.Interfaces
         DateTime DueDate { get; set; }
         string SendVia { get; set; }
         string BillTo { get; set; }
+        string Comments { get; set; }
 
         IList SelectedTitleIndexes { get; }
 

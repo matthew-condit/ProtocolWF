@@ -11,5 +11,6 @@ namespace Protocols.Models
         public const string Guidelines = "Guidelines";
         public const string Compliance = "Compliance";
         public const string ProtocolType = "Protocol Type";
+        public const string AssignedTo = "Assigned To";
     }
 }

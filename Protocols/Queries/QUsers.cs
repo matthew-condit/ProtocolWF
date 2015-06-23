@@ -60,17 +60,42 @@ namespace Protocols.Queries
                     SqlDataReader reader = command.ExecuteReader();
                     while (reader.Read())
                     {
-                        User user = new User();
-                        user.UserName = reader[0].ToString();
-                        user.FirstName = reader[1].ToString();
-                        user.LastName = reader[2].ToString();
-                        user.FullName = reader[3].ToString();
-                        user.EmailAddress = reader[4].ToString();
-                        user.Department.SetDepartment(reader[5].ToString(), reader[6].ToString());
-                        user.Role.SetRole(reader[7].ToString(), reader[8].ToString());
-                        user.IsActive = Convert.ToBoolean(reader[9].ToString());
-
+                        User user = CreateNewUser(reader);
                         results.Add(user);
+                    }
+                }
+            }
+
+            return results;
+        }
+
+        public static IList GetAssignedToUsers()
+        {
+            IList results = new ArrayList();
+            using (SqlConnection connection = new SqlConnection(CONNECTION_STRING))
+            {
+                connection.Open();
+                string query = @"SELECT Users.UserName, Users.FirstName, Users.LastName,
+                                        Users.FullName, Users.EmailAddress, 
+                                        Users.DepartmentID, Departments.DepartmentName, 
+                                        Users.RoleID, Roles.RoleName, Users.IsActive
+	                             FROM Users
+	                             INNER JOIN Departments
+	                             ON Users.DepartmentID = Departments.ID
+	                             INNER JOIN Roles
+	                             ON Users.RoleID = Roles.ID
+                                 WHERE Users.RoleID = 3";
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    command.CommandType = CommandType.Text;
+
+                    SqlDataReader reader = command.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        ListItem item = new ListItem();
+                        item.ListName = ListNames.AssignedTo;
+                        item.ItemName = reader[0].ToString();
+                        results.Add(item);
                     }
                 }
             }
@@ -102,17 +127,25 @@ namespace Protocols.Queries
                     SqlDataReader reader = command.ExecuteReader();
                     while (reader.Read())
                     {
-                        user.UserName = reader[0].ToString();
-                        user.FirstName = reader[1].ToString();
-                        user.LastName = reader[2].ToString();
-                        user.FullName = reader[3].ToString();
-                        user.EmailAddress = reader[4].ToString();
-                        user.Department.SetDepartment(reader[5].ToString(), reader[6].ToString());
-                        user.Role.SetRole(reader[7].ToString(), reader[8].ToString());
-                        user.IsActive = Convert.ToBoolean(reader[9].ToString());
+                        user = CreateNewUser(reader);
                     }
                 }
             }
+
+            return user;
+        }
+
+        private static User CreateNewUser(SqlDataReader reader)
+        {
+            User user = new User();
+            user.UserName = reader[0].ToString();
+            user.FirstName = reader[1].ToString();
+            user.LastName = reader[2].ToString();
+            user.FullName = reader[3].ToString();
+            user.EmailAddress = reader[4].ToString();
+            user.Department.SetDepartment(reader[5].ToString(), reader[6].ToString());
+            user.Role.SetRole(reader[7].ToString(), reader[8].ToString());
+            user.IsActive = Convert.ToBoolean(reader[9].ToString());
 
             return user;
         }

@@ -32,8 +32,9 @@ namespace Protocols.Interfaces
         DateTime DueDate { get; set; }
         string SendVia { get; set; }
         string BillTo { get; set; }
-        List<Comment> Comments { set; }
-        List<string> Titles { get; set; }
+        string Comments { get;  set; }
+        string AssignedTo { get; set; }
+        List<string> Titles { get; }
 
         Control ParentControl { get; }
     }

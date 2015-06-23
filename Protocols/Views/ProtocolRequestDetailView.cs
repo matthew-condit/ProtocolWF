@@ -11,6 +11,8 @@ using Protocols.Interfaces;
 using Protocols.Controllers;
 using System.Diagnostics;
 using Protocols.Models;
+using Protocols.Queries;
+using System.Collections;
 
 namespace Protocols.Views
 {
@@ -52,6 +54,7 @@ namespace Protocols.Views
             this.SendVia = "";
             this.BillTo = "Toxikon";
             this.CommentTextBox.Text = "";
+            
             this.TitleDataGridView.Rows.Clear();
         }
 
@@ -145,17 +148,18 @@ namespace Protocols.Views
             get { return this.BillToTextBox.Text; }
             set { this.BillToTextBox.Text = value; }
         }
-        public List<Comment> Comments
+        public string Comments
         {
-            set 
-            {
-                IList<Comment> list = value;
-                if(list != null && list.Count > 0)
-                {
-                    this.CommentTextBox.Text = list[0].Content;
-                }
-            }
+            get { return this.CommentTextBox.Text; }
+            set { this.CommentTextBox.Text = value; }
         }
+
+        public string AssignedTo
+        {
+            get { return this.AssignedToTextBox.Text; }
+            set { this.AssignedToTextBox.Text = value; }
+        }
+
         public List<string> Titles
         {
             get 
@@ -180,11 +184,6 @@ namespace Protocols.Views
                 
                 return results;
             }
-            set
-            {
-                IList<string> list = value;
-                this.TitleDataGridView.DataSource = list.Select(x => new { Value = x }).ToList();
-            }
         }
 
         private void SubmitButton_Click(object sender, EventArgs e)
@@ -194,17 +193,26 @@ namespace Protocols.Views
 
         private void OpenGuidelinesOptions_Click(object sender, EventArgs e)
         {
-            this.controller.OpenCheckBoxOptions(ListNames.Guidelines);
+            IList items = QListItems.GetListItems(ListNames.Guidelines);
+            this.controller.OpenCheckBoxOptions(ListNames.Guidelines, items);
         }
 
         private void OpenComplianceOptions_Click(object sender, EventArgs e)
         {
-            this.controller.OpenListBoxOptions(ListNames.Compliance);
+            IList items = QListItems.GetListItems(ListNames.Compliance);
+            this.controller.OpenListBoxOptions(ListNames.Compliance, items);
         }
 
         private void OpenProtocolTypeOptions_Click(object sender, EventArgs e)
         {
-            this.controller.OpenListBoxOptions(ListNames.ProtocolType);
+            IList items = QListItems.GetListItems(ListNames.ProtocolType);
+            this.controller.OpenListBoxOptions(ListNames.ProtocolType, items);
+        }
+
+        private void OpenAssignedToOptions_Click(object sender, EventArgs e)
+        {
+            IList items = QUsers.GetAssignedToUsers();
+            this.controller.OpenListBoxOptions(ListNames.AssignedTo, items);
         }
        
     }

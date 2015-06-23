@@ -146,6 +146,12 @@ namespace Protocols.Views
             set { this.BillToTextBox.Text = value; }
         }
 
+        public string Comments
+        {
+            get { return this.CommentsLabel.Text; }
+            set { this.CommentsLabel.Text = value; }
+        }
+
         public IList SelectedTitleIndexes
         {
             get
@@ -165,6 +171,16 @@ namespace Protocols.Views
             item.SubItems.Add(title.LatestActivity.ProtocolEvent.Description);
             item.SubItems.Add(title.LatestActivity.CreatedDate.ToString("MM/dd/yyyy"));
             item.SubItems.Add(title.LatestActivity.CreatedBy);
+            item.SubItems.Add(title.CommentsCount.ToString());
+        }
+
+        public void SetListViewAutoResizeColumns()
+        {
+            this.TitlesListView.Columns[0].AutoResize(ColumnHeaderAutoResizeStyle.ColumnContent);
+            this.TitlesListView.Columns[1].AutoResize(ColumnHeaderAutoResizeStyle.ColumnContent);
+            this.TitlesListView.Columns[2].AutoResize(ColumnHeaderAutoResizeStyle.HeaderSize);
+            this.TitlesListView.Columns[3].AutoResize(ColumnHeaderAutoResizeStyle.HeaderSize);
+            this.TitlesListView.Columns[4].AutoResize(ColumnHeaderAutoResizeStyle.HeaderSize);
         }
 
         public void ClearProtocolTitleListView()
@@ -200,6 +216,21 @@ namespace Protocols.Views
         private void EditTitleButton_Click(object sender, EventArgs e)
         {
             this.controller.EditTitleButtonClicked();
+        }
+
+        private void AddCommentButton_Click(object sender, EventArgs e)
+        {
+            this.controller.AddCommentsButtonClicked();
+        }
+
+        private void ViewCommentsButton_Click(object sender, EventArgs e)
+        {
+            this.controller.ViewCommentsButtonClicked();
+        }
+
+        private void ViewEventsButton_Click(object sender, EventArgs e)
+        {
+            this.controller.ViewEventsButtonClicked();
         }
     }
 }

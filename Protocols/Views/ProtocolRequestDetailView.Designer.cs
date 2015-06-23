@@ -35,6 +35,9 @@
             this.TitleDataGridView = new System.Windows.Forms.DataGridView();
             this.TitleCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.flowLayoutPanel4 = new System.Windows.Forms.FlowLayoutPanel();
+            this.AssignedToTextBox = new System.Windows.Forms.TextBox();
+            this.OpenAssignedToOptions = new System.Windows.Forms.Button();
             this.CommentTextBox = new System.Windows.Forms.TextBox();
             this.label15 = new System.Windows.Forms.Label();
             this.BillToTextBox = new System.Windows.Forms.TextBox();
@@ -79,10 +82,12 @@
             this.flowLayoutPanel3 = new System.Windows.Forms.FlowLayoutPanel();
             this.ProtocolTypeTextBox = new System.Windows.Forms.TextBox();
             this.OpenProtocolTypeOptions = new System.Windows.Forms.Button();
+            this.label20 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.TitleDataGridView)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
+            this.flowLayoutPanel4.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
             this.flowLayoutPanel2.SuspendLayout();
             this.flowLayoutPanel3.SuspendLayout();
@@ -103,23 +108,25 @@
             // 
             // toolStrip1
             // 
+            this.toolStrip1.BackColor = System.Drawing.Color.White;
+            this.toolStrip1.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.SubmitButton});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Padding = new System.Windows.Forms.Padding(0, 10, 1, 10);
-            this.toolStrip1.Size = new System.Drawing.Size(800, 44);
+            this.toolStrip1.Size = new System.Drawing.Size(800, 38);
             this.toolStrip1.TabIndex = 3;
             this.toolStrip1.Text = "toolStrip1";
             // 
             // SubmitButton
             // 
-            this.SubmitButton.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SubmitButton.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SubmitButton.Image = ((System.Drawing.Image)(resources.GetObject("SubmitButton.Image")));
             this.SubmitButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.SubmitButton.Name = "SubmitButton";
-            this.SubmitButton.Size = new System.Drawing.Size(71, 21);
+            this.SubmitButton.Size = new System.Drawing.Size(51, 35);
             this.SubmitButton.Text = "Submit";
+            this.SubmitButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.SubmitButton.Click += new System.EventHandler(this.SubmitButton_Click);
             // 
             // TitleDataGridView
@@ -148,7 +155,8 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 115F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 265F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 113F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 319F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 324F));
+            this.tableLayoutPanel1.Controls.Add(this.flowLayoutPanel4, 1, 9);
             this.tableLayoutPanel1.Controls.Add(this.CommentTextBox, 1, 8);
             this.tableLayoutPanel1.Controls.Add(this.label15, 0, 8);
             this.tableLayoutPanel1.Controls.Add(this.BillToTextBox, 1, 7);
@@ -187,6 +195,7 @@
             this.tableLayoutPanel1.Controls.Add(this.flowLayoutPanel1, 1, 2);
             this.tableLayoutPanel1.Controls.Add(this.flowLayoutPanel2, 1, 3);
             this.tableLayoutPanel1.Controls.Add(this.flowLayoutPanel3, 1, 4);
+            this.tableLayoutPanel1.Controls.Add(this.label20, 0, 9);
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 47);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 10;
@@ -202,6 +211,36 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(800, 327);
             this.tableLayoutPanel1.TabIndex = 0;
+            // 
+            // flowLayoutPanel4
+            // 
+            this.flowLayoutPanel4.Controls.Add(this.AssignedToTextBox);
+            this.flowLayoutPanel4.Controls.Add(this.OpenAssignedToOptions);
+            this.flowLayoutPanel4.Location = new System.Drawing.Point(117, 280);
+            this.flowLayoutPanel4.Margin = new System.Windows.Forms.Padding(0);
+            this.flowLayoutPanel4.Name = "flowLayoutPanel4";
+            this.flowLayoutPanel4.Size = new System.Drawing.Size(259, 28);
+            this.flowLayoutPanel4.TabIndex = 49;
+            // 
+            // AssignedToTextBox
+            // 
+            this.AssignedToTextBox.Location = new System.Drawing.Point(3, 3);
+            this.AssignedToTextBox.Name = "AssignedToTextBox";
+            this.AssignedToTextBox.ReadOnly = true;
+            this.AssignedToTextBox.Size = new System.Drawing.Size(232, 25);
+            this.AssignedToTextBox.TabIndex = 5;
+            // 
+            // OpenAssignedToOptions
+            // 
+            this.OpenAssignedToOptions.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("OpenAssignedToOptions.BackgroundImage")));
+            this.OpenAssignedToOptions.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.OpenAssignedToOptions.Location = new System.Drawing.Point(238, 5);
+            this.OpenAssignedToOptions.Margin = new System.Windows.Forms.Padding(0, 5, 0, 0);
+            this.OpenAssignedToOptions.Name = "OpenAssignedToOptions";
+            this.OpenAssignedToOptions.Size = new System.Drawing.Size(20, 20);
+            this.OpenAssignedToOptions.TabIndex = 6;
+            this.OpenAssignedToOptions.UseVisualStyleBackColor = true;
+            this.OpenAssignedToOptions.Click += new System.EventHandler(this.OpenAssignedToOptions_Click);
             // 
             // CommentTextBox
             // 
@@ -631,6 +670,16 @@
             this.OpenProtocolTypeOptions.UseVisualStyleBackColor = true;
             this.OpenProtocolTypeOptions.Click += new System.EventHandler(this.OpenProtocolTypeOptions_Click);
             // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Location = new System.Drawing.Point(4, 280);
+            this.label20.Name = "label20";
+            this.label20.Padding = new System.Windows.Forms.Padding(0, 5, 0, 5);
+            this.label20.Size = new System.Drawing.Size(87, 27);
+            this.label20.TabIndex = 48;
+            this.label20.Text = "Assigned To: ";
+            // 
             // ProtocolRequestDetailView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
@@ -648,6 +697,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.TitleDataGridView)).EndInit();
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
+            this.flowLayoutPanel4.ResumeLayout(false);
+            this.flowLayoutPanel4.PerformLayout();
             this.flowLayoutPanel1.ResumeLayout(false);
             this.flowLayoutPanel1.PerformLayout();
             this.flowLayoutPanel2.ResumeLayout(false);
@@ -710,5 +761,9 @@
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel3;
         private System.Windows.Forms.TextBox ProtocolTypeTextBox;
         private System.Windows.Forms.Button OpenProtocolTypeOptions;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel4;
+        private System.Windows.Forms.TextBox AssignedToTextBox;
+        private System.Windows.Forms.Button OpenAssignedToOptions;
+        private System.Windows.Forms.Label label20;
     }
 }

@@ -37,8 +37,10 @@
             this.AddEventButton = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.AddCommentButton = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
+            this.ViewEventsButton = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
+            this.ViewCommentsButton = new System.Windows.Forms.ToolStripButton();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.BillToTextBox = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
@@ -83,23 +85,32 @@
             this.ProtocolTypeTextBox = new System.Windows.Forms.TextBox();
             this.OpenProtocolTypeOptions = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.BottomPanel = new System.Windows.Forms.Panel();
+            this.toolStrip2 = new System.Windows.Forms.ToolStrip();
+            this.SaveChangesButton = new System.Windows.Forms.ToolStripButton();
             this.TitlesListView = new System.Windows.Forms.ListView();
             this.TitleCol = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.StatusCol = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.StatusDate = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.UserNameCol = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.CommentsCol = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.label15 = new System.Windows.Forms.Label();
+            this.CommentsLabel = new System.Windows.Forms.Label();
             this.toolStrip1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
             this.flowLayoutPanel2.SuspendLayout();
             this.flowLayoutPanel3.SuspendLayout();
             this.panel1.SuspendLayout();
+            this.BottomPanel.SuspendLayout();
+            this.toolStrip2.SuspendLayout();
             this.SuspendLayout();
             // 
             // toolStrip1
             // 
             this.toolStrip1.BackColor = System.Drawing.Color.White;
             this.toolStrip1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.toolStrip1.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.AddTitleButton,
             this.toolStripSeparator4,
@@ -108,8 +119,10 @@
             this.AddEventButton,
             this.toolStripSeparator2,
             this.AddCommentButton,
+            this.toolStripSeparator5,
+            this.ViewEventsButton,
             this.toolStripSeparator3,
-            this.toolStripButton1});
+            this.ViewCommentsButton});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Size = new System.Drawing.Size(800, 38);
@@ -169,20 +182,39 @@
             this.AddCommentButton.Size = new System.Drawing.Size(95, 35);
             this.AddCommentButton.Text = "Add Comments";
             this.AddCommentButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.AddCommentButton.Click += new System.EventHandler(this.AddCommentButton_Click);
+            // 
+            // toolStripSeparator5
+            // 
+            this.toolStripSeparator5.Name = "toolStripSeparator5";
+            this.toolStripSeparator5.Size = new System.Drawing.Size(6, 38);
+            // 
+            // ViewEventsButton
+            // 
+            this.ViewEventsButton.Image = global::Protocols.Properties.Resources.StatusAnnotations_Required_16xLG_color;
+            this.ViewEventsButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.ViewEventsButton.Name = "ViewEventsButton";
+            this.ViewEventsButton.Size = new System.Drawing.Size(73, 35);
+            this.ViewEventsButton.Text = "View Events";
+            this.ViewEventsButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.ViewEventsButton.ToolTipText = "View All Events of Selected Protocol";
+            this.ViewEventsButton.Click += new System.EventHandler(this.ViewEventsButton_Click);
             // 
             // toolStripSeparator3
             // 
             this.toolStripSeparator3.Name = "toolStripSeparator3";
             this.toolStripSeparator3.Size = new System.Drawing.Size(6, 38);
             // 
-            // toolStripButton1
+            // ViewCommentsButton
             // 
-            this.toolStripButton1.Image = global::Protocols.Properties.Resources.save_16xLG;
-            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton1.Name = "toolStripButton1";
-            this.toolStripButton1.Size = new System.Drawing.Size(84, 35);
-            this.toolStripButton1.Text = "Save Changes";
-            this.toolStripButton1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.ViewCommentsButton.Image = ((System.Drawing.Image)(resources.GetObject("ViewCommentsButton.Image")));
+            this.ViewCommentsButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.ViewCommentsButton.Name = "ViewCommentsButton";
+            this.ViewCommentsButton.Size = new System.Drawing.Size(98, 35);
+            this.ViewCommentsButton.Text = "View Comments";
+            this.ViewCommentsButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.ViewCommentsButton.ToolTipText = "View All Comments of Selected Protocol";
+            this.ViewCommentsButton.Click += new System.EventHandler(this.ViewCommentsButton_Click);
             // 
             // tableLayoutPanel1
             // 
@@ -191,7 +223,7 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 120F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 266F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 107F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 339F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 345F));
             this.tableLayoutPanel1.Controls.Add(this.BillToTextBox, 1, 7);
             this.tableLayoutPanel1.Controls.Add(this.label14, 0, 7);
             this.tableLayoutPanel1.Controls.Add(this.label13, 0, 6);
@@ -228,7 +260,9 @@
             this.tableLayoutPanel1.Controls.Add(this.flowLayoutPanel1, 1, 2);
             this.tableLayoutPanel1.Controls.Add(this.flowLayoutPanel2, 1, 3);
             this.tableLayoutPanel1.Controls.Add(this.flowLayoutPanel3, 1, 4);
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 419);
+            this.tableLayoutPanel1.Controls.Add(this.label15, 0, 8);
+            this.tableLayoutPanel1.Controls.Add(this.CommentsLabel, 1, 8);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 41);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 10;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
@@ -241,7 +275,7 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(791, 305);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(790, 311);
             this.tableLayoutPanel1.TabIndex = 1;
             // 
             // BillToTextBox
@@ -658,13 +692,47 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.BottomPanel);
             this.panel1.Controls.Add(this.TitlesListView);
-            this.panel1.Controls.Add(this.tableLayoutPanel1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 38);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(800, 732);
             this.panel1.TabIndex = 45;
+            // 
+            // BottomPanel
+            // 
+            this.BottomPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.BottomPanel.Controls.Add(this.toolStrip2);
+            this.BottomPanel.Controls.Add(this.tableLayoutPanel1);
+            this.BottomPanel.Location = new System.Drawing.Point(0, 365);
+            this.BottomPanel.Margin = new System.Windows.Forms.Padding(0);
+            this.BottomPanel.Name = "BottomPanel";
+            this.BottomPanel.Size = new System.Drawing.Size(800, 364);
+            this.BottomPanel.TabIndex = 46;
+            // 
+            // toolStrip2
+            // 
+            this.toolStrip2.BackColor = System.Drawing.Color.White;
+            this.toolStrip2.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
+            this.toolStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.SaveChangesButton});
+            this.toolStrip2.Location = new System.Drawing.Point(0, 0);
+            this.toolStrip2.Name = "toolStrip2";
+            this.toolStrip2.Size = new System.Drawing.Size(800, 38);
+            this.toolStrip2.TabIndex = 0;
+            this.toolStrip2.Text = "toolStrip2";
+            // 
+            // SaveChangesButton
+            // 
+            this.SaveChangesButton.Image = global::Protocols.Properties.Resources.save_16xLG;
+            this.SaveChangesButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.SaveChangesButton.Name = "SaveChangesButton";
+            this.SaveChangesButton.Size = new System.Drawing.Size(84, 35);
+            this.SaveChangesButton.Text = "Save Changes";
+            this.SaveChangesButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             // 
             // TitlesListView
             // 
@@ -674,12 +742,13 @@
             this.TitleCol,
             this.StatusCol,
             this.StatusDate,
-            this.UserNameCol});
+            this.UserNameCol,
+            this.CommentsCol});
             this.TitlesListView.FullRowSelect = true;
             this.TitlesListView.GridLines = true;
             this.TitlesListView.Location = new System.Drawing.Point(3, 9);
             this.TitlesListView.Name = "TitlesListView";
-            this.TitlesListView.Size = new System.Drawing.Size(794, 404);
+            this.TitlesListView.Size = new System.Drawing.Size(794, 349);
             this.TitlesListView.TabIndex = 45;
             this.TitlesListView.UseCompatibleStateImageBehavior = false;
             this.TitlesListView.View = System.Windows.Forms.View.Details;
@@ -704,6 +773,30 @@
             this.UserNameCol.Text = "Added By";
             this.UserNameCol.Width = 105;
             // 
+            // CommentsCol
+            // 
+            this.CommentsCol.Text = "Total Comments";
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(4, 249);
+            this.label15.Name = "label15";
+            this.label15.Padding = new System.Windows.Forms.Padding(0, 5, 0, 5);
+            this.label15.Size = new System.Drawing.Size(77, 27);
+            this.label15.TabIndex = 48;
+            this.label15.Text = "Comments: ";
+            // 
+            // CommentsLabel
+            // 
+            this.CommentsLabel.AutoSize = true;
+            this.CommentsLabel.Location = new System.Drawing.Point(125, 249);
+            this.CommentsLabel.Name = "CommentsLabel";
+            this.CommentsLabel.Padding = new System.Windows.Forms.Padding(0, 5, 0, 5);
+            this.CommentsLabel.Size = new System.Drawing.Size(70, 27);
+            this.CommentsLabel.TabIndex = 49;
+            this.CommentsLabel.Text = "Comments";
+            // 
             // ProtocolRequestEditView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
@@ -725,6 +818,10 @@
             this.flowLayoutPanel3.ResumeLayout(false);
             this.flowLayoutPanel3.PerformLayout();
             this.panel1.ResumeLayout(false);
+            this.BottomPanel.ResumeLayout(false);
+            this.BottomPanel.PerformLayout();
+            this.toolStrip2.ResumeLayout(false);
+            this.toolStrip2.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -733,7 +830,6 @@
         #endregion
 
         private System.Windows.Forms.ToolStrip toolStrip1;
-        private System.Windows.Forms.ToolStripButton toolStripButton1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.TextBox BillToTextBox;
         private System.Windows.Forms.Label label14;
@@ -782,7 +878,6 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.ToolStripButton AddEventButton;
         private System.Windows.Forms.ToolStripButton AddTitleButton;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
         private System.Windows.Forms.ToolStripButton EditTitleButton;
         private System.Windows.Forms.Panel panel1;
@@ -791,5 +886,15 @@
         private System.Windows.Forms.ColumnHeader StatusCol;
         private System.Windows.Forms.ColumnHeader StatusDate;
         private System.Windows.Forms.ColumnHeader UserNameCol;
+        private System.Windows.Forms.Panel BottomPanel;
+        private System.Windows.Forms.ToolStrip toolStrip2;
+        private System.Windows.Forms.ToolStripButton SaveChangesButton;
+        private System.Windows.Forms.ToolStripButton ViewEventsButton;
+        private System.Windows.Forms.ToolStripButton ViewCommentsButton;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator5;
+        private System.Windows.Forms.ColumnHeader CommentsCol;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.Label CommentsLabel;
     }
 }

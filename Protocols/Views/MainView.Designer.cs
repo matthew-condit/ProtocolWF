@@ -60,8 +60,8 @@
             // 
             this.DashboardMenuItem.ForeColor = System.Drawing.Color.White;
             this.DashboardMenuItem.Name = "DashboardMenuItem";
-            this.DashboardMenuItem.Size = new System.Drawing.Size(95, 21);
-            this.DashboardMenuItem.Text = "DASHBOARD";
+            this.DashboardMenuItem.Size = new System.Drawing.Size(58, 21);
+            this.DashboardMenuItem.Text = "HOME";
             this.DashboardMenuItem.Click += new System.EventHandler(this.DashboardMenuItem_Click);
             // 
             // ProtocolRequestMenuItem
@@ -140,6 +140,7 @@
             this.Name = "MainView";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Protocols";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);

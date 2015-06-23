@@ -21,7 +21,7 @@ namespace Protocols.Controllers
 
         public void LoadView()
         {
-            LoadProtocolRequestAddView();
+            LoadDashboardView();
         }
 
         public void LoadProtocolRequestAddView()

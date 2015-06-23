@@ -46,7 +46,9 @@ namespace Protocols.Views
             // 
             // toolStrip1
             // 
-            this.toolStrip1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.toolStrip1.BackColor = System.Drawing.Color.White;
+            this.toolStrip1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.toolStrip1.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripLabel1,
             this.SearchTextBox,
@@ -61,7 +63,7 @@ namespace Protocols.Views
             // toolStripLabel1
             // 
             this.toolStripLabel1.Name = "toolStripLabel1";
-            this.toolStripLabel1.Size = new System.Drawing.Size(103, 22);
+            this.toolStripLabel1.Size = new System.Drawing.Size(91, 22);
             this.toolStripLabel1.Text = "Sponsor Name: ";
             // 
             // SearchTextBox
@@ -76,7 +78,7 @@ namespace Protocols.Views
             this.SearchButton.Image = ((System.Drawing.Image)(resources.GetObject("SearchButton.Image")));
             this.SearchButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.SearchButton.Name = "SearchButton";
-            this.SearchButton.Size = new System.Drawing.Size(67, 22);
+            this.SearchButton.Size = new System.Drawing.Size(62, 22);
             this.SearchButton.Text = "Search";
             this.SearchButton.Click += new System.EventHandler(this.SearchButton_Click);
             // 
@@ -133,6 +135,7 @@ namespace Protocols.Views
             this.ProtocolRequestDetailView.Address = "Address";
             this.ProtocolRequestDetailView.BillTo = "";
             this.ProtocolRequestDetailView.City = "City";
+            this.ProtocolRequestDetailView.Comments = "";
             this.ProtocolRequestDetailView.Compliance = "";
             this.ProtocolRequestDetailView.ContactName = "Contact";
             this.ProtocolRequestDetailView.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -144,7 +147,7 @@ namespace Protocols.Views
             this.ProtocolRequestDetailView.Location = new System.Drawing.Point(3, 147);
             this.ProtocolRequestDetailView.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.ProtocolRequestDetailView.Name = "ProtocolRequestDetailView";
-            this.ProtocolRequestDetailView.Padding = new System.Windows.Forms.Padding(0, 10, 0, 10);
+            this.ProtocolRequestDetailView.Padding = new System.Windows.Forms.Padding(0, 0, 0, 10);
             this.ProtocolRequestDetailView.PhoneNumber = "Phone";
             this.ProtocolRequestDetailView.PONumber = "PO";
             this.ProtocolRequestDetailView.ProtocolType = "";
@@ -155,7 +158,6 @@ namespace Protocols.Views
             this.ProtocolRequestDetailView.SponsorName = "Sponsor";
             this.ProtocolRequestDetailView.State = "State";
             this.ProtocolRequestDetailView.TabIndex = 1;
-            this.ProtocolRequestDetailView.Titles = ((System.Collections.Generic.List<string>)(resources.GetObject("ProtocolRequestDetailView.Titles")));
             this.ProtocolRequestDetailView.ZipCode = "Zip Code";
             // 
             // ProtocolRequestAddView

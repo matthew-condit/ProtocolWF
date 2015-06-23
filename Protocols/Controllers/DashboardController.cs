@@ -28,26 +28,18 @@ namespace Protocols.Controllers
         public void LoadView()
         {
             this.protocolRequests = QProtocolRequests.GetActiveProtocolRequests();
-            this.protocols = QProtocols.GetInProcessProtocols();
-            LoadRequestTitles();
+            //this.protocols = QProtocols.GetInProcessProtocols();
+            LoadProtocolTitles();
             //LoadRequestComments();
             AddProtocolRequestsToView();
             //AddProtocolsToView();
         }
 
-        private void LoadRequestTitles()
+        private void LoadProtocolTitles()
         {
             foreach (ProtocolRequest request in protocolRequests)
             {
-                request.SetTitles((List<ProtocolTitle>)QProtocolRequests.GetProtocolRequestTitles(request.ID));
-            }
-        }
-
-        private void LoadRequestComments()
-        {
-            foreach(ProtocolRequest request in protocolRequests)
-            {
-                request.Comments = (List<Comment>)QProtocolRequests.GetProtocolRequestComments(request.ID);
+                request.SetTitles((List<ProtocolTitle>)QProtocolTitles.SelectByRequestID(request.ID));
             }
         }
 

@@ -23,7 +23,7 @@ namespace Protocols.Models
         public DateTime DueDate { get; set; }
         public string SendMethod { get; set; }
         public string BillTo { get; set; }
-        public List<Comment> Comments { get; set; }
+        public string Comments { get; set; }
         public string AssignedTo { get; set; }
         public string Priority { get; set; }
 
@@ -48,7 +48,7 @@ namespace Protocols.Models
             Titles = new List<ProtocolTitle>() { };
             DueDate = DateTime.Now;
             BillTo = "Toxikon";
-            Comments = new List<Comment>() { };
+            Comments = "";
             Workflow = new ProtocolRequestWorkflow();
             this.AssignedTo = "";
         }
@@ -76,8 +76,7 @@ namespace Protocols.Models
         public void RefreshProtocolTitles()
         {
             this.Titles.Clear();
-            this.Titles = new List<ProtocolTitle>((List<ProtocolTitle>)
-                          QProtocolRequests.GetProtocolRequestTitles(this.ID));
+            this.Titles = (List<ProtocolTitle>)QProtocolTitles.SelectByRequestID(this.ID);
         }
 
         public Image RequestStatusImage()
@@ -101,16 +100,6 @@ namespace Protocols.Models
                     break;
             }
             return result;
-        }
-
-        public List<string> TitleDescriptions
-        {
-            get
-            {
-                List<string> results = new List<string>() { };
-                results = this.Titles.Select(protocolTitle => protocolTitle.Description).ToList();
-                return results;
-            }
         }
     }
 }

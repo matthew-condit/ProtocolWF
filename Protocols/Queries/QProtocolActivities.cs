@@ -37,6 +37,29 @@ namespace Protocols.Queries
             }
         }
 
+        public static void InsertFromProtocolRequest(ProtocolRequest request, string userName)
+        {
+            using (SqlConnection connection = new SqlConnection(CONNECTION_STRING))
+            {
+                connection.Open();
+                using (SqlCommand command = new SqlCommand("ProtocolActivitiesInsert", connection))
+                {
+                    command.CommandType = CommandType.StoredProcedure;
+
+                    foreach (ProtocolTitle title in request.Titles)
+                    {
+                        command.Parameters.Clear();
+                        command.Parameters.Add("@ProtocolRequestID", SqlDbType.Int).Value = request.ID;
+                        command.Parameters.Add("@ProtocolTitleID", SqlDbType.Int).Value = title.ID;
+                        command.Parameters.Add("@ProtocolEventID", SqlDbType.Int).Value = 1;
+                        command.Parameters.Add("@CreatedBy", SqlDbType.NVarChar).Value = userName;
+
+                        int result = command.ExecuteNonQuery();
+                    }
+                }
+            }
+        }
+
         public static void InsertProtocolActivity(ProtocolActivity activity)
         {
             using (SqlConnection connection = new SqlConnection(CONNECTION_STRING))
@@ -71,7 +94,8 @@ namespace Protocols.Queries
                                   INNER JOIN ProtocolEvents
                                   ON ProtocolActivities.ProtocolEventID = ProtocolEvents.ID
                                   WHERE ProtocolActivities.ProtocolRequestID = @ProtocolRequestID
-                                  AND ProtocolActivities.ProtocolTitleID = @ProtocolTitleID";
+                                  AND ProtocolActivities.ProtocolTitleID = @ProtocolTitleID
+                                  ORDER BY ProtocolActivities.CreatedDate DESC";
                 using (SqlCommand command = new SqlCommand(query, connection))
                 {
                     command.CommandType = CommandType.Text;

@@ -53,6 +53,7 @@
     <Compile Include="Controllers\DepartmentListController.cs" />
     <Compile Include="Controllers\ListBoxOptionsController.cs" />
     <Compile Include="Controllers\ListItemsController.cs" />
+    <Compile Include="Controllers\ListViewPopupController.cs" />
     <Compile Include="Controllers\MainViewController.cs" />
     <Compile Include="Controllers\OneTextBoxFormController.cs" />
     <Compile Include="Controllers\ProtocolDashboardController.cs" />
@@ -73,6 +74,7 @@
     <Compile Include="Interfaces\IDepartmentListView.cs" />
     <Compile Include="Interfaces\IListBoxOptionsView.cs" />
     <Compile Include="Interfaces\IListItemsView.cs" />
+    <Compile Include="Interfaces\IListViewPopup.cs" />
     <Compile Include="Interfaces\IMainView.cs" />
     <Compile Include="Interfaces\IOneTextBoxFormView.cs" />
     <Compile Include="Interfaces\IProtocolDashboardView.cs" />
@@ -89,6 +91,7 @@
     <Compile Include="Models\DraftWorkflow.cs" />
     <Compile Include="Models\ListItem.cs" />
     <Compile Include="Models\ListNames.cs" />
+    <Compile Include="Models\ListViewPopupItemTypes.cs" />
     <Compile Include="Models\Protocol.cs" />
     <Compile Include="Models\ProtocolActivity.cs" />
     <Compile Include="Models\ProtocolEvent.cs" />
@@ -99,6 +102,7 @@
     <Compile Include="Models\ProtocolEventTypes.cs" />
     <Compile Include="Queries\QListItems.cs" />
     <Compile Include="Queries\QProtocolActivities.cs" />
+    <Compile Include="Queries\QProtocolComments.cs" />
     <Compile Include="Queries\QProtocolEvents.cs" />
     <Compile Include="Queries\QProtocolRequests.cs" />
     <Compile Include="Queries\QDepartments.cs" />
@@ -148,6 +152,12 @@
     </Compile>
     <Compile Include="Views\ListItemsView.Designer.cs">
       <DependentUpon>ListItemsView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ListViewPopup.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\ListViewPopup.Designer.cs">
+      <DependentUpon>ListViewPopup.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\MainView.cs">
       <SubType>Form</SubType>
@@ -276,6 +286,9 @@
     <EmbeddedResource Include="Views\ListItemsView.resx">
       <DependentUpon>ListItemsView.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Views\ListViewPopup.resx">
+      <DependentUpon>ListViewPopup.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\MainView.resx">
       <DependentUpon>MainView.cs</DependentUpon>
     </EmbeddedResource>
@@ -332,6 +345,9 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\StatusAnnotations_Information_16xLG_color.png" />
+    <None Include="Resources\StatusAnnotations_Required_16xLG_color.png" />
+    <None Include="Resources\RSReport_16xLG.png" />
     <None Include="Resources\StatusAnnotations_Complete_and_ok_16xLG_color.png" />
     <None Include="Resources\PencilAngled_16xLG_color.png" />
     <None Include="Resources\save_16xLG.png" />
@@ -342,6 +358,7 @@
     <None Include="Resources\Bubble_16xLG.png" />
     <None Include="Resources\checkbox_16xLG.png" />
     <None Include="Resources\color_wheel_16xLG.png" />
+    <None Include="Resources\house_16xLG.png" />
     <Content Include="Resources\Images\CGray.png" />
     <Content Include="Resources\Images\CGreen.png" />
     <Content Include="Resources\Images\CRed.png" />

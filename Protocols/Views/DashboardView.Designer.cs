@@ -104,8 +104,8 @@
             this.toolStripLabel1.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.toolStripLabel1.ForeColor = System.Drawing.Color.SlateGray;
             this.toolStripLabel1.Name = "toolStripLabel1";
-            this.toolStripLabel1.Size = new System.Drawing.Size(188, 22);
-            this.toolStripLabel1.Text = "Protocol Requests Dashboard";
+            this.toolStripLabel1.Size = new System.Drawing.Size(118, 22);
+            this.toolStripLabel1.Text = "Protocol Requests";
             // 
             // DashboardView
             // 
