@@ -7,11 +7,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Protocols.Interfaces;
-using Protocols.Controllers;
-using Protocols.Models;
+using Toxikon.ProtocolManager.Interfaces;
+using Toxikon.ProtocolManager.Controllers;
+using Toxikon.ProtocolManager.Models;
 
-namespace Protocols.Views
+namespace Toxikon.ProtocolManager.Views
 {
     public partial class DashboardView : UserControl, IDashboardView
     {

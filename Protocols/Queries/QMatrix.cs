@@ -1,4 +1,4 @@
-﻿using Protocols.Models;
+﻿using Toxikon.ProtocolManager.Models;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -9,7 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Protocols.Queries
+namespace Toxikon.ProtocolManager.Queries
 {
     public static class QMatrix
     {

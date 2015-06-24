@@ -1,13 +1,13 @@
-﻿using Protocols.Controllers;
-using Protocols.Models;
-using Protocols.Views;
+﻿using Toxikon.ProtocolManager.Controllers;
+using Toxikon.ProtocolManager.Models;
+using Toxikon.ProtocolManager.Views;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Protocols
+namespace Toxikon.ProtocolManager
 {
     static class Program
     {

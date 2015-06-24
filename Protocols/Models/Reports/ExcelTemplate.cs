@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Protocols.Models.Reports
+namespace Toxikon.ProtocolManager.Models.Reports
 {
     public class ExcelTemplate
     {

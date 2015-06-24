@@ -1,4 +1,4 @@
-﻿namespace Protocols.Views
+﻿namespace Toxikon.ProtocolManager.Views
 {
     partial class MainView
     {

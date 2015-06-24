@@ -1,4 +1,4 @@
-﻿using Protocols.Controllers;
+﻿using Toxikon.ProtocolManager.Controllers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Protocols.Interfaces
+namespace Toxikon.ProtocolManager.Interfaces
 {
     public interface IMainView
     {

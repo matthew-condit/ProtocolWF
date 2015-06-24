@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Protocols.Models
+namespace Toxikon.ProtocolManager.Models
 {
     internal class Utility
     {

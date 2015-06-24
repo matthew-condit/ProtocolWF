@@ -1,0 +1,386 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{E2C5AA4B-02A4-4148-BC12-F8796B2F3FE4}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Toxikon.ProtocolManager</RootNamespace>
+    <AssemblyName>ToxikonProtocolManager</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.Office.Interop.Excel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.DirectoryServices.AccountManagement" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Controllers\RequestFormController.cs" />
+    <Compile Include="Controllers\Templates\CheckBoxOptionsController.cs" />
+    <Compile Include="Controllers\DashboardController.cs" />
+    <Compile Include="Controllers\Admin\DepartmentEditController.cs" />
+    <Compile Include="Controllers\Admin\DepartmentListController.cs" />
+    <Compile Include="Controllers\Templates\ListBoxOptionsController.cs" />
+    <Compile Include="Controllers\Admin\ListItemsController.cs" />
+    <Compile Include="Controllers\Templates\ListViewPopupController.cs" />
+    <Compile Include="Controllers\MainViewController.cs" />
+    <Compile Include="Controllers\Templates\OneTextBoxFormController.cs" />
+    <Compile Include="Controllers\Protocols\ProtocolEventAddController.cs" />
+    <Compile Include="Controllers\Protocols\ProtocolEventEditController.cs" />
+    <Compile Include="Controllers\Protocols\ProtocolEventsController.cs" />
+    <Compile Include="Controllers\Protocols\ProtocolRequestAddController.cs" />
+    <Compile Include="Controllers\Protocols\ProtocolRequestDetailController.cs" />
+    <Compile Include="Controllers\Protocols\ProtocolRequestEditController.cs" />
+    <Compile Include="Controllers\Admin\RoleEditController.cs" />
+    <Compile Include="Controllers\Admin\RoleListController.cs" />
+    <Compile Include="Controllers\Admin\UserEditController.cs" />
+    <Compile Include="Controllers\Admin\UserListController.cs" />
+    <Compile Include="Interfaces\IRequestForm.cs" />
+    <Compile Include="Interfaces\Templates\ICheckBoxOptionsView.cs" />
+    <Compile Include="Interfaces\IDashboardView.cs" />
+    <Compile Include="Interfaces\Admin\IDepartmentEditView.cs" />
+    <Compile Include="Interfaces\Admin\IDepartmentListView.cs" />
+    <Compile Include="Interfaces\Templates\IListBoxOptionsView.cs" />
+    <Compile Include="Interfaces\Admin\IListItemsView.cs" />
+    <Compile Include="Interfaces\Templates\IListViewPopup.cs" />
+    <Compile Include="Interfaces\IMainView.cs" />
+    <Compile Include="Interfaces\Templates\IOneTextBoxFormView.cs" />
+    <Compile Include="Interfaces\Protocols\IProtocolEventAddView.cs" />
+    <Compile Include="Interfaces\Protocols\IProtocolEventEditView.cs" />
+    <Compile Include="Interfaces\Protocols\IProtocolEventsView.cs" />
+    <Compile Include="Interfaces\Protocols\IProtocolRequestEditView.cs" />
+    <Compile Include="Interfaces\Admin\IRoleEditView.cs" />
+    <Compile Include="Interfaces\Admin\IRoleListView.cs" />
+    <Compile Include="Interfaces\Admin\IUserEditView.cs" />
+    <Compile Include="Interfaces\Admin\IUserListView.cs" />
+    <Compile Include="Models\Comment.cs" />
+    <Compile Include="Models\ListItem.cs" />
+    <Compile Include="Models\ListNames.cs" />
+    <Compile Include="Models\ListViewPopupItemTypes.cs" />
+    <Compile Include="Models\Protocols\ProtocolActivity.cs" />
+    <Compile Include="Models\Protocols\ProtocolEvent.cs" />
+    <Compile Include="Models\Protocols\ProtocolNumber.cs" />
+    <Compile Include="Models\Protocols\ProtocolTitle.cs" />
+    <Compile Include="Models\Reports\ExcelDataTable.cs" />
+    <Compile Include="Models\Reports\ExcelTemplate.cs" />
+    <Compile Include="Models\Reports\ProtocolRequestReport.cs" />
+    <Compile Include="Models\RequestStatuses.cs" />
+    <Compile Include="Models\Protocols\ProtocolEventTypes.cs" />
+    <Compile Include="Queries\QListItems.cs" />
+    <Compile Include="Queries\QProtocolActivities.cs" />
+    <Compile Include="Queries\QProtocolComments.cs" />
+    <Compile Include="Queries\QProtocolEvents.cs" />
+    <Compile Include="Queries\QProtocolNumbers.cs" />
+    <Compile Include="Queries\QProtocolRequests.cs" />
+    <Compile Include="Queries\QDepartments.cs" />
+    <Compile Include="Queries\QProtocolTitles.cs" />
+    <Compile Include="Queries\QRoles.cs" />
+    <Compile Include="Queries\QUsers.cs" />
+    <Compile Include="Queries\QTMS.cs" />
+    <Compile Include="Views\RequestForms\RequestFormAdd.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\RequestForms\RequestFormAdd.Designer.cs">
+      <DependentUpon>RequestFormAdd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\RequestForms\RequestFormEdit.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\RequestForms\RequestFormEdit.Designer.cs">
+      <DependentUpon>RequestFormEdit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\RequestForms\RequestFormReadOnly.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\RequestForms\RequestFormReadOnly.Designer.cs">
+      <DependentUpon>RequestFormReadOnly.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Templates\CheckBoxOptionsView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Templates\CheckBoxOptionsView.Designer.cs">
+      <DependentUpon>CheckBoxOptionsView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\DashboardView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\DashboardView.Designer.cs">
+      <DependentUpon>DashboardView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Admin\DepartmentEditView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Admin\DepartmentEditView.Designer.cs">
+      <DependentUpon>DepartmentEditView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Admin\DepartmentListView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\Admin\DepartmentListView.Designer.cs">
+      <DependentUpon>DepartmentListView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Templates\ListBoxOptionsView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Templates\ListBoxOptionsView.Designer.cs">
+      <DependentUpon>ListBoxOptionsView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Admin\ListItemsView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\Admin\ListItemsView.Designer.cs">
+      <DependentUpon>ListItemsView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Templates\ListViewPopup.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Templates\ListViewPopup.Designer.cs">
+      <DependentUpon>ListViewPopup.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\MainView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\MainView.Designer.cs">
+      <DependentUpon>MainView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Interfaces\Protocols\IProtocolRequestAddView.cs" />
+    <Compile Include="Interfaces\Protocols\IProtocolRequestDetailView.cs" />
+    <Compile Include="Models\Department.cs" />
+    <Compile Include="Models\LoginInfo.cs" />
+    <Compile Include="Models\Protocols\ProtocolRequest.cs" />
+    <Compile Include="Models\Role.cs" />
+    <Compile Include="Models\Sponsor.cs" />
+    <Compile Include="Models\User.cs" />
+    <Compile Include="Models\Utility.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Queries\QMatrix.cs" />
+    <Compile Include="Views\Templates\OneTextBoxFormView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Templates\OneTextBoxFormView.Designer.cs">
+      <DependentUpon>OneTextBoxFormView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Protocols\ProtocolEventAddView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Protocols\ProtocolEventAddView.Designer.cs">
+      <DependentUpon>ProtocolEventAddView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Admin\ProtocolEventEditView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Admin\ProtocolEventEditView.Designer.cs">
+      <DependentUpon>ProtocolEventEditView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Admin\ProtocolEventsView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\Admin\ProtocolEventsView.Designer.cs">
+      <DependentUpon>ProtocolEventsView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Protocols\ProtocolRequestDetailView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\Protocols\ProtocolRequestDetailView.Designer.cs">
+      <DependentUpon>ProtocolRequestDetailView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Protocols\ProtocolRequestAddView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\Protocols\ProtocolRequestAddView.Designer.cs">
+      <DependentUpon>ProtocolRequestAddView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Protocols\ProtocolRequestEditView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\Protocols\ProtocolRequestEditView.Designer.cs">
+      <DependentUpon>ProtocolRequestEditView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Admin\RoleEditView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Admin\RoleEditView.Designer.cs">
+      <DependentUpon>RoleEditView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Admin\RoleListView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\Admin\RoleListView.Designer.cs">
+      <DependentUpon>RoleListView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Admin\UserEditView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Admin\UserEditView.Designer.cs">
+      <DependentUpon>UserEditView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Admin\UserListView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\Admin\UserListView.Designer.cs">
+      <DependentUpon>UserListView.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="Views\RequestForms\RequestFormAdd.resx">
+      <DependentUpon>RequestFormAdd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\RequestForms\RequestFormEdit.resx">
+      <DependentUpon>RequestFormEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\RequestForms\RequestFormReadOnly.resx">
+      <DependentUpon>RequestFormReadOnly.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Templates\CheckBoxOptionsView.resx">
+      <DependentUpon>CheckBoxOptionsView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\DashboardView.resx">
+      <DependentUpon>DashboardView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Admin\DepartmentEditView.resx">
+      <DependentUpon>DepartmentEditView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Admin\DepartmentListView.resx">
+      <DependentUpon>DepartmentListView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Templates\ListBoxOptionsView.resx">
+      <DependentUpon>ListBoxOptionsView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Admin\ListItemsView.resx">
+      <DependentUpon>ListItemsView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Templates\ListViewPopup.resx">
+      <DependentUpon>ListViewPopup.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\MainView.resx">
+      <DependentUpon>MainView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Templates\OneTextBoxFormView.resx">
+      <DependentUpon>OneTextBoxFormView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Protocols\ProtocolEventAddView.resx">
+      <DependentUpon>ProtocolEventAddView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Admin\ProtocolEventEditView.resx">
+      <DependentUpon>ProtocolEventEditView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Admin\ProtocolEventsView.resx">
+      <DependentUpon>ProtocolEventsView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Protocols\ProtocolRequestDetailView.resx">
+      <DependentUpon>ProtocolRequestDetailView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Protocols\ProtocolRequestAddView.resx">
+      <DependentUpon>ProtocolRequestAddView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Protocols\ProtocolRequestEditView.resx">
+      <DependentUpon>ProtocolRequestEditView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Admin\RoleEditView.resx">
+      <DependentUpon>RoleEditView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Admin\RoleListView.resx">
+      <DependentUpon>RoleListView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Admin\UserEditView.resx">
+      <DependentUpon>UserEditView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Admin\UserListView.resx">
+      <DependentUpon>UserListView.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\move_to_bottom.png" />
+    <None Include="Resources\StatusAnnotations_Information_16xLG_color.png" />
+    <None Include="Resources\StatusAnnotations_Required_16xLG_color.png" />
+    <None Include="Resources\RSReport_16xLG.png" />
+    <None Include="Resources\StatusAnnotations_Complete_and_ok_16xLG_color.png" />
+    <None Include="Resources\PencilAngled_16xLG_color.png" />
+    <None Include="Resources\save_16xLG.png" />
+    <None Include="Resources\RGreen.png" />
+    <None Include="Resources\IGreen.png" />
+    <None Include="Resources\CGreen.png" />
+    <None Include="Resources\action_add_16xLG.png" />
+    <None Include="Resources\Bubble_16xLG.png" />
+    <None Include="Resources\checkbox_16xLG.png" />
+    <None Include="Resources\color_wheel_16xLG.png" />
+    <None Include="Resources\house_16xLG.png" />
+    <Content Include="Resources\Images\CGray.png" />
+    <Content Include="Resources\Images\CGreen.png" />
+    <Content Include="Resources\Images\CRed.png" />
+    <Content Include="Resources\Images\IGray.png" />
+    <Content Include="Resources\Images\IGreen.png" />
+    <Content Include="Resources\Images\IRed.png" />
+    <Content Include="Resources\Images\NGray.png" />
+    <Content Include="Resources\Images\NGreen.png" />
+    <Content Include="Resources\Images\NRed.png" />
+    <Content Include="Resources\Images\RGray.png" />
+    <Content Include="Resources\Images\RGreen.png" />
+    <Content Include="Resources\Images\RRed.png" />
+    <None Include="Resources\NGreen.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

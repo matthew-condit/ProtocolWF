@@ -1,4 +1,4 @@
-﻿using Protocols.Models;
+﻿using Toxikon.ProtocolManager.Models;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -10,7 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Protocols.Queries
+namespace Toxikon.ProtocolManager.Queries
 {
     public class QProtocolComments
     {

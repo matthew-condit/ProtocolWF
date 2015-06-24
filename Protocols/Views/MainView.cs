@@ -1,6 +1,6 @@
-﻿using Protocols.Controllers;
-using Protocols.Interfaces;
-using Protocols.Models;
+﻿using Toxikon.ProtocolManager.Controllers;
+using Toxikon.ProtocolManager.Interfaces;
+using Toxikon.ProtocolManager.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -11,7 +11,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Protocols.Views
+namespace Toxikon.ProtocolManager.Views
 {
     public partial class MainView : Form, IMainView
     {

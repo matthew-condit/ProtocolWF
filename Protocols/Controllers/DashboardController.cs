@@ -1,7 +1,7 @@
-﻿using Protocols.Interfaces;
-using Protocols.Models;
-using Protocols.Queries;
-using Protocols.Views;
+﻿using Toxikon.ProtocolManager.Interfaces;
+using Toxikon.ProtocolManager.Models;
+using Toxikon.ProtocolManager.Queries;
+using Toxikon.ProtocolManager.Views;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -9,7 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Protocols.Controllers
+namespace Toxikon.ProtocolManager.Controllers
 {
     public class DashboardController
     {

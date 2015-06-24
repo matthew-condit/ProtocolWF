@@ -1,13 +1,18 @@
-﻿using Protocols.Interfaces;
-using Protocols.Models;
-using Protocols.Views;
+﻿using Toxikon.ProtocolManager.Controllers.Admin;
+using Toxikon.ProtocolManager.Controllers.Protocols;
+using Toxikon.ProtocolManager.Interfaces;
+using Toxikon.ProtocolManager.Interfaces.Protocols;
+using Toxikon.ProtocolManager.Models;
+using Toxikon.ProtocolManager.Views;
+using Toxikon.ProtocolManager.Views.Admin;
+using Toxikon.ProtocolManager.Views.Protocols;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Protocols.Controllers
+namespace Toxikon.ProtocolManager.Controllers
 {
     public class MainViewController
     {

@@ -6,10 +6,10 @@ using System.Text;
 using System.Threading.Tasks;
 using ExcelWorksheet = Microsoft.Office.Interop.Excel.Worksheet;
 using ExcelRange = Microsoft.Office.Interop.Excel.Range;
-using Protocols.Queries;
+using Toxikon.ProtocolManager.Queries;
 using System.Data;
 
-namespace Protocols.Models.Reports
+namespace Toxikon.ProtocolManager.Models.Reports
 {
     public class ProtocolRequestReport
     {

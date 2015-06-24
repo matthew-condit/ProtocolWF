@@ -1,5 +1,5 @@
-﻿using Protocols.Controllers;
-using Protocols.Models;
+﻿using Toxikon.ProtocolManager.Controllers;
+using Toxikon.ProtocolManager.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Protocols.Interfaces
+namespace Toxikon.ProtocolManager.Interfaces
 {
     public interface IDashboardView
     {
