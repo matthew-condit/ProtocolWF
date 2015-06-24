@@ -83,16 +83,6 @@ namespace Protocols.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap CGreen {
-            get {
-                object obj = ResourceManager.GetObject("CGreen", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
         internal static System.Drawing.Bitmap checkbox_16xLG {
             get {
                 object obj = ResourceManager.GetObject("checkbox_16xLG", resourceCulture);
@@ -123,19 +113,9 @@ namespace Protocols.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap IGreen {
+        internal static System.Drawing.Bitmap move_to_bottom {
             get {
-                object obj = ResourceManager.GetObject("IGreen", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap NGreen {
-            get {
-                object obj = ResourceManager.GetObject("NGreen", resourceCulture);
+                object obj = ResourceManager.GetObject("move_to_bottom", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -146,16 +126,6 @@ namespace Protocols.Properties {
         internal static System.Drawing.Bitmap PencilAngled_16xLG_color {
             get {
                 object obj = ResourceManager.GetObject("PencilAngled_16xLG_color", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap RGreen {
-            get {
-                object obj = ResourceManager.GetObject("RGreen", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

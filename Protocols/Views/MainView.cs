@@ -58,6 +58,33 @@ namespace Protocols.Views
             }
         }
 
+        public void SetMenuStripItemVisibleByUserRole(int roleID)
+        {
+            switch(roleID)
+            {
+                case 1:
+                    this.HomeMenuItem.Visible = true;
+                    this.ProtocolRequestMenuItem.Visible = true;
+                    this.AdminMenuItem.Visible = true;
+                    break;
+                case 2:
+                    this.HomeMenuItem.Visible = true;
+                    this.ProtocolRequestMenuItem.Visible = true;
+                    this.AdminMenuItem.Visible = false;
+                    break;
+                case 3:
+                    this.HomeMenuItem.Visible = true;
+                    this.ProtocolRequestMenuItem.Visible = false;
+                    this.AdminMenuItem.Visible = false;
+                    break;
+                default:
+                    this.HomeMenuItem.Visible = true;
+                    this.ProtocolRequestMenuItem.Visible = false;
+                    this.AdminMenuItem.Visible = false;
+                    break;
+            }
+        }
+
         public void SetController(MainViewController controller)
         {
             this.controller = controller;

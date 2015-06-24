@@ -21,14 +21,13 @@ namespace Protocols.Models
         public string ProtocolType { get; set; }
         public List<ProtocolTitle> Titles { get; private set; }
         public DateTime DueDate { get; set; }
-        public string SendMethod { get; set; }
+        public string SendVia { get; set; }
         public string BillTo { get; set; }
         public string Comments { get; set; }
         public string AssignedTo { get; set; }
         public string Priority { get; set; }
 
         public string RequestStatus { get; set; }
-        public ProtocolRequestWorkflow Workflow { get; set; }
 
         public ProtocolRequest()
         {
@@ -49,7 +48,6 @@ namespace Protocols.Models
             DueDate = DateTime.Now;
             BillTo = "Toxikon";
             Comments = "";
-            Workflow = new ProtocolRequestWorkflow();
             this.AssignedTo = "";
         }
 
@@ -77,29 +75,6 @@ namespace Protocols.Models
         {
             this.Titles.Clear();
             this.Titles = (List<ProtocolTitle>)QProtocolTitles.SelectByRequestID(this.ID);
-        }
-
-        public Image RequestStatusImage()
-        {
-            Image result = null;
-            switch (this.RequestStatus)
-            {
-                case RequestStatuses.New:
-                    result = Properties.Resources.NGreen;
-                    break;
-                case RequestStatuses.Received:
-                    result = Properties.Resources.RGreen;
-                    break;
-                case RequestStatuses.PutUp:
-                    result = Properties.Resources.IGreen;
-                    break;
-                case RequestStatuses.AssignedWorkflow:
-                    result = Properties.Resources.CGreen;
-                    break;
-                default:
-                    break;
-            }
-            return result;
-        }
+        }       
     }
 }

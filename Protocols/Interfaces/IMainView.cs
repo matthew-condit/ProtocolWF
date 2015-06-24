@@ -11,7 +11,7 @@ namespace Protocols.Interfaces
     public interface IMainView
     {
         void SetController(MainViewController controller);
-
+        void SetMenuStripItemVisibleByUserRole(int roleID);
         void AddControlToMainPanel(Control control);
     }
 }

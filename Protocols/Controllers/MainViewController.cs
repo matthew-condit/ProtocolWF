@@ -17,6 +17,8 @@ namespace Protocols.Controllers
         {
             this.view = view;
             this.view.SetController(this);
+            LoginInfo loginInfo = LoginInfo.GetInstance();
+            this.view.SetMenuStripItemVisibleByUserRole(loginInfo.Role.RoleID);
         }
 
         public void LoadView()

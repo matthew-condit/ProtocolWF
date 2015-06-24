@@ -17,10 +17,10 @@ namespace Protocols.Models
         private LoginInfo()
         {
             user = new User();
-            user = QUsers.GetUser(Environment.UserName);
-            
-            //user.UserName = Environment.UserName;
-            //user.FullName = UserPrincipal.Current.DisplayName;
+            //user = QUsers.GetUser(Environment.UserName);
+            user.Role.RoleID = 3;
+            user.UserName = "ctouch";//Environment.UserName;
+            user.FullName = "Bichngoc McCulley";// UserPrincipal.Current.DisplayName;
         }
 
         public static LoginInfo GetInstance()

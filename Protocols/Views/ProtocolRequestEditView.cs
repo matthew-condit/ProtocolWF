@@ -30,6 +30,31 @@ namespace Protocols.Views
             this.controller = controller;
         }
 
+        public void SetControlVisibleByUserRole(int roleID)
+        {
+            switch(roleID)
+            {
+                case 2:
+                    this.AddTitleButton.Visible = false;
+                    this.EditTitleButton.Visible = false;
+                    this.AddEventButton.Visible = false;
+                    this.AddCommentButton.Visible = false;
+                    this.AddProtocolNumber.Visible = false;
+                    this.RevisedProtocolButton.Visible = false;
+                    this.toolStrip2.Visible = false;
+                    this.OpenGuidelinesOptions.Visible = false;
+                    this.OpenComplianceOptions.Visible = false;
+                    this.OpenProtocolTypeOptions.Visible = false;
+                    this.OpenAssignedToOptions.Visible = false;
+                    this.DueDateDateTimePicker.Enabled = false;
+                    this.SendViaTextBox.Enabled = false;
+                    this.BillToTextBox.Enabled = false;
+                    break;
+                default:
+                    break;
+            }
+        }
+
         public Control ParentControl
         {
             get { return this.ParentForm; }
@@ -264,6 +289,11 @@ namespace Protocols.Views
         private void RevisedProtocolButton_Click(object sender, EventArgs e)
         {
             this.controller.RevisedProtocolButtonClicked();
+        }
+
+        private void DownloadReportButton_Click(object sender, EventArgs e)
+        {
+            this.controller.DownloadRequestReportButtonClicked();
         }
     }
 }

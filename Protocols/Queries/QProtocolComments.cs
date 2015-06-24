@@ -76,5 +76,43 @@ namespace Protocols.Queries
             }
             return results;
         }
+
+        public static DataTable SelectProtocolCommentsDataTable(ProtocolTitle title)
+        {
+            DataTable dataTable = new DataTable();
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(CONNECTION_STRING))
+                {
+                    connection.Open();
+                    string query = @"SELECT CONVERT(varchar(10), CreatedDate, 101) AS AddedDate, 
+                                            CreatedBy AS AddedBy,
+                                            Comments
+                                 FROM ProtocolComments
+                                 WHERE ProtocolRequestID = @ProtocolRequestID
+                                 AND ProtocolTitleID = @ProtocolTitleID
+                                 AND IsActive = 1
+                                 ORDER BY CreatedDate ASC";
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    {
+                        command.CommandType = CommandType.Text;
+
+                        command.Parameters.Clear();
+                        command.Parameters.Add("@ProtocolRequestID", SqlDbType.Int).Value = title.ProtocolRequestID;
+                        command.Parameters.Add("@ProtocolTitleID", SqlDbType.Int).Value = title.ID;
+                        dataTable.Load(command.ExecuteReader());
+                    }
+                }
+            }
+            catch(SqlException sqlEx)
+            {
+                Debug.WriteLine(sqlEx.ToString());
+            }
+            catch (FormatException formatEx)
+            {
+                Debug.WriteLine(formatEx.ToString());
+            }
+            return dataTable;
+        }
     }
 }

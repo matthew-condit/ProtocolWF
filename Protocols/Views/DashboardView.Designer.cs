@@ -30,11 +30,11 @@
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.RequestDataGridView = new System.Windows.Forms.DataGridView();
+            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
             this.RequestedDateCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.RequestedByCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SponsorCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
             ((System.ComponentModel.ISupportInitialize)(this.RequestDataGridView)).BeginInit();
             this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -67,25 +67,6 @@
             this.RequestDataGridView.Size = new System.Drawing.Size(654, 469);
             this.RequestDataGridView.TabIndex = 6;
             this.RequestDataGridView.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.RequestDataGridView_CellContentDoubleClick);
-            this.RequestDataGridView.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.RequestDataGridView_CellValueChanged);
-            // 
-            // RequestedDateCol
-            // 
-            this.RequestedDateCol.HeaderText = "Requested Date";
-            this.RequestedDateCol.Name = "RequestedDateCol";
-            this.RequestedDateCol.ReadOnly = true;
-            // 
-            // RequestedByCol
-            // 
-            this.RequestedByCol.HeaderText = "Requested By";
-            this.RequestedByCol.Name = "RequestedByCol";
-            this.RequestedByCol.ReadOnly = true;
-            // 
-            // SponsorCol
-            // 
-            this.SponsorCol.HeaderText = "Sponsor";
-            this.SponsorCol.Name = "SponsorCol";
-            this.SponsorCol.ReadOnly = true;
             // 
             // toolStrip1
             // 
@@ -106,6 +87,27 @@
             this.toolStripLabel1.Name = "toolStripLabel1";
             this.toolStripLabel1.Size = new System.Drawing.Size(118, 22);
             this.toolStripLabel1.Text = "Protocol Requests";
+            // 
+            // RequestedDateCol
+            // 
+            this.RequestedDateCol.FillWeight = 99.47188F;
+            this.RequestedDateCol.HeaderText = "Requested Date";
+            this.RequestedDateCol.Name = "RequestedDateCol";
+            this.RequestedDateCol.ReadOnly = true;
+            // 
+            // RequestedByCol
+            // 
+            this.RequestedByCol.FillWeight = 152.2843F;
+            this.RequestedByCol.HeaderText = "Requested By";
+            this.RequestedByCol.Name = "RequestedByCol";
+            this.RequestedByCol.ReadOnly = true;
+            // 
+            // SponsorCol
+            // 
+            this.SponsorCol.FillWeight = 48.24385F;
+            this.SponsorCol.HeaderText = "Sponsor";
+            this.SponsorCol.Name = "SponsorCol";
+            this.SponsorCol.ReadOnly = true;
             // 
             // DashboardView
             // 

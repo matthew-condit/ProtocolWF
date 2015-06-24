@@ -30,21 +30,9 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ProtocolRequestEditView));
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.AddTitleButton = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
-            this.EditTitleButton = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.AddEventButton = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-            this.AddCommentButton = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
-            this.ViewEventsButton = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
-            this.ViewCommentsButton = new System.Windows.Forms.ToolStripButton();
-            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.BottomTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.flowLayoutPanel4 = new System.Windows.Forms.FlowLayoutPanel();
             this.AssignedToTextBox = new System.Windows.Forms.TextBox();
-            this.OpenAssignedToOptions = new System.Windows.Forms.Button();
             this.BillToTextBox = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
@@ -80,33 +68,39 @@
             this.SendViaTextBox = new System.Windows.Forms.TextBox();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.GuidelinesTextBox = new System.Windows.Forms.TextBox();
-            this.OpenGuidelinesOptions = new System.Windows.Forms.Button();
             this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
             this.ComplianceTextBox = new System.Windows.Forms.TextBox();
-            this.OpenComplianceOptions = new System.Windows.Forms.Button();
             this.flowLayoutPanel3 = new System.Windows.Forms.FlowLayoutPanel();
             this.ProtocolTypeTextBox = new System.Windows.Forms.TextBox();
-            this.OpenProtocolTypeOptions = new System.Windows.Forms.Button();
             this.label15 = new System.Windows.Forms.Label();
             this.CommentsLabel = new System.Windows.Forms.Label();
             this.label20 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.BottomPanel = new System.Windows.Forms.Panel();
             this.toolStrip2 = new System.Windows.Forms.ToolStrip();
-            this.SaveChangesButton = new System.Windows.Forms.ToolStripButton();
             this.TitlesListView = new System.Windows.Forms.ListView();
             this.TitleCol = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.StatusCol = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.StatusDate = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.UserNameCol = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.CommentsCol = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.AddProtocolNumber = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
             this.ProtocolNumberCol = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.SaveChangesButton = new System.Windows.Forms.ToolStripButton();
+            this.OpenAssignedToOptions = new System.Windows.Forms.Button();
+            this.OpenGuidelinesOptions = new System.Windows.Forms.Button();
+            this.OpenComplianceOptions = new System.Windows.Forms.Button();
+            this.OpenProtocolTypeOptions = new System.Windows.Forms.Button();
+            this.AddTitleButton = new System.Windows.Forms.ToolStripButton();
+            this.EditTitleButton = new System.Windows.Forms.ToolStripButton();
+            this.AddEventButton = new System.Windows.Forms.ToolStripButton();
+            this.AddCommentButton = new System.Windows.Forms.ToolStripButton();
+            this.AddProtocolNumber = new System.Windows.Forms.ToolStripButton();
             this.RevisedProtocolButton = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator7 = new System.Windows.Forms.ToolStripSeparator();
+            this.ViewEventsButton = new System.Windows.Forms.ToolStripButton();
+            this.ViewCommentsButton = new System.Windows.Forms.ToolStripButton();
+            this.DownloadReportButton = new System.Windows.Forms.ToolStripButton();
             this.toolStrip1.SuspendLayout();
-            this.tableLayoutPanel1.SuspendLayout();
+            this.BottomTableLayoutPanel.SuspendLayout();
             this.flowLayoutPanel4.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
             this.flowLayoutPanel2.SuspendLayout();
@@ -123,176 +117,83 @@
             this.toolStrip1.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.AddTitleButton,
-            this.toolStripSeparator4,
             this.EditTitleButton,
-            this.toolStripSeparator1,
             this.AddEventButton,
-            this.toolStripSeparator2,
             this.AddCommentButton,
-            this.toolStripSeparator5,
             this.AddProtocolNumber,
-            this.toolStripSeparator7,
             this.RevisedProtocolButton,
-            this.toolStripSeparator6,
             this.ViewEventsButton,
-            this.toolStripSeparator3,
-            this.ViewCommentsButton});
+            this.ViewCommentsButton,
+            this.DownloadReportButton});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(800, 38);
+            this.toolStrip1.Size = new System.Drawing.Size(850, 38);
             this.toolStrip1.TabIndex = 0;
             this.toolStrip1.Text = "toolStrip1";
             // 
-            // AddTitleButton
+            // BottomTableLayoutPanel
             // 
-            this.AddTitleButton.Image = global::Protocols.Properties.Resources.action_add_16xLG;
-            this.AddTitleButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.AddTitleButton.Name = "AddTitleButton";
-            this.AddTitleButton.Size = new System.Drawing.Size(59, 35);
-            this.AddTitleButton.Text = "Add Title";
-            this.AddTitleButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.AddTitleButton.Click += new System.EventHandler(this.AddTitleButton_Click);
-            // 
-            // toolStripSeparator4
-            // 
-            this.toolStripSeparator4.Name = "toolStripSeparator4";
-            this.toolStripSeparator4.Size = new System.Drawing.Size(6, 38);
-            // 
-            // EditTitleButton
-            // 
-            this.EditTitleButton.Image = global::Protocols.Properties.Resources.PencilAngled_16xLG_color;
-            this.EditTitleButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.EditTitleButton.Name = "EditTitleButton";
-            this.EditTitleButton.Size = new System.Drawing.Size(57, 35);
-            this.EditTitleButton.Text = "Edit Title";
-            this.EditTitleButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.EditTitleButton.Click += new System.EventHandler(this.EditTitleButton_Click);
-            // 
-            // toolStripSeparator1
-            // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 38);
-            // 
-            // AddEventButton
-            // 
-            this.AddEventButton.Image = ((System.Drawing.Image)(resources.GetObject("AddEventButton.Image")));
-            this.AddEventButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.AddEventButton.Name = "AddEventButton";
-            this.AddEventButton.Size = new System.Drawing.Size(65, 35);
-            this.AddEventButton.Text = "Add Event";
-            this.AddEventButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.AddEventButton.Click += new System.EventHandler(this.AddEventButton_Click);
-            // 
-            // toolStripSeparator2
-            // 
-            this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 38);
-            // 
-            // AddCommentButton
-            // 
-            this.AddCommentButton.Image = global::Protocols.Properties.Resources.Bubble_16xLG;
-            this.AddCommentButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.AddCommentButton.Name = "AddCommentButton";
-            this.AddCommentButton.Size = new System.Drawing.Size(95, 35);
-            this.AddCommentButton.Text = "Add Comments";
-            this.AddCommentButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.AddCommentButton.Click += new System.EventHandler(this.AddCommentButton_Click);
-            // 
-            // toolStripSeparator5
-            // 
-            this.toolStripSeparator5.Name = "toolStripSeparator5";
-            this.toolStripSeparator5.Size = new System.Drawing.Size(6, 38);
-            // 
-            // ViewEventsButton
-            // 
-            this.ViewEventsButton.Image = global::Protocols.Properties.Resources.StatusAnnotations_Required_16xLG_color;
-            this.ViewEventsButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.ViewEventsButton.Name = "ViewEventsButton";
-            this.ViewEventsButton.Size = new System.Drawing.Size(73, 35);
-            this.ViewEventsButton.Text = "View Events";
-            this.ViewEventsButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.ViewEventsButton.ToolTipText = "View All Events of Selected Protocol";
-            this.ViewEventsButton.Click += new System.EventHandler(this.ViewEventsButton_Click);
-            // 
-            // toolStripSeparator3
-            // 
-            this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 38);
-            // 
-            // ViewCommentsButton
-            // 
-            this.ViewCommentsButton.Image = ((System.Drawing.Image)(resources.GetObject("ViewCommentsButton.Image")));
-            this.ViewCommentsButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.ViewCommentsButton.Name = "ViewCommentsButton";
-            this.ViewCommentsButton.Size = new System.Drawing.Size(98, 35);
-            this.ViewCommentsButton.Text = "View Comments";
-            this.ViewCommentsButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.ViewCommentsButton.ToolTipText = "View All Comments of Selected Protocol";
-            this.ViewCommentsButton.Click += new System.EventHandler(this.ViewCommentsButton_Click);
-            // 
-            // tableLayoutPanel1
-            // 
-            this.tableLayoutPanel1.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
-            this.tableLayoutPanel1.ColumnCount = 4;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 120F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 266F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 107F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 348F));
-            this.tableLayoutPanel1.Controls.Add(this.flowLayoutPanel4, 1, 9);
-            this.tableLayoutPanel1.Controls.Add(this.BillToTextBox, 1, 7);
-            this.tableLayoutPanel1.Controls.Add(this.label14, 0, 7);
-            this.tableLayoutPanel1.Controls.Add(this.label13, 0, 6);
-            this.tableLayoutPanel1.Controls.Add(this.DueDateDateTimePicker, 1, 5);
-            this.tableLayoutPanel1.Controls.Add(this.label12, 0, 5);
-            this.tableLayoutPanel1.Controls.Add(this.label1, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.RequestedDateLabel, 1, 0);
-            this.tableLayoutPanel1.Controls.Add(this.RequestedByLabel, 1, 1);
-            this.tableLayoutPanel1.Controls.Add(this.label2, 0, 1);
-            this.tableLayoutPanel1.Controls.Add(this.label16, 2, 1);
-            this.tableLayoutPanel1.Controls.Add(this.EmailLabel, 3, 1);
-            this.tableLayoutPanel1.Controls.Add(this.label4, 2, 0);
-            this.tableLayoutPanel1.Controls.Add(this.SponsorContactLabel, 3, 0);
-            this.tableLayoutPanel1.Controls.Add(this.label3, 2, 2);
-            this.tableLayoutPanel1.Controls.Add(this.SponsorNameLabel, 3, 2);
-            this.tableLayoutPanel1.Controls.Add(this.label5, 2, 3);
-            this.tableLayoutPanel1.Controls.Add(this.AddressLabel, 3, 3);
-            this.tableLayoutPanel1.Controls.Add(this.label17, 0, 2);
-            this.tableLayoutPanel1.Controls.Add(this.label18, 0, 3);
-            this.tableLayoutPanel1.Controls.Add(this.StateLabel, 3, 5);
-            this.tableLayoutPanel1.Controls.Add(this.label6, 2, 4);
-            this.tableLayoutPanel1.Controls.Add(this.CityLabel, 3, 4);
-            this.tableLayoutPanel1.Controls.Add(this.label19, 0, 4);
-            this.tableLayoutPanel1.Controls.Add(this.label11, 2, 9);
-            this.tableLayoutPanel1.Controls.Add(this.POLabel, 3, 9);
-            this.tableLayoutPanel1.Controls.Add(this.label10, 2, 8);
-            this.tableLayoutPanel1.Controls.Add(this.FaxNumberLabel, 3, 8);
-            this.tableLayoutPanel1.Controls.Add(this.label9, 2, 7);
-            this.tableLayoutPanel1.Controls.Add(this.PhoneNumberLabel, 3, 7);
-            this.tableLayoutPanel1.Controls.Add(this.label7, 2, 5);
-            this.tableLayoutPanel1.Controls.Add(this.label8, 2, 6);
-            this.tableLayoutPanel1.Controls.Add(this.ZipCodeLabel, 3, 6);
-            this.tableLayoutPanel1.Controls.Add(this.SendViaTextBox, 1, 6);
-            this.tableLayoutPanel1.Controls.Add(this.flowLayoutPanel1, 1, 2);
-            this.tableLayoutPanel1.Controls.Add(this.flowLayoutPanel2, 1, 3);
-            this.tableLayoutPanel1.Controls.Add(this.flowLayoutPanel3, 1, 4);
-            this.tableLayoutPanel1.Controls.Add(this.label15, 0, 8);
-            this.tableLayoutPanel1.Controls.Add(this.CommentsLabel, 1, 8);
-            this.tableLayoutPanel1.Controls.Add(this.label20, 0, 9);
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 41);
-            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 10;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(790, 311);
-            this.tableLayoutPanel1.TabIndex = 1;
+            this.BottomTableLayoutPanel.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
+            this.BottomTableLayoutPanel.ColumnCount = 4;
+            this.BottomTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 120F));
+            this.BottomTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 266F));
+            this.BottomTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 107F));
+            this.BottomTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 351F));
+            this.BottomTableLayoutPanel.Controls.Add(this.flowLayoutPanel4, 1, 9);
+            this.BottomTableLayoutPanel.Controls.Add(this.BillToTextBox, 1, 7);
+            this.BottomTableLayoutPanel.Controls.Add(this.label14, 0, 7);
+            this.BottomTableLayoutPanel.Controls.Add(this.label13, 0, 6);
+            this.BottomTableLayoutPanel.Controls.Add(this.DueDateDateTimePicker, 1, 5);
+            this.BottomTableLayoutPanel.Controls.Add(this.label12, 0, 5);
+            this.BottomTableLayoutPanel.Controls.Add(this.label1, 0, 0);
+            this.BottomTableLayoutPanel.Controls.Add(this.RequestedDateLabel, 1, 0);
+            this.BottomTableLayoutPanel.Controls.Add(this.RequestedByLabel, 1, 1);
+            this.BottomTableLayoutPanel.Controls.Add(this.label2, 0, 1);
+            this.BottomTableLayoutPanel.Controls.Add(this.label16, 2, 1);
+            this.BottomTableLayoutPanel.Controls.Add(this.EmailLabel, 3, 1);
+            this.BottomTableLayoutPanel.Controls.Add(this.label4, 2, 0);
+            this.BottomTableLayoutPanel.Controls.Add(this.SponsorContactLabel, 3, 0);
+            this.BottomTableLayoutPanel.Controls.Add(this.label3, 2, 2);
+            this.BottomTableLayoutPanel.Controls.Add(this.SponsorNameLabel, 3, 2);
+            this.BottomTableLayoutPanel.Controls.Add(this.label5, 2, 3);
+            this.BottomTableLayoutPanel.Controls.Add(this.AddressLabel, 3, 3);
+            this.BottomTableLayoutPanel.Controls.Add(this.label17, 0, 2);
+            this.BottomTableLayoutPanel.Controls.Add(this.label18, 0, 3);
+            this.BottomTableLayoutPanel.Controls.Add(this.StateLabel, 3, 5);
+            this.BottomTableLayoutPanel.Controls.Add(this.label6, 2, 4);
+            this.BottomTableLayoutPanel.Controls.Add(this.CityLabel, 3, 4);
+            this.BottomTableLayoutPanel.Controls.Add(this.label19, 0, 4);
+            this.BottomTableLayoutPanel.Controls.Add(this.label11, 2, 9);
+            this.BottomTableLayoutPanel.Controls.Add(this.POLabel, 3, 9);
+            this.BottomTableLayoutPanel.Controls.Add(this.label10, 2, 8);
+            this.BottomTableLayoutPanel.Controls.Add(this.FaxNumberLabel, 3, 8);
+            this.BottomTableLayoutPanel.Controls.Add(this.label9, 2, 7);
+            this.BottomTableLayoutPanel.Controls.Add(this.PhoneNumberLabel, 3, 7);
+            this.BottomTableLayoutPanel.Controls.Add(this.label7, 2, 5);
+            this.BottomTableLayoutPanel.Controls.Add(this.label8, 2, 6);
+            this.BottomTableLayoutPanel.Controls.Add(this.ZipCodeLabel, 3, 6);
+            this.BottomTableLayoutPanel.Controls.Add(this.SendViaTextBox, 1, 6);
+            this.BottomTableLayoutPanel.Controls.Add(this.flowLayoutPanel1, 1, 2);
+            this.BottomTableLayoutPanel.Controls.Add(this.flowLayoutPanel2, 1, 3);
+            this.BottomTableLayoutPanel.Controls.Add(this.flowLayoutPanel3, 1, 4);
+            this.BottomTableLayoutPanel.Controls.Add(this.label15, 0, 8);
+            this.BottomTableLayoutPanel.Controls.Add(this.CommentsLabel, 1, 8);
+            this.BottomTableLayoutPanel.Controls.Add(this.label20, 0, 9);
+            this.BottomTableLayoutPanel.Location = new System.Drawing.Point(3, 41);
+            this.BottomTableLayoutPanel.Name = "BottomTableLayoutPanel";
+            this.BottomTableLayoutPanel.RowCount = 10;
+            this.BottomTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+            this.BottomTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+            this.BottomTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+            this.BottomTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+            this.BottomTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+            this.BottomTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+            this.BottomTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+            this.BottomTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+            this.BottomTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+            this.BottomTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+            this.BottomTableLayoutPanel.Size = new System.Drawing.Size(790, 311);
+            this.BottomTableLayoutPanel.TabIndex = 1;
             // 
             // flowLayoutPanel4
             // 
@@ -311,18 +212,6 @@
             this.AssignedToTextBox.ReadOnly = true;
             this.AssignedToTextBox.Size = new System.Drawing.Size(232, 25);
             this.AssignedToTextBox.TabIndex = 5;
-            // 
-            // OpenAssignedToOptions
-            // 
-            this.OpenAssignedToOptions.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("OpenAssignedToOptions.BackgroundImage")));
-            this.OpenAssignedToOptions.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.OpenAssignedToOptions.Location = new System.Drawing.Point(238, 5);
-            this.OpenAssignedToOptions.Margin = new System.Windows.Forms.Padding(0, 5, 0, 0);
-            this.OpenAssignedToOptions.Name = "OpenAssignedToOptions";
-            this.OpenAssignedToOptions.Size = new System.Drawing.Size(20, 20);
-            this.OpenAssignedToOptions.TabIndex = 6;
-            this.OpenAssignedToOptions.UseVisualStyleBackColor = true;
-            this.OpenAssignedToOptions.Click += new System.EventHandler(this.OpenAssignedToOptions_Click);
             // 
             // BillToTextBox
             // 
@@ -664,18 +553,6 @@
             this.GuidelinesTextBox.Size = new System.Drawing.Size(232, 25);
             this.GuidelinesTextBox.TabIndex = 5;
             // 
-            // OpenGuidelinesOptions
-            // 
-            this.OpenGuidelinesOptions.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("OpenGuidelinesOptions.BackgroundImage")));
-            this.OpenGuidelinesOptions.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.OpenGuidelinesOptions.Location = new System.Drawing.Point(238, 5);
-            this.OpenGuidelinesOptions.Margin = new System.Windows.Forms.Padding(0, 5, 0, 0);
-            this.OpenGuidelinesOptions.Name = "OpenGuidelinesOptions";
-            this.OpenGuidelinesOptions.Size = new System.Drawing.Size(20, 20);
-            this.OpenGuidelinesOptions.TabIndex = 6;
-            this.OpenGuidelinesOptions.UseVisualStyleBackColor = true;
-            this.OpenGuidelinesOptions.Click += new System.EventHandler(this.OpenGuidelinesOptions_Click);
-            // 
             // flowLayoutPanel2
             // 
             this.flowLayoutPanel2.Controls.Add(this.ComplianceTextBox);
@@ -694,18 +571,6 @@
             this.ComplianceTextBox.Size = new System.Drawing.Size(232, 25);
             this.ComplianceTextBox.TabIndex = 8;
             // 
-            // OpenComplianceOptions
-            // 
-            this.OpenComplianceOptions.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("OpenComplianceOptions.BackgroundImage")));
-            this.OpenComplianceOptions.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.OpenComplianceOptions.Location = new System.Drawing.Point(238, 5);
-            this.OpenComplianceOptions.Margin = new System.Windows.Forms.Padding(0, 5, 0, 0);
-            this.OpenComplianceOptions.Name = "OpenComplianceOptions";
-            this.OpenComplianceOptions.Size = new System.Drawing.Size(20, 20);
-            this.OpenComplianceOptions.TabIndex = 9;
-            this.OpenComplianceOptions.UseVisualStyleBackColor = true;
-            this.OpenComplianceOptions.Click += new System.EventHandler(this.OpenComplianceOptions_Click);
-            // 
             // flowLayoutPanel3
             // 
             this.flowLayoutPanel3.Controls.Add(this.ProtocolTypeTextBox);
@@ -723,18 +588,6 @@
             this.ProtocolTypeTextBox.ReadOnly = true;
             this.ProtocolTypeTextBox.Size = new System.Drawing.Size(125, 25);
             this.ProtocolTypeTextBox.TabIndex = 11;
-            // 
-            // OpenProtocolTypeOptions
-            // 
-            this.OpenProtocolTypeOptions.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("OpenProtocolTypeOptions.BackgroundImage")));
-            this.OpenProtocolTypeOptions.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.OpenProtocolTypeOptions.Location = new System.Drawing.Point(131, 5);
-            this.OpenProtocolTypeOptions.Margin = new System.Windows.Forms.Padding(0, 5, 0, 0);
-            this.OpenProtocolTypeOptions.Name = "OpenProtocolTypeOptions";
-            this.OpenProtocolTypeOptions.Size = new System.Drawing.Size(20, 20);
-            this.OpenProtocolTypeOptions.TabIndex = 12;
-            this.OpenProtocolTypeOptions.UseVisualStyleBackColor = true;
-            this.OpenProtocolTypeOptions.Click += new System.EventHandler(this.OpenProtocolTypeOptions_Click);
             // 
             // label15
             // 
@@ -773,7 +626,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 38);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(800, 732);
+            this.panel1.Size = new System.Drawing.Size(850, 732);
             this.panel1.TabIndex = 45;
             // 
             // BottomPanel
@@ -782,11 +635,11 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.BottomPanel.Controls.Add(this.toolStrip2);
-            this.BottomPanel.Controls.Add(this.tableLayoutPanel1);
+            this.BottomPanel.Controls.Add(this.BottomTableLayoutPanel);
             this.BottomPanel.Location = new System.Drawing.Point(0, 365);
             this.BottomPanel.Margin = new System.Windows.Forms.Padding(0);
             this.BottomPanel.Name = "BottomPanel";
-            this.BottomPanel.Size = new System.Drawing.Size(800, 364);
+            this.BottomPanel.Size = new System.Drawing.Size(850, 364);
             this.BottomPanel.TabIndex = 46;
             // 
             // toolStrip2
@@ -797,19 +650,9 @@
             this.SaveChangesButton});
             this.toolStrip2.Location = new System.Drawing.Point(0, 0);
             this.toolStrip2.Name = "toolStrip2";
-            this.toolStrip2.Size = new System.Drawing.Size(800, 38);
+            this.toolStrip2.Size = new System.Drawing.Size(850, 38);
             this.toolStrip2.TabIndex = 0;
             this.toolStrip2.Text = "toolStrip2";
-            // 
-            // SaveChangesButton
-            // 
-            this.SaveChangesButton.Image = global::Protocols.Properties.Resources.save_16xLG;
-            this.SaveChangesButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.SaveChangesButton.Name = "SaveChangesButton";
-            this.SaveChangesButton.Size = new System.Drawing.Size(84, 35);
-            this.SaveChangesButton.Text = "Save Changes";
-            this.SaveChangesButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.SaveChangesButton.Click += new System.EventHandler(this.SaveChangesButton_Click);
             // 
             // TitlesListView
             // 
@@ -826,7 +669,7 @@
             this.TitlesListView.GridLines = true;
             this.TitlesListView.Location = new System.Drawing.Point(3, 9);
             this.TitlesListView.Name = "TitlesListView";
-            this.TitlesListView.Size = new System.Drawing.Size(794, 349);
+            this.TitlesListView.Size = new System.Drawing.Size(844, 349);
             this.TitlesListView.TabIndex = 45;
             this.TitlesListView.UseCompatibleStateImageBehavior = false;
             this.TitlesListView.View = System.Windows.Forms.View.Details;
@@ -855,6 +698,108 @@
             // 
             this.CommentsCol.Text = "Total Comments";
             // 
+            // ProtocolNumberCol
+            // 
+            this.ProtocolNumberCol.Text = "Protocol Number";
+            // 
+            // SaveChangesButton
+            // 
+            this.SaveChangesButton.Image = global::Protocols.Properties.Resources.save_16xLG;
+            this.SaveChangesButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.SaveChangesButton.Name = "SaveChangesButton";
+            this.SaveChangesButton.Size = new System.Drawing.Size(84, 35);
+            this.SaveChangesButton.Text = "Save Changes";
+            this.SaveChangesButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.SaveChangesButton.Click += new System.EventHandler(this.SaveChangesButton_Click);
+            // 
+            // OpenAssignedToOptions
+            // 
+            this.OpenAssignedToOptions.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("OpenAssignedToOptions.BackgroundImage")));
+            this.OpenAssignedToOptions.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.OpenAssignedToOptions.Location = new System.Drawing.Point(238, 5);
+            this.OpenAssignedToOptions.Margin = new System.Windows.Forms.Padding(0, 5, 0, 0);
+            this.OpenAssignedToOptions.Name = "OpenAssignedToOptions";
+            this.OpenAssignedToOptions.Size = new System.Drawing.Size(20, 20);
+            this.OpenAssignedToOptions.TabIndex = 6;
+            this.OpenAssignedToOptions.UseVisualStyleBackColor = true;
+            this.OpenAssignedToOptions.Click += new System.EventHandler(this.OpenAssignedToOptions_Click);
+            // 
+            // OpenGuidelinesOptions
+            // 
+            this.OpenGuidelinesOptions.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("OpenGuidelinesOptions.BackgroundImage")));
+            this.OpenGuidelinesOptions.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.OpenGuidelinesOptions.Location = new System.Drawing.Point(238, 5);
+            this.OpenGuidelinesOptions.Margin = new System.Windows.Forms.Padding(0, 5, 0, 0);
+            this.OpenGuidelinesOptions.Name = "OpenGuidelinesOptions";
+            this.OpenGuidelinesOptions.Size = new System.Drawing.Size(20, 20);
+            this.OpenGuidelinesOptions.TabIndex = 6;
+            this.OpenGuidelinesOptions.UseVisualStyleBackColor = true;
+            this.OpenGuidelinesOptions.Click += new System.EventHandler(this.OpenGuidelinesOptions_Click);
+            // 
+            // OpenComplianceOptions
+            // 
+            this.OpenComplianceOptions.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("OpenComplianceOptions.BackgroundImage")));
+            this.OpenComplianceOptions.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.OpenComplianceOptions.Location = new System.Drawing.Point(238, 5);
+            this.OpenComplianceOptions.Margin = new System.Windows.Forms.Padding(0, 5, 0, 0);
+            this.OpenComplianceOptions.Name = "OpenComplianceOptions";
+            this.OpenComplianceOptions.Size = new System.Drawing.Size(20, 20);
+            this.OpenComplianceOptions.TabIndex = 9;
+            this.OpenComplianceOptions.UseVisualStyleBackColor = true;
+            this.OpenComplianceOptions.Click += new System.EventHandler(this.OpenComplianceOptions_Click);
+            // 
+            // OpenProtocolTypeOptions
+            // 
+            this.OpenProtocolTypeOptions.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("OpenProtocolTypeOptions.BackgroundImage")));
+            this.OpenProtocolTypeOptions.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.OpenProtocolTypeOptions.Location = new System.Drawing.Point(131, 5);
+            this.OpenProtocolTypeOptions.Margin = new System.Windows.Forms.Padding(0, 5, 0, 0);
+            this.OpenProtocolTypeOptions.Name = "OpenProtocolTypeOptions";
+            this.OpenProtocolTypeOptions.Size = new System.Drawing.Size(20, 20);
+            this.OpenProtocolTypeOptions.TabIndex = 12;
+            this.OpenProtocolTypeOptions.UseVisualStyleBackColor = true;
+            this.OpenProtocolTypeOptions.Click += new System.EventHandler(this.OpenProtocolTypeOptions_Click);
+            // 
+            // AddTitleButton
+            // 
+            this.AddTitleButton.Image = global::Protocols.Properties.Resources.action_add_16xLG;
+            this.AddTitleButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.AddTitleButton.Name = "AddTitleButton";
+            this.AddTitleButton.Size = new System.Drawing.Size(59, 35);
+            this.AddTitleButton.Text = "Add Title";
+            this.AddTitleButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.AddTitleButton.Click += new System.EventHandler(this.AddTitleButton_Click);
+            // 
+            // EditTitleButton
+            // 
+            this.EditTitleButton.Image = global::Protocols.Properties.Resources.PencilAngled_16xLG_color;
+            this.EditTitleButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.EditTitleButton.Name = "EditTitleButton";
+            this.EditTitleButton.Size = new System.Drawing.Size(57, 35);
+            this.EditTitleButton.Text = "Edit Title";
+            this.EditTitleButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.EditTitleButton.Click += new System.EventHandler(this.EditTitleButton_Click);
+            // 
+            // AddEventButton
+            // 
+            this.AddEventButton.Image = ((System.Drawing.Image)(resources.GetObject("AddEventButton.Image")));
+            this.AddEventButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.AddEventButton.Name = "AddEventButton";
+            this.AddEventButton.Size = new System.Drawing.Size(65, 35);
+            this.AddEventButton.Text = "Add Event";
+            this.AddEventButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.AddEventButton.Click += new System.EventHandler(this.AddEventButton_Click);
+            // 
+            // AddCommentButton
+            // 
+            this.AddCommentButton.Image = global::Protocols.Properties.Resources.Bubble_16xLG;
+            this.AddCommentButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.AddCommentButton.Name = "AddCommentButton";
+            this.AddCommentButton.Size = new System.Drawing.Size(95, 35);
+            this.AddCommentButton.Text = "Add Comments";
+            this.AddCommentButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.AddCommentButton.Click += new System.EventHandler(this.AddCommentButton_Click);
+            // 
             // AddProtocolNumber
             // 
             this.AddProtocolNumber.Image = ((System.Drawing.Image)(resources.GetObject("AddProtocolNumber.Image")));
@@ -864,15 +809,6 @@
             this.AddProtocolNumber.Text = "Add Protocol Number";
             this.AddProtocolNumber.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.AddProtocolNumber.Click += new System.EventHandler(this.AddProtocolNumber_Click);
-            // 
-            // toolStripSeparator6
-            // 
-            this.toolStripSeparator6.Name = "toolStripSeparator6";
-            this.toolStripSeparator6.Size = new System.Drawing.Size(6, 38);
-            // 
-            // ProtocolNumberCol
-            // 
-            this.ProtocolNumberCol.Text = "Protocol Number";
             // 
             // RevisedProtocolButton
             // 
@@ -884,10 +820,37 @@
             this.RevisedProtocolButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.RevisedProtocolButton.Click += new System.EventHandler(this.RevisedProtocolButton_Click);
             // 
-            // toolStripSeparator7
+            // ViewEventsButton
             // 
-            this.toolStripSeparator7.Name = "toolStripSeparator7";
-            this.toolStripSeparator7.Size = new System.Drawing.Size(6, 38);
+            this.ViewEventsButton.Image = global::Protocols.Properties.Resources.StatusAnnotations_Required_16xLG_color;
+            this.ViewEventsButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.ViewEventsButton.Name = "ViewEventsButton";
+            this.ViewEventsButton.Size = new System.Drawing.Size(73, 35);
+            this.ViewEventsButton.Text = "View Events";
+            this.ViewEventsButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.ViewEventsButton.ToolTipText = "View All Events of Selected Protocol";
+            this.ViewEventsButton.Click += new System.EventHandler(this.ViewEventsButton_Click);
+            // 
+            // ViewCommentsButton
+            // 
+            this.ViewCommentsButton.Image = ((System.Drawing.Image)(resources.GetObject("ViewCommentsButton.Image")));
+            this.ViewCommentsButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.ViewCommentsButton.Name = "ViewCommentsButton";
+            this.ViewCommentsButton.Size = new System.Drawing.Size(98, 35);
+            this.ViewCommentsButton.Text = "View Comments";
+            this.ViewCommentsButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.ViewCommentsButton.ToolTipText = "View All Comments of Selected Protocol";
+            this.ViewCommentsButton.Click += new System.EventHandler(this.ViewCommentsButton_Click);
+            // 
+            // DownloadReportButton
+            // 
+            this.DownloadReportButton.Image = global::Protocols.Properties.Resources.move_to_bottom;
+            this.DownloadReportButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.DownloadReportButton.Name = "DownloadReportButton";
+            this.DownloadReportButton.Size = new System.Drawing.Size(103, 35);
+            this.DownloadReportButton.Text = "Download Report";
+            this.DownloadReportButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.DownloadReportButton.Click += new System.EventHandler(this.DownloadReportButton_Click);
             // 
             // ProtocolRequestEditView
             // 
@@ -898,11 +861,11 @@
             this.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "ProtocolRequestEditView";
-            this.Size = new System.Drawing.Size(800, 770);
+            this.Size = new System.Drawing.Size(850, 770);
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
-            this.tableLayoutPanel1.ResumeLayout(false);
-            this.tableLayoutPanel1.PerformLayout();
+            this.BottomTableLayoutPanel.ResumeLayout(false);
+            this.BottomTableLayoutPanel.PerformLayout();
             this.flowLayoutPanel4.ResumeLayout(false);
             this.flowLayoutPanel4.PerformLayout();
             this.flowLayoutPanel1.ResumeLayout(false);
@@ -924,7 +887,7 @@
         #endregion
 
         private System.Windows.Forms.ToolStrip toolStrip1;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        private System.Windows.Forms.TableLayoutPanel BottomTableLayoutPanel;
         private System.Windows.Forms.TextBox BillToTextBox;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label13;
@@ -968,11 +931,8 @@
         private System.Windows.Forms.TextBox ProtocolTypeTextBox;
         private System.Windows.Forms.Button OpenProtocolTypeOptions;
         private System.Windows.Forms.ToolStripButton AddCommentButton;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.ToolStripButton AddEventButton;
         private System.Windows.Forms.ToolStripButton AddTitleButton;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
         private System.Windows.Forms.ToolStripButton EditTitleButton;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.ListView TitlesListView;
@@ -985,8 +945,6 @@
         private System.Windows.Forms.ToolStripButton SaveChangesButton;
         private System.Windows.Forms.ToolStripButton ViewEventsButton;
         private System.Windows.Forms.ToolStripButton ViewCommentsButton;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator5;
         private System.Windows.Forms.ColumnHeader CommentsCol;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Label CommentsLabel;
@@ -995,9 +953,8 @@
         private System.Windows.Forms.TextBox AssignedToTextBox;
         private System.Windows.Forms.Button OpenAssignedToOptions;
         private System.Windows.Forms.ToolStripButton AddProtocolNumber;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator6;
         private System.Windows.Forms.ColumnHeader ProtocolNumberCol;
         private System.Windows.Forms.ToolStripButton RevisedProtocolButton;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator7;
+        private System.Windows.Forms.ToolStripButton DownloadReportButton;
     }
 }

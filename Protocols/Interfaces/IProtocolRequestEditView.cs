@@ -13,6 +13,7 @@ namespace Protocols.Interfaces
     public interface IProtocolRequestEditView
     {
         void SetController(ProtocolRequestEditController controller);
+        void SetControlVisibleByUserRole(int roleID);
         void AddTitleToView(ProtocolTitle title);
         void SetListViewAutoResizeColumns();
         void ClearProtocolTitleListView();

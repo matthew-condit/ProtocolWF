@@ -94,7 +94,7 @@ namespace Protocols.Queries
                     {
                         ListItem item = new ListItem();
                         item.ListName = ListNames.AssignedTo;
-                        item.ItemName = reader[0].ToString();
+                        item.ItemName = reader[3].ToString() + '-' + reader[0].ToString();
                         results.Add(item);
                     }
                 }

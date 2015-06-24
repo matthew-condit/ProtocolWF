@@ -67,7 +67,7 @@ namespace Protocols.Controllers
             this.view.Compliance = protocolRequest.Compliance;
             this.view.ProtocolType = protocolRequest.ProtocolType;
             this.view.BillTo = protocolRequest.BillTo;
-            this.view.SendVia = protocolRequest.SendMethod;
+            this.view.SendVia = protocolRequest.SendVia;
             this.view.DueDate = protocolRequest.DueDate;
         }
 
@@ -131,8 +131,9 @@ namespace Protocols.Controllers
                     this.view.ProtocolType = items;
                     break;
                 case ListNames.AssignedTo:
-                    this.protocolRequest.AssignedTo = items;
-                    this.view.AssignedTo = items;
+                    string[] splits = items.Split('-');
+                    this.protocolRequest.AssignedTo = splits[1];
+                    this.view.AssignedTo = this.protocolRequest.AssignedTo;
                     break;
                 default:
                     break;
@@ -193,7 +194,7 @@ namespace Protocols.Controllers
             this.protocolRequest.Compliance = this.view.Compliance;
             this.protocolRequest.ProtocolType = this.view.ProtocolType;
             this.protocolRequest.DueDate = this.view.DueDate;
-            this.protocolRequest.SendMethod = this.view.SendVia;
+            this.protocolRequest.SendVia = this.view.SendVia;
             this.protocolRequest.BillTo = this.view.BillTo;
             this.protocolRequest.Comments = this.view.Comments;
             this.protocolRequest.SetTitles(this.view.Titles);

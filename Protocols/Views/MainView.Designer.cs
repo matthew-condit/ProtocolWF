@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.DashboardMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.HomeMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ProtocolRequestMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.AdminMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.AdminDepartmentsMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -46,7 +46,7 @@
             this.menuStrip1.BackColor = System.Drawing.Color.DarkSlateGray;
             this.menuStrip1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.DashboardMenuItem,
+            this.HomeMenuItem,
             this.ProtocolRequestMenuItem,
             this.AdminMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
@@ -56,13 +56,13 @@
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
-            // DashboardMenuItem
+            // HomeMenuItem
             // 
-            this.DashboardMenuItem.ForeColor = System.Drawing.Color.White;
-            this.DashboardMenuItem.Name = "DashboardMenuItem";
-            this.DashboardMenuItem.Size = new System.Drawing.Size(58, 21);
-            this.DashboardMenuItem.Text = "HOME";
-            this.DashboardMenuItem.Click += new System.EventHandler(this.DashboardMenuItem_Click);
+            this.HomeMenuItem.ForeColor = System.Drawing.Color.White;
+            this.HomeMenuItem.Name = "HomeMenuItem";
+            this.HomeMenuItem.Size = new System.Drawing.Size(58, 21);
+            this.HomeMenuItem.Text = "HOME";
+            this.HomeMenuItem.Click += new System.EventHandler(this.DashboardMenuItem_Click);
             // 
             // ProtocolRequestMenuItem
             // 
@@ -151,7 +151,7 @@
         #endregion
 
         private System.Windows.Forms.MenuStrip menuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem DashboardMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem HomeMenuItem;
         private System.Windows.Forms.Panel MainPanel;
         private System.Windows.Forms.ToolStripMenuItem ProtocolRequestMenuItem;
         private System.Windows.Forms.ToolStripMenuItem AdminMenuItem;

@@ -13,6 +13,16 @@ namespace Protocols.Queries
     public class QProtocolActivities
     {
         private static string CONNECTION_STRING = Utility.GetTPMConnectionString();
+        private const string SelectProtocolActivitiesQuery1 = @"SELECT ProtocolActivities.ProtocolEventID,
+                                                        ProtocolEvents.EventDescription,
+                                                        ProtocolActivities.CreatedBy,
+                                                        ProtocolActivities.CreatedDate
+                                                  FROM ProtocolActivities
+                                                  INNER JOIN ProtocolEvents
+                                                  ON ProtocolActivities.ProtocolEventID = ProtocolEvents.ID
+                                                  WHERE ProtocolActivities.ProtocolRequestID = @ProtocolRequestID
+                                                  AND ProtocolActivities.ProtocolTitleID = @ProtocolTitleID
+                                                  ORDER BY ProtocolActivities.CreatedDate DESC";
 
         public static void InsertProtocolActivities(IList protocolActivities)
         {
@@ -86,17 +96,8 @@ namespace Protocols.Queries
             using (SqlConnection connection = new SqlConnection(CONNECTION_STRING))
             {
                 connection.Open();
-                string query = @"SELECT ProtocolActivities.ProtocolEventID,
-                                        ProtocolEvents.EventDescription,
-                                        ProtocolActivities.CreatedBy,
-                                        ProtocolActivities.CreatedDate
-                                  FROM ProtocolActivities
-                                  INNER JOIN ProtocolEvents
-                                  ON ProtocolActivities.ProtocolEventID = ProtocolEvents.ID
-                                  WHERE ProtocolActivities.ProtocolRequestID = @ProtocolRequestID
-                                  AND ProtocolActivities.ProtocolTitleID = @ProtocolTitleID
-                                  ORDER BY ProtocolActivities.CreatedDate DESC";
-                using (SqlCommand command = new SqlCommand(query, connection))
+
+                using (SqlCommand command = new SqlCommand(SelectProtocolActivitiesQuery1, connection))
                 {
                     command.CommandType = CommandType.Text;
                     command.Parameters.Add("@ProtocolRequestID", SqlDbType.Int).Value = requestID;
@@ -118,6 +119,33 @@ namespace Protocols.Queries
                 }
             }
             return results;
+        }
+
+        public static DataTable SelectProtocolActivitiesDataTable(int requestID, int titleID)
+        {
+            DataTable dataTable = new DataTable();
+            using (SqlConnection connection = new SqlConnection(CONNECTION_STRING))
+            {
+                connection.Open();
+                string query = @"SELECT CONVERT(varchar(10), ProtocolActivities.CreatedDate, 101) AS AddedDate,
+                                        ProtocolActivities.CreatedBy AS AddedBy,
+                                        ProtocolEvents.EventDescription AS Event
+                                    FROM ProtocolActivities
+                                    INNER JOIN ProtocolEvents
+                                    ON ProtocolActivities.ProtocolEventID = ProtocolEvents.ID
+                                    WHERE ProtocolActivities.ProtocolRequestID = @ProtocolRequestID
+                                    AND ProtocolActivities.ProtocolTitleID = @ProtocolTitleID
+                                    ORDER BY ProtocolActivities.CreatedDate ASC";
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    command.CommandType = CommandType.Text;
+                    command.Parameters.Add("@ProtocolRequestID", SqlDbType.Int).Value = requestID;
+                    command.Parameters.Add("@ProtocolTitleID", SqlDbType.Int).Value = titleID;
+
+                    dataTable.Load(command.ExecuteReader());
+                }
+            }
+            return dataTable;
         }
     }
 }

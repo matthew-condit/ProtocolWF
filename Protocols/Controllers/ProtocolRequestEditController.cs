@@ -1,5 +1,6 @@
 ﻿using Protocols.Interfaces;
 using Protocols.Models;
+using Protocols.Models.Reports;
 using Protocols.Queries;
 using Protocols.Views;
 using System;
@@ -25,6 +26,7 @@ namespace Protocols.Controllers
             this.view = view;
             this.view.SetController(this);
             loginInfo = LoginInfo.GetInstance();
+            this.view.SetControlVisibleByUserRole(loginInfo.Role.RoleID);
         }
 
         public void LoadView(ProtocolRequest protocolRequest)
@@ -44,7 +46,7 @@ namespace Protocols.Controllers
             this.view.Compliance = protocolRequest.Compliance;
             this.view.ProtocolType = protocolRequest.ProtocolType;
             this.view.BillTo = protocolRequest.BillTo;
-            this.view.SendVia = protocolRequest.SendMethod;
+            this.view.SendVia = protocolRequest.SendVia;
             this.view.DueDate = protocolRequest.DueDate;
             this.view.Comments = protocolRequest.Comments;
             this.view.AssignedTo = protocolRequest.AssignedTo;
@@ -119,8 +121,9 @@ namespace Protocols.Controllers
                     this.view.ProtocolType = items;
                     break;
                 case ListNames.AssignedTo:
-                    this.protocolRequest.AssignedTo = items;
-                    this.view.AssignedTo = items;
+                    string[] splits = items.Split('-');
+                    this.protocolRequest.AssignedTo = splits[1];
+                    this.view.AssignedTo = this.protocolRequest.AssignedTo;
                     break;
                 default:
                     break;
@@ -335,7 +338,7 @@ namespace Protocols.Controllers
             this.protocolRequest.Compliance = this.view.Compliance;
             this.protocolRequest.ProtocolType = this.view.ProtocolType;
             this.protocolRequest.DueDate = this.view.DueDate;
-            this.protocolRequest.SendMethod = this.view.SendVia;
+            this.protocolRequest.SendVia = this.view.SendVia;
             this.protocolRequest.BillTo = this.view.BillTo;
             this.protocolRequest.AssignedTo = this.view.AssignedTo;
         }
@@ -345,9 +348,18 @@ namespace Protocols.Controllers
         {
             if(this.view.SelectedTitleIndexes.Count == 1)
             {
-                ProtocolNumber protocolNumber = CreateNewProtocolNumber();
-                QProtocolNumbers.InsertProtocolNumber(protocolNumber, loginInfo.UserName);
-                this.RefreshTitleListView();
+                int selectedIndex = Convert.ToInt32(this.view.SelectedTitleIndexes[0]);
+                ProtocolTitle title = this.protocolRequest.Titles[selectedIndex];
+                if(title.ProtocolNumber != String.Empty)
+                {
+                    MessageBox.Show("Protocol Number already exists.\nTry Revised Protocol button instead.");
+                }
+                else
+                {
+                    ProtocolNumber protocolNumber = CreateNewProtocolNumber(title.ID);
+                    QProtocolNumbers.InsertProtocolNumber(protocolNumber, loginInfo.UserName);
+                    this.RefreshTitleListView();
+                }
             }
             else
             {
@@ -355,14 +367,12 @@ namespace Protocols.Controllers
             }
         }
 
-        private ProtocolNumber CreateNewProtocolNumber()
+        private ProtocolNumber CreateNewProtocolNumber(int titleID)
         {
-            int selectedIndex = Convert.ToInt32(this.view.SelectedTitleIndexes[0]);
-            ProtocolTitle title = this.protocolRequest.Titles[selectedIndex];
             ProtocolNumber protocolNumber = new ProtocolNumber();
             protocolNumber.SequenceNumber = QProtocolNumbers.InsertLastSequenceNumber();
             protocolNumber.ProtocolRequestID = this.protocolRequest.ID;
-            protocolNumber.ProtocolTitleID = title.ID;
+            protocolNumber.ProtocolTitleID = titleID;
             protocolNumber.ProtocolType = this.protocolRequest.ProtocolType == "File Copy" ? "A" : "B";
             protocolNumber.RevisedNumber = 0;
             protocolNumber.IsActive = true;
@@ -401,6 +411,14 @@ namespace Protocols.Controllers
             protocolNumber.RevisedNumber += 1;
             protocolNumber.SetFullCode();
             QProtocolNumbers.UpdateProtocolNumber(protocolNumber, loginInfo.UserName);
+        }
+
+        /*************************** DOWNLOAD PROTOCOL REQUEST REPORT ********************/
+        public void DownloadRequestReportButtonClicked()
+        {
+            ProtocolRequestReport reportTemplate = new ProtocolRequestReport(this.protocolRequest);
+            reportTemplate.Create();
+            MessageBox.Show("Download Complete!");
         }
     }
 }

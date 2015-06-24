@@ -34,7 +34,7 @@ namespace Protocols.Queries
                         command.Parameters.Add("@Compliance", SqlDbType.NVarChar).Value = request.Compliance;
                         command.Parameters.Add("@ProtocolType", SqlDbType.NVarChar).Value = request.ProtocolType;
                         command.Parameters.Add("@DueDate", SqlDbType.DateTime).Value = request.DueDate;
-                        command.Parameters.Add("@SendVia", SqlDbType.NVarChar).Value = request.SendMethod;
+                        command.Parameters.Add("@SendVia", SqlDbType.NVarChar).Value = request.SendVia;
                         command.Parameters.Add("@BillTo", SqlDbType.NVarChar).Value = request.BillTo;
                         command.Parameters.Add("@Comments", SqlDbType.NVarChar).Value = request.Comments;
                         command.Parameters.Add("@AssignedTo", SqlDbType.NVarChar).Value = request.AssignedTo;
@@ -103,7 +103,8 @@ namespace Protocols.Queries
 	                             FROM ProtocolRequests
                                  INNER JOIN Users
                                  ON ProtocolRequests.RequestedBy = Users.UserName
-	                             WHERE ProtocolRequests.IsActive = 1";
+	                             WHERE ProtocolRequests.IsActive = 1
+                                 ORDER BY ProtocolRequests.RequestedDate DESC";
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
                     connection.Open();
@@ -149,7 +150,8 @@ namespace Protocols.Queries
                                  INNER JOIN Users
                                  ON ProtocolRequests.RequestedBy = Users.UserName
 	                             WHERE ProtocolRequests.IsActive = 1
-                                 AND ProtocolRequests.RequestedBy = @RequestedBy";
+                                 AND ProtocolRequests.RequestedBy = @RequestedBy
+                                 ORDER BY ProtocolRequests.RequestedDate DESC";
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
                     connection.Open();
@@ -195,7 +197,8 @@ namespace Protocols.Queries
                                  INNER JOIN Users
                                  ON ProtocolRequests.RequestedBy = Users.UserName
 	                             WHERE ProtocolRequests.IsActive = 1
-                                 AND ProtocolRequests.AssignedTo = @UserName";
+                                 AND ProtocolRequests.AssignedTo = @UserName
+                                 ORDER BY ProtocolRequests.RequestedDate DESC";
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
                     connection.Open();
@@ -233,7 +236,7 @@ namespace Protocols.Queries
             request.Compliance = reader[3].ToString();
             request.ProtocolType = reader[4].ToString();
             request.DueDate = Convert.ToDateTime(reader[5].ToString());
-            request.SendMethod = reader[6].ToString();
+            request.SendVia = reader[6].ToString();
             request.BillTo = reader[7].ToString();
             request.Comments = reader[8].ToString();
             request.AssignedTo = reader[9].ToString();
@@ -257,7 +260,7 @@ namespace Protocols.Queries
                     command.Parameters.Add("@Compliance", SqlDbType.NVarChar).Value = request.Compliance;
                     command.Parameters.Add("@ProtocolType", SqlDbType.NVarChar).Value = request.ProtocolType;
                     command.Parameters.Add("@DueDate", SqlDbType.NVarChar).Value = request.DueDate;
-                    command.Parameters.Add("@SendVia", SqlDbType.NVarChar).Value = request.SendMethod;
+                    command.Parameters.Add("@SendVia", SqlDbType.NVarChar).Value = request.SendVia;
                     command.Parameters.Add("@BillTo", SqlDbType.NVarChar).Value = request.BillTo;
                     command.Parameters.Add("@AssignedTo", SqlDbType.NVarChar).Value = request.AssignedTo;
                     command.Parameters.Add("@UpdatedBy", SqlDbType.NVarChar).Value = userName;
