@@ -65,7 +65,6 @@
     <Compile Include="Controllers\Protocols\ProtocolEventEditController.cs" />
     <Compile Include="Controllers\Protocols\ProtocolEventsController.cs" />
     <Compile Include="Controllers\Protocols\ProtocolRequestAddController.cs" />
-    <Compile Include="Controllers\Protocols\ProtocolRequestDetailController.cs" />
     <Compile Include="Controllers\Protocols\ProtocolRequestEditController.cs" />
     <Compile Include="Controllers\Admin\RoleEditController.cs" />
     <Compile Include="Controllers\Admin\RoleListController.cs" />
@@ -90,7 +89,9 @@
     <Compile Include="Interfaces\Admin\IRoleListView.cs" />
     <Compile Include="Interfaces\Admin\IUserEditView.cs" />
     <Compile Include="Interfaces\Admin\IUserListView.cs" />
+    <Compile Include="Models\AuditItem.cs" />
     <Compile Include="Models\Comment.cs" />
+    <Compile Include="Models\ErrorHandler.cs" />
     <Compile Include="Models\ListItem.cs" />
     <Compile Include="Models\ListNames.cs" />
     <Compile Include="Models\ListViewPopupItemTypes.cs" />
@@ -187,7 +188,6 @@
       <DependentUpon>MainView.cs</DependentUpon>
     </Compile>
     <Compile Include="Interfaces\Protocols\IProtocolRequestAddView.cs" />
-    <Compile Include="Interfaces\Protocols\IProtocolRequestDetailView.cs" />
     <Compile Include="Models\Department.cs" />
     <Compile Include="Models\LoginInfo.cs" />
     <Compile Include="Models\Protocols\ProtocolRequest.cs" />
@@ -221,12 +221,6 @@
     </Compile>
     <Compile Include="Views\Admin\ProtocolEventsView.Designer.cs">
       <DependentUpon>ProtocolEventsView.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Views\Protocols\ProtocolRequestDetailView.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Views\Protocols\ProtocolRequestDetailView.Designer.cs">
-      <DependentUpon>ProtocolRequestDetailView.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\Protocols\ProtocolRequestAddView.cs">
       <SubType>UserControl</SubType>
@@ -321,9 +315,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Admin\ProtocolEventsView.resx">
       <DependentUpon>ProtocolEventsView.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Views\Protocols\ProtocolRequestDetailView.resx">
-      <DependentUpon>ProtocolRequestDetailView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Protocols\ProtocolRequestAddView.resx">
       <DependentUpon>ProtocolRequestAddView.cs</DependentUpon>

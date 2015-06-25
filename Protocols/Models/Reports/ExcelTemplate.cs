@@ -46,7 +46,7 @@ namespace Toxikon.ProtocolManager.Models.Reports
 
         public void AddNewWorkbook()
         {
-            workbook = excelApp.Workbooks.Add(Type.Missing);
+            workbook = excelApp.Workbooks.Add(Type.Missing);           
         }
 
         public void AddNewWorksheet(string worksheetName)
@@ -191,8 +191,9 @@ namespace Toxikon.ProtocolManager.Models.Reports
 
         public void Save()
         {
+            object ReadOnly = true;
             excelApp.ActiveWorkbook.SaveAs(filePath + fileName, Type.Missing, Type.Missing,
-                    Type.Missing, Type.Missing, Type.Missing, XlSaveAsAccessMode.xlNoChange,
+                    Type.Missing, ReadOnly, Type.Missing, XlSaveAsAccessMode.xlNoChange,
                     XlSaveConflictResolution.xlLocalSessionChanges,
                     Type.Missing, Type.Missing, Type.Missing, Type.Missing);
         }

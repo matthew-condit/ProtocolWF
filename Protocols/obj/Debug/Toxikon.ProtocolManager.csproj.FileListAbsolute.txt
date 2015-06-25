@@ -17,7 +17,6 @@ C:\Users\BMcCulley\Source\toxxwinapp\ProtocolsWF\Protocols\obj\Debug\Toxikon.Pro
 C:\Users\BMcCulley\Source\toxxwinapp\ProtocolsWF\Protocols\obj\Debug\Toxikon.ProtocolManager.Views.Protocols.ProtocolEventAddView.resources
 C:\Users\BMcCulley\Source\toxxwinapp\ProtocolsWF\Protocols\obj\Debug\Toxikon.ProtocolManager.Views.Protocols.ProtocolEventEditView.resources
 C:\Users\BMcCulley\Source\toxxwinapp\ProtocolsWF\Protocols\obj\Debug\Toxikon.ProtocolManager.Views.Protocols.ProtocolEventsView.resources
-C:\Users\BMcCulley\Source\toxxwinapp\ProtocolsWF\Protocols\obj\Debug\Toxikon.ProtocolManager.Views.Protocols.ProtocolRequestDetailView.resources
 C:\Users\BMcCulley\Source\toxxwinapp\ProtocolsWF\Protocols\obj\Debug\Toxikon.ProtocolManager.Views.Protocols.ProtocolRequestAddView.resources
 C:\Users\BMcCulley\Source\toxxwinapp\ProtocolsWF\Protocols\obj\Debug\Toxikon.ProtocolManager.Views.Protocols.ProtocolRequestEditView.resources
 C:\Users\BMcCulley\Source\toxxwinapp\ProtocolsWF\Protocols\obj\Debug\Toxikon.ProtocolManager.Views.Admin.RoleEditView.resources

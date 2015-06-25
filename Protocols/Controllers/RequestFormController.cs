@@ -144,7 +144,7 @@ namespace Toxikon.ProtocolManager.Controllers
 
         public void SubmitRequest()
         {
-            this.request.RequestStatus = "New";
+            this.request.RequestStatus = RequestStatuses.New;
             Debug.WriteLine(this.request.Titles.Count);
             this.request.ID = QProtocolRequests.InsertProtocolRequest(this.request, loginInfo.UserName);
             if (this.request.Titles.Count > 0)

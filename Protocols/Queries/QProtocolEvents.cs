@@ -13,21 +13,29 @@ namespace Toxikon.ProtocolManager.Queries
     public class QProtocolEvents
     {
         private static string CONNECTION_STRING = Utility.GetTPMConnectionString();
+        private const string ErrorFormName = "QProtocolEvents";
 
         public static void InsertProtocolEvent(ProtocolEvent protocolEvent, string userName)
         {
-            using(SqlConnection connection = new SqlConnection(CONNECTION_STRING))
+            try
             {
-                connection.Open();
-                using(SqlCommand command = new SqlCommand("ProtocolEventsInsert", connection))
+                using (SqlConnection connection = new SqlConnection(CONNECTION_STRING))
                 {
-                    command.CommandType = CommandType.StoredProcedure;
-                    command.Parameters.Add("@EventType", SqlDbType.NVarChar).Value = protocolEvent.Type;
-                    command.Parameters.Add("@EventDescription", SqlDbType.NVarChar).Value = protocolEvent.Description;
-                    command.Parameters.Add("@CreatedBy", SqlDbType.NVarChar).Value = userName;
+                    connection.Open();
+                    using (SqlCommand command = new SqlCommand("ProtocolEventsInsert", connection))
+                    {
+                        command.CommandType = CommandType.StoredProcedure;
+                        command.Parameters.Add("@EventType", SqlDbType.NVarChar).Value = protocolEvent.Type;
+                        command.Parameters.Add("@EventDescription", SqlDbType.NVarChar).Value = protocolEvent.Description;
+                        command.Parameters.Add("@CreatedBy", SqlDbType.NVarChar).Value = userName;
 
-                    int result = command.ExecuteNonQuery();
+                        int result = command.ExecuteNonQuery();
+                    }
                 }
+            }
+            catch(SqlException ex)
+            {
+                ErrorHandler.CreateLogFile(ErrorFormName, "InsertProtocolEvent", ex);
             }
         }
 
@@ -36,23 +44,30 @@ namespace Toxikon.ProtocolManager.Queries
             IList results = new ArrayList();
             string query = @"SELECT ID, EventType, EventDescription, IsActive
                              FROM ProtocolEvents";
-            using (SqlConnection connection = new SqlConnection(CONNECTION_STRING))
+            try
             {
-                connection.Open();
-                using (SqlCommand command = new SqlCommand(query, connection))
+                using (SqlConnection connection = new SqlConnection(CONNECTION_STRING))
                 {
-                    command.CommandType = CommandType.Text;
-                    SqlDataReader reader = command.ExecuteReader();
-                    while(reader.Read())
+                    connection.Open();
+                    using (SqlCommand command = new SqlCommand(query, connection))
                     {
-                        ProtocolEvent protocolEvent = new ProtocolEvent();
-                        protocolEvent.ID = Convert.ToInt32(reader[0].ToString());
-                        protocolEvent.Type = reader[1].ToString();
-                        protocolEvent.Description = reader[2].ToString();
-                        protocolEvent.IsActive = Convert.ToBoolean(reader[3].ToString());
-                        results.Add(protocolEvent);
+                        command.CommandType = CommandType.Text;
+                        SqlDataReader reader = command.ExecuteReader();
+                        while (reader.Read())
+                        {
+                            ProtocolEvent protocolEvent = new ProtocolEvent();
+                            protocolEvent.ID = Convert.ToInt32(reader[0].ToString());
+                            protocolEvent.Type = reader[1].ToString();
+                            protocolEvent.Description = reader[2].ToString();
+                            protocolEvent.IsActive = Convert.ToBoolean(reader[3].ToString());
+                            results.Add(protocolEvent);
+                        }
                     }
                 }
+            }
+            catch (SqlException ex)
+            {
+                ErrorHandler.CreateLogFile(ErrorFormName, "SelectProtocolEvents", ex);
             }
             return results;
         }
@@ -63,44 +78,59 @@ namespace Toxikon.ProtocolManager.Queries
             string query = @"SELECT ID, EventType, EventDescription, IsActive
                              FROM ProtocolEvents
                              WHERE EventType = @EventType";
-            using (SqlConnection connection = new SqlConnection(CONNECTION_STRING))
+            try
             {
-                connection.Open();
-                using (SqlCommand command = new SqlCommand(query, connection))
+                using (SqlConnection connection = new SqlConnection(CONNECTION_STRING))
                 {
-                    command.CommandType = CommandType.Text;
-                    command.Parameters.Add("@EventType", SqlDbType.NVarChar).Value = eventType;
-                    SqlDataReader reader = command.ExecuteReader();
-                    while (reader.Read())
+                    connection.Open();
+                    using (SqlCommand command = new SqlCommand(query, connection))
                     {
-                        ProtocolEvent protocolEvent = new ProtocolEvent();
-                        protocolEvent.ID = Convert.ToInt32(reader[0].ToString());
-                        protocolEvent.Type = reader[1].ToString();
-                        protocolEvent.Description = reader[2].ToString();
-                        protocolEvent.IsActive = Convert.ToBoolean(reader[3].ToString());
-                        results.Add(protocolEvent);
+                        command.CommandType = CommandType.Text;
+                        command.Parameters.Add("@EventType", SqlDbType.NVarChar).Value = eventType;
+                        SqlDataReader reader = command.ExecuteReader();
+                        while (reader.Read())
+                        {
+                            ProtocolEvent protocolEvent = new ProtocolEvent();
+                            protocolEvent.ID = Convert.ToInt32(reader[0].ToString());
+                            protocolEvent.Type = reader[1].ToString();
+                            protocolEvent.Description = reader[2].ToString();
+                            protocolEvent.IsActive = Convert.ToBoolean(reader[3].ToString());
+                            results.Add(protocolEvent);
+                        }
                     }
                 }
+            }
+            catch (SqlException ex)
+            {
+                ErrorHandler.CreateLogFile(ErrorFormName, "SelectProtocolEventsByType", ex);
             }
             return results;
         }
 
         public static void UpdateProtocolEvent(ProtocolEvent protocolEvent, string userName)
         {
-            using (SqlConnection connection = new SqlConnection(CONNECTION_STRING))
+            try
             {
-                connection.Open();
-                using (SqlCommand command = new SqlCommand("ProtocolEventsUpdate", connection))
+                using (SqlConnection connection = new SqlConnection(CONNECTION_STRING))
                 {
-                    command.CommandType = CommandType.StoredProcedure;
-                    command.Parameters.Add("@EventID", SqlDbType.Int).Value = protocolEvent.ID;
-                    command.Parameters.Add("@EventType", SqlDbType.NVarChar).Value = protocolEvent.Type;
-                    command.Parameters.Add("@EventDescription", SqlDbType.NVarChar).Value = protocolEvent.Description;
-                    command.Parameters.Add("@IsActive", SqlDbType.Bit).Value = protocolEvent.IsActive;
-                    command.Parameters.Add("@UpdatedBy", SqlDbType.NVarChar).Value = userName;
+                    connection.Open();
+                    using (SqlCommand command = new SqlCommand("ProtocolEventsUpdate", connection))
+                    {
+                        command.CommandType = CommandType.StoredProcedure;
+                        command.Parameters.Add("@EventID", SqlDbType.Int).Value = protocolEvent.ID;
+                        command.Parameters.Add("@EventType", SqlDbType.NVarChar).Value = protocolEvent.Type;
+                        command.Parameters.Add("@EventDescription", SqlDbType.NVarChar).Value = 
+                                                protocolEvent.Description;
+                        command.Parameters.Add("@IsActive", SqlDbType.Bit).Value = protocolEvent.IsActive;
+                        command.Parameters.Add("@UpdatedBy", SqlDbType.NVarChar).Value = userName;
 
-                    int result = command.ExecuteNonQuery();
+                        int result = command.ExecuteNonQuery();
+                    }
                 }
+            }
+            catch (SqlException ex)
+            {
+                ErrorHandler.CreateLogFile(ErrorFormName, "UpdateProtocolEvent", ex);
             }
         }
     }

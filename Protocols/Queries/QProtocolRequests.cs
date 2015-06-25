@@ -14,6 +14,7 @@ namespace Toxikon.ProtocolManager.Queries
     public static class QProtocolRequests
     {
         private static string connectionString = Utility.GetTPMConnectionString();
+        private const string ErrorFormName = "QProtocolRequests";
 
         public static int InsertProtocolRequest(ProtocolRequest request, string userName)
         {
@@ -43,13 +44,9 @@ namespace Toxikon.ProtocolManager.Queries
                     }
                 }
             }
-            catch(InvalidOperationException ioe)
+            catch(SqlException ex)
             {
-                Debug.WriteLine(ioe.ToString());
-            }
-            catch(SqlException e)
-            {
-                Debug.WriteLine(e.ToString());
+                ErrorHandler.CreateLogFile(ErrorFormName, "InsertProtocolRequest", ex);
             }
             return result;
         }
@@ -75,13 +72,9 @@ namespace Toxikon.ProtocolManager.Queries
                     }
                 }
             }
-            catch (InvalidOperationException ioe)
-            {
-                Debug.WriteLine(ioe.ToString());
-            }
             catch (SqlException e)
             {
-                Debug.WriteLine(e.ToString());
+                ErrorHandler.CreateLogFile(ErrorFormName, "GetProtocolRequestsByStatus", e);
             }
             return results;
         }
@@ -121,13 +114,9 @@ namespace Toxikon.ProtocolManager.Queries
                     }
                 }
             }
-            catch (InvalidOperationException ioe)
-            {
-                Debug.WriteLine(ioe.ToString());
-            }
             catch (SqlException e)
             {
-                Debug.WriteLine(e.ToString());
+                ErrorHandler.CreateLogFile(ErrorFormName, "GetActiveProtocolRequests", e);
             }
             return results;
         }
@@ -168,13 +157,9 @@ namespace Toxikon.ProtocolManager.Queries
                     }
                 }
             }
-            catch (InvalidOperationException ioe)
-            {
-                Debug.WriteLine(ioe.ToString());
-            }
             catch (SqlException e)
             {
-                Debug.WriteLine(e.ToString());
+                ErrorHandler.CreateLogFile(ErrorFormName, "SelectProtocolRequestByRequestedBy", e);
             }
             return results;
         }
@@ -215,13 +200,9 @@ namespace Toxikon.ProtocolManager.Queries
                     }
                 }
             }
-            catch (InvalidOperationException ioe)
-            {
-                Debug.WriteLine(ioe.ToString());
-            }
             catch (SqlException e)
             {
-                Debug.WriteLine(e.ToString());
+                ErrorHandler.CreateLogFile(ErrorFormName, "SelectProtocolRequestByAssignedTo", e);
             }
             return results;
         }
@@ -247,25 +228,32 @@ namespace Toxikon.ProtocolManager.Queries
 
         public static void Update(ProtocolRequest request, string userName)
         {
-            using(SqlConnection connection = new SqlConnection(connectionString))
+            try
             {
-                connection.Open();
-                using(SqlCommand command = new SqlCommand("ProtocolRequestsUpdate", connection))
+                using (SqlConnection connection = new SqlConnection(connectionString))
                 {
-                    command.CommandType = CommandType.StoredProcedure;
-                    command.Parameters.Add("@ProtocolRequestID", SqlDbType.Int).Value = request.ID;
-                    command.Parameters.Add("@SponsorCode", SqlDbType.NVarChar).Value = request.Contact.ContactCode;
-                    command.Parameters.Add("@Guidelines", SqlDbType.NVarChar).Value = request.Guidelines;
-                    command.Parameters.Add("@Compliance", SqlDbType.NVarChar).Value = request.Compliance;
-                    command.Parameters.Add("@ProtocolType", SqlDbType.NVarChar).Value = request.ProtocolType;
-                    command.Parameters.Add("@DueDate", SqlDbType.NVarChar).Value = request.DueDate;
-                    command.Parameters.Add("@SendVia", SqlDbType.NVarChar).Value = request.SendVia;
-                    command.Parameters.Add("@BillTo", SqlDbType.NVarChar).Value = request.BillTo;
-                    command.Parameters.Add("@AssignedTo", SqlDbType.NVarChar).Value = request.AssignedTo;
-                    command.Parameters.Add("@UpdatedBy", SqlDbType.NVarChar).Value = userName;
+                    connection.Open();
+                    using (SqlCommand command = new SqlCommand("ProtocolRequestsUpdate", connection))
+                    {
+                        command.CommandType = CommandType.StoredProcedure;
+                        command.Parameters.Add("@ProtocolRequestID", SqlDbType.Int).Value = request.ID;
+                        command.Parameters.Add("@SponsorCode", SqlDbType.NVarChar).Value = request.Contact.ContactCode;
+                        command.Parameters.Add("@Guidelines", SqlDbType.NVarChar).Value = request.Guidelines;
+                        command.Parameters.Add("@Compliance", SqlDbType.NVarChar).Value = request.Compliance;
+                        command.Parameters.Add("@ProtocolType", SqlDbType.NVarChar).Value = request.ProtocolType;
+                        command.Parameters.Add("@DueDate", SqlDbType.NVarChar).Value = request.DueDate;
+                        command.Parameters.Add("@SendVia", SqlDbType.NVarChar).Value = request.SendVia;
+                        command.Parameters.Add("@BillTo", SqlDbType.NVarChar).Value = request.BillTo;
+                        command.Parameters.Add("@AssignedTo", SqlDbType.NVarChar).Value = request.AssignedTo;
+                        command.Parameters.Add("@UpdatedBy", SqlDbType.NVarChar).Value = userName;
 
-                    int result = command.ExecuteNonQuery();
+                        int result = command.ExecuteNonQuery();
+                    }
                 }
+            }
+            catch (SqlException e)
+            {
+                ErrorHandler.CreateLogFile(ErrorFormName, "Update", e);
             }
         }
     }

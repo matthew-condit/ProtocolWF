@@ -14,6 +14,7 @@ namespace Toxikon.ProtocolManager.Queries
     public static class QMatrix
     {
         private static string CONNECTION_STRING = Utility.GetLIMSConnectionString();
+        private const string ErrorFormName = "QMatrix";
         private const string SelectSponsorContactsQuery = @"
             SELECT Submitters.SubmitterText1 AS SponsorCode,
 		           Submitters.SubmitterCode AS ContactCode,
@@ -79,7 +80,7 @@ namespace Toxikon.ProtocolManager.Queries
             }
             catch(SqlException sqlEx)
             {
-                Debug.WriteLine(sqlEx.ToString());
+                ErrorHandler.CreateLogFile(ErrorFormName, "GetSponsorContacts", sqlEx);
             }
             return results;
         }
@@ -110,7 +111,7 @@ namespace Toxikon.ProtocolManager.Queries
             }
             catch (SqlException sqlEx)
             {
-                Debug.WriteLine(sqlEx.ToString());
+                ErrorHandler.CreateLogFile(ErrorFormName, "GetSponsorContacts_NameAndCodeOnly", sqlEx);
             }
             return results;
         }
@@ -138,7 +139,7 @@ namespace Toxikon.ProtocolManager.Queries
             }
             catch (SqlException sqlEx)
             {
-                Debug.WriteLine(sqlEx.ToString());
+                ErrorHandler.CreateLogFile(ErrorFormName, "GetSponsorByContactCode", sqlEx);
             }
             return result;
         }

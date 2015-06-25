@@ -15,24 +15,32 @@ namespace Toxikon.ProtocolManager.Queries
     public class QProtocolComments
     {
         private static string CONNECTION_STRING = Utility.GetTPMConnectionString();
+        private const string ErrorFormName = "QProtocolComments";
 
         public static void InsertProtocolComments(ProtocolTitle title, string comments, string userName)
         {
-            using (SqlConnection connection = new SqlConnection(CONNECTION_STRING))
+            try
             {
-                connection.Open();
-                using (SqlCommand command = new SqlCommand("ProtocolCommentsInsert", connection))
+                using (SqlConnection connection = new SqlConnection(CONNECTION_STRING))
                 {
-                    command.CommandType = CommandType.StoredProcedure;
+                    connection.Open();
+                    using (SqlCommand command = new SqlCommand("ProtocolCommentsInsert", connection))
+                    {
+                        command.CommandType = CommandType.StoredProcedure;
 
-                    command.Parameters.Clear();
-                    command.Parameters.Add("@ProtocolRequestID", SqlDbType.Int).Value = title.ProtocolRequestID;
-                    command.Parameters.Add("@ProtocolTitleID", SqlDbType.Int).Value = title.ID;
-                    command.Parameters.Add("@Comments", SqlDbType.NVarChar).Value = comments;
-                    command.Parameters.Add("@CreatedBy", SqlDbType.NVarChar).Value = userName;
+                        command.Parameters.Clear();
+                        command.Parameters.Add("@ProtocolRequestID", SqlDbType.Int).Value = title.ProtocolRequestID;
+                        command.Parameters.Add("@ProtocolTitleID", SqlDbType.Int).Value = title.ID;
+                        command.Parameters.Add("@Comments", SqlDbType.NVarChar).Value = comments;
+                        command.Parameters.Add("@CreatedBy", SqlDbType.NVarChar).Value = userName;
 
-                    int result = command.ExecuteNonQuery();
+                        int result = command.ExecuteNonQuery();
+                    }
                 }
+            }
+            catch (Exception ex)
+            {
+                ErrorHandler.CreateLogFile(ErrorFormName, "InsertProtocolComments", ex);
             }
         }
 
@@ -70,9 +78,9 @@ namespace Toxikon.ProtocolManager.Queries
                     }
                 }
             }
-            catch(FormatException formatEx)
+            catch(Exception ex)
             {
-                Debug.WriteLine(formatEx.ToString());
+                ErrorHandler.CreateLogFile(ErrorFormName, "SelectProtocolComments", ex);
             }
             return results;
         }
@@ -106,11 +114,11 @@ namespace Toxikon.ProtocolManager.Queries
             }
             catch(SqlException sqlEx)
             {
-                Debug.WriteLine(sqlEx.ToString());
+                ErrorHandler.CreateLogFile(ErrorFormName, "SelectProtocolCommentsDataTable", sqlEx);
             }
             catch (FormatException formatEx)
             {
-                Debug.WriteLine(formatEx.ToString());
+                ErrorHandler.CreateLogFile(ErrorFormName, "SelectProtocolCommentsDataTable", formatEx);
             }
             return dataTable;
         }

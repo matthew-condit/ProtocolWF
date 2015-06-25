@@ -14,6 +14,7 @@ namespace Toxikon.ProtocolManager.Queries
     public class QProtocolTitles
     {
         private static string connectionString = Utility.GetTPMConnectionString();
+        private const string ErrorFormName = "QProtocolTitles";
 
         public static void InsertFromProtocolRequest(ProtocolRequest request, string userName)
         {
@@ -36,13 +37,9 @@ namespace Toxikon.ProtocolManager.Queries
                     }
                 }
             }
-            catch (InvalidOperationException ioe)
-            {
-                Debug.WriteLine(ioe.ToString());
-            }
             catch (SqlException e)
             {
-                Debug.WriteLine(e.ToString());
+                ErrorHandler.CreateLogFile(ErrorFormName, "InsertFromProtocolRequest", e);
             }
         }
 
@@ -65,13 +62,9 @@ namespace Toxikon.ProtocolManager.Queries
                     }
                 }
             }
-            catch (InvalidOperationException ioe)
-            {
-                Debug.WriteLine(ioe.ToString());
-            }
             catch (SqlException e)
             {
-                Debug.WriteLine(e.ToString());
+                ErrorHandler.CreateLogFile(ErrorFormName, "Insert", e);
             }
             return result;
         }
@@ -95,13 +88,9 @@ namespace Toxikon.ProtocolManager.Queries
                     }
                 }
             }
-            catch (InvalidOperationException ioe)
-            {
-                Debug.WriteLine(ioe.ToString());
-            }
             catch (SqlException e)
             {
-                Debug.WriteLine(e.ToString());
+                ErrorHandler.CreateLogFile(ErrorFormName, "Update", e);
             }
         }
 
@@ -136,13 +125,9 @@ namespace Toxikon.ProtocolManager.Queries
                     }
                 }
             }
-            catch (InvalidOperationException ioe)
-            {
-                Debug.WriteLine(ioe.ToString());
-            }
             catch (SqlException e)
             {
-                Debug.WriteLine(e.ToString());
+                ErrorHandler.CreateLogFile(ErrorFormName, "SelectByRequestID", e);
             }
             return results;
         }
