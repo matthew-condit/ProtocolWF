@@ -89,7 +89,7 @@ namespace Toxikon.ProtocolManager.Views
         {
             this.controller = controller;
             this.LoadProtocolRequestViewDelegate = new LoadProtocolRequestEditView(
-                this.controller.LoadProtocolRequestEditView);
+                this.controller.LoadProtocolRequestDetailView);
         }
 
         public void AddControlToMainPanel(Control control)

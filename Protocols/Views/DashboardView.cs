@@ -36,7 +36,7 @@ namespace Toxikon.ProtocolManager.Views
         {
             int rowIndex = this.RequestDataGridView.Rows.Add(request.RequestedDate.ToString("MM/dd/yyyy"),
                  request.RequestedBy,
-                 request.Sponsor.SponsorName);
+                 request.Contact.SponsorName);
             /*DataGridViewRow row = this.RequestDataGridView.Rows[rowIndex];
             row.Height = 40;
             SetDataGridViewCheckBoxCell_BackColor(request, rowIndex);*/

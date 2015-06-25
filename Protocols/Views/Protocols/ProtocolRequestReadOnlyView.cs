@@ -9,29 +9,27 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Toxikon.ProtocolManager.Interfaces.Protocols;
 using Toxikon.ProtocolManager.Controllers.Protocols;
-using System.Diagnostics;
-using Toxikon.ProtocolManager.Models;
-using System.Collections;
-using Toxikon.ProtocolManager.Queries;
 using Toxikon.ProtocolManager.Views.RequestForms;
+using System.Collections;
+using Toxikon.ProtocolManager.Models;
 
 namespace Toxikon.ProtocolManager.Views.Protocols
 {
-    public partial class ProtocolRequestEditView : UserControl, IProtocolRequestEditView
+    public partial class ProtocolRequestReadOnlyView : UserControl, IProtocolRequestReadOnlyView
     {
-        ProtocolRequestEditController controller;
+        ProtocolRequestReadOnlyController controller;
 
-        public ProtocolRequestEditView()
+        public ProtocolRequestReadOnlyView()
         {
             InitializeComponent();
         }
 
-        public RequestFormEdit GetRequestForm
+        public RequestFormReadOnly GetRequestForm
         {
             get { return this.RequestForm; }
         }
 
-        public void SetController(ProtocolRequestEditController controller)
+        public void SetController(ProtocolRequestReadOnlyController controller)
         {
             this.controller = controller;
         }
@@ -51,7 +49,7 @@ namespace Toxikon.ProtocolManager.Views.Protocols
             get
             {
                 IList results = new ArrayList();
-                if(this.TitlesListView.SelectedIndices.Count != 0)
+                if (this.TitlesListView.SelectedIndices.Count != 0)
                 {
                     results = this.TitlesListView.SelectedIndices;
                 }
@@ -84,26 +82,6 @@ namespace Toxikon.ProtocolManager.Views.Protocols
             this.TitlesListView.Items.Clear();
         }
 
-        private void AddTitleButton_Click(object sender, EventArgs e)
-        {
-            this.controller.AddTitleButtonClicked();
-        }
-
-        private void EditTitleButton_Click(object sender, EventArgs e)
-        {
-            this.controller.EditTitleButtonClicked();
-        }
-
-        private void AddEventButton_Click(object sender, EventArgs e)
-        {
-            this.controller.AddEventButtonClicked();
-        }
-
-        private void AddCommentButton_Click(object sender, EventArgs e)
-        {
-            this.controller.AddCommentsButtonClicked();
-        }
-
         private void ViewCommentsButton_Click(object sender, EventArgs e)
         {
             this.controller.ViewCommentsButtonClicked();
@@ -112,21 +90,6 @@ namespace Toxikon.ProtocolManager.Views.Protocols
         private void ViewEventsButton_Click(object sender, EventArgs e)
         {
             this.controller.ViewEventsButtonClicked();
-        }
-
-        private void SaveChangesButton_Click(object sender, EventArgs e)
-        {
-            this.controller.SaveChangedButtonClicked();
-        }
-
-        private void AddProtocolNumber_Click(object sender, EventArgs e)
-        {
-            this.controller.AddProtocolNumberButtonClicked();
-        }
-
-        private void RevisedProtocolButton_Click(object sender, EventArgs e)
-        {
-            this.controller.RevisedProtocolButtonClicked();
         }
 
         private void DownloadReportButton_Click(object sender, EventArgs e)

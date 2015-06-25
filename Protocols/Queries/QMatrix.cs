@@ -14,8 +14,9 @@ namespace Toxikon.ProtocolManager.Queries
     public static class QMatrix
     {
         private static string CONNECTION_STRING = Utility.GetLIMSConnectionString();
-        private const string SponsorInfoQuery = @"
-            SELECT Submitters.SubmitterCode,
+        private const string SelectSponsorContactsQuery = @"
+            SELECT Submitters.SubmitterText1 AS SponsorCode,
+		           Submitters.SubmitterCode AS ContactCode,
 	               Submitters.SubmitterName AS SponsorName,
 	               ISNULL(Submitters.SubmitterText2, '') + ' ' +
 	               ISNULL(Submitters.SubmitterText3, '') AS ContactName,
@@ -27,14 +28,15 @@ namespace Toxikon.ProtocolManager.Queries
 	               Submitters.SubmitterAddress3 AS Country,
 	               Submitters.SubmitterTelephone AS PhoneNumber,
 	               Submitters.SubmitterFax AS Fax,
-	               Submitters.SubmitterClass,
                    Submitters.SubmitterTelex AS Email
             FROM Submitters
             WHERE Submitters.SubmitterName LIKE @SponsorName
-            AND Submitters.RecordStatus = 1";
+            AND Submitters.RecordStatus = 1
+            AND Submitters.SubmitterClass = 'Contact'";
 
-        private const string SponsorInfoBySponsorCode = @"
-            SELECT Submitters.SubmitterCode,
+        private const string ContactInfoByContactCode = @"
+            SELECT Submitters.SubmitterText1 AS SponsorCode,
+		           Submitters.SubmitterCode AS ContactCode,
 	               Submitters.SubmitterName AS SponsorName,
 	               ISNULL(Submitters.SubmitterText2, '') + ' ' +
 	               ISNULL(Submitters.SubmitterText3, '') AS ContactName,
@@ -46,13 +48,13 @@ namespace Toxikon.ProtocolManager.Queries
 	               Submitters.SubmitterAddress3 AS Country,
 	               Submitters.SubmitterTelephone AS PhoneNumber,
 	               Submitters.SubmitterFax AS Fax,
-	               Submitters.SubmitterClass,
                    Submitters.SubmitterTelex AS Email
             FROM Submitters
-            WHERE Submitters.SubmitterCode = @SponsorCode
-            AND Submitters.RecordStatus = 1";
+            WHERE Submitters.SubmitterCode = @ContactCode
+            AND Submitters.RecordStatus = 1
+            AND Submitters.SubmitterClass = 'Contact'";
 
-        public static IList GetSponsorInfo(string sponsorName)
+        public static IList GetSponsorContacts(string sponsorName)
         {
             IList results = new ArrayList();
             sponsorName += "%";
@@ -61,7 +63,7 @@ namespace Toxikon.ProtocolManager.Queries
                 using (SqlConnection connection = new SqlConnection(CONNECTION_STRING))
                 {
                     connection.Open();
-                    using(SqlCommand command = new SqlCommand(SponsorInfoQuery, connection))
+                    using(SqlCommand command = new SqlCommand(SelectSponsorContactsQuery, connection))
                     {
                         command.CommandType = CommandType.Text;
                         command.Parameters.Add("@SponsorName", SqlDbType.NVarChar).Value = sponsorName;
@@ -69,7 +71,7 @@ namespace Toxikon.ProtocolManager.Queries
                         SqlDataReader reader = command.ExecuteReader();
                         while(reader.Read())
                         {
-                            Sponsor sponsor = CreateNewSponsor(reader);
+                            SponsorContact sponsor = CreateNewSponsor(reader);
                             results.Add(sponsor);
                         }
                     }
@@ -82,18 +84,49 @@ namespace Toxikon.ProtocolManager.Queries
             return results;
         }
 
-        public static Sponsor GetSponsorBySponsorCode(string sponsorCode)
+        public static IList GetSponsorContacts_NameAndCodeOnly(string sponsorName)
         {
-            Sponsor result = new Sponsor();
+            IList results = new ArrayList();
             try
             {
                 using (SqlConnection connection = new SqlConnection(CONNECTION_STRING))
                 {
                     connection.Open();
-                    using (SqlCommand command = new SqlCommand(SponsorInfoBySponsorCode, connection))
+                    using (SqlCommand command = new SqlCommand(SelectSponsorContactsQuery, connection))
                     {
                         command.CommandType = CommandType.Text;
-                        command.Parameters.Add("@SponsorCode", SqlDbType.NVarChar).Value = sponsorCode;
+                        command.Parameters.Add("@SponsorName", SqlDbType.NVarChar).Value = sponsorName;
+
+                        SqlDataReader reader = command.ExecuteReader();
+                        while (reader.Read())
+                        {
+                            ListItem item = new ListItem();
+                            item.ListName = ListNames.Contact;
+                            item.ItemName = reader[3].ToString() + '-' + reader[1].ToString();
+                            results.Add(item);
+                        }
+                    }
+                }
+            }
+            catch (SqlException sqlEx)
+            {
+                Debug.WriteLine(sqlEx.ToString());
+            }
+            return results;
+        }
+
+        public static SponsorContact GetSponsorByContactCode(string contactCode)
+        {
+            SponsorContact result = new SponsorContact();
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(CONNECTION_STRING))
+                {
+                    connection.Open();
+                    using (SqlCommand command = new SqlCommand(ContactInfoByContactCode, connection))
+                    {
+                        command.CommandType = CommandType.Text;
+                        command.Parameters.Add("@ContactCode", SqlDbType.NVarChar).Value = contactCode;
 
                         SqlDataReader reader = command.ExecuteReader();
                         while (reader.Read())
@@ -110,18 +143,19 @@ namespace Toxikon.ProtocolManager.Queries
             return result;
         }
 
-        private static Sponsor CreateNewSponsor(SqlDataReader reader)
+        private static SponsorContact CreateNewSponsor(SqlDataReader reader)
         {
-            Sponsor sponsor = new Sponsor();
+            SponsorContact sponsor = new SponsorContact();
             sponsor.SponsorCode = reader[0].ToString().Trim();
-            sponsor.SponsorName = reader[1].ToString().Trim();
-            sponsor.SponsorContact = reader[2].ToString().Trim();
-            sponsor.Address = reader[3].ToString().Trim();
-            sponsor.City = reader[4].ToString().Trim();
-            sponsor.State = reader[5].ToString().Trim();
-            sponsor.ZipCode = reader[6].ToString().Trim();
-            sponsor.PhoneNumber = reader[8].ToString().Trim();
-            sponsor.FaxNumber = reader[9].ToString().Trim();
+            sponsor.ContactCode = reader[1].ToString().Trim();
+            sponsor.SponsorName = reader[2].ToString().Trim();
+            sponsor.ContactName = reader[3].ToString().Trim();
+            sponsor.Address = reader[4].ToString().Trim();
+            sponsor.City = reader[5].ToString().Trim();
+            sponsor.State = reader[6].ToString().Trim();
+            sponsor.ZipCode = reader[7].ToString().Trim();
+            sponsor.PhoneNumber = reader[9].ToString().Trim();
+            sponsor.FaxNumber = reader[10].ToString().Trim();
             sponsor.Email = reader[11].ToString().Trim();
             return sponsor;
         }

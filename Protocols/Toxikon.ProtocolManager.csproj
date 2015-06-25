@@ -50,6 +50,7 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controllers\Protocols\ProtocolRequestReadOnlyController.cs" />
     <Compile Include="Controllers\RequestFormController.cs" />
     <Compile Include="Controllers\Templates\CheckBoxOptionsController.cs" />
     <Compile Include="Controllers\DashboardController.cs" />
@@ -71,6 +72,7 @@
     <Compile Include="Controllers\Admin\UserEditController.cs" />
     <Compile Include="Controllers\Admin\UserListController.cs" />
     <Compile Include="Interfaces\IRequestForm.cs" />
+    <Compile Include="Interfaces\Protocols\IProtocolRequestReadOnlyView.cs" />
     <Compile Include="Interfaces\Templates\ICheckBoxOptionsView.cs" />
     <Compile Include="Interfaces\IDashboardView.cs" />
     <Compile Include="Interfaces\Admin\IDepartmentEditView.cs" />
@@ -112,6 +114,12 @@
     <Compile Include="Queries\QRoles.cs" />
     <Compile Include="Queries\QUsers.cs" />
     <Compile Include="Queries\QTMS.cs" />
+    <Compile Include="Views\Protocols\ProtocolRequestReadOnlyView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\Protocols\ProtocolRequestReadOnlyView.Designer.cs">
+      <DependentUpon>ProtocolRequestReadOnlyView.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\RequestForms\RequestFormAdd.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -184,7 +192,7 @@
     <Compile Include="Models\LoginInfo.cs" />
     <Compile Include="Models\Protocols\ProtocolRequest.cs" />
     <Compile Include="Models\Role.cs" />
-    <Compile Include="Models\Sponsor.cs" />
+    <Compile Include="Models\SponsorContact.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Models\Utility.cs" />
     <Compile Include="Program.cs" />
@@ -266,6 +274,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="Views\Protocols\ProtocolRequestReadOnlyView.resx">
+      <DependentUpon>ProtocolRequestReadOnlyView.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\RequestForms\RequestFormAdd.resx">
       <DependentUpon>RequestFormAdd.cs</DependentUpon>
     </EmbeddedResource>

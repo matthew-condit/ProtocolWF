@@ -15,7 +15,7 @@ namespace Toxikon.ProtocolManager.Controllers.Protocols
     public class ProtocolRequestAddController
     {
         IProtocolRequestAddView view;
-        IList sponsors;
+        IList sponsorContacts;
         ProtocolRequest request;
 
         RequestFormController requestFormController;
@@ -24,7 +24,7 @@ namespace Toxikon.ProtocolManager.Controllers.Protocols
         {
             this.view = view;
             this.view.SetController(this);
-            this.sponsors = new ArrayList();
+            this.sponsorContacts = new ArrayList();
             this.request = new ProtocolRequest();
             this.requestFormController = new RequestFormController(this.view.GetRequestForm);
         }
@@ -49,31 +49,31 @@ namespace Toxikon.ProtocolManager.Controllers.Protocols
             }
             else
             {
-                sponsors = QMatrix.GetSponsorInfo(this.view.SearchSponsorName);
-                if(sponsors.Count == 0)
+                sponsorContacts = QMatrix.GetSponsorContacts(this.view.SearchSponsorName);
+                if(sponsorContacts.Count == 0)
                 {
                     MessageBox.Show("No record found.");
                 }
                 else
                 {
-                    AddSponsorsToView();
+                    AddSponsorContactsToView();
                 }
             }
         }
 
-        private void AddSponsorsToView()
+        private void AddSponsorContactsToView()
         {
-            foreach(Sponsor sponsor in sponsors)
+            foreach(SponsorContact contact in sponsorContacts)
             {
-                this.view.AddSponsorToSearchResultList(sponsor);
+                this.view.AddSponsorContactToList(contact);
             }
         }
 
-        public void SponsorListViewSelectedIndexChanged(int selectedIndex)
+        public void ContactListViewSelectedIndexChanged(int selectedIndex)
         {
-            if(selectedIndex >= 0 && selectedIndex < this.sponsors.Count)
+            if(selectedIndex >= 0 && selectedIndex < this.sponsorContacts.Count)
             {
-                this.request.SetSponsor((Sponsor)this.sponsors[selectedIndex]);
+                this.request.SetContact((SponsorContact)this.sponsorContacts[selectedIndex]);
                 this.requestFormController.LoadView(this.request);
             }
         }
@@ -81,13 +81,15 @@ namespace Toxikon.ProtocolManager.Controllers.Protocols
         public void SubmitButtonClicked()
         {
             this.requestFormController.UpdateRequestWithViewValues();
-            if (this.request.Sponsor.SponsorCode == String.Empty)
+            this.request.SetTitles(this.view.Titles);
+
+            if (this.request.Contact.SponsorCode == String.Empty)
             {
                 MessageBox.Show("No sponsor selected.");
             }
             else if (this.request.AssignedTo == String.Empty)
             {
-                MessageBox.Show("Please fill in all required fields.");
+                MessageBox.Show("Assigned To is required.");
             }
             else
             {
@@ -114,7 +116,7 @@ namespace Toxikon.ProtocolManager.Controllers.Protocols
         private void Clear()
         {
             InitProtocolRequest();
-            this.sponsors.Clear();
+            this.sponsorContacts.Clear();
             this.view.ClearView();
         }
     }

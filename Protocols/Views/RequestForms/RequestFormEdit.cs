@@ -182,5 +182,10 @@ namespace Toxikon.ProtocolManager.Views.RequestForms
             IList items = QUsers.GetAssignedToUsers();
             this.controller.OpenListBoxOptions(ListNames.AssignedTo, items);
         }
+
+        private void ChangeContactButton_Click(object sender, EventArgs e)
+        {
+            this.controller.ChangeContactButtonClicked();
+        }
     }
 }

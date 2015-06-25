@@ -150,4 +150,12 @@
         QmCC
 </value>
   </data>
+  <data name="ChangeContactButton.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADrwAAA68AZW8ckkAAABMSURBVDhPzY0xCgAwCAN9m/9/j2uLJHRwsYFCPchg4KI9
+        IyKWGqogC3c/ubmpghkDaqiCLOqH7qYKZgyooQqyqB+6myqYMaCG6lfMNiDL5L0uTmNzAAAAAElFTkSu
+        QmCC
+</value>
+  </data>
 </root>

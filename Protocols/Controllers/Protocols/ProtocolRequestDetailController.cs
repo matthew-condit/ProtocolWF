@@ -17,7 +17,7 @@ namespace Toxikon.ProtocolManager.Controllers.Protocols
     public class ProtocolRequestDetailController
     {
         IProtocolRequestDetailView view;
-        Sponsor sponsor;
+        SponsorContact sponsor;
         ProtocolRequest protocolRequest;
 
         public delegate void SubmitButtonClick();
@@ -45,10 +45,10 @@ namespace Toxikon.ProtocolManager.Controllers.Protocols
             protocolRequest.RequestedDate = DateTime.Now;
         }
 
-        public void LoadView(Sponsor sponsor)
+        public void LoadView(SponsorContact sponsor)
         {
-            this.sponsor = new Sponsor(sponsor);
-            protocolRequest.SponsorCode = sponsor.SponsorCode;
+            this.sponsor = new SponsorContact(sponsor);
+            protocolRequest.SetContact(this.sponsor);
             UpdateViewWithProtocolRequest();
             UpdateViewWithSponsor();
         }
@@ -56,7 +56,7 @@ namespace Toxikon.ProtocolManager.Controllers.Protocols
         public void LoadView(ProtocolRequest protocolRequest)
         {
             this.protocolRequest = protocolRequest;
-            this.sponsor = protocolRequest.Sponsor;
+            this.sponsor = protocolRequest.Contact;
             UpdateViewWithProtocolRequest();
             UpdateViewWithSponsor();
         }
@@ -75,7 +75,7 @@ namespace Toxikon.ProtocolManager.Controllers.Protocols
 
         private void UpdateViewWithSponsor()
         {
-            this.view.ContactName = sponsor.SponsorContact;
+            this.view.ContactName = sponsor.ContactName;
             this.view.SponsorName = sponsor.SponsorName;
             this.view.Email = sponsor.Email;
             this.view.Address = sponsor.Address;
@@ -144,7 +144,7 @@ namespace Toxikon.ProtocolManager.Controllers.Protocols
 
         public void SubmitButtonClicked()
         {
-            if (this.protocolRequest.SponsorCode == String.Empty)
+            if (this.protocolRequest.Contact.SponsorCode == String.Empty)
             {
                 MessageBox.Show("No sponsor selected.");
             }

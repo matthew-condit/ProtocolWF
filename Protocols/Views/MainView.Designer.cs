@@ -139,7 +139,7 @@
             this.MinimumSize = new System.Drawing.Size(825, 850);
             this.Name = "MainView";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Protocols";
+            this.Text = "TPM - Toxikon Protocol Manager";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();

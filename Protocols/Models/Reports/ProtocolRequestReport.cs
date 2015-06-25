@@ -22,7 +22,7 @@ namespace Toxikon.ProtocolManager.Models.Reports
             this.protocolRequest = request;
             this.filePath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) +
                            "\\TPM-ToxikonProtocolManager\\";
-            this.fileName = protocolRequest.Sponsor.SponsorName + '-' + protocolRequest.RequestedBy + '-' +
+            this.fileName = protocolRequest.Contact.SponsorName + '-' + protocolRequest.RequestedBy + '-' +
                             protocolRequest.RequestedDate.ToString("yyyyMMdd");
         }
 
@@ -94,43 +94,43 @@ namespace Toxikon.ProtocolManager.Models.Reports
             rowIndex += 2;
             InsertReportHeaderRow(worksheet, "A" + rowIndex, "A" + rowIndex, "Contact Name: ", true, false);
             InsertReportHeaderRow(worksheet, "B" + rowIndex, "G" + rowIndex,
-                                  this.protocolRequest.Sponsor.SponsorContact, false, false);
+                                  this.protocolRequest.Contact.ContactName, false, false);
             rowIndex += 1;
             InsertReportHeaderRow(worksheet, "A" + rowIndex, "A" + rowIndex, "Email: ", true, false);
             InsertReportHeaderRow(worksheet, "B" + rowIndex, "G" + rowIndex,
-                                  this.protocolRequest.Sponsor.Email, false, false);
+                                  this.protocolRequest.Contact.Email, false, false);
             rowIndex += 1;
             InsertReportHeaderRow(worksheet, "A" + rowIndex, "A" + rowIndex, "Sponsor: ", true, false);
             InsertReportHeaderRow(worksheet, "B" + rowIndex, "G" + rowIndex,
-                                  this.protocolRequest.Sponsor.SponsorName, false, false);
+                                  this.protocolRequest.Contact.SponsorName, false, false);
             rowIndex += 1;
             InsertReportHeaderRow(worksheet, "A" + rowIndex, "A" + rowIndex, "Address: ", true, false);
             InsertReportHeaderRow(worksheet, "B" + rowIndex, "G" + rowIndex,
-                                  this.protocolRequest.Sponsor.Address, false, false);
+                                  this.protocolRequest.Contact.Address, false, false);
             rowIndex += 1;
             InsertReportHeaderRow(worksheet, "A" + rowIndex, "A" + rowIndex, "City: ", true, false);
             InsertReportHeaderRow(worksheet, "B" + rowIndex, "G" + rowIndex,
-                                  this.protocolRequest.Sponsor.City, false, false);
+                                  this.protocolRequest.Contact.City, false, false);
             rowIndex += 1;
             InsertReportHeaderRow(worksheet, "A" + rowIndex, "A" + rowIndex, "State: ", true, false);
             InsertReportHeaderRow(worksheet, "B" + rowIndex, "G" + rowIndex,
-                                  this.protocolRequest.Sponsor.State, false, false);
+                                  this.protocolRequest.Contact.State, false, false);
             rowIndex += 1;
             InsertReportHeaderRow(worksheet, "A" + rowIndex, "A" + rowIndex, "Zip Code: ", true, false);
             InsertReportHeaderRow(worksheet, "B" + rowIndex, "G" + rowIndex,
-                                  this.protocolRequest.Sponsor.ZipCode, false, false);
+                                  this.protocolRequest.Contact.ZipCode, false, false);
             rowIndex += 1;
             InsertReportHeaderRow(worksheet, "A" + rowIndex, "A" + rowIndex, "Phone Number: ", true, false);
             InsertReportHeaderRow(worksheet, "B" + rowIndex, "G" + rowIndex,
-                                  this.protocolRequest.Sponsor.PhoneNumber, false, false);
+                                  this.protocolRequest.Contact.PhoneNumber, false, false);
             rowIndex += 1;
             InsertReportHeaderRow(worksheet, "A" + rowIndex, "A" + rowIndex, "Fax: ", true, false);
             InsertReportHeaderRow(worksheet, "B" + rowIndex, "G" + rowIndex,
-                                  this.protocolRequest.Sponsor.FaxNumber, false, false);
+                                  this.protocolRequest.Contact.FaxNumber, false, false);
             rowIndex += 1;
             InsertReportHeaderRow(worksheet, "A" + rowIndex, "A" + rowIndex, "PO: ", true, false);
             InsertReportHeaderRow(worksheet, "B" + rowIndex, "G" + rowIndex,
-                                  this.protocolRequest.Sponsor.PONumber, false, false);
+                                  this.protocolRequest.Contact.PONumber, false, false);
 
             ExcelRange columnA = worksheet.get_Range("A1", "A21");
             columnA.EntireColumn.AutoFit();

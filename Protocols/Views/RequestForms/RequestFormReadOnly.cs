@@ -130,7 +130,15 @@ namespace Toxikon.ProtocolManager.Views.RequestForms
         }
         public DateTime DueDate
         {
-            get { return Convert.ToDateTime(this.DueDateLabel.Text); }
+            get 
+            {
+                DateTime result;
+                if (!DateTime.TryParse(this.DueDateLabel.Text, out result))
+                {
+                    result = DateTime.Now;
+                }
+                return result;
+            }
             set { this.DueDateLabel.Text = value.ToString("MM/dd/yyyy"); }
         }
         public string SendVia

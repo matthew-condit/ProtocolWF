@@ -10,6 +10,7 @@ using Toxikon.ProtocolManager.Controllers.Templates;
 using System.Windows.Forms;
 using System.Collections;
 using Toxikon.ProtocolManager.Queries;
+using System.Diagnostics;
 
 namespace Toxikon.ProtocolManager.Controllers
 {
@@ -46,16 +47,21 @@ namespace Toxikon.ProtocolManager.Controllers
             this.view.Comments = request.Comments;
             this.view.AssignedTo = request.AssignedTo;
 
-            this.view.ContactName = request.Sponsor.SponsorContact;
-            this.view.SponsorName = request.Sponsor.SponsorName;
-            this.view.Email = request.Sponsor.Email;
-            this.view.Address = request.Sponsor.Address;
-            this.view.City = request.Sponsor.City;
-            this.view.State = request.Sponsor.State;
-            this.view.ZipCode = request.Sponsor.ZipCode;
-            this.view.PhoneNumber = request.Sponsor.PhoneNumber;
-            this.view.FaxNumber = request.Sponsor.FaxNumber;
-            this.view.PONumber = request.Sponsor.PONumber;
+            UpdateViewWithSponsorContact();
+        }
+
+        protected void UpdateViewWithSponsorContact()
+        {
+            this.view.ContactName = request.Contact.ContactName;
+            this.view.SponsorName = request.Contact.SponsorName;
+            this.view.Email = request.Contact.Email;
+            this.view.Address = request.Contact.Address;
+            this.view.City = request.Contact.City;
+            this.view.State = request.Contact.State;
+            this.view.ZipCode = request.Contact.ZipCode;
+            this.view.PhoneNumber = request.Contact.PhoneNumber;
+            this.view.FaxNumber = request.Contact.FaxNumber;
+            this.view.PONumber = request.Contact.PONumber;
         }
 
         public void UpdateRequestWithViewValues()
@@ -68,6 +74,12 @@ namespace Toxikon.ProtocolManager.Controllers
             this.request.BillTo = this.view.BillTo;
             this.request.Comments = this.view.Comments;
             this.request.AssignedTo = this.view.AssignedTo;
+        }
+
+        public void ChangeContactButtonClicked()
+        {
+            IList contacts = QMatrix.GetSponsorContacts_NameAndCodeOnly(this.request.Contact.SponsorName);
+            OpenListBoxOptions(ListNames.Contact, contacts);
         }
 
         public void OpenCheckBoxOptions(string listName, IList items)
@@ -116,9 +128,14 @@ namespace Toxikon.ProtocolManager.Controllers
                     this.view.ProtocolType = items;
                     break;
                 case ListNames.AssignedTo:
-                    string[] splits = items.Split('-');
-                    this.request.AssignedTo = splits[1];
+                    string[] splits1 = items.Split('-');
+                    this.request.AssignedTo = splits1[1];
                     this.view.AssignedTo = this.request.AssignedTo;
+                    break;
+                case ListNames.Contact:
+                    string[] splits2 = items.Split('-');
+                    this.request.SetContact(splits2[1]);
+                    UpdateViewWithSponsorContact();
                     break;
                 default:
                     break;
@@ -127,13 +144,18 @@ namespace Toxikon.ProtocolManager.Controllers
 
         public void SubmitRequest()
         {
-            UpdateRequestWithViewValues();
-            //this.request.ID = QProtocolRequests.InsertProtocolRequest(this.request, loginInfo.UserName);
+            this.request.RequestStatus = "New";
+            Debug.WriteLine(this.request.Titles.Count);
+            this.request.ID = QProtocolRequests.InsertProtocolRequest(this.request, loginInfo.UserName);
+            if (this.request.Titles.Count > 0)
+            {
+                QProtocolTitles.InsertFromProtocolRequest(this.request, loginInfo.UserName);
+            }
+            QProtocolActivities.InsertFromProtocolRequest(this.request, loginInfo.UserName);
         }
 
         public void UpdateRequest()
         {
-            UpdateRequestWithViewValues();
             QProtocolRequests.Update(this.request, loginInfo.UserName);
         }
 

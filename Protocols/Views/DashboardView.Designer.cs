@@ -47,6 +47,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.RequestDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.RequestDataGridView.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.RequestDataGridView.BackgroundColor = System.Drawing.Color.White;
             this.RequestDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.RequestDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -90,21 +91,21 @@
             // 
             // RequestedDateCol
             // 
-            this.RequestedDateCol.FillWeight = 99.47188F;
+            this.RequestedDateCol.FillWeight = 30F;
             this.RequestedDateCol.HeaderText = "Requested Date";
             this.RequestedDateCol.Name = "RequestedDateCol";
             this.RequestedDateCol.ReadOnly = true;
             // 
             // RequestedByCol
             // 
-            this.RequestedByCol.FillWeight = 152.2843F;
+            this.RequestedByCol.FillWeight = 30F;
             this.RequestedByCol.HeaderText = "Requested By";
             this.RequestedByCol.Name = "RequestedByCol";
             this.RequestedByCol.ReadOnly = true;
             // 
             // SponsorCol
             // 
-            this.SponsorCol.FillWeight = 48.24385F;
+            this.SponsorCol.FillWeight = 240F;
             this.SponsorCol.HeaderText = "Sponsor";
             this.SponsorCol.Name = "SponsorCol";
             this.SponsorCol.ReadOnly = true;

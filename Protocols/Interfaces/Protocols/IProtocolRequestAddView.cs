@@ -13,7 +13,7 @@ namespace Toxikon.ProtocolManager.Interfaces.Protocols
     public interface IProtocolRequestAddView
     {
         void SetController(ProtocolRequestAddController controller);
-        void AddSponsorToSearchResultList(Sponsor sponsor);
+        void AddSponsorContactToList(SponsorContact contact);
         void ClearView();
 
         string SearchSponsorName { get; set; }

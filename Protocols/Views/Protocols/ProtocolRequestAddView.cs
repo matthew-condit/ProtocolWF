@@ -38,12 +38,13 @@ namespace Toxikon.ProtocolManager.Views.Protocols
         {
             this.SearchSponsorName = "";
             this.SponsorListView.Items.Clear();
+            this.TitleDataGridView.Rows.Clear();
         }
 
-        public void AddSponsorToSearchResultList(Sponsor sponsor)
+        public void AddSponsorContactToList(SponsorContact sponsor)
         {
             ListViewItem item = this.SponsorListView.Items.Add(sponsor.SponsorName);
-            item.SubItems.Add(sponsor.SponsorContact);
+            item.SubItems.Add(sponsor.ContactName);
             item.SubItems.Add(sponsor.Email);
         }
 
@@ -62,7 +63,7 @@ namespace Toxikon.ProtocolManager.Views.Protocols
         {
             if(this.SponsorListView.SelectedIndices.Count > 0)
             {
-                this.controller.SponsorListViewSelectedIndexChanged(this.SponsorListView.SelectedIndices[0]);
+                this.controller.ContactListViewSelectedIndexChanged(this.SponsorListView.SelectedIndices[0]);
             }
         }
 

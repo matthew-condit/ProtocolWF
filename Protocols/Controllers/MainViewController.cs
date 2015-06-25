@@ -17,12 +17,13 @@ namespace Toxikon.ProtocolManager.Controllers
     public class MainViewController
     {
         IMainView view;
+        LoginInfo loginInfo;
 
         public MainViewController(IMainView view)
         {
             this.view = view;
             this.view.SetController(this);
-            LoginInfo loginInfo = LoginInfo.GetInstance();
+            loginInfo = LoginInfo.GetInstance();
             this.view.SetMenuStripItemVisibleByUserRole(loginInfo.Role.RoleID);
         }
 
@@ -81,6 +82,34 @@ namespace Toxikon.ProtocolManager.Controllers
             DashboardView subView = new DashboardView();
             DashboardController subViewController = new DashboardController(subView);
             subViewController.LoadView();
+
+            view.AddControlToMainPanel(subView);
+        }
+
+        public void LoadProtocolRequestDetailView(ProtocolRequest request)
+        {
+            switch(loginInfo.Role.RoleID)
+            {
+                case 1:
+                    LoadProtocolRequestEditView(request);
+                    break;
+                case 2:
+                    LoadProtocolRequestReadOnlyView(request);
+                    break;
+                case 3:
+                    LoadProtocolRequestEditView(request);
+                    break;
+                default:
+                    LoadProtocolRequestReadOnlyView(request);
+                    break;
+            }
+        }
+
+        public void LoadProtocolRequestReadOnlyView(ProtocolRequest request)
+        {
+            ProtocolRequestReadOnlyView subView = new ProtocolRequestReadOnlyView();
+            ProtocolRequestReadOnlyController subViewController = new ProtocolRequestReadOnlyController(subView);
+            subViewController.LoadView(request);
 
             view.AddControlToMainPanel(subView);
         }

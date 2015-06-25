@@ -14,8 +14,7 @@ namespace Toxikon.ProtocolManager.Models
         public int ID { get; set; }
         public string RequestedBy { get; set; }
         public DateTime RequestedDate { get; set; }
-        public string SponsorCode { get; set; }
-        public Sponsor Sponsor { get; private set; }
+        public SponsorContact Contact { get; private set; }
         public string Guidelines { get; set; }
         public string Compliance { get; set; }
         public string ProtocolType { get; set; }
@@ -38,9 +37,8 @@ namespace Toxikon.ProtocolManager.Models
         {
             this.ID = 0;
             RequestedBy = "";
-            RequestedDate = DateTime.Now;
-            SponsorCode = "";
-            this.Sponsor = new Models.Sponsor();
+            RequestedDate = DateTime.Now;           
+            this.Contact = new Models.SponsorContact();
             Guidelines = "";
             Compliance = "";
             ProtocolType = "";
@@ -51,23 +49,24 @@ namespace Toxikon.ProtocolManager.Models
             this.AssignedTo = "";
         }
 
-        public void SetSponsor(Sponsor sponsor)
+        public void SetContact(SponsorContact contact)
         {
-            this.Sponsor.SponsorCode = sponsor.SponsorCode;
-            this.Sponsor.SponsorName = sponsor.SponsorName;
-            this.Sponsor.SponsorContact = sponsor.SponsorContact;
-            this.Sponsor.Address = sponsor.Address;
-            this.Sponsor.City = sponsor.City;
-            this.Sponsor.State = sponsor.State;
-            this.Sponsor.ZipCode = sponsor.ZipCode;
-            this.Sponsor.PhoneNumber = sponsor.PhoneNumber;
-            this.Sponsor.FaxNumber = sponsor.FaxNumber;
-            this.Sponsor.Email = sponsor.Email;
+            this.Contact.SponsorCode = contact.SponsorCode;
+            this.Contact.SponsorName = contact.SponsorName;
+            this.Contact.ContactName = contact.ContactName;
+            this.Contact.Address = contact.Address;
+            this.Contact.City = contact.City;
+            this.Contact.State = contact.State;
+            this.Contact.ZipCode = contact.ZipCode;
+            this.Contact.PhoneNumber = contact.PhoneNumber;
+            this.Contact.FaxNumber = contact.FaxNumber;
+            this.Contact.Email = contact.Email;
         }
 
-        public void SetSponsor()
+        public void SetContact(string contactCode)
         {
-            this.Sponsor = QMatrix.GetSponsorBySponsorCode(this.SponsorCode);
+            this.Contact.ContactCode = contactCode;
+            this.Contact = QMatrix.GetSponsorByContactCode(contactCode);
         }
 
         public void SetTitles(List<string> titleDescriptions)

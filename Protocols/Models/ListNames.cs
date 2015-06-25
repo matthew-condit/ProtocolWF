@@ -12,5 +12,6 @@ namespace Toxikon.ProtocolManager.Models
         public const string Compliance = "Compliance";
         public const string ProtocolType = "Protocol Type";
         public const string AssignedTo = "Assigned To";
+        public const string Contact = "Sponsor Contact";
     }
 }

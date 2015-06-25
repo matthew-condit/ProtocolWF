@@ -20,8 +20,9 @@ namespace Toxikon.ProtocolManager.Controllers.Protocols
     {
         IProtocolRequestEditView view;
         ProtocolRequest protocolRequest;
-        Sponsor sponsor;
+        SponsorContact sponsor;
         LoginInfo loginInfo;
+        RequestFormController requestFormController;
         string SelectOneMessage = "Please select one title and try it again.";
 
         public ProtocolRequestEditController(IProtocolRequestEditView view)
@@ -29,30 +30,15 @@ namespace Toxikon.ProtocolManager.Controllers.Protocols
             this.view = view;
             this.view.SetController(this);
             loginInfo = LoginInfo.GetInstance();
-            this.view.SetControlVisibleByUserRole(loginInfo.Role.RoleID);
+            this.requestFormController = new RequestFormController(this.view.GetRequestForm);
         }
 
         public void LoadView(ProtocolRequest protocolRequest)
         {
             this.protocolRequest = protocolRequest;
-            this.sponsor = protocolRequest.Sponsor;
-            UpdateViewWithProtocolRequest();
+            this.sponsor = protocolRequest.Contact;
+            this.requestFormController.LoadView(this.protocolRequest);
             this.RefreshTitleListView();
-            UpdateViewWithSponsor();
-        }
-
-        private void UpdateViewWithProtocolRequest()
-        {
-            this.view.RequestedBy = protocolRequest.RequestedBy;
-            this.view.RequestedDate = protocolRequest.RequestedDate.ToString("MM/dd/yyyy");
-            this.view.Guidelines = protocolRequest.Guidelines;
-            this.view.Compliance = protocolRequest.Compliance;
-            this.view.ProtocolType = protocolRequest.ProtocolType;
-            this.view.BillTo = protocolRequest.BillTo;
-            this.view.SendVia = protocolRequest.SendVia;
-            this.view.DueDate = protocolRequest.DueDate;
-            this.view.Comments = protocolRequest.Comments;
-            this.view.AssignedTo = protocolRequest.AssignedTo;
         }
 
         private void AddTilesToView()
@@ -61,75 +47,6 @@ namespace Toxikon.ProtocolManager.Controllers.Protocols
             foreach(ProtocolTitle item in protocolRequest.Titles)
             {
                 this.view.AddTitleToView(item);
-            }
-        }
-
-        private void UpdateViewWithSponsor()
-        {
-            this.view.ContactName = sponsor.SponsorContact;
-            this.view.SponsorName = sponsor.SponsorName;
-            this.view.Email = sponsor.Email;
-            this.view.Address = sponsor.Address;
-            this.view.City = sponsor.City;
-            this.view.State = sponsor.State;
-            this.view.ZipCode = sponsor.ZipCode;
-            this.view.PhoneNumber = sponsor.PhoneNumber;
-            this.view.FaxNumber = sponsor.FaxNumber;
-            this.view.PONumber = sponsor.PONumber;
-        }
-
-        public void OpenCheckBoxOptions(string listName, IList items)
-        {
-            CheckBoxOptionsView popup = new CheckBoxOptionsView();
-            CheckBoxOptionsController popupController = new CheckBoxOptionsController(popup, items);
-            popupController.LoadView();
-
-            DialogResult dialogResult = popup.ShowDialog(this.view.ParentControl);
-            if (dialogResult == DialogResult.OK)
-            {
-                string itemsString = String.Join(", ", popupController.SelectedItems);
-                SetListSelectedItems(listName, itemsString);
-            }
-            popup.Dispose();
-        }
-
-        public void OpenListBoxOptions(string listName, IList items)
-        {
-            ListBoxOptionsView popup = new ListBoxOptionsView();
-            ListBoxOptionsController popupController = new ListBoxOptionsController(popup, items);
-            popupController.LoadView();
-
-            DialogResult dialogResult = popup.ShowDialog(this.view.ParentControl);
-            if (dialogResult == DialogResult.OK)
-            {
-                SetListSelectedItems(listName, popupController.SelectedItem);
-            }
-            popup.Dispose();
-        }
-
-        private void SetListSelectedItems(string listName, string items)
-        {
-            switch (listName)
-            {
-                case ListNames.Guidelines:
-                    this.protocolRequest.Guidelines = items;
-                    this.view.Guidelines = items;
-                    break;
-                case ListNames.Compliance:
-                    this.protocolRequest.Compliance = items;
-                    this.view.Compliance = items;
-                    break;
-                case ListNames.ProtocolType:
-                    this.protocolRequest.ProtocolType = items;
-                    this.view.ProtocolType = items;
-                    break;
-                case ListNames.AssignedTo:
-                    string[] splits = items.Split('-');
-                    this.protocolRequest.AssignedTo = splits[1];
-                    this.view.AssignedTo = this.protocolRequest.AssignedTo;
-                    break;
-                default:
-                    break;
             }
         }
 
@@ -330,20 +247,9 @@ namespace Toxikon.ProtocolManager.Controllers.Protocols
         /**************************** SAVE CHANGES *************************/
         public void SaveChangedButtonClicked()
         {
-            UpdateProtocolRequestWithViewValues();
-            QProtocolRequests.Update(this.protocolRequest, loginInfo.UserName);
+            this.requestFormController.UpdateRequestWithViewValues();
+            this.requestFormController.UpdateRequest();
             MessageBox.Show("Updated!");
-        }
-
-        private void UpdateProtocolRequestWithViewValues()
-        {
-            this.protocolRequest.Guidelines = this.view.Guidelines;
-            this.protocolRequest.Compliance = this.view.Compliance;
-            this.protocolRequest.ProtocolType = this.view.ProtocolType;
-            this.protocolRequest.DueDate = this.view.DueDate;
-            this.protocolRequest.SendVia = this.view.SendVia;
-            this.protocolRequest.BillTo = this.view.BillTo;
-            this.protocolRequest.AssignedTo = this.view.AssignedTo;
         }
 
         /*************************** PROTOCOL NUMBERS *************************/
