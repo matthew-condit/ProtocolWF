@@ -69,7 +69,7 @@ namespace Toxikon.ProtocolManager.Queries
             return results;
         }
 
-        public static IList GetAssignedToUsers()
+        public static IList GetUsersByRoleID(int roleID, string listName)
         {
             IList results = new ArrayList();
             using (SqlConnection connection = new SqlConnection(CONNECTION_STRING))
@@ -84,16 +84,17 @@ namespace Toxikon.ProtocolManager.Queries
 	                             ON Users.DepartmentID = Departments.ID
 	                             INNER JOIN Roles
 	                             ON Users.RoleID = Roles.ID
-                                 WHERE Users.RoleID = 3";
+                                 WHERE Users.RoleID = @RoleID";
                 using (SqlCommand command = new SqlCommand(query, connection))
                 {
                     command.CommandType = CommandType.Text;
+                    command.Parameters.Add("@RoleID", SqlDbType.Int).Value = roleID;
 
                     SqlDataReader reader = command.ExecuteReader();
                     while (reader.Read())
                     {
                         ListItem item = new ListItem();
-                        item.ListName = ListNames.AssignedTo;
+                        item.ListName = listName;
                         item.ItemName = reader[3].ToString() + '-' + reader[0].ToString();
                         results.Add(item);
                     }

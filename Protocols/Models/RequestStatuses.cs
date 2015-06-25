@@ -11,6 +11,6 @@ namespace Toxikon.ProtocolManager.Models
         public const string New = "New";
         public const string Received = "Received";
         public const string PutUp = "Put Up";
-        public const string AssignedWorkflow = "Assigned WorkFlow";
+        public const string Closed = "Closed";
     }
 }

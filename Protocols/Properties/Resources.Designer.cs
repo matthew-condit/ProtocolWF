@@ -153,6 +153,16 @@ namespace Toxikon.ProtocolManager.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Security_Shields_Complete_and_ok_16xLG_color {
+            get {
+                object obj = ResourceManager.GetObject("Security_Shields_Complete_and_ok_16xLG_color", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap StatusAnnotations_Complete_and_ok_16xLG_color {
             get {
                 object obj = ResourceManager.GetObject("StatusAnnotations_Complete_and_ok_16xLG_color", resourceCulture);
@@ -176,6 +186,16 @@ namespace Toxikon.ProtocolManager.Properties {
         internal static System.Drawing.Bitmap StatusAnnotations_Required_16xLG_color {
             get {
                 object obj = ResourceManager.GetObject("StatusAnnotations_Required_16xLG_color", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap ZoomNeutral_16xlG {
+            get {
+                object obj = ResourceManager.GetObject("ZoomNeutral_16xlG", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

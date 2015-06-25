@@ -256,5 +256,30 @@ namespace Toxikon.ProtocolManager.Queries
                 ErrorHandler.CreateLogFile(ErrorFormName, "Update", e);
             }
         }
+
+        public static void UpdateRequestStatus(ProtocolRequest request, string updatedBy)
+        {
+            try
+            {
+                using(SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    connection.Open();
+                    using(SqlCommand command = new SqlCommand("ProtocolRequests_UpdateRequestStatus", connection))
+                    {
+                        command.CommandType = CommandType.StoredProcedure;
+                        command.Parameters.Add("@ProtocolRequestID", SqlDbType.Int).Value = request.ID;
+                        command.Parameters.Add("@RequestStatus", SqlDbType.NVarChar).Value = request.RequestStatus;
+                        command.Parameters.Add("@IsActive", SqlDbType.Bit).Value = request.IsActive;
+                        command.Parameters.Add("@UpdatedBy", SqlDbType.NVarChar).Value = updatedBy;
+
+                        int result = command.ExecuteNonQuery();
+                    }
+                }
+            }
+            catch(SqlException sqlEx)
+            {
+                ErrorHandler.CreateLogFile(ErrorFormName, "UpdateRequestStatus", sqlEx);
+            }
+        }
     }
 }

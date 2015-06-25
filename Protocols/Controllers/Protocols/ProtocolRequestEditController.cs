@@ -329,5 +329,21 @@ namespace Toxikon.ProtocolManager.Controllers.Protocols
             reportTemplate.Create();
             MessageBox.Show("Download Complete!");
         }
+
+        /************************** CLOSE PROTOCOL REQUEST ***************************/
+        public void CloseRequestButtonClicked()
+        {
+            DialogResult dialogResult = MessageBox.Show("Are you sure you want to close this request?",
+                                        "Close Protocol Request",
+                                        MessageBoxButtons.YesNo,
+                                        MessageBoxIcon.Question);
+            if(dialogResult == DialogResult.Yes)
+            {
+                this.protocolRequest.Close();
+                QProtocolRequests.UpdateRequestStatus(this.protocolRequest, loginInfo.UserName);
+                MainView mainView = (MainView)this.view.ParentControl;
+                mainView.Invoke(mainView.LoadProtocolRequestViewDelegate, new object[] { this.protocolRequest });
+            }
+        }
     }
 }

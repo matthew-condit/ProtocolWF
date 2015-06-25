@@ -93,6 +93,7 @@
             this.DownloadReportButton.Size = new System.Drawing.Size(103, 35);
             this.DownloadReportButton.Text = "Download Report";
             this.DownloadReportButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.DownloadReportButton.Visible = false;
             this.DownloadReportButton.Click += new System.EventHandler(this.DownloadReportButton_Click);
             // 
             // panel1
@@ -127,6 +128,7 @@
             this.RequestForm.Comments = "Comments";
             this.RequestForm.Compliance = "Compliance";
             this.RequestForm.ContactName = "Contact";
+            this.RequestForm.DueDate = new System.DateTime(2015, 6, 25, 0, 0, 0, 0);
             this.RequestForm.Email = "Email";
             this.RequestForm.FaxNumber = "Fax";
             this.RequestForm.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -145,7 +147,6 @@
             this.RequestForm.State = "State";
             this.RequestForm.TabIndex = 0;
             this.RequestForm.ZipCode = "Zip Code";
-            this.RequestForm.DueDate = System.DateTime.Now;
             // 
             // TitlesListView
             // 
@@ -166,6 +167,7 @@
             this.TitlesListView.TabIndex = 45;
             this.TitlesListView.UseCompatibleStateImageBehavior = false;
             this.TitlesListView.View = System.Windows.Forms.View.Details;
+            this.TitlesListView.Leave += new System.EventHandler(this.TitlesListView_Leave);
             // 
             // TitleCol
             // 

@@ -38,6 +38,7 @@
             this.ListItemsMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.AdminProtocolEventsButton = new System.Windows.Forms.ToolStripMenuItem();
             this.MainPanel = new System.Windows.Forms.Panel();
+            this.HistoryMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -48,7 +49,8 @@
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.HomeMenuItem,
             this.ProtocolRequestMenuItem,
-            this.AdminMenuItem});
+            this.AdminMenuItem,
+            this.HistoryMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(6, 10, 0, 10);
@@ -128,6 +130,13 @@
             this.MainPanel.Size = new System.Drawing.Size(809, 771);
             this.MainPanel.TabIndex = 1;
             // 
+            // HistoryMenuItem
+            // 
+            this.HistoryMenuItem.ForeColor = System.Drawing.Color.White;
+            this.HistoryMenuItem.Name = "HistoryMenuItem";
+            this.HistoryMenuItem.Size = new System.Drawing.Size(71, 21);
+            this.HistoryMenuItem.Text = "HISTORY";
+            // 
             // MainView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -160,6 +169,7 @@
         private System.Windows.Forms.ToolStripMenuItem AdminUsersMenuItem;
         private System.Windows.Forms.ToolStripMenuItem ListItemsMenuItem;
         private System.Windows.Forms.ToolStripMenuItem AdminProtocolEventsButton;
+        private System.Windows.Forms.ToolStripMenuItem HistoryMenuItem;
     }
 }
 

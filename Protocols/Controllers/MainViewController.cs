@@ -88,7 +88,19 @@ namespace Toxikon.ProtocolManager.Controllers
 
         public void LoadProtocolRequestDetailView(ProtocolRequest request)
         {
-            switch(loginInfo.Role.RoleID)
+            if(request.RequestStatus != RequestStatuses.Closed)
+            {
+                LoadProtocolRequestDetailByRoleID(request);
+            }
+            else
+            {
+                LoadProtocolRequestReadOnlyView(request);
+            }
+        }
+
+        private void LoadProtocolRequestDetailByRoleID(ProtocolRequest request)
+        {
+            switch (loginInfo.Role.RoleID)
             {
                 case 1:
                     LoadProtocolRequestEditView(request);

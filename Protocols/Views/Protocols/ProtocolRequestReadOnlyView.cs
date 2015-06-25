@@ -96,5 +96,10 @@ namespace Toxikon.ProtocolManager.Views.Protocols
         {
             this.controller.DownloadRequestReportButtonClicked();
         }
+
+        private void TitlesListView_Leave(object sender, EventArgs e)
+        {
+            this.TitlesListView.SelectedIndices.Clear();
+        }
     }
 }

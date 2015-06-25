@@ -50,6 +50,7 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controllers\HistoryController.cs" />
     <Compile Include="Controllers\Protocols\ProtocolRequestReadOnlyController.cs" />
     <Compile Include="Controllers\RequestFormController.cs" />
     <Compile Include="Controllers\Templates\CheckBoxOptionsController.cs" />
@@ -70,6 +71,7 @@
     <Compile Include="Controllers\Admin\RoleListController.cs" />
     <Compile Include="Controllers\Admin\UserEditController.cs" />
     <Compile Include="Controllers\Admin\UserListController.cs" />
+    <Compile Include="Interfaces\IHistoryView.cs" />
     <Compile Include="Interfaces\IRequestForm.cs" />
     <Compile Include="Interfaces\Protocols\IProtocolRequestReadOnlyView.cs" />
     <Compile Include="Interfaces\Templates\ICheckBoxOptionsView.cs" />
@@ -115,6 +117,12 @@
     <Compile Include="Queries\QRoles.cs" />
     <Compile Include="Queries\QUsers.cs" />
     <Compile Include="Queries\QTMS.cs" />
+    <Compile Include="Views\HistoryView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\HistoryView.Designer.cs">
+      <DependentUpon>HistoryView.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\Protocols\ProtocolRequestReadOnlyView.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -268,6 +276,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="Views\HistoryView.resx">
+      <DependentUpon>HistoryView.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\Protocols\ProtocolRequestReadOnlyView.resx">
       <DependentUpon>ProtocolRequestReadOnlyView.cs</DependentUpon>
     </EmbeddedResource>
@@ -348,6 +359,8 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\ZoomNeutral_16xlG.png" />
+    <None Include="Resources\Security_Shields_Complete_and_ok_16xLG_color.png" />
     <None Include="Resources\move_to_bottom.png" />
     <None Include="Resources\StatusAnnotations_Information_16xLG_color.png" />
     <None Include="Resources\StatusAnnotations_Required_16xLG_color.png" />

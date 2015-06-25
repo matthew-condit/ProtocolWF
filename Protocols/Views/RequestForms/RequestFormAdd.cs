@@ -179,7 +179,7 @@ namespace Toxikon.ProtocolManager.Views.RequestForms
 
         private void OpenAssignedToOptions_Click(object sender, EventArgs e)
         {
-            IList items = QUsers.GetAssignedToUsers();
+            IList items = QUsers.GetUsersByRoleID(3, ListNames.AssignedTo);
             this.controller.OpenListBoxOptions(ListNames.AssignedTo, items);
         }
     }

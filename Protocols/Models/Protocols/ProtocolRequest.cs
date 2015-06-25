@@ -27,6 +27,7 @@ namespace Toxikon.ProtocolManager.Models
         public string Priority { get; set; }
 
         public string RequestStatus { get; set; }
+        public bool IsActive { get; set; }
 
         public ProtocolRequest()
         {
@@ -47,6 +48,7 @@ namespace Toxikon.ProtocolManager.Models
             BillTo = "Toxikon";
             Comments = "";
             this.AssignedTo = "";
+            this.IsActive = true;
         }
 
         public void SetContact(SponsorContact contact)
@@ -88,6 +90,12 @@ namespace Toxikon.ProtocolManager.Models
         {
             this.Titles.Clear();
             this.Titles = (List<ProtocolTitle>)QProtocolTitles.SelectByRequestID(this.ID);
-        }       
+        }
+       
+        public void Close()
+        {
+            this.RequestStatus = RequestStatuses.Closed;
+            this.IsActive = false;
+        }
     }
 }
