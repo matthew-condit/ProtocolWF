@@ -79,13 +79,8 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 115F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 265F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 113F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 333F));
-            this.tableLayoutPanel1.Controls.Add(this.BillToLabel, 1, 7);
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 334F));
             this.tableLayoutPanel1.Controls.Add(this.ComplianceLabel, 1, 3);
-            this.tableLayoutPanel1.Controls.Add(this.label15, 0, 8);
-            this.tableLayoutPanel1.Controls.Add(this.label14, 0, 7);
-            this.tableLayoutPanel1.Controls.Add(this.label13, 0, 6);
-            this.tableLayoutPanel1.Controls.Add(this.label12, 0, 5);
             this.tableLayoutPanel1.Controls.Add(this.label1, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.RequestedDateLabel, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.RequestedByLabel, 1, 1);
@@ -113,13 +108,18 @@
             this.tableLayoutPanel1.Controls.Add(this.label7, 2, 5);
             this.tableLayoutPanel1.Controls.Add(this.label8, 2, 6);
             this.tableLayoutPanel1.Controls.Add(this.ZipCodeLabel, 3, 6);
-            this.tableLayoutPanel1.Controls.Add(this.label20, 0, 9);
-            this.tableLayoutPanel1.Controls.Add(this.CommentsLabel, 1, 8);
             this.tableLayoutPanel1.Controls.Add(this.GuidelinesLabel, 1, 2);
             this.tableLayoutPanel1.Controls.Add(this.ProtocolTypeLabel, 1, 4);
-            this.tableLayoutPanel1.Controls.Add(this.DueDateLabel, 1, 5);
-            this.tableLayoutPanel1.Controls.Add(this.SendViaLabel, 1, 6);
-            this.tableLayoutPanel1.Controls.Add(this.AssignedToLabel, 1, 9);
+            this.tableLayoutPanel1.Controls.Add(this.label20, 0, 5);
+            this.tableLayoutPanel1.Controls.Add(this.AssignedToLabel, 1, 5);
+            this.tableLayoutPanel1.Controls.Add(this.label15, 0, 9);
+            this.tableLayoutPanel1.Controls.Add(this.CommentsLabel, 1, 9);
+            this.tableLayoutPanel1.Controls.Add(this.label14, 0, 8);
+            this.tableLayoutPanel1.Controls.Add(this.BillToLabel, 1, 8);
+            this.tableLayoutPanel1.Controls.Add(this.label13, 0, 7);
+            this.tableLayoutPanel1.Controls.Add(this.SendViaLabel, 1, 7);
+            this.tableLayoutPanel1.Controls.Add(this.label12, 0, 6);
+            this.tableLayoutPanel1.Controls.Add(this.DueDateLabel, 1, 6);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -134,13 +134,13 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(800, 325);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(800, 315);
             this.tableLayoutPanel1.TabIndex = 3;
             // 
             // BillToLabel
             // 
             this.BillToLabel.AutoSize = true;
-            this.BillToLabel.Location = new System.Drawing.Point(120, 218);
+            this.BillToLabel.Location = new System.Drawing.Point(120, 249);
             this.BillToLabel.Name = "BillToLabel";
             this.BillToLabel.Padding = new System.Windows.Forms.Padding(0, 5, 0, 5);
             this.BillToLabel.Size = new System.Drawing.Size(43, 27);
@@ -161,7 +161,7 @@
             // 
             this.label15.AutoSize = true;
             this.label15.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label15.Location = new System.Drawing.Point(4, 249);
+            this.label15.Location = new System.Drawing.Point(4, 280);
             this.label15.Name = "label15";
             this.label15.Padding = new System.Windows.Forms.Padding(0, 5, 0, 5);
             this.label15.Size = new System.Drawing.Size(81, 27);
@@ -172,7 +172,7 @@
             // 
             this.label14.AutoSize = true;
             this.label14.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.Location = new System.Drawing.Point(4, 218);
+            this.label14.Location = new System.Drawing.Point(4, 249);
             this.label14.Name = "label14";
             this.label14.Padding = new System.Windows.Forms.Padding(0, 5, 0, 5);
             this.label14.Size = new System.Drawing.Size(51, 27);
@@ -183,7 +183,7 @@
             // 
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.Location = new System.Drawing.Point(4, 187);
+            this.label13.Location = new System.Drawing.Point(4, 218);
             this.label13.Name = "label13";
             this.label13.Padding = new System.Windows.Forms.Padding(0, 5, 0, 5);
             this.label13.Size = new System.Drawing.Size(36, 27);
@@ -194,7 +194,7 @@
             // 
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(4, 156);
+            this.label12.Location = new System.Drawing.Point(4, 187);
             this.label12.Name = "label12";
             this.label12.Padding = new System.Windows.Forms.Padding(0, 5, 0, 5);
             this.label12.Size = new System.Drawing.Size(71, 27);
@@ -490,7 +490,7 @@
             // 
             this.label20.AutoSize = true;
             this.label20.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label20.Location = new System.Drawing.Point(4, 280);
+            this.label20.Location = new System.Drawing.Point(4, 156);
             this.label20.Name = "label20";
             this.label20.Padding = new System.Windows.Forms.Padding(0, 5, 0, 5);
             this.label20.Size = new System.Drawing.Size(89, 27);
@@ -500,7 +500,7 @@
             // CommentsLabel
             // 
             this.CommentsLabel.AutoSize = true;
-            this.CommentsLabel.Location = new System.Drawing.Point(120, 249);
+            this.CommentsLabel.Location = new System.Drawing.Point(120, 280);
             this.CommentsLabel.Name = "CommentsLabel";
             this.CommentsLabel.Padding = new System.Windows.Forms.Padding(0, 5, 0, 5);
             this.CommentsLabel.Size = new System.Drawing.Size(70, 27);
@@ -530,7 +530,7 @@
             // DueDateLabel
             // 
             this.DueDateLabel.AutoSize = true;
-            this.DueDateLabel.Location = new System.Drawing.Point(120, 156);
+            this.DueDateLabel.Location = new System.Drawing.Point(120, 187);
             this.DueDateLabel.Name = "DueDateLabel";
             this.DueDateLabel.Padding = new System.Windows.Forms.Padding(0, 5, 0, 5);
             this.DueDateLabel.Size = new System.Drawing.Size(62, 27);
@@ -540,7 +540,7 @@
             // SendViaLabel
             // 
             this.SendViaLabel.AutoSize = true;
-            this.SendViaLabel.Location = new System.Drawing.Point(120, 187);
+            this.SendViaLabel.Location = new System.Drawing.Point(120, 218);
             this.SendViaLabel.Name = "SendViaLabel";
             this.SendViaLabel.Padding = new System.Windows.Forms.Padding(0, 5, 0, 5);
             this.SendViaLabel.Size = new System.Drawing.Size(26, 27);
@@ -550,7 +550,7 @@
             // AssignedToLabel
             // 
             this.AssignedToLabel.AutoSize = true;
-            this.AssignedToLabel.Location = new System.Drawing.Point(120, 280);
+            this.AssignedToLabel.Location = new System.Drawing.Point(120, 156);
             this.AssignedToLabel.Name = "AssignedToLabel";
             this.AssignedToLabel.Padding = new System.Windows.Forms.Padding(0, 5, 0, 5);
             this.AssignedToLabel.Size = new System.Drawing.Size(80, 27);
@@ -566,7 +566,7 @@
             this.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "RequestFormReadOnly";
-            this.Size = new System.Drawing.Size(800, 325);
+            this.Size = new System.Drawing.Size(800, 315);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             this.ResumeLayout(false);

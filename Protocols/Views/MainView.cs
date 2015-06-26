@@ -25,6 +25,16 @@ namespace Toxikon.ProtocolManager.Views
             this.menuStrip1.Renderer = new MyRenderer();
         }
 
+        protected override CreateParams CreateParams
+        {
+            get
+            {
+                CreateParams handleParam = base.CreateParams;
+                handleParam.ExStyle |= 0x02000000;   // WS_EX_COMPOSITED       
+                return handleParam;
+            }
+        }
+
         private class MyRenderer : ToolStripProfessionalRenderer
         {
             public MyRenderer() : base(new MyColors()) { }
@@ -62,23 +72,19 @@ namespace Toxikon.ProtocolManager.Views
         {
             switch(roleID)
             {
-                case 1:
-                    this.HomeMenuItem.Visible = true;
+                case UserRoles.IT:
                     this.ProtocolRequestMenuItem.Visible = true;
                     this.AdminMenuItem.Visible = true;
                     break;
-                case 2:
-                    this.HomeMenuItem.Visible = true;
+                case UserRoles.CSR:
                     this.ProtocolRequestMenuItem.Visible = true;
                     this.AdminMenuItem.Visible = false;
                     break;
-                case 3:
-                    this.HomeMenuItem.Visible = true;
+                case UserRoles.DocControl:
                     this.ProtocolRequestMenuItem.Visible = false;
                     this.AdminMenuItem.Visible = false;
                     break;
                 default:
-                    this.HomeMenuItem.Visible = true;
                     this.ProtocolRequestMenuItem.Visible = false;
                     this.AdminMenuItem.Visible = false;
                     break;
@@ -132,6 +138,11 @@ namespace Toxikon.ProtocolManager.Views
         private void AdminProtocolEventsButton_Click(object sender, EventArgs e)
         {
             this.controller.LoadProtocolEventsView();
+        }
+
+        private void HistoryMenuItem_Click(object sender, EventArgs e)
+        {
+            this.controller.LoadHistoryView();
         }
     }
 }

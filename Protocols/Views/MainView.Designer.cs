@@ -31,6 +31,7 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.HomeMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ProtocolRequestMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.HistoryMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.AdminMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.AdminDepartmentsMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.AdminRolesMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -38,7 +39,6 @@
             this.ListItemsMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.AdminProtocolEventsButton = new System.Windows.Forms.ToolStripMenuItem();
             this.MainPanel = new System.Windows.Forms.Panel();
-            this.HistoryMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -49,12 +49,12 @@
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.HomeMenuItem,
             this.ProtocolRequestMenuItem,
-            this.AdminMenuItem,
-            this.HistoryMenuItem});
+            this.HistoryMenuItem,
+            this.AdminMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(6, 10, 0, 10);
-            this.menuStrip1.Size = new System.Drawing.Size(809, 41);
+            this.menuStrip1.Size = new System.Drawing.Size(1184, 41);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -73,6 +73,14 @@
             this.ProtocolRequestMenuItem.Size = new System.Drawing.Size(145, 21);
             this.ProtocolRequestMenuItem.Text = "PROTOCOL REQUEST";
             this.ProtocolRequestMenuItem.Click += new System.EventHandler(this.ProtocolRequestMenuItem_Click);
+            // 
+            // HistoryMenuItem
+            // 
+            this.HistoryMenuItem.ForeColor = System.Drawing.Color.White;
+            this.HistoryMenuItem.Name = "HistoryMenuItem";
+            this.HistoryMenuItem.Size = new System.Drawing.Size(71, 21);
+            this.HistoryMenuItem.Text = "HISTORY";
+            this.HistoryMenuItem.Click += new System.EventHandler(this.HistoryMenuItem_Click);
             // 
             // AdminMenuItem
             // 
@@ -127,29 +135,21 @@
             this.MainPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.MainPanel.Location = new System.Drawing.Point(0, 41);
             this.MainPanel.Name = "MainPanel";
-            this.MainPanel.Size = new System.Drawing.Size(809, 771);
+            this.MainPanel.Size = new System.Drawing.Size(1184, 771);
             this.MainPanel.TabIndex = 1;
-            // 
-            // HistoryMenuItem
-            // 
-            this.HistoryMenuItem.ForeColor = System.Drawing.Color.White;
-            this.HistoryMenuItem.Name = "HistoryMenuItem";
-            this.HistoryMenuItem.Size = new System.Drawing.Size(71, 21);
-            this.HistoryMenuItem.Text = "HISTORY";
             // 
             // MainView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(809, 812);
+            this.ClientSize = new System.Drawing.Size(1184, 812);
             this.Controls.Add(this.MainPanel);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
-            this.MinimumSize = new System.Drawing.Size(825, 850);
+            this.MinimumSize = new System.Drawing.Size(1150, 850);
             this.Name = "MainView";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "TPM - Toxikon Protocol Manager";
-            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);

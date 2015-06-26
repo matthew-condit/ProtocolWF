@@ -91,9 +91,9 @@
     <Compile Include="Interfaces\Admin\IRoleListView.cs" />
     <Compile Include="Interfaces\Admin\IUserEditView.cs" />
     <Compile Include="Interfaces\Admin\IUserListView.cs" />
-    <Compile Include="Models\AuditItem.cs" />
-    <Compile Include="Models\Comment.cs" />
-    <Compile Include="Models\ErrorHandler.cs" />
+    <Compile Include="Models\Admin\AuditItem.cs" />
+    <Compile Include="Models\Protocols\Comment.cs" />
+    <Compile Include="Models\Admin\ErrorHandler.cs" />
     <Compile Include="Models\ListItem.cs" />
     <Compile Include="Models\ListNames.cs" />
     <Compile Include="Models\ListViewPopupItemTypes.cs" />
@@ -104,8 +104,9 @@
     <Compile Include="Models\Reports\ExcelDataTable.cs" />
     <Compile Include="Models\Reports\ExcelTemplate.cs" />
     <Compile Include="Models\Reports\ProtocolRequestReport.cs" />
-    <Compile Include="Models\RequestStatuses.cs" />
+    <Compile Include="Models\Protocols\RequestStatuses.cs" />
     <Compile Include="Models\Protocols\ProtocolEventTypes.cs" />
+    <Compile Include="Models\Admin\UserRoles.cs" />
     <Compile Include="Queries\QListItems.cs" />
     <Compile Include="Queries\QProtocolActivities.cs" />
     <Compile Include="Queries\QProtocolComments.cs" />
@@ -196,12 +197,12 @@
       <DependentUpon>MainView.cs</DependentUpon>
     </Compile>
     <Compile Include="Interfaces\Protocols\IProtocolRequestAddView.cs" />
-    <Compile Include="Models\Department.cs" />
-    <Compile Include="Models\LoginInfo.cs" />
+    <Compile Include="Models\Admin\Department.cs" />
+    <Compile Include="Models\Admin\LoginInfo.cs" />
     <Compile Include="Models\Protocols\ProtocolRequest.cs" />
-    <Compile Include="Models\Role.cs" />
-    <Compile Include="Models\SponsorContact.cs" />
-    <Compile Include="Models\User.cs" />
+    <Compile Include="Models\Admin\Role.cs" />
+    <Compile Include="Models\Protocols\SponsorContact.cs" />
+    <Compile Include="Models\Admin\User.cs" />
     <Compile Include="Models\Utility.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

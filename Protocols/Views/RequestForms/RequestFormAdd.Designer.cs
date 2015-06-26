@@ -30,16 +30,6 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RequestFormAdd));
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.flowLayoutPanel4 = new System.Windows.Forms.FlowLayoutPanel();
-            this.AssignedToTextBox = new System.Windows.Forms.TextBox();
-            this.OpenAssignedToOptions = new System.Windows.Forms.Button();
-            this.CommentTextBox = new System.Windows.Forms.TextBox();
-            this.label15 = new System.Windows.Forms.Label();
-            this.BillToTextBox = new System.Windows.Forms.TextBox();
-            this.label14 = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
-            this.DueDateDateTimePicker = new System.Windows.Forms.DateTimePicker();
-            this.label12 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.RequestedDateLabel = new System.Windows.Forms.Label();
             this.RequestedByLabel = new System.Windows.Forms.Label();
@@ -67,7 +57,6 @@
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.ZipCodeLabel = new System.Windows.Forms.Label();
-            this.SendViaTextBox = new System.Windows.Forms.TextBox();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.GuidelinesTextBox = new System.Windows.Forms.TextBox();
             this.OpenGuidelinesOptions = new System.Windows.Forms.Button();
@@ -78,11 +67,22 @@
             this.ProtocolTypeTextBox = new System.Windows.Forms.TextBox();
             this.OpenProtocolTypeOptions = new System.Windows.Forms.Button();
             this.label20 = new System.Windows.Forms.Label();
+            this.flowLayoutPanel4 = new System.Windows.Forms.FlowLayoutPanel();
+            this.AssignedToTextBox = new System.Windows.Forms.TextBox();
+            this.OpenAssignedToOptions = new System.Windows.Forms.Button();
+            this.label15 = new System.Windows.Forms.Label();
+            this.CommentTextBox = new System.Windows.Forms.TextBox();
+            this.label14 = new System.Windows.Forms.Label();
+            this.BillToTextBox = new System.Windows.Forms.TextBox();
+            this.label13 = new System.Windows.Forms.Label();
+            this.SendViaTextBox = new System.Windows.Forms.TextBox();
+            this.label12 = new System.Windows.Forms.Label();
+            this.DueDateDateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.tableLayoutPanel1.SuspendLayout();
-            this.flowLayoutPanel4.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
             this.flowLayoutPanel2.SuspendLayout();
             this.flowLayoutPanel3.SuspendLayout();
+            this.flowLayoutPanel4.SuspendLayout();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -92,15 +92,7 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 115F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 265F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 113F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 332F));
-            this.tableLayoutPanel1.Controls.Add(this.flowLayoutPanel4, 1, 9);
-            this.tableLayoutPanel1.Controls.Add(this.CommentTextBox, 1, 8);
-            this.tableLayoutPanel1.Controls.Add(this.label15, 0, 8);
-            this.tableLayoutPanel1.Controls.Add(this.BillToTextBox, 1, 7);
-            this.tableLayoutPanel1.Controls.Add(this.label14, 0, 7);
-            this.tableLayoutPanel1.Controls.Add(this.label13, 0, 6);
-            this.tableLayoutPanel1.Controls.Add(this.DueDateDateTimePicker, 1, 5);
-            this.tableLayoutPanel1.Controls.Add(this.label12, 0, 5);
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 335F));
             this.tableLayoutPanel1.Controls.Add(this.label1, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.RequestedDateLabel, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.RequestedByLabel, 1, 1);
@@ -128,11 +120,19 @@
             this.tableLayoutPanel1.Controls.Add(this.label7, 2, 5);
             this.tableLayoutPanel1.Controls.Add(this.label8, 2, 6);
             this.tableLayoutPanel1.Controls.Add(this.ZipCodeLabel, 3, 6);
-            this.tableLayoutPanel1.Controls.Add(this.SendViaTextBox, 1, 6);
             this.tableLayoutPanel1.Controls.Add(this.flowLayoutPanel1, 1, 2);
             this.tableLayoutPanel1.Controls.Add(this.flowLayoutPanel2, 1, 3);
             this.tableLayoutPanel1.Controls.Add(this.flowLayoutPanel3, 1, 4);
-            this.tableLayoutPanel1.Controls.Add(this.label20, 0, 9);
+            this.tableLayoutPanel1.Controls.Add(this.label20, 0, 5);
+            this.tableLayoutPanel1.Controls.Add(this.flowLayoutPanel4, 1, 5);
+            this.tableLayoutPanel1.Controls.Add(this.label15, 0, 9);
+            this.tableLayoutPanel1.Controls.Add(this.CommentTextBox, 1, 9);
+            this.tableLayoutPanel1.Controls.Add(this.label14, 0, 8);
+            this.tableLayoutPanel1.Controls.Add(this.BillToTextBox, 1, 8);
+            this.tableLayoutPanel1.Controls.Add(this.label13, 0, 7);
+            this.tableLayoutPanel1.Controls.Add(this.SendViaTextBox, 1, 7);
+            this.tableLayoutPanel1.Controls.Add(this.label12, 0, 6);
+            this.tableLayoutPanel1.Controls.Add(this.DueDateDateTimePicker, 1, 6);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -147,105 +147,8 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(800, 325);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(800, 315);
             this.tableLayoutPanel1.TabIndex = 1;
-            // 
-            // flowLayoutPanel4
-            // 
-            this.flowLayoutPanel4.Controls.Add(this.AssignedToTextBox);
-            this.flowLayoutPanel4.Controls.Add(this.OpenAssignedToOptions);
-            this.flowLayoutPanel4.Location = new System.Drawing.Point(117, 280);
-            this.flowLayoutPanel4.Margin = new System.Windows.Forms.Padding(0);
-            this.flowLayoutPanel4.Name = "flowLayoutPanel4";
-            this.flowLayoutPanel4.Size = new System.Drawing.Size(259, 30);
-            this.flowLayoutPanel4.TabIndex = 49;
-            // 
-            // AssignedToTextBox
-            // 
-            this.AssignedToTextBox.BackColor = System.Drawing.Color.White;
-            this.AssignedToTextBox.Location = new System.Drawing.Point(3, 3);
-            this.AssignedToTextBox.Name = "AssignedToTextBox";
-            this.AssignedToTextBox.ReadOnly = true;
-            this.AssignedToTextBox.Size = new System.Drawing.Size(232, 25);
-            this.AssignedToTextBox.TabIndex = 22;
-            // 
-            // OpenAssignedToOptions
-            // 
-            this.OpenAssignedToOptions.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("OpenAssignedToOptions.BackgroundImage")));
-            this.OpenAssignedToOptions.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.OpenAssignedToOptions.Location = new System.Drawing.Point(238, 5);
-            this.OpenAssignedToOptions.Margin = new System.Windows.Forms.Padding(0, 5, 0, 0);
-            this.OpenAssignedToOptions.Name = "OpenAssignedToOptions";
-            this.OpenAssignedToOptions.Size = new System.Drawing.Size(20, 20);
-            this.OpenAssignedToOptions.TabIndex = 6;
-            this.OpenAssignedToOptions.UseVisualStyleBackColor = true;
-            this.OpenAssignedToOptions.Click += new System.EventHandler(this.OpenAssignedToOptions_Click);
-            // 
-            // CommentTextBox
-            // 
-            this.CommentTextBox.Location = new System.Drawing.Point(120, 252);
-            this.CommentTextBox.Name = "CommentTextBox";
-            this.CommentTextBox.Size = new System.Drawing.Size(232, 25);
-            this.CommentTextBox.TabIndex = 20;
-            // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label15.Location = new System.Drawing.Point(4, 249);
-            this.label15.Name = "label15";
-            this.label15.Padding = new System.Windows.Forms.Padding(0, 5, 0, 5);
-            this.label15.Size = new System.Drawing.Size(81, 27);
-            this.label15.TabIndex = 19;
-            this.label15.Text = "Comments: ";
-            // 
-            // BillToTextBox
-            // 
-            this.BillToTextBox.Location = new System.Drawing.Point(120, 221);
-            this.BillToTextBox.Name = "BillToTextBox";
-            this.BillToTextBox.Size = new System.Drawing.Size(125, 25);
-            this.BillToTextBox.TabIndex = 18;
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.Location = new System.Drawing.Point(4, 218);
-            this.label14.Name = "label14";
-            this.label14.Padding = new System.Windows.Forms.Padding(0, 5, 0, 5);
-            this.label14.Size = new System.Drawing.Size(51, 27);
-            this.label14.TabIndex = 17;
-            this.label14.Text = "Bill To: ";
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.Location = new System.Drawing.Point(4, 187);
-            this.label13.Name = "label13";
-            this.label13.Padding = new System.Windows.Forms.Padding(0, 5, 0, 5);
-            this.label13.Size = new System.Drawing.Size(36, 27);
-            this.label13.TabIndex = 15;
-            this.label13.Text = "VIA: ";
-            // 
-            // DueDateDateTimePicker
-            // 
-            this.DueDateDateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.DueDateDateTimePicker.Location = new System.Drawing.Point(120, 159);
-            this.DueDateDateTimePicker.Name = "DueDateDateTimePicker";
-            this.DueDateDateTimePicker.Size = new System.Drawing.Size(125, 25);
-            this.DueDateDateTimePicker.TabIndex = 14;
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(4, 156);
-            this.label12.Name = "label12";
-            this.label12.Padding = new System.Windows.Forms.Padding(0, 5, 0, 5);
-            this.label12.Size = new System.Drawing.Size(71, 27);
-            this.label12.TabIndex = 13;
-            this.label12.Text = "Due Date: ";
             // 
             // label1
             // 
@@ -532,13 +435,6 @@
             this.ZipCodeLabel.TabIndex = 36;
             this.ZipCodeLabel.Text = "Zip Code";
             // 
-            // SendViaTextBox
-            // 
-            this.SendViaTextBox.Location = new System.Drawing.Point(120, 190);
-            this.SendViaTextBox.Name = "SendViaTextBox";
-            this.SendViaTextBox.Size = new System.Drawing.Size(125, 25);
-            this.SendViaTextBox.TabIndex = 16;
-            // 
             // flowLayoutPanel1
             // 
             this.flowLayoutPanel1.Controls.Add(this.GuidelinesTextBox);
@@ -636,12 +532,116 @@
             // 
             this.label20.AutoSize = true;
             this.label20.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label20.Location = new System.Drawing.Point(4, 280);
+            this.label20.Location = new System.Drawing.Point(4, 156);
             this.label20.Name = "label20";
             this.label20.Padding = new System.Windows.Forms.Padding(0, 5, 0, 5);
             this.label20.Size = new System.Drawing.Size(89, 27);
-            this.label20.TabIndex = 21;
+            this.label20.TabIndex = 13;
             this.label20.Text = "Assigned To: ";
+            // 
+            // flowLayoutPanel4
+            // 
+            this.flowLayoutPanel4.Controls.Add(this.AssignedToTextBox);
+            this.flowLayoutPanel4.Controls.Add(this.OpenAssignedToOptions);
+            this.flowLayoutPanel4.Location = new System.Drawing.Point(117, 156);
+            this.flowLayoutPanel4.Margin = new System.Windows.Forms.Padding(0);
+            this.flowLayoutPanel4.Name = "flowLayoutPanel4";
+            this.flowLayoutPanel4.Size = new System.Drawing.Size(259, 30);
+            this.flowLayoutPanel4.TabIndex = 49;
+            // 
+            // AssignedToTextBox
+            // 
+            this.AssignedToTextBox.BackColor = System.Drawing.Color.White;
+            this.AssignedToTextBox.Location = new System.Drawing.Point(3, 3);
+            this.AssignedToTextBox.Name = "AssignedToTextBox";
+            this.AssignedToTextBox.ReadOnly = true;
+            this.AssignedToTextBox.Size = new System.Drawing.Size(232, 25);
+            this.AssignedToTextBox.TabIndex = 14;
+            // 
+            // OpenAssignedToOptions
+            // 
+            this.OpenAssignedToOptions.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("OpenAssignedToOptions.BackgroundImage")));
+            this.OpenAssignedToOptions.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.OpenAssignedToOptions.Location = new System.Drawing.Point(238, 5);
+            this.OpenAssignedToOptions.Margin = new System.Windows.Forms.Padding(0, 5, 0, 0);
+            this.OpenAssignedToOptions.Name = "OpenAssignedToOptions";
+            this.OpenAssignedToOptions.Size = new System.Drawing.Size(20, 20);
+            this.OpenAssignedToOptions.TabIndex = 15;
+            this.OpenAssignedToOptions.UseVisualStyleBackColor = true;
+            this.OpenAssignedToOptions.Click += new System.EventHandler(this.OpenAssignedToOptions_Click);
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label15.Location = new System.Drawing.Point(4, 280);
+            this.label15.Name = "label15";
+            this.label15.Padding = new System.Windows.Forms.Padding(0, 5, 0, 5);
+            this.label15.Size = new System.Drawing.Size(81, 27);
+            this.label15.TabIndex = 22;
+            this.label15.Text = "Comments: ";
+            // 
+            // CommentTextBox
+            // 
+            this.CommentTextBox.Location = new System.Drawing.Point(120, 283);
+            this.CommentTextBox.Name = "CommentTextBox";
+            this.CommentTextBox.Size = new System.Drawing.Size(232, 25);
+            this.CommentTextBox.TabIndex = 23;
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label14.Location = new System.Drawing.Point(4, 249);
+            this.label14.Name = "label14";
+            this.label14.Padding = new System.Windows.Forms.Padding(0, 5, 0, 5);
+            this.label14.Size = new System.Drawing.Size(51, 27);
+            this.label14.TabIndex = 20;
+            this.label14.Text = "Bill To: ";
+            // 
+            // BillToTextBox
+            // 
+            this.BillToTextBox.Location = new System.Drawing.Point(120, 252);
+            this.BillToTextBox.Name = "BillToTextBox";
+            this.BillToTextBox.Size = new System.Drawing.Size(125, 25);
+            this.BillToTextBox.TabIndex = 21;
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.Location = new System.Drawing.Point(4, 218);
+            this.label13.Name = "label13";
+            this.label13.Padding = new System.Windows.Forms.Padding(0, 5, 0, 5);
+            this.label13.Size = new System.Drawing.Size(36, 27);
+            this.label13.TabIndex = 18;
+            this.label13.Text = "VIA: ";
+            // 
+            // SendViaTextBox
+            // 
+            this.SendViaTextBox.Location = new System.Drawing.Point(120, 221);
+            this.SendViaTextBox.Name = "SendViaTextBox";
+            this.SendViaTextBox.Size = new System.Drawing.Size(125, 25);
+            this.SendViaTextBox.TabIndex = 19;
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.Location = new System.Drawing.Point(4, 187);
+            this.label12.Name = "label12";
+            this.label12.Padding = new System.Windows.Forms.Padding(0, 5, 0, 5);
+            this.label12.Size = new System.Drawing.Size(71, 27);
+            this.label12.TabIndex = 16;
+            this.label12.Text = "Due Date: ";
+            // 
+            // DueDateDateTimePicker
+            // 
+            this.DueDateDateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.DueDateDateTimePicker.Location = new System.Drawing.Point(120, 190);
+            this.DueDateDateTimePicker.Name = "DueDateDateTimePicker";
+            this.DueDateDateTimePicker.Size = new System.Drawing.Size(125, 25);
+            this.DueDateDateTimePicker.TabIndex = 17;
             // 
             // RequestFormAdd
             // 
@@ -652,17 +652,17 @@
             this.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "RequestFormAdd";
-            this.Size = new System.Drawing.Size(800, 325);
+            this.Size = new System.Drawing.Size(800, 315);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
-            this.flowLayoutPanel4.ResumeLayout(false);
-            this.flowLayoutPanel4.PerformLayout();
             this.flowLayoutPanel1.ResumeLayout(false);
             this.flowLayoutPanel1.PerformLayout();
             this.flowLayoutPanel2.ResumeLayout(false);
             this.flowLayoutPanel2.PerformLayout();
             this.flowLayoutPanel3.ResumeLayout(false);
             this.flowLayoutPanel3.PerformLayout();
+            this.flowLayoutPanel4.ResumeLayout(false);
+            this.flowLayoutPanel4.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -670,9 +670,6 @@
         #endregion
 
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel4;
-        private System.Windows.Forms.TextBox AssignedToTextBox;
-        private System.Windows.Forms.Button OpenAssignedToOptions;
         private System.Windows.Forms.TextBox CommentTextBox;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.TextBox BillToTextBox;
@@ -685,28 +682,18 @@
         private System.Windows.Forms.Label RequestedByLabel;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label16;
-        private System.Windows.Forms.Label EmailLabel;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label SponsorContactLabel;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label SponsorNameLabel;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label AddressLabel;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.Label label18;
-        private System.Windows.Forms.Label StateLabel;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label CityLabel;
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.Label POLabel;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.Label FaxNumberLabel;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Label PhoneNumberLabel;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Label ZipCodeLabel;
         private System.Windows.Forms.TextBox SendViaTextBox;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private System.Windows.Forms.TextBox GuidelinesTextBox;
@@ -718,5 +705,18 @@
         private System.Windows.Forms.TextBox ProtocolTypeTextBox;
         private System.Windows.Forms.Button OpenProtocolTypeOptions;
         private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.Label EmailLabel;
+        private System.Windows.Forms.Label SponsorContactLabel;
+        private System.Windows.Forms.Label SponsorNameLabel;
+        private System.Windows.Forms.Label AddressLabel;
+        private System.Windows.Forms.Label StateLabel;
+        private System.Windows.Forms.Label CityLabel;
+        private System.Windows.Forms.Label POLabel;
+        private System.Windows.Forms.Label FaxNumberLabel;
+        private System.Windows.Forms.Label PhoneNumberLabel;
+        private System.Windows.Forms.Label ZipCodeLabel;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel4;
+        private System.Windows.Forms.TextBox AssignedToTextBox;
+        private System.Windows.Forms.Button OpenAssignedToOptions;
     }
 }

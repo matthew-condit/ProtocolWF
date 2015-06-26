@@ -15,7 +15,9 @@ namespace Toxikon.ProtocolManager.Interfaces
         void AddItemToRequestedByComboBox(ListItem item);
         void SetRequestedByComboBox_SelectedIndex(int index);
         void AddItemToListView(ProtocolRequest request);
+        void ClearListView();
 
         ProtocolRequestReadOnlyView GetRequestView { get; }
+        string SearchLableText { get; set; }
     }
 }

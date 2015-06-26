@@ -39,21 +39,31 @@ namespace Toxikon.ProtocolManager.Controllers.Protocols
             {
                 if (view.EventDescription.Trim() == "" || view.EventType.Trim() == "")
                 {
-                    view.SetDialogResult(DialogResult.Retry);
-                    ShowMessage("All fields are required.");
+                    CancelSubmitEvent();
                 }
                 else
                 {
-                    this.ProtocolEvent.Type = view.EventType;
-                    this.ProtocolEvent.Description = view.EventDescription;
-                    this.ProtocolEvent.IsActive = view.IsActive;
-                    view.SetDialogResult(DialogResult.OK);
+                    SubmitForm();
                 }
             }
             catch (Exception e)
             {
                 ShowMessage(e.Message);
             }
+        }
+
+        private void CancelSubmitEvent()
+        {
+            view.SetDialogResult(DialogResult.Retry);
+            ShowMessage("All fields are required.");
+        }
+
+        private void SubmitForm()
+        {
+            this.ProtocolEvent.Type = view.EventType;
+            this.ProtocolEvent.Description = view.EventDescription;
+            this.ProtocolEvent.IsActive = view.IsActive;
+            view.SetDialogResult(DialogResult.OK);
         }
 
         private void ShowMessage(string message)

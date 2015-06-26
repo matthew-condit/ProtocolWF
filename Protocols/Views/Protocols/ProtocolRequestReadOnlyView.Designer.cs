@@ -35,7 +35,6 @@
             this.DownloadReportButton = new System.Windows.Forms.ToolStripButton();
             this.panel1 = new System.Windows.Forms.Panel();
             this.BottomPanel = new System.Windows.Forms.Panel();
-            this.RequestForm = new Toxikon.ProtocolManager.Views.RequestForms.RequestFormReadOnly();
             this.TitlesListView = new System.Windows.Forms.ListView();
             this.TitleCol = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.StatusCol = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -43,6 +42,7 @@
             this.UserNameCol = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.CommentsCol = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.ProtocolNumberCol = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.RequestForm = new Toxikon.ProtocolManager.Views.RequestForms.RequestFormReadOnly();
             this.toolStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.BottomPanel.SuspendLayout();
@@ -118,36 +118,6 @@
             this.BottomPanel.Size = new System.Drawing.Size(850, 364);
             this.BottomPanel.TabIndex = 46;
             // 
-            // RequestForm
-            // 
-            this.RequestForm.Address = "Address";
-            this.RequestForm.AssignedTo = "Assigned To";
-            this.RequestForm.BackColor = System.Drawing.Color.White;
-            this.RequestForm.BillTo = "Bill To";
-            this.RequestForm.City = "City";
-            this.RequestForm.Comments = "Comments";
-            this.RequestForm.Compliance = "Compliance";
-            this.RequestForm.ContactName = "Contact";
-            this.RequestForm.DueDate = new System.DateTime(2015, 6, 25, 0, 0, 0, 0);
-            this.RequestForm.Email = "Email";
-            this.RequestForm.FaxNumber = "Fax";
-            this.RequestForm.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.RequestForm.Guidelines = "Guidelines";
-            this.RequestForm.Location = new System.Drawing.Point(4, 4);
-            this.RequestForm.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.RequestForm.Name = "RequestForm";
-            this.RequestForm.PhoneNumber = "Phone Number";
-            this.RequestForm.PONumber = "PO";
-            this.RequestForm.ProtocolType = "Protocol Type";
-            this.RequestForm.RequestedBy = "Requested By";
-            this.RequestForm.RequestedDate = "Requested Date";
-            this.RequestForm.SendVia = "Via";
-            this.RequestForm.Size = new System.Drawing.Size(800, 325);
-            this.RequestForm.SponsorName = "Sponsor";
-            this.RequestForm.State = "State";
-            this.RequestForm.TabIndex = 0;
-            this.RequestForm.ZipCode = "Zip Code";
-            // 
             // TitlesListView
             // 
             this.TitlesListView.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -196,6 +166,38 @@
             // ProtocolNumberCol
             // 
             this.ProtocolNumberCol.Text = "Protocol Number";
+            // 
+            // RequestForm
+            // 
+            this.RequestForm.Address = "Address";
+            this.RequestForm.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.RequestForm.AssignedTo = "Assigned To";
+            this.RequestForm.BackColor = System.Drawing.Color.White;
+            this.RequestForm.BillTo = "Bill To";
+            this.RequestForm.City = "City";
+            this.RequestForm.Comments = "Comments";
+            this.RequestForm.Compliance = "Compliance";
+            this.RequestForm.ContactName = "Contact";
+            this.RequestForm.DueDate = new System.DateTime(2015, 6, 25, 0, 0, 0, 0);
+            this.RequestForm.Email = "Email";
+            this.RequestForm.FaxNumber = "Fax";
+            this.RequestForm.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.RequestForm.Guidelines = "Guidelines";
+            this.RequestForm.Location = new System.Drawing.Point(3, 0);
+            this.RequestForm.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.RequestForm.Name = "RequestForm";
+            this.RequestForm.PhoneNumber = "Phone Number";
+            this.RequestForm.PONumber = "PO";
+            this.RequestForm.ProtocolType = "Protocol Type";
+            this.RequestForm.RequestedBy = "Requested By";
+            this.RequestForm.RequestedDate = "Requested Date";
+            this.RequestForm.SendVia = "Via";
+            this.RequestForm.Size = new System.Drawing.Size(844, 314);
+            this.RequestForm.SponsorName = "Sponsor";
+            this.RequestForm.State = "State";
+            this.RequestForm.TabIndex = 0;
+            this.RequestForm.ZipCode = "Zip Code";
             // 
             // ProtocolRequestReadOnlyView
             // 

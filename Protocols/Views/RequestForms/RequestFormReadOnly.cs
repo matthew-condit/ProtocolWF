@@ -33,6 +33,8 @@ namespace Toxikon.ProtocolManager.Views.RequestForms
 
         public void ClearView()
         {
+            this.RequestedBy = "";
+            this.RequestedDateLabel.Text = "";
             this.ContactName = "";
             this.SponsorName = "";
             this.Email = "";
@@ -46,9 +48,9 @@ namespace Toxikon.ProtocolManager.Views.RequestForms
             this.Guidelines = "";
             this.Compliance = "";
             this.ProtocolType = "";
-            this.DueDate = DateTime.Now;
+            this.DueDateLabel.Text = "";
             this.SendVia = "";
-            this.BillTo = "Toxikon";
+            this.BillTo = "";
             this.Comments = "";
             this.AssignedToLabel.Text = "";
         }

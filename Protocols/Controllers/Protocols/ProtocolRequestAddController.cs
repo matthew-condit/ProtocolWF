@@ -49,15 +49,20 @@ namespace Toxikon.ProtocolManager.Controllers.Protocols
             }
             else
             {
-                sponsorContacts = QMatrix.GetSponsorContacts(this.view.SearchSponsorName);
-                if(sponsorContacts.Count == 0)
-                {
-                    MessageBox.Show("No record found.");
-                }
-                else
-                {
-                    AddSponsorContactsToView();
-                }
+                DoSearch();
+            }
+        }
+
+        private void DoSearch()
+        {
+            sponsorContacts = QMatrix.GetSponsorContacts(this.view.SearchSponsorName);
+            if (sponsorContacts.Count == 0)
+            {
+                MessageBox.Show("No record found.");
+            }
+            else
+            {
+                AddSponsorContactsToView();
             }
         }
 
@@ -80,9 +85,7 @@ namespace Toxikon.ProtocolManager.Controllers.Protocols
 
         public void SubmitButtonClicked()
         {
-            this.requestFormController.UpdateRequestWithViewValues();
-            this.request.SetTitles(this.view.Titles);
-
+            UpdateRequestWithViewValues();
             if (this.request.Contact.SponsorCode == String.Empty)
             {
                 MessageBox.Show("No sponsor selected.");
@@ -93,15 +96,25 @@ namespace Toxikon.ProtocolManager.Controllers.Protocols
             }
             else
             {
-                DialogResult dialogResult = ShowConfirmation();
-                if (dialogResult == DialogResult.Yes)
-                {
-                    this.requestFormController.SubmitRequest();
-                    this.requestFormController.ClearForm();
-                    this.Clear();
-                    MessageBox.Show("Submitted!");
-                }
+                SubmitFormWithConfirmation();
+            }
+        }
 
+        private void UpdateRequestWithViewValues()
+        {
+            this.requestFormController.UpdateRequestWithViewValues();
+            this.request.SetTitles(this.view.Titles);
+        }
+
+        private void SubmitFormWithConfirmation()
+        {
+            DialogResult dialogResult = ShowConfirmation();
+            if (dialogResult == DialogResult.Yes)
+            {
+                this.requestFormController.SubmitRequest();
+                this.requestFormController.ClearForm();
+                this.Clear();
+                MessageBox.Show("Submitted!");
             }
         }
 

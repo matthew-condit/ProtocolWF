@@ -339,7 +339,7 @@ namespace Toxikon.ProtocolManager.Controllers.Protocols
                                         MessageBoxIcon.Question);
             if(dialogResult == DialogResult.Yes)
             {
-                this.protocolRequest.Close();
+                this.protocolRequest.CloseRequest();
                 QProtocolRequests.UpdateRequestStatus(this.protocolRequest, loginInfo.UserName);
                 MainView mainView = (MainView)this.view.ParentControl;
                 mainView.Invoke(mainView.LoadProtocolRequestViewDelegate, new object[] { this.protocolRequest });

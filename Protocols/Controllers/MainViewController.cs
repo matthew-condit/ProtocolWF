@@ -143,5 +143,14 @@ namespace Toxikon.ProtocolManager.Controllers
 
             view.AddControlToMainPanel(subView);
         }
+
+        public void LoadHistoryView()
+        {
+            HistoryView subView = new HistoryView();
+            HistoryController subViewController = new HistoryController(subView);
+            subViewController.LoadView();
+
+            view.AddControlToMainPanel(subView);
+        }
     }
 }

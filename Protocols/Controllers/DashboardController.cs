@@ -35,14 +35,14 @@ namespace Toxikon.ProtocolManager.Controllers
             LoginInfo loginInfo = LoginInfo.GetInstance();
             switch(loginInfo.Role.RoleID)
             {
-                case 1://IT
-                    this.protocolRequests = QProtocolRequests.GetActiveProtocolRequests();
+                case UserRoles.IT:
+                    this.protocolRequests = QProtocolRequests.SelectAllNewRequests();
                     break;
-                case 2://CSR
-                    this.protocolRequests = QProtocolRequests.SelectProtocolRequestByRequestedBy(loginInfo.UserName);
+                case UserRoles.CSR:
+                    this.protocolRequests = QProtocolRequests.Select_New_RequestedBy_Requests(loginInfo.UserName);
                     break;
-                case 3://Doc Control
-                    this.protocolRequests = QProtocolRequests.SelectProtocolRequestByAssignedTo(loginInfo.UserName);
+                case UserRoles.DocControl:
+                    this.protocolRequests = QProtocolRequests.Select_New_AssignedTo_Requests(loginInfo.UserName);
                     break;
                 default:
                     break;

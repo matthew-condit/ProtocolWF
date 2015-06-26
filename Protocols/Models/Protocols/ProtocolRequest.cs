@@ -92,7 +92,7 @@ namespace Toxikon.ProtocolManager.Models
             this.Titles = (List<ProtocolTitle>)QProtocolTitles.SelectByRequestID(this.ID);
         }
        
-        public void Close()
+        public void CloseRequest()
         {
             this.RequestStatus = RequestStatuses.Closed;
             this.IsActive = false;

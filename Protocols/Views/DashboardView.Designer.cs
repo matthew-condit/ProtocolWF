@@ -91,21 +91,21 @@
             // 
             // RequestedDateCol
             // 
-            this.RequestedDateCol.FillWeight = 30F;
+            this.RequestedDateCol.FillWeight = 40F;
             this.RequestedDateCol.HeaderText = "Requested Date";
             this.RequestedDateCol.Name = "RequestedDateCol";
             this.RequestedDateCol.ReadOnly = true;
             // 
             // RequestedByCol
             // 
-            this.RequestedByCol.FillWeight = 30F;
+            this.RequestedByCol.FillWeight = 40F;
             this.RequestedByCol.HeaderText = "Requested By";
             this.RequestedByCol.Name = "RequestedByCol";
             this.RequestedByCol.ReadOnly = true;
             // 
             // SponsorCol
             // 
-            this.SponsorCol.FillWeight = 240F;
+            this.SponsorCol.FillWeight = 220F;
             this.SponsorCol.HeaderText = "Sponsor";
             this.SponsorCol.Name = "SponsorCol";
             this.SponsorCol.ReadOnly = true;

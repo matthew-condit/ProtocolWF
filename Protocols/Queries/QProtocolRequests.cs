@@ -79,31 +79,17 @@ namespace Toxikon.ProtocolManager.Queries
             return results;
         }
 
-        public static IList GetActiveProtocolRequests()
+        public static IList SelectAllNewRequests()
         {
             IList results = new ArrayList();
             try
             {
-                string query = @"SELECT ProtocolRequests.ID, ProtocolRequests.SponsorCode, 
-                                        ProtocolRequests.Guidelines, ProtocolRequests.Compliance, 
-                                        ProtocolRequests.ProtocolType, ProtocolRequests.DueDate, 
-                                        ProtocolRequests.SendVia, ProtocolRequests.BillTo,
-                                        ProtocolRequests.Comments,
-                                        ProtocolRequests.AssignedTo, 
-                                        ProtocolRequests.RequestStatus, Users.FullName,
-		                                ProtocolRequests.RequestedDate, ProtocolRequests.UpdatedBy, 
-                                        ProtocolRequests.UpdatedDate
-	                             FROM ProtocolRequests
-                                 INNER JOIN Users
-                                 ON ProtocolRequests.RequestedBy = Users.UserName
-	                             WHERE ProtocolRequests.IsActive = 1
-                                 ORDER BY ProtocolRequests.RequestedDate DESC";
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
                     connection.Open();
-                    using (SqlCommand command = new SqlCommand(query, connection))
+                    using (SqlCommand command = new SqlCommand("pr_admin_select_new_requests", connection))
                     {
-                        command.CommandType = CommandType.Text;
+                        command.CommandType = CommandType.StoredProcedure;
 
                         SqlDataReader reader = command.ExecuteReader();
                         while (reader.Read())
@@ -116,37 +102,22 @@ namespace Toxikon.ProtocolManager.Queries
             }
             catch (SqlException e)
             {
-                ErrorHandler.CreateLogFile(ErrorFormName, "GetActiveProtocolRequests", e);
+                ErrorHandler.CreateLogFile(ErrorFormName, "SelectAllNewRequests", e);
             }
             return results;
         }
 
-        public static IList SelectProtocolRequestByRequestedBy(string userName)
+        public static IList Select_New_RequestedBy_Requests(string userName)
         {
             IList results = new ArrayList();
             try
             {
-                string query = @"SELECT ProtocolRequests.ID, ProtocolRequests.SponsorCode, 
-                                        ProtocolRequests.Guidelines, ProtocolRequests.Compliance, 
-                                        ProtocolRequests.ProtocolType, ProtocolRequests.DueDate, 
-                                        ProtocolRequests.SendVia, ProtocolRequests.BillTo,
-                                        ProtocolRequests.Comments,
-                                        ProtocolRequests.AssignedTo, 
-                                        ProtocolRequests.RequestStatus, Users.FullName,
-		                                ProtocolRequests.RequestedDate, ProtocolRequests.UpdatedBy, 
-                                        ProtocolRequests.UpdatedDate
-	                             FROM ProtocolRequests
-                                 INNER JOIN Users
-                                 ON ProtocolRequests.RequestedBy = Users.UserName
-	                             WHERE ProtocolRequests.IsActive = 1
-                                 AND ProtocolRequests.RequestedBy = @RequestedBy
-                                 ORDER BY ProtocolRequests.RequestedDate DESC";
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
                     connection.Open();
-                    using (SqlCommand command = new SqlCommand(query, connection))
+                    using (SqlCommand command = new SqlCommand("pr_select_new_requestedby_requests", connection))
                     {
-                        command.CommandType = CommandType.Text;
+                        command.CommandType = CommandType.StoredProcedure;
                         command.Parameters.Add("@RequestedBy", SqlDbType.NVarChar).Value = userName;
                         SqlDataReader reader = command.ExecuteReader();
                         while (reader.Read())
@@ -164,32 +135,17 @@ namespace Toxikon.ProtocolManager.Queries
             return results;
         }
 
-        public static IList SelectProtocolRequestByAssignedTo(string userName)
+        public static IList Select_New_AssignedTo_Requests(string userName)
         {
             IList results = new ArrayList();
             try
             {
-                string query = @"SELECT ProtocolRequests.ID, ProtocolRequests.SponsorCode, 
-                                        ProtocolRequests.Guidelines, ProtocolRequests.Compliance, 
-                                        ProtocolRequests.ProtocolType, ProtocolRequests.DueDate, 
-                                        ProtocolRequests.SendVia, ProtocolRequests.BillTo,
-                                        ProtocolRequests.Comments,
-                                        ProtocolRequests.AssignedTo, 
-                                        ProtocolRequests.RequestStatus, Users.FullName,
-		                                ProtocolRequests.RequestedDate, ProtocolRequests.UpdatedBy, 
-                                        ProtocolRequests.UpdatedDate
-	                             FROM ProtocolRequests
-                                 INNER JOIN Users
-                                 ON ProtocolRequests.RequestedBy = Users.UserName
-	                             WHERE ProtocolRequests.IsActive = 1
-                                 AND ProtocolRequests.AssignedTo = @UserName
-                                 ORDER BY ProtocolRequests.RequestedDate DESC";
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
                     connection.Open();
-                    using (SqlCommand command = new SqlCommand(query, connection))
+                    using (SqlCommand command = new SqlCommand("pr_select_new_assignedto_requests", connection))
                     {
-                        command.CommandType = CommandType.Text;
+                        command.CommandType = CommandType.StoredProcedure;
                         command.Parameters.Add("@UserName", SqlDbType.NVarChar).Value = userName;
                         SqlDataReader reader = command.ExecuteReader();
                         while (reader.Read())
@@ -203,6 +159,65 @@ namespace Toxikon.ProtocolManager.Queries
             catch (SqlException e)
             {
                 ErrorHandler.CreateLogFile(ErrorFormName, "SelectProtocolRequestByAssignedTo", e);
+            }
+            return results;
+        }
+
+        public static IList SelectClosedRequests(string requestedBy, string assignedTo)
+        {
+            IList results = new ArrayList();
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    connection.Open();
+                    using (SqlCommand command = new SqlCommand("pr_select_closed_requests", connection))
+                    {
+                        command.CommandType = CommandType.StoredProcedure;
+                        command.Parameters.Add("@RequestedBy", SqlDbType.NVarChar).Value = requestedBy;
+                        command.Parameters.Add("@AssignedTo", SqlDbType.NVarChar).Value = assignedTo;
+
+                        SqlDataReader reader = command.ExecuteReader();
+                        while (reader.Read())
+                        {
+                            ProtocolRequest request = CreateNewProtocolRequest(reader);
+                            results.Add(request);
+                        }
+                    }
+                }
+            }
+            catch (SqlException e)
+            {
+                ErrorHandler.CreateLogFile(ErrorFormName, "SelectClosedRequests", e);
+            }
+            return results;
+        }
+
+        public static IList AdminSelectClosedRequests(string requestedBy)
+        {
+            IList results = new ArrayList();
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    connection.Open();
+                    using (SqlCommand command = new SqlCommand("pr_admin_select_closed_requests", connection))
+                    {
+                        command.CommandType = CommandType.StoredProcedure;
+                        command.Parameters.Add("@RequestedBy", SqlDbType.NVarChar).Value = requestedBy;
+
+                        SqlDataReader reader = command.ExecuteReader();
+                        while (reader.Read())
+                        {
+                            ProtocolRequest request = CreateNewProtocolRequest(reader);
+                            results.Add(request);
+                        }
+                    }
+                }
+            }
+            catch (SqlException e)
+            {
+                ErrorHandler.CreateLogFile(ErrorFormName, "AdminSelectClosedRequests", e);
             }
             return results;
         }

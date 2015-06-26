@@ -27,6 +27,13 @@ namespace Toxikon.ProtocolManager.Views
         {
             this.controller = controller;
         }
+
+        public string SearchLableText
+        {
+            get { return this.SearchLabel.Text; }
+            set { this.SearchLabel.Text = value; }
+        }
+
         public void AddItemToRequestedByComboBox(ListItem item)
         {
             this.RequestedByComboBox.Items.Add(item.ItemName);
@@ -41,6 +48,11 @@ namespace Toxikon.ProtocolManager.Views
         {
             ListViewItem item = this.RequestListView.Items.Add(request.RequestedDate.ToString("MM/dd/yyyy"));
             item.SubItems.Add(request.Contact.SponsorName);
+        }
+
+        public void ClearListView()
+        {
+            this.RequestListView.Items.Clear();
         }
 
         public ProtocolRequestReadOnlyView GetRequestView

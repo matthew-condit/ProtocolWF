@@ -29,6 +29,7 @@ namespace Toxikon.ProtocolManager.Controllers.Protocols
             this.view.SetController(this);
             loginInfo = LoginInfo.GetInstance();
             this.requestFormController = new RequestFormController(this.view.GetRequestForm);
+            requestFormController.ClearForm();
         }
 
         public void LoadView(ProtocolRequest protocolRequest)
@@ -37,6 +38,12 @@ namespace Toxikon.ProtocolManager.Controllers.Protocols
             this.sponsor = protocolRequest.Contact;
             this.requestFormController.LoadView(this.protocolRequest);
             this.RefreshTitleListView();
+        }
+
+        public void ClearView()
+        {
+            this.requestFormController.ClearForm();
+            this.view.ClearView();
         }
 
         private void AddTilesToView()
