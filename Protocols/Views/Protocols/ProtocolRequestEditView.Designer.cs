@@ -38,9 +38,9 @@
             this.RevisedProtocolButton = new System.Windows.Forms.ToolStripButton();
             this.ViewEventsButton = new System.Windows.Forms.ToolStripButton();
             this.ViewCommentsButton = new System.Windows.Forms.ToolStripButton();
+            this.UpdateFilePathButton = new System.Windows.Forms.ToolStripButton();
             this.panel1 = new System.Windows.Forms.Panel();
             this.BottomPanel = new System.Windows.Forms.Panel();
-            this.RequestForm = new Toxikon.ProtocolManager.Views.RequestForms.RequestFormEdit();
             this.toolStrip2 = new System.Windows.Forms.ToolStrip();
             this.SaveChangesButton = new System.Windows.Forms.ToolStripButton();
             this.CloseRequestButton = new System.Windows.Forms.ToolStripButton();
@@ -52,6 +52,10 @@
             this.UserNameCol = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.CommentsCol = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.ProtocolNumberCol = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.FileNameCol = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
+            this.OpenFileButton = new System.Windows.Forms.ToolStripButton();
+            this.RequestForm = new Toxikon.ProtocolManager.Views.RequestForms.RequestFormEdit();
             this.toolStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.BottomPanel.SuspendLayout();
@@ -67,14 +71,16 @@
             this.AddTitleButton,
             this.EditTitleButton,
             this.AddEventButton,
+            this.ViewEventsButton,
             this.AddCommentButton,
+            this.ViewCommentsButton,
             this.AddProtocolNumber,
             this.RevisedProtocolButton,
-            this.ViewEventsButton,
-            this.ViewCommentsButton});
+            this.UpdateFilePathButton,
+            this.OpenFileButton});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(850, 38);
+            this.toolStrip1.Size = new System.Drawing.Size(896, 38);
             this.toolStrip1.TabIndex = 0;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -160,6 +166,16 @@
             this.ViewCommentsButton.ToolTipText = "View All Comments of Selected Protocol";
             this.ViewCommentsButton.Click += new System.EventHandler(this.ViewCommentsButton_Click);
             // 
+            // UpdateFilePathButton
+            // 
+            this.UpdateFilePathButton.Image = ((System.Drawing.Image)(resources.GetObject("UpdateFilePathButton.Image")));
+            this.UpdateFilePathButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.UpdateFilePathButton.Name = "UpdateFilePathButton";
+            this.UpdateFilePathButton.Size = new System.Drawing.Size(97, 35);
+            this.UpdateFilePathButton.Text = "Update File Path";
+            this.UpdateFilePathButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.UpdateFilePathButton.Click += new System.EventHandler(this.UpdateFilePathButton_Click);
+            // 
             // panel1
             // 
             this.panel1.Controls.Add(this.BottomPanel);
@@ -167,7 +183,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 38);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(850, 732);
+            this.panel1.Size = new System.Drawing.Size(896, 732);
             this.panel1.TabIndex = 45;
             // 
             // BottomPanel
@@ -180,40 +196,8 @@
             this.BottomPanel.Location = new System.Drawing.Point(0, 365);
             this.BottomPanel.Margin = new System.Windows.Forms.Padding(0);
             this.BottomPanel.Name = "BottomPanel";
-            this.BottomPanel.Size = new System.Drawing.Size(850, 364);
+            this.BottomPanel.Size = new System.Drawing.Size(896, 364);
             this.BottomPanel.TabIndex = 46;
-            // 
-            // RequestForm
-            // 
-            this.RequestForm.Address = "Address";
-            this.RequestForm.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.RequestForm.AssignedTo = "";
-            this.RequestForm.BackColor = System.Drawing.Color.White;
-            this.RequestForm.BillTo = "";
-            this.RequestForm.City = "City";
-            this.RequestForm.Comments = "Comments";
-            this.RequestForm.Compliance = "";
-            this.RequestForm.ContactName = "Contact";
-            this.RequestForm.DueDate = new System.DateTime(2015, 6, 25, 8, 50, 10, 872);
-            this.RequestForm.Email = "Email";
-            this.RequestForm.FaxNumber = "Fax";
-            this.RequestForm.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.RequestForm.Guidelines = "";
-            this.RequestForm.Location = new System.Drawing.Point(4, 42);
-            this.RequestForm.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.RequestForm.Name = "RequestForm";
-            this.RequestForm.PhoneNumber = "Phone Number";
-            this.RequestForm.PONumber = "PO";
-            this.RequestForm.ProtocolType = "";
-            this.RequestForm.RequestedBy = "Requested By";
-            this.RequestForm.RequestedDate = "Requested Date";
-            this.RequestForm.SendVia = "";
-            this.RequestForm.Size = new System.Drawing.Size(843, 325);
-            this.RequestForm.SponsorName = "Sponsor";
-            this.RequestForm.State = "State";
-            this.RequestForm.TabIndex = 1;
-            this.RequestForm.ZipCode = "Zip Code";
             // 
             // toolStrip2
             // 
@@ -225,7 +209,7 @@
             this.DownloadReportButton});
             this.toolStrip2.Location = new System.Drawing.Point(0, 0);
             this.toolStrip2.Name = "toolStrip2";
-            this.toolStrip2.Size = new System.Drawing.Size(850, 38);
+            this.toolStrip2.Size = new System.Drawing.Size(896, 38);
             this.toolStrip2.TabIndex = 0;
             this.toolStrip2.Text = "toolStrip2";
             // 
@@ -269,12 +253,13 @@
             this.StatusDate,
             this.UserNameCol,
             this.CommentsCol,
-            this.ProtocolNumberCol});
+            this.ProtocolNumberCol,
+            this.FileNameCol});
             this.TitlesListView.FullRowSelect = true;
             this.TitlesListView.GridLines = true;
             this.TitlesListView.Location = new System.Drawing.Point(3, 9);
             this.TitlesListView.Name = "TitlesListView";
-            this.TitlesListView.Size = new System.Drawing.Size(844, 349);
+            this.TitlesListView.Size = new System.Drawing.Size(890, 349);
             this.TitlesListView.TabIndex = 45;
             this.TitlesListView.UseCompatibleStateImageBehavior = false;
             this.TitlesListView.View = System.Windows.Forms.View.Details;
@@ -308,6 +293,56 @@
             // 
             this.ProtocolNumberCol.Text = "Protocol Number";
             // 
+            // FileNameCol
+            // 
+            this.FileNameCol.Text = "File Name";
+            // 
+            // openFileDialog
+            // 
+            this.openFileDialog.FileName = "openFileDialog1";
+            // 
+            // OpenFileButton
+            // 
+            this.OpenFileButton.Image = ((System.Drawing.Image)(resources.GetObject("OpenFileButton.Image")));
+            this.OpenFileButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.OpenFileButton.Name = "OpenFileButton";
+            this.OpenFileButton.Size = new System.Drawing.Size(61, 35);
+            this.OpenFileButton.Text = "Open File";
+            this.OpenFileButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.OpenFileButton.Click += new System.EventHandler(this.OpenFileButton_Click);
+            // 
+            // RequestForm
+            // 
+            this.RequestForm.Address = "Address";
+            this.RequestForm.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.RequestForm.AssignedTo = "";
+            this.RequestForm.BackColor = System.Drawing.Color.White;
+            this.RequestForm.BillTo = "";
+            this.RequestForm.City = "City";
+            this.RequestForm.Comments = "Comments";
+            this.RequestForm.Compliance = "";
+            this.RequestForm.ContactName = "Contact";
+            this.RequestForm.DueDate = new System.DateTime(2015, 6, 25, 8, 50, 10, 872);
+            this.RequestForm.Email = "Email";
+            this.RequestForm.FaxNumber = "Fax";
+            this.RequestForm.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.RequestForm.Guidelines = "";
+            this.RequestForm.Location = new System.Drawing.Point(4, 42);
+            this.RequestForm.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.RequestForm.Name = "RequestForm";
+            this.RequestForm.PhoneNumber = "Phone Number";
+            this.RequestForm.PONumber = "PO";
+            this.RequestForm.ProtocolType = "";
+            this.RequestForm.RequestedBy = "Requested By";
+            this.RequestForm.RequestedDate = "Requested Date";
+            this.RequestForm.SendVia = "";
+            this.RequestForm.Size = new System.Drawing.Size(889, 325);
+            this.RequestForm.SponsorName = "Sponsor";
+            this.RequestForm.State = "State";
+            this.RequestForm.TabIndex = 1;
+            this.RequestForm.ZipCode = "Zip Code";
+            // 
             // ProtocolRequestEditView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
@@ -317,7 +352,7 @@
             this.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "ProtocolRequestEditView";
-            this.Size = new System.Drawing.Size(850, 770);
+            this.Size = new System.Drawing.Size(896, 770);
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
             this.panel1.ResumeLayout(false);
@@ -355,5 +390,9 @@
         private RequestForms.RequestFormEdit RequestForm;
         private System.Windows.Forms.ToolStripButton CloseRequestButton;
         private System.Windows.Forms.ToolStripButton DownloadReportButton;
+        private System.Windows.Forms.ToolStripButton UpdateFilePathButton;
+        private System.Windows.Forms.OpenFileDialog openFileDialog;
+        private System.Windows.Forms.ColumnHeader FileNameCol;
+        private System.Windows.Forms.ToolStripButton OpenFileButton;
     }
 }

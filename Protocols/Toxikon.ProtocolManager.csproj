@@ -91,7 +91,9 @@
     <Compile Include="Interfaces\Admin\IRoleListView.cs" />
     <Compile Include="Interfaces\Admin\IUserEditView.cs" />
     <Compile Include="Interfaces\Admin\IUserListView.cs" />
+    <Compile Include="Models\Admin\AuditHandler.cs" />
     <Compile Include="Models\Admin\AuditItem.cs" />
+    <Compile Include="Models\Admin\TableNames.cs" />
     <Compile Include="Models\Protocols\Comment.cs" />
     <Compile Include="Models\Admin\ErrorHandler.cs" />
     <Compile Include="Models\ListItem.cs" />
@@ -360,6 +362,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\Open_6296.png" />
     <None Include="Resources\ZoomNeutral_16xlG.png" />
     <None Include="Resources\Security_Shields_Complete_and_ok_16xLG_color.png" />
     <None Include="Resources\move_to_bottom.png" />

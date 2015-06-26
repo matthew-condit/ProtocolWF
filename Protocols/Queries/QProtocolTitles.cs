@@ -120,6 +120,8 @@ namespace Toxikon.ProtocolManager.Queries
                             title.CommentsCount = reader[5].ToString() == "" ? 0 :
                                                   Convert.ToInt32(reader[5].ToString());
                             title.ProtocolNumber = reader[6].ToString();
+                            title.FileName = reader[7].ToString();
+                            title.FilePath = reader[8].ToString();
                             results.Add(title);
                         }
                     }
@@ -130,6 +132,32 @@ namespace Toxikon.ProtocolManager.Queries
                 ErrorHandler.CreateLogFile(ErrorFormName, "SelectByRequestID", e);
             }
             return results;
+        }
+        
+        public static void UpdateFileInfo(ProtocolTitle title, string userName)
+        {
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    connection.Open();
+                    using (SqlCommand command = new SqlCommand("pr_titles_update_fileinfo", connection))
+                    {
+                        command.CommandType = CommandType.StoredProcedure;
+
+                        command.Parameters.Add("@TitleID", SqlDbType.Int).Value = title.ID;
+                        command.Parameters.Add("@FileName", SqlDbType.NVarChar).Value = title.FileName;
+                        command.Parameters.Add("@FilePath", SqlDbType.NVarChar).Value = title.FilePath;
+                        command.Parameters.Add("@UpdatedBy", SqlDbType.NVarChar).Value = userName;
+
+                        int result = command.ExecuteNonQuery();
+                    }
+                }
+            }
+            catch (SqlException e)
+            {
+                ErrorHandler.CreateLogFile(ErrorFormName, "UpdateFileInfo", e);
+            }
         }
     }
 }

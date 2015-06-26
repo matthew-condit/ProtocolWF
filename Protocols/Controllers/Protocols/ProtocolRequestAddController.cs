@@ -55,6 +55,7 @@ namespace Toxikon.ProtocolManager.Controllers.Protocols
 
         private void DoSearch()
         {
+            this.sponsorContacts.Clear();
             sponsorContacts = QMatrix.GetSponsorContacts(this.view.SearchSponsorName);
             if (sponsorContacts.Count == 0)
             {
@@ -62,6 +63,7 @@ namespace Toxikon.ProtocolManager.Controllers.Protocols
             }
             else
             {
+                this.view.ClearView();
                 AddSponsorContactsToView();
             }
         }

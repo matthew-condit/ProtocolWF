@@ -130,6 +130,14 @@
         aPoGnpgteu5Hk+b/ADT9iQqc9TzIGtT03c1/RAhPM4LovU+7z2wAAAAASUVORK5CYII=
 </value>
   </data>
+  <data name="ViewCommentsButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAABOSURBVDhPY6AK+Pbt239yMdwAJycnkvGoAaMGgDCKAegY
+        WeHmzZsx5GEYbAA6AEmgaT7//v17Aag0YQAzgCzNIAAygGzNIAAygDjNDAwA7Wa6fwUqAXgAAAAASUVO
+        RK5CYII=
+</value>
+  </data>
   <data name="AddProtocolNumber.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
@@ -139,16 +147,30 @@
         HHqv7UO9ogG9Qb2CAe/JmAOJc7d+3lIefAAAAABJRU5ErkJggg==
 </value>
   </data>
-  <data name="ViewCommentsButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="UpdateFilePathButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAABOSURBVDhPY6AK+Pbt239yMdwAJycnkvGoAaMGgDCKAegY
-        WeHmzZsx5GEYbAA6AEmgaT7//v17Aag0YQAzgCzNIAAygGzNIAAygDjNDAwA7Wa6fwUqAXgAAAAASUVO
-        RK5CYII=
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAC+SURBVDhPY6A6+P79e8K3b9/+E4uh2hDg8+fP99/cO/H/
+        zrYqghhuALqp9/d1/X9yevn/D+8/4sQYBqCb/u7FI6waYRirAdgU4sLUMwBEUGzAvV1NYAFCGDlcQHyw
+        AV+/fp3/7NxKDMXY8KMT8zENACYch4+v7mMoxoVfP7yMagAIgBLPw0MTMRRjw/f3dmIaAPRGAbGpD4Sf
+        Xd4GpuEGvH//XuDLp3dgAVIx2AAQ+PLliwEoPEjFUO3kAgYGABx8zdKRHVj/AAAAAElFTkSuQmCC
+</value>
+  </data>
+  <data name="OpenFileButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAADLSURBVDhPY8AGvnz5YvDt27f3QPwfDb8HyUGV4QcwQ2Im
+        7PvPEDwHjEFs2hny/ft3ha9fv84HSQIxsrPBGK8hIMazlx/eVy89+Z8/dhFcIT4MMwRsM4ihV7QWq0Jc
+        GG4AyNkgm2ESvm07/u88+wDudBjG6QUQA+ZskGYg/zzQ0ACY10DyODWDwPM3H+CSIJtJ0gwCyAacuP4U
+        bABMMxCDnY+EMaMPJIjLC0QBfIEIVYIf4IpGog0AAZifkRMSOGxIAdiSMlSKloCBAQDPUsVyUSLeNQAA
+        AABJRU5ErkJggg==
 </value>
   </data>
   <metadata name="toolStrip2.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>122, 17</value>
+  </metadata>
+  <metadata name="openFileDialog.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>227, 17</value>
   </metadata>
   <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>62</value>

@@ -30,7 +30,7 @@ namespace Toxikon.ProtocolManager.Queries
 
                         command.Parameters.Add("@RequestedBy", SqlDbType.NVarChar).Value = userName;
                         command.Parameters.Add("@SponsorCode", SqlDbType.NVarChar).Value = 
-                                                request.Contact.SponsorCode;
+                                                request.Contact.ContactCode;
                         command.Parameters.Add("@Guidelines", SqlDbType.NVarChar).Value = request.Guidelines;
                         command.Parameters.Add("@Compliance", SqlDbType.NVarChar).Value = request.Compliance;
                         command.Parameters.Add("@ProtocolType", SqlDbType.NVarChar).Value = request.ProtocolType;

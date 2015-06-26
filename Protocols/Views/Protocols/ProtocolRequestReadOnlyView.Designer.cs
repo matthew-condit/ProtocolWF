@@ -30,9 +30,6 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ProtocolRequestReadOnlyView));
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.ViewEventsButton = new System.Windows.Forms.ToolStripButton();
-            this.ViewCommentsButton = new System.Windows.Forms.ToolStripButton();
-            this.DownloadReportButton = new System.Windows.Forms.ToolStripButton();
             this.panel1 = new System.Windows.Forms.Panel();
             this.BottomPanel = new System.Windows.Forms.Panel();
             this.TitlesListView = new System.Windows.Forms.ListView();
@@ -42,7 +39,12 @@
             this.UserNameCol = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.CommentsCol = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.ProtocolNumberCol = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.ViewEventsButton = new System.Windows.Forms.ToolStripButton();
+            this.ViewCommentsButton = new System.Windows.Forms.ToolStripButton();
+            this.DownloadReportButton = new System.Windows.Forms.ToolStripButton();
+            this.OpenFileButton = new System.Windows.Forms.ToolStripButton();
             this.RequestForm = new Toxikon.ProtocolManager.Views.RequestForms.RequestFormReadOnly();
+            this.FileNameCol = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.toolStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.BottomPanel.SuspendLayout();
@@ -56,12 +58,85 @@
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.ViewEventsButton,
             this.ViewCommentsButton,
-            this.DownloadReportButton});
+            this.DownloadReportButton,
+            this.OpenFileButton});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Size = new System.Drawing.Size(850, 38);
             this.toolStrip1.TabIndex = 1;
             this.toolStrip1.Text = "toolStrip1";
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.BottomPanel);
+            this.panel1.Controls.Add(this.TitlesListView);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel1.Location = new System.Drawing.Point(0, 38);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(850, 732);
+            this.panel1.TabIndex = 46;
+            // 
+            // BottomPanel
+            // 
+            this.BottomPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.BottomPanel.Controls.Add(this.RequestForm);
+            this.BottomPanel.Location = new System.Drawing.Point(0, 365);
+            this.BottomPanel.Margin = new System.Windows.Forms.Padding(0);
+            this.BottomPanel.Name = "BottomPanel";
+            this.BottomPanel.Size = new System.Drawing.Size(850, 364);
+            this.BottomPanel.TabIndex = 46;
+            // 
+            // TitlesListView
+            // 
+            this.TitlesListView.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.TitlesListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.TitleCol,
+            this.StatusCol,
+            this.StatusDate,
+            this.UserNameCol,
+            this.CommentsCol,
+            this.ProtocolNumberCol,
+            this.FileNameCol});
+            this.TitlesListView.FullRowSelect = true;
+            this.TitlesListView.GridLines = true;
+            this.TitlesListView.Location = new System.Drawing.Point(3, 9);
+            this.TitlesListView.Name = "TitlesListView";
+            this.TitlesListView.Size = new System.Drawing.Size(844, 349);
+            this.TitlesListView.TabIndex = 45;
+            this.TitlesListView.UseCompatibleStateImageBehavior = false;
+            this.TitlesListView.View = System.Windows.Forms.View.Details;
+            this.TitlesListView.Leave += new System.EventHandler(this.TitlesListView_Leave);
+            // 
+            // TitleCol
+            // 
+            this.TitleCol.Text = "Titles";
+            this.TitleCol.Width = 107;
+            // 
+            // StatusCol
+            // 
+            this.StatusCol.Text = "Latest Status";
+            this.StatusCol.Width = 195;
+            // 
+            // StatusDate
+            // 
+            this.StatusDate.Text = "Latest Status Date";
+            this.StatusDate.Width = 131;
+            // 
+            // UserNameCol
+            // 
+            this.UserNameCol.Text = "Added By";
+            this.UserNameCol.Width = 105;
+            // 
+            // CommentsCol
+            // 
+            this.CommentsCol.Text = "Total Comments";
+            // 
+            // ProtocolNumberCol
+            // 
+            this.ProtocolNumberCol.Text = "Protocol Number";
             // 
             // ViewEventsButton
             // 
@@ -96,76 +171,15 @@
             this.DownloadReportButton.Visible = false;
             this.DownloadReportButton.Click += new System.EventHandler(this.DownloadReportButton_Click);
             // 
-            // panel1
+            // OpenFileButton
             // 
-            this.panel1.Controls.Add(this.BottomPanel);
-            this.panel1.Controls.Add(this.TitlesListView);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(0, 38);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(850, 732);
-            this.panel1.TabIndex = 46;
-            // 
-            // BottomPanel
-            // 
-            this.BottomPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.BottomPanel.Controls.Add(this.RequestForm);
-            this.BottomPanel.Location = new System.Drawing.Point(0, 365);
-            this.BottomPanel.Margin = new System.Windows.Forms.Padding(0);
-            this.BottomPanel.Name = "BottomPanel";
-            this.BottomPanel.Size = new System.Drawing.Size(850, 364);
-            this.BottomPanel.TabIndex = 46;
-            // 
-            // TitlesListView
-            // 
-            this.TitlesListView.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.TitlesListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.TitleCol,
-            this.StatusCol,
-            this.StatusDate,
-            this.UserNameCol,
-            this.CommentsCol,
-            this.ProtocolNumberCol});
-            this.TitlesListView.FullRowSelect = true;
-            this.TitlesListView.GridLines = true;
-            this.TitlesListView.Location = new System.Drawing.Point(3, 9);
-            this.TitlesListView.Name = "TitlesListView";
-            this.TitlesListView.Size = new System.Drawing.Size(844, 349);
-            this.TitlesListView.TabIndex = 45;
-            this.TitlesListView.UseCompatibleStateImageBehavior = false;
-            this.TitlesListView.View = System.Windows.Forms.View.Details;
-            this.TitlesListView.Leave += new System.EventHandler(this.TitlesListView_Leave);
-            // 
-            // TitleCol
-            // 
-            this.TitleCol.Text = "Titles";
-            this.TitleCol.Width = 318;
-            // 
-            // StatusCol
-            // 
-            this.StatusCol.Text = "Latest Status";
-            this.StatusCol.Width = 195;
-            // 
-            // StatusDate
-            // 
-            this.StatusDate.Text = "Latest Status Date";
-            this.StatusDate.Width = 131;
-            // 
-            // UserNameCol
-            // 
-            this.UserNameCol.Text = "Added By";
-            this.UserNameCol.Width = 105;
-            // 
-            // CommentsCol
-            // 
-            this.CommentsCol.Text = "Total Comments";
-            // 
-            // ProtocolNumberCol
-            // 
-            this.ProtocolNumberCol.Text = "Protocol Number";
+            this.OpenFileButton.Image = global::Toxikon.ProtocolManager.Properties.Resources.Open_6296;
+            this.OpenFileButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.OpenFileButton.Name = "OpenFileButton";
+            this.OpenFileButton.Size = new System.Drawing.Size(61, 35);
+            this.OpenFileButton.Text = "Open File";
+            this.OpenFileButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.OpenFileButton.Click += new System.EventHandler(this.OpenFileButton_Click);
             // 
             // RequestForm
             // 
@@ -198,6 +212,11 @@
             this.RequestForm.State = "State";
             this.RequestForm.TabIndex = 0;
             this.RequestForm.ZipCode = "Zip Code";
+            // 
+            // FileNameCol
+            // 
+            this.FileNameCol.Text = "File Name";
+            this.FileNameCol.Width = 121;
             // 
             // ProtocolRequestReadOnlyView
             // 
@@ -235,5 +254,7 @@
         private System.Windows.Forms.ColumnHeader UserNameCol;
         private System.Windows.Forms.ColumnHeader CommentsCol;
         private System.Windows.Forms.ColumnHeader ProtocolNumberCol;
+        private System.Windows.Forms.ToolStripButton OpenFileButton;
+        private System.Windows.Forms.ColumnHeader FileNameCol;
     }
 }

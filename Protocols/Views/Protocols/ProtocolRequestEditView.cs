@@ -67,6 +67,7 @@ namespace Toxikon.ProtocolManager.Views.Protocols
             item.SubItems.Add(title.LatestActivity.CreatedBy);
             item.SubItems.Add(title.CommentsCount.ToString());
             item.SubItems.Add(title.ProtocolNumber);
+            item.SubItems.Add(title.FileName);
         }
 
         public void SetListViewAutoResizeColumns()
@@ -77,6 +78,7 @@ namespace Toxikon.ProtocolManager.Views.Protocols
             this.TitlesListView.Columns[3].AutoResize(ColumnHeaderAutoResizeStyle.HeaderSize);
             this.TitlesListView.Columns[4].AutoResize(ColumnHeaderAutoResizeStyle.HeaderSize);
             this.TitlesListView.Columns[5].AutoResize(ColumnHeaderAutoResizeStyle.HeaderSize);
+            this.TitlesListView.Columns[6].AutoResize(ColumnHeaderAutoResizeStyle.HeaderSize);
         }
 
         public void ClearProtocolTitleListView()
@@ -142,6 +144,27 @@ namespace Toxikon.ProtocolManager.Views.Protocols
         private void CloseRequestButton_Click(object sender, EventArgs e)
         {
             this.controller.CloseRequestButtonClicked();
+        }
+
+        private void UpdateFilePathButton_Click(object sender, EventArgs e)
+        {
+            if (this.SelectedTitleIndexes.Count == 1)
+            {
+                DialogResult dialogResult = openFileDialog.ShowDialog();
+                if (dialogResult == DialogResult.OK)
+                {
+                    controller.UpdateFilePathButtonClicked(openFileDialog.FileName);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Please select one title and try it again.");
+            }
+        }
+
+        private void OpenFileButton_Click(object sender, EventArgs e)
+        {
+            this.controller.OpenFileButtonClicked();
         }
     }
 }

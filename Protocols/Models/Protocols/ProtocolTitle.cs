@@ -15,6 +15,8 @@ namespace Toxikon.ProtocolManager.Models
         public ProtocolActivity LatestActivity { get; set; }
         public int CommentsCount { get; set; }
         public string ProtocolNumber { get; set; }
+        public string FileName { get; set; }
+        public string FilePath { get; set; }
 
         public ProtocolTitle()
         {
@@ -25,6 +27,8 @@ namespace Toxikon.ProtocolManager.Models
             this.LatestActivity = new ProtocolActivity();
             this.CommentsCount = 0;
             this.ProtocolNumber = "";
+            this.FileName = "";
+            this.FilePath = "";
         }
     }
 }

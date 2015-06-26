@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -116,6 +117,27 @@ namespace Toxikon.ProtocolManager.Controllers.Protocols
             ProtocolRequestReport reportTemplate = new ProtocolRequestReport(this.protocolRequest);
             reportTemplate.Create();
             MessageBox.Show("Download Complete!");
+        }
+
+        public void OpenFileButtonClicked()
+        {
+            if (this.view.SelectedTitleIndexes.Count == 1)
+            {
+                int selectedIndex = Convert.ToInt32(this.view.SelectedTitleIndexes[0]);
+                ProtocolTitle title = this.protocolRequest.Titles[selectedIndex];
+                if (title.FilePath != String.Empty && File.Exists(title.FilePath))
+                {
+                    System.Diagnostics.Process.Start(title.FilePath);
+                }
+                else
+                {
+                    MessageBox.Show("File does not exist.");
+                }
+            }
+            else
+            {
+                MessageBox.Show(this.SelectOneMessage);
+            }
         }
     }
 }

@@ -195,7 +195,7 @@ namespace Toxikon.ProtocolManager.Views.Protocols
             // 
             // SearchTextBox
             // 
-            this.SearchTextBox.BackColor = System.Drawing.SystemColors.Info;
+            this.SearchTextBox.BackColor = System.Drawing.Color.LemonChiffon;
             this.SearchTextBox.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SearchTextBox.Name = "SearchTextBox";
             this.SearchTextBox.Size = new System.Drawing.Size(200, 25);

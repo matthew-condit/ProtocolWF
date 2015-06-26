@@ -123,6 +123,16 @@ namespace Toxikon.ProtocolManager.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Open_6296 {
+            get {
+                object obj = ResourceManager.GetObject("Open_6296", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap PencilAngled_16xLG_color {
             get {
                 object obj = ResourceManager.GetObject("PencilAngled_16xLG_color", resourceCulture);

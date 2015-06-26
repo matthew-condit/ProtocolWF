@@ -13,6 +13,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
 
 namespace Toxikon.ProtocolManager.Controllers.Protocols
 {
@@ -343,6 +344,45 @@ namespace Toxikon.ProtocolManager.Controllers.Protocols
                 QProtocolRequests.UpdateRequestStatus(this.protocolRequest, loginInfo.UserName);
                 MainView mainView = (MainView)this.view.ParentControl;
                 mainView.Invoke(mainView.LoadProtocolRequestViewDelegate, new object[] { this.protocolRequest });
+            }
+        }
+
+        /****************************** FILE PATH **********************************/
+        public void UpdateFilePathButtonClicked(string filePath)
+        {
+            if (this.view.SelectedTitleIndexes.Count == 1)
+            {
+                int selectedIndex = Convert.ToInt32(this.view.SelectedTitleIndexes[0]);
+                ProtocolTitle title = this.protocolRequest.Titles[selectedIndex];
+                title.FileName = Path.GetFileName(filePath);
+                title.FilePath = filePath;
+                QProtocolTitles.UpdateFileInfo(title, loginInfo.UserName);
+                this.RefreshTitleListView();
+            }
+            else
+            {
+                MessageBox.Show(this.SelectOneMessage);
+            }
+        }
+
+        public void OpenFileButtonClicked()
+        {
+            if (this.view.SelectedTitleIndexes.Count == 1)
+            {
+                int selectedIndex = Convert.ToInt32(this.view.SelectedTitleIndexes[0]);
+                ProtocolTitle title = this.protocolRequest.Titles[selectedIndex];
+                if(title.FilePath != String.Empty && File.Exists(title.FilePath))
+                {
+                    System.Diagnostics.Process.Start(title.FilePath);
+                }
+                else
+                {
+                    MessageBox.Show("File does not exist.");
+                }
+            }
+            else
+            {
+                MessageBox.Show(this.SelectOneMessage);
             }
         }
     }
