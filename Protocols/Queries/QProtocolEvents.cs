@@ -22,7 +22,7 @@ namespace Toxikon.ProtocolManager.Queries
                 using (SqlConnection connection = new SqlConnection(CONNECTION_STRING))
                 {
                     connection.Open();
-                    using (SqlCommand command = new SqlCommand("ProtocolEventsInsert", connection))
+                    using (SqlCommand command = new SqlCommand("pe_insert_event", connection))
                     {
                         command.CommandType = CommandType.StoredProcedure;
                         command.Parameters.Add("@EventType", SqlDbType.NVarChar).Value = protocolEvent.Type;
@@ -42,16 +42,14 @@ namespace Toxikon.ProtocolManager.Queries
         public static IList SelectProtocolEvents()
         {
             IList results = new ArrayList();
-            string query = @"SELECT ID, EventType, EventDescription, IsActive
-                             FROM ProtocolEvents";
             try
             {
                 using (SqlConnection connection = new SqlConnection(CONNECTION_STRING))
                 {
                     connection.Open();
-                    using (SqlCommand command = new SqlCommand(query, connection))
+                    using (SqlCommand command = new SqlCommand("pe_select_all_events", connection))
                     {
-                        command.CommandType = CommandType.Text;
+                        command.CommandType = CommandType.StoredProcedure;
                         SqlDataReader reader = command.ExecuteReader();
                         while (reader.Read())
                         {
@@ -75,17 +73,14 @@ namespace Toxikon.ProtocolManager.Queries
         public static IList SelectProtocolEventsByType(string eventType)
         {
             IList results = new ArrayList();
-            string query = @"SELECT ID, EventType, EventDescription, IsActive
-                             FROM ProtocolEvents
-                             WHERE EventType = @EventType";
             try
             {
                 using (SqlConnection connection = new SqlConnection(CONNECTION_STRING))
                 {
                     connection.Open();
-                    using (SqlCommand command = new SqlCommand(query, connection))
+                    using (SqlCommand command = new SqlCommand("pe_select_events_by_type", connection))
                     {
-                        command.CommandType = CommandType.Text;
+                        command.CommandType = CommandType.StoredProcedure;
                         command.Parameters.Add("@EventType", SqlDbType.NVarChar).Value = eventType;
                         SqlDataReader reader = command.ExecuteReader();
                         while (reader.Read())
@@ -114,7 +109,7 @@ namespace Toxikon.ProtocolManager.Queries
                 using (SqlConnection connection = new SqlConnection(CONNECTION_STRING))
                 {
                     connection.Open();
-                    using (SqlCommand command = new SqlCommand("ProtocolEventsUpdate", connection))
+                    using (SqlCommand command = new SqlCommand("pe_update_event", connection))
                     {
                         command.CommandType = CommandType.StoredProcedure;
                         command.Parameters.Add("@EventID", SqlDbType.Int).Value = protocolEvent.ID;

@@ -16,63 +16,81 @@ namespace Toxikon.ProtocolManager.Queries
 
         public static void InsertListItem(ListItem listItem, string userName)
         {
-            using(SqlConnection connection = new SqlConnection(CONNECTION_STRING))
+            try
             {
-                connection.Open();
-                using(SqlCommand command = new SqlCommand("ListItemsInsert", connection))
+                using (SqlConnection connection = new SqlConnection(CONNECTION_STRING))
                 {
-                    command.CommandType = CommandType.StoredProcedure;
-                    command.Parameters.Add("@ListName", SqlDbType.NVarChar).Value = listItem.ListName;
-                    command.Parameters.Add("@ItemName", SqlDbType.NVarChar).Value = listItem.ItemName;
-                    command.Parameters.Add("@CreatedBy", SqlDbType.NVarChar).Value = userName;
+                    connection.Open();
+                    using (SqlCommand command = new SqlCommand("li_insert_listitem", connection))
+                    {
+                        command.CommandType = CommandType.StoredProcedure;
+                        command.Parameters.Add("@ListName", SqlDbType.NVarChar).Value = listItem.ListName;
+                        command.Parameters.Add("@ItemName", SqlDbType.NVarChar).Value = listItem.ItemName;
+                        command.Parameters.Add("@CreatedBy", SqlDbType.NVarChar).Value = userName;
 
-                    int result = command.ExecuteNonQuery();
+                        int result = command.ExecuteNonQuery();
+                    }
                 }
+            }
+            catch(SqlException sqlEx)
+            {
+                ErrorHandler.CreateLogFile("QListItems", "InsertListItem", sqlEx);
             }
         }
 
         public static IList GetListItems(string listName)
         {
             IList results = new ArrayList();
-            string query = @"SELECT ItemName, IsActive 
-                             FROM ListItems
-                             WHERE ListName = @ListName";
-            using (SqlConnection connection = new SqlConnection(CONNECTION_STRING))
+            try
             {
-                connection.Open();
-                using (SqlCommand command = new SqlCommand(query, connection))
+                using (SqlConnection connection = new SqlConnection(CONNECTION_STRING))
                 {
-                    command.CommandType = CommandType.Text;
-                    command.Parameters.Add("@ListName", SqlDbType.NVarChar).Value = listName;
-
-                    SqlDataReader reader = command.ExecuteReader();
-                    while(reader.Read())
+                    connection.Open();
+                    using (SqlCommand command = new SqlCommand("li_select_listitems_by_listname", connection))
                     {
-                        ListItem listItem = new ListItem();
-                        listItem.ListName = listName;
-                        listItem.ItemName = reader[0].ToString();
-                        listItem.IsActive = Convert.ToBoolean(reader[1].ToString());
-                        results.Add(listItem);
+                        command.CommandType = CommandType.StoredProcedure;
+                        command.Parameters.Add("@ListName", SqlDbType.NVarChar).Value = listName;
+
+                        SqlDataReader reader = command.ExecuteReader();
+                        while (reader.Read())
+                        {
+                            ListItem listItem = new ListItem();
+                            listItem.ListName = listName;
+                            listItem.ItemName = reader[0].ToString();
+                            listItem.IsActive = Convert.ToBoolean(reader[1].ToString());
+                            results.Add(listItem);
+                        }
                     }
                 }
+            }
+            catch(SqlException sqlEx)
+            {
+                ErrorHandler.CreateLogFile("QListItems", "GetListItems", sqlEx);
             }
             return results;
         }
 
         public static void UpdateListItem(ListItem listItem, string userName)
         {
-            using (SqlConnection connection = new SqlConnection(CONNECTION_STRING))
+            try
             {
-                connection.Open();
-                using (SqlCommand command = new SqlCommand("ListItemsUpdate", connection))
+                using (SqlConnection connection = new SqlConnection(CONNECTION_STRING))
                 {
-                    command.CommandType = CommandType.Text;
-                    command.Parameters.Add("@ListName", SqlDbType.NVarChar).Value = listItem.ListName;
-                    command.Parameters.Add("@ItemName", SqlDbType.NVarChar).Value = listItem.ItemName;
-                    command.Parameters.Add("@IsActive", SqlDbType.Bit).Value = listItem.IsActive;
-                    command.Parameters.Add("@UpdatedBy", SqlDbType.NVarChar).Value = userName;
-                    int result = command.ExecuteNonQuery();
+                    connection.Open();
+                    using (SqlCommand command = new SqlCommand("li_update_listitem", connection))
+                    {
+                        command.CommandType = CommandType.StoredProcedure;
+                        command.Parameters.Add("@ListName", SqlDbType.NVarChar).Value = listItem.ListName;
+                        command.Parameters.Add("@ItemName", SqlDbType.NVarChar).Value = listItem.ItemName;
+                        command.Parameters.Add("@IsActive", SqlDbType.Bit).Value = listItem.IsActive;
+                        command.Parameters.Add("@UpdatedBy", SqlDbType.NVarChar).Value = userName;
+                        int result = command.ExecuteNonQuery();
+                    }
                 }
+            }
+            catch(SqlException sqlEx)
+            {
+                ErrorHandler.CreateLogFile("QListItems", "UpdateListItem", sqlEx);
             }
         }
     }

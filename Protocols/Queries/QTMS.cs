@@ -26,23 +26,33 @@ namespace Toxikon.ProtocolManager.Queries
             WHERE Name LIKE @SearchString
             AND IsActive = 1";
 
+        private const string ErrorFormName = "QTMS";
+
         private static string CONNECTION_STRING = Utility.GetTMSConnectionString();
 
         public static IList GetAllDepartments()
         {
             IList results = new ArrayList();
-            using (SqlConnection connection = new SqlConnection(CONNECTION_STRING))
+            try
             {
-                connection.Open();
-                using (SqlCommand command = new SqlCommand(GET_DEPARTMENTS, connection))
+                using (SqlConnection connection = new SqlConnection(CONNECTION_STRING))
                 {
-                    SqlDataReader reader = command.ExecuteReader();
-                    while (reader.Read())
+                    connection.Open();
+                    using (SqlCommand command = new SqlCommand(GET_DEPARTMENTS, connection))
                     {
-                        results.Add(reader[0].ToString());
+                        SqlDataReader reader = command.ExecuteReader();
+                        while (reader.Read())
+                        {
+                            results.Add(reader[0].ToString());
+                        }
                     }
                 }
             }
+            catch (SqlException sqlEx)
+            {
+                ErrorHandler.CreateLogFile(ErrorFormName, "GetAllDepartments", sqlEx);
+            }
+            
             return results;
         }
 
@@ -50,26 +60,34 @@ namespace Toxikon.ProtocolManager.Queries
         {
             searchString = "%" + searchString + "%";
             IList results = new ArrayList();
-            using (SqlConnection connection = new SqlConnection(CONNECTION_STRING))
+            try
             {
-                connection.Open();
-                using (SqlCommand command = new SqlCommand(SEARCH_EMPLOYEE, connection))
+                using (SqlConnection connection = new SqlConnection(CONNECTION_STRING))
                 {
-                    command.Parameters.AddWithValue("@SearchString", searchString);
-                    SqlDataReader reader = command.ExecuteReader();
-                    while (reader.Read())
+                    connection.Open();
+                    using (SqlCommand command = new SqlCommand(SEARCH_EMPLOYEE, connection))
                     {
-                        User user = new User();
-                        user.SetUserName(reader[0].ToString());
-                        user.FirstName = reader[1].ToString();
-                        user.LastName = reader[2].ToString();
-                        user.FullName = reader[3].ToString();
-                        user.EmailAddress = reader[4].ToString();
-                        user.PositionTitle = reader[5].ToString();
-                        results.Add(user);
+                        command.Parameters.AddWithValue("@SearchString", searchString);
+                        SqlDataReader reader = command.ExecuteReader();
+                        while (reader.Read())
+                        {
+                            User user = new User();
+                            user.SetUserName(reader[0].ToString());
+                            user.FirstName = reader[1].ToString();
+                            user.LastName = reader[2].ToString();
+                            user.FullName = reader[3].ToString();
+                            user.EmailAddress = reader[4].ToString();
+                            user.PositionTitle = reader[5].ToString();
+                            results.Add(user);
+                        }
                     }
                 }
             }
+            catch (SqlException sqlEx)
+            {
+                ErrorHandler.CreateLogFile(ErrorFormName, "GetResultsFromSearchEmployee", sqlEx);
+            }
+            
             return results;
         }
     }

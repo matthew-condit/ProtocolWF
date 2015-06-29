@@ -144,5 +144,10 @@ namespace Toxikon.ProtocolManager.Views
         {
             this.controller.LoadHistoryView();
         }
+
+        private void ListNamesMenuItem_Click(object sender, EventArgs e)
+        {
+            this.controller.LoadListNameView();
+        }
     }
 }

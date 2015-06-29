@@ -13,22 +13,29 @@ namespace Toxikon.ProtocolManager.Queries
     public class QDepartments
     {
         private static string CONNECTION_STRING = Utility.GetTPMConnectionString();
+        private const string ErrorFormName = "QDepartments";
 
         public static Int32 InsertDepartment(Department department, string userName)
         {
             Int32 result = 0;
-
-            using (SqlConnection connection = new SqlConnection(CONNECTION_STRING))
+            try
             {
-                connection.Open();
-                using (SqlCommand commamd = new SqlCommand("DepartmentsInsert", connection))
+                using (SqlConnection connection = new SqlConnection(CONNECTION_STRING))
                 {
-                    commamd.CommandType = CommandType.StoredProcedure;
-                    commamd.Parameters.AddWithValue("@DepartmentName", department.DepartmentName);
-                    commamd.Parameters.AddWithValue("@CreatedBy", userName);
+                    connection.Open();
+                    using (SqlCommand commamd = new SqlCommand("d_insert_department", connection))
+                    {
+                        commamd.CommandType = CommandType.StoredProcedure;
+                        commamd.Parameters.AddWithValue("@DepartmentName", department.DepartmentName);
+                        commamd.Parameters.AddWithValue("@CreatedBy", userName);
 
-                    result = commamd.ExecuteNonQuery();
+                        result = commamd.ExecuteNonQuery();
+                    }
                 }
+            }
+            catch(SqlException sqlEx)
+            {
+                ErrorHandler.CreateLogFile(ErrorFormName, "InsertDepartment", sqlEx);
             }
             return result;
         }
@@ -36,43 +43,56 @@ namespace Toxikon.ProtocolManager.Queries
         public static IList GetDepartments()
         {
             IList results = new ArrayList();
-            using (SqlConnection connection = new SqlConnection(CONNECTION_STRING))
+            try
             {
-                connection.Open();
-                string query = @"SELECT ID, DepartmentName, IsActive
-                                FROM Departments";
-                using (SqlCommand command = new SqlCommand(query, connection))
+                using (SqlConnection connection = new SqlConnection(CONNECTION_STRING))
                 {
-                    command.CommandType = System.Data.CommandType.Text;
-                    SqlDataReader reader = command.ExecuteReader();
-                    while (reader.Read())
+                    connection.Open();
+                    using (SqlCommand command = new SqlCommand("d_select_all_departments", connection))
                     {
-                        Department department = new Department();
-                        department.DepartmentID = Convert.ToInt32(reader[0].ToString());
-                        department.SetDepartmentName(reader[1].ToString());
-                        department.IsActive = Convert.ToBoolean(reader[2].ToString());
-                        results.Add(department);
+                        command.CommandType = System.Data.CommandType.StoredProcedure;
+                        SqlDataReader reader = command.ExecuteReader();
+                        while (reader.Read())
+                        {
+                            Department department = new Department();
+                            department.DepartmentID = Convert.ToInt32(reader[0].ToString());
+                            department.SetDepartmentName(reader[1].ToString());
+                            department.IsActive = Convert.ToBoolean(reader[2].ToString());
+                            results.Add(department);
+                        }
                     }
                 }
             }
+            catch (SqlException sqlEx)
+            {
+                ErrorHandler.CreateLogFile(ErrorFormName, "GetDepartments", sqlEx);
+            }
+            
             return results;
         }
 
         public static void UpdateDepartment(Department department, string userName)
         {
-            using (SqlConnection connection = new SqlConnection(CONNECTION_STRING))
+            try
             {
-                connection.Open();
-                using (SqlCommand command = new SqlCommand("DepartmentsUpdate", connection))
+                using (SqlConnection connection = new SqlConnection(CONNECTION_STRING))
                 {
-                    command.CommandType = CommandType.StoredProcedure;
-                    command.Parameters.Add("@ID", SqlDbType.Int).Value = department.DepartmentID;
-                    command.Parameters.Add("@DepartmentName", SqlDbType.NVarChar).Value = department.DepartmentName;
-                    command.Parameters.Add("@IsActive", SqlDbType.Bit).Value = department.IsActive;
-                    command.Parameters.Add("@UpdatedBy", SqlDbType.NVarChar).Value = userName;
+                    connection.Open();
+                    using (SqlCommand command = new SqlCommand("d_update_department", connection))
+                    {
+                        command.CommandType = CommandType.StoredProcedure;
+                        command.Parameters.Add("@ID", SqlDbType.Int).Value = department.DepartmentID;
+                        command.Parameters.Add("@DepartmentName", SqlDbType.NVarChar).Value = department.DepartmentName;
+                        command.Parameters.Add("@IsActive", SqlDbType.Bit).Value = department.IsActive;
+                        command.Parameters.Add("@UpdatedBy", SqlDbType.NVarChar).Value = userName;
 
-                    Int32 result = command.ExecuteNonQuery();
+                        Int32 result = command.ExecuteNonQuery();
+                    }
                 }
+            }
+            catch(SqlException sqlEx)
+            {
+                ErrorHandler.CreateLogFile(ErrorFormName, "UpdateDepartment", sqlEx);
             }
         }
     }

@@ -6,22 +6,24 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Outlook = Microsoft.Office.Interop.Outlook;
 
 namespace Toxikon.ProtocolManager.Models
 {
     public class ErrorHandler
     {
-        private static string logFolder = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) +
-                                          "\\TPMErrorLogFiles\\";
+        private static string logFolder = @"\\toxx\toxxShared\TPMErrorLogs\";
+        /*Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) +
+                                          "\\TPMErrorLogFiles\\";*/
 
         public static void SendEmailToSupport(Exception catchedException)
         {
             try
             {
-                /*LoginInfo loginInfo = LoginInfo.GetInstance();
+                LoginInfo loginInfo = LoginInfo.GetInstance();
 
                 Outlook.Application outlookApp = new Outlook.Application();
-                Outlook._MailItem mailItem = (Outlook._MailItem)outlookApp.CreateItem(Outlook.OlItemType.olMailItem);
+                Outlook._MailItem mailItem = (Outlook.MailItem)outlookApp.CreateItem(Outlook.OlItemType.olMailItem);
 
                 Outlook.Recipient recipient = (Outlook.Recipient)mailItem.Recipients.Add("Bichngoc.McCulley@toxikon.com");
                 recipient.Resolve();
@@ -34,7 +36,7 @@ namespace Toxikon.ProtocolManager.Models
 
                 recipient = null;
                 mailItem = null;
-                outlookApp = null;*/
+                outlookApp = null;
             }
             catch (Exception e)
             {
@@ -60,6 +62,8 @@ namespace Toxikon.ProtocolManager.Models
                 log.WriteLine(e.ToString());
 
                 log.Close();
+
+                SendEmailToSupport(e);
             }
             catch(UnauthorizedAccessException accessEx)
             {

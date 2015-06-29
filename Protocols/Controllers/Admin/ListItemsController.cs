@@ -20,15 +20,16 @@ namespace Toxikon.ProtocolManager.Controllers.Admin
         {
             this.view = view;
             this.view.SetController(this);
-            listNames = new ArrayList() { ListNames.Guidelines, ListNames.Compliance, ListNames.ProtocolType};
+            listNames = new ArrayList();
             this.selectedListName = "";
         }
 
         public void LoadView()
         {
-            foreach(string listName in listNames)
+            listNames = QListNames.SelectAll();
+            foreach(ListName listName in listNames)
             {
-                this.view.AddListNameToView(listName);
+                this.view.AddListNameToView(listName.Name);
             }
         }
 
@@ -36,7 +37,8 @@ namespace Toxikon.ProtocolManager.Controllers.Admin
         {
             if(selectedIndex > -1 && selectedIndex < this.listNames.Count)
             {
-                this.selectedListName = listNames[selectedIndex] as string;
+                ListName selectedItem = listNames[selectedIndex] as ListName;
+                this.selectedListName =  selectedItem.Name;
                 LoadSelectedListNameItems();
             }
         }

@@ -39,6 +39,7 @@
             this.ListItemsMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.AdminProtocolEventsButton = new System.Windows.Forms.ToolStripMenuItem();
             this.MainPanel = new System.Windows.Forms.Panel();
+            this.ListNamesMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -88,6 +89,7 @@
             this.AdminDepartmentsMenuItem,
             this.AdminRolesMenuItem,
             this.AdminUsersMenuItem,
+            this.ListNamesMenuItem,
             this.ListItemsMenuItem,
             this.AdminProtocolEventsButton});
             this.AdminMenuItem.ForeColor = System.Drawing.Color.White;
@@ -138,6 +140,13 @@
             this.MainPanel.Size = new System.Drawing.Size(1184, 771);
             this.MainPanel.TabIndex = 1;
             // 
+            // ListNamesMenuItem
+            // 
+            this.ListNamesMenuItem.Name = "ListNamesMenuItem";
+            this.ListNamesMenuItem.Size = new System.Drawing.Size(166, 22);
+            this.ListNamesMenuItem.Text = "List Names";
+            this.ListNamesMenuItem.Click += new System.EventHandler(this.ListNamesMenuItem_Click);
+            // 
             // MainView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -170,6 +179,7 @@
         private System.Windows.Forms.ToolStripMenuItem ListItemsMenuItem;
         private System.Windows.Forms.ToolStripMenuItem AdminProtocolEventsButton;
         private System.Windows.Forms.ToolStripMenuItem HistoryMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem ListNamesMenuItem;
     }
 }
 

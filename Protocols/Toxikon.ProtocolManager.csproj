@@ -35,6 +35,9 @@
     <Reference Include="Microsoft.Office.Interop.Excel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </Reference>
+    <Reference Include="Microsoft.Office.Interop.Outlook, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
@@ -50,6 +53,7 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controllers\Admin\ListNameController.cs" />
     <Compile Include="Controllers\HistoryController.cs" />
     <Compile Include="Controllers\Protocols\ProtocolRequestReadOnlyController.cs" />
     <Compile Include="Controllers\RequestFormController.cs" />
@@ -71,6 +75,7 @@
     <Compile Include="Controllers\Admin\RoleListController.cs" />
     <Compile Include="Controllers\Admin\UserEditController.cs" />
     <Compile Include="Controllers\Admin\UserListController.cs" />
+    <Compile Include="Interfaces\Admin\IListNameView.cs" />
     <Compile Include="Interfaces\IHistoryView.cs" />
     <Compile Include="Interfaces\IRequestForm.cs" />
     <Compile Include="Interfaces\Protocols\IProtocolRequestReadOnlyView.cs" />
@@ -94,6 +99,7 @@
     <Compile Include="Models\Admin\AuditHandler.cs" />
     <Compile Include="Models\Admin\AuditItem.cs" />
     <Compile Include="Models\Admin\TableNames.cs" />
+    <Compile Include="Models\ListName.cs" />
     <Compile Include="Models\Protocols\Comment.cs" />
     <Compile Include="Models\Admin\ErrorHandler.cs" />
     <Compile Include="Models\ListItem.cs" />
@@ -110,6 +116,7 @@
     <Compile Include="Models\Protocols\ProtocolEventTypes.cs" />
     <Compile Include="Models\Admin\UserRoles.cs" />
     <Compile Include="Queries\QListItems.cs" />
+    <Compile Include="Queries\QListNames.cs" />
     <Compile Include="Queries\QProtocolActivities.cs" />
     <Compile Include="Queries\QProtocolComments.cs" />
     <Compile Include="Queries\QProtocolEvents.cs" />
@@ -120,6 +127,12 @@
     <Compile Include="Queries\QRoles.cs" />
     <Compile Include="Queries\QUsers.cs" />
     <Compile Include="Queries\QTMS.cs" />
+    <Compile Include="Views\Admin\ListNameView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\Admin\ListNameView.Designer.cs">
+      <DependentUpon>ListNameView.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\HistoryView.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -279,6 +292,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="Views\Admin\ListNameView.resx">
+      <DependentUpon>ListNameView.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\HistoryView.resx">
       <DependentUpon>HistoryView.cs</DependentUpon>
     </EmbeddedResource>

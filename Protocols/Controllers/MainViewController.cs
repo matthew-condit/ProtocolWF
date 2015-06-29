@@ -102,13 +102,13 @@ namespace Toxikon.ProtocolManager.Controllers
         {
             switch (loginInfo.Role.RoleID)
             {
-                case 1:
+                case UserRoles.IT:
                     LoadProtocolRequestEditView(request);
                     break;
-                case 2:
+                case UserRoles.CSR:
                     LoadProtocolRequestReadOnlyView(request);
                     break;
-                case 3:
+                case UserRoles.DocControl:
                     LoadProtocolRequestEditView(request);
                     break;
                 default:
@@ -150,6 +150,14 @@ namespace Toxikon.ProtocolManager.Controllers
             HistoryController subViewController = new HistoryController(subView);
             subViewController.LoadView();
 
+            view.AddControlToMainPanel(subView);
+        }
+
+        public void LoadListNameView()
+        {
+            ListNameView subView = new ListNameView();
+            ListNameController subViewController = new ListNameController(subView);
+            subViewController.LoadView();
             view.AddControlToMainPanel(subView);
         }
     }

@@ -170,7 +170,7 @@ namespace Toxikon.ProtocolManager.Models.Reports
         private void InsertProtocolCommentsDataTable(ExcelTemplate excelTemplate, ExcelWorksheet worksheet, 
                                                      ProtocolTitle title)
         {
-            DataTable dataTable = QProtocolComments.SelectProtocolCommentsDataTable(title);
+            DataTable dataTable = QProtocolComments.SelectActiveCommentsDataTable(title);
             ExcelDataTable excelDataTable = CreateNewExcelDataTable("CommentsTable" + title.ID, dataTable, 5, 4);
             InsertExcelDataTable(excelTemplate, worksheet, excelDataTable);
             FormatExcelDataTable(worksheet, excelDataTable);

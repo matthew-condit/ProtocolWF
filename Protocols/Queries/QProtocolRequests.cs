@@ -24,7 +24,7 @@ namespace Toxikon.ProtocolManager.Queries
                 using(SqlConnection connection = new SqlConnection(connectionString))
                 {
                     connection.Open();
-                    using(SqlCommand command = new SqlCommand("ProtocolRequestsInsert", connection))
+                    using(SqlCommand command = new SqlCommand("pr_insert_request", connection))
                     {
                         command.CommandType = CommandType.StoredProcedure;
 
@@ -59,7 +59,7 @@ namespace Toxikon.ProtocolManager.Queries
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
                     connection.Open();
-                    using (SqlCommand command = new SqlCommand("ProtocolRequestSelect", connection))
+                    using (SqlCommand command = new SqlCommand("pr_select_requests_by_status", connection))
                     {
                         command.CommandType = CommandType.StoredProcedure;
                         command.Parameters.Add("@RequestStatus", SqlDbType.NVarChar).Value = status;
@@ -248,7 +248,7 @@ namespace Toxikon.ProtocolManager.Queries
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
                     connection.Open();
-                    using (SqlCommand command = new SqlCommand("ProtocolRequestsUpdate", connection))
+                    using (SqlCommand command = new SqlCommand("pr_update_request", connection))
                     {
                         command.CommandType = CommandType.StoredProcedure;
                         command.Parameters.Add("@ProtocolRequestID", SqlDbType.Int).Value = request.ID;
@@ -279,7 +279,7 @@ namespace Toxikon.ProtocolManager.Queries
                 using(SqlConnection connection = new SqlConnection(connectionString))
                 {
                     connection.Open();
-                    using(SqlCommand command = new SqlCommand("ProtocolRequests_UpdateRequestStatus", connection))
+                    using(SqlCommand command = new SqlCommand("pr_update_request_status", connection))
                     {
                         command.CommandType = CommandType.StoredProcedure;
                         command.Parameters.Add("@ProtocolRequestID", SqlDbType.Int).Value = request.ID;

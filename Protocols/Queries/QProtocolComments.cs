@@ -17,14 +17,14 @@ namespace Toxikon.ProtocolManager.Queries
         private static string CONNECTION_STRING = Utility.GetTPMConnectionString();
         private const string ErrorFormName = "QProtocolComments";
 
-        public static void InsertProtocolComments(ProtocolTitle title, string comments, string userName)
+        public static void InsertComments(ProtocolTitle title, string comments, string userName)
         {
             try
             {
                 using (SqlConnection connection = new SqlConnection(CONNECTION_STRING))
                 {
                     connection.Open();
-                    using (SqlCommand command = new SqlCommand("ProtocolCommentsInsert", connection))
+                    using (SqlCommand command = new SqlCommand("pc_insert_comments", connection))
                     {
                         command.CommandType = CommandType.StoredProcedure;
 
@@ -44,7 +44,7 @@ namespace Toxikon.ProtocolManager.Queries
             }
         }
 
-        public static IList SelectProtocolComments(ProtocolTitle title)
+        public static IList SelectActiveComments(ProtocolTitle title)
         {
             IList results = new ArrayList();
             try
@@ -52,17 +52,9 @@ namespace Toxikon.ProtocolManager.Queries
                 using (SqlConnection connection = new SqlConnection(CONNECTION_STRING))
                 {
                     connection.Open();
-                    string query = @"SELECT Comments, CreatedBy, CreatedDate
-                                 FROM ProtocolComments
-                                 WHERE ProtocolRequestID = @ProtocolRequestID
-                                 AND ProtocolTitleID = @ProtocolTitleID
-                                 AND IsActive = 1
-                                 ORDER BY CreatedDate DESC";
-                    using (SqlCommand command = new SqlCommand(query, connection))
+                    using (SqlCommand command = new SqlCommand("pc_select_active_comments", connection))
                     {
-                        command.CommandType = CommandType.Text;
-
-                        command.Parameters.Clear();
+                        command.CommandType = CommandType.StoredProcedure;
                         command.Parameters.Add("@ProtocolRequestID", SqlDbType.Int).Value = title.ProtocolRequestID;
                         command.Parameters.Add("@ProtocolTitleID", SqlDbType.Int).Value = title.ID;
                         SqlDataReader reader = command.ExecuteReader();
@@ -80,12 +72,12 @@ namespace Toxikon.ProtocolManager.Queries
             }
             catch(Exception ex)
             {
-                ErrorHandler.CreateLogFile(ErrorFormName, "SelectProtocolComments", ex);
+                ErrorHandler.CreateLogFile(ErrorFormName, "SelectActiveComments", ex);
             }
             return results;
         }
 
-        public static DataTable SelectProtocolCommentsDataTable(ProtocolTitle title)
+        public static DataTable SelectActiveCommentsDataTable(ProtocolTitle title)
         {
             DataTable dataTable = new DataTable();
             try
@@ -93,17 +85,9 @@ namespace Toxikon.ProtocolManager.Queries
                 using (SqlConnection connection = new SqlConnection(CONNECTION_STRING))
                 {
                     connection.Open();
-                    string query = @"SELECT CONVERT(varchar(10), CreatedDate, 101) AS AddedDate, 
-                                            CreatedBy AS AddedBy,
-                                            Comments
-                                 FROM ProtocolComments
-                                 WHERE ProtocolRequestID = @ProtocolRequestID
-                                 AND ProtocolTitleID = @ProtocolTitleID
-                                 AND IsActive = 1
-                                 ORDER BY CreatedDate ASC";
-                    using (SqlCommand command = new SqlCommand(query, connection))
+                    using (SqlCommand command = new SqlCommand("pc_select_active_comments_datatable", connection))
                     {
-                        command.CommandType = CommandType.Text;
+                        command.CommandType = CommandType.StoredProcedure;
 
                         command.Parameters.Clear();
                         command.Parameters.Add("@ProtocolRequestID", SqlDbType.Int).Value = title.ProtocolRequestID;
@@ -114,11 +98,7 @@ namespace Toxikon.ProtocolManager.Queries
             }
             catch(SqlException sqlEx)
             {
-                ErrorHandler.CreateLogFile(ErrorFormName, "SelectProtocolCommentsDataTable", sqlEx);
-            }
-            catch (FormatException formatEx)
-            {
-                ErrorHandler.CreateLogFile(ErrorFormName, "SelectProtocolCommentsDataTable", formatEx);
+                ErrorHandler.CreateLogFile(ErrorFormName, "SelectActiveCommentsDataTable", sqlEx);
             }
             return dataTable;
         }

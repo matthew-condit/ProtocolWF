@@ -22,7 +22,7 @@ namespace Toxikon.ProtocolManager.Queries
                 using (SqlConnection connection = new SqlConnection(CONNECTION_STRING))
                 {
                     connection.Open();
-                    using (SqlCommand command = new SqlCommand("ProtocolActivitiesInsert", connection))
+                    using (SqlCommand command = new SqlCommand("pa_insert_activity", connection))
                     {
                         command.CommandType = CommandType.StoredProcedure;
 
@@ -52,7 +52,7 @@ namespace Toxikon.ProtocolManager.Queries
                 using (SqlConnection connection = new SqlConnection(CONNECTION_STRING))
                 {
                     connection.Open();
-                    using (SqlCommand command = new SqlCommand("ProtocolActivitiesInsert", connection))
+                    using (SqlCommand command = new SqlCommand("pa_insert_activity", connection))
                     {
                         command.CommandType = CommandType.StoredProcedure;
 
@@ -82,7 +82,7 @@ namespace Toxikon.ProtocolManager.Queries
                 using (SqlConnection connection = new SqlConnection(CONNECTION_STRING))
                 {
                     connection.Open();
-                    using (SqlCommand command = new SqlCommand("ProtocolActivitiesInsert", connection))
+                    using (SqlCommand command = new SqlCommand("pa_insert_activity", connection))
                     {
                         command.CommandType = CommandType.StoredProcedure;
 
@@ -111,7 +111,7 @@ namespace Toxikon.ProtocolManager.Queries
                 {
                     connection.Open();
 
-                    using (SqlCommand command = new SqlCommand("ProtocolActivitiesSelect", connection))
+                    using (SqlCommand command = new SqlCommand("pa_select_all_activities", connection))
                     {
                         command.CommandType = CommandType.StoredProcedure;
                         command.Parameters.Add("@ProtocolRequestID", SqlDbType.Int).Value = requestID;
@@ -148,7 +148,7 @@ namespace Toxikon.ProtocolManager.Queries
                 using (SqlConnection connection = new SqlConnection(CONNECTION_STRING))
                 {
                     connection.Open();
-                    using (SqlCommand command = new SqlCommand("ProtocolActivitiesSelectDataTable", connection))
+                    using (SqlCommand command = new SqlCommand("pa_select_all_activities_datatable", connection))
                     {
                         command.CommandType = CommandType.StoredProcedure;
                         command.Parameters.Add("@ProtocolRequestID", SqlDbType.Int).Value = requestID;

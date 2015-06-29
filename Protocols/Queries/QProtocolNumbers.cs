@@ -46,7 +46,7 @@ namespace Toxikon.ProtocolManager.Queries
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
                     connection.Open();
-                    using (SqlCommand command = new SqlCommand("ProtocolNumbersInsert", connection))
+                    using (SqlCommand command = new SqlCommand("pn_insert_protocol_number", connection))
                     {
                         command.CommandType = CommandType.StoredProcedure;
                         command.Parameters.Add("@ProtocolRequestID", SqlDbType.Int).Value = item.ProtocolRequestID;
@@ -71,22 +71,14 @@ namespace Toxikon.ProtocolManager.Queries
         public static ProtocolNumber SelectProtocolNumber(int requestID, int titleID, string fullCode)
         {
             ProtocolNumber protocolNumber = new ProtocolNumber();
-            protocolNumber.ProtocolRequestID = requestID;
-            protocolNumber.ProtocolTitleID = titleID;
-
-            string query = @"SELECT YearNumber, SequenceNumber, RevisedNumber, ProtocolType
-                             FROM ProtocolNumbers
-                             WHERE ProtocolRequestID = @ProtocolRequestID
-                             AND ProtocolTitleID = @ProtocolTitleID
-                             AND ProtocolNumber = @ProtocolNumber";
             try
             {
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
                     connection.Open();
-                    using (SqlCommand command = new SqlCommand(query, connection))
+                    using (SqlCommand command = new SqlCommand("pn_select_protocol_number", connection))
                     {
-                        command.CommandType = CommandType.Text;
+                        command.CommandType = CommandType.StoredProcedure;
                         command.Parameters.Add("@ProtocolRequestID", SqlDbType.Int).Value = requestID;
                         command.Parameters.Add("@ProtocolTitleID", SqlDbType.Int).Value = titleID;
                         command.Parameters.Add("@ProtocolNumber", SqlDbType.NVarChar).Value = fullCode;
@@ -94,6 +86,8 @@ namespace Toxikon.ProtocolManager.Queries
                         SqlDataReader reader = command.ExecuteReader();
                         while (reader.Read())
                         {
+                            protocolNumber.ProtocolRequestID = requestID;
+                            protocolNumber.ProtocolTitleID = titleID;
                             protocolNumber.YearNumber = Convert.ToInt32(reader[0].ToString());
                             protocolNumber.SequenceNumber = Convert.ToInt32(reader[1].ToString());
                             protocolNumber.RevisedNumber = Convert.ToInt32(reader[2].ToString());
@@ -116,7 +110,7 @@ namespace Toxikon.ProtocolManager.Queries
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
                     connection.Open();
-                    using (SqlCommand command = new SqlCommand("ProtocolNumbersUpdate", connection))
+                    using (SqlCommand command = new SqlCommand("pn_update_protocol_number", connection))
                     {
                         command.CommandType = CommandType.StoredProcedure;
                         command.Parameters.Add("@ProtocolRequestID", SqlDbType.Int).Value = item.ProtocolRequestID;

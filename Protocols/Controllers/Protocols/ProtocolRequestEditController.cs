@@ -227,7 +227,7 @@ namespace Toxikon.ProtocolManager.Controllers.Protocols
         {
             int selectedIndex = Convert.ToInt32(this.view.SelectedTitleIndexes[0]);
             ProtocolTitle title = this.protocolRequest.Titles[selectedIndex];
-            QProtocolComments.InsertProtocolComments(title, comments, loginInfo.UserName);
+            QProtocolComments.InsertComments(title, comments, loginInfo.UserName);
         }
 
         public void ViewCommentsButtonClicked()
@@ -236,7 +236,7 @@ namespace Toxikon.ProtocolManager.Controllers.Protocols
             {
                 int selectedIndex = Convert.ToInt32(this.view.SelectedTitleIndexes[0]);
                 ProtocolTitle title = this.protocolRequest.Titles[selectedIndex];
-                IList comments = QProtocolComments.SelectProtocolComments(title);
+                IList comments = QProtocolComments.SelectActiveComments(title);
                 ShowListViewPopup(ListViewPopupItemTypes.ProtocolComment, comments);
             }
             else

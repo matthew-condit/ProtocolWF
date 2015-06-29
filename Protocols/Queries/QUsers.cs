@@ -13,124 +13,125 @@ namespace Toxikon.ProtocolManager.Queries
     public class QUsers
     {
         private static string CONNECTION_STRING = Utility.GetTPMConnectionString();
+        private const string ErrorFormName = "QUsers";
 
         public static Int32 InsertUser(User user, string userName)
         {
             Int32 result = 0;
-            using (SqlConnection connection = new SqlConnection(CONNECTION_STRING))
+            try
             {
-                connection.Open();
-                using (SqlCommand command = new SqlCommand("UsersInsert", connection))
+                using (SqlConnection connection = new SqlConnection(CONNECTION_STRING))
                 {
-                    command.CommandType = System.Data.CommandType.StoredProcedure;
+                    connection.Open();
+                    using (SqlCommand command = new SqlCommand("u_insert_user", connection))
+                    {
+                        command.CommandType = System.Data.CommandType.StoredProcedure;
 
-                    command.Parameters.AddWithValue("@UserName", user.UserName);
-                    command.Parameters.AddWithValue("@FirstName", user.FirstName);
-                    command.Parameters.AddWithValue("@LastName", user.LastName);
-                    command.Parameters.AddWithValue("@FullName", user.FullName);
-                    command.Parameters.AddWithValue("@EmailAddress", user.EmailAddress);
-                    command.Parameters.AddWithValue("@DepartmentID", user.Department.DepartmentID);
-                    command.Parameters.AddWithValue("@RoleID", user.Role.RoleID);
-                    command.Parameters.AddWithValue("@CreatedBy", userName);
+                        command.Parameters.AddWithValue("@UserName", user.UserName);
+                        command.Parameters.AddWithValue("@FirstName", user.FirstName);
+                        command.Parameters.AddWithValue("@LastName", user.LastName);
+                        command.Parameters.AddWithValue("@FullName", user.FullName);
+                        command.Parameters.AddWithValue("@EmailAddress", user.EmailAddress);
+                        command.Parameters.AddWithValue("@DepartmentID", user.Department.DepartmentID);
+                        command.Parameters.AddWithValue("@RoleID", user.Role.RoleID);
+                        command.Parameters.AddWithValue("@CreatedBy", userName);
 
-                    result = command.ExecuteNonQuery();
+                        result = command.ExecuteNonQuery();
+                    }
                 }
             }
+            catch(SqlException sqlEx)
+            {
+                ErrorHandler.CreateLogFile(ErrorFormName, "InsertUser", sqlEx);
+            }
+            
             return result;
         }
 
         public static IList GetUsers()
         {
             IList results = new ArrayList();
-            using (SqlConnection connection = new SqlConnection(CONNECTION_STRING))
+            try
             {
-                connection.Open();
-                string query = @"SELECT Users.UserName, Users.FirstName, Users.LastName,
-                                        Users.FullName, Users.EmailAddress, 
-                                        Users.DepartmentID, Departments.DepartmentName, 
-                                        Users.RoleID, Roles.RoleName, Users.IsActive
-	                             FROM Users
-	                             INNER JOIN Departments
-	                             ON Users.DepartmentID = Departments.ID
-	                             INNER JOIN Roles
-	                             ON Users.RoleID = Roles.ID";
-                using (SqlCommand command = new SqlCommand(query, connection))
+                using (SqlConnection connection = new SqlConnection(CONNECTION_STRING))
                 {
-                    command.CommandType = CommandType.Text;
-                    SqlDataReader reader = command.ExecuteReader();
-                    while (reader.Read())
+                    connection.Open();
+                    using (SqlCommand command = new SqlCommand("u_select_all_users", connection))
                     {
-                        User user = CreateNewUser(reader);
-                        results.Add(user);
+                        command.CommandType = CommandType.StoredProcedure;
+                        SqlDataReader reader = command.ExecuteReader();
+                        while (reader.Read())
+                        {
+                            User user = CreateNewUser(reader);
+                            results.Add(user);
+                        }
                     }
                 }
             }
-
+            catch (SqlException sqlEx)
+            {
+                ErrorHandler.CreateLogFile(ErrorFormName, "GetUsers", sqlEx);
+            }
             return results;
         }
 
         public static IList GetUsersByRoleID(int roleID, string listName)
         {
             IList results = new ArrayList();
-            using (SqlConnection connection = new SqlConnection(CONNECTION_STRING))
+            try
             {
-                connection.Open();
-                string query = @"SELECT Users.UserName, Users.FirstName, Users.LastName,
-                                        Users.FullName, Users.EmailAddress, 
-                                        Users.DepartmentID, Departments.DepartmentName, 
-                                        Users.RoleID, Roles.RoleName, Users.IsActive
-	                             FROM Users
-	                             INNER JOIN Departments
-	                             ON Users.DepartmentID = Departments.ID
-	                             INNER JOIN Roles
-	                             ON Users.RoleID = Roles.ID
-                                 WHERE Users.RoleID = @RoleID";
-                using (SqlCommand command = new SqlCommand(query, connection))
+                using (SqlConnection connection = new SqlConnection(CONNECTION_STRING))
                 {
-                    command.CommandType = CommandType.Text;
-                    command.Parameters.Add("@RoleID", SqlDbType.Int).Value = roleID;
-
-                    SqlDataReader reader = command.ExecuteReader();
-                    while (reader.Read())
+                    connection.Open();
+                    using (SqlCommand command = new SqlCommand("u_select_users_by_roleid", connection))
                     {
-                        ListItem item = new ListItem();
-                        item.ListName = listName;
-                        item.ItemName = reader[3].ToString() + '-' + reader[0].ToString();
-                        results.Add(item);
+                        command.CommandType = CommandType.StoredProcedure;
+                        command.Parameters.Add("@RoleID", SqlDbType.Int).Value = roleID;
+                        command.Parameters.Add("@IsActive", SqlDbType.Bit).Value = true;
+
+                        SqlDataReader reader = command.ExecuteReader();
+                        while (reader.Read())
+                        {
+                            ListItem item = new ListItem();
+                            item.ListName = listName;
+                            item.ItemName = reader[3].ToString() + '-' + reader[0].ToString();
+                            results.Add(item);
+                        }
                     }
                 }
             }
-
+            catch(SqlException sqlEx)
+            {
+                ErrorHandler.CreateLogFile(ErrorFormName, "GetUsersByRoleID", sqlEx);
+            }
             return results;
         }
 
         public static User GetUser(string username)
         {
             User user = new User();
-            using (SqlConnection connection = new SqlConnection(CONNECTION_STRING))
+            try
             {
-                connection.Open();
-                string query = @"SELECT Users.UserName, Users.FirstName, Users.LastName,
-                                        Users.FullName, Users.EmailAddress, 
-                                        Users.DepartmentID, Departments.DepartmentName, 
-                                        Users.RoleID, Roles.RoleName, Users.IsActive
-	                             FROM Users
-	                             INNER JOIN Departments
-	                             ON Users.DepartmentID = Departments.ID
-	                             INNER JOIN Roles
-	                             ON Users.RoleID = Roles.ID
-                                 WHERE Users.UserName = @UserName
-                                 AND Users.IsActive = 1";
-                using (SqlCommand command = new SqlCommand(query, connection))
+                using (SqlConnection connection = new SqlConnection(CONNECTION_STRING))
                 {
-                    command.CommandType = CommandType.Text;
-                    command.Parameters.Add("@UserName", SqlDbType.NVarChar).Value = username;
-                    SqlDataReader reader = command.ExecuteReader();
-                    while (reader.Read())
+                    connection.Open();
+                    using (SqlCommand command = new SqlCommand("u_select_user_by_username", connection))
                     {
-                        user = CreateNewUser(reader);
+                        command.CommandType = CommandType.StoredProcedure;
+                        command.Parameters.Add("@UserName", SqlDbType.NVarChar).Value = username;
+                        command.Parameters.Add("@IsActive", SqlDbType.Bit).Value = true;
+
+                        SqlDataReader reader = command.ExecuteReader();
+                        while (reader.Read())
+                        {
+                            user = CreateNewUser(reader);
+                        }
                     }
                 }
+            }
+            catch(SqlException sqlEx)
+            {
+                ErrorHandler.CreateLogFile(ErrorFormName, "GetUser", sqlEx);
             }
 
             return user;
@@ -153,24 +154,31 @@ namespace Toxikon.ProtocolManager.Queries
 
         public static void UpdateUser(User user, string userName)
         {
-            using (SqlConnection connection = new SqlConnection(CONNECTION_STRING))
+            try
             {
-                connection.Open();
-                using (SqlCommand command = new SqlCommand("UsersUpdate", connection))
+                using (SqlConnection connection = new SqlConnection(CONNECTION_STRING))
                 {
-                    command.CommandType = CommandType.StoredProcedure;
-                    command.Parameters.Add("@UserName", SqlDbType.NVarChar).Value = user.UserName;
-                    command.Parameters.Add("@FirstName", SqlDbType.NVarChar).Value = user.FirstName;
-                    command.Parameters.Add("@LastName", SqlDbType.NChar).Value = user.LastName;
-                    command.Parameters.Add("@FullName", SqlDbType.NVarChar).Value = user.FullName;
-                    command.Parameters.Add("@EmailAddress", SqlDbType.NVarChar).Value = user.EmailAddress;
-                    command.Parameters.Add("@DepartmentID", SqlDbType.NChar).Value = user.Department.DepartmentID;
-                    command.Parameters.Add("@RoleID", SqlDbType.Int).Value = user.Role.RoleID;
-                    command.Parameters.Add("@IsActive", SqlDbType.Bit).Value = user.IsActive;
-                    command.Parameters.Add("@UpdatedBy", SqlDbType.NVarChar).Value = userName;
+                    connection.Open();
+                    using (SqlCommand command = new SqlCommand("u_update_user", connection))
+                    {
+                        command.CommandType = CommandType.StoredProcedure;
+                        command.Parameters.Add("@UserName", SqlDbType.NVarChar).Value = user.UserName;
+                        command.Parameters.Add("@FirstName", SqlDbType.NVarChar).Value = user.FirstName;
+                        command.Parameters.Add("@LastName", SqlDbType.NChar).Value = user.LastName;
+                        command.Parameters.Add("@FullName", SqlDbType.NVarChar).Value = user.FullName;
+                        command.Parameters.Add("@EmailAddress", SqlDbType.NVarChar).Value = user.EmailAddress;
+                        command.Parameters.Add("@DepartmentID", SqlDbType.NChar).Value = user.Department.DepartmentID;
+                        command.Parameters.Add("@RoleID", SqlDbType.Int).Value = user.Role.RoleID;
+                        command.Parameters.Add("@IsActive", SqlDbType.Bit).Value = user.IsActive;
+                        command.Parameters.Add("@UpdatedBy", SqlDbType.NVarChar).Value = userName;
 
-                    Int32 result = command.ExecuteNonQuery();
+                        int result = command.ExecuteNonQuery();
+                    }
                 }
+            }
+            catch(SqlException sqlEx)
+            {
+                ErrorHandler.CreateLogFile(ErrorFormName, "UpdateUser", sqlEx);
             }
         }
     }
