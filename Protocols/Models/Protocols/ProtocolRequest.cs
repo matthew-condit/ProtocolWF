@@ -24,7 +24,6 @@ namespace Toxikon.ProtocolManager.Models
         public string BillTo { get; set; }
         public string Comments { get; set; }
         public string AssignedTo { get; set; }
-        public string Priority { get; set; }
 
         public string RequestStatus { get; set; }
         public bool IsActive { get; set; }

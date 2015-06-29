@@ -316,8 +316,11 @@ namespace Toxikon.ProtocolManager.Controllers.Protocols
 
         private void UpdateProtocolNumber(ProtocolTitle title)
         {
-            ProtocolNumber protocolNumber = QProtocolNumbers.SelectProtocolNumber(this.protocolRequest.ID,
-                               title.ID, title.ProtocolNumber);
+            ProtocolNumber protocolNumber = new ProtocolNumber();
+            protocolNumber.ProtocolRequestID = this.protocolRequest.ID;
+            protocolNumber.ProtocolTitleID = title.ID;
+            protocolNumber.FullCode = title.ProtocolNumber;
+            QProtocolNumbers.SetProtocolNumber(protocolNumber);
             protocolNumber.RevisedNumber += 1;
             protocolNumber.SetFullCode();
             QProtocolNumbers.UpdateProtocolNumber(protocolNumber, loginInfo.UserName);

@@ -25,7 +25,6 @@ namespace Toxikon.ProtocolManager.Queries
                     using (SqlCommand command = new SqlCommand("pa_insert_activity", connection))
                     {
                         command.CommandType = CommandType.StoredProcedure;
-
                         foreach (ProtocolActivity activity in protocolActivities)
                         {
                             command.Parameters.Clear();
@@ -55,7 +54,6 @@ namespace Toxikon.ProtocolManager.Queries
                     using (SqlCommand command = new SqlCommand("pa_insert_activity", connection))
                     {
                         command.CommandType = CommandType.StoredProcedure;
-
                         foreach (ProtocolTitle title in request.Titles)
                         {
                             command.Parameters.Clear();
@@ -85,8 +83,6 @@ namespace Toxikon.ProtocolManager.Queries
                     using (SqlCommand command = new SqlCommand("pa_insert_activity", connection))
                     {
                         command.CommandType = CommandType.StoredProcedure;
-
-                        command.Parameters.Clear();
                         command.Parameters.Add("@ProtocolRequestID", SqlDbType.Int).Value = activity.ProtocolRequestID;
                         command.Parameters.Add("@ProtocolTitleID", SqlDbType.Int).Value = activity.ProtocolTitleID;
                         command.Parameters.Add("@ProtocolEventID", SqlDbType.Int).Value = activity.ProtocolEvent.ID;
@@ -116,18 +112,10 @@ namespace Toxikon.ProtocolManager.Queries
                         command.CommandType = CommandType.StoredProcedure;
                         command.Parameters.Add("@ProtocolRequestID", SqlDbType.Int).Value = requestID;
                         command.Parameters.Add("@ProtocolTitleID", SqlDbType.Int).Value = titleID;
-
                         SqlDataReader reader = command.ExecuteReader();
                         while (reader.Read())
                         {
-                            ProtocolActivity activity = new ProtocolActivity();
-                            activity.ProtocolRequestID = requestID;
-                            activity.ProtocolTitleID = titleID;
-                            activity.ProtocolEvent.ID = Convert.ToInt32(reader[0].ToString());
-                            activity.ProtocolEvent.Description = reader[1].ToString();
-                            activity.CreatedBy = reader[2].ToString();
-                            activity.CreatedDate = Convert.ToDateTime(reader[3].ToString());
-
+                            ProtocolActivity activity = CreateNewProtocolActivity(requestID, titleID, reader);
                             results.Add(activity);
                         }
                     }
@@ -138,6 +126,19 @@ namespace Toxikon.ProtocolManager.Queries
                 ErrorHandler.CreateLogFile(ErrorFormName, "SelectProtocolActivity", ex);
             }
             return results;
+        }
+
+        private static ProtocolActivity CreateNewProtocolActivity(int requestID, int titleID, SqlDataReader reader)
+        {
+            ProtocolActivity activity = new ProtocolActivity();
+            activity.ProtocolRequestID = requestID;
+            activity.ProtocolTitleID = titleID;
+            activity.ProtocolEvent.ID = Convert.ToInt32(reader[0].ToString());
+            activity.ProtocolEvent.Description = reader[1].ToString();
+            activity.CreatedBy = reader[2].ToString();
+            activity.CreatedDate = Convert.ToDateTime(reader[3].ToString());
+
+            return activity;
         }
 
         public static DataTable SelectProtocolActivitiesDataTable(int requestID, int titleID)

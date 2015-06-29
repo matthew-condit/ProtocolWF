@@ -27,8 +27,6 @@ namespace Toxikon.ProtocolManager.Queries
                     using (SqlCommand command = new SqlCommand("pc_insert_comments", connection))
                     {
                         command.CommandType = CommandType.StoredProcedure;
-
-                        command.Parameters.Clear();
                         command.Parameters.Add("@ProtocolRequestID", SqlDbType.Int).Value = title.ProtocolRequestID;
                         command.Parameters.Add("@ProtocolTitleID", SqlDbType.Int).Value = title.ID;
                         command.Parameters.Add("@Comments", SqlDbType.NVarChar).Value = comments;

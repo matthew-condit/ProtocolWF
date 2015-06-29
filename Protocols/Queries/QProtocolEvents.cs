@@ -53,11 +53,7 @@ namespace Toxikon.ProtocolManager.Queries
                         SqlDataReader reader = command.ExecuteReader();
                         while (reader.Read())
                         {
-                            ProtocolEvent protocolEvent = new ProtocolEvent();
-                            protocolEvent.ID = Convert.ToInt32(reader[0].ToString());
-                            protocolEvent.Type = reader[1].ToString();
-                            protocolEvent.Description = reader[2].ToString();
-                            protocolEvent.IsActive = Convert.ToBoolean(reader[3].ToString());
+                            ProtocolEvent protocolEvent = CreateNewProtocolEvent(reader);
                             results.Add(protocolEvent);
                         }
                     }
@@ -68,6 +64,16 @@ namespace Toxikon.ProtocolManager.Queries
                 ErrorHandler.CreateLogFile(ErrorFormName, "SelectProtocolEvents", ex);
             }
             return results;
+        }
+
+        public static ProtocolEvent CreateNewProtocolEvent(SqlDataReader reader)
+        {
+            ProtocolEvent protocolEvent = new ProtocolEvent();
+            protocolEvent.ID = Convert.ToInt32(reader[0].ToString());
+            protocolEvent.Type = reader[1].ToString();
+            protocolEvent.Description = reader[2].ToString();
+            protocolEvent.IsActive = Convert.ToBoolean(reader[3].ToString());
+            return protocolEvent;
         }
 
         public static IList SelectProtocolEventsByType(string eventType)
@@ -85,11 +91,7 @@ namespace Toxikon.ProtocolManager.Queries
                         SqlDataReader reader = command.ExecuteReader();
                         while (reader.Read())
                         {
-                            ProtocolEvent protocolEvent = new ProtocolEvent();
-                            protocolEvent.ID = Convert.ToInt32(reader[0].ToString());
-                            protocolEvent.Type = reader[1].ToString();
-                            protocolEvent.Description = reader[2].ToString();
-                            protocolEvent.IsActive = Convert.ToBoolean(reader[3].ToString());
+                            ProtocolEvent protocolEvent = CreateNewProtocolEvent(reader);
                             results.Add(protocolEvent);
                         }
                     }

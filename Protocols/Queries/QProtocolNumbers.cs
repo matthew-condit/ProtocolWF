@@ -68,9 +68,8 @@ namespace Toxikon.ProtocolManager.Queries
             }
         }
 
-        public static ProtocolNumber SelectProtocolNumber(int requestID, int titleID, string fullCode)
+        public static void SetProtocolNumber(ProtocolNumber item)
         {
-            ProtocolNumber protocolNumber = new ProtocolNumber();
             try
             {
                 using (SqlConnection connection = new SqlConnection(connectionString))
@@ -79,28 +78,25 @@ namespace Toxikon.ProtocolManager.Queries
                     using (SqlCommand command = new SqlCommand("pn_select_protocol_number", connection))
                     {
                         command.CommandType = CommandType.StoredProcedure;
-                        command.Parameters.Add("@ProtocolRequestID", SqlDbType.Int).Value = requestID;
-                        command.Parameters.Add("@ProtocolTitleID", SqlDbType.Int).Value = titleID;
-                        command.Parameters.Add("@ProtocolNumber", SqlDbType.NVarChar).Value = fullCode;
+                        command.Parameters.Add("@ProtocolRequestID", SqlDbType.Int).Value = item.ProtocolRequestID;
+                        command.Parameters.Add("@ProtocolTitleID", SqlDbType.Int).Value = item.ProtocolTitleID;
+                        command.Parameters.Add("@ProtocolNumber", SqlDbType.NVarChar).Value = item.FullCode;
 
                         SqlDataReader reader = command.ExecuteReader();
                         while (reader.Read())
                         {
-                            protocolNumber.ProtocolRequestID = requestID;
-                            protocolNumber.ProtocolTitleID = titleID;
-                            protocolNumber.YearNumber = Convert.ToInt32(reader[0].ToString());
-                            protocolNumber.SequenceNumber = Convert.ToInt32(reader[1].ToString());
-                            protocolNumber.RevisedNumber = Convert.ToInt32(reader[2].ToString());
-                            protocolNumber.ProtocolType = reader[3].ToString();
+                            item.YearNumber = Convert.ToInt32(reader[0].ToString());
+                            item.SequenceNumber = Convert.ToInt32(reader[1].ToString());
+                            item.RevisedNumber = Convert.ToInt32(reader[2].ToString());
+                            item.ProtocolType = reader[3].ToString();
                         }
                     }
                 }
             }
             catch (SqlException ex)
             {
-                ErrorHandler.CreateLogFile(ErrorFormName, "SelectProtocolNumber", ex);
+                ErrorHandler.CreateLogFile(ErrorFormName, "SetProtocolNumber", ex);
             }
-            return protocolNumber;
         }
 
         public static void UpdateProtocolNumber(ProtocolNumber item, string userName)
