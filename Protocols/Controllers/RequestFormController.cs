@@ -66,14 +66,10 @@ namespace Toxikon.ProtocolManager.Controllers
 
         public void UpdateRequestWithViewValues()
         {
-            this.request.Guidelines = this.view.Guidelines;
-            this.request.Compliance = this.view.Compliance;
-            this.request.ProtocolType = this.view.ProtocolType;
             this.request.DueDate = this.view.DueDate;
             this.request.SendVia = this.view.SendVia;
             this.request.BillTo = this.view.BillTo;
             this.request.Comments = this.view.Comments;
-            this.request.AssignedTo = this.view.AssignedTo;
         }
 
         public void ChangeContactButtonClicked()
@@ -106,7 +102,7 @@ namespace Toxikon.ProtocolManager.Controllers
             DialogResult dialogResult = popup.ShowDialog(this.view.ParentControl);
             if (dialogResult == DialogResult.OK)
             {
-                SetListSelectedItems(listName, popupController.SelectedItem);
+                SetSelectedListItem(listName, popupController.SelectedItem);
             }
             popup.Dispose();
         }
@@ -127,14 +123,21 @@ namespace Toxikon.ProtocolManager.Controllers
                     this.request.ProtocolType = items;
                     this.view.ProtocolType = items;
                     break;
+                default:
+                    break;
+            }
+        }
+
+        private void SetSelectedListItem(string listName, ListItem item)
+        {
+            switch (listName)
+            {
                 case ListNames.AssignedTo:
-                    string[] splits1 = items.Split('-');
-                    this.request.AssignedTo = splits1[1];
-                    this.view.AssignedTo = this.request.AssignedTo;
+                    this.request.AssignedTo = item.Value;
+                    this.view.AssignedTo = item.Text;
                     break;
                 case ListNames.Contact:
-                    string[] splits2 = items.Split('-');
-                    this.request.SetContact(splits2[1]);
+                    this.request.SetContact(item.Value);
                     UpdateViewWithSponsorContact();
                     break;
                 default:
@@ -145,18 +148,17 @@ namespace Toxikon.ProtocolManager.Controllers
         public void SubmitRequest()
         {
             this.request.RequestStatus = RequestStatuses.New;
-            Debug.WriteLine(this.request.Titles.Count);
-            this.request.ID = QProtocolRequests.InsertProtocolRequest(this.request, loginInfo.UserName);
+            this.request.ID = QProtocolRequests.InsertItem(this.request, loginInfo.UserName);
             if (this.request.Titles.Count > 0)
             {
-                QProtocolTitles.InsertFromProtocolRequest(this.request, loginInfo.UserName);
+                QProtocolTitles.InsertItem(this.request, loginInfo.UserName);
             }
-            QProtocolActivities.InsertFromProtocolRequest(this.request, loginInfo.UserName);
+            QProtocolActivities.InsertItem(this.request, loginInfo.UserName);
         }
 
         public void UpdateRequest()
         {
-            QProtocolRequests.Update(this.request, loginInfo.UserName);
+            QProtocolRequests.UpdateItem(this.request, loginInfo.UserName);
         }
 
         public void ClearForm()

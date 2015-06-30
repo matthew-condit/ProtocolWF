@@ -86,7 +86,7 @@ namespace Toxikon.ProtocolManager.Controllers.Protocols
             {
                 int selectedIndex = Convert.ToInt32(this.view.SelectedTitleIndexes[0]);
                 ProtocolTitle title = this.protocolRequest.Titles[selectedIndex];
-                IList events = QProtocolActivities.SelectProtocolActivity(this.protocolRequest.ID, title.ID);
+                IList events = QProtocolActivities.SelectItems(this.protocolRequest.ID, title.ID);
                 ShowListViewPopup(ListViewPopupItemTypes.ProtocolEvent, events);
             }
             else
@@ -102,7 +102,7 @@ namespace Toxikon.ProtocolManager.Controllers.Protocols
             {
                 int selectedIndex = Convert.ToInt32(this.view.SelectedTitleIndexes[0]);
                 ProtocolTitle title = this.protocolRequest.Titles[selectedIndex];
-                IList comments = QProtocolComments.SelectActiveComments(title);
+                IList comments = QProtocolComments.SelectItems(title);
                 ShowListViewPopup(ListViewPopupItemTypes.ProtocolComment, comments);
             }
             else

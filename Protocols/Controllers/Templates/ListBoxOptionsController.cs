@@ -14,21 +14,21 @@ namespace Toxikon.ProtocolManager.Controllers.Templates
     {
         IListBoxOptionsView view;
         IList items;
-        public string SelectedItem { get; private set; }
+        public ListItem SelectedItem { get; private set; }
 
         public ListBoxOptionsController(IListBoxOptionsView view, IList items)
         {
             this.view = view;
             this.view.SetController(this);
             this.items = new ArrayList(items);
-            this.SelectedItem = "";
+            this.SelectedItem = null;
         }
 
         public void LoadView()
         {
             foreach(ListItem item in items)
             {
-                this.view.AddItemToListBox(item.ItemName);
+                this.view.AddItemToListBox(item.Text);
             }
         }
 
@@ -36,14 +36,13 @@ namespace Toxikon.ProtocolManager.Controllers.Templates
         {
             if(selectedIndex > -1 && selectedIndex < this.items.Count)
             {
-                ListItem selectedListItem = (ListItem)this.items[selectedIndex];
-                this.SelectedItem = selectedListItem.ItemName;
+                this.SelectedItem = (ListItem)this.items[selectedIndex];
             }
         }
 
         public void SubmitButtonClicked()
         {
-            if(this.SelectedItem == "")
+            if(this.SelectedItem == null)
             {
                 MessageBox.Show("Please select 1 item.");
                 this.view.SetDialogResult(DialogResult.Retry);

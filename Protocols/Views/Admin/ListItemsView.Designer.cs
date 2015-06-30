@@ -35,8 +35,10 @@
             this.toolStripLabel2 = new System.Windows.Forms.ToolStripLabel();
             this.ItemNameTextBox = new System.Windows.Forms.ToolStripTextBox();
             this.AddButton = new System.Windows.Forms.ToolStripButton();
+            this.UpdateButton = new System.Windows.Forms.ToolStripButton();
             this.ItemsListView = new System.Windows.Forms.ListView();
             this.ItemNameCol = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.ActiveCol = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -49,7 +51,8 @@
             this.ListNameComboBox,
             this.toolStripLabel2,
             this.ItemNameTextBox,
-            this.AddButton});
+            this.AddButton,
+            this.UpdateButton});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Padding = new System.Windows.Forms.Padding(10, 0, 1, 0);
@@ -93,6 +96,16 @@
             this.AddButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.AddButton.Click += new System.EventHandler(this.AddButton_Click);
             // 
+            // UpdateButton
+            // 
+            this.UpdateButton.Image = global::Toxikon.ProtocolManager.Properties.Resources.PencilAngled_16xLG_color;
+            this.UpdateButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.UpdateButton.Name = "UpdateButton";
+            this.UpdateButton.Size = new System.Drawing.Size(55, 37);
+            this.UpdateButton.Text = "Update";
+            this.UpdateButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.UpdateButton.Click += new System.EventHandler(this.UpdateButton_Click);
+            // 
             // ItemsListView
             // 
             this.ItemsListView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -100,19 +113,28 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.ItemsListView.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.ItemsListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.ItemNameCol});
+            this.ItemNameCol,
+            this.ActiveCol});
+            this.ItemsListView.FullRowSelect = true;
             this.ItemsListView.GridLines = true;
             this.ItemsListView.Location = new System.Drawing.Point(0, 44);
+            this.ItemsListView.MultiSelect = false;
             this.ItemsListView.Name = "ItemsListView";
             this.ItemsListView.Size = new System.Drawing.Size(640, 193);
             this.ItemsListView.TabIndex = 1;
             this.ItemsListView.UseCompatibleStateImageBehavior = false;
             this.ItemsListView.View = System.Windows.Forms.View.Details;
+            this.ItemsListView.SelectedIndexChanged += new System.EventHandler(this.ItemsListView_SelectedIndexChanged);
             // 
             // ItemNameCol
             // 
             this.ItemNameCol.Text = "Item Name";
-            this.ItemNameCol.Width = 580;
+            this.ItemNameCol.Width = 448;
+            // 
+            // ActiveCol
+            // 
+            this.ActiveCol.Text = "Active";
+            this.ActiveCol.Width = 94;
             // 
             // ListItemsView
             // 
@@ -141,5 +163,7 @@
         private System.Windows.Forms.ToolStripButton AddButton;
         private System.Windows.Forms.ListView ItemsListView;
         private System.Windows.Forms.ColumnHeader ItemNameCol;
+        private System.Windows.Forms.ToolStripButton UpdateButton;
+        private System.Windows.Forms.ColumnHeader ActiveCol;
     }
 }

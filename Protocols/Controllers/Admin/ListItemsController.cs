@@ -7,6 +7,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
+using Toxikon.ProtocolManager.Views.Templates;
+using Toxikon.ProtocolManager.Controllers.Templates;
 
 namespace Toxikon.ProtocolManager.Controllers.Admin
 {
@@ -14,6 +17,8 @@ namespace Toxikon.ProtocolManager.Controllers.Admin
     {
         IListItemsView view;
         IList listNames;
+        IList listItems;
+        ListItem selectedItem;
         string selectedListName;
 
         public ListItemsController(IListItemsView view)
@@ -21,12 +26,14 @@ namespace Toxikon.ProtocolManager.Controllers.Admin
             this.view = view;
             this.view.SetController(this);
             listNames = new ArrayList();
+            listItems = new ArrayList();
+            this.selectedItem = null;
             this.selectedListName = "";
         }
 
         public void LoadView()
         {
-            listNames = QListNames.SelectAll();
+            listNames = QListNames.SelectItems();
             foreach(ListName listName in listNames)
             {
                 this.view.AddListNameToView(listName.Name);
@@ -37,8 +44,8 @@ namespace Toxikon.ProtocolManager.Controllers.Admin
         {
             if(selectedIndex > -1 && selectedIndex < this.listNames.Count)
             {
-                ListName selectedItem = listNames[selectedIndex] as ListName;
-                this.selectedListName =  selectedItem.Name;
+                ListName selectedListName = listNames[selectedIndex] as ListName;
+                this.selectedListName =  selectedListName.Name;
                 LoadSelectedListNameItems();
             }
         }
@@ -46,15 +53,23 @@ namespace Toxikon.ProtocolManager.Controllers.Admin
         private void LoadSelectedListNameItems()
         {
             view.ClearListItems();
-            IList listItems = QListItems.GetListItems(this.selectedListName);
-            AddListItemsToView(listItems);
+            listItems = QListItems.SelectItems(this.selectedListName);
+            AddListItemsToView();
         }
 
-        private void AddListItemsToView(IList items)
+        private void AddListItemsToView()
         {
-            foreach(ListItem item in items)
+            foreach(ListItem item in listItems)
             {
-                view.AddListItemToView(item.ItemName);
+                view.AddListItemToView(item);
+            }
+        }
+
+        public void ListViewSelectedIndexChanged(int selectedIndex)
+        {
+            if(selectedIndex > -1 && selectedIndex < this.listItems.Count)
+            {
+                this.selectedItem = listItems[selectedIndex] as ListItem;
             }
         }
 
@@ -63,15 +78,49 @@ namespace Toxikon.ProtocolManager.Controllers.Admin
             if(this.selectedListName != "" && view.ItemName.Trim() != "")
             {
                 ListItem item = new ListItem();
-                item.ListName = this.selectedListName;
-                item.ItemName = view.ItemName;
+                item.Name = this.selectedListName;
+                item.Text = view.ItemName;
                 item.IsActive = true;
 
                 LoginInfo loginInfo = LoginInfo.GetInstance();
-                QListItems.InsertListItem(item, loginInfo.UserName);
+                QListItems.InsertItem(item, loginInfo.UserName);
                 view.ClearNewItemTextBox();
                 LoadSelectedListNameItems();
             }
+        }
+
+        public void UpdateButtonClicked()
+        {
+            if(this.selectedItem != null)
+            {
+                string oldItemValue = selectedItem.Value;
+                ShowUpdateWindow();
+                if(this.selectedItem.Value.Trim() != String.Empty)
+                {
+                    LoginInfo loginInfo = LoginInfo.GetInstance();
+                    QListItems.UpdateItem(this.selectedItem, oldItemValue, loginInfo.UserName);
+                    LoadSelectedListNameItems();
+                }
+            }
+            else
+            {
+                MessageBox.Show("Please select at least one item.");
+            }
+        }
+
+        public void ShowUpdateWindow()
+        {
+            OneTextBoxTrueFalseForm popup = new OneTextBoxTrueFalseForm();
+            OneTextBoxTrueFalseFormController popupController = new OneTextBoxTrueFalseFormController(popup);
+            popupController.SetTextBoxItem("Item Value: ", this.selectedItem.Text);
+            popupController.SetTrueFalseItem("Active: ", this.selectedItem.IsActive);
+
+            DialogResult dialogResult = popup.ShowDialog(this.view.ParentControl);
+            popup.Dispose();
+
+            this.selectedItem.IsActive = popupController.TrueFalseValue;
+            this.selectedItem.Text = popupController.TextBoxValue;
+            this.selectedItem.Value = popupController.TextBoxValue;
         }
     }
 }

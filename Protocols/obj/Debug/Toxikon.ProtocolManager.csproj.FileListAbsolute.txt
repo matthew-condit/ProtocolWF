@@ -7,7 +7,6 @@ C:\Users\BMcCulley\Source\toxxwinapp\ProtocolsWF\Protocols\obj\Debug\Toxikon.Pro
 C:\Users\BMcCulley\Source\toxxwinapp\ProtocolsWF\Protocols\obj\Debug\Toxikon.ProtocolManager.Views.RequestForms.RequestFormReadOnly.resources
 C:\Users\BMcCulley\Source\toxxwinapp\ProtocolsWF\Protocols\obj\Debug\Toxikon.ProtocolManager.Views.Templates.CheckBoxOptionsView.resources
 C:\Users\BMcCulley\Source\toxxwinapp\ProtocolsWF\Protocols\obj\Debug\Toxikon.ProtocolManager.Views.DashboardView.resources
-C:\Users\BMcCulley\Source\toxxwinapp\ProtocolsWF\Protocols\obj\Debug\Toxikon.ProtocolManager.Views.Admin.DepartmentEditView.resources
 C:\Users\BMcCulley\Source\toxxwinapp\ProtocolsWF\Protocols\obj\Debug\Toxikon.ProtocolManager.Views.Admin.DepartmentListView.resources
 C:\Users\BMcCulley\Source\toxxwinapp\ProtocolsWF\Protocols\obj\Debug\Toxikon.ProtocolManager.Views.Templates.ListBoxOptionsView.resources
 C:\Users\BMcCulley\Source\toxxwinapp\ProtocolsWF\Protocols\obj\Debug\Toxikon.ProtocolManager.Views.Admin.ListItemsView.resources
@@ -19,7 +18,6 @@ C:\Users\BMcCulley\Source\toxxwinapp\ProtocolsWF\Protocols\obj\Debug\Toxikon.Pro
 C:\Users\BMcCulley\Source\toxxwinapp\ProtocolsWF\Protocols\obj\Debug\Toxikon.ProtocolManager.Views.Protocols.ProtocolEventsView.resources
 C:\Users\BMcCulley\Source\toxxwinapp\ProtocolsWF\Protocols\obj\Debug\Toxikon.ProtocolManager.Views.Protocols.ProtocolRequestAddView.resources
 C:\Users\BMcCulley\Source\toxxwinapp\ProtocolsWF\Protocols\obj\Debug\Toxikon.ProtocolManager.Views.Protocols.ProtocolRequestEditView.resources
-C:\Users\BMcCulley\Source\toxxwinapp\ProtocolsWF\Protocols\obj\Debug\Toxikon.ProtocolManager.Views.Admin.RoleEditView.resources
 C:\Users\BMcCulley\Source\toxxwinapp\ProtocolsWF\Protocols\obj\Debug\Toxikon.ProtocolManager.Views.Admin.RoleListView.resources
 C:\Users\BMcCulley\Source\toxxwinapp\ProtocolsWF\Protocols\obj\Debug\Toxikon.ProtocolManager.Views.Admin.UserEditView.resources
 C:\Users\BMcCulley\Source\toxxwinapp\ProtocolsWF\Protocols\obj\Debug\Toxikon.ProtocolManager.Views.Admin.UserListView.resources
@@ -30,3 +28,4 @@ C:\Users\BMcCulley\Source\toxxwinapp\ProtocolsWF\Protocols\obj\Debug\Toxikon.Pro
 C:\Users\BMcCulley\Source\toxxwinapp\ProtocolsWF\Protocols\obj\Debug\Toxikon.ProtocolManager.Views.Protocols.ProtocolRequestReadOnlyView.resources
 C:\Users\BMcCulley\Source\toxxwinapp\ProtocolsWF\Protocols\obj\Debug\Toxikon.ProtocolManager.Views.HistoryView.resources
 C:\Users\BMcCulley\Source\toxxwinapp\ProtocolsWF\Protocols\obj\Debug\Toxikon.ProtocolManager.Views.Admin.ListNameView.resources
+C:\Users\BMcCulley\Source\toxxwinapp\ProtocolsWF\Protocols\obj\Debug\Toxikon.ProtocolManager.Views.Templates.OneTextBoxTrueFalseForm.resources

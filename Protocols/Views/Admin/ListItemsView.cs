@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Toxikon.ProtocolManager.Interfaces.Admin;
 using Toxikon.ProtocolManager.Controllers.Admin;
+using Toxikon.ProtocolManager.Models;
 
 namespace Toxikon.ProtocolManager.Views.Admin
 {
@@ -25,13 +26,18 @@ namespace Toxikon.ProtocolManager.Views.Admin
         {
             this.controller = controller;
         }
+        public Control ParentControl
+        {
+            get { return this.ParentForm; }
+        }
         public void AddListNameToView(string listName)
         {
             this.ListNameComboBox.Items.Add(listName);
         }
-        public void AddListItemToView(string listItem)
+        public void AddListItemToView(ListItem listItem)
         {
-            ListViewItem item = this.ItemsListView.Items.Add(listItem);
+            ListViewItem item = this.ItemsListView.Items.Add(listItem.Text);
+            item.SubItems.Add(listItem.IsActive.ToString());
         }
         public void ClearListItems()
         {
@@ -56,6 +62,19 @@ namespace Toxikon.ProtocolManager.Views.Admin
         private void ListNameComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             this.controller.ListNameComboBoxSelectedIndexChanged(this.ListNameComboBox.SelectedIndex);
+        }
+
+        private void UpdateButton_Click(object sender, EventArgs e)
+        {
+            this.controller.UpdateButtonClicked();
+        }
+
+        private void ItemsListView_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if(this.ItemsListView.SelectedIndices.Count > 0)
+            {
+                this.controller.ListViewSelectedIndexChanged(this.ItemsListView.SelectedIndices[0]);
+            }
         }
     }
 }

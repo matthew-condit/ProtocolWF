@@ -15,7 +15,7 @@ namespace Toxikon.ProtocolManager.Queries
         private static string CONNECTION_STRING = Utility.GetTPMConnectionString();
         private const string ErrorFormName = "QProtocolActivities";
 
-        public static void InsertProtocolActivities(IList protocolActivities)
+        public static void InsertItems(IList protocolActivities)
         {
             try
             {
@@ -44,7 +44,7 @@ namespace Toxikon.ProtocolManager.Queries
             }
         }
 
-        public static void InsertFromProtocolRequest(ProtocolRequest request, string userName)
+        public static void InsertItem(ProtocolRequest request, string userName)
         {
             try
             {
@@ -73,7 +73,7 @@ namespace Toxikon.ProtocolManager.Queries
             }
         }
 
-        public static void InsertProtocolActivity(ProtocolActivity activity)
+        public static void InsertItem(ProtocolActivity activity)
         {
             try
             {
@@ -98,7 +98,7 @@ namespace Toxikon.ProtocolManager.Queries
             }
         }
 
-        public static IList SelectProtocolActivity(int requestID, int titleID)
+        public static IList SelectItems(int requestID, int titleID)
         {
             IList results = new List<ProtocolActivity>() { };
             try
@@ -141,7 +141,7 @@ namespace Toxikon.ProtocolManager.Queries
             return activity;
         }
 
-        public static DataTable SelectProtocolActivitiesDataTable(int requestID, int titleID)
+        public static DataTable SelectItemsToDataTable(int requestID, int titleID)
         {
             DataTable dataTable = new DataTable();
             try

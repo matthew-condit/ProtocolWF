@@ -15,7 +15,7 @@ namespace Toxikon.ProtocolManager.Queries
         private static string CONNECTION_STRING = Utility.GetTPMConnectionString();
         private const string ErrorFormName = "QUsers";
 
-        public static Int32 InsertUser(User user, string userName)
+        public static Int32 InsertItem(User user, string userName)
         {
             Int32 result = 0;
             try
@@ -48,7 +48,7 @@ namespace Toxikon.ProtocolManager.Queries
             return result;
         }
 
-        public static IList GetUsers()
+        public static IList SelectItems()
         {
             IList results = new ArrayList();
             try
@@ -75,7 +75,7 @@ namespace Toxikon.ProtocolManager.Queries
             return results;
         }
 
-        public static IList GetUsersByRoleID(int roleID, string listName)
+        public static IList SelectUsersByRoleID(int roleID, string listName)
         {
             IList results = new ArrayList();
             try
@@ -93,8 +93,9 @@ namespace Toxikon.ProtocolManager.Queries
                         while (reader.Read())
                         {
                             ListItem item = new ListItem();
-                            item.ListName = listName;
-                            item.ItemName = reader[3].ToString() + '-' + reader[0].ToString();
+                            item.Name = listName;
+                            item.Value = reader[0].ToString();
+                            item.Text = reader[3].ToString();
                             results.Add(item);
                         }
                     }
@@ -107,7 +108,7 @@ namespace Toxikon.ProtocolManager.Queries
             return results;
         }
 
-        public static User GetUser(string username)
+        public static User SelectUser(string username)
         {
             User user = new User();
             try

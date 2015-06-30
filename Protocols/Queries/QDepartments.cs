@@ -15,7 +15,7 @@ namespace Toxikon.ProtocolManager.Queries
         private static string CONNECTION_STRING = Utility.GetTPMConnectionString();
         private const string ErrorFormName = "QDepartments";
 
-        public static Int32 InsertDepartment(Department department, string userName)
+        public static Int32 InsertItem(Department department, string userName)
         {
             Int32 result = 0;
             try
@@ -40,7 +40,7 @@ namespace Toxikon.ProtocolManager.Queries
             return result;
         }
 
-        public static IList GetDepartments()
+        public static IList SelectItems()
         {
             IList results = new ArrayList();
             try
@@ -71,7 +71,7 @@ namespace Toxikon.ProtocolManager.Queries
             return results;
         }
 
-        public static void UpdateDepartment(Department department, string userName)
+        public static void UpdateItem(Department department, string userName)
         {
             try
             {

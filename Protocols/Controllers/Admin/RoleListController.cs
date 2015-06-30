@@ -10,6 +10,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Toxikon.ProtocolManager.Views.Templates;
+using Toxikon.ProtocolManager.Controllers.Templates;
 
 namespace Toxikon.ProtocolManager.Controllers.Admin
 {
@@ -30,7 +32,7 @@ namespace Toxikon.ProtocolManager.Controllers.Admin
         {
             this.roles.Clear();
             this.view.ClearView();
-            this.roles = QRoles.GetRoles();
+            this.roles = QRoles.SelectItems();
             AddRolesToView();
         }
 
@@ -49,13 +51,17 @@ namespace Toxikon.ProtocolManager.Controllers.Admin
 
         public void NewButtonClicked()
         {
-            RoleEditView popup = new RoleEditView();
-            RoleEditController popupController = new RoleEditController(popup);
+            OneTextBoxTrueFalseForm popup = new OneTextBoxTrueFalseForm();
+            OneTextBoxTrueFalseFormController popupController = new OneTextBoxTrueFalseFormController(popup);
+            popupController.SetTextBoxItem("Role: ", "");
+            popupController.SetTrueFalseItem("Active: ", true);
 
             DialogResult dialogResult = popup.ShowDialog(view.ParentControl);
             if (dialogResult == DialogResult.OK)
             {
-                Role role = popupController.Role;
+                Role role = new Role();
+                role.RoleName = popupController.TextBoxValue;
+                role.IsActive = popupController.TrueFalseValue;
                 InsertNewRole(role);
                 LoadView();
             }
@@ -65,7 +71,7 @@ namespace Toxikon.ProtocolManager.Controllers.Admin
         private void InsertNewRole(Role role)
         {
             LoginInfo loginInfo = LoginInfo.GetInstance();
-            QRoles.InsertRole(role.RoleName, loginInfo.UserName);
+            QRoles.InsertItem(role.RoleName, loginInfo.UserName);
             MessageBox.Show("New role is added.");
         }
 
@@ -77,8 +83,10 @@ namespace Toxikon.ProtocolManager.Controllers.Admin
             }
             else
             {
-                RoleEditView popup = new RoleEditView();
-                RoleEditController popupController = new RoleEditController(popup, this.selectedRole);
+                OneTextBoxTrueFalseForm popup = new OneTextBoxTrueFalseForm();
+                OneTextBoxTrueFalseFormController popupController = new OneTextBoxTrueFalseFormController(popup);
+                popupController.SetTextBoxItem("Role: ", this.selectedRole.RoleName);
+                popupController.SetTrueFalseItem("Active: ", this.selectedRole.IsActive);
 
                 DialogResult dialogResult = popup.ShowDialog(view.ParentControl);
                 if (dialogResult == DialogResult.OK)
@@ -93,7 +101,7 @@ namespace Toxikon.ProtocolManager.Controllers.Admin
         private void UpdateSelectedRole()
         {
             LoginInfo loginInfo = LoginInfo.GetInstance();
-            QRoles.UpdateRole(selectedRole, loginInfo.UserName);
+            QRoles.UpdateItem(selectedRole, loginInfo.UserName);
         }
     }
 }

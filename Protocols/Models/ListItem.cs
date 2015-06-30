@@ -8,14 +8,16 @@ namespace Toxikon.ProtocolManager.Models
 {
     public class ListItem
     {
-        public string ListName { get; set; }
-        public string ItemName { get; set; }
+        public string Name { get; set; }
+        public string Text { get; set; }
+        public string Value { get; set; }
         public bool IsActive { get; set; }
 
         public ListItem()
         {
-            this.ListName = "";
-            this.ItemName = "";
+            this.Name = "";
+            this.Text = "";
+            this.Value = "";
             this.IsActive = true;
         }
     }

@@ -16,7 +16,7 @@ namespace Toxikon.ProtocolManager.Queries
         private static string connectionString = Utility.GetTPMConnectionString();
         private const string ErrorFormName = "QProtocolRequests";
 
-        public static int InsertProtocolRequest(ProtocolRequest request, string userName)
+        public static int InsertItem(ProtocolRequest request, string userName)
         {
             int result = -1;
             try
@@ -51,7 +51,7 @@ namespace Toxikon.ProtocolManager.Queries
             return result;
         }
 
-        public static IList GetProtocolRequestsByStatus(string status)
+        public static IList SelectItemsByStatus(string status)
         {
             IList results = new ArrayList();
             try
@@ -107,7 +107,7 @@ namespace Toxikon.ProtocolManager.Queries
             return results;
         }
 
-        public static IList Select_New_RequestedBy_Requests(string userName)
+        public static IList SelectItemsByRequestedBy(string userName)
         {
             IList results = new ArrayList();
             try
@@ -135,7 +135,7 @@ namespace Toxikon.ProtocolManager.Queries
             return results;
         }
 
-        public static IList Select_New_AssignedTo_Requests(string userName)
+        public static IList SelectItemsByAssignedTo(string userName)
         {
             IList results = new ArrayList();
             try
@@ -241,7 +241,7 @@ namespace Toxikon.ProtocolManager.Queries
             return request;
         }
 
-        public static void Update(ProtocolRequest request, string userName)
+        public static void UpdateItem(ProtocolRequest request, string userName)
         {
             try
             {

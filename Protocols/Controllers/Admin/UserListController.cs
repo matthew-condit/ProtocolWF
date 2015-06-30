@@ -30,7 +30,7 @@ namespace Toxikon.ProtocolManager.Controllers.Admin
         {
             this.userList.Clear();
             view.ClearView();
-            this.userList = QUsers.GetUsers();
+            this.userList = QUsers.SelectItems();
             foreach (User user in userList)
             {
                 view.AddItemToListView(user);
@@ -60,7 +60,7 @@ namespace Toxikon.ProtocolManager.Controllers.Admin
         private void InsertNewUser(User user)
         {
             LoginInfo loginInfo = LoginInfo.GetInstance();
-            QUsers.InsertUser(user, loginInfo.UserName);
+            QUsers.InsertItem(user, loginInfo.UserName);
             MessageBox.Show("New user is added.");
         }
 

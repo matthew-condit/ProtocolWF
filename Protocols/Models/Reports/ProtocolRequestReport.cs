@@ -160,7 +160,7 @@ namespace Toxikon.ProtocolManager.Models.Reports
         private void InsertProtocolEventsDataTable(ExcelTemplate excelTemplate, ExcelWorksheet worksheet, 
                                                    ProtocolTitle title)
         {
-            DataTable dataTable = QProtocolActivities.SelectProtocolActivitiesDataTable(this.protocolRequest.ID,
+            DataTable dataTable = QProtocolActivities.SelectItemsToDataTable(this.protocolRequest.ID,
                                       title.ID);
             ExcelDataTable eventsDataTable = CreateNewExcelDataTable("EventsTable" + title.ID, dataTable, 1, 4);
             InsertExcelDataTable(excelTemplate, worksheet, eventsDataTable);
@@ -170,7 +170,7 @@ namespace Toxikon.ProtocolManager.Models.Reports
         private void InsertProtocolCommentsDataTable(ExcelTemplate excelTemplate, ExcelWorksheet worksheet, 
                                                      ProtocolTitle title)
         {
-            DataTable dataTable = QProtocolComments.SelectActiveCommentsDataTable(title);
+            DataTable dataTable = QProtocolComments.SelectItemsToDataTable(title);
             ExcelDataTable excelDataTable = CreateNewExcelDataTable("CommentsTable" + title.ID, dataTable, 5, 4);
             InsertExcelDataTable(excelTemplate, worksheet, excelDataTable);
             FormatExcelDataTable(worksheet, excelDataTable);

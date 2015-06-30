@@ -38,7 +38,7 @@ namespace Toxikon.ProtocolManager.Queries
             }
         }
 
-        public static IList SelectAll()
+        public static IList SelectItems()
         {
             IList results = new ArrayList();
             try
@@ -76,7 +76,7 @@ namespace Toxikon.ProtocolManager.Queries
             return results;
         }
 
-        public static void SetIsActive(ListName item, string userName)
+        public static void UpdateIsActive(ListName item, string userName)
         {
             try
             {

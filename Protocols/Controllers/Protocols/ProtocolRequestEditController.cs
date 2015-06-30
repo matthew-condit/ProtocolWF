@@ -114,7 +114,7 @@ namespace Toxikon.ProtocolManager.Controllers.Protocols
         private void SubmitNewProtocolTitleToDB(ProtocolTitle title)
         {
             LoginInfo loginInfo = LoginInfo.GetInstance();
-            title.ID = QProtocolTitles.Insert(title, loginInfo.UserName);
+            title.ID = QProtocolTitles.InsertItem(title, loginInfo.UserName);
             SubmitProtocolActivityToDB(title.ID);
         }
 
@@ -126,7 +126,7 @@ namespace Toxikon.ProtocolManager.Controllers.Protocols
             activity.ProtocolEvent.ID = 1;
             activity.CreatedBy = loginInfo.UserName;
 
-            QProtocolActivities.InsertProtocolActivity(activity);
+            QProtocolActivities.InsertItem(activity);
         }
 
         public void EditTitleButtonClicked()
@@ -139,7 +139,7 @@ namespace Toxikon.ProtocolManager.Controllers.Protocols
                 if (popupResult != String.Empty)
                 {
                     title.Description = popupResult;
-                    QProtocolTitles.Update(title, loginInfo.UserName);
+                    QProtocolTitles.UpdateTitle(title, loginInfo.UserName);
                     RefreshTitleListView();
                 }
             }
@@ -187,7 +187,7 @@ namespace Toxikon.ProtocolManager.Controllers.Protocols
 
                 protocolActivities.Add(protocolActivity);
             }
-            QProtocolActivities.InsertProtocolActivities(protocolActivities);
+            QProtocolActivities.InsertItems(protocolActivities);
         }
 
         public void ViewEventsButtonClicked()
@@ -196,7 +196,7 @@ namespace Toxikon.ProtocolManager.Controllers.Protocols
             {
                 int selectedIndex = Convert.ToInt32(this.view.SelectedTitleIndexes[0]);
                 ProtocolTitle title = this.protocolRequest.Titles[selectedIndex];
-                IList events = QProtocolActivities.SelectProtocolActivity(this.protocolRequest.ID, title.ID);
+                IList events = QProtocolActivities.SelectItems(this.protocolRequest.ID, title.ID);
                 ShowListViewPopup(ListViewPopupItemTypes.ProtocolEvent, events);
             }
             else
@@ -227,7 +227,7 @@ namespace Toxikon.ProtocolManager.Controllers.Protocols
         {
             int selectedIndex = Convert.ToInt32(this.view.SelectedTitleIndexes[0]);
             ProtocolTitle title = this.protocolRequest.Titles[selectedIndex];
-            QProtocolComments.InsertComments(title, comments, loginInfo.UserName);
+            QProtocolComments.InsertItem(title, comments, loginInfo.UserName);
         }
 
         public void ViewCommentsButtonClicked()
@@ -236,7 +236,7 @@ namespace Toxikon.ProtocolManager.Controllers.Protocols
             {
                 int selectedIndex = Convert.ToInt32(this.view.SelectedTitleIndexes[0]);
                 ProtocolTitle title = this.protocolRequest.Titles[selectedIndex];
-                IList comments = QProtocolComments.SelectActiveComments(title);
+                IList comments = QProtocolComments.SelectItems(title);
                 ShowListViewPopup(ListViewPopupItemTypes.ProtocolComment, comments);
             }
             else
@@ -267,7 +267,7 @@ namespace Toxikon.ProtocolManager.Controllers.Protocols
                 else
                 {
                     ProtocolNumber protocolNumber = CreateNewProtocolNumber(title.ID);
-                    QProtocolNumbers.InsertProtocolNumber(protocolNumber, loginInfo.UserName);
+                    QProtocolNumbers.InsertItem(protocolNumber, loginInfo.UserName);
                     this.RefreshTitleListView();
                 }
             }
@@ -320,10 +320,10 @@ namespace Toxikon.ProtocolManager.Controllers.Protocols
             protocolNumber.ProtocolRequestID = this.protocolRequest.ID;
             protocolNumber.ProtocolTitleID = title.ID;
             protocolNumber.FullCode = title.ProtocolNumber;
-            QProtocolNumbers.SetProtocolNumber(protocolNumber);
+            QProtocolNumbers.SelectItem(protocolNumber);
             protocolNumber.RevisedNumber += 1;
             protocolNumber.SetFullCode();
-            QProtocolNumbers.UpdateProtocolNumber(protocolNumber, loginInfo.UserName);
+            QProtocolNumbers.UpdateItem(protocolNumber, loginInfo.UserName);
         }
 
         /*************************** DOWNLOAD PROTOCOL REQUEST REPORT ********************/

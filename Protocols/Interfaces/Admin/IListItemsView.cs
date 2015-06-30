@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
+using Toxikon.ProtocolManager.Models;
 
 namespace Toxikon.ProtocolManager.Interfaces.Admin
 {
@@ -11,10 +13,11 @@ namespace Toxikon.ProtocolManager.Interfaces.Admin
     {
         void SetController(ListItemsController controller);
         void AddListNameToView(string listName);
-        void AddListItemToView(string listItem);
+        void AddListItemToView(ListItem listItem);
         void ClearListItems();
         void ClearNewItemTextBox();
 
         string ItemName { get; set; }
+        Control ParentControl { get; }
     }
 }

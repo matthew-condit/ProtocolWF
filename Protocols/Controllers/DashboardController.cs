@@ -39,10 +39,10 @@ namespace Toxikon.ProtocolManager.Controllers
                     this.protocolRequests = QProtocolRequests.SelectAllNewRequests();
                     break;
                 case UserRoles.CSR:
-                    this.protocolRequests = QProtocolRequests.Select_New_RequestedBy_Requests(loginInfo.UserName);
+                    this.protocolRequests = QProtocolRequests.SelectItemsByRequestedBy(loginInfo.UserName);
                     break;
                 case UserRoles.DocControl:
-                    this.protocolRequests = QProtocolRequests.Select_New_AssignedTo_Requests(loginInfo.UserName);
+                    this.protocolRequests = QProtocolRequests.SelectItemsByAssignedTo(loginInfo.UserName);
                     break;
                 default:
                     break;
@@ -53,7 +53,7 @@ namespace Toxikon.ProtocolManager.Controllers
         {
             foreach (ProtocolRequest request in protocolRequests)
             {
-                request.SetTitles((List<ProtocolTitle>)QProtocolTitles.SelectByRequestID(request.ID));
+                request.SetTitles((List<ProtocolTitle>)QProtocolTitles.SelectItems(request.ID));
             }
         }
 

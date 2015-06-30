@@ -14,7 +14,7 @@ namespace Toxikon.ProtocolManager.Queries
     {
         private static string CONNECTION_STRING = Utility.GetTPMConnectionString();
 
-        public static void InsertListItem(ListItem listItem, string userName)
+        public static void InsertItem(ListItem listItem, string userName)
         {
             try
             {
@@ -24,8 +24,8 @@ namespace Toxikon.ProtocolManager.Queries
                     using (SqlCommand command = new SqlCommand("li_insert_listitem", connection))
                     {
                         command.CommandType = CommandType.StoredProcedure;
-                        command.Parameters.Add("@ListName", SqlDbType.NVarChar).Value = listItem.ListName;
-                        command.Parameters.Add("@ItemName", SqlDbType.NVarChar).Value = listItem.ItemName;
+                        command.Parameters.Add("@ListName", SqlDbType.NVarChar).Value = listItem.Name;
+                        command.Parameters.Add("@ItemName", SqlDbType.NVarChar).Value = listItem.Text;
                         command.Parameters.Add("@CreatedBy", SqlDbType.NVarChar).Value = userName;
 
                         int result = command.ExecuteNonQuery();
@@ -38,7 +38,7 @@ namespace Toxikon.ProtocolManager.Queries
             }
         }
 
-        public static IList GetListItems(string listName)
+        public static IList SelectItems(string listName)
         {
             IList results = new ArrayList();
             try
@@ -55,8 +55,9 @@ namespace Toxikon.ProtocolManager.Queries
                         while (reader.Read())
                         {
                             ListItem listItem = new ListItem();
-                            listItem.ListName = listName;
-                            listItem.ItemName = reader[0].ToString();
+                            listItem.Name = listName;
+                            listItem.Text = reader[0].ToString();
+                            listItem.Value = reader[0].ToString();
                             listItem.IsActive = Convert.ToBoolean(reader[1].ToString());
                             results.Add(listItem);
                         }
@@ -70,7 +71,7 @@ namespace Toxikon.ProtocolManager.Queries
             return results;
         }
 
-        public static void UpdateListItem(ListItem listItem, string userName)
+        public static void UpdateItem(ListItem listItem, string oldItemName, string userName)
         {
             try
             {
@@ -80,8 +81,9 @@ namespace Toxikon.ProtocolManager.Queries
                     using (SqlCommand command = new SqlCommand("li_update_listitem", connection))
                     {
                         command.CommandType = CommandType.StoredProcedure;
-                        command.Parameters.Add("@ListName", SqlDbType.NVarChar).Value = listItem.ListName;
-                        command.Parameters.Add("@ItemName", SqlDbType.NVarChar).Value = listItem.ItemName;
+                        command.Parameters.Add("@ListName", SqlDbType.NVarChar).Value = listItem.Name;
+                        command.Parameters.Add("@OldItemName", SqlDbType.NVarChar).Value = oldItemName;
+                        command.Parameters.Add("@NewItemName", SqlDbType.NVarChar).Value = listItem.Value;
                         command.Parameters.Add("@IsActive", SqlDbType.Bit).Value = listItem.IsActive;
                         command.Parameters.Add("@UpdatedBy", SqlDbType.NVarChar).Value = userName;
                         int result = command.ExecuteNonQuery();

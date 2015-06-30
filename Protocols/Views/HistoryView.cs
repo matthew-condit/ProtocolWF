@@ -36,7 +36,7 @@ namespace Toxikon.ProtocolManager.Views
 
         public void AddItemToRequestedByComboBox(ListItem item)
         {
-            this.RequestedByComboBox.Items.Add(item.ItemName);
+            this.RequestedByComboBox.Items.Add(item.Text);
         }
         
         public void SetRequestedByComboBox_SelectedIndex(int index)

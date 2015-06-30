@@ -161,25 +161,25 @@ namespace Toxikon.ProtocolManager.Views.RequestForms
 
         private void OpenGuidelinesOptions_Click(object sender, EventArgs e)
         {
-            IList items = QListItems.GetListItems(ListNames.Guidelines);
+            IList items = QListItems.SelectItems(ListNames.Guidelines);
             this.controller.OpenCheckBoxOptions(ListNames.Guidelines, items);
         }
 
         private void OpenComplianceOptions_Click(object sender, EventArgs e)
         {
-            IList items = QListItems.GetListItems(ListNames.Compliance);
+            IList items = QListItems.SelectItems(ListNames.Compliance);
             this.controller.OpenListBoxOptions(ListNames.Compliance, items);
         }
 
         private void OpenProtocolTypeOptions_Click(object sender, EventArgs e)
         {
-            IList items = QListItems.GetListItems(ListNames.ProtocolType);
+            IList items = QListItems.SelectItems(ListNames.ProtocolType);
             this.controller.OpenListBoxOptions(ListNames.ProtocolType, items);
         }
 
         private void OpenAssignedToOptions_Click(object sender, EventArgs e)
         {
-            IList items = QUsers.GetUsersByRoleID(3, ListNames.AssignedTo);
+            IList items = QUsers.SelectUsersByRoleID(3, ListNames.AssignedTo);
             this.controller.OpenListBoxOptions(ListNames.AssignedTo, items);
         }
     }

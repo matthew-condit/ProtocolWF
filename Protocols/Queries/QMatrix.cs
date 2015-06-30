@@ -102,8 +102,9 @@ namespace Toxikon.ProtocolManager.Queries
                         while (reader.Read())
                         {
                             ListItem item = new ListItem();
-                            item.ListName = ListNames.Contact;
-                            item.ItemName = reader[3].ToString() + '-' + reader[1].ToString();
+                            item.Name = ListNames.Contact;
+                            item.Value = reader[1].ToString();
+                            item.Text = reader[3].ToString();
                             results.Add(item);
                         }
                     }

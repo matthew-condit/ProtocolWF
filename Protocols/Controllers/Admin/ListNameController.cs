@@ -37,7 +37,7 @@ namespace Toxikon.ProtocolManager.Controllers.Admin
         public void LoadItems()
         {
             items.Clear();
-            items = QListNames.SelectAll();
+            items = QListNames.SelectItems();
         }
 
         private void AddItemsToView()
@@ -95,7 +95,7 @@ namespace Toxikon.ProtocolManager.Controllers.Admin
                 if (dialogResult == DialogResult.Yes)
                 {
                     this.selectedItem.IsActive = false;
-                    QListNames.SetIsActive(this.selectedItem, loginInfo.UserName);
+                    QListNames.UpdateIsActive(this.selectedItem, loginInfo.UserName);
                     LoadView();
                 }
             }

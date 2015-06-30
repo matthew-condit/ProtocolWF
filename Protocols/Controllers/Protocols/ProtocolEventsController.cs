@@ -31,7 +31,7 @@ namespace Toxikon.ProtocolManager.Controllers.Protocols
         {
             this.protocolEvents.Clear();
             this.view.ClearView();
-            protocolEvents = QProtocolEvents.SelectProtocolEvents();
+            protocolEvents = QProtocolEvents.SelectItems();
             AddProtocolEventsToView();
         }
         private void AddProtocolEventsToView()
@@ -64,7 +64,7 @@ namespace Toxikon.ProtocolManager.Controllers.Protocols
         private void InsertNewItem(ProtocolEvent item)
         {
             LoginInfo loginInfo = LoginInfo.GetInstance();
-            QProtocolEvents.InsertProtocolEvent(item, loginInfo.UserName);
+            QProtocolEvents.InsertItem(item, loginInfo.UserName);
             MessageBox.Show("New event is added.");
         }
         public void UpdateButtonClicked()
@@ -91,7 +91,7 @@ namespace Toxikon.ProtocolManager.Controllers.Protocols
         private void UpdateSelectedItem()
         {
             LoginInfo loginInfo = LoginInfo.GetInstance();
-            QProtocolEvents.UpdateProtocolEvent(this.selectedProtocolEvent, loginInfo.UserName);
+            QProtocolEvents.UpdateItem(this.selectedProtocolEvent, loginInfo.UserName);
         }
     }
 }

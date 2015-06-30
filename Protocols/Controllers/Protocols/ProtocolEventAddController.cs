@@ -44,7 +44,7 @@ namespace Toxikon.ProtocolManager.Controllers.Protocols
         }
         private void AddProtocolEventsToView()
         {
-            this.protocolEvents = QProtocolEvents.SelectProtocolEventsByType(this.selectedEventType);
+            this.protocolEvents = QProtocolEvents.SelectItems(this.selectedEventType);
             foreach(ProtocolEvent protocolEvent in protocolEvents)
             {
                 this.view.AddProtocolEventToView(protocolEvent);

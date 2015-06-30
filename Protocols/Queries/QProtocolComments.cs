@@ -17,7 +17,7 @@ namespace Toxikon.ProtocolManager.Queries
         private static string CONNECTION_STRING = Utility.GetTPMConnectionString();
         private const string ErrorFormName = "QProtocolComments";
 
-        public static void InsertComments(ProtocolTitle title, string comments, string userName)
+        public static void InsertItem(ProtocolTitle title, string comments, string userName)
         {
             try
             {
@@ -42,7 +42,7 @@ namespace Toxikon.ProtocolManager.Queries
             }
         }
 
-        public static IList SelectActiveComments(ProtocolTitle title)
+        public static IList SelectItems(ProtocolTitle title)
         {
             IList results = new ArrayList();
             try
@@ -75,7 +75,7 @@ namespace Toxikon.ProtocolManager.Queries
             return results;
         }
 
-        public static DataTable SelectActiveCommentsDataTable(ProtocolTitle title)
+        public static DataTable SelectItemsToDataTable(ProtocolTitle title)
         {
             DataTable dataTable = new DataTable();
             try

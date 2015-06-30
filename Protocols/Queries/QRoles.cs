@@ -15,7 +15,7 @@ namespace Toxikon.ProtocolManager.Queries
         private static string CONNECTION_STRING = Utility.GetTPMConnectionString();
         private const string ErrorFormName = "QRoles";
 
-        public static Int32 InsertRole(string roleName, string userName)
+        public static Int32 InsertItem(string roleName, string userName)
         {
             Int32 result = 0;
             try
@@ -40,7 +40,7 @@ namespace Toxikon.ProtocolManager.Queries
             return result;
         }
 
-        public static IList GetRoles()
+        public static IList SelectItems()
         {
             IList results = new ArrayList();
             try
@@ -71,7 +71,7 @@ namespace Toxikon.ProtocolManager.Queries
             return results;
         }
 
-        public static void UpdateRole(Role role, string userName)
+        public static void UpdateItem(Role role, string userName)
         {
             try
             {

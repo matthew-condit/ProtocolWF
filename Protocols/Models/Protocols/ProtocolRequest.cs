@@ -88,7 +88,7 @@ namespace Toxikon.ProtocolManager.Models
         public void RefreshProtocolTitles()
         {
             this.Titles.Clear();
-            this.Titles = (List<ProtocolTitle>)QProtocolTitles.SelectByRequestID(this.ID);
+            this.Titles = (List<ProtocolTitle>)QProtocolTitles.SelectItems(this.ID);
         }
        
         public void CloseRequest()

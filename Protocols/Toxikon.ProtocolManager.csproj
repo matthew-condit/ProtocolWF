@@ -59,7 +59,6 @@
     <Compile Include="Controllers\RequestFormController.cs" />
     <Compile Include="Controllers\Templates\CheckBoxOptionsController.cs" />
     <Compile Include="Controllers\DashboardController.cs" />
-    <Compile Include="Controllers\Admin\DepartmentEditController.cs" />
     <Compile Include="Controllers\Admin\DepartmentListController.cs" />
     <Compile Include="Controllers\Templates\ListBoxOptionsController.cs" />
     <Compile Include="Controllers\Admin\ListItemsController.cs" />
@@ -71,17 +70,16 @@
     <Compile Include="Controllers\Protocols\ProtocolEventsController.cs" />
     <Compile Include="Controllers\Protocols\ProtocolRequestAddController.cs" />
     <Compile Include="Controllers\Protocols\ProtocolRequestEditController.cs" />
-    <Compile Include="Controllers\Admin\RoleEditController.cs" />
     <Compile Include="Controllers\Admin\RoleListController.cs" />
     <Compile Include="Controllers\Admin\UserEditController.cs" />
     <Compile Include="Controllers\Admin\UserListController.cs" />
+    <Compile Include="Controllers\Templates\OneTextBoxTrueFalseFormController.cs" />
     <Compile Include="Interfaces\Admin\IListNameView.cs" />
     <Compile Include="Interfaces\IHistoryView.cs" />
     <Compile Include="Interfaces\IRequestForm.cs" />
     <Compile Include="Interfaces\Protocols\IProtocolRequestReadOnlyView.cs" />
     <Compile Include="Interfaces\Templates\ICheckBoxOptionsView.cs" />
     <Compile Include="Interfaces\IDashboardView.cs" />
-    <Compile Include="Interfaces\Admin\IDepartmentEditView.cs" />
     <Compile Include="Interfaces\Admin\IDepartmentListView.cs" />
     <Compile Include="Interfaces\Templates\IListBoxOptionsView.cs" />
     <Compile Include="Interfaces\Admin\IListItemsView.cs" />
@@ -92,10 +90,10 @@
     <Compile Include="Interfaces\Protocols\IProtocolEventEditView.cs" />
     <Compile Include="Interfaces\Protocols\IProtocolEventsView.cs" />
     <Compile Include="Interfaces\Protocols\IProtocolRequestEditView.cs" />
-    <Compile Include="Interfaces\Admin\IRoleEditView.cs" />
     <Compile Include="Interfaces\Admin\IRoleListView.cs" />
     <Compile Include="Interfaces\Admin\IUserEditView.cs" />
     <Compile Include="Interfaces\Admin\IUserListView.cs" />
+    <Compile Include="Interfaces\Templates\IOneTextBoxTrueFalseForm.cs" />
     <Compile Include="Models\Admin\AuditHandler.cs" />
     <Compile Include="Models\Admin\AuditItem.cs" />
     <Compile Include="Models\Admin\TableNames.cs" />
@@ -175,12 +173,6 @@
     <Compile Include="Views\DashboardView.Designer.cs">
       <DependentUpon>DashboardView.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\Admin\DepartmentEditView.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Views\Admin\DepartmentEditView.Designer.cs">
-      <DependentUpon>DepartmentEditView.cs</DependentUpon>
-    </Compile>
     <Compile Include="Views\Admin\DepartmentListView.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -258,12 +250,6 @@
     <Compile Include="Views\Protocols\ProtocolRequestEditView.Designer.cs">
       <DependentUpon>ProtocolRequestEditView.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\Admin\RoleEditView.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Views\Admin\RoleEditView.Designer.cs">
-      <DependentUpon>RoleEditView.cs</DependentUpon>
-    </Compile>
     <Compile Include="Views\Admin\RoleListView.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -281,6 +267,12 @@
     </Compile>
     <Compile Include="Views\Admin\UserListView.Designer.cs">
       <DependentUpon>UserListView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Templates\OneTextBoxTrueFalseForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Templates\OneTextBoxTrueFalseForm.Designer.cs">
+      <DependentUpon>OneTextBoxTrueFalseForm.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -316,9 +308,6 @@
     <EmbeddedResource Include="Views\DashboardView.resx">
       <DependentUpon>DashboardView.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\Admin\DepartmentEditView.resx">
-      <DependentUpon>DepartmentEditView.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Views\Admin\DepartmentListView.resx">
       <DependentUpon>DepartmentListView.cs</DependentUpon>
     </EmbeddedResource>
@@ -352,9 +341,6 @@
     <EmbeddedResource Include="Views\Protocols\ProtocolRequestEditView.resx">
       <DependentUpon>ProtocolRequestEditView.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\Admin\RoleEditView.resx">
-      <DependentUpon>RoleEditView.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Views\Admin\RoleListView.resx">
       <DependentUpon>RoleListView.cs</DependentUpon>
     </EmbeddedResource>
@@ -363,6 +349,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Admin\UserListView.resx">
       <DependentUpon>UserListView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Templates\OneTextBoxTrueFalseForm.resx">
+      <DependentUpon>OneTextBoxTrueFalseForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

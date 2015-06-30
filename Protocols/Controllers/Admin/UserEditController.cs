@@ -52,7 +52,7 @@ namespace Toxikon.ProtocolManager.Controllers.Admin
 
         private void LoadDepartments()
         {
-            departments = QDepartments.GetDepartments();
+            departments = QDepartments.SelectItems();
             foreach(Department department in departments)
             {
                 view.AddDepartmentToComboBox(department);
@@ -75,7 +75,7 @@ namespace Toxikon.ProtocolManager.Controllers.Admin
 
         private void LoadRoles()
         {
-            roles = QRoles.GetRoles();
+            roles = QRoles.SelectItems();
             foreach(Role role in roles)
             {
                 view.AddRoleToComboBox(role);

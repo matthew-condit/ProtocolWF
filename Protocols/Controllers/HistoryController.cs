@@ -35,8 +35,9 @@ namespace Toxikon.ProtocolManager.Controllers
         {
             SetUserList();
             ListItem customItem = new ListItem();
-            customItem.ListName = ListNames.RequestedBy;
-            customItem.ItemName = "Bichngoc McCulley-bmcculley";
+            customItem.Name = ListNames.RequestedBy;
+            customItem.Text = "Bichngoc McCulley";
+            customItem.Value = "bmcculley";
             this.userList.Add(customItem);
             if(this.userList.Count != 0)
             {
@@ -50,15 +51,15 @@ namespace Toxikon.ProtocolManager.Controllers
             switch(loginInfo.Role.RoleID)
             {
                 case UserRoles.IT:
-                    this.userList = QUsers.GetUsersByRoleID(UserRoles.CSR, ListNames.RequestedBy);
+                    this.userList = QUsers.SelectUsersByRoleID(UserRoles.CSR, ListNames.RequestedBy);
                     this.view.SearchLableText = ListNames.RequestedBy;
                     break;
                 case UserRoles.CSR:
-                    this.userList = QUsers.GetUsersByRoleID(UserRoles.DocControl, ListNames.AssignedTo);
+                    this.userList = QUsers.SelectUsersByRoleID(UserRoles.DocControl, ListNames.AssignedTo);
                     this.view.SearchLableText = ListNames.AssignedTo;
                     break;
                 case UserRoles.DocControl:
-                    this.userList = QUsers.GetUsersByRoleID(UserRoles.CSR, ListNames.RequestedBy);
+                    this.userList = QUsers.SelectUsersByRoleID(UserRoles.CSR, ListNames.RequestedBy);
                     this.view.SearchLableText = ListNames.RequestedBy;
                     break;
                 default:
@@ -96,18 +97,16 @@ namespace Toxikon.ProtocolManager.Controllers
 
         private void SetRequestList()
         {
-            string[] splits = this.selectedItem.ItemName.Split('-');
-            string userName = splits[1];
             switch(loginInfo.Role.RoleID)
             {
                 case UserRoles.IT:
-                    this.requestList = QProtocolRequests.AdminSelectClosedRequests(userName);
+                    this.requestList = QProtocolRequests.AdminSelectClosedRequests(this.selectedItem.Value);
                     break;
                 case UserRoles.CSR:
-                    this.requestList = QProtocolRequests.SelectClosedRequests(loginInfo.UserName, userName);
+                    this.requestList = QProtocolRequests.SelectClosedRequests(loginInfo.UserName, this.selectedItem.Value);
                     break;
                 case UserRoles.DocControl:
-                    this.requestList = QProtocolRequests.SelectClosedRequests(userName, loginInfo.UserName);
+                    this.requestList = QProtocolRequests.SelectClosedRequests(this.selectedItem.Value, loginInfo.UserName);
                     break;
                 default:
                     break;

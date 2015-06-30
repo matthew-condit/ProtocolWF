@@ -15,7 +15,7 @@ namespace Toxikon.ProtocolManager.Queries
         private static string CONNECTION_STRING = Utility.GetTPMConnectionString();
         private const string ErrorFormName = "QProtocolEvents";
 
-        public static void InsertProtocolEvent(ProtocolEvent protocolEvent, string userName)
+        public static void InsertItem(ProtocolEvent protocolEvent, string userName)
         {
             try
             {
@@ -39,7 +39,7 @@ namespace Toxikon.ProtocolManager.Queries
             }
         }
 
-        public static IList SelectProtocolEvents()
+        public static IList SelectItems()
         {
             IList results = new ArrayList();
             try
@@ -76,7 +76,7 @@ namespace Toxikon.ProtocolManager.Queries
             return protocolEvent;
         }
 
-        public static IList SelectProtocolEventsByType(string eventType)
+        public static IList SelectItems(string eventType)
         {
             IList results = new ArrayList();
             try
@@ -104,7 +104,7 @@ namespace Toxikon.ProtocolManager.Queries
             return results;
         }
 
-        public static void UpdateProtocolEvent(ProtocolEvent protocolEvent, string userName)
+        public static void UpdateItem(ProtocolEvent protocolEvent, string userName)
         {
             try
             {

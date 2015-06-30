@@ -10,6 +10,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Toxikon.ProtocolManager.Views.Templates;
+using Toxikon.ProtocolManager.Controllers.Templates;
 
 namespace Toxikon.ProtocolManager.Controllers.Admin
 {
@@ -35,7 +37,7 @@ namespace Toxikon.ProtocolManager.Controllers.Admin
         public void LoadDepartmentList()
         {
             departments.Clear();
-            departments = QDepartments.GetDepartments();
+            departments = QDepartments.SelectItems();
         }
 
         private void AddDepartmentListToView()
@@ -61,13 +63,18 @@ namespace Toxikon.ProtocolManager.Controllers.Admin
 
         public void NewButtonClicked()
         {
-            DepartmentEditView popup = new DepartmentEditView();
-            DepartmentEditController popupController = new DepartmentEditController(popup);
+            OneTextBoxTrueFalseForm popup = new OneTextBoxTrueFalseForm();
+            OneTextBoxTrueFalseFormController popupController = new OneTextBoxTrueFalseFormController(popup);
+            popupController.SetTextBoxItem("Department: ", "");
+            popupController.SetTrueFalseItem("Active: ", true);
 
             DialogResult dialogResult = popup.ShowDialog(view.ParentControl);
             if (dialogResult == DialogResult.OK)
             {
-                Department department = popupController.Department;
+                Department department = new Department();
+                department.SetDepartmentName(popupController.TextBoxValue);
+                department.IsActive = popupController.TrueFalseValue;
+
                 InsertNewDepartment(department);
                 LoadView();
             }
@@ -77,7 +84,7 @@ namespace Toxikon.ProtocolManager.Controllers.Admin
         private void InsertNewDepartment(Department department)
         {
             LoginInfo loginInfo = LoginInfo.GetInstance();
-            Int32 result = QDepartments.InsertDepartment(department, loginInfo.UserName);
+            Int32 result = QDepartments.InsertItem(department, loginInfo.UserName);
             MessageBox.Show("New department is added.");
         }
 
@@ -89,9 +96,10 @@ namespace Toxikon.ProtocolManager.Controllers.Admin
             }
             else
             {
-                DepartmentEditView popup = new DepartmentEditView();
-                DepartmentEditController popupController = new DepartmentEditController(popup,
-                                            this.selectedDepartment);
+                OneTextBoxTrueFalseForm popup = new OneTextBoxTrueFalseForm();
+                OneTextBoxTrueFalseFormController popupController = new OneTextBoxTrueFalseFormController(popup);
+                popupController.SetTextBoxItem("Department: ", this.selectedDepartment.DepartmentName);
+                popupController.SetTrueFalseItem("Active: ", this.selectedDepartment.IsActive);
 
                 DialogResult dialogResult = popup.ShowDialog(view.ParentControl);
                 if (dialogResult == DialogResult.OK)
@@ -106,7 +114,7 @@ namespace Toxikon.ProtocolManager.Controllers.Admin
         private void UpdateDepartment()
         {
             LoginInfo loginInfo = LoginInfo.GetInstance();
-            QDepartments.UpdateDepartment(this.selectedDepartment, loginInfo.UserName);
+            QDepartments.UpdateItem(this.selectedDepartment, loginInfo.UserName);
         }
     }
 }

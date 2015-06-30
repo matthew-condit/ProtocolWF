@@ -39,7 +39,7 @@ namespace Toxikon.ProtocolManager.Queries
             return result;
         }
 
-        public static void InsertProtocolNumber(ProtocolNumber item, string userName)
+        public static void InsertItem(ProtocolNumber item, string userName)
         {
             try
             {
@@ -68,7 +68,7 @@ namespace Toxikon.ProtocolManager.Queries
             }
         }
 
-        public static void SetProtocolNumber(ProtocolNumber item)
+        public static void SelectItem(ProtocolNumber item)
         {
             try
             {
@@ -99,7 +99,7 @@ namespace Toxikon.ProtocolManager.Queries
             }
         }
 
-        public static void UpdateProtocolNumber(ProtocolNumber item, string userName)
+        public static void UpdateItem(ProtocolNumber item, string userName)
         {
             try
             {
