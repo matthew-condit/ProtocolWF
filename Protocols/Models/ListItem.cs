@@ -20,5 +20,21 @@ namespace Toxikon.ProtocolManager.Models
             this.Value = "";
             this.IsActive = true;
         }
+
+        public ListItem(string name, string value)
+        {
+            this.Name = name;
+            this.Value = value;
+            this.Text = value;
+            this.IsActive = true;
+        }
+
+        public ListItem(string name, string text, string value, bool isActive)
+        {
+            this.Name = name;
+            this.Text = text;
+            this.Value = value;
+            this.IsActive = isActive;
+        }
     }
 }

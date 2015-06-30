@@ -16,27 +16,30 @@ namespace Toxikon.ProtocolManager.Controllers.Protocols
     public class ProtocolEventsController
     {
         IProtocolEventsView view;
-        IList protocolEvents;
-        ProtocolEvent selectedProtocolEvent;
+        IList items;
+        ProtocolEvent selectedItem;
+        LoginInfo loginInfo;
 
         public ProtocolEventsController(IProtocolEventsView view)
         {
             this.view = view;
             this.view.SetController(this);
-            this.protocolEvents = new ArrayList();
-            selectedProtocolEvent = null;
+            this.items = new ArrayList();
+            selectedItem = null;
+            loginInfo = LoginInfo.GetInstance();
         }
 
         public void LoadView()
         {
-            this.protocolEvents.Clear();
+            this.items.Clear();
             this.view.ClearView();
-            protocolEvents = QProtocolEvents.SelectItems();
-            AddProtocolEventsToView();
+            items = QProtocolEvents.SelectItems();
+            AddItemsToView();
         }
-        private void AddProtocolEventsToView()
+
+        private void AddItemsToView()
         {
-            foreach(ProtocolEvent item in protocolEvents)
+            foreach(ProtocolEvent item in items)
             {
                 this.view.AddItemToListView(item);
             }
@@ -44,54 +47,59 @@ namespace Toxikon.ProtocolManager.Controllers.Protocols
 
         public void ListViewSelectedIndexChanged(int selectedIndex)
         {
-            this.selectedProtocolEvent = (ProtocolEvent)this.protocolEvents[selectedIndex];
+            if(selectedIndex > -1 && selectedIndex < this.items.Count)
+            {
+                this.selectedItem = (ProtocolEvent)this.items[selectedIndex];
+            }
         }
 
         public void NewButtonClicked()
         {
-            ProtocolEventEditView popup = new ProtocolEventEditView();
-            ProtocolEventEditController popupController = new ProtocolEventEditController(popup);
-
-            DialogResult dialogResult = popup.ShowDialog(view.ParentControl);
+            ProtocolEvent item = new ProtocolEvent();
+            DialogResult dialogResult = ShowPopup(item);
             if (dialogResult == DialogResult.OK)
             {
-                ProtocolEvent item = popupController.ProtocolEvent;
-                InsertNewItem(item);
-                LoadView();
+                DoInsert(item);
             }
-            popup.Dispose();
         }
-        private void InsertNewItem(ProtocolEvent item)
-        {
-            LoginInfo loginInfo = LoginInfo.GetInstance();
-            QProtocolEvents.InsertItem(item, loginInfo.UserName);
-            MessageBox.Show("New event is added.");
-        }
+        
         public void UpdateButtonClicked()
         {
-            if (this.selectedProtocolEvent == null)
+            if (this.selectedItem == null)
             {
                 MessageBox.Show("Please select one item and try it again.");
             }
             else
             {
-                ProtocolEventEditView popup = new ProtocolEventEditView();
-                ProtocolEventEditController popupController = new ProtocolEventEditController(
-                                            popup, this.selectedProtocolEvent);
-
-                DialogResult dialogResult = popup.ShowDialog(view.ParentControl);
+                DialogResult dialogResult = ShowPopup(this.selectedItem);
                 if (dialogResult == DialogResult.OK)
                 {
-                    UpdateSelectedItem();
-                    LoadView();
+                    DoUpdate(this.selectedItem);
                 }
-                popup.Dispose();
             }
         }
-        private void UpdateSelectedItem()
+
+        private DialogResult ShowPopup(ProtocolEvent item)
         {
-            LoginInfo loginInfo = LoginInfo.GetInstance();
-            QProtocolEvents.UpdateItem(this.selectedProtocolEvent, loginInfo.UserName);
+            ProtocolEventEditView popup = new ProtocolEventEditView();
+            ProtocolEventEditController popupController = new ProtocolEventEditController(popup, item);
+            DialogResult dialogResult = popup.ShowDialog(view.ParentControl);
+            popup.Dispose();
+            return dialogResult;
+        }
+
+        private void DoUpdate(ProtocolEvent item)
+        {
+            QProtocolEvents.UpdateItem(item, loginInfo.UserName);
+            MessageBox.Show("Updated!");
+            LoadView();
+        }
+
+        private void DoInsert(ProtocolEvent item)
+        {
+            QProtocolEvents.InsertItem(item, loginInfo.UserName);
+            MessageBox.Show("New event is added.");
+            LoadView();
         }
     }
 }

@@ -13,7 +13,7 @@ namespace Toxikon.ProtocolManager.Models
         public string FullCode { get; set; }
         public int YearNumber { get; set; }
         public int SequenceNumber { get; set; }
-        public string ProtocolType { get; set; } // A or B
+        public string ProtocolType { get; set; } // A: File Copy or B: Single Copy
         public int RevisedNumber { get; set; }
         public bool IsActive { get; set; }
 

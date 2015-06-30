@@ -20,12 +20,14 @@ namespace Toxikon.ProtocolManager.Controllers.Admin
         IDepartmentListView view;
         IList departments;
         Department selectedDepartment;
+        LoginInfo loginInfo;
 
         public DepartmentListController(IDepartmentListView view)
         {
             this.view = view;
             this.view.SetController(this);
             this.departments = new ArrayList();
+            loginInfo = LoginInfo.GetInstance();
         }
 
         public void LoadView()
@@ -63,28 +65,21 @@ namespace Toxikon.ProtocolManager.Controllers.Admin
 
         public void NewButtonClicked()
         {
-            OneTextBoxTrueFalseForm popup = new OneTextBoxTrueFalseForm();
-            OneTextBoxTrueFalseFormController popupController = new OneTextBoxTrueFalseFormController(popup);
-            popupController.SetTextBoxItem("Department: ", "");
-            popupController.SetTrueFalseItem("Active: ", true);
-
-            DialogResult dialogResult = popup.ShowDialog(view.ParentControl);
-            if (dialogResult == DialogResult.OK)
+            Department department = new Department();
+            ListItem result = ShowPopup(department);
+            if (result.Value != String.Empty)
             {
-                Department department = new Department();
-                department.SetDepartmentName(popupController.TextBoxValue);
-                department.IsActive = popupController.TrueFalseValue;
-
-                InsertNewDepartment(department);
+                InsertNewDepartment(department, result);
                 LoadView();
             }
-            popup.Dispose();
         }
 
-        private void InsertNewDepartment(Department department)
+        private void InsertNewDepartment(Department department, ListItem result)
         {
-            LoginInfo loginInfo = LoginInfo.GetInstance();
-            Int32 result = QDepartments.InsertItem(department, loginInfo.UserName);
+            department.DepartmentName = result.Value;
+            department.IsActive = result.IsActive;
+           
+            int dbresult = QDepartments.InsertItem(department, loginInfo.UserName);
             MessageBox.Show("New department is added.");
         }
 
@@ -96,25 +91,29 @@ namespace Toxikon.ProtocolManager.Controllers.Admin
             }
             else
             {
-                OneTextBoxTrueFalseForm popup = new OneTextBoxTrueFalseForm();
-                OneTextBoxTrueFalseFormController popupController = new OneTextBoxTrueFalseFormController(popup);
-                popupController.SetTextBoxItem("Department: ", this.selectedDepartment.DepartmentName);
-                popupController.SetTrueFalseItem("Active: ", this.selectedDepartment.IsActive);
-
-                DialogResult dialogResult = popup.ShowDialog(view.ParentControl);
-                if (dialogResult == DialogResult.OK)
+                ListItem result = ShowPopup(this.selectedDepartment);
+                if (result.Value != String.Empty)
                 {
-                    UpdateDepartment();
+                    UpdateDepartment(result);
                     LoadView();
                 }
-                popup.Dispose();
             }
         }
 
-        private void UpdateDepartment()
+        private void UpdateDepartment(ListItem result)
         {
-            LoginInfo loginInfo = LoginInfo.GetInstance();
+            this.selectedDepartment.DepartmentName = result.Value;
+            this.selectedDepartment.IsActive = result.IsActive;
             QDepartments.UpdateItem(this.selectedDepartment, loginInfo.UserName);
+        }
+
+        private ListItem ShowPopup(Department department)
+        {
+            ListItem textBoxItem = new ListItem("Department: ", department.DepartmentName);
+            ListItem trueFalseItem = new ListItem("Active: ", department.IsActive.ToString());
+            ListItem result = TemplatesController.ShowOneTextBoxTrueFalseForm(textBoxItem, trueFalseItem,
+                               this.view.ParentControl);
+            return result;
         }
     }
 }

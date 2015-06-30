@@ -18,7 +18,7 @@ namespace Toxikon.ProtocolManager.Models
             ID = -1;
             Type = "";
             Description = "";
-            IsActive = false;
+            IsActive = true;
         }
     }
 }

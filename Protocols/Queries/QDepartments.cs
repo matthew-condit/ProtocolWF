@@ -56,7 +56,7 @@ namespace Toxikon.ProtocolManager.Queries
                         {
                             Department department = new Department();
                             department.DepartmentID = Convert.ToInt32(reader[0].ToString());
-                            department.SetDepartmentName(reader[1].ToString());
+                            department.DepartmentName = reader[1].ToString();
                             department.IsActive = Convert.ToBoolean(reader[2].ToString());
                             results.Add(department);
                         }

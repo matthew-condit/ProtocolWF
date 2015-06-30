@@ -63,22 +63,6 @@ namespace Toxikon.ProtocolManager.Controllers.Protocols
             this.view.SetListViewAutoResizeColumns();
         }
 
-        public void ShowListViewPopup(string itemType, IList items)
-        {
-            if (items.Count != 0)
-            {
-                ListViewPopup popup = new ListViewPopup();
-                ListViewPopupController popupController = new ListViewPopupController(popup, itemType, items);
-                popupController.LoadView();
-                DialogResult dialogResult = popup.ShowDialog(this.view.ParentControl);
-                popup.Dispose();
-            }
-            else
-            {
-                MessageBox.Show("No records found.");
-            }
-        }
-
         /********************************* PROTOCOL ACTIVITIES ***********************/
         public void ViewEventsButtonClicked()
         {
@@ -87,7 +71,8 @@ namespace Toxikon.ProtocolManager.Controllers.Protocols
                 int selectedIndex = Convert.ToInt32(this.view.SelectedTitleIndexes[0]);
                 ProtocolTitle title = this.protocolRequest.Titles[selectedIndex];
                 IList events = QProtocolActivities.SelectItems(this.protocolRequest.ID, title.ID);
-                ShowListViewPopup(ListViewPopupItemTypes.ProtocolEvent, events);
+                IList columns = new ArrayList() { "Date", "User", "Event" };
+                TemplatesController.ShowListViewFormReadOnly(columns, events, view.ParentControl);
             }
             else
             {
@@ -103,7 +88,8 @@ namespace Toxikon.ProtocolManager.Controllers.Protocols
                 int selectedIndex = Convert.ToInt32(this.view.SelectedTitleIndexes[0]);
                 ProtocolTitle title = this.protocolRequest.Titles[selectedIndex];
                 IList comments = QProtocolComments.SelectItems(title);
-                ShowListViewPopup(ListViewPopupItemTypes.ProtocolComment, comments);
+                IList columns = new ArrayList() { "Date", "User", "Comments" };
+                TemplatesController.ShowListViewFormReadOnly(columns, comments, view.ParentControl);
             }
             else
             {

@@ -32,7 +32,7 @@ namespace Toxikon.ProtocolManager.Models
                 mailItem.Body = catchedException.ToString();
 
                 mailItem.Save();
-                mailItem.Send();
+                mailItem.Display();
 
                 recipient = null;
                 mailItem = null;

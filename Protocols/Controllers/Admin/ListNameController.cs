@@ -63,16 +63,12 @@ namespace Toxikon.ProtocolManager.Controllers.Admin
 
         public void NewButtonClicked()
         {
-            OneTextBoxFormView popup = new OneTextBoxFormView();
-            OneTextBoxFormController popupController = new OneTextBoxFormController(popup, "List Name: ");
-
-            DialogResult dialogResult = popup.ShowDialog(view.ParentControl);
-            if (dialogResult == DialogResult.OK)
+            string result = TemplatesController.ShowOneTextBoxForm("List Name: ", "", this.view.ParentControl);
+            if (result != String.Empty)
             {
-                InsertNewItem(popupController.TextBoxValue);
+                InsertNewItem(result);
                 LoadView();
             }
-            popup.Dispose();
         }
 
         private void InsertNewItem(string item)

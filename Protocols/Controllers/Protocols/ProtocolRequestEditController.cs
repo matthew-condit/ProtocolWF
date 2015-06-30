@@ -58,43 +58,10 @@ namespace Toxikon.ProtocolManager.Controllers.Protocols
             this.view.SetListViewAutoResizeColumns();
         }
 
-        public string ShowOneTextBoxPopup(string textBoxLabel, string textBoxValue)
-        {
-            string result = "";
-            OneTextBoxFormView popup = new OneTextBoxFormView();
-            OneTextBoxFormController popupController = new OneTextBoxFormController(popup, textBoxLabel);
-            popupController.TextBoxValue = textBoxValue;
-            popupController.LoadView();
-
-            DialogResult dialogResult = popup.ShowDialog(this.view.ParentControl);
-            if (dialogResult == DialogResult.OK)
-            {
-                result = popupController.TextBoxValue;
-            }
-            popup.Dispose();
-            return result;
-        }
-
-        public void ShowListViewPopup(string itemType, IList items)
-        {
-            if(items.Count != 0)
-            {
-                ListViewPopup popup = new ListViewPopup();
-                ListViewPopupController popupController = new ListViewPopupController(popup, itemType, items);
-                popupController.LoadView();
-                DialogResult dialogResult = popup.ShowDialog(this.view.ParentControl);
-                popup.Dispose();
-            }
-            else
-            {
-                MessageBox.Show("No records found.");
-            }
-        }
-
         /************************** PROTOCOL TITLE EVENTS ***************************/
         public void AddTitleButtonClicked()
         {
-            string popupResult = ShowOneTextBoxPopup("Title: ", "");
+            string popupResult = TemplatesController.ShowOneTextBoxForm("Title: ", "", this.view.ParentControl);
             if(popupResult != String.Empty)
             {
                 ProtocolTitle title = CreateNewProtocolTitle(popupResult);
@@ -135,7 +102,8 @@ namespace Toxikon.ProtocolManager.Controllers.Protocols
             {
                 int selectedIndex = Convert.ToInt32(this.view.SelectedTitleIndexes[0]);
                 ProtocolTitle title = this.protocolRequest.Titles[selectedIndex];
-                string popupResult = ShowOneTextBoxPopup("Title: ", title.Description);
+                string popupResult = TemplatesController.ShowOneTextBoxForm("Title: ", title.Description, 
+                                     this.view.ParentControl);
                 if (popupResult != String.Empty)
                 {
                     title.Description = popupResult;
@@ -197,7 +165,8 @@ namespace Toxikon.ProtocolManager.Controllers.Protocols
                 int selectedIndex = Convert.ToInt32(this.view.SelectedTitleIndexes[0]);
                 ProtocolTitle title = this.protocolRequest.Titles[selectedIndex];
                 IList events = QProtocolActivities.SelectItems(this.protocolRequest.ID, title.ID);
-                ShowListViewPopup(ListViewPopupItemTypes.ProtocolEvent, events);
+                IList columns = new ArrayList() { "Date", "User", "Event" };
+                TemplatesController.ShowListViewFormReadOnly(columns, events, view.ParentControl);
             }
             else
             {
@@ -210,7 +179,8 @@ namespace Toxikon.ProtocolManager.Controllers.Protocols
         {
             if(this.view.SelectedTitleIndexes.Count == 1)
             {
-                string popupResult = ShowOneTextBoxPopup("Comments: ", "");
+                string popupResult = TemplatesController.ShowOneTextBoxForm("Comments: ", "", 
+                                     this.view.ParentControl);
                 if(popupResult != String.Empty)
                 {
                     InsertProtocolCommentsIntoDB(popupResult);
@@ -237,7 +207,8 @@ namespace Toxikon.ProtocolManager.Controllers.Protocols
                 int selectedIndex = Convert.ToInt32(this.view.SelectedTitleIndexes[0]);
                 ProtocolTitle title = this.protocolRequest.Titles[selectedIndex];
                 IList comments = QProtocolComments.SelectItems(title);
-                ShowListViewPopup(ListViewPopupItemTypes.ProtocolComment, comments);
+                IList columns = new ArrayList() { "Date", "User", "Comments" };
+                TemplatesController.ShowListViewFormReadOnly(columns, comments, view.ParentControl);
             }
             else
             {
@@ -381,6 +352,27 @@ namespace Toxikon.ProtocolManager.Controllers.Protocols
                 else
                 {
                     MessageBox.Show("File does not exist.");
+                }
+            }
+            else
+            {
+                MessageBox.Show(this.SelectOneMessage);
+            }
+        }
+
+        /*********************************** PROJECT NUMBER *************************/
+        public void UpdateProjectNumberButtonClicked()
+        {
+            if (this.view.SelectedTitleIndexes.Count == 1)
+            {
+                int selectedIndex = Convert.ToInt32(this.view.SelectedTitleIndexes[0]);
+                ProtocolTitle title = this.protocolRequest.Titles[selectedIndex];
+                string result = TemplatesController.ShowOneTextBoxForm("Project Number: ", "", this.view.ParentControl);
+                if(result != String.Empty)
+                {
+                    title.ProjectNumber = result;
+                    QProtocolTitles.UpdateProjectNumber(title, loginInfo.UserName);
+                    this.RefreshTitleListView();
                 }
             }
             else

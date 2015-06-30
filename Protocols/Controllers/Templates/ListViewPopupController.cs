@@ -14,45 +14,21 @@ namespace Toxikon.ProtocolManager.Controllers.Templates
         IListViewPopup view;
         string itemType;
         IList items;
+        IList columns;
 
-        public ListViewPopupController(IListViewPopup view, string itemType, IList items)
+        public ListViewPopupController(IListViewPopup view, IList columns, IList items)
         {
             this.view = view;
             this.view.SetController(this);
-            this.itemType = itemType;
+            this.columns = new ArrayList(columns);
             this.items = new ArrayList(items);
         }
 
         public void LoadView()
         {
-            if(itemType == ListViewPopupItemTypes.ProtocolComment)
-            {
-                AddCommentColumns();
-            }
-            else if(itemType == ListViewPopupItemTypes.ProtocolEvent)
-            {
-                AddEventColumns();
-            }
+            this.view.AddListViewColumns(columns);
             AddItemsToView();
             this.view.SetListViewAutoResizeColumns();
-        }
-
-        private void AddCommentColumns()
-        {
-            IList columns = new ArrayList();
-            columns.Add("Date");
-            columns.Add("User");
-            columns.Add("Comments");
-            this.view.AddListViewColumns(columns);
-        }
-
-        private void AddEventColumns()
-        {
-            IList columns = new ArrayList();
-            columns.Add("Date");
-            columns.Add("User");
-            columns.Add("Event");
-            this.view.AddListViewColumns(columns);
         }
 
         private void AddItemsToView()

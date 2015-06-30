@@ -20,12 +20,14 @@ namespace Toxikon.ProtocolManager.Controllers.Admin
         IRoleListView view;
         IList roles;
         Role selectedRole;
+        LoginInfo loginInfo;
 
         public RoleListController(IRoleListView view)
         {
             this.view = view;
             this.view.SetController(this);
             roles = new ArrayList();
+            loginInfo = LoginInfo.GetInstance();
         }
 
         public void LoadView()
@@ -51,26 +53,19 @@ namespace Toxikon.ProtocolManager.Controllers.Admin
 
         public void NewButtonClicked()
         {
-            OneTextBoxTrueFalseForm popup = new OneTextBoxTrueFalseForm();
-            OneTextBoxTrueFalseFormController popupController = new OneTextBoxTrueFalseFormController(popup);
-            popupController.SetTextBoxItem("Role: ", "");
-            popupController.SetTrueFalseItem("Active: ", true);
-
-            DialogResult dialogResult = popup.ShowDialog(view.ParentControl);
-            if (dialogResult == DialogResult.OK)
+            Role role = new Role();
+            ListItem result = ShowPopup(role);
+            if (result.Value != String.Empty)
             {
-                Role role = new Role();
-                role.RoleName = popupController.TextBoxValue;
-                role.IsActive = popupController.TrueFalseValue;
-                InsertNewRole(role);
+                InsertNewRole(role, result);
                 LoadView();
             }
-            popup.Dispose();
         }
 
-        private void InsertNewRole(Role role)
+        private void InsertNewRole(Role role, ListItem result)
         {
-            LoginInfo loginInfo = LoginInfo.GetInstance();
+            role.RoleName = result.Value;
+            role.IsActive = result.IsActive;
             QRoles.InsertItem(role.RoleName, loginInfo.UserName);
             MessageBox.Show("New role is added.");
         }
@@ -83,25 +78,29 @@ namespace Toxikon.ProtocolManager.Controllers.Admin
             }
             else
             {
-                OneTextBoxTrueFalseForm popup = new OneTextBoxTrueFalseForm();
-                OneTextBoxTrueFalseFormController popupController = new OneTextBoxTrueFalseFormController(popup);
-                popupController.SetTextBoxItem("Role: ", this.selectedRole.RoleName);
-                popupController.SetTrueFalseItem("Active: ", this.selectedRole.IsActive);
-
-                DialogResult dialogResult = popup.ShowDialog(view.ParentControl);
-                if (dialogResult == DialogResult.OK)
+                ListItem result = ShowPopup(this.selectedRole);
+                if (result.Value != String.Empty)
                 {
-                    UpdateSelectedRole();
+                    UpdateSelectedRole(result);
                     LoadView();
                 }
-                popup.Dispose();
             }
         }
 
-        private void UpdateSelectedRole()
+        private void UpdateSelectedRole(ListItem result)
         {
-            LoginInfo loginInfo = LoginInfo.GetInstance();
+            this.selectedRole.RoleName = result.Value;
+            this.selectedRole.IsActive = result.IsActive;
             QRoles.UpdateItem(selectedRole, loginInfo.UserName);
+        }
+
+        private ListItem ShowPopup(Role item)
+        {
+            ListItem textBoxItem = new ListItem("Role: ", item.RoleName);
+            ListItem trueFalseItem = new ListItem("Active: ", item.IsActive.ToString());
+            ListItem result = TemplatesController.ShowOneTextBoxTrueFalseForm(textBoxItem, trueFalseItem,
+                               this.view.ParentControl);
+            return result;
         }
     }
 }

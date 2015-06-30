@@ -77,11 +77,7 @@ namespace Toxikon.ProtocolManager.Controllers.Admin
         {
             if(this.selectedListName != "" && view.ItemName.Trim() != "")
             {
-                ListItem item = new ListItem();
-                item.Name = this.selectedListName;
-                item.Text = view.ItemName;
-                item.IsActive = true;
-
+                ListItem item = new ListItem(this.selectedListName, view.ItemName, view.ItemName, true);
                 LoginInfo loginInfo = LoginInfo.GetInstance();
                 QListItems.InsertItem(item, loginInfo.UserName);
                 view.ClearNewItemTextBox();
@@ -94,11 +90,10 @@ namespace Toxikon.ProtocolManager.Controllers.Admin
             if(this.selectedItem != null)
             {
                 string oldItemValue = selectedItem.Value;
-                ShowUpdateWindow();
-                if(this.selectedItem.Value.Trim() != String.Empty)
+                ListItem result = ShowPopup();
+                if(result.Value.Trim() != String.Empty)
                 {
-                    LoginInfo loginInfo = LoginInfo.GetInstance();
-                    QListItems.UpdateItem(this.selectedItem, oldItemValue, loginInfo.UserName);
+                    UpdateSelectedItem(oldItemValue, result);
                     LoadSelectedListNameItems();
                 }
             }
@@ -108,19 +103,22 @@ namespace Toxikon.ProtocolManager.Controllers.Admin
             }
         }
 
-        public void ShowUpdateWindow()
+        private void UpdateSelectedItem(string oldItemValue, ListItem result)
         {
-            OneTextBoxTrueFalseForm popup = new OneTextBoxTrueFalseForm();
-            OneTextBoxTrueFalseFormController popupController = new OneTextBoxTrueFalseFormController(popup);
-            popupController.SetTextBoxItem("Item Value: ", this.selectedItem.Text);
-            popupController.SetTrueFalseItem("Active: ", this.selectedItem.IsActive);
+            this.selectedItem.Text = result.Value;
+            this.selectedItem.Value = result.IsActive.ToString();
+            this.selectedItem.IsActive = result.IsActive;
+            LoginInfo loginInfo = LoginInfo.GetInstance();
+            QListItems.UpdateItem(this.selectedItem, oldItemValue, loginInfo.UserName);
+        }
 
-            DialogResult dialogResult = popup.ShowDialog(this.view.ParentControl);
-            popup.Dispose();
-
-            this.selectedItem.IsActive = popupController.TrueFalseValue;
-            this.selectedItem.Text = popupController.TextBoxValue;
-            this.selectedItem.Value = popupController.TextBoxValue;
+        public ListItem ShowPopup()
+        {
+            ListItem textBoxItem = new ListItem("Item Value: ", this.selectedItem.Text);
+            ListItem trueFalseItem = new ListItem("Active: ", this.selectedItem.IsActive.ToString());
+            ListItem result = TemplatesController.ShowOneTextBoxTrueFalseForm(textBoxItem, trueFalseItem, 
+                               view.ParentControl);
+            return result;
         }
     }
 }
