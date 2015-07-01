@@ -51,7 +51,7 @@ namespace Toxikon.ProtocolManager.Controllers
             return result;
         }
 
-        public static void ShowListViewFormReadOnly(IList columns, IList items, Control parentControl)
+        public static void ShowReadOnlyListViewForm(IList columns, IList items, Control parentControl)
         {
             if(items.Count > 0)
             {

@@ -131,9 +131,11 @@ namespace Toxikon.ProtocolManager.Queries
                                                Convert.ToDateTime(reader[4].ToString());
             title.CommentsCount = reader[5].ToString() == "" ? 0 :
                                   Convert.ToInt32(reader[5].ToString());
-            title.ProtocolNumber = reader[6].ToString();
-            title.FileName = reader[7].ToString();
-            title.FilePath = reader[8].ToString();
+            title.ProtocolNumber.ProtocolRequestID = title.ProtocolRequestID;
+            title.ProtocolNumber.ProtocolTitleID = title.ID;
+            title.ProtocolNumber.FullCode = reader[6].ToString().Trim();
+            title.FileName = reader[7].ToString().Trim();
+            title.FilePath = reader[8].ToString().Trim();
 
             return title;
         }

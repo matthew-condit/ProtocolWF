@@ -66,7 +66,7 @@ namespace Toxikon.ProtocolManager.Views.Protocols
             item.SubItems.Add(title.LatestActivity.CreatedDate.ToString("MM/dd/yyyy"));
             item.SubItems.Add(title.LatestActivity.CreatedBy);
             item.SubItems.Add(title.CommentsCount.ToString());
-            item.SubItems.Add(title.ProtocolNumber);
+            item.SubItems.Add(title.ProtocolNumber.FullCode);
             item.SubItems.Add(title.FileName);
         }
 
@@ -128,7 +128,7 @@ namespace Toxikon.ProtocolManager.Views.Protocols
 
         private void RevisedProtocolButton_Click(object sender, EventArgs e)
         {
-            this.controller.RevisedProtocolButtonClicked();
+            this.controller.ReviseProtocolButtonClicked();
         }
 
         private void DownloadReportButton_Click(object sender, EventArgs e)

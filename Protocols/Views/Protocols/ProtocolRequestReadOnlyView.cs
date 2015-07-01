@@ -64,7 +64,7 @@ namespace Toxikon.ProtocolManager.Views.Protocols
             item.SubItems.Add(title.LatestActivity.CreatedDate.ToString("MM/dd/yyyy"));
             item.SubItems.Add(title.LatestActivity.CreatedBy);
             item.SubItems.Add(title.CommentsCount.ToString());
-            item.SubItems.Add(title.ProtocolNumber);
+            item.SubItems.Add(title.ProtocolNumber.FullCode);
             item.SubItems.Add(title.FileName);
         }
 

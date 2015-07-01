@@ -36,30 +36,24 @@ namespace Toxikon.ProtocolManager.Models
                             this.RevisedNumber.ToString("00") + this.ProtocolType;
         }
 
-        public static ProtocolNumber Create(ProtocolTitle title, string type)
+        public void Create(ProtocolTitle title, string type)
         {
-            ProtocolNumber protocolNumber = new ProtocolNumber();
-            protocolNumber.SequenceNumber = QProtocolNumbers.InsertLastSequenceNumber();
-            protocolNumber.ProtocolRequestID = title.ProtocolRequestID;
-            protocolNumber.ProtocolTitleID = title.ID;
-            protocolNumber.ProtocolType = type == "File Copy" ? "A" : "B";
-            protocolNumber.RevisedNumber = 0;
-            protocolNumber.IsActive = true;
-            protocolNumber.SetFullCode();
-
-            return protocolNumber;
+            this.SequenceNumber = QProtocolNumbers.InsertLastSequenceNumber();
+            this.ProtocolRequestID = title.ProtocolRequestID;
+            this.ProtocolTitleID = title.ID;
+            this.ProtocolType = type == "File Copy" ? "A" : "B";
+            this.RevisedNumber = 0;
+            this.IsActive = true;
+            this.SetFullCode();
         }
 
-        public static void Update(ProtocolTitle title, string userName)
+        public void Update()
         {
-            ProtocolNumber protocolNumber = new ProtocolNumber();
-            protocolNumber.ProtocolRequestID = title.ProtocolRequestID;
-            protocolNumber.ProtocolTitleID = title.ID;
-            protocolNumber.FullCode = title.ProtocolNumber;
-            QProtocolNumbers.SelectItem(protocolNumber);
-            protocolNumber.RevisedNumber += 1;
-            protocolNumber.SetFullCode();
-            QProtocolNumbers.UpdateItem(protocolNumber, userName);
+            QProtocolNumbers.SelectItem(this);
+            LoginInfo loginInfo = LoginInfo.GetInstance();
+            this.RevisedNumber += 1;
+            this.SetFullCode();
+            QProtocolNumbers.UpdateItem(this, loginInfo.UserName);
         }
 
     }

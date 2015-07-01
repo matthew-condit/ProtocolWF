@@ -95,6 +95,8 @@ namespace Toxikon.ProtocolManager.Models
         {
             this.RequestStatus = RequestStatuses.Closed;
             this.IsActive = false;
+            LoginInfo loginInfo = LoginInfo.GetInstance();
+            QProtocolRequests.UpdateRequestStatus(this, loginInfo.UserName);
         }
     }
 }

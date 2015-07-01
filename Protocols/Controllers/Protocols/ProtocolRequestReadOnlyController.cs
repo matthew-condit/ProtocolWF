@@ -71,7 +71,7 @@ namespace Toxikon.ProtocolManager.Controllers.Protocols
                 ProtocolTitle title = this.protocolRequest.Titles[selectedIndex];
                 IList events = QProtocolActivities.SelectItems(this.protocolRequest.ID, title.ID);
                 IList columns = new ArrayList() { "Date", "User", "Event" };
-                TemplatesController.ShowListViewFormReadOnly(columns, events, view.ParentControl);
+                TemplatesController.ShowReadOnlyListViewForm(columns, events, view.ParentControl);
             }
             else
             {
@@ -87,7 +87,7 @@ namespace Toxikon.ProtocolManager.Controllers.Protocols
                 ProtocolTitle title = this.protocolRequest.Titles[selectedIndex];
                 IList comments = QProtocolComments.SelectItems(title);
                 IList columns = new ArrayList() { "Date", "User", "Comments" };
-                TemplatesController.ShowListViewFormReadOnly(columns, comments, view.ParentControl);
+                TemplatesController.ShowReadOnlyListViewForm(columns, comments, view.ParentControl);
             }
             else
             {

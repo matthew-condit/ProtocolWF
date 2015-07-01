@@ -153,7 +153,8 @@ namespace Toxikon.ProtocolManager.Models.Reports
             InsertReportHeaderRow(worksheet, "A1", "A1", "Title: ", true, false);
             InsertReportHeaderRow(worksheet, "B1", "G1", title.Description, false, false);
             InsertReportHeaderRow(worksheet, "A2", "A2", "Protocol Number: ", true, false);
-            string protocolNumber = title.ProtocolNumber.Trim() == String.Empty ? "N/A" : title.ProtocolNumber;
+            string protocolNumber = title.ProtocolNumber.FullCode.Trim() == String.Empty ? "N/A" : 
+                                    title.ProtocolNumber.FullCode;
             InsertReportHeaderRow(worksheet, "B2", "G2", protocolNumber, false, false);
         }
 
