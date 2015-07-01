@@ -160,10 +160,18 @@
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
         YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAADLSURBVDhPY8AGvnz5YvDt27f3QPwfDb8HyUGV4QcwQ2Im
-        7PvPEDwHjEFs2hny/ft3ha9fv84HSQIxsrPBGK8hIMazFx/eVy89+Z8/dhFcIT4MMwRsM4ihV7QWq0Jc
+        7PvPEDwHjEFs2hny/ft3ha9fv84HSQIxsrPBGK8hIMaz5x/eVy89+Z8/dhFcIT4MMwRsM4ihV7QWq0Jc
         GG4AyNkgm2ESvm07/u88+wDudBjG6QUQA+ZskGYg/zzQ0ACY10DyODWDwPM3H+CSIJtJ0gwCyAacuP4U
-        bABMMxCDnY+EMaMPJIjLC0QBfIEIVYIf4IpGog0AAZifkRMSOGxIAdiSMlSKloCBAQDMUMVxAk51QwAA
+        bABMMxCDnY+EMaMPJIjLC0QBfIEIVYIf4IpGog0AAZifkRMSOGxIAdiSMlSKloCBAQDJTsVwItbJLQAA
         AABJRU5ErkJggg==
+</value>
+  </data>
+  <data name="UpdateProjectNumberButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAABuSURBVDhP7ZBLCoAwDEQ9VBcuJcfzwMmykuLUGNIfuHTg
+        LdppXiEbwszZIiLHXc1Fh/YzFZYE9lcrAEORHfRAgncRSwIielEFwA+CrgDRw0gAmgJPtEC9DwUaX/6C
+        Z5nowJTAP+p1NZ8IItod5wtiLgXaP8GE9wAAAABJRU5ErkJggg==
 </value>
   </data>
   <metadata name="toolStrip2.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">

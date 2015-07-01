@@ -18,7 +18,7 @@ namespace Toxikon.ProtocolManager.Controllers.Protocols
     public class ProtocolRequestReadOnlyController
     {
         IProtocolRequestReadOnlyView view;
-        ProtocolRequest protocolRequest;
+        ProtocolRequest request;
         SponsorContact sponsor;
         LoginInfo loginInfo;
         RequestFormController requestFormController;
@@ -35,9 +35,9 @@ namespace Toxikon.ProtocolManager.Controllers.Protocols
 
         public void LoadView(ProtocolRequest protocolRequest)
         {
-            this.protocolRequest = protocolRequest;
+            this.request = protocolRequest;
             this.sponsor = protocolRequest.Contact;
-            this.requestFormController.LoadView(this.protocolRequest);
+            this.requestFormController.LoadView(this.request);
             this.RefreshTitleListView();
         }
 
@@ -50,7 +50,7 @@ namespace Toxikon.ProtocolManager.Controllers.Protocols
         private void AddTilesToView()
         {
             this.view.ClearProtocolTitleListView();
-            foreach (ProtocolTitle item in protocolRequest.Titles)
+            foreach (ProtocolTitle item in request.Titles)
             {
                 this.view.AddTitleToView(item);
             }
@@ -58,18 +58,24 @@ namespace Toxikon.ProtocolManager.Controllers.Protocols
 
         private void RefreshTitleListView()
         {
-            this.protocolRequest.RefreshProtocolTitles();
+            this.request.RefreshProtocolTitles();
             AddTilesToView();
             this.view.SetListViewAutoResizeColumns();
+        }
+
+        private ProtocolTitle GetSelectedTitleFromView()
+        {
+            int selectedIndex = Convert.ToInt32(this.view.SelectedTitleIndexes[0]);
+            ProtocolTitle title = this.request.Titles[selectedIndex];
+            return title;
         }
 
         public void ViewEventsButtonClicked()
         {
             if (this.view.SelectedTitleIndexes.Count == 1)
             {
-                int selectedIndex = Convert.ToInt32(this.view.SelectedTitleIndexes[0]);
-                ProtocolTitle title = this.protocolRequest.Titles[selectedIndex];
-                IList events = QProtocolActivities.SelectItems(this.protocolRequest.ID, title.ID);
+                ProtocolTitle title = GetSelectedTitleFromView();
+                IList events = QProtocolActivities.SelectItems(this.request.ID, title.ID);
                 IList columns = new ArrayList() { "Date", "User", "Event" };
                 TemplatesController.ShowReadOnlyListViewForm(columns, events, view.ParentControl);
             }
@@ -83,8 +89,7 @@ namespace Toxikon.ProtocolManager.Controllers.Protocols
         {
             if (this.view.SelectedTitleIndexes.Count == 1)
             {
-                int selectedIndex = Convert.ToInt32(this.view.SelectedTitleIndexes[0]);
-                ProtocolTitle title = this.protocolRequest.Titles[selectedIndex];
+                ProtocolTitle title = GetSelectedTitleFromView();
                 IList comments = QProtocolComments.SelectItems(title);
                 IList columns = new ArrayList() { "Date", "User", "Comments" };
                 TemplatesController.ShowReadOnlyListViewForm(columns, comments, view.ParentControl);
@@ -97,7 +102,7 @@ namespace Toxikon.ProtocolManager.Controllers.Protocols
 
         public void DownloadRequestReportButtonClicked()
         {
-            ProtocolRequestReport reportTemplate = new ProtocolRequestReport(this.protocolRequest);
+            ProtocolRequestReport reportTemplate = new ProtocolRequestReport(this.request);
             reportTemplate.Create();
             MessageBox.Show("Download Complete!");
         }
@@ -106,8 +111,7 @@ namespace Toxikon.ProtocolManager.Controllers.Protocols
         {
             if (this.view.SelectedTitleIndexes.Count == 1)
             {
-                int selectedIndex = Convert.ToInt32(this.view.SelectedTitleIndexes[0]);
-                ProtocolTitle title = this.protocolRequest.Titles[selectedIndex];
+                ProtocolTitle title = GetSelectedTitleFromView();
                 if (title.FilePath != String.Empty && File.Exists(title.FilePath))
                 {
                     System.Diagnostics.Process.Start(title.FilePath);

@@ -279,8 +279,8 @@ namespace Toxikon.ProtocolManager.Controllers.Protocols
             if (this.view.SelectedTitleIndexes.Count == 1)
             {
                 ProtocolTitle title = GetSelectedTitleFromView();
-                string projectNumber = TemplatesController.ShowOneTextBoxForm("Project Number: ", "",
-                                       this.view.ParentControl);
+                string projectNumber = TemplatesController.ShowOneTextBoxForm("Project Number: ", 
+                                       title.ProjectNumber, this.view.ParentControl);
                 if (projectNumber != String.Empty)
                 {
                     title.AddProjectNumber(projectNumber);

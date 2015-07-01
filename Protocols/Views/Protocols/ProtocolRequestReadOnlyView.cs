@@ -66,6 +66,7 @@ namespace Toxikon.ProtocolManager.Views.Protocols
             item.SubItems.Add(title.CommentsCount.ToString());
             item.SubItems.Add(title.ProtocolNumber.FullCode);
             item.SubItems.Add(title.FileName);
+            item.SubItems.Add(title.ProjectNumber);
         }
 
         public void SetListViewAutoResizeColumns()
@@ -77,6 +78,7 @@ namespace Toxikon.ProtocolManager.Views.Protocols
             this.TitlesListView.Columns[4].AutoResize(ColumnHeaderAutoResizeStyle.HeaderSize);
             this.TitlesListView.Columns[5].AutoResize(ColumnHeaderAutoResizeStyle.HeaderSize);
             this.TitlesListView.Columns[6].AutoResize(ColumnHeaderAutoResizeStyle.HeaderSize);
+            this.TitlesListView.Columns[7].AutoResize(ColumnHeaderAutoResizeStyle.HeaderSize);
         }
 
         public void ClearProtocolTitleListView()

@@ -10,39 +10,60 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Toxikon.ProtocolManager.Controllers.Templates;
+using Toxikon.ProtocolManager.Interfaces.Templates;
 
 namespace Toxikon.ProtocolManager.Controllers.Admin
 {
-    public class UserListController
+    public class UserListController : UCToolStripListView1Controller
     {
-        IUserListView view;
+        IUCToolStripListView1 view;
         IList userList;
         User selectedUser;
 
-        public UserListController(IUserListView view)
+        public UserListController(IUCToolStripListView1 view)
         {
             this.view = view;
             this.view.SetController(this);
             this.userList = new ArrayList();
         }
 
-        public void LoadView()
+        public override void LoadView()
         {
             this.userList.Clear();
             view.ClearView();
+
+            IList columns = new ArrayList() { "Username", "Department", "Role Name", "Active" };
+            this.view.AddListViewColumns(columns);
+            this.view.ListTitle = "Users";
+
             this.userList = QUsers.SelectItems();
+            AddUsersToView();
+            SetColumnsHeaderSize();
+        }
+
+        private void AddUsersToView()
+        {
             foreach (User user in userList)
             {
                 view.AddItemToListView(user);
             }
         }
 
-        public void ListViewSelectedIndexChanged(int selectedIndex)
+        private void SetColumnsHeaderSize()
+        {
+            this.view.SetListViewAutoResizeColumns(0, ColumnHeaderAutoResizeStyle.ColumnContent);
+            this.view.SetListViewAutoResizeColumns(1, ColumnHeaderAutoResizeStyle.ColumnContent);
+            this.view.SetListViewAutoResizeColumns(2, ColumnHeaderAutoResizeStyle.ColumnContent);
+            this.view.SetListViewAutoResizeColumns(3, ColumnHeaderAutoResizeStyle.HeaderSize);
+        }
+
+        public override void ListViewSelectedIndexChanged(int selectedIndex)
         {
             this.selectedUser = (User)this.userList[selectedIndex];
         }
 
-        public void NewButtonClicked()
+        public override void NewButtonClicked()
         {
             User user = new User();
             DialogResult dialogResult = ShowPopup(user);
@@ -60,7 +81,7 @@ namespace Toxikon.ProtocolManager.Controllers.Admin
             MessageBox.Show("New user is added.");
         }
 
-        public void UpdateButtonClicked()
+        public override void UpdateButtonClicked()
         {
             if (this.selectedUser == null)
             {

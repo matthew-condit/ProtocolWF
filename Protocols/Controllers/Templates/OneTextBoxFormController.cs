@@ -10,11 +10,11 @@ namespace Toxikon.ProtocolManager.Controllers.Templates
 {
     public class OneTextBoxFormController
     {
-        IOneTextBoxFormView view;
+        IOneTextBoxForm view;
         public string TextBoxLabel { get; set; }
         public string TextBoxValue { get; set; }
 
-        public OneTextBoxFormController(IOneTextBoxFormView view)
+        public OneTextBoxFormController(IOneTextBoxForm view)
         {
             this.view = view;
             this.view.SetController(this);

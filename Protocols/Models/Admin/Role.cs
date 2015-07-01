@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Toxikon.ProtocolManager.Queries;
 
 namespace Toxikon.ProtocolManager.Models
 {
@@ -23,6 +24,22 @@ namespace Toxikon.ProtocolManager.Models
         {
             this.RoleID = Convert.ToInt32(roleID);
             this.RoleName = roleName;
+        }
+
+        public void Submit(string roleName, bool isActive)
+        {
+            LoginInfo loginInfo = LoginInfo.GetInstance();
+            this.RoleName = roleName;
+            this.IsActive = isActive;
+            QRoles.InsertItem(this.RoleName, loginInfo.UserName);
+        }
+
+        public void Update(string roleName, bool isActive)
+        {
+            LoginInfo loginInfo = LoginInfo.GetInstance();
+            this.RoleName = roleName;
+            this.IsActive = isActive;
+            QRoles.UpdateItem(this, loginInfo.UserName);
         }
     }
 }

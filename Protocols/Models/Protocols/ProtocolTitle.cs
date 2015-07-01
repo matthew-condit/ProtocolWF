@@ -70,7 +70,7 @@ namespace Toxikon.ProtocolManager.Models
         {
             if (this.ProtocolNumber.FullCode != String.Empty)
             {
-                MessageBox.Show("Protocol Number already exists.\nTry Revised Protocol button instead.");
+                MessageBox.Show("Protocol Number already exists.");
             }
             else
             {

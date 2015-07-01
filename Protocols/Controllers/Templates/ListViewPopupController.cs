@@ -11,11 +11,11 @@ namespace Toxikon.ProtocolManager.Controllers.Templates
 {
     public class ListViewPopupController
     {
-        IListViewPopup view;
+        IListViewForm view;
         IList items;
         IList columns;
 
-        public ListViewPopupController(IListViewPopup view, IList columns, IList items)
+        public ListViewPopupController(IListViewForm view, IList columns, IList items)
         {
             this.view = view;
             this.view.SetController(this);

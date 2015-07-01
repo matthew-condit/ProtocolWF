@@ -53,6 +53,7 @@ namespace Toxikon.ProtocolManager.Models
         public void SetContact(SponsorContact contact)
         {
             this.Contact.SponsorCode = contact.SponsorCode;
+            this.Contact.ContactCode = contact.ContactCode;
             this.Contact.SponsorName = contact.SponsorName;
             this.Contact.ContactName = contact.ContactName;
             this.Contact.Address = contact.Address;

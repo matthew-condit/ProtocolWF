@@ -136,6 +136,7 @@ namespace Toxikon.ProtocolManager.Queries
             title.ProtocolNumber.FullCode = reader[6].ToString().Trim();
             title.FileName = reader[7].ToString().Trim();
             title.FilePath = reader[8].ToString().Trim();
+            title.ProjectNumber = reader[9].ToString().Trim();
 
             return title;
         }

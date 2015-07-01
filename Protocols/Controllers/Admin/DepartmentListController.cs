@@ -12,17 +12,18 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Toxikon.ProtocolManager.Views.Templates;
 using Toxikon.ProtocolManager.Controllers.Templates;
+using Toxikon.ProtocolManager.Interfaces.Templates;
 
 namespace Toxikon.ProtocolManager.Controllers.Admin
 {
-    public class DepartmentListController
+    public class DepartmentListController : UCToolStripListView1Controller
     {
-        IDepartmentListView view;
+        IUCToolStripListView1 view;
         IList departments;
         Department selectedDepartment;
         LoginInfo loginInfo;
 
-        public DepartmentListController(IDepartmentListView view)
+        public DepartmentListController(IUCToolStripListView1 view)
         {
             this.view = view;
             this.view.SetController(this);
@@ -30,28 +31,36 @@ namespace Toxikon.ProtocolManager.Controllers.Admin
             loginInfo = LoginInfo.GetInstance();
         }
 
-        public void LoadView()
-        {
-            LoadDepartmentList();
-            AddDepartmentListToView();
-        }
-
-        public void LoadDepartmentList()
+        public override void LoadView()
         {
             departments.Clear();
+            view.ClearView();
+
+            IList columns = new ArrayList(){"ID", "Department", "Active"};
+            this.view.AddListViewColumns(columns);
+            this.view.ListTitle = "Departments";
             departments = QDepartments.SelectItems();
+          
+            AddDepartmentListToView();
+            SetColumnsHeaderSize();
         }
 
         private void AddDepartmentListToView()
         {
-            view.ClearView();
             foreach (Department department in departments)
             {
                 view.AddItemToListView(department);
             }
         }
 
-        public void ListViewSelectedIndexChanged(int selectedIndex)
+        private void SetColumnsHeaderSize()
+        {
+            this.view.SetListViewAutoResizeColumns(0, ColumnHeaderAutoResizeStyle.ColumnContent);
+            this.view.SetListViewAutoResizeColumns(1, ColumnHeaderAutoResizeStyle.ColumnContent);
+            this.view.SetListViewAutoResizeColumns(2, ColumnHeaderAutoResizeStyle.HeaderSize);
+        }
+
+        public override void ListViewSelectedIndexChanged(int selectedIndex)
         {
             if(selectedIndex > -1 && selectedIndex < departments.Count)
             {
@@ -59,27 +68,19 @@ namespace Toxikon.ProtocolManager.Controllers.Admin
             }
         }
 
-        public void NewButtonClicked()
+        public override void NewButtonClicked()
         {
             Department department = new Department();
             Item result = ShowPopup(department);
             if (result.Value != String.Empty)
             {
-                InsertNewDepartment(department, result);
+                department.Submit(result.Value, result.IsActive);
+                MessageBox.Show("New department is added.");
                 LoadView();
             }
         }
 
-        private void InsertNewDepartment(Department department, Item result)
-        {
-            department.DepartmentName = result.Value;
-            department.IsActive = result.IsActive;
-           
-            int dbresult = QDepartments.InsertItem(department, loginInfo.UserName);
-            MessageBox.Show("New department is added.");
-        }
-
-        public void UpdateButtonClicked()
+        public override void UpdateButtonClicked()
         {
             if (this.selectedDepartment == null)
             {
@@ -90,17 +91,10 @@ namespace Toxikon.ProtocolManager.Controllers.Admin
                 Item result = ShowPopup(this.selectedDepartment);
                 if (result.Value != String.Empty)
                 {
-                    UpdateDepartment(result);
+                    this.selectedDepartment.Update(result.Value, result.IsActive);
                     LoadView();
                 }
             }
-        }
-
-        private void UpdateDepartment(Item result)
-        {
-            this.selectedDepartment.DepartmentName = result.Value;
-            this.selectedDepartment.IsActive = result.IsActive;
-            QDepartments.UpdateItem(this.selectedDepartment, loginInfo.UserName);
         }
 
         private Item ShowPopup(Department department)

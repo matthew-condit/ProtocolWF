@@ -8,6 +8,7 @@ namespace Toxikon.ProtocolManager.Models
 {
     public class Item
     {
+        public int ID { get; set; }
         public string Name { get; set; }
         public string Text { get; set; }
         public string Value { get; set; }
@@ -19,6 +20,7 @@ namespace Toxikon.ProtocolManager.Models
 
         public Item()
         {
+            this.ID = 0;
             this.Name = "";
             this.Text = "";
             this.Value = "";
@@ -31,6 +33,7 @@ namespace Toxikon.ProtocolManager.Models
 
         public Item(string name, string value)
         {
+            this.ID = 0;
             this.Name = name;
             this.Value = value;
             this.Text = value;
@@ -43,6 +46,7 @@ namespace Toxikon.ProtocolManager.Models
 
         public Item(string name, string text, string value, bool isActive)
         {
+            this.ID = 0;
             this.Name = name;
             this.Text = text;
             this.Value = value;

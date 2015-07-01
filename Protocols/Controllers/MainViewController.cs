@@ -11,6 +11,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Toxikon.ProtocolManager.Views.Templates;
 
 namespace Toxikon.ProtocolManager.Controllers
 {
@@ -43,7 +44,7 @@ namespace Toxikon.ProtocolManager.Controllers
 
         public void LoadDepartmentListView()
         {
-            DepartmentListView subView = new DepartmentListView();
+            UCToolStripListView1 subView = new UCToolStripListView1();
             DepartmentListController subViewController = new DepartmentListController(subView);
             subViewController.LoadView();
 
@@ -52,7 +53,7 @@ namespace Toxikon.ProtocolManager.Controllers
 
         public void LoadRoleListView()
         {
-            RoleListView subView = new RoleListView();
+            UCToolStripListView1 subView = new UCToolStripListView1();
             RoleListController subViewController = new RoleListController(subView);
             subViewController.LoadView();
 
@@ -61,7 +62,7 @@ namespace Toxikon.ProtocolManager.Controllers
 
         public void LoadUserListView()
         {
-            UserListView subView = new UserListView();
+            UCToolStripListView1 subView = new UCToolStripListView1();
             UserListController subViewController = new UserListController(subView);
             subViewController.LoadView();
 
@@ -137,7 +138,7 @@ namespace Toxikon.ProtocolManager.Controllers
 
         public void LoadProtocolEventsView()
         {
-            ProtocolEventsView subView = new ProtocolEventsView();
+            UCToolStripListView1 subView = new UCToolStripListView1();
             ProtocolEventsController subViewController = new ProtocolEventsController(subView);
             subViewController.LoadView();
 
@@ -155,7 +156,7 @@ namespace Toxikon.ProtocolManager.Controllers
 
         public void LoadListNameView()
         {
-            ListNameView subView = new ListNameView();
+            UCToolStripListView1 subView = new UCToolStripListView1();
             ListNameController subViewController = new ListNameController(subView);
             subViewController.LoadView();
             view.AddControlToMainPanel(subView);

@@ -12,11 +12,11 @@ namespace Toxikon.ProtocolManager.Controllers.Templates
 {
     public class CheckBoxOptionsController
     {
-        ICheckBoxOptionsView view;
+        ICheckedListBoxForm view;
         IList items;
         public List<string> SelectedItems { get; private set; }
 
-        public CheckBoxOptionsController(ICheckBoxOptionsView view, IList items)
+        public CheckBoxOptionsController(ICheckedListBoxForm view, IList items)
         {
             this.view = view;
             this.view.SetController(this);

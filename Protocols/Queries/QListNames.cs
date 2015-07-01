@@ -72,18 +72,19 @@ namespace Toxikon.ProtocolManager.Queries
             return results;
         }
 
-        public static void UpdateIsActive(Item item, string userName)
+        public static void UpdateItem(Item oldItem, Item newItem, string userName)
         {
             try
             {
                 using(SqlConnection connection = new SqlConnection(CONNECTION_STRING))
                 {
                     connection.Open();
-                    using(SqlCommand command = new SqlCommand("ln_update_isactive", connection))
+                    using(SqlCommand command = new SqlCommand("ln_update_listname", connection))
                     {
                         command.CommandType = CommandType.StoredProcedure;
-                        command.Parameters.Add("@ListName", SqlDbType.NVarChar).Value = item.Name;
-                        command.Parameters.Add("@IsActive", SqlDbType.Bit).Value = item.IsActive;
+                        command.Parameters.Add("@OldListName", SqlDbType.NVarChar).Value = oldItem.Name;
+                        command.Parameters.Add("@NewListName", SqlDbType.NVarChar).Value = newItem.Value;
+                        command.Parameters.Add("@IsActive", SqlDbType.Bit).Value = newItem.IsActive;
                         command.Parameters.Add("@UpdatedBy", SqlDbType.NVarChar).Value = userName;
 
                         int result = command.ExecuteNonQuery();
@@ -92,7 +93,7 @@ namespace Toxikon.ProtocolManager.Queries
             }
             catch(SqlException sqlEx)
             {
-                ErrorHandler.CreateLogFile(ErrorFormName, "SetIsActive", sqlEx);
+                ErrorHandler.CreateLogFile(ErrorFormName, "UpdateItem", sqlEx);
             }
         }
     }

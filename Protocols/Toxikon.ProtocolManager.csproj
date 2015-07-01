@@ -54,6 +54,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controllers\Admin\ListNameController.cs" />
+    <Compile Include="Controllers\Templates\UCToolStripListView1Controller.cs" />
     <Compile Include="Controllers\HistoryController.cs" />
     <Compile Include="Controllers\Protocols\ProtocolRequestReadOnlyController.cs" />
     <Compile Include="Controllers\RequestFormController.cs" />
@@ -67,8 +68,8 @@
     <Compile Include="Controllers\MainViewController.cs" />
     <Compile Include="Controllers\Templates\OneTextBoxFormController.cs" />
     <Compile Include="Controllers\Protocols\ProtocolEventAddController.cs" />
-    <Compile Include="Controllers\Protocols\ProtocolEventEditController.cs" />
-    <Compile Include="Controllers\Protocols\ProtocolEventsController.cs" />
+    <Compile Include="Controllers\Admin\ProtocolEventEditController.cs" />
+    <Compile Include="Controllers\Admin\ProtocolEventsController.cs" />
     <Compile Include="Controllers\Protocols\ProtocolRequestAddController.cs" />
     <Compile Include="Controllers\Protocols\ProtocolRequestEditController.cs" />
     <Compile Include="Controllers\Admin\RoleListController.cs" />
@@ -79,22 +80,23 @@
     <Compile Include="Interfaces\IHistoryView.cs" />
     <Compile Include="Interfaces\IRequestForm.cs" />
     <Compile Include="Interfaces\Protocols\IProtocolRequestReadOnlyView.cs" />
-    <Compile Include="Interfaces\Templates\ICheckBoxOptionsView.cs" />
+    <Compile Include="Interfaces\Templates\ICheckedListBoxForm.cs" />
     <Compile Include="Interfaces\IDashboardView.cs" />
     <Compile Include="Interfaces\Admin\IDepartmentListView.cs" />
-    <Compile Include="Interfaces\Templates\IListBoxOptionsView.cs" />
+    <Compile Include="Interfaces\Templates\IListBoxForm.cs" />
     <Compile Include="Interfaces\Admin\IListItemsView.cs" />
-    <Compile Include="Interfaces\Templates\IListViewPopup.cs" />
+    <Compile Include="Interfaces\Templates\IListViewForm.cs" />
     <Compile Include="Interfaces\IMainView.cs" />
-    <Compile Include="Interfaces\Templates\IOneTextBoxFormView.cs" />
+    <Compile Include="Interfaces\Templates\IOneTextBoxForm.cs" />
     <Compile Include="Interfaces\Protocols\IProtocolEventAddView.cs" />
-    <Compile Include="Interfaces\Protocols\IProtocolEventEditView.cs" />
+    <Compile Include="Interfaces\Admin\IProtocolEventEditView.cs" />
     <Compile Include="Interfaces\Protocols\IProtocolEventsView.cs" />
     <Compile Include="Interfaces\Protocols\IProtocolRequestEditView.cs" />
     <Compile Include="Interfaces\Admin\IRoleListView.cs" />
     <Compile Include="Interfaces\Admin\IUserEditView.cs" />
     <Compile Include="Interfaces\Admin\IUserListView.cs" />
     <Compile Include="Interfaces\Templates\IOneTextBoxTrueFalseForm.cs" />
+    <Compile Include="Interfaces\Templates\IUCToolStripListView1.cs" />
     <Compile Include="Models\Admin\AuditHandler.cs" />
     <Compile Include="Models\Admin\AuditItem.cs" />
     <Compile Include="Models\Protocols\Comment.cs" />
@@ -121,12 +123,6 @@
     <Compile Include="Queries\QRoles.cs" />
     <Compile Include="Queries\QUsers.cs" />
     <Compile Include="Queries\QTMS.cs" />
-    <Compile Include="Views\Admin\ListNameView.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Views\Admin\ListNameView.Designer.cs">
-      <DependentUpon>ListNameView.cs</DependentUpon>
-    </Compile>
     <Compile Include="Views\HistoryView.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -157,11 +153,11 @@
     <Compile Include="Views\RequestForms\RequestFormReadOnly.Designer.cs">
       <DependentUpon>RequestFormReadOnly.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\Templates\CheckBoxOptionsView.cs">
+    <Compile Include="Views\Templates\CheckedListBoxForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Views\Templates\CheckBoxOptionsView.Designer.cs">
-      <DependentUpon>CheckBoxOptionsView.cs</DependentUpon>
+    <Compile Include="Views\Templates\CheckedListBoxForm.Designer.cs">
+      <DependentUpon>CheckedListBoxForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\DashboardView.cs">
       <SubType>UserControl</SubType>
@@ -169,17 +165,11 @@
     <Compile Include="Views\DashboardView.Designer.cs">
       <DependentUpon>DashboardView.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\Admin\DepartmentListView.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Views\Admin\DepartmentListView.Designer.cs">
-      <DependentUpon>DepartmentListView.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Views\Templates\ListBoxOptionsView.cs">
+    <Compile Include="Views\Templates\ListBoxForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Views\Templates\ListBoxOptionsView.Designer.cs">
-      <DependentUpon>ListBoxOptionsView.cs</DependentUpon>
+    <Compile Include="Views\Templates\ListBoxForm.Designer.cs">
+      <DependentUpon>ListBoxForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\Admin\ListItemsView.cs">
       <SubType>UserControl</SubType>
@@ -187,11 +177,11 @@
     <Compile Include="Views\Admin\ListItemsView.Designer.cs">
       <DependentUpon>ListItemsView.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\Templates\ListViewPopup.cs">
+    <Compile Include="Views\Templates\ListViewForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Views\Templates\ListViewPopup.Designer.cs">
-      <DependentUpon>ListViewPopup.cs</DependentUpon>
+    <Compile Include="Views\Templates\ListViewForm.Designer.cs">
+      <DependentUpon>ListViewForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\MainView.cs">
       <SubType>Form</SubType>
@@ -210,11 +200,11 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Queries\QMatrix.cs" />
-    <Compile Include="Views\Templates\OneTextBoxFormView.cs">
+    <Compile Include="Views\Templates\OneTextBoxForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Views\Templates\OneTextBoxFormView.Designer.cs">
-      <DependentUpon>OneTextBoxFormView.cs</DependentUpon>
+    <Compile Include="Views\Templates\OneTextBoxForm.Designer.cs">
+      <DependentUpon>OneTextBoxForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\Protocols\ProtocolEventAddView.cs">
       <SubType>Form</SubType>
@@ -228,12 +218,6 @@
     <Compile Include="Views\Admin\ProtocolEventEditView.Designer.cs">
       <DependentUpon>ProtocolEventEditView.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\Admin\ProtocolEventsView.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Views\Admin\ProtocolEventsView.Designer.cs">
-      <DependentUpon>ProtocolEventsView.cs</DependentUpon>
-    </Compile>
     <Compile Include="Views\Protocols\ProtocolRequestAddView.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -246,29 +230,23 @@
     <Compile Include="Views\Protocols\ProtocolRequestEditView.Designer.cs">
       <DependentUpon>ProtocolRequestEditView.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\Admin\RoleListView.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Views\Admin\RoleListView.Designer.cs">
-      <DependentUpon>RoleListView.cs</DependentUpon>
-    </Compile>
     <Compile Include="Views\Admin\UserEditView.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Views\Admin\UserEditView.Designer.cs">
       <DependentUpon>UserEditView.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\Admin\UserListView.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Views\Admin\UserListView.Designer.cs">
-      <DependentUpon>UserListView.cs</DependentUpon>
-    </Compile>
     <Compile Include="Views\Templates\OneTextBoxTrueFalseForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Views\Templates\OneTextBoxTrueFalseForm.Designer.cs">
       <DependentUpon>OneTextBoxTrueFalseForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Templates\UCToolStripListView1.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\Templates\UCToolStripListView1.Designer.cs">
+      <DependentUpon>UCToolStripListView1.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -280,9 +258,6 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="Views\Admin\ListNameView.resx">
-      <DependentUpon>ListNameView.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Views\HistoryView.resx">
       <DependentUpon>HistoryView.cs</DependentUpon>
     </EmbeddedResource>
@@ -298,29 +273,26 @@
     <EmbeddedResource Include="Views\RequestForms\RequestFormReadOnly.resx">
       <DependentUpon>RequestFormReadOnly.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\Templates\CheckBoxOptionsView.resx">
-      <DependentUpon>CheckBoxOptionsView.cs</DependentUpon>
+    <EmbeddedResource Include="Views\Templates\CheckedListBoxForm.resx">
+      <DependentUpon>CheckedListBoxForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\DashboardView.resx">
       <DependentUpon>DashboardView.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\Admin\DepartmentListView.resx">
-      <DependentUpon>DepartmentListView.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Views\Templates\ListBoxOptionsView.resx">
-      <DependentUpon>ListBoxOptionsView.cs</DependentUpon>
+    <EmbeddedResource Include="Views\Templates\ListBoxForm.resx">
+      <DependentUpon>ListBoxForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Admin\ListItemsView.resx">
       <DependentUpon>ListItemsView.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\Templates\ListViewPopup.resx">
-      <DependentUpon>ListViewPopup.cs</DependentUpon>
+    <EmbeddedResource Include="Views\Templates\ListViewForm.resx">
+      <DependentUpon>ListViewForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\MainView.resx">
       <DependentUpon>MainView.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\Templates\OneTextBoxFormView.resx">
-      <DependentUpon>OneTextBoxFormView.cs</DependentUpon>
+    <EmbeddedResource Include="Views\Templates\OneTextBoxForm.resx">
+      <DependentUpon>OneTextBoxForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Protocols\ProtocolEventAddView.resx">
       <DependentUpon>ProtocolEventAddView.cs</DependentUpon>
@@ -328,26 +300,20 @@
     <EmbeddedResource Include="Views\Admin\ProtocolEventEditView.resx">
       <DependentUpon>ProtocolEventEditView.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\Admin\ProtocolEventsView.resx">
-      <DependentUpon>ProtocolEventsView.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Views\Protocols\ProtocolRequestAddView.resx">
       <DependentUpon>ProtocolRequestAddView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Protocols\ProtocolRequestEditView.resx">
       <DependentUpon>ProtocolRequestEditView.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\Admin\RoleListView.resx">
-      <DependentUpon>RoleListView.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Views\Admin\UserEditView.resx">
       <DependentUpon>UserEditView.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\Admin\UserListView.resx">
-      <DependentUpon>UserListView.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Views\Templates\OneTextBoxTrueFalseForm.resx">
       <DependentUpon>OneTextBoxTrueFalseForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Templates\UCToolStripListView1.resx">
+      <DependentUpon>UCToolStripListView1.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

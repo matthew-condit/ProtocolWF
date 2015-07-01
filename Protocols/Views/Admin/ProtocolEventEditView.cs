@@ -1,5 +1,5 @@
-﻿using Toxikon.ProtocolManager.Controllers.Protocols;
-using Toxikon.ProtocolManager.Interfaces.Protocols;
+﻿using Toxikon.ProtocolManager.Controllers.Admin;
+using Toxikon.ProtocolManager.Interfaces.Admin;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;

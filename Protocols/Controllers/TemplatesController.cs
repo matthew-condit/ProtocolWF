@@ -16,7 +16,7 @@ namespace Toxikon.ProtocolManager.Controllers
         public static string ShowOneTextBoxForm(string textBoxLabel, string textBoxValue, Control parentControl)
         {
             string result = "";
-            OneTextBoxFormView popup = new OneTextBoxFormView();
+            OneTextBoxForm popup = new OneTextBoxForm();
             OneTextBoxFormController popupController = new OneTextBoxFormController(popup);
             popupController.TextBoxLabel = textBoxLabel;
             popupController.TextBoxValue = textBoxValue;
@@ -55,7 +55,7 @@ namespace Toxikon.ProtocolManager.Controllers
         {
             if(items.Count > 0)
             {
-                ListViewPopup popup = new ListViewPopup();
+                ListViewForm popup = new ListViewForm();
                 ListViewPopupController popupController = new ListViewPopupController(popup, columns, items);
                 popupController.LoadView();
                 DialogResult dialogResult = popup.ShowDialog(parentControl);
@@ -69,7 +69,7 @@ namespace Toxikon.ProtocolManager.Controllers
 
         public static List<string> ShowCheckBoxOptionsForm(IList items, Control parentControl)
         {
-            CheckBoxOptionsView popup = new CheckBoxOptionsView();
+            CheckedListBoxForm popup = new CheckedListBoxForm();
             CheckBoxOptionsController popupController = new CheckBoxOptionsController(popup, items);
             popupController.LoadView();
             DialogResult dialogResult = popup.ShowDialog(parentControl);
@@ -79,7 +79,7 @@ namespace Toxikon.ProtocolManager.Controllers
 
         public static Item ShowListBoxOptionsForm(IList items, Control parentControl)
         {
-            ListBoxOptionsView popup = new ListBoxOptionsView();
+            ListBoxForm popup = new ListBoxForm();
             ListBoxOptionsController popupController = new ListBoxOptionsController(popup, items);
             popupController.LoadView();
             DialogResult dialogResult = popup.ShowDialog(parentControl);

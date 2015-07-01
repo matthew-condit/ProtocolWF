@@ -12,17 +12,18 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Toxikon.ProtocolManager.Views.Templates;
 using Toxikon.ProtocolManager.Controllers.Templates;
+using Toxikon.ProtocolManager.Interfaces.Templates;
 
 namespace Toxikon.ProtocolManager.Controllers.Admin
 {
-    public class RoleListController
+    public class RoleListController : UCToolStripListView1Controller
     {
-        IRoleListView view;
+        IUCToolStripListView1 view;
         IList roles;
         Role selectedRole;
         LoginInfo loginInfo;
 
-        public RoleListController(IRoleListView view)
+        public RoleListController(IUCToolStripListView1 view)
         {
             this.view = view;
             this.view.SetController(this);
@@ -30,12 +31,16 @@ namespace Toxikon.ProtocolManager.Controllers.Admin
             loginInfo = LoginInfo.GetInstance();
         }
 
-        public void LoadView()
+        public override void LoadView()
         {
             this.roles.Clear();
             this.view.ClearView();
+            IList columns = new ArrayList() { "ID", "Role Name", "Active" };
+            this.view.AddListViewColumns(columns);
+            this.view.ListTitle = "Roles";
             this.roles = QRoles.SelectItems();
             AddRolesToView();
+            SetColumnsHeaderSize();
         }
 
         private void AddRolesToView()
@@ -46,31 +51,31 @@ namespace Toxikon.ProtocolManager.Controllers.Admin
             }
         }
 
-        public void ListViewSelectedIndexChanged(int selectedIndex)
+        private void SetColumnsHeaderSize()
+        {
+            this.view.SetListViewAutoResizeColumns(0, ColumnHeaderAutoResizeStyle.ColumnContent);
+            this.view.SetListViewAutoResizeColumns(1, ColumnHeaderAutoResizeStyle.ColumnContent);
+            this.view.SetListViewAutoResizeColumns(2, ColumnHeaderAutoResizeStyle.HeaderSize);
+        }
+
+        public override void ListViewSelectedIndexChanged(int selectedIndex)
         {
             this.selectedRole = (Role)this.roles[selectedIndex];
         }
 
-        public void NewButtonClicked()
+        public override void NewButtonClicked()
         {
             Role role = new Role();
             Item result = ShowPopup(role);
             if (result.Value != String.Empty)
             {
-                InsertNewRole(role, result);
+                role.Submit(result.Value, result.IsActive);
+                MessageBox.Show("New role is added.");
                 LoadView();
             }
         }
 
-        private void InsertNewRole(Role role, Item result)
-        {
-            role.RoleName = result.Value;
-            role.IsActive = result.IsActive;
-            QRoles.InsertItem(role.RoleName, loginInfo.UserName);
-            MessageBox.Show("New role is added.");
-        }
-
-        public void UpdateButtonClicked()
+        public override void UpdateButtonClicked()
         {
             if (this.selectedRole == null)
             {
@@ -81,17 +86,10 @@ namespace Toxikon.ProtocolManager.Controllers.Admin
                 Item result = ShowPopup(this.selectedRole);
                 if (result.Value != String.Empty)
                 {
-                    UpdateSelectedRole(result);
+                    this.selectedRole.Update(result.Value, result.IsActive);
                     LoadView();
                 }
             }
-        }
-
-        private void UpdateSelectedRole(Item result)
-        {
-            this.selectedRole.RoleName = result.Value;
-            this.selectedRole.IsActive = result.IsActive;
-            QRoles.UpdateItem(selectedRole, loginInfo.UserName);
         }
 
         private Item ShowPopup(Role item)

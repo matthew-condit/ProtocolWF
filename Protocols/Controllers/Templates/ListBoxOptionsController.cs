@@ -12,11 +12,11 @@ namespace Toxikon.ProtocolManager.Controllers.Templates
 {
     public class ListBoxOptionsController
     {
-        IListBoxOptionsView view;
+        IListBoxForm view;
         IList items;
         public Item SelectedItem { get; private set; }
 
-        public ListBoxOptionsController(IListBoxOptionsView view, IList items)
+        public ListBoxOptionsController(IListBoxForm view, IList items)
         {
             this.view = view;
             this.view.SetController(this);

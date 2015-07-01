@@ -7,20 +7,21 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Toxikon.ProtocolManager.Controllers.Templates;
 using Toxikon.ProtocolManager.Interfaces.Admin;
+using Toxikon.ProtocolManager.Interfaces.Templates;
 using Toxikon.ProtocolManager.Models;
 using Toxikon.ProtocolManager.Queries;
 using Toxikon.ProtocolManager.Views.Templates;
 
 namespace Toxikon.ProtocolManager.Controllers.Admin
 {
-    public class ListNameController
+    public class ListNameController : UCToolStripListView1Controller
     {
-        IListNameView view;
+        IUCToolStripListView1 view;
         IList items;
         Item selectedItem;
         LoginInfo loginInfo;
 
-        public ListNameController(IListNameView view)
+        public ListNameController(IUCToolStripListView1 view)
         {
             this.view = view;
             this.view.SetController(this);
@@ -28,28 +29,33 @@ namespace Toxikon.ProtocolManager.Controllers.Admin
             items = new ArrayList();
         }
 
-        public void LoadView()
-        {
-            LoadItems();
-            AddItemsToView();
-        }
-
-        public void LoadItems()
+        public override void LoadView()
         {
             items.Clear();
+            view.ClearView();
+            IList columns = new ArrayList() { "Name", "Active" };
+            this.view.AddListViewColumns(columns);
+            this.view.ListTitle = "List Names";
             items = QListNames.SelectItems();
+            AddItemsToView();
+            SetColumnsHeaderSize();
         }
 
         private void AddItemsToView()
         {
-            view.ClearView();
             foreach (Item item in items)
             {
                 view.AddItemToListView(item);
             }
         }
 
-        public void ListViewSelectedIndexChanged(int selectedIndex)
+        private void SetColumnsHeaderSize()
+        {
+            this.view.SetListViewAutoResizeColumns(0, ColumnHeaderAutoResizeStyle.ColumnContent);
+            this.view.SetListViewAutoResizeColumns(1, ColumnHeaderAutoResizeStyle.HeaderSize);
+        }
+
+        public override void ListViewSelectedIndexChanged(int selectedIndex)
         {
             if (selectedIndex > -1 && selectedIndex < items.Count)
             {
@@ -57,7 +63,7 @@ namespace Toxikon.ProtocolManager.Controllers.Admin
             }
         }
 
-        public void NewButtonClicked()
+        public override void NewButtonClicked()
         {
             string result = TemplatesController.ShowOneTextBoxForm("List Name: ", "", this.view.ParentControl);
             if (result != String.Empty)
@@ -74,7 +80,7 @@ namespace Toxikon.ProtocolManager.Controllers.Admin
             MessageBox.Show("New item is added.");
         }
 
-        public void RemoveButtonClicked()
+        public override void UpdateButtonClicked()
         {
             if (this.selectedItem == null)
             {
@@ -82,15 +88,22 @@ namespace Toxikon.ProtocolManager.Controllers.Admin
             }
             else
             {
-                DialogResult dialogResult = MessageBox.Show("Are you sure?", "Inactivate Item",
-                                            MessageBoxButtons.YesNo);
-                if (dialogResult == DialogResult.Yes)
+                Item result = ShowPopup(this.selectedItem);
+                if (result.Value != String.Empty)
                 {
-                    this.selectedItem.IsActive = false;
-                    QListNames.UpdateIsActive(this.selectedItem, loginInfo.UserName);
+                    QListNames.UpdateItem(this.selectedItem, result, loginInfo.UserName);
                     LoadView();
                 }
             }
+        }
+
+        private Item ShowPopup(Item item)
+        {
+            Item textBoxItem = new Item("List Name: ", item.Name);
+            Item trueFalseItem = new Item("Active: ", item.IsActive.ToString());
+            Item result = TemplatesController.ShowOneTextBoxTrueFalseForm(textBoxItem, trueFalseItem,
+                               this.view.ParentControl);
+            return result;
         }
     }
 }
