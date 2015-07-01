@@ -13,7 +13,7 @@ namespace Toxikon.ProtocolManager.Interfaces.Admin
     {
         void SetController(ListItemsController controller);
         void AddListNameToView(string listName);
-        void AddListItemToView(ListItem listItem);
+        void AddListItemToView(Item listItem);
         void ClearListItems();
         void ClearNewItemTextBox();
 

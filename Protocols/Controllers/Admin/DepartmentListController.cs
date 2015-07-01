@@ -57,16 +57,12 @@ namespace Toxikon.ProtocolManager.Controllers.Admin
             {
                 selectedDepartment = (Department)departments[selectedIndex];
             }
-            else
-            {
-                selectedDepartment = null;
-            }
         }
 
         public void NewButtonClicked()
         {
             Department department = new Department();
-            ListItem result = ShowPopup(department);
+            Item result = ShowPopup(department);
             if (result.Value != String.Empty)
             {
                 InsertNewDepartment(department, result);
@@ -74,7 +70,7 @@ namespace Toxikon.ProtocolManager.Controllers.Admin
             }
         }
 
-        private void InsertNewDepartment(Department department, ListItem result)
+        private void InsertNewDepartment(Department department, Item result)
         {
             department.DepartmentName = result.Value;
             department.IsActive = result.IsActive;
@@ -91,7 +87,7 @@ namespace Toxikon.ProtocolManager.Controllers.Admin
             }
             else
             {
-                ListItem result = ShowPopup(this.selectedDepartment);
+                Item result = ShowPopup(this.selectedDepartment);
                 if (result.Value != String.Empty)
                 {
                     UpdateDepartment(result);
@@ -100,18 +96,18 @@ namespace Toxikon.ProtocolManager.Controllers.Admin
             }
         }
 
-        private void UpdateDepartment(ListItem result)
+        private void UpdateDepartment(Item result)
         {
             this.selectedDepartment.DepartmentName = result.Value;
             this.selectedDepartment.IsActive = result.IsActive;
             QDepartments.UpdateItem(this.selectedDepartment, loginInfo.UserName);
         }
 
-        private ListItem ShowPopup(Department department)
+        private Item ShowPopup(Department department)
         {
-            ListItem textBoxItem = new ListItem("Department: ", department.DepartmentName);
-            ListItem trueFalseItem = new ListItem("Active: ", department.IsActive.ToString());
-            ListItem result = TemplatesController.ShowOneTextBoxTrueFalseForm(textBoxItem, trueFalseItem,
+            Item textBoxItem = new Item("Department: ", department.DepartmentName);
+            Item trueFalseItem = new Item("Active: ", department.IsActive.ToString());
+            Item result = TemplatesController.ShowOneTextBoxTrueFalseForm(textBoxItem, trueFalseItem,
                                this.view.ParentControl);
             return result;
         }

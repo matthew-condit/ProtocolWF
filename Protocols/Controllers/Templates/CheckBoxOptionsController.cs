@@ -26,7 +26,7 @@ namespace Toxikon.ProtocolManager.Controllers.Templates
 
         public void LoadView()
         {
-            foreach(ListItem item in items)
+            foreach(Item item in items)
             {
                 this.view.AddItemToList(item.Text);
             }

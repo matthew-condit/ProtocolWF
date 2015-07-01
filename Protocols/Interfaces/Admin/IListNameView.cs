@@ -12,7 +12,7 @@ namespace Toxikon.ProtocolManager.Interfaces.Admin
     public interface IListNameView
     {
         void SetController(ListNameController controller);
-        void AddItemToListView(ListName item);
+        void AddItemToListView(Item item);
         void ClearView();
 
         Control ParentControl { get; }

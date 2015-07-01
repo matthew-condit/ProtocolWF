@@ -27,7 +27,7 @@ namespace Toxikon.ProtocolManager.Views.Admin
             this.controller = controller;
         }
         
-        public void AddItemToListView(ListName item)
+        public void AddItemToListView(Item item)
         {
             ListViewItem listViewItem = this.MainListView.Items.Add(item.Name);
             listViewItem.SubItems.Add(item.IsActive.ToString());

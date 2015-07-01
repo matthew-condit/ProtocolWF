@@ -12,12 +12,12 @@ namespace Toxikon.ProtocolManager.Interfaces
     public interface IHistoryView
     {
         void SetController(HistoryController controller);
-        void AddItemToRequestedByComboBox(ListItem item);
+        void AddItemToRequestedByComboBox(Item item);
         void SetRequestedByComboBox_SelectedIndex(int index);
         void AddItemToListView(ProtocolRequest request);
         void ClearListView();
 
         ProtocolRequestReadOnlyView GetRequestView { get; }
-        string SearchLableText { get; set; }
+        string SearchLabelText { get; set; }
     }
 }

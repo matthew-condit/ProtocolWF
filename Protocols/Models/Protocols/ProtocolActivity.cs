@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Toxikon.ProtocolManager.Queries;
 
 namespace Toxikon.ProtocolManager.Models
 {
@@ -22,6 +23,19 @@ namespace Toxikon.ProtocolManager.Models
             this.ProtocolEvent = new ProtocolEvent();
             this.CreatedBy = "";
             this.CreatedDate = DateTime.Now;
+        }
+
+        public ProtocolActivity(ProtocolTitle title, int eventID, string createdBy)
+        {
+            this.ProtocolRequestID = title.ProtocolRequestID;
+            this.ProtocolTitleID = title.ID;
+            this.ProtocolEvent = new ProtocolEvent(eventID);
+            this.CreatedBy = createdBy;
+        }
+
+        public void Submit()
+        {
+            QProtocolActivities.InsertItem(this);
         }
     }
 }

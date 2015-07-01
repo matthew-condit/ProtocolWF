@@ -52,13 +52,9 @@ namespace Toxikon.ProtocolManager.Queries
                         SqlDataReader reader = command.ExecuteReader();
                         while(reader.Read())
                         {
-                            ListName listName = new ListName();
+                            Item listName = new Item();
                             listName.Name = reader[0].ToString();
                             listName.IsActive = Convert.ToBoolean(reader[1].ToString());
-                            listName.CreatedBy = reader[2].ToString();
-                            listName.CreatedDate = Convert.ToDateTime(reader[3].ToString());
-                            listName.UpdatedBy = reader[4].ToString();
-                            listName.UpdatedDate = Convert.ToDateTime(reader[5].ToString());
 
                             results.Add(listName);
                         }
@@ -76,7 +72,7 @@ namespace Toxikon.ProtocolManager.Queries
             return results;
         }
 
-        public static void UpdateIsActive(ListName item, string userName)
+        public static void UpdateIsActive(Item item, string userName)
         {
             try
             {

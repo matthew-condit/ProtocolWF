@@ -75,7 +75,7 @@ namespace Toxikon.ProtocolManager.Queries
             return results;
         }
 
-        public static IList SelectUsersByRoleID(int roleID, string listName)
+        public static IList SelectUsersByRoleID(int roleID)
         {
             IList results = new ArrayList();
             try
@@ -92,8 +92,7 @@ namespace Toxikon.ProtocolManager.Queries
                         SqlDataReader reader = command.ExecuteReader();
                         while (reader.Read())
                         {
-                            ListItem item = new ListItem();
-                            item.Name = listName;
+                            Item item = new Item();
                             item.Value = reader[0].ToString();
                             item.Text = reader[3].ToString();
                             results.Add(item);

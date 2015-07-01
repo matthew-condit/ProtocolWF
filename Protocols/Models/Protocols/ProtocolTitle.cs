@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Toxikon.ProtocolManager.Queries;
 
 namespace Toxikon.ProtocolManager.Models
 {
@@ -34,6 +35,18 @@ namespace Toxikon.ProtocolManager.Models
             this.ProjectNumber = "";
             this.FileName = "";
             this.FilePath = "";
+        }
+
+        public ProtocolTitle(int requestID, string description)
+        {
+            this.ProtocolRequestID = requestID;
+            this.Description = description;
+        }
+
+        public void Submit()
+        {
+            LoginInfo loginInfo = LoginInfo.GetInstance();
+            this.ID = QProtocolTitles.InsertItem(this, loginInfo.UserName);
         }
     }
 }

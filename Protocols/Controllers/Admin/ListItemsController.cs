@@ -18,7 +18,7 @@ namespace Toxikon.ProtocolManager.Controllers.Admin
         IListItemsView view;
         IList listNames;
         IList listItems;
-        ListItem selectedItem;
+        Item selectedItem;
         string selectedListName;
 
         public ListItemsController(IListItemsView view)
@@ -34,7 +34,7 @@ namespace Toxikon.ProtocolManager.Controllers.Admin
         public void LoadView()
         {
             listNames = QListNames.SelectItems();
-            foreach(ListName listName in listNames)
+            foreach(Item listName in listNames)
             {
                 this.view.AddListNameToView(listName.Name);
             }
@@ -44,7 +44,7 @@ namespace Toxikon.ProtocolManager.Controllers.Admin
         {
             if(selectedIndex > -1 && selectedIndex < this.listNames.Count)
             {
-                ListName selectedListName = listNames[selectedIndex] as ListName;
+                Item selectedListName = listNames[selectedIndex] as Item;
                 this.selectedListName =  selectedListName.Name;
                 LoadSelectedListNameItems();
             }
@@ -59,7 +59,7 @@ namespace Toxikon.ProtocolManager.Controllers.Admin
 
         private void AddListItemsToView()
         {
-            foreach(ListItem item in listItems)
+            foreach(Item item in listItems)
             {
                 view.AddListItemToView(item);
             }
@@ -69,7 +69,7 @@ namespace Toxikon.ProtocolManager.Controllers.Admin
         {
             if(selectedIndex > -1 && selectedIndex < this.listItems.Count)
             {
-                this.selectedItem = listItems[selectedIndex] as ListItem;
+                this.selectedItem = listItems[selectedIndex] as Item;
             }
         }
 
@@ -77,7 +77,7 @@ namespace Toxikon.ProtocolManager.Controllers.Admin
         {
             if(this.selectedListName != "" && view.ItemName.Trim() != "")
             {
-                ListItem item = new ListItem(this.selectedListName, view.ItemName, view.ItemName, true);
+                Item item = new Item(this.selectedListName, view.ItemName, view.ItemName, true);
                 LoginInfo loginInfo = LoginInfo.GetInstance();
                 QListItems.InsertItem(item, loginInfo.UserName);
                 view.ClearNewItemTextBox();
@@ -90,7 +90,7 @@ namespace Toxikon.ProtocolManager.Controllers.Admin
             if(this.selectedItem != null)
             {
                 string oldItemValue = selectedItem.Value;
-                ListItem result = ShowPopup();
+                Item result = ShowPopup();
                 if(result.Value.Trim() != String.Empty)
                 {
                     UpdateSelectedItem(oldItemValue, result);
@@ -103,7 +103,7 @@ namespace Toxikon.ProtocolManager.Controllers.Admin
             }
         }
 
-        private void UpdateSelectedItem(string oldItemValue, ListItem result)
+        private void UpdateSelectedItem(string oldItemValue, Item result)
         {
             this.selectedItem.Text = result.Value;
             this.selectedItem.Value = result.IsActive.ToString();
@@ -112,11 +112,11 @@ namespace Toxikon.ProtocolManager.Controllers.Admin
             QListItems.UpdateItem(this.selectedItem, oldItemValue, loginInfo.UserName);
         }
 
-        public ListItem ShowPopup()
+        public Item ShowPopup()
         {
-            ListItem textBoxItem = new ListItem("Item Value: ", this.selectedItem.Text);
-            ListItem trueFalseItem = new ListItem("Active: ", this.selectedItem.IsActive.ToString());
-            ListItem result = TemplatesController.ShowOneTextBoxTrueFalseForm(textBoxItem, trueFalseItem, 
+            Item textBoxItem = new Item("Item Value: ", this.selectedItem.Text);
+            Item trueFalseItem = new Item("Active: ", this.selectedItem.IsActive.ToString());
+            Item result = TemplatesController.ShowOneTextBoxTrueFalseForm(textBoxItem, trueFalseItem, 
                                view.ParentControl);
             return result;
         }

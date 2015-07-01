@@ -14,7 +14,7 @@ namespace Toxikon.ProtocolManager.Queries
     {
         private static string CONNECTION_STRING = Utility.GetTPMConnectionString();
 
-        public static void InsertItem(ListItem listItem, string userName)
+        public static void InsertItem(Item listItem, string userName)
         {
             try
             {
@@ -54,7 +54,7 @@ namespace Toxikon.ProtocolManager.Queries
                         SqlDataReader reader = command.ExecuteReader();
                         while (reader.Read())
                         {
-                            ListItem listItem = new ListItem();
+                            Item listItem = new Item();
                             listItem.Name = listName;
                             listItem.Text = reader[0].ToString();
                             listItem.Value = reader[0].ToString();
@@ -71,7 +71,7 @@ namespace Toxikon.ProtocolManager.Queries
             return results;
         }
 
-        public static void UpdateItem(ListItem listItem, string oldItemName, string userName)
+        public static void UpdateItem(Item listItem, string oldItemName, string userName)
         {
             try
             {

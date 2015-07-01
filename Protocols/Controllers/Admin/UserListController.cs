@@ -44,17 +44,13 @@ namespace Toxikon.ProtocolManager.Controllers.Admin
 
         public void NewButtonClicked()
         {
-            UserEditView popup = new UserEditView();
-            UserEditController popupController = new UserEditController(popup);
-
-            DialogResult dialogResult = popup.ShowDialog(view.ParentControl);
+            User user = new User();
+            DialogResult dialogResult = ShowPopup(user);
             if (dialogResult == DialogResult.OK)
             {
-                User user = popupController.User;
                 InsertNewUser(user);
                 LoadView();
             }
-            popup.Dispose();
         }
 
         private void InsertNewUser(User user)
@@ -72,17 +68,23 @@ namespace Toxikon.ProtocolManager.Controllers.Admin
             }
             else
             {
-                UserEditView popup = new UserEditView();
-                UserEditController popupController = new UserEditController(popup, this.selectedUser);
-
-                DialogResult dialogResult = popup.ShowDialog(view.ParentControl);
+                DialogResult dialogResult = ShowPopup(this.selectedUser);
                 if (dialogResult == DialogResult.OK)
                 {
                     UpdateSelectedUser();
                     LoadView();
                 }
-                popup.Dispose();
             }
+        }
+
+        private DialogResult ShowPopup(User user)
+        {
+            UserEditView popup = new UserEditView();
+            UserEditController popupController = new UserEditController(popup, user);
+            popupController.LoadView();
+            DialogResult dialogResult = popup.ShowDialog(view.ParentControl);
+            popup.Dispose();
+            return dialogResult;
         }
 
         private void UpdateSelectedUser()

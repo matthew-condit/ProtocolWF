@@ -97,13 +97,9 @@
     <Compile Include="Interfaces\Templates\IOneTextBoxTrueFalseForm.cs" />
     <Compile Include="Models\Admin\AuditHandler.cs" />
     <Compile Include="Models\Admin\AuditItem.cs" />
-    <Compile Include="Models\Admin\TableNames.cs" />
-    <Compile Include="Models\ListName.cs" />
     <Compile Include="Models\Protocols\Comment.cs" />
     <Compile Include="Models\Admin\ErrorHandler.cs" />
-    <Compile Include="Models\ListItem.cs" />
-    <Compile Include="Models\ListNames.cs" />
-    <Compile Include="Models\ListViewPopupItemTypes.cs" />
+    <Compile Include="Models\Item.cs" />
     <Compile Include="Models\Protocols\ProtocolActivity.cs" />
     <Compile Include="Models\Protocols\ProtocolEvent.cs" />
     <Compile Include="Models\Protocols\ProtocolNumber.cs" />
@@ -112,7 +108,6 @@
     <Compile Include="Models\Reports\ExcelTemplate.cs" />
     <Compile Include="Models\Reports\ProtocolRequestReport.cs" />
     <Compile Include="Models\Protocols\RequestStatuses.cs" />
-    <Compile Include="Models\Protocols\ProtocolEventTypes.cs" />
     <Compile Include="Models\Admin\UserRoles.cs" />
     <Compile Include="Queries\QListItems.cs" />
     <Compile Include="Queries\QListNames.cs" />

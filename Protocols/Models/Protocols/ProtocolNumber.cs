@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Toxikon.ProtocolManager.Queries;
 
 namespace Toxikon.ProtocolManager.Models
 {
@@ -34,5 +35,32 @@ namespace Toxikon.ProtocolManager.Models
             this.FullCode = "P" + this.YearNumber.ToString() + "-" + this.SequenceNumber.ToString("0000") + "-" +
                             this.RevisedNumber.ToString("00") + this.ProtocolType;
         }
+
+        public static ProtocolNumber Create(ProtocolTitle title, string type)
+        {
+            ProtocolNumber protocolNumber = new ProtocolNumber();
+            protocolNumber.SequenceNumber = QProtocolNumbers.InsertLastSequenceNumber();
+            protocolNumber.ProtocolRequestID = title.ProtocolRequestID;
+            protocolNumber.ProtocolTitleID = title.ID;
+            protocolNumber.ProtocolType = type == "File Copy" ? "A" : "B";
+            protocolNumber.RevisedNumber = 0;
+            protocolNumber.IsActive = true;
+            protocolNumber.SetFullCode();
+
+            return protocolNumber;
+        }
+
+        public static void Update(ProtocolTitle title, string userName)
+        {
+            ProtocolNumber protocolNumber = new ProtocolNumber();
+            protocolNumber.ProtocolRequestID = title.ProtocolRequestID;
+            protocolNumber.ProtocolTitleID = title.ID;
+            protocolNumber.FullCode = title.ProtocolNumber;
+            QProtocolNumbers.SelectItem(protocolNumber);
+            protocolNumber.RevisedNumber += 1;
+            protocolNumber.SetFullCode();
+            QProtocolNumbers.UpdateItem(protocolNumber, userName);
+        }
+
     }
 }

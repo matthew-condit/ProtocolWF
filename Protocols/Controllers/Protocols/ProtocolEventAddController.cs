@@ -24,8 +24,7 @@ namespace Toxikon.ProtocolManager.Controllers.Protocols
             this.view = view;
             this.view.SetController(this);
             this.protocolEvents = new ArrayList();
-            selectedEventType = ProtocolEventTypes.ProtocolRequest;
-            this.protocolEventTypes = new ArrayList(ProtocolEventTypes.EventTypeList);
+            this.protocolEventTypes = new ArrayList(QProtocolEvents.SelectTypes());
             this.SelectedProtocolEvent = null;
         }
 
@@ -44,7 +43,7 @@ namespace Toxikon.ProtocolManager.Controllers.Protocols
         }
         private void AddProtocolEventsToView()
         {
-            this.protocolEvents = QProtocolEvents.SelectItems(this.selectedEventType);
+            this.protocolEvents = QProtocolEvents.SelectItemsByType(this.selectedEventType);
             foreach(ProtocolEvent protocolEvent in protocolEvents)
             {
                 this.view.AddProtocolEventToView(protocolEvent);

@@ -63,7 +63,6 @@ namespace Toxikon.ProtocolManager.Controllers.Protocols
             this.view.SetListViewAutoResizeColumns();
         }
 
-        /********************************* PROTOCOL ACTIVITIES ***********************/
         public void ViewEventsButtonClicked()
         {
             if (this.view.SelectedTitleIndexes.Count == 1)
@@ -80,7 +79,6 @@ namespace Toxikon.ProtocolManager.Controllers.Protocols
             }
         }
 
-        /*************************** COMMENTS EVENTS ***************************/
         public void ViewCommentsButtonClicked()
         {
             if (this.view.SelectedTitleIndexes.Count == 1)
@@ -97,7 +95,6 @@ namespace Toxikon.ProtocolManager.Controllers.Protocols
             }
         }
 
-        /*************************** DOWNLOAD PROTOCOL REQUEST REPORT ********************/
         public void DownloadRequestReportButtonClicked()
         {
             ProtocolRequestReport reportTemplate = new ProtocolRequestReport(this.protocolRequest);

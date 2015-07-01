@@ -54,7 +54,7 @@ namespace Toxikon.ProtocolManager.Controllers.Admin
         public void NewButtonClicked()
         {
             Role role = new Role();
-            ListItem result = ShowPopup(role);
+            Item result = ShowPopup(role);
             if (result.Value != String.Empty)
             {
                 InsertNewRole(role, result);
@@ -62,7 +62,7 @@ namespace Toxikon.ProtocolManager.Controllers.Admin
             }
         }
 
-        private void InsertNewRole(Role role, ListItem result)
+        private void InsertNewRole(Role role, Item result)
         {
             role.RoleName = result.Value;
             role.IsActive = result.IsActive;
@@ -78,7 +78,7 @@ namespace Toxikon.ProtocolManager.Controllers.Admin
             }
             else
             {
-                ListItem result = ShowPopup(this.selectedRole);
+                Item result = ShowPopup(this.selectedRole);
                 if (result.Value != String.Empty)
                 {
                     UpdateSelectedRole(result);
@@ -87,18 +87,18 @@ namespace Toxikon.ProtocolManager.Controllers.Admin
             }
         }
 
-        private void UpdateSelectedRole(ListItem result)
+        private void UpdateSelectedRole(Item result)
         {
             this.selectedRole.RoleName = result.Value;
             this.selectedRole.IsActive = result.IsActive;
             QRoles.UpdateItem(selectedRole, loginInfo.UserName);
         }
 
-        private ListItem ShowPopup(Role item)
+        private Item ShowPopup(Role item)
         {
-            ListItem textBoxItem = new ListItem("Role: ", item.RoleName);
-            ListItem trueFalseItem = new ListItem("Active: ", item.IsActive.ToString());
-            ListItem result = TemplatesController.ShowOneTextBoxTrueFalseForm(textBoxItem, trueFalseItem,
+            Item textBoxItem = new Item("Role: ", item.RoleName);
+            Item trueFalseItem = new Item("Active: ", item.IsActive.ToString());
+            Item result = TemplatesController.ShowOneTextBoxTrueFalseForm(textBoxItem, trueFalseItem,
                                this.view.ParentControl);
             return result;
         }

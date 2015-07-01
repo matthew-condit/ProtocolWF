@@ -20,5 +20,10 @@ namespace Toxikon.ProtocolManager.Models
             Description = "";
             IsActive = true;
         }
+
+        public ProtocolEvent(int eventID)
+        {
+            this.ID = eventID;
+        }
     }
 }

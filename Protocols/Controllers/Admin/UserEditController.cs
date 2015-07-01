@@ -18,35 +18,34 @@ namespace Toxikon.ProtocolManager.Controllers.Admin
         IList roles;
         public User User { get; private set; }
 
-        public UserEditController(IUserEditView view)
-        {
-            User = new User();
-            departments = new ArrayList();
-            roles = new ArrayList();
-
-            this.view = view;
-            this.view.SetController(this);
-            this.LoadDepartments();
-            this.LoadRoles();
-            this.view.SetNewMode();
-            UpdateViewWithUser();
-        }
-
         public UserEditController(IUserEditView view, User user)
         {
             this.User = user;
             departments = new ArrayList();
             roles = new ArrayList();
-
             this.view = view;
             this.view.SetController(this);
+        }
+
+        public void LoadView()
+        {
             this.LoadDepartments();
             this.LoadRoles();
+            if(User.UserName == String.Empty)
+            {
+                this.view.SetNewMode();
+            }
+            else
+            {
+                LoadUpdateMode();
+            }
+        }
+
+        private void LoadUpdateMode()
+        {
             this.view.SetUpdateMode();
-
-            this.User.Department = GetDepartmentByID(user.Department.DepartmentID);
-            this.User.Role = GetRoleByID(user.Role.RoleID);
-
+            this.User.Department = GetDepartmentByID(this.User.Department.DepartmentID);
+            this.User.Role = GetRoleByID(this.User.Role.RoleID);
             UpdateViewWithUser();
         }
 

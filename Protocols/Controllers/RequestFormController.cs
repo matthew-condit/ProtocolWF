@@ -20,6 +20,8 @@ namespace Toxikon.ProtocolManager.Controllers
         protected ProtocolRequest request;
         LoginInfo loginInfo;
 
+        enum OptionFields { Guidelines, Compliance, ProtocolType, AssignedTo, Contact };
+
         public RequestFormController(IRequestForm view)
         {
             this.view = view;
@@ -72,76 +74,59 @@ namespace Toxikon.ProtocolManager.Controllers
             this.request.Comments = this.view.Comments;
         }
 
+        public void GuidelinesButtonClicked()
+        {
+            IList items = QListItems.SelectItems(OptionFields.Guidelines.ToString());
+            List<string> selectedItems = TemplatesController.ShowCheckBoxOptionsForm(items, view.ParentControl);
+            if (selectedItems.Count != 0)
+            {
+                string itemsString = String.Join(", ", selectedItems);
+                this.request.Guidelines = itemsString;
+                this.view.Guidelines = itemsString;
+            }
+        }
+
+        public void ComplianceButtonClicked()
+        {
+            IList items = QListItems.SelectItems(OptionFields.Compliance.ToString());
+            Item selectedItem = TemplatesController.ShowListBoxOptionsForm(items, view.ParentControl);
+            if(selectedItem.Name != "")
+            {
+                this.request.Compliance = selectedItem.Value;
+                this.view.Compliance = selectedItem.Value;
+            }
+        }
+
+        public void ProtocolTypeButtonClicked()
+        {
+            IList items = QListItems.SelectItems(OptionFields.ProtocolType.ToString());
+            Item selectedItem = TemplatesController.ShowListBoxOptionsForm(items, view.ParentControl);
+            if (selectedItem.Value != "")
+            {
+                this.request.ProtocolType = selectedItem.Value;
+                this.view.ProtocolType = selectedItem.Value;
+            }
+        }
+
+        public void AssignedToButtonClicked()
+        {
+            IList items = QUsers.SelectUsersByRoleID(UserRoles.DocControl);
+            Item selectedItem = TemplatesController.ShowListBoxOptionsForm(items, view.ParentControl);
+            if (selectedItem.Value != "")
+            {
+                this.request.AssignedTo = selectedItem.Value;
+                this.view.AssignedTo = selectedItem.Text;
+            }
+        }
+
         public void ChangeContactButtonClicked()
         {
-            IList contacts = QMatrix.GetSponsorContacts_NameAndCodeOnly(this.request.Contact.SponsorName);
-            OpenListBoxOptions(ListNames.Contact, contacts);
-        }
-
-        public void OpenCheckBoxOptions(string listName, IList items)
-        {
-            CheckBoxOptionsView popup = new CheckBoxOptionsView();
-            CheckBoxOptionsController popupController = new CheckBoxOptionsController(popup, items);
-            popupController.LoadView();
-
-            DialogResult dialogResult = popup.ShowDialog(this.view.ParentControl);
-            if (dialogResult == DialogResult.OK)
+            IList items = QMatrix.GetSponsorContacts_NameAndCodeOnly(this.request.Contact.SponsorName);
+            Item selectedItem = TemplatesController.ShowListBoxOptionsForm(items, view.ParentControl);
+            if (selectedItem.Value != "")
             {
-                string itemsString = String.Join(", ", popupController.SelectedItems);
-                SetListSelectedItems(listName, itemsString);
-            }
-            popup.Dispose();
-        }
-
-        public void OpenListBoxOptions(string listName, IList items)
-        {
-            ListBoxOptionsView popup = new ListBoxOptionsView();
-            ListBoxOptionsController popupController = new ListBoxOptionsController(popup, items);
-            popupController.LoadView();
-
-            DialogResult dialogResult = popup.ShowDialog(this.view.ParentControl);
-            if (dialogResult == DialogResult.OK)
-            {
-                SetSelectedListItem(listName, popupController.SelectedItem);
-            }
-            popup.Dispose();
-        }
-
-        private void SetListSelectedItems(string listName, string items)
-        {
-            switch (listName)
-            {
-                case ListNames.Guidelines:
-                    this.request.Guidelines = items;
-                    this.view.Guidelines = items;
-                    break;
-                case ListNames.Compliance:
-                    this.request.Compliance = items;
-                    this.view.Compliance = items;
-                    break;
-                case ListNames.ProtocolType:
-                    this.request.ProtocolType = items;
-                    this.view.ProtocolType = items;
-                    break;
-                default:
-                    break;
-            }
-        }
-
-        private void SetSelectedListItem(string listName, ListItem item)
-        {
-            switch (listName)
-            {
-                case ListNames.AssignedTo:
-                    this.request.AssignedTo = item.Value;
-                    this.view.AssignedTo = item.Text;
-                    break;
-                case ListNames.Contact:
-                    this.request.SetContact(item.Value);
-                    UpdateViewWithSponsorContact();
-                    break;
-                default:
-                    break;
+                this.request.SetContact(selectedItem.Value);
+                UpdateViewWithSponsorContact();
             }
         }
 

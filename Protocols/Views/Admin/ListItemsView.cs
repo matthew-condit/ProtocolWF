@@ -34,7 +34,7 @@ namespace Toxikon.ProtocolManager.Views.Admin
         {
             this.ListNameComboBox.Items.Add(listName);
         }
-        public void AddListItemToView(ListItem listItem)
+        public void AddListItemToView(Item listItem)
         {
             ListViewItem item = this.ItemsListView.Items.Add(listItem.Text);
             item.SubItems.Add(listItem.IsActive.ToString());

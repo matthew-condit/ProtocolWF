@@ -32,10 +32,10 @@ namespace Toxikon.ProtocolManager.Controllers
             return result;
         }
 
-        public static ListItem ShowOneTextBoxTrueFalseForm(ListItem textBoxItem, ListItem trueFalseItem, 
+        public static Item ShowOneTextBoxTrueFalseForm(Item textBoxItem, Item trueFalseItem, 
                                                            Control parentControl)
         {
-            ListItem result = new ListItem();
+            Item result = new Item();
             OneTextBoxTrueFalseForm popup = new OneTextBoxTrueFalseForm();
             OneTextBoxTrueFalseFormController popupController = new OneTextBoxTrueFalseFormController(popup);
             popupController.SetTextBoxItem(textBoxItem.Name, textBoxItem.Value);
@@ -65,6 +65,27 @@ namespace Toxikon.ProtocolManager.Controllers
             {
                 MessageBox.Show("No records found.");
             }
+        }
+
+        public static List<string> ShowCheckBoxOptionsForm(IList items, Control parentControl)
+        {
+            CheckBoxOptionsView popup = new CheckBoxOptionsView();
+            CheckBoxOptionsController popupController = new CheckBoxOptionsController(popup, items);
+            popupController.LoadView();
+            DialogResult dialogResult = popup.ShowDialog(parentControl);
+            popup.Dispose();
+            return popupController.SelectedItems;
+        }
+
+        public static Item ShowListBoxOptionsForm(IList items, Control parentControl)
+        {
+            ListBoxOptionsView popup = new ListBoxOptionsView();
+            ListBoxOptionsController popupController = new ListBoxOptionsController(popup, items);
+            popupController.LoadView();
+            DialogResult dialogResult = popup.ShowDialog(parentControl);
+            popup.Dispose();
+
+            return popupController.SelectedItem;
         }
     }
 }

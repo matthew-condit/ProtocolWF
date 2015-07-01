@@ -28,13 +28,13 @@ namespace Toxikon.ProtocolManager.Views
             this.controller = controller;
         }
 
-        public string SearchLableText
+        public string SearchLabelText
         {
             get { return this.SearchLabel.Text; }
             set { this.SearchLabel.Text = value; }
         }
 
-        public void AddItemToRequestedByComboBox(ListItem item)
+        public void AddItemToRequestedByComboBox(Item item)
         {
             this.RequestedByComboBox.Items.Add(item.Text);
         }

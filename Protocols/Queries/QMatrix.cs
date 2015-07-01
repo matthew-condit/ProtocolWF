@@ -101,8 +101,8 @@ namespace Toxikon.ProtocolManager.Queries
                         SqlDataReader reader = command.ExecuteReader();
                         while (reader.Read())
                         {
-                            ListItem item = new ListItem();
-                            item.Name = ListNames.Contact;
+                            Item item = new Item();
+                            item.Name = "Contact";
                             item.Value = reader[1].ToString();
                             item.Text = reader[3].ToString();
                             results.Add(item);

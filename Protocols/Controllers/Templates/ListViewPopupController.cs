@@ -12,7 +12,6 @@ namespace Toxikon.ProtocolManager.Controllers.Templates
     public class ListViewPopupController
     {
         IListViewPopup view;
-        string itemType;
         IList items;
         IList columns;
 

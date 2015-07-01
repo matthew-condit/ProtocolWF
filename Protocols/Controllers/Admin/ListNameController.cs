@@ -17,7 +17,7 @@ namespace Toxikon.ProtocolManager.Controllers.Admin
     {
         IListNameView view;
         IList items;
-        ListName selectedItem;
+        Item selectedItem;
         LoginInfo loginInfo;
 
         public ListNameController(IListNameView view)
@@ -43,7 +43,7 @@ namespace Toxikon.ProtocolManager.Controllers.Admin
         private void AddItemsToView()
         {
             view.ClearView();
-            foreach (ListName item in items)
+            foreach (Item item in items)
             {
                 view.AddItemToListView(item);
             }
@@ -53,11 +53,7 @@ namespace Toxikon.ProtocolManager.Controllers.Admin
         {
             if (selectedIndex > -1 && selectedIndex < items.Count)
             {
-                selectedItem = (ListName)items[selectedIndex];
-            }
-            else
-            {
-                selectedItem = null;
+                selectedItem = (Item)items[selectedIndex];
             }
         }
 

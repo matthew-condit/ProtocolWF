@@ -26,7 +26,8 @@ namespace Toxikon.ProtocolManager.Queries
                     {
                         command.CommandType = CommandType.StoredProcedure;
                         command.Parameters.Add("@EventType", SqlDbType.NVarChar).Value = protocolEvent.Type;
-                        command.Parameters.Add("@EventDescription", SqlDbType.NVarChar).Value = protocolEvent.Description;
+                        command.Parameters.Add("@EventDescription", SqlDbType.NVarChar).Value = 
+                                                protocolEvent.Description;
                         command.Parameters.Add("@CreatedBy", SqlDbType.NVarChar).Value = userName;
 
                         int result = command.ExecuteNonQuery();
@@ -76,7 +77,7 @@ namespace Toxikon.ProtocolManager.Queries
             return protocolEvent;
         }
 
-        public static IList SelectItems(string eventType)
+        public static IList SelectItemsByType(string eventType)
         {
             IList results = new ArrayList();
             try
@@ -129,6 +130,32 @@ namespace Toxikon.ProtocolManager.Queries
             {
                 ErrorHandler.CreateLogFile(ErrorFormName, "UpdateProtocolEvent", ex);
             }
+        }
+
+        public static IList SelectTypes()
+        {
+            IList results = new ArrayList();
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(CONNECTION_STRING))
+                {
+                    connection.Open();
+                    using (SqlCommand command = new SqlCommand("pe_select_eventtypes", connection))
+                    {
+                        command.CommandType = CommandType.StoredProcedure;
+                        SqlDataReader reader = command.ExecuteReader();
+                        while (reader.Read())
+                        {
+                            results.Add(reader[0].ToString());
+                        }
+                    }
+                }
+            }
+            catch (SqlException ex)
+            {
+                ErrorHandler.CreateLogFile(ErrorFormName, "SelectTypes", ex);
+            }
+            return results;
         }
     }
 }

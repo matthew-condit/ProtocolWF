@@ -16,10 +16,12 @@ namespace Toxikon.ProtocolManager.Controllers
         IHistoryView view;
         IList userList;
         IList requestList;
-        ListItem selectedItem;
+        Item selectedItem;
         ProtocolRequest selectedRequest;
         LoginInfo loginInfo;
         ProtocolRequestReadOnlyController requestViewController;
+
+        enum SearchTypes { RequestedBy, AssignedTo };
 
         public HistoryController(IHistoryView view)
         {
@@ -34,8 +36,8 @@ namespace Toxikon.ProtocolManager.Controllers
         public void LoadView()
         {
             SetUserList();
-            ListItem customItem = new ListItem();
-            customItem.Name = ListNames.RequestedBy;
+            Item customItem = new Item();
+            customItem.Name = "RequestedBy";
             customItem.Text = "Bichngoc McCulley";
             customItem.Value = "bmcculley";
             this.userList.Add(customItem);
@@ -51,16 +53,16 @@ namespace Toxikon.ProtocolManager.Controllers
             switch(loginInfo.Role.RoleID)
             {
                 case UserRoles.IT:
-                    this.userList = QUsers.SelectUsersByRoleID(UserRoles.CSR, ListNames.RequestedBy);
-                    this.view.SearchLableText = ListNames.RequestedBy;
+                    this.userList = QUsers.SelectUsersByRoleID(UserRoles.CSR);
+                    this.view.SearchLabelText = SearchTypes.RequestedBy.ToString();
                     break;
                 case UserRoles.CSR:
-                    this.userList = QUsers.SelectUsersByRoleID(UserRoles.DocControl, ListNames.AssignedTo);
-                    this.view.SearchLableText = ListNames.AssignedTo;
+                    this.userList = QUsers.SelectUsersByRoleID(UserRoles.DocControl);
+                    this.view.SearchLabelText = SearchTypes.AssignedTo.ToString();
                     break;
                 case UserRoles.DocControl:
-                    this.userList = QUsers.SelectUsersByRoleID(UserRoles.CSR, ListNames.RequestedBy);
-                    this.view.SearchLableText = ListNames.RequestedBy;
+                    this.userList = QUsers.SelectUsersByRoleID(UserRoles.CSR);
+                    this.view.SearchLabelText = SearchTypes.RequestedBy.ToString();
                     break;
                 default:
                     break;
@@ -69,7 +71,7 @@ namespace Toxikon.ProtocolManager.Controllers
 
         private void AddUserListToView()
         {
-            foreach(ListItem item in userList)
+            foreach(Item item in userList)
             {
                 this.view.AddItemToRequestedByComboBox(item);
             }
@@ -79,7 +81,7 @@ namespace Toxikon.ProtocolManager.Controllers
         {
             if(selectedIndex > -1 && selectedIndex < this.userList.Count)
             {
-                this.selectedItem = this.userList[selectedIndex] as ListItem;
+                this.selectedItem = this.userList[selectedIndex] as Item;
             }
         }
 
@@ -103,10 +105,12 @@ namespace Toxikon.ProtocolManager.Controllers
                     this.requestList = QProtocolRequests.AdminSelectClosedRequests(this.selectedItem.Value);
                     break;
                 case UserRoles.CSR:
-                    this.requestList = QProtocolRequests.SelectClosedRequests(loginInfo.UserName, this.selectedItem.Value);
+                    this.requestList = QProtocolRequests.SelectClosedRequests(loginInfo.UserName, 
+                                       this.selectedItem.Value);
                     break;
                 case UserRoles.DocControl:
-                    this.requestList = QProtocolRequests.SelectClosedRequests(this.selectedItem.Value, loginInfo.UserName);
+                    this.requestList = QProtocolRequests.SelectClosedRequests(this.selectedItem.Value, 
+                                       loginInfo.UserName);
                     break;
                 default:
                     break;
