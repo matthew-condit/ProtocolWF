@@ -42,7 +42,7 @@
             this.MainListBox.ItemHeight = 17;
             this.MainListBox.Location = new System.Drawing.Point(0, 0);
             this.MainListBox.Name = "MainListBox";
-            this.MainListBox.Size = new System.Drawing.Size(284, 225);
+            this.MainListBox.Size = new System.Drawing.Size(284, 259);
             this.MainListBox.TabIndex = 0;
             this.MainListBox.SelectedIndexChanged += new System.EventHandler(this.MainListBox_SelectedIndexChanged);
             // 
@@ -50,9 +50,10 @@
             // 
             this.toolStrip1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.toolStrip1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.toolStrip1.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.SubmitButton});
-            this.toolStrip1.Location = new System.Drawing.Point(0, 228);
+            this.toolStrip1.Location = new System.Drawing.Point(0, 278);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Padding = new System.Windows.Forms.Padding(0, 5, 1, 5);
             this.toolStrip1.Size = new System.Drawing.Size(284, 34);
@@ -69,19 +70,21 @@
             this.SubmitButton.Text = "Submit";
             this.SubmitButton.Click += new System.EventHandler(this.SubmitButton_Click);
             // 
-            // ListBoxOptionsView
+            // ListBoxForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(284, 262);
+            this.ClientSize = new System.Drawing.Size(284, 312);
             this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.MainListBox);
             this.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.MaximizeBox = false;
+            this.MaximumSize = new System.Drawing.Size(300, 350);
             this.MinimizeBox = false;
-            this.Name = "ListBoxOptionsView";
+            this.MinimumSize = new System.Drawing.Size(300, 350);
+            this.Name = "ListBoxForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Options";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ListBoxOptionsView_FormClosing);

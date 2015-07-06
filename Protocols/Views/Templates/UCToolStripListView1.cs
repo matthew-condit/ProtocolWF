@@ -75,8 +75,8 @@ namespace Toxikon.ProtocolManager.Views.Templates
 
         private void AddDepartmentToListView(Department item)
         {
-            ListViewItem listViewItem = this.MainListView.Items.Add(item.DepartmentID.ToString());
-            listViewItem.SubItems.Add(item.DepartmentName);
+            ListViewItem listViewItem = this.MainListView.Items.Add(item.ID.ToString());
+            listViewItem.SubItems.Add(item.Name);
             listViewItem.SubItems.Add(item.IsActive.ToString());
         }
 
@@ -104,7 +104,7 @@ namespace Toxikon.ProtocolManager.Views.Templates
         private void AddUserToListView(User user)
         {
             ListViewItem item = this.MainListView.Items.Add(user.UserName);
-            item.SubItems.Add(user.Department.DepartmentName);
+            item.SubItems.Add(user.Department.Name);
             item.SubItems.Add(user.Role.RoleName);
             item.SubItems.Add(user.IsActive.ToString());
         }

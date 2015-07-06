@@ -9,33 +9,33 @@ namespace Toxikon.ProtocolManager.Models
 {
     public class Department
     {
-        public int DepartmentID { get; set; }
-        public string DepartmentName { get; set; }
+        public int ID { get; set; }
+        public string Name { get; set; }
         public bool IsActive { get; set; }
 
         public Department()
         {
-            DepartmentID = 0;
-            DepartmentName = "";
+            ID = 0;
+            Name = "";
             IsActive = true;
         }
 
         public Department(string departmentName)
         {
-            this.DepartmentName = departmentName;
+            this.Name = departmentName;
             this.IsActive = true;
         }
 
         public void SetDepartment(string departmentID, string departmentName)
         {
-            this.DepartmentID = departmentID == "" ? 0 : Convert.ToInt32(departmentID);
-            this.DepartmentName = departmentName;
+            this.ID = departmentID == "" ? 0 : Convert.ToInt32(departmentID);
+            this.Name = departmentName;
         }
 
-        public void Submit(string departmentName, bool isActive)
+        public void Insert(string departmentName, bool isActive)
         {
             LoginInfo loginInfo = LoginInfo.GetInstance();
-            this.DepartmentName = departmentName;
+            this.Name = departmentName;
             this.IsActive = isActive;
             int dbresult = QDepartments.InsertItem(this, loginInfo.UserName);
         }
@@ -43,7 +43,7 @@ namespace Toxikon.ProtocolManager.Models
         public void Update(string departmentName, bool isActive)
         {
             LoginInfo loginInfo = LoginInfo.GetInstance();
-            this.DepartmentName = departmentName;
+            this.Name = departmentName;
             this.IsActive = isActive;
             QDepartments.UpdateItem(this, loginInfo.UserName);
         }

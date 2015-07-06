@@ -74,7 +74,7 @@ namespace Toxikon.ProtocolManager.Controllers.Admin
             Item result = ShowPopup(department);
             if (result.Value != String.Empty)
             {
-                department.Submit(result.Value, result.IsActive);
+                department.Insert(result.Value, result.IsActive);
                 MessageBox.Show("New department is added.");
                 LoadView();
             }
@@ -99,7 +99,7 @@ namespace Toxikon.ProtocolManager.Controllers.Admin
 
         private Item ShowPopup(Department department)
         {
-            Item textBoxItem = new Item("Department: ", department.DepartmentName);
+            Item textBoxItem = new Item("Department: ", department.Name);
             Item trueFalseItem = new Item("Active: ", department.IsActive.ToString());
             Item result = TemplatesController.ShowOneTextBoxTrueFalseForm(textBoxItem, trueFalseItem,
                                this.view.ParentControl);

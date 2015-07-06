@@ -252,7 +252,8 @@ namespace Toxikon.ProtocolManager.Queries
                     {
                         command.CommandType = CommandType.StoredProcedure;
                         command.Parameters.Add("@ProtocolRequestID", SqlDbType.Int).Value = request.ID;
-                        command.Parameters.Add("@SponsorCode", SqlDbType.NVarChar).Value = request.Contact.ContactCode;
+                        command.Parameters.Add("@SponsorCode", SqlDbType.NVarChar).Value = 
+                                           request.Contact.ContactCode;
                         command.Parameters.Add("@Guidelines", SqlDbType.NVarChar).Value = request.Guidelines;
                         command.Parameters.Add("@Compliance", SqlDbType.NVarChar).Value = request.Compliance;
                         command.Parameters.Add("@ProtocolType", SqlDbType.NVarChar).Value = request.ProtocolType;

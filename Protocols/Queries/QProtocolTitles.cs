@@ -129,14 +129,14 @@ namespace Toxikon.ProtocolManager.Queries
             title.LatestActivity.CreatedBy = reader[3].ToString();
             title.LatestActivity.CreatedDate = reader[4].ToString() == "" ? DateTime.Now :
                                                Convert.ToDateTime(reader[4].ToString());
-            title.CommentsCount = reader[5].ToString() == "" ? 0 :
-                                  Convert.ToInt32(reader[5].ToString());
+            title.CommentsCount = reader[5].ToString() == "" ? 0 : Convert.ToInt32(reader[5].ToString());
             title.ProtocolNumber.ProtocolRequestID = title.ProtocolRequestID;
             title.ProtocolNumber.ProtocolTitleID = title.ID;
             title.ProtocolNumber.FullCode = reader[6].ToString().Trim();
             title.FileName = reader[7].ToString().Trim();
             title.FilePath = reader[8].ToString().Trim();
             title.ProjectNumber = reader[9].ToString().Trim();
+            title.Department.Name = reader[10].ToString().Trim();
 
             return title;
         }
@@ -178,6 +178,30 @@ namespace Toxikon.ProtocolManager.Queries
                         command.CommandType = CommandType.StoredProcedure;
                         command.Parameters.Add("@TitleID", SqlDbType.Int).Value = title.ID;
                         command.Parameters.Add("@ProjectNumber", SqlDbType.NVarChar).Value = title.ProjectNumber;
+                        command.Parameters.Add("@UpdatedBy", SqlDbType.NVarChar).Value = userName;
+
+                        int result = command.ExecuteNonQuery();
+                    }
+                }
+            }
+            catch (SqlException e)
+            {
+                ErrorHandler.CreateLogFile(ErrorFormName, "UpdateProjectNumber", e);
+            }
+        }
+
+        public static void UpdateDepartmentID(ProtocolTitle title, string userName)
+        {
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    connection.Open();
+                    using (SqlCommand command = new SqlCommand("prt_update_department_id", connection))
+                    {
+                        command.CommandType = CommandType.StoredProcedure;
+                        command.Parameters.Add("@TitleID", SqlDbType.Int).Value = title.ID;
+                        command.Parameters.Add("@DepartmentID", SqlDbType.NVarChar).Value = title.Department.ID;
                         command.Parameters.Add("@UpdatedBy", SqlDbType.NVarChar).Value = userName;
 
                         int result = command.ExecuteNonQuery();

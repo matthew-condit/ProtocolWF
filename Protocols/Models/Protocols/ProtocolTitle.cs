@@ -18,11 +18,13 @@ namespace Toxikon.ProtocolManager.Models
         public ProtocolActivity LatestActivity { get; set; }
         public int CommentsCount { get; set; }
         public ProtocolNumber ProtocolNumber { get; set; }
-        public int DepartmentID { get; set; }
+        public Department Department { get; set; }
         public string ProjectNumber { get; set; }
 
         public string FileName { get; set; }
         public string FilePath { get; set; }
+
+        LoginInfo loginInfo;
 
         public ProtocolTitle()
         {
@@ -33,10 +35,11 @@ namespace Toxikon.ProtocolManager.Models
             this.LatestActivity = new ProtocolActivity();
             this.CommentsCount = 0;
             this.ProtocolNumber = new ProtocolNumber();
-            this.DepartmentID = 0;
+            this.Department = new Department();
             this.ProjectNumber = "";
             this.FileName = "";
             this.FilePath = "";
+            loginInfo = LoginInfo.GetInstance();
         }
 
         public ProtocolTitle(int requestID, string description)
@@ -47,20 +50,17 @@ namespace Toxikon.ProtocolManager.Models
 
         public void Submit()
         {
-            LoginInfo loginInfo = LoginInfo.GetInstance();
             this.ID = QProtocolTitles.InsertItem(this, loginInfo.UserName);
         }
 
         public void UpdateDescription(string description)
         {
             this.Description = description;
-            LoginInfo loginInfo = LoginInfo.GetInstance();
             QProtocolTitles.UpdateTitle(this, loginInfo.UserName);
         }
 
         public void UpdateFileInfo(string filePath)
         {
-            LoginInfo loginInfo = LoginInfo.GetInstance();
             this.FileName = Path.GetFileName(filePath);
             this.FilePath = filePath;
             QProtocolTitles.UpdateFileInfo(this, loginInfo.UserName);
@@ -74,7 +74,6 @@ namespace Toxikon.ProtocolManager.Models
             }
             else
             {
-                LoginInfo loginInfo = LoginInfo.GetInstance();
                 this.ProtocolNumber = new ProtocolNumber();
                 this.ProtocolNumber.Create(this, protocolType);
                 QProtocolNumbers.InsertItem(this.ProtocolNumber, loginInfo.UserName);
@@ -83,9 +82,14 @@ namespace Toxikon.ProtocolManager.Models
 
         public void AddProjectNumber(string projectNumber)
         {
-            LoginInfo loginInfo = LoginInfo.GetInstance();
             this.ProjectNumber = projectNumber;
             QProtocolTitles.UpdateProjectNumber(this, loginInfo.UserName);
+        }
+
+        public void UpdateDepartment(int departmentID)
+        {
+            this.Department.ID = departmentID;
+            QProtocolTitles.UpdateDepartmentID(this, loginInfo.UserName);
         }
 
         public void OpenFile()

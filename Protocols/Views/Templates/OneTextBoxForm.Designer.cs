@@ -67,9 +67,9 @@
             // 
             this.TextBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.TextBox1.Location = new System.Drawing.Point(102, 3);
+            this.TextBox1.Location = new System.Drawing.Point(101, 3);
             this.TextBox1.Name = "TextBox1";
-            this.TextBox1.Size = new System.Drawing.Size(479, 25);
+            this.TextBox1.Size = new System.Drawing.Size(480, 25);
             this.TextBox1.TabIndex = 1;
             // 
             // toolStrip1
@@ -95,7 +95,7 @@
             this.SubmitButton.Text = "Submit";
             this.SubmitButton.Click += new System.EventHandler(this.SubmitButton_Click);
             // 
-            // OneTextBoxFormView
+            // OneTextBoxForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -105,8 +105,10 @@
             this.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.MaximizeBox = false;
+            this.MaximumSize = new System.Drawing.Size(600, 140);
             this.MinimizeBox = false;
-            this.Name = "OneTextBoxFormView";
+            this.MinimumSize = new System.Drawing.Size(600, 140);
+            this.Name = "OneTextBoxForm";
             this.Padding = new System.Windows.Forms.Padding(0, 10, 0, 0);
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Form";

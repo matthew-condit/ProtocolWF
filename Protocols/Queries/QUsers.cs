@@ -32,7 +32,7 @@ namespace Toxikon.ProtocolManager.Queries
                         command.Parameters.AddWithValue("@LastName", user.LastName);
                         command.Parameters.AddWithValue("@FullName", user.FullName);
                         command.Parameters.AddWithValue("@EmailAddress", user.EmailAddress);
-                        command.Parameters.AddWithValue("@DepartmentID", user.Department.DepartmentID);
+                        command.Parameters.AddWithValue("@DepartmentID", user.Department.ID);
                         command.Parameters.AddWithValue("@RoleID", user.Role.RoleID);
                         command.Parameters.AddWithValue("@CreatedBy", userName);
 
@@ -167,7 +167,7 @@ namespace Toxikon.ProtocolManager.Queries
                         command.Parameters.Add("@LastName", SqlDbType.NChar).Value = user.LastName;
                         command.Parameters.Add("@FullName", SqlDbType.NVarChar).Value = user.FullName;
                         command.Parameters.Add("@EmailAddress", SqlDbType.NVarChar).Value = user.EmailAddress;
-                        command.Parameters.Add("@DepartmentID", SqlDbType.NChar).Value = user.Department.DepartmentID;
+                        command.Parameters.Add("@DepartmentID", SqlDbType.NChar).Value = user.Department.ID;
                         command.Parameters.Add("@RoleID", SqlDbType.Int).Value = user.Role.RoleID;
                         command.Parameters.Add("@IsActive", SqlDbType.Bit).Value = user.IsActive;
                         command.Parameters.Add("@UpdatedBy", SqlDbType.NVarChar).Value = userName;

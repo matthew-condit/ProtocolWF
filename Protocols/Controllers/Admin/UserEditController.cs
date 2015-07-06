@@ -44,7 +44,7 @@ namespace Toxikon.ProtocolManager.Controllers.Admin
         private void LoadUpdateMode()
         {
             this.view.SetUpdateMode();
-            this.User.Department = GetDepartmentByID(this.User.Department.DepartmentID);
+            this.User.Department = GetDepartmentByID(this.User.Department.ID);
             this.User.Role = GetRoleByID(this.User.Role.RoleID);
             UpdateViewWithUser();
         }
@@ -63,7 +63,7 @@ namespace Toxikon.ProtocolManager.Controllers.Admin
             Department result = new Department();
             foreach(Department department in departments)
             {
-                if(department.DepartmentID == id)
+                if(department.ID == id)
                 {
                     result = department;
                     break;

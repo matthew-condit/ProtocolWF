@@ -69,6 +69,7 @@ namespace Toxikon.ProtocolManager.Views.Protocols
             item.SubItems.Add(title.ProtocolNumber.FullCode);
             item.SubItems.Add(title.FileName);
             item.SubItems.Add(title.ProjectNumber);
+            item.SubItems.Add(title.Department.Name);
         }
 
         public void SetListViewAutoResizeColumns()
@@ -81,6 +82,7 @@ namespace Toxikon.ProtocolManager.Views.Protocols
             this.TitlesListView.Columns[5].AutoResize(ColumnHeaderAutoResizeStyle.HeaderSize);
             this.TitlesListView.Columns[6].AutoResize(ColumnHeaderAutoResizeStyle.HeaderSize);
             this.TitlesListView.Columns[7].AutoResize(ColumnHeaderAutoResizeStyle.HeaderSize);
+            this.TitlesListView.Columns[8].AutoResize(ColumnHeaderAutoResizeStyle.HeaderSize);
         }
 
         public void ClearProtocolTitleListView()
@@ -172,6 +174,11 @@ namespace Toxikon.ProtocolManager.Views.Protocols
         private void UpdateProjectNumberButton_Click(object sender, EventArgs e)
         {
             this.controller.UpdateProjectNumberButtonClicked();
+        }
+
+        private void DepartmentButton_Click(object sender, EventArgs e)
+        {
+            this.controller.DepartmentButtonClicked();
         }
     }
 }

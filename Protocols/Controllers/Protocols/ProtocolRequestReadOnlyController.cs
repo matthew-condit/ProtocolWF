@@ -74,10 +74,7 @@ namespace Toxikon.ProtocolManager.Controllers.Protocols
         {
             if (this.view.SelectedTitleIndexes.Count == 1)
             {
-                ProtocolTitle title = GetSelectedTitleFromView();
-                IList events = QProtocolActivities.SelectItems(this.request.ID, title.ID);
-                IList columns = new ArrayList() { "Date", "User", "Event" };
-                TemplatesController.ShowReadOnlyListViewForm(columns, events, view.ParentControl);
+                ShowSelectedTitleEvents();
             }
             else
             {
@@ -85,19 +82,32 @@ namespace Toxikon.ProtocolManager.Controllers.Protocols
             }
         }
 
+        private void ShowSelectedTitleEvents()
+        {
+            ProtocolTitle title = GetSelectedTitleFromView();
+            IList events = QProtocolActivities.SelectItems(this.request.ID, title.ID);
+            IList columns = new ArrayList() { "Date", "User", "Event" };
+            TemplatesController.ShowReadOnlyListViewForm(columns, events, view.ParentControl);
+        }
+
         public void ViewCommentsButtonClicked()
         {
             if (this.view.SelectedTitleIndexes.Count == 1)
             {
-                ProtocolTitle title = GetSelectedTitleFromView();
-                IList comments = QProtocolComments.SelectItems(title);
-                IList columns = new ArrayList() { "Date", "User", "Comments" };
-                TemplatesController.ShowReadOnlyListViewForm(columns, comments, view.ParentControl);
+                ShowSelectedTitleComments();
             }
             else
             {
                 MessageBox.Show(this.SelectOneMessage);
             }
+        }
+
+        private void ShowSelectedTitleComments()
+        {
+            ProtocolTitle title = GetSelectedTitleFromView();
+            IList comments = QProtocolComments.SelectItems(title);
+            IList columns = new ArrayList() { "Date", "User", "Comments" };
+            TemplatesController.ShowReadOnlyListViewForm(columns, comments, view.ParentControl);
         }
 
         public void DownloadRequestReportButtonClicked()
@@ -111,19 +121,24 @@ namespace Toxikon.ProtocolManager.Controllers.Protocols
         {
             if (this.view.SelectedTitleIndexes.Count == 1)
             {
-                ProtocolTitle title = GetSelectedTitleFromView();
-                if (title.FilePath != String.Empty && File.Exists(title.FilePath))
-                {
-                    System.Diagnostics.Process.Start(title.FilePath);
-                }
-                else
-                {
-                    MessageBox.Show("File does not exist.");
-                }
+                OpenSelectedTitleFile();   
             }
             else
             {
                 MessageBox.Show(this.SelectOneMessage);
+            }
+        }
+
+        private void OpenSelectedTitleFile()
+        {
+            ProtocolTitle title = GetSelectedTitleFromView();
+            if (title.FilePath != String.Empty && File.Exists(title.FilePath))
+            {
+                System.Diagnostics.Process.Start(title.FilePath);
+            }
+            else
+            {
+                MessageBox.Show("File does not exist.");
             }
         }
     }

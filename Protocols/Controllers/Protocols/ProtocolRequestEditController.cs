@@ -278,18 +278,47 @@ namespace Toxikon.ProtocolManager.Controllers.Protocols
         {
             if (this.view.SelectedTitleIndexes.Count == 1)
             {
-                ProtocolTitle title = GetSelectedTitleFromView();
-                string projectNumber = TemplatesController.ShowOneTextBoxForm("Project Number: ", 
-                                       title.ProjectNumber, this.view.ParentControl);
-                if (projectNumber != String.Empty)
-                {
-                    title.AddProjectNumber(projectNumber);
-                    this.RefreshTitleListView();
-                }
+                UpdateSelectedTitleProjectNumber();
             }
             else
             {
                 MessageBox.Show(this.SelectOneMessage);
+            }
+        }
+
+        private void UpdateSelectedTitleProjectNumber()
+        {
+            ProtocolTitle title = GetSelectedTitleFromView();
+            string projectNumber = TemplatesController.ShowOneTextBoxForm("Project Number: ",
+                                   title.ProjectNumber, this.view.ParentControl);
+            if (projectNumber != String.Empty)
+            {
+                title.AddProjectNumber(projectNumber);
+                this.RefreshTitleListView();
+            }
+        }
+
+        public void DepartmentButtonClicked()
+        {
+            if (this.view.SelectedTitleIndexes.Count == 1)
+            {
+                UpdateSelectedTitleDepartment();
+            }
+            else
+            {
+                MessageBox.Show(this.SelectOneMessage);
+            }
+        }
+
+        private void UpdateSelectedTitleDepartment()
+        {
+            ProtocolTitle title = GetSelectedTitleFromView();
+            IList items = QDepartments.SelectItems2();
+            Item selectedItem = TemplatesController.ShowListBoxOptionsForm(items, view.ParentControl);
+            if (selectedItem.Value != "")
+            {
+                title.UpdateDepartment(Convert.ToInt32(selectedItem.Value));
+                this.RefreshTitleListView();
             }
         }
 
