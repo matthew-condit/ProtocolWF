@@ -77,12 +77,21 @@ namespace Toxikon.ProtocolManager.Controllers.Admin
         {
             if(this.selectedListName != "" && view.ItemName.Trim() != "")
             {
-                Item item = new Item(this.selectedListName, view.ItemName, view.ItemName, true);
-                LoginInfo loginInfo = LoginInfo.GetInstance();
-                QListItems.InsertItem(item, loginInfo.UserName);
-                view.ClearNewItemTextBox();
-                LoadSelectedListNameItems();
+                CreateAndInsertNewListItem();
             }
+            else
+            {
+                MessageBox.Show("List Name and Item Name are required!");
+            }
+        }
+
+        private void CreateAndInsertNewListItem()
+        {
+            Item item = new Item(this.selectedListName, view.ItemName, view.ItemName, true);
+            LoginInfo loginInfo = LoginInfo.GetInstance();
+            QListItems.InsertItem(item, loginInfo.UserName);
+            view.ClearNewItemTextBox();
+            LoadSelectedListNameItems();
         }
 
         public void UpdateButtonClicked()
@@ -96,6 +105,7 @@ namespace Toxikon.ProtocolManager.Controllers.Admin
                     UpdateSelectedItem(oldItemValue, result);
                     LoadSelectedListNameItems();
                 }
+                this.selectedItem = null;
             }
             else
             {

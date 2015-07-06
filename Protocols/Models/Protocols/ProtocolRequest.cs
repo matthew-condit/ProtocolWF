@@ -36,16 +36,16 @@ namespace Toxikon.ProtocolManager.Models
         public void Refresh()
         {
             this.ID = 0;
-            RequestedBy = "";
-            RequestedDate = DateTime.Now;           
+            this.RequestedBy = "";
+            this.RequestedDate = DateTime.Now;           
             this.Contact = new Models.SponsorContact();
-            Guidelines = "";
-            Compliance = "";
-            ProtocolType = "";
-            Titles = new List<ProtocolTitle>() { };
-            DueDate = DateTime.Now;
-            BillTo = "Toxikon";
-            Comments = "";
+            this.Guidelines = "";
+            this.Compliance = "";
+            this.ProtocolType = "";
+            this.Titles = new List<ProtocolTitle>() { };
+            this.DueDate = DateTime.Now;
+            this.BillTo = "Toxikon";
+            this.Comments = "";
             this.AssignedTo = "";
             this.IsActive = true;
         }

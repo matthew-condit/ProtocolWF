@@ -32,8 +32,8 @@
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.ViewEventsButton = new System.Windows.Forms.ToolStripButton();
             this.ViewCommentsButton = new System.Windows.Forms.ToolStripButton();
-            this.DownloadReportButton = new System.Windows.Forms.ToolStripButton();
             this.OpenFileButton = new System.Windows.Forms.ToolStripButton();
+            this.DownloadReportButton = new System.Windows.Forms.ToolStripButton();
             this.panel1 = new System.Windows.Forms.Panel();
             this.BottomPanel = new System.Windows.Forms.Panel();
             this.RequestForm = new Toxikon.ProtocolManager.Views.RequestForms.RequestFormReadOnly();
@@ -46,6 +46,7 @@
             this.ProtocolNumberCol = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.FileNameCol = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.PNCol = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.DepartmentCol = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.toolStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.BottomPanel.SuspendLayout();
@@ -59,8 +60,8 @@
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.ViewEventsButton,
             this.ViewCommentsButton,
-            this.DownloadReportButton,
-            this.OpenFileButton});
+            this.OpenFileButton,
+            this.DownloadReportButton});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Size = new System.Drawing.Size(850, 38);
@@ -69,7 +70,7 @@
             // 
             // ViewEventsButton
             // 
-            this.ViewEventsButton.Image = global::Toxikon.ProtocolManager.Properties.Resources.StatusAnnotations_Required_16xLG_color;
+            this.ViewEventsButton.Image = ((System.Drawing.Image)(resources.GetObject("ViewEventsButton.Image")));
             this.ViewEventsButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.ViewEventsButton.Name = "ViewEventsButton";
             this.ViewEventsButton.Size = new System.Drawing.Size(73, 35);
@@ -89,17 +90,6 @@
             this.ViewCommentsButton.ToolTipText = "View All Comments of Selected Protocol";
             this.ViewCommentsButton.Click += new System.EventHandler(this.ViewCommentsButton_Click);
             // 
-            // DownloadReportButton
-            // 
-            this.DownloadReportButton.Image = global::Toxikon.ProtocolManager.Properties.Resources.move_to_bottom;
-            this.DownloadReportButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.DownloadReportButton.Name = "DownloadReportButton";
-            this.DownloadReportButton.Size = new System.Drawing.Size(103, 35);
-            this.DownloadReportButton.Text = "Download Report";
-            this.DownloadReportButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.DownloadReportButton.Visible = false;
-            this.DownloadReportButton.Click += new System.EventHandler(this.DownloadReportButton_Click);
-            // 
             // OpenFileButton
             // 
             this.OpenFileButton.Image = global::Toxikon.ProtocolManager.Properties.Resources.Open_6296;
@@ -109,6 +99,16 @@
             this.OpenFileButton.Text = "Open File";
             this.OpenFileButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.OpenFileButton.Click += new System.EventHandler(this.OpenFileButton_Click);
+            // 
+            // DownloadReportButton
+            // 
+            this.DownloadReportButton.Image = global::Toxikon.ProtocolManager.Properties.Resources.move_to_bottom;
+            this.DownloadReportButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.DownloadReportButton.Name = "DownloadReportButton";
+            this.DownloadReportButton.Size = new System.Drawing.Size(103, 35);
+            this.DownloadReportButton.Text = "Download Report";
+            this.DownloadReportButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.DownloadReportButton.Click += new System.EventHandler(this.DownloadReportButton_Click);
             // 
             // panel1
             // 
@@ -176,7 +176,8 @@
             this.CommentsCol,
             this.ProtocolNumberCol,
             this.FileNameCol,
-            this.PNCol});
+            this.PNCol,
+            this.DepartmentCol});
             this.TitlesListView.FullRowSelect = true;
             this.TitlesListView.GridLines = true;
             this.TitlesListView.Location = new System.Drawing.Point(3, 9);
@@ -224,6 +225,10 @@
             // 
             this.PNCol.Text = "Project Number";
             // 
+            // DepartmentCol
+            // 
+            this.DepartmentCol.Text = "Department";
+            // 
             // ProtocolRequestReadOnlyView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
@@ -263,5 +268,6 @@
         private System.Windows.Forms.ToolStripButton OpenFileButton;
         private System.Windows.Forms.ColumnHeader FileNameCol;
         private System.Windows.Forms.ColumnHeader PNCol;
+        private System.Windows.Forms.ColumnHeader DepartmentCol;
     }
 }

@@ -79,13 +79,18 @@ namespace Toxikon.ProtocolManager.Controllers
 
         public static Item ShowListBoxOptionsForm(IList items, Control parentControl)
         {
+            Item result = new Item();
             ListBoxForm popup = new ListBoxForm();
             ListBoxOptionsController popupController = new ListBoxOptionsController(popup, items);
             popupController.LoadView();
             DialogResult dialogResult = popup.ShowDialog(parentControl);
+            if(dialogResult == DialogResult.OK)
+            {
+                result = popupController.SelectedItem;
+            }
             popup.Dispose();
 
-            return popupController.SelectedItem;
+            return result;
         }
     }
 }

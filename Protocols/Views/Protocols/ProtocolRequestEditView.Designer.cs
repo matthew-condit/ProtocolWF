@@ -44,7 +44,6 @@
             this.OpenFileButton = new System.Windows.Forms.ToolStripButton();
             this.panel1 = new System.Windows.Forms.Panel();
             this.BottomPanel = new System.Windows.Forms.Panel();
-            this.RequestForm = new Toxikon.ProtocolManager.Views.RequestForms.RequestFormEdit();
             this.toolStrip2 = new System.Windows.Forms.ToolStrip();
             this.SaveChangesButton = new System.Windows.Forms.ToolStripButton();
             this.CloseRequestButton = new System.Windows.Forms.ToolStripButton();
@@ -58,8 +57,9 @@
             this.ProtocolNumberCol = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.FileNameCol = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.PNCol = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.DepartmentCol = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
+            this.RequestForm = new Toxikon.ProtocolManager.Views.RequestForms.RequestFormEdit();
             this.toolStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.BottomPanel.SuspendLayout();
@@ -98,6 +98,7 @@
             this.AddTitleButton.Size = new System.Drawing.Size(59, 35);
             this.AddTitleButton.Text = "Add Title";
             this.AddTitleButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.AddTitleButton.ToolTipText = "Add new title";
             this.AddTitleButton.Click += new System.EventHandler(this.AddTitleButton_Click);
             // 
             // EditTitleButton
@@ -108,6 +109,7 @@
             this.EditTitleButton.Size = new System.Drawing.Size(57, 35);
             this.EditTitleButton.Text = "Edit Title";
             this.EditTitleButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.EditTitleButton.ToolTipText = "Edit selected title";
             this.EditTitleButton.Click += new System.EventHandler(this.EditTitleButton_Click);
             // 
             // AddEventButton
@@ -118,6 +120,7 @@
             this.AddEventButton.Size = new System.Drawing.Size(65, 35);
             this.AddEventButton.Text = "Add Event";
             this.AddEventButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.AddEventButton.ToolTipText = "Add new event to selected title";
             this.AddEventButton.Click += new System.EventHandler(this.AddEventButton_Click);
             // 
             // ViewEventsButton
@@ -128,7 +131,7 @@
             this.ViewEventsButton.Size = new System.Drawing.Size(73, 35);
             this.ViewEventsButton.Text = "View Events";
             this.ViewEventsButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.ViewEventsButton.ToolTipText = "View All Events of Selected Protocol";
+            this.ViewEventsButton.ToolTipText = "View all events";
             this.ViewEventsButton.Click += new System.EventHandler(this.ViewEventsButton_Click);
             // 
             // AddCommentButton
@@ -139,6 +142,7 @@
             this.AddCommentButton.Size = new System.Drawing.Size(95, 35);
             this.AddCommentButton.Text = "Add Comments";
             this.AddCommentButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.AddCommentButton.ToolTipText = "Add new comments";
             this.AddCommentButton.Click += new System.EventHandler(this.AddCommentButton_Click);
             // 
             // ViewCommentsButton
@@ -149,7 +153,7 @@
             this.ViewCommentsButton.Size = new System.Drawing.Size(98, 35);
             this.ViewCommentsButton.Text = "View Comments";
             this.ViewCommentsButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.ViewCommentsButton.ToolTipText = "View All Comments of Selected Protocol";
+            this.ViewCommentsButton.ToolTipText = "View all comments";
             this.ViewCommentsButton.Click += new System.EventHandler(this.ViewCommentsButton_Click);
             // 
             // AddProtocolNumber
@@ -157,9 +161,10 @@
             this.AddProtocolNumber.Image = ((System.Drawing.Image)(resources.GetObject("AddProtocolNumber.Image")));
             this.AddProtocolNumber.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.AddProtocolNumber.Name = "AddProtocolNumber";
-            this.AddProtocolNumber.Size = new System.Drawing.Size(128, 35);
-            this.AddProtocolNumber.Text = "Add Protocol Number";
+            this.AddProtocolNumber.Size = new System.Drawing.Size(103, 35);
+            this.AddProtocolNumber.Text = "Protocol Number";
             this.AddProtocolNumber.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.AddProtocolNumber.ToolTipText = "Assign new protocol number";
             this.AddProtocolNumber.Click += new System.EventHandler(this.AddProtocolNumber_Click);
             // 
             // ReviseProtocolButton
@@ -170,6 +175,7 @@
             this.ReviseProtocolButton.Size = new System.Drawing.Size(92, 35);
             this.ReviseProtocolButton.Text = "Revise Protocol";
             this.ReviseProtocolButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.ReviseProtocolButton.ToolTipText = "Update protocol number";
             this.ReviseProtocolButton.Click += new System.EventHandler(this.RevisedProtocolButton_Click);
             // 
             // DepartmentButton
@@ -180,6 +186,7 @@
             this.DepartmentButton.Size = new System.Drawing.Size(74, 35);
             this.DepartmentButton.Text = "Department";
             this.DepartmentButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.DepartmentButton.ToolTipText = "Assign department to selected title";
             this.DepartmentButton.Click += new System.EventHandler(this.DepartmentButton_Click);
             // 
             // UpdateProjectNumberButton
@@ -190,6 +197,7 @@
             this.UpdateProjectNumberButton.Size = new System.Drawing.Size(95, 35);
             this.UpdateProjectNumberButton.Text = "Project Number";
             this.UpdateProjectNumberButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.UpdateProjectNumberButton.ToolTipText = "Assign Project Number to selected title";
             this.UpdateProjectNumberButton.Click += new System.EventHandler(this.UpdateProjectNumberButton_Click);
             // 
             // UpdateFilePathButton
@@ -200,6 +208,7 @@
             this.UpdateFilePathButton.Size = new System.Drawing.Size(97, 35);
             this.UpdateFilePathButton.Text = "Update File Path";
             this.UpdateFilePathButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.UpdateFilePathButton.ToolTipText = "Update Protocol file location";
             this.UpdateFilePathButton.Click += new System.EventHandler(this.UpdateFilePathButton_Click);
             // 
             // OpenFileButton
@@ -210,6 +219,7 @@
             this.OpenFileButton.Size = new System.Drawing.Size(61, 35);
             this.OpenFileButton.Text = "Open File";
             this.OpenFileButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.OpenFileButton.ToolTipText = "Open selected title protocol file";
             this.OpenFileButton.Click += new System.EventHandler(this.OpenFileButton_Click);
             // 
             // panel1
@@ -234,38 +244,6 @@
             this.BottomPanel.Name = "BottomPanel";
             this.BottomPanel.Size = new System.Drawing.Size(999, 364);
             this.BottomPanel.TabIndex = 46;
-            // 
-            // RequestForm
-            // 
-            this.RequestForm.Address = "Address";
-            this.RequestForm.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.RequestForm.AssignedTo = "";
-            this.RequestForm.BackColor = System.Drawing.Color.White;
-            this.RequestForm.BillTo = "";
-            this.RequestForm.City = "City";
-            this.RequestForm.Comments = "Comments";
-            this.RequestForm.Compliance = "";
-            this.RequestForm.ContactName = "Contact";
-            this.RequestForm.DueDate = new System.DateTime(2015, 6, 25, 8, 50, 10, 872);
-            this.RequestForm.Email = "Email";
-            this.RequestForm.FaxNumber = "Fax";
-            this.RequestForm.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.RequestForm.Guidelines = "";
-            this.RequestForm.Location = new System.Drawing.Point(4, 42);
-            this.RequestForm.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.RequestForm.Name = "RequestForm";
-            this.RequestForm.PhoneNumber = "Phone Number";
-            this.RequestForm.PONumber = "PO";
-            this.RequestForm.ProtocolType = "";
-            this.RequestForm.RequestedBy = "Requested By";
-            this.RequestForm.RequestedDate = "Requested Date";
-            this.RequestForm.SendVia = "";
-            this.RequestForm.Size = new System.Drawing.Size(992, 325);
-            this.RequestForm.SponsorName = "Sponsor";
-            this.RequestForm.State = "State";
-            this.RequestForm.TabIndex = 1;
-            this.RequestForm.ZipCode = "Zip Code";
             // 
             // toolStrip2
             // 
@@ -371,13 +349,45 @@
             // 
             this.PNCol.Text = "Project Number";
             // 
+            // DepartmentCol
+            // 
+            this.DepartmentCol.Text = "Department";
+            // 
             // openFileDialog
             // 
             this.openFileDialog.FileName = "openFileDialog1";
             // 
-            // DepartmentCol
+            // RequestForm
             // 
-            this.DepartmentCol.Text = "Department";
+            this.RequestForm.Address = "Address";
+            this.RequestForm.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.RequestForm.AssignedTo = "";
+            this.RequestForm.BackColor = System.Drawing.Color.White;
+            this.RequestForm.BillTo = "";
+            this.RequestForm.City = "City";
+            this.RequestForm.Comments = "Comments";
+            this.RequestForm.Compliance = "";
+            this.RequestForm.ContactName = "Contact";
+            this.RequestForm.DueDate = new System.DateTime(2015, 6, 25, 8, 50, 10, 872);
+            this.RequestForm.Email = "Email";
+            this.RequestForm.FaxNumber = "Fax";
+            this.RequestForm.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.RequestForm.Guidelines = "";
+            this.RequestForm.Location = new System.Drawing.Point(4, 42);
+            this.RequestForm.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.RequestForm.Name = "RequestForm";
+            this.RequestForm.PhoneNumber = "Phone Number";
+            this.RequestForm.PONumber = "PO";
+            this.RequestForm.ProtocolType = "";
+            this.RequestForm.RequestedBy = "Requested By";
+            this.RequestForm.RequestedDate = "Requested Date";
+            this.RequestForm.SendVia = "";
+            this.RequestForm.Size = new System.Drawing.Size(992, 325);
+            this.RequestForm.SponsorName = "Sponsor";
+            this.RequestForm.State = "State";
+            this.RequestForm.TabIndex = 1;
+            this.RequestForm.ZipCode = "Zip Code";
             // 
             // ProtocolRequestEditView
             // 

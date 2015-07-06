@@ -112,6 +112,18 @@ namespace Toxikon.ProtocolManager.Controllers.Protocols
 
         public void DownloadRequestReportButtonClicked()
         {
+            if (this.request != null)
+            {
+                CreateAndDownloadSelectedTitleReport();
+            }
+            else
+            {
+                MessageBox.Show("Please select a request.");
+            }
+        }
+
+        private void CreateAndDownloadSelectedTitleReport()
+        {
             ProtocolRequestReport reportTemplate = new ProtocolRequestReport(this.request);
             reportTemplate.Create();
             MessageBox.Show("Download Complete!");

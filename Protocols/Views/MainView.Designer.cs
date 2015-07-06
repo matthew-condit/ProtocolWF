@@ -36,10 +36,10 @@
             this.AdminDepartmentsMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.AdminRolesMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.AdminUsersMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ListNamesMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ListItemsMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.AdminProtocolEventsButton = new System.Windows.Forms.ToolStripMenuItem();
             this.MainPanel = new System.Windows.Forms.Panel();
-            this.ListNamesMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -118,6 +118,13 @@
             this.AdminUsersMenuItem.Text = "Users";
             this.AdminUsersMenuItem.Click += new System.EventHandler(this.AdminUsersMenuItem_Click);
             // 
+            // ListNamesMenuItem
+            // 
+            this.ListNamesMenuItem.Name = "ListNamesMenuItem";
+            this.ListNamesMenuItem.Size = new System.Drawing.Size(166, 22);
+            this.ListNamesMenuItem.Text = "List Names";
+            this.ListNamesMenuItem.Click += new System.EventHandler(this.ListNamesMenuItem_Click);
+            // 
             // ListItemsMenuItem
             // 
             this.ListItemsMenuItem.Name = "ListItemsMenuItem";
@@ -140,13 +147,6 @@
             this.MainPanel.Size = new System.Drawing.Size(1184, 771);
             this.MainPanel.TabIndex = 1;
             // 
-            // ListNamesMenuItem
-            // 
-            this.ListNamesMenuItem.Name = "ListNamesMenuItem";
-            this.ListNamesMenuItem.Size = new System.Drawing.Size(166, 22);
-            this.ListNamesMenuItem.Text = "List Names";
-            this.ListNamesMenuItem.Click += new System.EventHandler(this.ListNamesMenuItem_Click);
-            // 
             // MainView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -159,6 +159,7 @@
             this.Name = "MainView";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "TPM - Toxikon Protocol Manager";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);

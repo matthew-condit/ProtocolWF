@@ -121,12 +121,24 @@
     <value>17, 17</value>
   </metadata>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="ViewEventsButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAADDSURBVDhPnZGxDcMgEEUZISNkhMzgnioVUoZJResMgJRN
+        WMcljTEl4aNcdMLnBPKlL+Tj3j8DCooxPrdty63f9dDWuWsARCG3h8/q6uqKb+99nqZpZ2st9kOFKY3c
+        hqBZgtd1vXwCAEhuQ3Yw1BsgwhAauKUjHMKksjn/gEVX+OgZAfLL46Y/qgFcKBpjRIj89Tg0neyc64e5
+        UkrnZVmC1nochkrjzKcPwSGEE58+BEPlVe40fRiGAGD6XzBUIIAdsFIvvw/4SsLJ934AAAAASUVORK5C
+        YII=
+</value>
+  </data>
   <data name="ViewCommentsButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAABOSURBVDhPY6AK+Pbt239yMdwAJycnkvGoAaMGgDCKAegY
-        WeHmzZsx5GEYbAA6AEmgaT7//v17Aag0YQAzgCzNIAAygGzNIAAygDjNDAwA7Wa6fwUqAXgAAAAASUVO
-        RK5CYII=
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAADHSURBVDhP3ZK9DcIwEIU9CiMwQ/pUVJEYgjIs4Br3bJGK
+        FFBnGoPkn/LQM77oEpHgtDzpKYrP77uLHQWFEEjYOuf2qVAqhI6XO6nDlfDcBBGdU3gzBEGE5mZI3ras
+        H4A1fyaUi/ITuq6jqqoWrbVOEJ5icogIP+1r1YCgKQPGKWAUv4WkJwCp/wBYnDA2MKhtz+M7e3ILUrhb
+        FHiS/tZT0zSp28zrfyo2AVDXNQ3DQN77Uy6ViQHGGIQfeblcctQY4y4vz6TUGxgEALKWuXKuAAAAAElF
+        TkSuQmCC
 </value>
   </data>
 </root>

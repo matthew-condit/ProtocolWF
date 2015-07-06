@@ -20,6 +20,7 @@ namespace Toxikon.ProtocolManager.Views.Admin
         public UserEditView()
         {
             InitializeComponent();
+            this.DepartmentComboBox.DisplayMember = "Name";
         }
 
         public void SetController(UserEditController controller)
