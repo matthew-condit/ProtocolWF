@@ -25,3 +25,7 @@ C:\Users\BMcCulley\Source\toxxwinapp\ProtocolsWF\Protocols\obj\Debug\Toxikon.Pro
 C:\Users\BMcCulley\Source\toxxwinapp\ProtocolsWF\Protocols\obj\Debug\Toxikon.ProtocolManager.Views.Templates.ListViewForm.resources
 C:\Users\BMcCulley\Source\toxxwinapp\ProtocolsWF\Protocols\obj\Debug\Toxikon.ProtocolManager.Views.Templates.OneTextBoxForm.resources
 C:\Users\BMcCulley\Source\toxxwinapp\ProtocolsWF\Protocols\obj\Debug\Toxikon.ProtocolManager.Views.Templates.UCToolStripListView1.resources
+C:\Users\BMcCulley\Source\toxxwinapp\ProtocolsWF\Protocols\bin\Debug\ToxikonProtocolManager.exe.manifest
+C:\Users\BMcCulley\Source\toxxwinapp\ProtocolsWF\Protocols\bin\Debug\ToxikonProtocolManager.application
+C:\Users\BMcCulley\Source\toxxwinapp\ProtocolsWF\Protocols\obj\Debug\ToxikonProtocolManager.exe.manifest
+C:\Users\BMcCulley\Source\toxxwinapp\ProtocolsWF\Protocols\obj\Debug\ToxikonProtocolManager.application

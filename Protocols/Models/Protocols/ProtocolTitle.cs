@@ -24,8 +24,6 @@ namespace Toxikon.ProtocolManager.Models
         public string FileName { get; set; }
         public string FilePath { get; set; }
 
-        LoginInfo loginInfo;
-
         public ProtocolTitle()
         {
             this.ID = 0;
@@ -39,7 +37,6 @@ namespace Toxikon.ProtocolManager.Models
             this.ProjectNumber = "";
             this.FileName = "";
             this.FilePath = "";
-            loginInfo = LoginInfo.GetInstance();
         }
 
         public ProtocolTitle(int requestID, string description)
@@ -50,12 +47,14 @@ namespace Toxikon.ProtocolManager.Models
 
         public void Submit()
         {
+            LoginInfo loginInfo = LoginInfo.GetInstance();
             this.ID = QProtocolTitles.InsertItem(this, loginInfo.UserName);
         }
 
         public void UpdateDescription(string description)
         {
             this.Description = description;
+            LoginInfo loginInfo = LoginInfo.GetInstance();
             QProtocolTitles.UpdateTitle(this, loginInfo.UserName);
         }
 
@@ -63,6 +62,7 @@ namespace Toxikon.ProtocolManager.Models
         {
             this.FileName = Path.GetFileName(filePath);
             this.FilePath = filePath;
+            LoginInfo loginInfo = LoginInfo.GetInstance();
             QProtocolTitles.UpdateFileInfo(this, loginInfo.UserName);
         }
 
@@ -76,6 +76,7 @@ namespace Toxikon.ProtocolManager.Models
             {
                 this.ProtocolNumber = new ProtocolNumber();
                 this.ProtocolNumber.Create(this, protocolType);
+                LoginInfo loginInfo = LoginInfo.GetInstance();
                 QProtocolNumbers.InsertItem(this.ProtocolNumber, loginInfo.UserName);
             }
         }
@@ -83,12 +84,14 @@ namespace Toxikon.ProtocolManager.Models
         public void AddProjectNumber(string projectNumber)
         {
             this.ProjectNumber = projectNumber;
+            LoginInfo loginInfo = LoginInfo.GetInstance();
             QProtocolTitles.UpdateProjectNumber(this, loginInfo.UserName);
         }
 
         public void UpdateDepartment(int departmentID)
         {
             this.Department.ID = departmentID;
+            LoginInfo loginInfo = LoginInfo.GetInstance();
             QProtocolTitles.UpdateDepartmentID(this, loginInfo.UserName);
         }
 
