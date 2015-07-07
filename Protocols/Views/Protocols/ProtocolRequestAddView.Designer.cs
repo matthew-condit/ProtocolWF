@@ -30,89 +30,44 @@ namespace Toxikon.ProtocolManager.Views.Protocols
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ProtocolRequestAddView));
-            this.MainPanel = new System.Windows.Forms.Panel();
-            this.ToolStrip2Panel = new System.Windows.Forms.Panel();
-            this.toolStrip2 = new System.Windows.Forms.ToolStrip();
-            this.SubmitButton = new System.Windows.Forms.ToolStripButton();
             this.SponsorListView = new System.Windows.Forms.ListView();
             this.SponsorNameCol = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.ContactNameCol = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.EmailCol = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.RequestForm = new Toxikon.ProtocolManager.Views.RequestForms.RequestFormAdd();
-            this.TitleDataGridView = new System.Windows.Forms.DataGridView();
-            this.TitleCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
             this.SearchTextBox = new System.Windows.Forms.ToolStripTextBox();
             this.SearchButton = new System.Windows.Forms.ToolStripButton();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.MainPanel.SuspendLayout();
-            this.ToolStrip2Panel.SuspendLayout();
-            this.toolStrip2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.TitleDataGridView)).BeginInit();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+            this.RequestForm = new Toxikon.ProtocolManager.Views.RequestForms.RequestFormAdd();
+            this.TitleDataGridView = new System.Windows.Forms.DataGridView();
+            this.TitleCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.toolStrip2 = new System.Windows.Forms.ToolStrip();
+            this.SubmitButton = new System.Windows.Forms.ToolStripButton();
             this.toolStrip1.SuspendLayout();
+            this.tableLayoutPanel1.SuspendLayout();
+            this.panel1.SuspendLayout();
+            this.tableLayoutPanel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.TitleDataGridView)).BeginInit();
+            this.toolStrip2.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // MainPanel
-            // 
-            this.MainPanel.Controls.Add(this.ToolStrip2Panel);
-            this.MainPanel.Controls.Add(this.SponsorListView);
-            this.MainPanel.Controls.Add(this.RequestForm);
-            this.MainPanel.Controls.Add(this.TitleDataGridView);
-            this.MainPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.MainPanel.Location = new System.Drawing.Point(0, 45);
-            this.MainPanel.Name = "MainPanel";
-            this.MainPanel.Size = new System.Drawing.Size(800, 715);
-            this.MainPanel.TabIndex = 2;
-            // 
-            // ToolStrip2Panel
-            // 
-            this.ToolStrip2Panel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.ToolStrip2Panel.Controls.Add(this.toolStrip2);
-            this.ToolStrip2Panel.Location = new System.Drawing.Point(3, 140);
-            this.ToolStrip2Panel.Name = "ToolStrip2Panel";
-            this.ToolStrip2Panel.Size = new System.Drawing.Size(792, 40);
-            this.ToolStrip2Panel.TabIndex = 47;
-            // 
-            // toolStrip2
-            // 
-            this.toolStrip2.BackColor = System.Drawing.Color.White;
-            this.toolStrip2.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.toolStrip2.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
-            this.toolStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.SubmitButton});
-            this.toolStrip2.Location = new System.Drawing.Point(0, 0);
-            this.toolStrip2.Margin = new System.Windows.Forms.Padding(3);
-            this.toolStrip2.Name = "toolStrip2";
-            this.toolStrip2.Padding = new System.Windows.Forms.Padding(10, 0, 1, 0);
-            this.toolStrip2.Size = new System.Drawing.Size(792, 38);
-            this.toolStrip2.TabIndex = 44;
-            this.toolStrip2.Text = "toolStrip2";
-            // 
-            // SubmitButton
-            // 
-            this.SubmitButton.Image = global::Toxikon.ProtocolManager.Properties.Resources.StatusAnnotations_Complete_and_ok_16xLG_color;
-            this.SubmitButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.SubmitButton.Name = "SubmitButton";
-            this.SubmitButton.Size = new System.Drawing.Size(49, 35);
-            this.SubmitButton.Text = "Submit";
-            this.SubmitButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.SubmitButton.Click += new System.EventHandler(this.SubmitButton_Click);
             // 
             // SponsorListView
             // 
-            this.SponsorListView.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.SponsorListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.SponsorNameCol,
             this.ContactNameCol,
             this.EmailCol});
+            this.SponsorListView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.SponsorListView.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SponsorListView.FullRowSelect = true;
             this.SponsorListView.GridLines = true;
-            this.SponsorListView.Location = new System.Drawing.Point(3, 1);
+            this.SponsorListView.Location = new System.Drawing.Point(3, 3);
             this.SponsorListView.MultiSelect = false;
             this.SponsorListView.Name = "SponsorListView";
-            this.SponsorListView.Size = new System.Drawing.Size(792, 135);
+            this.SponsorListView.Size = new System.Drawing.Size(1194, 293);
             this.SponsorListView.TabIndex = 43;
             this.SponsorListView.UseCompatibleStateImageBehavior = false;
             this.SponsorListView.View = System.Windows.Forms.View.Details;
@@ -132,60 +87,6 @@ namespace Toxikon.ProtocolManager.Views.Protocols
             // 
             this.EmailCol.Text = "Email";
             this.EmailCol.Width = 226;
-            // 
-            // RequestForm
-            // 
-            this.RequestForm.Address = "Address";
-            this.RequestForm.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.RequestForm.AssignedTo = "";
-            this.RequestForm.BackColor = System.Drawing.Color.White;
-            this.RequestForm.BillTo = "";
-            this.RequestForm.City = "City";
-            this.RequestForm.Comments = "";
-            this.RequestForm.Compliance = "";
-            this.RequestForm.ContactName = "Contact";
-            this.RequestForm.DueDate = new System.DateTime(2015, 6, 24, 16, 22, 58, 736);
-            this.RequestForm.Email = "Email";
-            this.RequestForm.FaxNumber = "Fax";
-            this.RequestForm.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.RequestForm.Guidelines = "";
-            this.RequestForm.Location = new System.Drawing.Point(3, 187);
-            this.RequestForm.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.RequestForm.Name = "RequestForm";
-            this.RequestForm.PhoneNumber = "Phone Number";
-            this.RequestForm.PONumber = "PO";
-            this.RequestForm.ProtocolType = "";
-            this.RequestForm.RequestedBy = "Requested By";
-            this.RequestForm.RequestedDate = "Requested Date";
-            this.RequestForm.SendVia = "";
-            this.RequestForm.Size = new System.Drawing.Size(794, 325);
-            this.RequestForm.SponsorName = "Sponsor";
-            this.RequestForm.State = "State";
-            this.RequestForm.TabIndex = 45;
-            this.RequestForm.ZipCode = "Zip Code";
-            // 
-            // TitleDataGridView
-            // 
-            this.TitleDataGridView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.TitleDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.TitleDataGridView.BackgroundColor = System.Drawing.Color.White;
-            this.TitleDataGridView.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.TitleDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.TitleDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.TitleCol});
-            this.TitleDataGridView.Location = new System.Drawing.Point(3, 519);
-            this.TitleDataGridView.MultiSelect = false;
-            this.TitleDataGridView.Name = "TitleDataGridView";
-            this.TitleDataGridView.Size = new System.Drawing.Size(794, 197);
-            this.TitleDataGridView.TabIndex = 24;
-            // 
-            // TitleCol
-            // 
-            this.TitleCol.HeaderText = "Titles";
-            this.TitleCol.Name = "TitleCol";
             // 
             // toolStripLabel1
             // 
@@ -220,30 +121,149 @@ namespace Toxikon.ProtocolManager.Views.Protocols
             this.SearchButton});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Padding = new System.Windows.Forms.Padding(0, 10, 1, 10);
-            this.toolStrip1.Size = new System.Drawing.Size(800, 45);
+            this.toolStrip1.Padding = new System.Windows.Forms.Padding(0, 5, 1, 5);
+            this.toolStrip1.Size = new System.Drawing.Size(1200, 35);
             this.toolStrip1.TabIndex = 0;
             this.toolStrip1.Text = "toolStrip1";
+            // 
+            // tableLayoutPanel1
+            // 
+            this.tableLayoutPanel1.ColumnCount = 1;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel1.Controls.Add(this.SponsorListView, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.panel1, 0, 1);
+            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 35);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RowCount = 2;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 45F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 55F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1200, 665);
+            this.tableLayoutPanel1.TabIndex = 3;
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.tableLayoutPanel2);
+            this.panel1.Controls.Add(this.toolStrip2);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.panel1.Location = new System.Drawing.Point(3, 302);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(1194, 360);
+            this.panel1.TabIndex = 44;
+            // 
+            // tableLayoutPanel2
+            // 
+            this.tableLayoutPanel2.ColumnCount = 2;
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel2.Controls.Add(this.RequestForm, 0, 0);
+            this.tableLayoutPanel2.Controls.Add(this.TitleDataGridView, 1, 0);
+            this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(0, 38);
+            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
+            this.tableLayoutPanel2.RowCount = 1;
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(1194, 322);
+            this.tableLayoutPanel2.TabIndex = 47;
+            // 
+            // RequestForm
+            // 
+            this.RequestForm.Address = "Address";
+            this.RequestForm.AssignedTo = "";
+            this.RequestForm.BackColor = System.Drawing.Color.White;
+            this.RequestForm.BillTo = "";
+            this.RequestForm.City = "City";
+            this.RequestForm.Comments = "";
+            this.RequestForm.Compliance = "";
+            this.RequestForm.ContactName = "Contact";
+            this.RequestForm.Dock = System.Windows.Forms.DockStyle.Top;
+            this.RequestForm.DueDate = new System.DateTime(2015, 7, 6, 0, 0, 0, 0);
+            this.RequestForm.Email = "Email";
+            this.RequestForm.FaxNumber = "Fax";
+            this.RequestForm.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.RequestForm.Guidelines = "";
+            this.RequestForm.Location = new System.Drawing.Point(3, 4);
+            this.RequestForm.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.RequestForm.Name = "RequestForm";
+            this.RequestForm.PhoneNumber = "Phone Number";
+            this.RequestForm.PONumber = "PO";
+            this.RequestForm.ProtocolType = "";
+            this.RequestForm.RequestedBy = "Requested By";
+            this.RequestForm.RequestedDate = "Requested Date";
+            this.RequestForm.SendVia = "";
+            this.RequestForm.Size = new System.Drawing.Size(591, 314);
+            this.RequestForm.SponsorName = "Sponsor";
+            this.RequestForm.State = "State";
+            this.RequestForm.TabIndex = 45;
+            this.RequestForm.ZipCode = "Zip Code";
+            // 
+            // TitleDataGridView
+            // 
+            this.TitleDataGridView.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.TitleDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.TitleDataGridView.BackgroundColor = System.Drawing.Color.White;
+            this.TitleDataGridView.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.TitleDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.TitleDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.TitleCol});
+            this.TitleDataGridView.Location = new System.Drawing.Point(600, 3);
+            this.TitleDataGridView.MultiSelect = false;
+            this.TitleDataGridView.Name = "TitleDataGridView";
+            this.TitleDataGridView.Size = new System.Drawing.Size(591, 316);
+            this.TitleDataGridView.TabIndex = 46;
+            // 
+            // TitleCol
+            // 
+            this.TitleCol.HeaderText = "Titles";
+            this.TitleCol.Name = "TitleCol";
+            // 
+            // toolStrip2
+            // 
+            this.toolStrip2.BackColor = System.Drawing.Color.White;
+            this.toolStrip2.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.toolStrip2.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
+            this.toolStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.SubmitButton});
+            this.toolStrip2.Location = new System.Drawing.Point(0, 0);
+            this.toolStrip2.Margin = new System.Windows.Forms.Padding(3);
+            this.toolStrip2.Name = "toolStrip2";
+            this.toolStrip2.Padding = new System.Windows.Forms.Padding(10, 0, 1, 0);
+            this.toolStrip2.Size = new System.Drawing.Size(1194, 38);
+            this.toolStrip2.TabIndex = 45;
+            this.toolStrip2.Text = "toolStrip2";
+            // 
+            // SubmitButton
+            // 
+            this.SubmitButton.Image = global::Toxikon.ProtocolManager.Properties.Resources.StatusAnnotations_Complete_and_ok_16xLG_color;
+            this.SubmitButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.SubmitButton.Name = "SubmitButton";
+            this.SubmitButton.Size = new System.Drawing.Size(49, 35);
+            this.SubmitButton.Text = "Submit";
+            this.SubmitButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.SubmitButton.Click += new System.EventHandler(this.SubmitButton_Click);
             // 
             // ProtocolRequestAddView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
-            this.Controls.Add(this.MainPanel);
+            this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.toolStrip1);
             this.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "ProtocolRequestAddView";
-            this.Size = new System.Drawing.Size(800, 760);
-            this.MainPanel.ResumeLayout(false);
-            this.ToolStrip2Panel.ResumeLayout(false);
-            this.ToolStrip2Panel.PerformLayout();
-            this.toolStrip2.ResumeLayout(false);
-            this.toolStrip2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.TitleDataGridView)).EndInit();
+            this.Size = new System.Drawing.Size(1200, 700);
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
+            this.tableLayoutPanel1.ResumeLayout(false);
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
+            this.tableLayoutPanel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.TitleDataGridView)).EndInit();
+            this.toolStrip2.ResumeLayout(false);
+            this.toolStrip2.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -251,7 +271,6 @@ namespace Toxikon.ProtocolManager.Views.Protocols
 
         #endregion
 
-        private System.Windows.Forms.Panel MainPanel;
         private System.Windows.Forms.ToolStripLabel toolStripLabel1;
         private System.Windows.Forms.ToolStripTextBox SearchTextBox;
         private System.Windows.Forms.ToolStripButton SearchButton;
@@ -260,11 +279,13 @@ namespace Toxikon.ProtocolManager.Views.Protocols
         private System.Windows.Forms.ColumnHeader SponsorNameCol;
         private System.Windows.Forms.ColumnHeader ContactNameCol;
         private System.Windows.Forms.ColumnHeader EmailCol;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.DataGridView TitleDataGridView;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TitleCol;
         private System.Windows.Forms.ToolStrip toolStrip2;
         private System.Windows.Forms.ToolStripButton SubmitButton;
         private RequestForms.RequestFormAdd RequestForm;
-        private System.Windows.Forms.DataGridView TitleDataGridView;
-        private System.Windows.Forms.DataGridViewTextBoxColumn TitleCol;
-        private System.Windows.Forms.Panel ToolStrip2Panel;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
     }
 }

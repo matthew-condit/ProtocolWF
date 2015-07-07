@@ -34,8 +34,6 @@
             this.ViewCommentsButton = new System.Windows.Forms.ToolStripButton();
             this.OpenFileButton = new System.Windows.Forms.ToolStripButton();
             this.DownloadReportButton = new System.Windows.Forms.ToolStripButton();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.BottomPanel = new System.Windows.Forms.Panel();
             this.RequestForm = new Toxikon.ProtocolManager.Views.RequestForms.RequestFormReadOnly();
             this.TitlesListView = new System.Windows.Forms.ListView();
             this.TitleCol = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -47,9 +45,9 @@
             this.FileNameCol = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.PNCol = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.DepartmentCol = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.toolStrip1.SuspendLayout();
-            this.panel1.SuspendLayout();
-            this.BottomPanel.SuspendLayout();
+            this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // toolStrip1
@@ -110,28 +108,6 @@
             this.DownloadReportButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.DownloadReportButton.Click += new System.EventHandler(this.DownloadReportButton_Click);
             // 
-            // panel1
-            // 
-            this.panel1.Controls.Add(this.BottomPanel);
-            this.panel1.Controls.Add(this.TitlesListView);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(0, 38);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(850, 732);
-            this.panel1.TabIndex = 46;
-            // 
-            // BottomPanel
-            // 
-            this.BottomPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.BottomPanel.Controls.Add(this.RequestForm);
-            this.BottomPanel.Location = new System.Drawing.Point(0, 365);
-            this.BottomPanel.Margin = new System.Windows.Forms.Padding(0);
-            this.BottomPanel.Name = "BottomPanel";
-            this.BottomPanel.Size = new System.Drawing.Size(850, 364);
-            this.BottomPanel.TabIndex = 46;
-            // 
             // RequestForm
             // 
             this.RequestForm.Address = "Address";
@@ -149,7 +125,7 @@
             this.RequestForm.FaxNumber = "Fax";
             this.RequestForm.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.RequestForm.Guidelines = "Guidelines";
-            this.RequestForm.Location = new System.Drawing.Point(3, 0);
+            this.RequestForm.Location = new System.Drawing.Point(3, 335);
             this.RequestForm.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.RequestForm.Name = "RequestForm";
             this.RequestForm.PhoneNumber = "Phone Number";
@@ -166,8 +142,6 @@
             // 
             // TitlesListView
             // 
-            this.TitlesListView.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.TitlesListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.TitleCol,
             this.StatusCol,
@@ -178,11 +152,13 @@
             this.FileNameCol,
             this.PNCol,
             this.DepartmentCol});
+            this.TitlesListView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.TitlesListView.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TitlesListView.FullRowSelect = true;
             this.TitlesListView.GridLines = true;
-            this.TitlesListView.Location = new System.Drawing.Point(3, 9);
+            this.TitlesListView.Location = new System.Drawing.Point(3, 3);
             this.TitlesListView.Name = "TitlesListView";
-            this.TitlesListView.Size = new System.Drawing.Size(844, 349);
+            this.TitlesListView.Size = new System.Drawing.Size(844, 325);
             this.TitlesListView.TabIndex = 45;
             this.TitlesListView.UseCompatibleStateImageBehavior = false;
             this.TitlesListView.View = System.Windows.Forms.View.Details;
@@ -229,21 +205,35 @@
             // 
             this.DepartmentCol.Text = "Department";
             // 
+            // tableLayoutPanel1
+            // 
+            this.tableLayoutPanel1.ColumnCount = 1;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.Controls.Add(this.RequestForm, 0, 1);
+            this.tableLayoutPanel1.Controls.Add(this.TitlesListView, 0, 0);
+            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 38);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RowCount = 2;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(850, 662);
+            this.tableLayoutPanel1.TabIndex = 47;
+            // 
             // ProtocolRequestReadOnlyView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.toolStrip1);
             this.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "ProtocolRequestReadOnlyView";
-            this.Size = new System.Drawing.Size(850, 770);
+            this.Size = new System.Drawing.Size(850, 700);
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
-            this.panel1.ResumeLayout(false);
-            this.BottomPanel.ResumeLayout(false);
+            this.tableLayoutPanel1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -255,8 +245,6 @@
         private System.Windows.Forms.ToolStripButton ViewEventsButton;
         private System.Windows.Forms.ToolStripButton ViewCommentsButton;
         private System.Windows.Forms.ToolStripButton DownloadReportButton;
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Panel BottomPanel;
         private RequestForms.RequestFormReadOnly RequestForm;
         private System.Windows.Forms.ListView TitlesListView;
         private System.Windows.Forms.ColumnHeader TitleCol;
@@ -269,5 +257,6 @@
         private System.Windows.Forms.ColumnHeader FileNameCol;
         private System.Windows.Forms.ColumnHeader PNCol;
         private System.Windows.Forms.ColumnHeader DepartmentCol;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
     }
 }

@@ -39,7 +39,7 @@
             // 
             this.OptionsCheckedListBox.CheckOnClick = true;
             this.OptionsCheckedListBox.Dock = System.Windows.Forms.DockStyle.Top;
-            this.OptionsCheckedListBox.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.OptionsCheckedListBox.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.OptionsCheckedListBox.FormattingEnabled = true;
             this.OptionsCheckedListBox.Location = new System.Drawing.Point(0, 0);
             this.OptionsCheckedListBox.Name = "OptionsCheckedListBox";
@@ -49,14 +49,14 @@
             // toolStrip1
             // 
             this.toolStrip1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.toolStrip1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.toolStrip1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.toolStrip1.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.SubmitButton});
-            this.toolStrip1.Location = new System.Drawing.Point(0, 278);
+            this.toolStrip1.Location = new System.Drawing.Point(0, 279);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Padding = new System.Windows.Forms.Padding(0, 5, 1, 5);
-            this.toolStrip1.Size = new System.Drawing.Size(284, 34);
+            this.toolStrip1.Size = new System.Drawing.Size(284, 33);
             this.toolStrip1.TabIndex = 1;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -66,7 +66,7 @@
             this.SubmitButton.Image = ((System.Drawing.Image)(resources.GetObject("SubmitButton.Image")));
             this.SubmitButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.SubmitButton.Name = "SubmitButton";
-            this.SubmitButton.Size = new System.Drawing.Size(68, 21);
+            this.SubmitButton.Size = new System.Drawing.Size(65, 20);
             this.SubmitButton.Text = "Submit";
             this.SubmitButton.Click += new System.EventHandler(this.SubmitButton_Click);
             // 

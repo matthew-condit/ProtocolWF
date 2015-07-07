@@ -43,7 +43,7 @@
             // toolStrip1
             // 
             this.toolStrip1.BackColor = System.Drawing.Color.White;
-            this.toolStrip1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.toolStrip1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.NewButton,
             this.toolStripSeparator1,
@@ -51,7 +51,7 @@
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Padding = new System.Windows.Forms.Padding(10, 0, 1, 0);
-            this.toolStrip1.Size = new System.Drawing.Size(570, 40);
+            this.toolStrip1.Size = new System.Drawing.Size(570, 38);
             this.toolStrip1.TabIndex = 5;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -60,7 +60,7 @@
             this.NewButton.Image = ((System.Drawing.Image)(resources.GetObject("NewButton.Image")));
             this.NewButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.NewButton.Name = "NewButton";
-            this.NewButton.Size = new System.Drawing.Size(38, 37);
+            this.NewButton.Size = new System.Drawing.Size(35, 35);
             this.NewButton.Text = "New";
             this.NewButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.NewButton.ToolTipText = "Create new department";
@@ -69,14 +69,14 @@
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 40);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 38);
             // 
             // UpdateButton
             // 
             this.UpdateButton.Image = ((System.Drawing.Image)(resources.GetObject("UpdateButton.Image")));
             this.UpdateButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.UpdateButton.Name = "UpdateButton";
-            this.UpdateButton.Size = new System.Drawing.Size(55, 37);
+            this.UpdateButton.Size = new System.Drawing.Size(49, 35);
             this.UpdateButton.Text = "Update";
             this.UpdateButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.UpdateButton.Click += new System.EventHandler(this.UpdateButton_Click);
@@ -86,10 +86,10 @@
             this.panel1.Controls.Add(this.MainListView);
             this.panel1.Controls.Add(this.TitleLabel);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(0, 40);
+            this.panel1.Location = new System.Drawing.Point(0, 38);
             this.panel1.Name = "panel1";
             this.panel1.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
-            this.panel1.Size = new System.Drawing.Size(570, 200);
+            this.panel1.Size = new System.Drawing.Size(570, 174);
             this.panel1.TabIndex = 6;
             // 
             // MainListView
@@ -99,9 +99,9 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.MainListView.FullRowSelect = true;
             this.MainListView.GridLines = true;
-            this.MainListView.Location = new System.Drawing.Point(13, 36);
+            this.MainListView.Location = new System.Drawing.Point(13, 32);
             this.MainListView.Name = "MainListView";
-            this.MainListView.Size = new System.Drawing.Size(544, 161);
+            this.MainListView.Size = new System.Drawing.Size(544, 141);
             this.MainListView.TabIndex = 3;
             this.MainListView.UseCompatibleStateImageBehavior = false;
             this.MainListView.View = System.Windows.Forms.View.Details;
@@ -110,23 +110,23 @@
             // TitleLabel
             // 
             this.TitleLabel.AutoSize = true;
-            this.TitleLabel.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TitleLabel.Location = new System.Drawing.Point(13, 16);
+            this.TitleLabel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TitleLabel.Location = new System.Drawing.Point(13, 14);
             this.TitleLabel.Name = "TitleLabel";
-            this.TitleLabel.Size = new System.Drawing.Size(83, 17);
+            this.TitleLabel.Size = new System.Drawing.Size(75, 15);
             this.TitleLabel.TabIndex = 2;
             this.TitleLabel.Text = "Departments";
             // 
             // UCToolStripListView1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.toolStrip1);
-            this.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "UCToolStripListView1";
-            this.Size = new System.Drawing.Size(570, 240);
+            this.Size = new System.Drawing.Size(570, 212);
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
             this.panel1.ResumeLayout(false);

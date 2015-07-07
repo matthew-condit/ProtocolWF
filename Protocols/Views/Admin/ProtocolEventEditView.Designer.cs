@@ -57,7 +57,7 @@
             this.tableLayoutPanel1.Controls.Add(this.DescriptionTextBox, 1, 1);
             this.tableLayoutPanel1.Controls.Add(this.EventTypeComboBox, 1, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.tableLayoutPanel1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tableLayoutPanel1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 3;
@@ -72,7 +72,7 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(3, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(78, 17);
+            this.label1.Size = new System.Drawing.Size(71, 15);
             this.label1.TabIndex = 0;
             this.label1.Text = "Event Type: ";
             // 
@@ -81,7 +81,7 @@
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(3, 62);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(45, 17);
+            this.label2.Size = new System.Drawing.Size(43, 15);
             this.label2.TabIndex = 2;
             this.label2.Text = "Active:";
             // 
@@ -99,7 +99,7 @@
             this.TrueRadioButton.AutoSize = true;
             this.TrueRadioButton.Location = new System.Drawing.Point(3, 3);
             this.TrueRadioButton.Name = "TrueRadioButton";
-            this.TrueRadioButton.Size = new System.Drawing.Size(52, 21);
+            this.TrueRadioButton.Size = new System.Drawing.Size(49, 19);
             this.TrueRadioButton.TabIndex = 0;
             this.TrueRadioButton.TabStop = true;
             this.TrueRadioButton.Text = "True";
@@ -108,9 +108,9 @@
             // FalseRadioButton
             // 
             this.FalseRadioButton.AutoSize = true;
-            this.FalseRadioButton.Location = new System.Drawing.Point(61, 3);
+            this.FalseRadioButton.Location = new System.Drawing.Point(58, 3);
             this.FalseRadioButton.Name = "FalseRadioButton";
-            this.FalseRadioButton.Size = new System.Drawing.Size(55, 21);
+            this.FalseRadioButton.Size = new System.Drawing.Size(51, 19);
             this.FalseRadioButton.TabIndex = 1;
             this.FalseRadioButton.TabStop = true;
             this.FalseRadioButton.Text = "False";
@@ -121,7 +121,7 @@
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(3, 31);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(77, 17);
+            this.label3.Size = new System.Drawing.Size(70, 15);
             this.label3.TabIndex = 4;
             this.label3.Text = "Description:";
             // 
@@ -129,7 +129,7 @@
             // 
             this.DescriptionTextBox.Location = new System.Drawing.Point(134, 34);
             this.DescriptionTextBox.Name = "DescriptionTextBox";
-            this.DescriptionTextBox.Size = new System.Drawing.Size(447, 25);
+            this.DescriptionTextBox.Size = new System.Drawing.Size(447, 23);
             this.DescriptionTextBox.TabIndex = 5;
             // 
             // EventTypeComboBox
@@ -141,13 +141,13 @@
             "Protocol Request"});
             this.EventTypeComboBox.Location = new System.Drawing.Point(134, 3);
             this.EventTypeComboBox.Name = "EventTypeComboBox";
-            this.EventTypeComboBox.Size = new System.Drawing.Size(177, 25);
+            this.EventTypeComboBox.Size = new System.Drawing.Size(177, 23);
             this.EventTypeComboBox.TabIndex = 6;
             // 
             // toolStrip1
             // 
             this.toolStrip1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.toolStrip1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.toolStrip1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.SubmitButton});
             this.toolStrip1.Location = new System.Drawing.Point(0, 127);
@@ -162,7 +162,7 @@
             this.SubmitButton.Image = ((System.Drawing.Image)(resources.GetObject("SubmitButton.Image")));
             this.SubmitButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.SubmitButton.Name = "SubmitButton";
-            this.SubmitButton.Size = new System.Drawing.Size(68, 22);
+            this.SubmitButton.Size = new System.Drawing.Size(65, 22);
             this.SubmitButton.Text = "Submit";
             this.SubmitButton.Click += new System.EventHandler(this.SubmitButton_Click);
             // 

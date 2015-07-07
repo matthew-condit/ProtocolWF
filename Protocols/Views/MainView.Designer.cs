@@ -46,7 +46,7 @@
             // menuStrip1
             // 
             this.menuStrip1.BackColor = System.Drawing.Color.DarkSlateGray;
-            this.menuStrip1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.menuStrip1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.HomeMenuItem,
             this.ProtocolRequestMenuItem,
@@ -54,8 +54,8 @@
             this.AdminMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Padding = new System.Windows.Forms.Padding(6, 10, 0, 10);
-            this.menuStrip1.Size = new System.Drawing.Size(1184, 41);
+            this.menuStrip1.Padding = new System.Windows.Forms.Padding(6, 5, 0, 5);
+            this.menuStrip1.Size = new System.Drawing.Size(1184, 29);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -63,7 +63,7 @@
             // 
             this.HomeMenuItem.ForeColor = System.Drawing.Color.White;
             this.HomeMenuItem.Name = "HomeMenuItem";
-            this.HomeMenuItem.Size = new System.Drawing.Size(58, 21);
+            this.HomeMenuItem.Size = new System.Drawing.Size(54, 19);
             this.HomeMenuItem.Text = "HOME";
             this.HomeMenuItem.Click += new System.EventHandler(this.DashboardMenuItem_Click);
             // 
@@ -71,7 +71,7 @@
             // 
             this.ProtocolRequestMenuItem.ForeColor = System.Drawing.Color.White;
             this.ProtocolRequestMenuItem.Name = "ProtocolRequestMenuItem";
-            this.ProtocolRequestMenuItem.Size = new System.Drawing.Size(145, 21);
+            this.ProtocolRequestMenuItem.Size = new System.Drawing.Size(133, 19);
             this.ProtocolRequestMenuItem.Text = "PROTOCOL REQUEST";
             this.ProtocolRequestMenuItem.Click += new System.EventHandler(this.ProtocolRequestMenuItem_Click);
             // 
@@ -79,7 +79,7 @@
             // 
             this.HistoryMenuItem.ForeColor = System.Drawing.Color.White;
             this.HistoryMenuItem.Name = "HistoryMenuItem";
-            this.HistoryMenuItem.Size = new System.Drawing.Size(71, 21);
+            this.HistoryMenuItem.Size = new System.Drawing.Size(67, 19);
             this.HistoryMenuItem.Text = "HISTORY";
             this.HistoryMenuItem.Click += new System.EventHandler(this.HistoryMenuItem_Click);
             // 
@@ -94,68 +94,68 @@
             this.AdminProtocolEventsButton});
             this.AdminMenuItem.ForeColor = System.Drawing.Color.White;
             this.AdminMenuItem.Name = "AdminMenuItem";
-            this.AdminMenuItem.Size = new System.Drawing.Size(62, 21);
+            this.AdminMenuItem.Size = new System.Drawing.Size(58, 19);
             this.AdminMenuItem.Text = "ADMIN";
             // 
             // AdminDepartmentsMenuItem
             // 
             this.AdminDepartmentsMenuItem.Name = "AdminDepartmentsMenuItem";
-            this.AdminDepartmentsMenuItem.Size = new System.Drawing.Size(166, 22);
+            this.AdminDepartmentsMenuItem.Size = new System.Drawing.Size(156, 22);
             this.AdminDepartmentsMenuItem.Text = "Departments";
             this.AdminDepartmentsMenuItem.Click += new System.EventHandler(this.AdminDepartmentsMenuItem_Click);
             // 
             // AdminRolesMenuItem
             // 
             this.AdminRolesMenuItem.Name = "AdminRolesMenuItem";
-            this.AdminRolesMenuItem.Size = new System.Drawing.Size(166, 22);
+            this.AdminRolesMenuItem.Size = new System.Drawing.Size(156, 22);
             this.AdminRolesMenuItem.Text = "Roles";
             this.AdminRolesMenuItem.Click += new System.EventHandler(this.AdminRolesMenuItem_Click);
             // 
             // AdminUsersMenuItem
             // 
             this.AdminUsersMenuItem.Name = "AdminUsersMenuItem";
-            this.AdminUsersMenuItem.Size = new System.Drawing.Size(166, 22);
+            this.AdminUsersMenuItem.Size = new System.Drawing.Size(156, 22);
             this.AdminUsersMenuItem.Text = "Users";
             this.AdminUsersMenuItem.Click += new System.EventHandler(this.AdminUsersMenuItem_Click);
             // 
             // ListNamesMenuItem
             // 
             this.ListNamesMenuItem.Name = "ListNamesMenuItem";
-            this.ListNamesMenuItem.Size = new System.Drawing.Size(166, 22);
+            this.ListNamesMenuItem.Size = new System.Drawing.Size(156, 22);
             this.ListNamesMenuItem.Text = "List Names";
             this.ListNamesMenuItem.Click += new System.EventHandler(this.ListNamesMenuItem_Click);
             // 
             // ListItemsMenuItem
             // 
             this.ListItemsMenuItem.Name = "ListItemsMenuItem";
-            this.ListItemsMenuItem.Size = new System.Drawing.Size(166, 22);
+            this.ListItemsMenuItem.Size = new System.Drawing.Size(156, 22);
             this.ListItemsMenuItem.Text = "List Items";
             this.ListItemsMenuItem.Click += new System.EventHandler(this.ListItemsMenuItem_Click);
             // 
             // AdminProtocolEventsButton
             // 
             this.AdminProtocolEventsButton.Name = "AdminProtocolEventsButton";
-            this.AdminProtocolEventsButton.Size = new System.Drawing.Size(166, 22);
+            this.AdminProtocolEventsButton.Size = new System.Drawing.Size(156, 22);
             this.AdminProtocolEventsButton.Text = "Protocol Events";
             this.AdminProtocolEventsButton.Click += new System.EventHandler(this.AdminProtocolEventsButton_Click);
             // 
             // MainPanel
             // 
             this.MainPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.MainPanel.Location = new System.Drawing.Point(0, 41);
+            this.MainPanel.Location = new System.Drawing.Point(0, 29);
             this.MainPanel.Name = "MainPanel";
-            this.MainPanel.Size = new System.Drawing.Size(1184, 771);
+            this.MainPanel.Size = new System.Drawing.Size(1184, 633);
             this.MainPanel.TabIndex = 1;
             // 
             // MainView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1184, 812);
+            this.ClientSize = new System.Drawing.Size(1184, 662);
             this.Controls.Add(this.MainPanel);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
-            this.MinimumSize = new System.Drawing.Size(1150, 850);
+            this.MinimumSize = new System.Drawing.Size(1200, 700);
             this.Name = "MainView";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "TPM - Toxikon Protocol Manager";

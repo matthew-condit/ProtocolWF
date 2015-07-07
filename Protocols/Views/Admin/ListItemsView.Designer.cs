@@ -45,7 +45,7 @@
             // toolStrip1
             // 
             this.toolStrip1.BackColor = System.Drawing.Color.White;
-            this.toolStrip1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.toolStrip1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripLabel1,
             this.ListNameComboBox,
@@ -56,14 +56,14 @@
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Padding = new System.Windows.Forms.Padding(10, 0, 1, 0);
-            this.toolStrip1.Size = new System.Drawing.Size(640, 40);
+            this.toolStrip1.Size = new System.Drawing.Size(640, 38);
             this.toolStrip1.TabIndex = 0;
             this.toolStrip1.Text = "toolStrip1";
             // 
             // toolStripLabel1
             // 
             this.toolStripLabel1.Name = "toolStripLabel1";
-            this.toolStripLabel1.Size = new System.Drawing.Size(40, 37);
+            this.toolStripLabel1.Size = new System.Drawing.Size(36, 35);
             this.toolStripLabel1.Text = "Lists: ";
             // 
             // ListNameComboBox
@@ -71,27 +71,27 @@
             this.ListNameComboBox.BackColor = System.Drawing.SystemColors.Info;
             this.ListNameComboBox.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ListNameComboBox.Name = "ListNameComboBox";
-            this.ListNameComboBox.Size = new System.Drawing.Size(150, 40);
+            this.ListNameComboBox.Size = new System.Drawing.Size(150, 38);
             this.ListNameComboBox.SelectedIndexChanged += new System.EventHandler(this.ListNameComboBox_SelectedIndexChanged);
             // 
             // toolStripLabel2
             // 
             this.toolStripLabel2.Name = "toolStripLabel2";
-            this.toolStripLabel2.Size = new System.Drawing.Size(109, 37);
+            this.toolStripLabel2.Size = new System.Drawing.Size(99, 35);
             this.toolStripLabel2.Text = "New Item Name: ";
             // 
             // ItemNameTextBox
             // 
             this.ItemNameTextBox.BackColor = System.Drawing.SystemColors.Info;
             this.ItemNameTextBox.Name = "ItemNameTextBox";
-            this.ItemNameTextBox.Size = new System.Drawing.Size(200, 40);
+            this.ItemNameTextBox.Size = new System.Drawing.Size(200, 38);
             // 
             // AddButton
             // 
             this.AddButton.Image = ((System.Drawing.Image)(resources.GetObject("AddButton.Image")));
             this.AddButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.AddButton.Name = "AddButton";
-            this.AddButton.Size = new System.Drawing.Size(36, 37);
+            this.AddButton.Size = new System.Drawing.Size(33, 35);
             this.AddButton.Text = "Add";
             this.AddButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.AddButton.Click += new System.EventHandler(this.AddButton_Click);
@@ -101,7 +101,7 @@
             this.UpdateButton.Image = global::Toxikon.ProtocolManager.Properties.Resources.PencilAngled_16xLG_color;
             this.UpdateButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.UpdateButton.Name = "UpdateButton";
-            this.UpdateButton.Size = new System.Drawing.Size(55, 37);
+            this.UpdateButton.Size = new System.Drawing.Size(49, 35);
             this.UpdateButton.Text = "Update";
             this.UpdateButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.UpdateButton.Click += new System.EventHandler(this.UpdateButton_Click);
@@ -115,6 +115,7 @@
             this.ItemsListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.ItemNameCol,
             this.ActiveCol});
+            this.ItemsListView.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ItemsListView.FullRowSelect = true;
             this.ItemsListView.GridLines = true;
             this.ItemsListView.Location = new System.Drawing.Point(0, 44);

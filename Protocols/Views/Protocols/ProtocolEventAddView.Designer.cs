@@ -43,7 +43,7 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(3, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(131, 17);
+            this.label1.Size = new System.Drawing.Size(119, 15);
             this.label1.TabIndex = 0;
             this.label1.Text = "Protocol Event Type: ";
             // 
@@ -51,7 +51,7 @@
             // 
             this.flowLayoutPanel1.Controls.Add(this.label1);
             this.flowLayoutPanel1.Controls.Add(this.EventTypeComboBox);
-            this.flowLayoutPanel1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.flowLayoutPanel1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 13);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             this.flowLayoutPanel1.Size = new System.Drawing.Size(367, 35);
@@ -60,20 +60,20 @@
             // EventTypeComboBox
             // 
             this.EventTypeComboBox.FormattingEnabled = true;
-            this.EventTypeComboBox.Location = new System.Drawing.Point(140, 3);
+            this.EventTypeComboBox.Location = new System.Drawing.Point(128, 3);
             this.EventTypeComboBox.Name = "EventTypeComboBox";
-            this.EventTypeComboBox.Size = new System.Drawing.Size(195, 25);
+            this.EventTypeComboBox.Size = new System.Drawing.Size(195, 23);
             this.EventTypeComboBox.TabIndex = 1;
             this.EventTypeComboBox.SelectedIndexChanged += new System.EventHandler(this.EventTypeComboBox_SelectedIndexChanged);
             // 
             // ProtocolEventsListBox
             // 
-            this.ProtocolEventsListBox.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ProtocolEventsListBox.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ProtocolEventsListBox.FormattingEnabled = true;
-            this.ProtocolEventsListBox.ItemHeight = 17;
+            this.ProtocolEventsListBox.ItemHeight = 15;
             this.ProtocolEventsListBox.Location = new System.Drawing.Point(0, 55);
             this.ProtocolEventsListBox.Name = "ProtocolEventsListBox";
-            this.ProtocolEventsListBox.Size = new System.Drawing.Size(367, 191);
+            this.ProtocolEventsListBox.Size = new System.Drawing.Size(367, 184);
             this.ProtocolEventsListBox.TabIndex = 2;
             this.ProtocolEventsListBox.SelectedIndexChanged += new System.EventHandler(this.ProtocolEventsListBox_SelectedIndexChanged);
             // 

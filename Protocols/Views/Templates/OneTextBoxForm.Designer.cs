@@ -46,12 +46,12 @@
             this.tableLayoutPanel1.Controls.Add(this.Label1, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.TextBox1, 1, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.tableLayoutPanel1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 10);
+            this.tableLayoutPanel1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 9);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(584, 43);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(584, 38);
             this.tableLayoutPanel1.TabIndex = 4;
             // 
             // Label1
@@ -59,7 +59,7 @@
             this.Label1.AutoSize = true;
             this.Label1.Location = new System.Drawing.Point(3, 0);
             this.Label1.Name = "Label1";
-            this.Label1.Size = new System.Drawing.Size(42, 17);
+            this.Label1.Size = new System.Drawing.Size(38, 15);
             this.Label1.TabIndex = 0;
             this.Label1.Text = "Label:";
             // 
@@ -69,17 +69,17 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.TextBox1.Location = new System.Drawing.Point(101, 3);
             this.TextBox1.Name = "TextBox1";
-            this.TextBox1.Size = new System.Drawing.Size(480, 25);
+            this.TextBox1.Size = new System.Drawing.Size(480, 23);
             this.TextBox1.TabIndex = 1;
             // 
             // toolStrip1
             // 
             this.toolStrip1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.toolStrip1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.toolStrip1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.toolStrip1.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.SubmitButton});
-            this.toolStrip1.Location = new System.Drawing.Point(0, 77);
+            this.toolStrip1.Location = new System.Drawing.Point(0, 65);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Size = new System.Drawing.Size(584, 25);
             this.toolStrip1.TabIndex = 5;
@@ -91,25 +91,25 @@
             this.SubmitButton.Image = ((System.Drawing.Image)(resources.GetObject("SubmitButton.Image")));
             this.SubmitButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.SubmitButton.Name = "SubmitButton";
-            this.SubmitButton.Size = new System.Drawing.Size(68, 22);
+            this.SubmitButton.Size = new System.Drawing.Size(65, 22);
             this.SubmitButton.Text = "Submit";
             this.SubmitButton.Click += new System.EventHandler(this.SubmitButton_Click);
             // 
             // OneTextBoxForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(584, 102);
+            this.ClientSize = new System.Drawing.Size(584, 90);
             this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.tableLayoutPanel1);
-            this.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.MaximizeBox = false;
-            this.MaximumSize = new System.Drawing.Size(600, 140);
+            this.MaximumSize = new System.Drawing.Size(600, 128);
             this.MinimizeBox = false;
-            this.MinimumSize = new System.Drawing.Size(600, 140);
+            this.MinimumSize = new System.Drawing.Size(600, 128);
             this.Name = "OneTextBoxForm";
-            this.Padding = new System.Windows.Forms.Padding(0, 10, 0, 0);
+            this.Padding = new System.Windows.Forms.Padding(0, 9, 0, 0);
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Form";
             this.tableLayoutPanel1.ResumeLayout(false);

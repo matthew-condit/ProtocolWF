@@ -77,6 +77,7 @@
             this.RequestListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.DateCol,
             this.SponsorCol});
+            this.RequestListView.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.RequestListView.FullRowSelect = true;
             this.RequestListView.GridLines = true;
             this.RequestListView.Location = new System.Drawing.Point(0, 48);
