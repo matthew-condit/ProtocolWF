@@ -66,8 +66,8 @@ namespace Toxikon.ProtocolManager.Controllers.Admin
         public override void NewButtonClicked()
         {
             User user = new User();
-            DialogResult dialogResult = ShowPopup(user);
-            if (dialogResult == DialogResult.OK)
+            user = ShowPopup(user);
+            if (user.UserName != String.Empty)
             {
                 InsertNewUser(user);
                 LoadView();
@@ -89,23 +89,20 @@ namespace Toxikon.ProtocolManager.Controllers.Admin
             }
             else
             {
-                DialogResult dialogResult = ShowPopup(this.selectedUser);
-                if (dialogResult == DialogResult.OK)
-                {
-                    UpdateSelectedUser();
-                    LoadView();
-                }
+                this.selectedUser = ShowPopup(this.selectedUser);
+                UpdateSelectedUser();
+                LoadView();
             }
         }
 
-        private DialogResult ShowPopup(User user)
+        private User ShowPopup(User user)
         {
             UserEditView popup = new UserEditView();
             UserEditController popupController = new UserEditController(popup, user);
             popupController.LoadView();
             DialogResult dialogResult = popup.ShowDialog(view.ParentControl);
             popup.Dispose();
-            return dialogResult;
+            return popupController.User;
         }
 
         private void UpdateSelectedUser()

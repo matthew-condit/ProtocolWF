@@ -136,7 +136,8 @@ namespace Toxikon.ProtocolManager.Models.Reports
                         Range numberRange = worksheet.Cells[startRowIndex + rowIndex, startColIndex + colIndex];
                         numberRange.NumberFormat = "0.0000";
                     }
-                    worksheet.Cells[startRowIndex + rowIndex, startColIndex + colIndex] = result != "" ? result : "=NA()";
+                    worksheet.Cells[startRowIndex + rowIndex, startColIndex + colIndex] = result != "" ? 
+                                                                                          result : "=NA()";
                 }
             }
         }

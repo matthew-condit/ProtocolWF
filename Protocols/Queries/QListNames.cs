@@ -54,6 +54,7 @@ namespace Toxikon.ProtocolManager.Queries
                         {
                             Item listName = new Item();
                             listName.Name = reader[0].ToString();
+                            listName.Value = reader[0].ToString();
                             listName.IsActive = Convert.ToBoolean(reader[1].ToString());
 
                             results.Add(listName);

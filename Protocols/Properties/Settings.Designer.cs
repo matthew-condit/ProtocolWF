@@ -55,5 +55,16 @@ namespace Toxikon.ProtocolManager.Properties {
                 return ((string)(this["TPMTestConnectionString"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=TOXX\\DB1TOXX;Initial Catalog=TPM;Persist Security Info=True;User ID=T" +
+            "PMUser;Password=Misto0615")]
+        public string TPMConnectionString {
+            get {
+                return ((string)(this["TPMConnectionString"]));
+            }
+        }
     }
 }

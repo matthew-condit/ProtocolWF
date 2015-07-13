@@ -156,15 +156,20 @@ namespace Toxikon.ProtocolManager.Controllers.Protocols
         {
             if (this.view.SelectedTitleIndexes.Count == 1)
             {
-                ProtocolTitle title = GetSelectedTitleFromView();
-                IList events = QProtocolActivities.SelectItems(this.request.ID, title.ID);
-                IList columns = new ArrayList() { "Date", "User", "Event" };
-                TemplatesController.ShowReadOnlyListViewForm(columns, events, view.ParentControl);
+                ShowSelectedTitleEvents();
             }
             else
             {
                 MessageBox.Show(this.SelectOneMessage);
             }
+        }
+
+        private void ShowSelectedTitleEvents()
+        {
+            ProtocolTitle title = GetSelectedTitleFromView();
+            IList events = QProtocolActivities.SelectItems(this.request.ID, title.ID);
+            IList columns = new ArrayList() { "Date", "User", "Event" };
+            TemplatesController.ShowReadOnlyListViewForm(columns, events, view.ParentControl);
         }
 
         public void AddCommentsButtonClicked()
@@ -195,10 +200,7 @@ namespace Toxikon.ProtocolManager.Controllers.Protocols
         {
             if(this.view.SelectedTitleIndexes.Count == 1)
             {
-                ProtocolTitle title = GetSelectedTitleFromView();
-                IList comments = QProtocolComments.SelectItems(title);
-                IList columns = new ArrayList() { "Date", "User", "Comments" };
-                TemplatesController.ShowReadOnlyListViewForm(columns, comments, view.ParentControl);
+                ShowSelectedTitleComments();
             }
             else
             {
@@ -206,12 +208,19 @@ namespace Toxikon.ProtocolManager.Controllers.Protocols
             }
         }
 
+        private void ShowSelectedTitleComments()
+        {
+            ProtocolTitle title = GetSelectedTitleFromView();
+            IList comments = QProtocolComments.SelectItems(title);
+            IList columns = new ArrayList() { "Date", "User", "Comments" };
+            TemplatesController.ShowReadOnlyListViewForm(columns, comments, view.ParentControl);
+        }
+
         public void AddProtocolNumberButtonClicked()
         {
             if(this.view.SelectedTitleIndexes.Count == 1)
             {
-                ProtocolTitle title = GetSelectedTitleFromView();
-                title.AddProtocolNumber(this.request.ProtocolType);
+                AssignProtocolNumberToSelectedTitle();
                 this.RefreshTitleListView();
             }
             else
@@ -220,11 +229,17 @@ namespace Toxikon.ProtocolManager.Controllers.Protocols
             }
         }
 
+        private void AssignProtocolNumberToSelectedTitle()
+        {
+            ProtocolTitle title = GetSelectedTitleFromView();
+            title.AddProtocolNumber(this.request.ProtocolType);
+        }
+
         public void ReviseProtocolButtonClicked()
         {
             if (this.view.SelectedTitleIndexes.Count == 1)
             {
-                ReviseSelectedProtocol();
+                ReviseSelectedTitleProtocolNumber();
             }
             else
             {
@@ -232,7 +247,7 @@ namespace Toxikon.ProtocolManager.Controllers.Protocols
             }
         }
 
-        private void ReviseSelectedProtocol()
+        private void ReviseSelectedTitleProtocolNumber()
         {
             ProtocolTitle title = GetSelectedTitleFromView();
             if (title.ProtocolNumber.FullCode != String.Empty)
@@ -251,14 +266,19 @@ namespace Toxikon.ProtocolManager.Controllers.Protocols
         {
             if (this.view.SelectedTitleIndexes.Count == 1)
             {
-                ProtocolTitle title = GetSelectedTitleFromView();
-                title.UpdateFileInfo(filePath);
+                UpdateSelectedTitleFilePath(filePath);
                 this.RefreshTitleListView();
             }
             else
             {
                 MessageBox.Show(this.SelectOneMessage);
             }
+        }
+
+        private void UpdateSelectedTitleFilePath(string filePath)
+        {
+            ProtocolTitle title = GetSelectedTitleFromView();
+            title.UpdateFileInfo(filePath);
         }
 
         public void OpenFileButtonClicked()
@@ -303,6 +323,7 @@ namespace Toxikon.ProtocolManager.Controllers.Protocols
             if (this.view.SelectedTitleIndexes.Count == 1)
             {
                 UpdateSelectedTitleDepartment();
+                this.RefreshTitleListView();
             }
             else
             {
@@ -312,14 +333,19 @@ namespace Toxikon.ProtocolManager.Controllers.Protocols
 
         private void UpdateSelectedTitleDepartment()
         {
-            ProtocolTitle title = GetSelectedTitleFromView();
-            IList items = QDepartments.SelectItems2();
-            Item selectedItem = TemplatesController.ShowListBoxOptionsForm(items, view.ParentControl);
+            Item selectedItem = SelectDepartmentFromOptions();
             if (selectedItem.Value != "")
             {
+                ProtocolTitle title = GetSelectedTitleFromView();
                 title.UpdateDepartment(Convert.ToInt32(selectedItem.Value));
-                this.RefreshTitleListView();
             }
+        }
+
+        private Item SelectDepartmentFromOptions()
+        {
+            IList items = QDepartments.SelectItems2();
+            Item selectedItem = TemplatesController.ShowListBoxOptionsForm(items, view.ParentControl);
+            return selectedItem;
         }
 
         public void SaveChangedButtonClicked()

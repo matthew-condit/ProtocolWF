@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Reflection;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -22,17 +24,15 @@ namespace Toxikon.ProtocolManager.Models
             {
                 LoginInfo loginInfo = LoginInfo.GetInstance();
 
-                Outlook.Application outlookApp = new Outlook.Application();
+                Outlook.Application outlookApp = GetApplicationObject();
                 Outlook._MailItem mailItem = (Outlook.MailItem)outlookApp.CreateItem(Outlook.OlItemType.olMailItem);
+                mailItem.Subject = loginInfo.UserName + "---ERROR: " + catchedException.Message;
+                mailItem.Body = catchedException.ToString();
 
                 Outlook.Recipient recipient = (Outlook.Recipient)mailItem.Recipients.Add("Bichngoc.McCulley@toxikon.com");
                 recipient.Resolve();
 
-                mailItem.Subject = loginInfo.UserName + "---ERROR: " + catchedException.Message;
-                mailItem.Body = catchedException.ToString();
-
-                mailItem.Save();
-                mailItem.Display();
+                mailItem.Send();
 
                 recipient = null;
                 mailItem = null;
@@ -40,7 +40,7 @@ namespace Toxikon.ProtocolManager.Models
             }
             catch (Exception e)
             {
-                Debug.WriteLine(e.Message);
+                MessageBox.Show(e.Message);
             }
         }
 
@@ -67,8 +67,26 @@ namespace Toxikon.ProtocolManager.Models
             }
             catch(UnauthorizedAccessException accessEx)
             {
-                MessageBox.Show("ErrorHandler: " + accessEx.Message);
+                MessageBox.Show(accessEx.Message);
             }
+        }
+
+        private static Outlook.Application GetApplicationObject()
+        {
+            Outlook.Application application = null;
+            if (Process.GetProcessesByName("OUTLOOK").Count() > 0)
+            {
+                application = Marshal.GetActiveObject("Outlook.Application") as Outlook.Application;
+            }
+            else
+            {
+                application = new Outlook.Application();
+                Outlook.NameSpace nameSpace = application.GetNamespace("MAPI");
+                nameSpace.Logon("", "", Missing.Value, Missing.Value);
+                nameSpace = null;
+            }
+
+            return application;
         }
     }
 }

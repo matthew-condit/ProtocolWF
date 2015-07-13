@@ -42,14 +42,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="ToxikonProtocolManager.exe" size="266752">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="ToxikonProtocolManager.exe" size="272384">
       <assemblyIdentity name="ToxikonProtocolManager" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>0bW31fBd/yoLSsWP6XsG87BTJr9U750mBf9cefse3U8=</dsig:DigestValue>
+        <dsig:DigestValue>vGazPk3j7Oo57hAIiZpQHf3BILYukiwIhCz13QvddYA=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -161,13 +161,13 @@
       <dsig:DigestValue>PaxRwDRU+vRl39+I3PGVVvEr1lK/9O0U9wYtEHCi1RA=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="ToxikonProtocolManager.exe.config" size="1036">
+  <file name="ToxikonProtocolManager.exe.config" size="2085">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>r0dzfHFQPKlS7dYv1NuZrBfoyIu9AmhkF2DGzTeoxRQ=</dsig:DigestValue>
+      <dsig:DigestValue>HKz7chiHmKmRgGGAbCr0DRnY7xumUGtaR1HrGMuK3fM=</dsig:DigestValue>
     </hash>
   </file>
 </asmv1:assembly>

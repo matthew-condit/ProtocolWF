@@ -89,8 +89,17 @@ namespace Toxikon.ProtocolManager.Views.Templates
 
         private void AddItemObjectToView(Item item)
         {
-            ListViewItem listViewItem = this.MainListView.Items.Add(item.Name);
-            listViewItem.SubItems.Add(item.IsActive.ToString());
+            if(item.ID != 0)
+            {
+                ListViewItem listViewItem = this.MainListView.Items.Add(item.ID.ToString());
+                listViewItem.SubItems.Add(item.Value);
+                listViewItem.SubItems.Add(item.IsActive.ToString());
+            }
+            else
+            {
+                ListViewItem listViewItem = this.MainListView.Items.Add(item.Value);
+                listViewItem.SubItems.Add(item.IsActive.ToString());
+            }
         }
 
         private void AddProtocolEventToListView(ProtocolEvent protocolEvent)

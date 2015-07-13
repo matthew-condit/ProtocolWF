@@ -40,6 +40,8 @@
             this.ListItemsMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.AdminProtocolEventsButton = new System.Windows.Forms.ToolStripMenuItem();
             this.MainPanel = new System.Windows.Forms.Panel();
+            this.TemplatesGroupsMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.templatesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -91,7 +93,9 @@
             this.AdminUsersMenuItem,
             this.ListNamesMenuItem,
             this.ListItemsMenuItem,
-            this.AdminProtocolEventsButton});
+            this.AdminProtocolEventsButton,
+            this.TemplatesGroupsMenuItem,
+            this.templatesToolStripMenuItem});
             this.AdminMenuItem.ForeColor = System.Drawing.Color.White;
             this.AdminMenuItem.Name = "AdminMenuItem";
             this.AdminMenuItem.Size = new System.Drawing.Size(58, 19);
@@ -100,42 +104,42 @@
             // AdminDepartmentsMenuItem
             // 
             this.AdminDepartmentsMenuItem.Name = "AdminDepartmentsMenuItem";
-            this.AdminDepartmentsMenuItem.Size = new System.Drawing.Size(156, 22);
+            this.AdminDepartmentsMenuItem.Size = new System.Drawing.Size(170, 22);
             this.AdminDepartmentsMenuItem.Text = "Departments";
             this.AdminDepartmentsMenuItem.Click += new System.EventHandler(this.AdminDepartmentsMenuItem_Click);
             // 
             // AdminRolesMenuItem
             // 
             this.AdminRolesMenuItem.Name = "AdminRolesMenuItem";
-            this.AdminRolesMenuItem.Size = new System.Drawing.Size(156, 22);
+            this.AdminRolesMenuItem.Size = new System.Drawing.Size(170, 22);
             this.AdminRolesMenuItem.Text = "Roles";
             this.AdminRolesMenuItem.Click += new System.EventHandler(this.AdminRolesMenuItem_Click);
             // 
             // AdminUsersMenuItem
             // 
             this.AdminUsersMenuItem.Name = "AdminUsersMenuItem";
-            this.AdminUsersMenuItem.Size = new System.Drawing.Size(156, 22);
+            this.AdminUsersMenuItem.Size = new System.Drawing.Size(170, 22);
             this.AdminUsersMenuItem.Text = "Users";
             this.AdminUsersMenuItem.Click += new System.EventHandler(this.AdminUsersMenuItem_Click);
             // 
             // ListNamesMenuItem
             // 
             this.ListNamesMenuItem.Name = "ListNamesMenuItem";
-            this.ListNamesMenuItem.Size = new System.Drawing.Size(156, 22);
+            this.ListNamesMenuItem.Size = new System.Drawing.Size(170, 22);
             this.ListNamesMenuItem.Text = "List Names";
             this.ListNamesMenuItem.Click += new System.EventHandler(this.ListNamesMenuItem_Click);
             // 
             // ListItemsMenuItem
             // 
             this.ListItemsMenuItem.Name = "ListItemsMenuItem";
-            this.ListItemsMenuItem.Size = new System.Drawing.Size(156, 22);
+            this.ListItemsMenuItem.Size = new System.Drawing.Size(170, 22);
             this.ListItemsMenuItem.Text = "List Items";
             this.ListItemsMenuItem.Click += new System.EventHandler(this.ListItemsMenuItem_Click);
             // 
             // AdminProtocolEventsButton
             // 
             this.AdminProtocolEventsButton.Name = "AdminProtocolEventsButton";
-            this.AdminProtocolEventsButton.Size = new System.Drawing.Size(156, 22);
+            this.AdminProtocolEventsButton.Size = new System.Drawing.Size(170, 22);
             this.AdminProtocolEventsButton.Text = "Protocol Events";
             this.AdminProtocolEventsButton.Click += new System.EventHandler(this.AdminProtocolEventsButton_Click);
             // 
@@ -146,6 +150,19 @@
             this.MainPanel.Name = "MainPanel";
             this.MainPanel.Size = new System.Drawing.Size(1184, 633);
             this.MainPanel.TabIndex = 1;
+            // 
+            // TemplatesGroupsMenuItem
+            // 
+            this.TemplatesGroupsMenuItem.Name = "TemplatesGroupsMenuItem";
+            this.TemplatesGroupsMenuItem.Size = new System.Drawing.Size(170, 22);
+            this.TemplatesGroupsMenuItem.Text = "Templates Groups";
+            this.TemplatesGroupsMenuItem.Click += new System.EventHandler(this.TemplatesGroupsMenuItem_Click);
+            // 
+            // templatesToolStripMenuItem
+            // 
+            this.templatesToolStripMenuItem.Name = "templatesToolStripMenuItem";
+            this.templatesToolStripMenuItem.Size = new System.Drawing.Size(170, 22);
+            this.templatesToolStripMenuItem.Text = "Templates";
             // 
             // MainView
             // 
@@ -181,6 +198,8 @@
         private System.Windows.Forms.ToolStripMenuItem AdminProtocolEventsButton;
         private System.Windows.Forms.ToolStripMenuItem HistoryMenuItem;
         private System.Windows.Forms.ToolStripMenuItem ListNamesMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem TemplatesGroupsMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem templatesToolStripMenuItem;
     }
 }
 

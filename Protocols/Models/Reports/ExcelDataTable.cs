@@ -20,9 +20,9 @@ namespace Toxikon.ProtocolManager.Models.Reports
         public ExcelDataTable()
         {
             this.dataTable = new DataTable();
-            this.TopLeft = "A1";
             this.StartColumnIndex = 1;
             this.StartRowIndex = 1;
+            this.SetTopLeft();
             this.SetBottomRight();
             this.TableName = "ReportDataTable";
             this.TableStyleName = "TableStyleLight11";

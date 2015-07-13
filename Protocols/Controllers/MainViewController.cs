@@ -161,5 +161,14 @@ namespace Toxikon.ProtocolManager.Controllers
             subViewController.LoadView();
             view.AddControlToMainPanel(subView);
         }
+
+        public void LoadTemplateGroupsView()
+        {
+            UCToolStripListView1 subView = new UCToolStripListView1();
+            TemplateGroupsController subViewController = new TemplateGroupsController(subView);
+            subViewController.LoadView();
+
+            view.AddControlToMainPanel(subView);
+        }
     }
 }

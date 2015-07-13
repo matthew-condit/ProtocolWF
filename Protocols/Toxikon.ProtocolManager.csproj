@@ -88,6 +88,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controllers\Admin\ListNameController.cs" />
+    <Compile Include="Controllers\Admin\TemplateGroupsController.cs" />
     <Compile Include="Controllers\Templates\UCToolStripListView1Controller.cs" />
     <Compile Include="Controllers\HistoryController.cs" />
     <Compile Include="Controllers\Protocols\ProtocolRequestReadOnlyController.cs" />
@@ -155,6 +156,8 @@
     <Compile Include="Queries\QDepartments.cs" />
     <Compile Include="Queries\QProtocolTitles.cs" />
     <Compile Include="Queries\QRoles.cs" />
+    <Compile Include="Queries\QTemplateGroups.cs" />
+    <Compile Include="Queries\QTemplates.cs" />
     <Compile Include="Queries\QUsers.cs" />
     <Compile Include="Queries\QTMS.cs" />
     <Compile Include="Views\HistoryView.cs">

@@ -35,9 +35,11 @@ namespace Toxikon.ProtocolManager.Models
 
         internal static string GetTPMConnectionString()
         {
+            string TPM = @"Toxikon.ProtocolManager.Properties.Settings.TPMConnectionString";
+            string TPMTest = @"Toxikon.ProtocolManager.Properties.Settings.TPMTestConnectionString";
             string result = "";
             ConnectionStringSettings settings =
-                ConfigurationManager.ConnectionStrings["Protocols.Properties.Settings.TPMTestConnectionString"];
+                ConfigurationManager.ConnectionStrings[TPMTest];
             if (settings != null)
             {
                 result = settings.ConnectionString;
