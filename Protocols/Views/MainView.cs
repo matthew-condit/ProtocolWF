@@ -154,5 +154,10 @@ namespace Toxikon.ProtocolManager.Views
         {
             this.controller.LoadTemplateGroupsView();
         }
+
+        private void TemplatesMenuItem_Click(object sender, EventArgs e)
+        {
+            this.controller.LoadTemplatesView();
+        }
     }
 }

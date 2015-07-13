@@ -89,6 +89,8 @@
   <ItemGroup>
     <Compile Include="Controllers\Admin\ListNameController.cs" />
     <Compile Include="Controllers\Admin\TemplateGroupsController.cs" />
+    <Compile Include="Controllers\Admin\TemplateListController.cs" />
+    <Compile Include="Controllers\Controller.cs" />
     <Compile Include="Controllers\Templates\UCToolStripListView1Controller.cs" />
     <Compile Include="Controllers\HistoryController.cs" />
     <Compile Include="Controllers\Protocols\ProtocolRequestReadOnlyController.cs" />
@@ -111,6 +113,7 @@
     <Compile Include="Controllers\Admin\UserEditController.cs" />
     <Compile Include="Controllers\Admin\UserListController.cs" />
     <Compile Include="Controllers\Templates\OneTextBoxTrueFalseFormController.cs" />
+    <Compile Include="Controllers\Templates\UCTemplate2Controller.cs" />
     <Compile Include="Interfaces\Admin\IListNameView.cs" />
     <Compile Include="Interfaces\IHistoryView.cs" />
     <Compile Include="Interfaces\IRequestForm.cs" />
@@ -132,6 +135,7 @@
     <Compile Include="Interfaces\Admin\IUserListView.cs" />
     <Compile Include="Interfaces\Templates\IOneTextBoxTrueFalseForm.cs" />
     <Compile Include="Interfaces\Templates\IUCToolStripListView1.cs" />
+    <Compile Include="Interfaces\Templates\IUCTemplate2.cs" />
     <Compile Include="Models\Admin\AuditHandler.cs" />
     <Compile Include="Models\Admin\AuditItem.cs" />
     <Compile Include="Models\Protocols\Comment.cs" />
@@ -279,6 +283,12 @@
     <Compile Include="Views\Templates\OneTextBoxTrueFalseForm.Designer.cs">
       <DependentUpon>OneTextBoxTrueFalseForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\Templates\UCTemplate2View.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\Templates\UCTemplate2View.Designer.cs">
+      <DependentUpon>UCTemplate2View.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\Templates\UCToolStripListView1.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -348,6 +358,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Templates\OneTextBoxTrueFalseForm.resx">
       <DependentUpon>OneTextBoxTrueFalseForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Templates\UCTemplate2View.resx">
+      <DependentUpon>UCTemplate2View.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Templates\UCToolStripListView1.resx">
       <DependentUpon>UCToolStripListView1.cs</DependentUpon>

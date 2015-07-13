@@ -122,7 +122,7 @@ namespace Toxikon.ProtocolManager.Controllers.Admin
             QListItems.UpdateItem(this.selectedItem, oldItemValue, loginInfo.UserName);
         }
 
-        public Item ShowPopup()
+        private Item ShowPopup()
         {
             Item textBoxItem = new Item("Item Value: ", this.selectedItem.Text);
             Item trueFalseItem = new Item("Active: ", this.selectedItem.IsActive.ToString());

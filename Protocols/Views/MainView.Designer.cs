@@ -39,9 +39,9 @@
             this.ListNamesMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ListItemsMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.AdminProtocolEventsButton = new System.Windows.Forms.ToolStripMenuItem();
-            this.MainPanel = new System.Windows.Forms.Panel();
             this.TemplatesGroupsMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.templatesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.TemplatesMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.MainPanel = new System.Windows.Forms.Panel();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -95,7 +95,7 @@
             this.ListItemsMenuItem,
             this.AdminProtocolEventsButton,
             this.TemplatesGroupsMenuItem,
-            this.templatesToolStripMenuItem});
+            this.TemplatesMenuItem});
             this.AdminMenuItem.ForeColor = System.Drawing.Color.White;
             this.AdminMenuItem.Name = "AdminMenuItem";
             this.AdminMenuItem.Size = new System.Drawing.Size(58, 19);
@@ -143,14 +143,6 @@
             this.AdminProtocolEventsButton.Text = "Protocol Events";
             this.AdminProtocolEventsButton.Click += new System.EventHandler(this.AdminProtocolEventsButton_Click);
             // 
-            // MainPanel
-            // 
-            this.MainPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.MainPanel.Location = new System.Drawing.Point(0, 29);
-            this.MainPanel.Name = "MainPanel";
-            this.MainPanel.Size = new System.Drawing.Size(1184, 633);
-            this.MainPanel.TabIndex = 1;
-            // 
             // TemplatesGroupsMenuItem
             // 
             this.TemplatesGroupsMenuItem.Name = "TemplatesGroupsMenuItem";
@@ -158,11 +150,20 @@
             this.TemplatesGroupsMenuItem.Text = "Templates Groups";
             this.TemplatesGroupsMenuItem.Click += new System.EventHandler(this.TemplatesGroupsMenuItem_Click);
             // 
-            // templatesToolStripMenuItem
+            // TemplatesMenuItem
             // 
-            this.templatesToolStripMenuItem.Name = "templatesToolStripMenuItem";
-            this.templatesToolStripMenuItem.Size = new System.Drawing.Size(170, 22);
-            this.templatesToolStripMenuItem.Text = "Templates";
+            this.TemplatesMenuItem.Name = "TemplatesMenuItem";
+            this.TemplatesMenuItem.Size = new System.Drawing.Size(170, 22);
+            this.TemplatesMenuItem.Text = "Templates";
+            this.TemplatesMenuItem.Click += new System.EventHandler(this.TemplatesMenuItem_Click);
+            // 
+            // MainPanel
+            // 
+            this.MainPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.MainPanel.Location = new System.Drawing.Point(0, 29);
+            this.MainPanel.Name = "MainPanel";
+            this.MainPanel.Size = new System.Drawing.Size(1184, 633);
+            this.MainPanel.TabIndex = 1;
             // 
             // MainView
             // 
@@ -199,7 +200,7 @@
         private System.Windows.Forms.ToolStripMenuItem HistoryMenuItem;
         private System.Windows.Forms.ToolStripMenuItem ListNamesMenuItem;
         private System.Windows.Forms.ToolStripMenuItem TemplatesGroupsMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem templatesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem TemplatesMenuItem;
     }
 }
 

@@ -39,6 +39,7 @@ namespace Toxikon.ProtocolManager.Controllers.Admin
 
             items = QTemplateGroups.GetAllItems();
             AddItemsToView();
+            SetColumnsHeaderSize();
         }
 
         private void AddItemsToView()
@@ -86,6 +87,7 @@ namespace Toxikon.ProtocolManager.Controllers.Admin
                 Item result = ShowPopup(this.selectedItem);
                 if (result.Value != String.Empty)
                 {
+                    QTemplateGroups.UpdateItem(result, loginInfo.UserName);
                     LoadView();
                 }
             }

@@ -105,7 +105,26 @@ namespace Toxikon.ProtocolManager.Queries
 
         public static void UpdateItem(Item item, string userName)
         {
-
+            try
+            {
+                using(SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    connection.Open();
+                    using(SqlCommand command = new SqlCommand("tg_update_template_group", connection))
+                    {
+                        command.CommandType = CommandType.StoredProcedure;
+                        command.Parameters.Add("@ID", SqlDbType.Int).Value = item.ID;
+                        command.Parameters.Add("@Name", SqlDbType.NVarChar).Value = item.Value;
+                        command.Parameters.Add("@IsActive", SqlDbType.Bit).Value = item.IsActive;
+                        command.Parameters.Add("@UpdatedBy", SqlDbType.NVarChar).Value = userName;
+                        int result = command.ExecuteNonQuery();
+                    }
+                }
+            }
+            catch(SqlException ex)
+            {
+                ErrorHandler.CreateLogFile(className, "UpdateItem", ex);
+            }
         }
     }
 }
