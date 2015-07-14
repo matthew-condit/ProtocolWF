@@ -44,6 +44,8 @@ namespace Toxikon.ProtocolManager.Controllers
             this.view.Compliance = request.Compliance;
             this.view.ProtocolType = request.ProtocolType;
             this.view.BillTo = request.BillTo;
+            this.view.Cost = request.Cost;
+            this.view.PONumber = request.PO;
             this.view.SendVia = request.SendVia;
             this.view.DueDate = request.DueDate;
             this.view.Comments = request.Comments;
@@ -71,6 +73,8 @@ namespace Toxikon.ProtocolManager.Controllers
             this.request.DueDate = this.view.DueDate;
             this.request.SendVia = this.view.SendVia;
             this.request.BillTo = this.view.BillTo;
+            this.request.Cost = this.view.Cost;
+            this.request.PO = this.view.PONumber;
             this.request.Comments = this.view.Comments;
         }
 
@@ -134,9 +138,9 @@ namespace Toxikon.ProtocolManager.Controllers
         {
             this.request.RequestStatus = RequestStatuses.New;
             this.request.ID = QProtocolRequests.InsertItem(this.request, loginInfo.UserName);
-            if (this.request.Titles.Count > 0)
+            if (this.request.Templates.Count > 0)
             {
-                QProtocolTitles.InsertItem(this.request, loginInfo.UserName);
+                QProtocolRequestTemplates.InsertItems(this.request.Templates, loginInfo.UserName);
             }
             QProtocolActivities.InsertItem(this.request, loginInfo.UserName);
         }

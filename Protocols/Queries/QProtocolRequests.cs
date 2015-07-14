@@ -37,7 +37,9 @@ namespace Toxikon.ProtocolManager.Queries
                         command.Parameters.Add("@DueDate", SqlDbType.DateTime).Value = request.DueDate;
                         command.Parameters.Add("@SendVia", SqlDbType.NVarChar).Value = request.SendVia;
                         command.Parameters.Add("@BillTo", SqlDbType.NVarChar).Value = request.BillTo;
+                        command.Parameters.Add("@Cost", SqlDbType.NVarChar).Value = request.Cost;
                         command.Parameters.Add("@Comments", SqlDbType.NVarChar).Value = request.Comments;
+                        command.Parameters.Add("@PO", SqlDbType.NVarChar).Value = request.PO;
                         command.Parameters.Add("@AssignedTo", SqlDbType.NVarChar).Value = request.AssignedTo;
 
                         result = Convert.ToInt32(command.ExecuteScalar());
@@ -233,11 +235,13 @@ namespace Toxikon.ProtocolManager.Queries
             request.DueDate = Convert.ToDateTime(reader[5].ToString());
             request.SendVia = reader[6].ToString();
             request.BillTo = reader[7].ToString();
-            request.Comments = reader[8].ToString();
-            request.AssignedTo = reader[9].ToString();
-            request.RequestStatus = reader[10].ToString();
-            request.RequestedBy = reader[11].ToString();
-            request.RequestedDate = Convert.ToDateTime(reader[12].ToString());
+            request.Cost = reader[8].ToString().Trim();
+            request.Comments = reader[9].ToString();
+            request.PO = reader[10].ToString().Trim();
+            request.AssignedTo = reader[11].ToString();
+            request.RequestStatus = reader[12].ToString();
+            request.RequestedBy = reader[13].ToString();
+            request.RequestedDate = Convert.ToDateTime(reader[14].ToString());
             return request;
         }
 
@@ -260,6 +264,8 @@ namespace Toxikon.ProtocolManager.Queries
                         command.Parameters.Add("@DueDate", SqlDbType.NVarChar).Value = request.DueDate;
                         command.Parameters.Add("@SendVia", SqlDbType.NVarChar).Value = request.SendVia;
                         command.Parameters.Add("@BillTo", SqlDbType.NVarChar).Value = request.BillTo;
+                        command.Parameters.Add("@Cost", SqlDbType.NVarChar).Value = request.Cost;
+                        command.Parameters.Add("@PO", SqlDbType.NVarChar).Value = request.PO;
                         command.Parameters.Add("@AssignedTo", SqlDbType.NVarChar).Value = request.AssignedTo;
                         command.Parameters.Add("@UpdatedBy", SqlDbType.NVarChar).Value = userName;
 

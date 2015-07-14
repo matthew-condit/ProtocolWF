@@ -41,6 +41,13 @@ namespace Toxikon.ProtocolManager.Controllers.Admin
             }
         }
 
+        private void SetColumnsHeaderSize()
+        {
+            this.view.SetListViewAutoResizeColumns(0, ColumnHeaderAutoResizeStyle.ColumnContent);
+            this.view.SetListViewAutoResizeColumns(1, ColumnHeaderAutoResizeStyle.ColumnContent);
+            this.view.SetListViewAutoResizeColumns(2, ColumnHeaderAutoResizeStyle.HeaderSize);
+        }
+
         private void AddItemsToComboBox()
         {
             foreach (Item item in comboBoxItems)
@@ -63,12 +70,14 @@ namespace Toxikon.ProtocolManager.Controllers.Admin
             this.ClearListView();
             this.listViewItems = QTemplates.GetItemsByGroupID(this.comboBoxSelectedItem.ID);
             AddItemsToListView();
+            SetColumnsHeaderSize();
         }
 
         public void ClearListView()
         {
             this.listViewItems.Clear();
             this.view.ClearListView();
+            this.listViewSelectedItem = null;
         }
 
         public void AddItemsToListView()
@@ -93,6 +102,8 @@ namespace Toxikon.ProtocolManager.Controllers.Admin
             if (this.comboBoxSelectedItem != null && view.TextBoxValue.Trim() != "")
             {
                 InsertNewTemplate();
+                LoadListViewItems();
+                this.view.ClearTextBox();
             }
             else
             {
@@ -108,7 +119,19 @@ namespace Toxikon.ProtocolManager.Controllers.Admin
 
         public void UpdateButtonClicked()
         {
+            if(this.listViewSelectedItem != null)
+            {
+                Item result = ShowPopup();
+                if (result.Value != String.Empty)
+                {
+                    this.listViewSelectedItem.Value = result.Value;
+                    this.listViewSelectedItem.IsActive = result.IsActive;
 
+                    LoginInfo loginInfo = LoginInfo.GetInstance();
+                    QTemplates.UpdateItem(this.listViewSelectedItem, loginInfo.UserName);
+                    this.LoadListViewItems();
+                }
+            }
         }
 
         private Item ShowPopup()

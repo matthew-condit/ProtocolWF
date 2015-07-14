@@ -49,8 +49,8 @@ namespace Toxikon.ProtocolManager.Queries
                     using (SqlCommand command = new SqlCommand("pn_insert_protocol_number", connection))
                     {
                         command.CommandType = CommandType.StoredProcedure;
-                        command.Parameters.Add("@ProtocolRequestID", SqlDbType.Int).Value = item.ProtocolRequestID;
-                        command.Parameters.Add("@ProtocolTitleID", SqlDbType.Int).Value = item.ProtocolTitleID;
+                        command.Parameters.Add("@RequestID", SqlDbType.Int).Value = item.RequestID;
+                        command.Parameters.Add("@TemplateID", SqlDbType.Int).Value = item.TemplateID;
                         command.Parameters.Add("@ProtocolNumber", SqlDbType.NVarChar).Value = item.FullCode;
                         command.Parameters.Add("@YearNumber", SqlDbType.Int).Value = item.YearNumber;
                         command.Parameters.Add("@SequenceNumber", SqlDbType.Int).Value = item.SequenceNumber;
@@ -78,8 +78,8 @@ namespace Toxikon.ProtocolManager.Queries
                     using (SqlCommand command = new SqlCommand("pn_select_protocol_number", connection))
                     {
                         command.CommandType = CommandType.StoredProcedure;
-                        command.Parameters.Add("@ProtocolRequestID", SqlDbType.Int).Value = item.ProtocolRequestID;
-                        command.Parameters.Add("@ProtocolTitleID", SqlDbType.Int).Value = item.ProtocolTitleID;
+                        command.Parameters.Add("@RequestID", SqlDbType.Int).Value = item.RequestID;
+                        command.Parameters.Add("@TemplateID", SqlDbType.Int).Value = item.TemplateID;
                         command.Parameters.Add("@ProtocolNumber", SqlDbType.NVarChar).Value = item.FullCode;
 
                         SqlDataReader reader = command.ExecuteReader();
@@ -109,8 +109,8 @@ namespace Toxikon.ProtocolManager.Queries
                     using (SqlCommand command = new SqlCommand("pn_update_protocol_number", connection))
                     {
                         command.CommandType = CommandType.StoredProcedure;
-                        command.Parameters.Add("@ProtocolRequestID", SqlDbType.Int).Value = item.ProtocolRequestID;
-                        command.Parameters.Add("@ProtocolTitleID", SqlDbType.Int).Value = item.ProtocolTitleID;
+                        command.Parameters.Add("@RequestID", SqlDbType.Int).Value = item.RequestID;
+                        command.Parameters.Add("@TemplateID", SqlDbType.Int).Value = item.TemplateID;
                         command.Parameters.Add("@ProtocolNumber", SqlDbType.NVarChar).Value = item.FullCode;
                         command.Parameters.Add("@RevisedNumber", SqlDbType.Int).Value = item.RevisedNumber;
                         command.Parameters.Add("@UpdatedBy", SqlDbType.NVarChar).Value = userName;

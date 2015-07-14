@@ -91,6 +91,7 @@
     <Compile Include="Controllers\Admin\TemplateGroupsController.cs" />
     <Compile Include="Controllers\Admin\TemplateListController.cs" />
     <Compile Include="Controllers\Controller.cs" />
+    <Compile Include="Controllers\Protocols\TemplateOptionsController.cs" />
     <Compile Include="Controllers\Templates\UCToolStripListView1Controller.cs" />
     <Compile Include="Controllers\HistoryController.cs" />
     <Compile Include="Controllers\Protocols\ProtocolRequestReadOnlyController.cs" />
@@ -134,6 +135,7 @@
     <Compile Include="Interfaces\Admin\IUserEditView.cs" />
     <Compile Include="Interfaces\Admin\IUserListView.cs" />
     <Compile Include="Interfaces\Templates\IOneTextBoxTrueFalseForm.cs" />
+    <Compile Include="Interfaces\Protocols\ITemplateOptionsForm.cs" />
     <Compile Include="Interfaces\Templates\IUCToolStripListView1.cs" />
     <Compile Include="Interfaces\Templates\IUCTemplate2.cs" />
     <Compile Include="Models\Admin\AuditHandler.cs" />
@@ -144,7 +146,7 @@
     <Compile Include="Models\Protocols\ProtocolActivity.cs" />
     <Compile Include="Models\Protocols\ProtocolEvent.cs" />
     <Compile Include="Models\Protocols\ProtocolNumber.cs" />
-    <Compile Include="Models\Protocols\ProtocolTitle.cs" />
+    <Compile Include="Models\Protocols\ProtocolTemplate.cs" />
     <Compile Include="Models\Reports\ExcelDataTable.cs" />
     <Compile Include="Models\Reports\ExcelTemplate.cs" />
     <Compile Include="Models\Reports\ProtocolRequestReport.cs" />
@@ -158,7 +160,7 @@
     <Compile Include="Queries\QProtocolNumbers.cs" />
     <Compile Include="Queries\QProtocolRequests.cs" />
     <Compile Include="Queries\QDepartments.cs" />
-    <Compile Include="Queries\QProtocolTitles.cs" />
+    <Compile Include="Queries\QProtocolRequestTemplates.cs" />
     <Compile Include="Queries\QRoles.cs" />
     <Compile Include="Queries\QTemplateGroups.cs" />
     <Compile Include="Queries\QTemplates.cs" />
@@ -283,6 +285,12 @@
     <Compile Include="Views\Templates\OneTextBoxTrueFalseForm.Designer.cs">
       <DependentUpon>OneTextBoxTrueFalseForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\Protocols\TemplateOptionsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Protocols\TemplateOptionsForm.Designer.cs">
+      <DependentUpon>TemplateOptionsForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\Templates\UCTemplate2View.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -358,6 +366,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Templates\OneTextBoxTrueFalseForm.resx">
       <DependentUpon>OneTextBoxTrueFalseForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Protocols\TemplateOptionsForm.resx">
+      <DependentUpon>TemplateOptionsForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Templates\UCTemplate2View.resx">
       <DependentUpon>UCTemplate2View.cs</DependentUpon>

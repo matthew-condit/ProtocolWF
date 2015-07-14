@@ -67,7 +67,7 @@ namespace Toxikon.ProtocolManager.Views.Protocols
             this.SponsorListView.Location = new System.Drawing.Point(3, 3);
             this.SponsorListView.MultiSelect = false;
             this.SponsorListView.Name = "SponsorListView";
-            this.SponsorListView.Size = new System.Drawing.Size(1194, 293);
+            this.SponsorListView.Size = new System.Drawing.Size(1194, 193);
             this.SponsorListView.TabIndex = 43;
             this.SponsorListView.UseCompatibleStateImageBehavior = false;
             this.SponsorListView.View = System.Windows.Forms.View.Details;
@@ -136,8 +136,8 @@ namespace Toxikon.ProtocolManager.Views.Protocols
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 35);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 2;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 45F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 55F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 30F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 70F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(1200, 665);
             this.tableLayoutPanel1.TabIndex = 3;
             // 
@@ -147,9 +147,9 @@ namespace Toxikon.ProtocolManager.Views.Protocols
             this.panel1.Controls.Add(this.toolStrip2);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.panel1.Location = new System.Drawing.Point(3, 302);
+            this.panel1.Location = new System.Drawing.Point(3, 202);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1194, 360);
+            this.panel1.Size = new System.Drawing.Size(1194, 460);
             this.panel1.TabIndex = 44;
             // 
             // tableLayoutPanel2
@@ -164,7 +164,7 @@ namespace Toxikon.ProtocolManager.Views.Protocols
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 1;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(1194, 322);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(1194, 422);
             this.tableLayoutPanel2.TabIndex = 47;
             // 
             // RequestForm
@@ -177,6 +177,7 @@ namespace Toxikon.ProtocolManager.Views.Protocols
             this.RequestForm.Comments = "";
             this.RequestForm.Compliance = "";
             this.RequestForm.ContactName = "Contact";
+            this.RequestForm.Cost = "";
             this.RequestForm.Dock = System.Windows.Forms.DockStyle.Top;
             this.RequestForm.DueDate = new System.DateTime(2015, 7, 6, 0, 0, 0, 0);
             this.RequestForm.Email = "Email";
@@ -192,7 +193,7 @@ namespace Toxikon.ProtocolManager.Views.Protocols
             this.RequestForm.RequestedBy = "Requested By";
             this.RequestForm.RequestedDate = "Requested Date";
             this.RequestForm.SendVia = "";
-            this.RequestForm.Size = new System.Drawing.Size(591, 314);
+            this.RequestForm.Size = new System.Drawing.Size(591, 354);
             this.RequestForm.SponsorName = "Sponsor";
             this.RequestForm.State = "State";
             this.RequestForm.TabIndex = 45;
@@ -211,7 +212,7 @@ namespace Toxikon.ProtocolManager.Views.Protocols
             this.TitleDataGridView.Location = new System.Drawing.Point(600, 3);
             this.TitleDataGridView.MultiSelect = false;
             this.TitleDataGridView.Name = "TitleDataGridView";
-            this.TitleDataGridView.Size = new System.Drawing.Size(591, 316);
+            this.TitleDataGridView.Size = new System.Drawing.Size(591, 355);
             this.TitleDataGridView.TabIndex = 46;
             // 
             // TitleCol

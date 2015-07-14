@@ -138,9 +138,9 @@ namespace Toxikon.ProtocolManager.Models.Reports
 
         private void CreateProtocolTitleSheets(ExcelTemplate excelTemplate)
         {
-            for(int i = 0; i < this.protocolRequest.Titles.Count; i++)
+            for(int i = 0; i < this.protocolRequest.Templates.Count; i++)
             {
-                ProtocolTitle title = this.protocolRequest.Titles[i];
+                ProtocolTemplate title = this.protocolRequest.Templates[i];
                 ExcelWorksheet worksheet = CreateNewWorksheet(excelTemplate, i + 1);
                 InsertProtocolTitleSheetHeader(worksheet, title);
                 InsertProtocolEventsDataTable(excelTemplate, worksheet, title);
@@ -148,7 +148,7 @@ namespace Toxikon.ProtocolManager.Models.Reports
             }
         }
 
-        private void InsertProtocolTitleSheetHeader(ExcelWorksheet worksheet, ProtocolTitle title)
+        private void InsertProtocolTitleSheetHeader(ExcelWorksheet worksheet, ProtocolTemplate title)
         {
             InsertReportHeaderRow(worksheet, "A1", "A1", "Title: ", true, false);
             InsertReportHeaderRow(worksheet, "B1", "G1", title.Description, false, false);
@@ -159,20 +159,20 @@ namespace Toxikon.ProtocolManager.Models.Reports
         }
 
         private void InsertProtocolEventsDataTable(ExcelTemplate excelTemplate, ExcelWorksheet worksheet, 
-                                                   ProtocolTitle title)
+                                                   ProtocolTemplate title)
         {
             DataTable dataTable = QProtocolActivities.SelectItemsToDataTable(this.protocolRequest.ID,
-                                      title.ID);
-            ExcelDataTable eventsDataTable = CreateNewExcelDataTable("EventsTable" + title.ID, dataTable, 1, 4);
+                                      title.TemplateID);
+            ExcelDataTable eventsDataTable = CreateNewExcelDataTable("EventsTable" + title.TemplateID, dataTable, 1, 4);
             InsertExcelDataTable(excelTemplate, worksheet, eventsDataTable);
             FormatExcelDataTable(worksheet, eventsDataTable);
         }
 
         private void InsertProtocolCommentsDataTable(ExcelTemplate excelTemplate, ExcelWorksheet worksheet, 
-                                                     ProtocolTitle title)
+                                                     ProtocolTemplate title)
         {
             DataTable dataTable = QProtocolComments.SelectItemsToDataTable(title);
-            ExcelDataTable excelDataTable = CreateNewExcelDataTable("CommentsTable" + title.ID, dataTable, 5, 4);
+            ExcelDataTable excelDataTable = CreateNewExcelDataTable("CommentsTable" + title.TemplateID, dataTable, 5, 4);
             InsertExcelDataTable(excelTemplate, worksheet, excelDataTable);
             FormatExcelDataTable(worksheet, excelDataTable);
         }

@@ -49,7 +49,6 @@
             this.CityLabel = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
-            this.POLabel = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.FaxNumberLabel = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
@@ -78,6 +77,9 @@
             this.SendViaTextBox = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
             this.DueDateDateTimePicker = new System.Windows.Forms.DateTimePicker();
+            this.POTextBox = new System.Windows.Forms.TextBox();
+            this.label21 = new System.Windows.Forms.Label();
+            this.CostTextBox = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel1.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
             this.flowLayoutPanel2.SuspendLayout();
@@ -92,7 +94,8 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 99F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 268F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 98F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 331F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 332F));
+            this.tableLayoutPanel1.Controls.Add(this.label21, 0, 9);
             this.tableLayoutPanel1.Controls.Add(this.label1, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.RequestedDateLabel, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.RequestedByLabel, 1, 1);
@@ -111,8 +114,6 @@
             this.tableLayoutPanel1.Controls.Add(this.label6, 2, 4);
             this.tableLayoutPanel1.Controls.Add(this.CityLabel, 3, 4);
             this.tableLayoutPanel1.Controls.Add(this.label19, 0, 4);
-            this.tableLayoutPanel1.Controls.Add(this.label11, 2, 9);
-            this.tableLayoutPanel1.Controls.Add(this.POLabel, 3, 9);
             this.tableLayoutPanel1.Controls.Add(this.label10, 2, 8);
             this.tableLayoutPanel1.Controls.Add(this.FaxNumberLabel, 3, 8);
             this.tableLayoutPanel1.Controls.Add(this.label9, 2, 7);
@@ -125,30 +126,35 @@
             this.tableLayoutPanel1.Controls.Add(this.flowLayoutPanel3, 1, 4);
             this.tableLayoutPanel1.Controls.Add(this.label20, 0, 5);
             this.tableLayoutPanel1.Controls.Add(this.flowLayoutPanel4, 1, 5);
-            this.tableLayoutPanel1.Controls.Add(this.label15, 0, 9);
-            this.tableLayoutPanel1.Controls.Add(this.CommentTextBox, 1, 9);
-            this.tableLayoutPanel1.Controls.Add(this.label14, 0, 8);
             this.tableLayoutPanel1.Controls.Add(this.BillToTextBox, 1, 8);
             this.tableLayoutPanel1.Controls.Add(this.label13, 0, 7);
             this.tableLayoutPanel1.Controls.Add(this.SendViaTextBox, 1, 7);
             this.tableLayoutPanel1.Controls.Add(this.label12, 0, 6);
             this.tableLayoutPanel1.Controls.Add(this.DueDateDateTimePicker, 1, 6);
+            this.tableLayoutPanel1.Controls.Add(this.label14, 0, 8);
+            this.tableLayoutPanel1.Controls.Add(this.CostTextBox, 1, 9);
+            this.tableLayoutPanel1.Controls.Add(this.label15, 0, 11);
+            this.tableLayoutPanel1.Controls.Add(this.label11, 0, 10);
+            this.tableLayoutPanel1.Controls.Add(this.CommentTextBox, 1, 11);
+            this.tableLayoutPanel1.Controls.Add(this.POTextBox, 1, 10);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 10;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 26F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 26F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 26F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 26F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 26F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 26F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 26F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 26F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 26F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 26F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(700, 278);
+            this.tableLayoutPanel1.RowCount = 12;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(700, 340);
             this.tableLayoutPanel1.TabIndex = 1;
             // 
             // label1
@@ -175,7 +181,7 @@
             // RequestedByLabel
             // 
             this.RequestedByLabel.AutoSize = true;
-            this.RequestedByLabel.Location = new System.Drawing.Point(104, 28);
+            this.RequestedByLabel.Location = new System.Drawing.Point(104, 25);
             this.RequestedByLabel.Name = "RequestedByLabel";
             this.RequestedByLabel.Padding = new System.Windows.Forms.Padding(0, 4, 0, 4);
             this.RequestedByLabel.Size = new System.Drawing.Size(78, 23);
@@ -186,7 +192,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(4, 28);
+            this.label2.Location = new System.Drawing.Point(4, 25);
             this.label2.Name = "label2";
             this.label2.Padding = new System.Windows.Forms.Padding(0, 4, 0, 4);
             this.label2.Size = new System.Drawing.Size(84, 23);
@@ -197,7 +203,7 @@
             // 
             this.label16.AutoSize = true;
             this.label16.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label16.Location = new System.Drawing.Point(373, 28);
+            this.label16.Location = new System.Drawing.Point(373, 25);
             this.label16.Name = "label16";
             this.label16.Padding = new System.Windows.Forms.Padding(0, 4, 0, 4);
             this.label16.Size = new System.Drawing.Size(42, 23);
@@ -207,7 +213,7 @@
             // EmailLabel
             // 
             this.EmailLabel.AutoSize = true;
-            this.EmailLabel.Location = new System.Drawing.Point(472, 28);
+            this.EmailLabel.Location = new System.Drawing.Point(472, 25);
             this.EmailLabel.Name = "EmailLabel";
             this.EmailLabel.Padding = new System.Windows.Forms.Padding(0, 4, 0, 4);
             this.EmailLabel.Size = new System.Drawing.Size(36, 23);
@@ -239,7 +245,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(373, 55);
+            this.label3.Location = new System.Drawing.Point(373, 49);
             this.label3.Name = "label3";
             this.label3.Padding = new System.Windows.Forms.Padding(0, 4, 0, 4);
             this.label3.Size = new System.Drawing.Size(57, 23);
@@ -249,7 +255,7 @@
             // SponsorNameLabel
             // 
             this.SponsorNameLabel.AutoSize = true;
-            this.SponsorNameLabel.Location = new System.Drawing.Point(472, 55);
+            this.SponsorNameLabel.Location = new System.Drawing.Point(472, 49);
             this.SponsorNameLabel.Name = "SponsorNameLabel";
             this.SponsorNameLabel.Padding = new System.Windows.Forms.Padding(0, 4, 0, 4);
             this.SponsorNameLabel.Size = new System.Drawing.Size(50, 23);
@@ -260,7 +266,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(373, 82);
+            this.label5.Location = new System.Drawing.Point(373, 75);
             this.label5.Name = "label5";
             this.label5.Padding = new System.Windows.Forms.Padding(0, 4, 0, 4);
             this.label5.Size = new System.Drawing.Size(55, 23);
@@ -270,7 +276,7 @@
             // AddressLabel
             // 
             this.AddressLabel.AutoSize = true;
-            this.AddressLabel.Location = new System.Drawing.Point(472, 82);
+            this.AddressLabel.Location = new System.Drawing.Point(472, 75);
             this.AddressLabel.Name = "AddressLabel";
             this.AddressLabel.Padding = new System.Windows.Forms.Padding(0, 4, 0, 4);
             this.AddressLabel.Size = new System.Drawing.Size(49, 23);
@@ -281,7 +287,7 @@
             // 
             this.label17.AutoSize = true;
             this.label17.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label17.Location = new System.Drawing.Point(4, 55);
+            this.label17.Location = new System.Drawing.Point(4, 49);
             this.label17.Name = "label17";
             this.label17.Padding = new System.Windows.Forms.Padding(0, 4, 0, 4);
             this.label17.Size = new System.Drawing.Size(65, 23);
@@ -292,7 +298,7 @@
             // 
             this.label18.AutoSize = true;
             this.label18.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label18.Location = new System.Drawing.Point(4, 82);
+            this.label18.Location = new System.Drawing.Point(4, 75);
             this.label18.Name = "label18";
             this.label18.Padding = new System.Windows.Forms.Padding(0, 4, 0, 4);
             this.label18.Size = new System.Drawing.Size(73, 23);
@@ -302,7 +308,7 @@
             // StateLabel
             // 
             this.StateLabel.AutoSize = true;
-            this.StateLabel.Location = new System.Drawing.Point(472, 136);
+            this.StateLabel.Location = new System.Drawing.Point(472, 129);
             this.StateLabel.Name = "StateLabel";
             this.StateLabel.Padding = new System.Windows.Forms.Padding(0, 4, 0, 4);
             this.StateLabel.Size = new System.Drawing.Size(33, 23);
@@ -313,7 +319,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(373, 109);
+            this.label6.Location = new System.Drawing.Point(373, 102);
             this.label6.Name = "label6";
             this.label6.Padding = new System.Windows.Forms.Padding(0, 4, 0, 4);
             this.label6.Size = new System.Drawing.Size(33, 23);
@@ -323,7 +329,7 @@
             // CityLabel
             // 
             this.CityLabel.AutoSize = true;
-            this.CityLabel.Location = new System.Drawing.Point(472, 109);
+            this.CityLabel.Location = new System.Drawing.Point(472, 102);
             this.CityLabel.Name = "CityLabel";
             this.CityLabel.Padding = new System.Windows.Forms.Padding(0, 4, 0, 4);
             this.CityLabel.Size = new System.Drawing.Size(28, 23);
@@ -334,7 +340,7 @@
             // 
             this.label19.AutoSize = true;
             this.label19.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label19.Location = new System.Drawing.Point(4, 109);
+            this.label19.Location = new System.Drawing.Point(4, 102);
             this.label19.Name = "label19";
             this.label19.Padding = new System.Windows.Forms.Padding(0, 4, 0, 4);
             this.label19.Size = new System.Drawing.Size(87, 23);
@@ -345,28 +351,18 @@
             // 
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(373, 244);
+            this.label11.Location = new System.Drawing.Point(4, 276);
             this.label11.Name = "label11";
             this.label11.Padding = new System.Windows.Forms.Padding(0, 4, 0, 4);
             this.label11.Size = new System.Drawing.Size(29, 23);
-            this.label11.TabIndex = 41;
+            this.label11.TabIndex = 24;
             this.label11.Text = "PO: ";
-            // 
-            // POLabel
-            // 
-            this.POLabel.AutoSize = true;
-            this.POLabel.Location = new System.Drawing.Point(472, 244);
-            this.POLabel.Name = "POLabel";
-            this.POLabel.Padding = new System.Windows.Forms.Padding(0, 4, 0, 4);
-            this.POLabel.Size = new System.Drawing.Size(23, 23);
-            this.POLabel.TabIndex = 42;
-            this.POLabel.Text = "PO";
             // 
             // label10
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(373, 217);
+            this.label10.Location = new System.Drawing.Point(373, 216);
             this.label10.Name = "label10";
             this.label10.Padding = new System.Windows.Forms.Padding(0, 4, 0, 4);
             this.label10.Size = new System.Drawing.Size(31, 23);
@@ -376,7 +372,7 @@
             // FaxNumberLabel
             // 
             this.FaxNumberLabel.AutoSize = true;
-            this.FaxNumberLabel.Location = new System.Drawing.Point(472, 217);
+            this.FaxNumberLabel.Location = new System.Drawing.Point(472, 216);
             this.FaxNumberLabel.Name = "FaxNumberLabel";
             this.FaxNumberLabel.Padding = new System.Windows.Forms.Padding(0, 4, 0, 4);
             this.FaxNumberLabel.Size = new System.Drawing.Size(24, 23);
@@ -387,7 +383,7 @@
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(373, 190);
+            this.label9.Location = new System.Drawing.Point(373, 186);
             this.label9.Name = "label9";
             this.label9.Padding = new System.Windows.Forms.Padding(0, 4, 0, 4);
             this.label9.Size = new System.Drawing.Size(91, 23);
@@ -397,7 +393,7 @@
             // PhoneNumberLabel
             // 
             this.PhoneNumberLabel.AutoSize = true;
-            this.PhoneNumberLabel.Location = new System.Drawing.Point(472, 190);
+            this.PhoneNumberLabel.Location = new System.Drawing.Point(472, 186);
             this.PhoneNumberLabel.Name = "PhoneNumberLabel";
             this.PhoneNumberLabel.Padding = new System.Windows.Forms.Padding(0, 4, 0, 4);
             this.PhoneNumberLabel.Size = new System.Drawing.Size(88, 23);
@@ -408,7 +404,7 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(373, 136);
+            this.label7.Location = new System.Drawing.Point(373, 129);
             this.label7.Name = "label7";
             this.label7.Padding = new System.Windows.Forms.Padding(0, 4, 0, 4);
             this.label7.Size = new System.Drawing.Size(40, 23);
@@ -419,7 +415,7 @@
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(373, 163);
+            this.label8.Location = new System.Drawing.Point(373, 156);
             this.label8.Name = "label8";
             this.label8.Padding = new System.Windows.Forms.Padding(0, 4, 0, 4);
             this.label8.Size = new System.Drawing.Size(60, 23);
@@ -429,7 +425,7 @@
             // ZipCodeLabel
             // 
             this.ZipCodeLabel.AutoSize = true;
-            this.ZipCodeLabel.Location = new System.Drawing.Point(472, 163);
+            this.ZipCodeLabel.Location = new System.Drawing.Point(472, 156);
             this.ZipCodeLabel.Name = "ZipCodeLabel";
             this.ZipCodeLabel.Padding = new System.Windows.Forms.Padding(0, 4, 0, 4);
             this.ZipCodeLabel.Size = new System.Drawing.Size(55, 23);
@@ -440,7 +436,7 @@
             // 
             this.flowLayoutPanel1.Controls.Add(this.GuidelinesTextBox);
             this.flowLayoutPanel1.Controls.Add(this.OpenGuidelinesOptions);
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(101, 55);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(101, 49);
             this.flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(0);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             this.flowLayoutPanel1.Size = new System.Drawing.Size(268, 25);
@@ -471,7 +467,7 @@
             // 
             this.flowLayoutPanel2.Controls.Add(this.ComplianceTextBox);
             this.flowLayoutPanel2.Controls.Add(this.OpenComplianceOptions);
-            this.flowLayoutPanel2.Location = new System.Drawing.Point(101, 82);
+            this.flowLayoutPanel2.Location = new System.Drawing.Point(101, 75);
             this.flowLayoutPanel2.Margin = new System.Windows.Forms.Padding(0);
             this.flowLayoutPanel2.Name = "flowLayoutPanel2";
             this.flowLayoutPanel2.Size = new System.Drawing.Size(268, 26);
@@ -502,7 +498,7 @@
             // 
             this.flowLayoutPanel3.Controls.Add(this.ProtocolTypeTextBox);
             this.flowLayoutPanel3.Controls.Add(this.OpenProtocolTypeOptions);
-            this.flowLayoutPanel3.Location = new System.Drawing.Point(101, 109);
+            this.flowLayoutPanel3.Location = new System.Drawing.Point(101, 102);
             this.flowLayoutPanel3.Margin = new System.Windows.Forms.Padding(0);
             this.flowLayoutPanel3.Name = "flowLayoutPanel3";
             this.flowLayoutPanel3.Size = new System.Drawing.Size(268, 26);
@@ -533,7 +529,7 @@
             // 
             this.label20.AutoSize = true;
             this.label20.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold);
-            this.label20.Location = new System.Drawing.Point(4, 136);
+            this.label20.Location = new System.Drawing.Point(4, 129);
             this.label20.Name = "label20";
             this.label20.Padding = new System.Windows.Forms.Padding(0, 4, 0, 4);
             this.label20.Size = new System.Drawing.Size(78, 23);
@@ -544,7 +540,7 @@
             // 
             this.flowLayoutPanel4.Controls.Add(this.AssignedToTextBox);
             this.flowLayoutPanel4.Controls.Add(this.OpenAssignedToOptions);
-            this.flowLayoutPanel4.Location = new System.Drawing.Point(101, 136);
+            this.flowLayoutPanel4.Location = new System.Drawing.Point(101, 129);
             this.flowLayoutPanel4.Margin = new System.Windows.Forms.Padding(0);
             this.flowLayoutPanel4.Name = "flowLayoutPanel4";
             this.flowLayoutPanel4.Size = new System.Drawing.Size(268, 26);
@@ -575,25 +571,25 @@
             // 
             this.label15.AutoSize = true;
             this.label15.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold);
-            this.label15.Location = new System.Drawing.Point(4, 244);
+            this.label15.Location = new System.Drawing.Point(4, 306);
             this.label15.Name = "label15";
             this.label15.Padding = new System.Windows.Forms.Padding(0, 4, 0, 4);
             this.label15.Size = new System.Drawing.Size(71, 23);
-            this.label15.TabIndex = 22;
+            this.label15.TabIndex = 26;
             this.label15.Text = "Comments: ";
             // 
             // CommentTextBox
             // 
-            this.CommentTextBox.Location = new System.Drawing.Point(104, 247);
+            this.CommentTextBox.Location = new System.Drawing.Point(104, 309);
             this.CommentTextBox.Name = "CommentTextBox";
             this.CommentTextBox.Size = new System.Drawing.Size(232, 23);
-            this.CommentTextBox.TabIndex = 23;
+            this.CommentTextBox.TabIndex = 27;
             // 
             // label14
             // 
             this.label14.AutoSize = true;
             this.label14.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold);
-            this.label14.Location = new System.Drawing.Point(4, 217);
+            this.label14.Location = new System.Drawing.Point(4, 216);
             this.label14.Name = "label14";
             this.label14.Padding = new System.Windows.Forms.Padding(0, 4, 0, 4);
             this.label14.Size = new System.Drawing.Size(46, 23);
@@ -602,7 +598,7 @@
             // 
             // BillToTextBox
             // 
-            this.BillToTextBox.Location = new System.Drawing.Point(104, 220);
+            this.BillToTextBox.Location = new System.Drawing.Point(104, 219);
             this.BillToTextBox.Name = "BillToTextBox";
             this.BillToTextBox.Size = new System.Drawing.Size(125, 23);
             this.BillToTextBox.TabIndex = 21;
@@ -611,7 +607,7 @@
             // 
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold);
-            this.label13.Location = new System.Drawing.Point(4, 190);
+            this.label13.Location = new System.Drawing.Point(4, 186);
             this.label13.Name = "label13";
             this.label13.Padding = new System.Windows.Forms.Padding(0, 4, 0, 4);
             this.label13.Size = new System.Drawing.Size(32, 23);
@@ -620,7 +616,7 @@
             // 
             // SendViaTextBox
             // 
-            this.SendViaTextBox.Location = new System.Drawing.Point(104, 193);
+            this.SendViaTextBox.Location = new System.Drawing.Point(104, 189);
             this.SendViaTextBox.Name = "SendViaTextBox";
             this.SendViaTextBox.Size = new System.Drawing.Size(125, 23);
             this.SendViaTextBox.TabIndex = 19;
@@ -629,7 +625,7 @@
             // 
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold);
-            this.label12.Location = new System.Drawing.Point(4, 163);
+            this.label12.Location = new System.Drawing.Point(4, 156);
             this.label12.Name = "label12";
             this.label12.Padding = new System.Windows.Forms.Padding(0, 4, 0, 4);
             this.label12.Size = new System.Drawing.Size(63, 23);
@@ -639,10 +635,35 @@
             // DueDateDateTimePicker
             // 
             this.DueDateDateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.DueDateDateTimePicker.Location = new System.Drawing.Point(104, 166);
+            this.DueDateDateTimePicker.Location = new System.Drawing.Point(104, 159);
             this.DueDateDateTimePicker.Name = "DueDateDateTimePicker";
             this.DueDateDateTimePicker.Size = new System.Drawing.Size(125, 23);
             this.DueDateDateTimePicker.TabIndex = 17;
+            // 
+            // POTextBox
+            // 
+            this.POTextBox.Location = new System.Drawing.Point(104, 279);
+            this.POTextBox.Name = "POTextBox";
+            this.POTextBox.Size = new System.Drawing.Size(125, 23);
+            this.POTextBox.TabIndex = 25;
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold);
+            this.label21.Location = new System.Drawing.Point(4, 246);
+            this.label21.Name = "label21";
+            this.label21.Padding = new System.Windows.Forms.Padding(0, 4, 0, 4);
+            this.label21.Size = new System.Drawing.Size(33, 23);
+            this.label21.TabIndex = 22;
+            this.label21.Text = "Cost:";
+            // 
+            // CostTextBox
+            // 
+            this.CostTextBox.Location = new System.Drawing.Point(104, 249);
+            this.CostTextBox.Name = "CostTextBox";
+            this.CostTextBox.Size = new System.Drawing.Size(125, 23);
+            this.CostTextBox.TabIndex = 23;
             // 
             // RequestFormAdd
             // 
@@ -653,7 +674,7 @@
             this.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "RequestFormAdd";
-            this.Size = new System.Drawing.Size(700, 278);
+            this.Size = new System.Drawing.Size(700, 340);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             this.flowLayoutPanel1.ResumeLayout(false);
@@ -712,12 +733,14 @@
         private System.Windows.Forms.Label AddressLabel;
         private System.Windows.Forms.Label StateLabel;
         private System.Windows.Forms.Label CityLabel;
-        private System.Windows.Forms.Label POLabel;
         private System.Windows.Forms.Label FaxNumberLabel;
         private System.Windows.Forms.Label PhoneNumberLabel;
         private System.Windows.Forms.Label ZipCodeLabel;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel4;
         private System.Windows.Forms.TextBox AssignedToTextBox;
         private System.Windows.Forms.Button OpenAssignedToOptions;
+        private System.Windows.Forms.Label label21;
+        private System.Windows.Forms.TextBox POTextBox;
+        private System.Windows.Forms.TextBox CostTextBox;
     }
 }

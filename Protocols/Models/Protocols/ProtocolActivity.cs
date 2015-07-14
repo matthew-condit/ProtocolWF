@@ -9,8 +9,8 @@ namespace Toxikon.ProtocolManager.Models
 {
     public class ProtocolActivity
     {
-        public int ProtocolRequestID { get; set; }
-        public int ProtocolTitleID { get; set; }
+        public int RequestID { get; set; }
+        public int TemplateID { get; set; }
         public ProtocolEvent ProtocolEvent { get; set; }
 
         public string CreatedBy { get; set; }
@@ -18,17 +18,17 @@ namespace Toxikon.ProtocolManager.Models
 
         public ProtocolActivity()
         {
-            this.ProtocolRequestID = 0;
-            this.ProtocolTitleID = 0;
+            this.RequestID = 0;
+            this.TemplateID = 0;
             this.ProtocolEvent = new ProtocolEvent();
             this.CreatedBy = "";
             this.CreatedDate = DateTime.Now;
         }
 
-        public ProtocolActivity(ProtocolTitle title, int eventID, string createdBy)
+        public ProtocolActivity(ProtocolTemplate title, int eventID, string createdBy)
         {
-            this.ProtocolRequestID = title.ProtocolRequestID;
-            this.ProtocolTitleID = title.ID;
+            this.RequestID = title.RequestID;
+            this.TemplateID = title.TemplateID;
             this.ProtocolEvent = new ProtocolEvent(eventID);
             this.CreatedBy = createdBy;
         }

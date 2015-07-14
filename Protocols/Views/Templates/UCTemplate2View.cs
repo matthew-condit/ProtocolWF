@@ -61,6 +61,11 @@ namespace Toxikon.ProtocolManager.Views.Templates
             }
         }
 
+        public void SetListViewAutoResizeColumns(int columnIndex, ColumnHeaderAutoResizeStyle style)
+        {
+            this.ItemsListView.Columns[columnIndex].AutoResize(style);
+        }
+
         public void ClearListView()
         {
             this.ItemsListView.Items.Clear();
@@ -95,6 +100,25 @@ namespace Toxikon.ProtocolManager.Views.Templates
             if(this.controller is TemplateListController)
             {
                 ((TemplateListController)this.controller).ComboBoxSelectedIndexChanged(this.MainComboBox.SelectedIndex);
+            }
+        }
+
+        private void UpdateButton_Click(object sender, EventArgs e)
+        {
+            if(this.controller is TemplateListController)
+            {
+                ((TemplateListController)this.controller).UpdateButtonClicked();
+            }
+        }
+
+        private void ItemsListView_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if(this.ItemsListView.SelectedIndices.Count > 0)
+            {
+                if (this.controller is TemplateListController)
+                {
+                    ((TemplateListController)this.controller).ListViewSelectedIndexChanged(this.ItemsListView.SelectedIndices[0]);
+                }
             }
         }
     }

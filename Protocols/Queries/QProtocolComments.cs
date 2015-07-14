@@ -17,7 +17,7 @@ namespace Toxikon.ProtocolManager.Queries
         private static string CONNECTION_STRING = Utility.GetTPMConnectionString();
         private const string ErrorFormName = "QProtocolComments";
 
-        public static void InsertItem(ProtocolTitle title, string comments, string userName)
+        public static void InsertItem(ProtocolTemplate title, string comments, string userName)
         {
             try
             {
@@ -27,8 +27,8 @@ namespace Toxikon.ProtocolManager.Queries
                     using (SqlCommand command = new SqlCommand("pc_insert_comments", connection))
                     {
                         command.CommandType = CommandType.StoredProcedure;
-                        command.Parameters.Add("@ProtocolRequestID", SqlDbType.Int).Value = title.ProtocolRequestID;
-                        command.Parameters.Add("@ProtocolTitleID", SqlDbType.Int).Value = title.ID;
+                        command.Parameters.Add("@RequestID", SqlDbType.Int).Value = title.RequestID;
+                        command.Parameters.Add("@TemplateID", SqlDbType.Int).Value = title.TemplateID;
                         command.Parameters.Add("@Comments", SqlDbType.NVarChar).Value = comments;
                         command.Parameters.Add("@CreatedBy", SqlDbType.NVarChar).Value = userName;
 
@@ -42,7 +42,7 @@ namespace Toxikon.ProtocolManager.Queries
             }
         }
 
-        public static IList SelectItems(ProtocolTitle title)
+        public static IList SelectItems(ProtocolTemplate title)
         {
             IList results = new ArrayList();
             try
@@ -53,8 +53,8 @@ namespace Toxikon.ProtocolManager.Queries
                     using (SqlCommand command = new SqlCommand("pc_select_active_comments", connection))
                     {
                         command.CommandType = CommandType.StoredProcedure;
-                        command.Parameters.Add("@ProtocolRequestID", SqlDbType.Int).Value = title.ProtocolRequestID;
-                        command.Parameters.Add("@ProtocolTitleID", SqlDbType.Int).Value = title.ID;
+                        command.Parameters.Add("@RequestID", SqlDbType.Int).Value = title.RequestID;
+                        command.Parameters.Add("@TemplateID", SqlDbType.Int).Value = title.TemplateID;
                         SqlDataReader reader = command.ExecuteReader();
                         while (reader.Read())
                         {
@@ -75,7 +75,7 @@ namespace Toxikon.ProtocolManager.Queries
             return results;
         }
 
-        public static DataTable SelectItemsToDataTable(ProtocolTitle title)
+        public static DataTable SelectItemsToDataTable(ProtocolTemplate title)
         {
             DataTable dataTable = new DataTable();
             try
@@ -88,8 +88,8 @@ namespace Toxikon.ProtocolManager.Queries
                         command.CommandType = CommandType.StoredProcedure;
 
                         command.Parameters.Clear();
-                        command.Parameters.Add("@ProtocolRequestID", SqlDbType.Int).Value = title.ProtocolRequestID;
-                        command.Parameters.Add("@ProtocolTitleID", SqlDbType.Int).Value = title.ID;
+                        command.Parameters.Add("@RequestID", SqlDbType.Int).Value = title.RequestID;
+                        command.Parameters.Add("@TemplateID", SqlDbType.Int).Value = title.TemplateID;
                         dataTable.Load(command.ExecuteReader());
                     }
                 }

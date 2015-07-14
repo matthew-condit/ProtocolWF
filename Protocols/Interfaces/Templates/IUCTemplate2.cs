@@ -20,6 +20,7 @@ namespace Toxikon.ProtocolManager.Interfaces.Templates
 
         void AddListViewColumns(IList columns);
         void AddItemToListView(string[] values);
+        void SetListViewAutoResizeColumns(int columnIndex, ColumnHeaderAutoResizeStyle style);
         void ClearListView();
 
         void ClearTextBox();

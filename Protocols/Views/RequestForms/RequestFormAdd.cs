@@ -53,6 +53,8 @@ namespace Toxikon.ProtocolManager.Views.RequestForms
             this.DueDate = DateTime.Now;
             this.SendVia = "";
             this.BillTo = "Toxikon";
+            this.Cost = "";
+            this.PONumber = "";
             this.CommentTextBox.Text = "";
             this.AssignedToTextBox.Text = "";
         }
@@ -114,8 +116,8 @@ namespace Toxikon.ProtocolManager.Views.RequestForms
         }
         public string PONumber
         {
-            get { return this.POLabel.Text; }
-            set { this.POLabel.Text = value; }
+            get { return this.POTextBox.Text; }
+            set { this.POTextBox.Text = value; }
         }
         public string Guidelines
         {
@@ -147,6 +149,13 @@ namespace Toxikon.ProtocolManager.Views.RequestForms
             get { return this.BillToTextBox.Text; }
             set { this.BillToTextBox.Text = value; }
         }
+
+        public string Cost
+        {
+            get { return this.CostTextBox.Text; }
+            set { this.CostTextBox.Text = value; }
+        }
+
         public string Comments
         {
             get { return this.CommentTextBox.Text; }

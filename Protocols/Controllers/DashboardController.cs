@@ -53,7 +53,7 @@ namespace Toxikon.ProtocolManager.Controllers
         {
             foreach (ProtocolRequest request in protocolRequests)
             {
-                request.SetTitles((List<ProtocolTitle>)QProtocolTitles.SelectItems(request.ID));
+                request.SetTitles((List<ProtocolTemplate>)QProtocolRequestTemplates.SelectItems(request.ID));
             }
         }
 

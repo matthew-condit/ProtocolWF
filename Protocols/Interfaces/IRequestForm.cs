@@ -31,6 +31,7 @@ namespace Toxikon.ProtocolManager.Interfaces
         DateTime DueDate { get; set; }
         string SendVia { get; set; }
         string BillTo { get; set; }
+        string Cost { get; set; }
         string Comments { get; set; }
         string AssignedTo { get; set; }
 

@@ -240,7 +240,7 @@
             this.TitlesListView.GridLines = true;
             this.TitlesListView.Location = new System.Drawing.Point(3, 3);
             this.TitlesListView.Name = "TitlesListView";
-            this.TitlesListView.Size = new System.Drawing.Size(993, 291);
+            this.TitlesListView.Size = new System.Drawing.Size(993, 258);
             this.TitlesListView.TabIndex = 45;
             this.TitlesListView.UseCompatibleStateImageBehavior = false;
             this.TitlesListView.View = System.Windows.Forms.View.Details;
@@ -300,8 +300,8 @@
             this.MainTableLayoutPanel.Location = new System.Drawing.Point(0, 38);
             this.MainTableLayoutPanel.Name = "MainTableLayoutPanel";
             this.MainTableLayoutPanel.RowCount = 2;
-            this.MainTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 45F));
-            this.MainTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 55F));
+            this.MainTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 40F));
+            this.MainTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 60F));
             this.MainTableLayoutPanel.Size = new System.Drawing.Size(999, 662);
             this.MainTableLayoutPanel.TabIndex = 46;
             // 
@@ -310,9 +310,9 @@
             this.panel2.Controls.Add(this.RequestForm);
             this.panel2.Controls.Add(this.toolStrip2);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(3, 300);
+            this.panel2.Location = new System.Drawing.Point(3, 267);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(993, 359);
+            this.panel2.Size = new System.Drawing.Size(993, 392);
             this.panel2.TabIndex = 46;
             // 
             // RequestForm
@@ -327,6 +327,7 @@
             this.RequestForm.Comments = "Comments";
             this.RequestForm.Compliance = "";
             this.RequestForm.ContactName = "Contact";
+            this.RequestForm.Cost = "";
             this.RequestForm.DueDate = new System.DateTime(2015, 7, 6, 17, 11, 19, 859);
             this.RequestForm.Email = "Email";
             this.RequestForm.FaxNumber = "Fax";
@@ -341,7 +342,7 @@
             this.RequestForm.RequestedBy = "Requested By";
             this.RequestForm.RequestedDate = "Requested Date";
             this.RequestForm.SendVia = "";
-            this.RequestForm.Size = new System.Drawing.Size(993, 278);
+            this.RequestForm.Size = new System.Drawing.Size(993, 346);
             this.RequestForm.SponsorName = "Sponsor";
             this.RequestForm.State = "State";
             this.RequestForm.TabIndex = 2;

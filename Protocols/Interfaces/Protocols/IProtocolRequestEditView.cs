@@ -14,7 +14,7 @@ namespace Toxikon.ProtocolManager.Interfaces.Protocols
     public interface IProtocolRequestEditView
     {
         void SetController(ProtocolRequestEditController controller);
-        void AddTitleToView(ProtocolTitle title);
+        void AddTitleToView(ProtocolTemplate title);
         void SetListViewAutoResizeColumns();
         void ClearProtocolTitleListView();
         void ClearView();

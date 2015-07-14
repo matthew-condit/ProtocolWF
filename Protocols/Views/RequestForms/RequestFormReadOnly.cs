@@ -51,6 +51,7 @@ namespace Toxikon.ProtocolManager.Views.RequestForms
             this.DueDateLabel.Text = "";
             this.SendVia = "";
             this.BillTo = "";
+            this.Cost = "";
             this.Comments = "";
             this.AssignedToLabel.Text = "";
         }
@@ -152,6 +153,12 @@ namespace Toxikon.ProtocolManager.Views.RequestForms
         {
             get { return this.BillToLabel.Text; }
             set { this.BillToLabel.Text = value; }
+        }
+
+        public string Cost
+        {
+            get { return this.CostLabel.Text; }
+            set { this.CostLabel.Text = value; }
         }
 
         public string Comments

@@ -18,12 +18,14 @@ namespace Toxikon.ProtocolManager.Models
         public string Guidelines { get; set; }
         public string Compliance { get; set; }
         public string ProtocolType { get; set; }
-        public List<ProtocolTitle> Titles { get; private set; }
+        public List<ProtocolTemplate> Templates { get; private set; }
         public DateTime DueDate { get; set; }
         public string SendVia { get; set; }
         public string BillTo { get; set; }
+        public string Cost { get; set; }
         public string Comments { get; set; }
         public string AssignedTo { get; set; }
+        public string PO { get; set; }
 
         public string RequestStatus { get; set; }
         public bool IsActive { get; set; }
@@ -42,11 +44,13 @@ namespace Toxikon.ProtocolManager.Models
             this.Guidelines = "";
             this.Compliance = "";
             this.ProtocolType = "";
-            this.Titles = new List<ProtocolTitle>() { };
+            this.Templates = new List<ProtocolTemplate>() { };
             this.DueDate = DateTime.Now;
             this.BillTo = "Toxikon";
+            this.Cost = "";
             this.Comments = "";
             this.AssignedTo = "";
+            this.PO = "";
             this.IsActive = true;
         }
 
@@ -75,21 +79,21 @@ namespace Toxikon.ProtocolManager.Models
         {
             foreach(string item in titleDescriptions)
             {
-                ProtocolTitle protocolTitle = new ProtocolTitle();
+                ProtocolTemplate protocolTitle = new ProtocolTemplate();
                 protocolTitle.Description = item;
-                this.Titles.Add(protocolTitle);
+                this.Templates.Add(protocolTitle);
             }
         }
 
-        public void SetTitles(List<ProtocolTitle> items)
+        public void SetTitles(List<ProtocolTemplate> items)
         {
-            this.Titles = new List<ProtocolTitle>(items);
+            this.Templates = new List<ProtocolTemplate>(items);
         }
 
         public void RefreshProtocolTitles()
         {
-            this.Titles.Clear();
-            this.Titles = (List<ProtocolTitle>)QProtocolTitles.SelectItems(this.ID);
+            this.Templates.Clear();
+            this.Templates = (List<ProtocolTemplate>)QProtocolRequestTemplates.SelectItems(this.ID);
         }
        
         public void CloseRequest()

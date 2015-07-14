@@ -9,8 +9,8 @@ namespace Toxikon.ProtocolManager.Models
 {
     public class ProtocolNumber
     {
-        public int ProtocolRequestID { get; set; }
-        public int ProtocolTitleID { get; set; }
+        public int RequestID { get; set; }
+        public int TemplateID { get; set; }
         public string FullCode { get; set; }
         public int YearNumber { get; set; }
         public int SequenceNumber { get; set; }
@@ -20,8 +20,8 @@ namespace Toxikon.ProtocolManager.Models
 
         public ProtocolNumber()
         {
-            this.ProtocolRequestID = 0;
-            this.ProtocolTitleID = 0;
+            this.RequestID = 0;
+            this.TemplateID = 0;
             this.FullCode = "";
             this.ProtocolType = "A";
             this.SequenceNumber = 0;
@@ -36,11 +36,11 @@ namespace Toxikon.ProtocolManager.Models
                             this.RevisedNumber.ToString("00") + this.ProtocolType;
         }
 
-        public void Create(ProtocolTitle title, string type)
+        public void Create(ProtocolTemplate title, string type)
         {
             this.SequenceNumber = QProtocolNumbers.InsertLastSequenceNumber();
-            this.ProtocolRequestID = title.ProtocolRequestID;
-            this.ProtocolTitleID = title.ID;
+            this.RequestID = title.RequestID;
+            this.TemplateID = title.TemplateID;
             this.ProtocolType = type == "File Copy" ? "A" : "B";
             this.RevisedNumber = 0;
             this.IsActive = true;

@@ -22,6 +22,7 @@ C:\Users\BMcCulley\Source\toxxwinapp\ProtocolsWF\Protocols\obj\Debug\Toxikon.Pro
 C:\Users\BMcCulley\Source\toxxwinapp\ProtocolsWF\Protocols\obj\Debug\Toxikon.ProtocolManager.Views.Protocols.ProtocolRequestEditView.resources
 C:\Users\BMcCulley\Source\toxxwinapp\ProtocolsWF\Protocols\obj\Debug\Toxikon.ProtocolManager.Views.Admin.UserEditView.resources
 C:\Users\BMcCulley\Source\toxxwinapp\ProtocolsWF\Protocols\obj\Debug\Toxikon.ProtocolManager.Views.Templates.OneTextBoxTrueFalseForm.resources
+C:\Users\BMcCulley\Source\toxxwinapp\ProtocolsWF\Protocols\obj\Debug\Toxikon.ProtocolManager.Views.Templates.UCTemplate2View.resources
 C:\Users\BMcCulley\Source\toxxwinapp\ProtocolsWF\Protocols\obj\Debug\Toxikon.ProtocolManager.Views.Templates.UCToolStripListView1.resources
 C:\Users\BMcCulley\Source\toxxwinapp\ProtocolsWF\Protocols\obj\Debug\Toxikon.ProtocolManager.csproj.GenerateResource.Cache
 C:\Users\BMcCulley\Source\toxxwinapp\ProtocolsWF\Protocols\obj\Debug\ToxikonProtocolManager.exe.manifest
@@ -29,4 +30,3 @@ C:\Users\BMcCulley\Source\toxxwinapp\ProtocolsWF\Protocols\obj\Debug\ToxikonProt
 C:\Users\BMcCulley\Source\toxxwinapp\ProtocolsWF\Protocols\obj\Debug\ToxikonProtocolManager.exe
 C:\Users\BMcCulley\Source\toxxwinapp\ProtocolsWF\Protocols\obj\Debug\ToxikonProtocolManager.pdb
 C:\Users\BMcCulley\Source\toxxwinapp\ProtocolsWF\Protocols\obj\Debug\Toxikon.ProtocolManager.csprojResolveAssemblyReference.cache
-C:\Users\BMcCulley\Source\toxxwinapp\ProtocolsWF\Protocols\obj\Debug\Toxikon.ProtocolManager.Views.Templates.UCTemplate2View.resources

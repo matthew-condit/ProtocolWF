@@ -57,7 +57,7 @@ namespace Toxikon.ProtocolManager.Views.Protocols
             }
         }
 
-        public void AddTitleToView(ProtocolTitle title)
+        public void AddTitleToView(ProtocolTemplate title)
         {
             ListViewItem item = this.TitlesListView.Items.Add(title.Description);
             item.SubItems.Add(title.LatestActivity.ProtocolEvent.Description);

@@ -50,7 +50,7 @@ namespace Toxikon.ProtocolManager.Controllers.Protocols
         private void AddTilesToView()
         {
             this.view.ClearProtocolTitleListView();
-            foreach (ProtocolTitle item in request.Titles)
+            foreach (ProtocolTemplate item in request.Templates)
             {
                 this.view.AddTitleToView(item);
             }
@@ -63,10 +63,10 @@ namespace Toxikon.ProtocolManager.Controllers.Protocols
             this.view.SetListViewAutoResizeColumns();
         }
 
-        private ProtocolTitle GetSelectedTitleFromView()
+        private ProtocolTemplate GetSelectedTitleFromView()
         {
             int selectedIndex = Convert.ToInt32(this.view.SelectedTitleIndexes[0]);
-            ProtocolTitle title = this.request.Titles[selectedIndex];
+            ProtocolTemplate title = this.request.Templates[selectedIndex];
             return title;
         }
 
@@ -84,8 +84,8 @@ namespace Toxikon.ProtocolManager.Controllers.Protocols
 
         private void ShowSelectedTitleEvents()
         {
-            ProtocolTitle title = GetSelectedTitleFromView();
-            IList events = QProtocolActivities.SelectItems(this.request.ID, title.ID);
+            ProtocolTemplate title = GetSelectedTitleFromView();
+            IList events = QProtocolActivities.SelectItems(this.request.ID, title.TemplateID);
             IList columns = new ArrayList() { "Date", "User", "Event" };
             TemplatesController.ShowReadOnlyListViewForm(columns, events, view.ParentControl);
         }
@@ -104,7 +104,7 @@ namespace Toxikon.ProtocolManager.Controllers.Protocols
 
         private void ShowSelectedTitleComments()
         {
-            ProtocolTitle title = GetSelectedTitleFromView();
+            ProtocolTemplate title = GetSelectedTitleFromView();
             IList comments = QProtocolComments.SelectItems(title);
             IList columns = new ArrayList() { "Date", "User", "Comments" };
             TemplatesController.ShowReadOnlyListViewForm(columns, comments, view.ParentControl);
@@ -143,7 +143,7 @@ namespace Toxikon.ProtocolManager.Controllers.Protocols
 
         private void OpenSelectedTitleFile()
         {
-            ProtocolTitle title = GetSelectedTitleFromView();
+            ProtocolTemplate title = GetSelectedTitleFromView();
             if (title.FilePath != String.Empty && File.Exists(title.FilePath))
             {
                 System.Diagnostics.Process.Start(title.FilePath);

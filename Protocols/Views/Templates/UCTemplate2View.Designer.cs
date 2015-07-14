@@ -102,6 +102,7 @@
             this.UpdateButton.Size = new System.Drawing.Size(49, 35);
             this.UpdateButton.Text = "Update";
             this.UpdateButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.UpdateButton.Click += new System.EventHandler(this.UpdateButton_Click);
             // 
             // ItemsListView
             // 
@@ -117,6 +118,7 @@
             this.ItemsListView.TabIndex = 2;
             this.ItemsListView.UseCompatibleStateImageBehavior = false;
             this.ItemsListView.View = System.Windows.Forms.View.Details;
+            this.ItemsListView.SelectedIndexChanged += new System.EventHandler(this.ItemsListView_SelectedIndexChanged);
             // 
             // UCTemplate2View
             // 

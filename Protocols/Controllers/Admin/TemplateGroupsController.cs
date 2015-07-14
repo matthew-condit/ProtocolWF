@@ -87,7 +87,9 @@ namespace Toxikon.ProtocolManager.Controllers.Admin
                 Item result = ShowPopup(this.selectedItem);
                 if (result.Value != String.Empty)
                 {
-                    QTemplateGroups.UpdateItem(result, loginInfo.UserName);
+                    this.selectedItem.Value = result.Value;
+                    this.selectedItem.IsActive = result.IsActive;
+                    QTemplateGroups.UpdateItem(this.selectedItem, loginInfo.UserName);
                     LoadView();
                 }
             }
