@@ -71,6 +71,7 @@ namespace Toxikon.ProtocolManager.Queries
             if (reader == null) throw new ArgumentNullException();
             Item item = new Item();
             item.ID = Convert.ToInt32(reader[0].ToString());
+            item.Text = reader[1].ToString();
             item.Value = reader[1].ToString();
             return item;
         }

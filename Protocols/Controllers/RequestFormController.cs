@@ -138,10 +138,6 @@ namespace Toxikon.ProtocolManager.Controllers
         {
             this.request.RequestStatus = RequestStatuses.New;
             this.request.ID = QProtocolRequests.InsertItem(this.request, loginInfo.UserName);
-            if (this.request.Templates.Count > 0)
-            {
-                QProtocolRequestTemplates.InsertItems(this.request.Templates, loginInfo.UserName);
-            }
             QProtocolActivities.InsertItem(this.request, loginInfo.UserName);
         }
 

@@ -7,17 +7,20 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Toxikon.ProtocolManager.Views.RequestForms;
+using System.Windows.Forms;
 
 namespace Toxikon.ProtocolManager.Interfaces.Protocols
 {
     public interface IProtocolRequestAddView
     {
         void SetController(ProtocolRequestAddController controller);
-        void AddSponsorContactToList(SponsorContact contact);
+        void AddItemToComboBox(Item item);
+        void SetComboBoxSelectedIndex(int selectedIndex);
+        void AddItemToDataGrid(Item item);
         void ClearView();
 
         string SearchSponsorName { get; set; }
-        List<string> Titles { get; }
         RequestFormAdd GetRequestForm { get; }
+        Control ParentControl { get; }
     }
 }

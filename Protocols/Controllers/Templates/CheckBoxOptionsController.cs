@@ -15,6 +15,7 @@ namespace Toxikon.ProtocolManager.Controllers.Templates
         ICheckedListBoxForm view;
         IList items;
         public List<string> SelectedItems { get; private set; }
+        public IList SelectedIndices { get; private set; }
 
         public CheckBoxOptionsController(ICheckedListBoxForm view, IList items)
         {
@@ -22,6 +23,7 @@ namespace Toxikon.ProtocolManager.Controllers.Templates
             this.view.SetController(this);
             this.items = new ArrayList(items);
             this.SelectedItems = new List<string> { };
+            this.SelectedIndices = new ArrayList();
         }
 
         public void LoadView()
@@ -36,6 +38,7 @@ namespace Toxikon.ProtocolManager.Controllers.Templates
         {
             if(view.SelectedItems.Count != 0)
             {
+                this.SelectedIndices = view.SelectedIndices;
                 foreach (string item in view.SelectedItems)
                 {
                     this.SelectedItems.Add(item);

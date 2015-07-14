@@ -45,6 +45,11 @@ namespace Toxikon.ProtocolManager.Views.Templates
             }
         }
 
+        public IList SelectedIndices
+        {
+            get { return this.OptionsCheckedListBox.CheckedIndices; }
+        }
+
         private void SubmitButton_Click(object sender, EventArgs e)
         {
             this.controller.SubmitButtonClicked();

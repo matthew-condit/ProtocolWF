@@ -16,5 +16,6 @@ namespace Toxikon.ProtocolManager.Interfaces.Templates
         void SetDialogResult(DialogResult dialogResult);
 
         IList SelectedItems { get; }
+        IList SelectedIndices { get; }
     }
 }

@@ -16,20 +16,20 @@ namespace Toxikon.ProtocolManager.Queries
         private static string connectionString = Utility.GetTPMConnectionString();
         private const string ErrorFormName = "QProtocolRequestTemplates";
 
-        public static void InsertItems(List<ProtocolTemplate> items, string userName)
+        public static void InsertItems(int requestID, IList items, string userName)
         {
             try
             {
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
                     connection.Open();
-                    foreach (ProtocolTemplate item in items)
+                    foreach (Item item in items)
                     {
                         using (SqlCommand command = new SqlCommand("prt_insert_template", connection))
                         {
                             command.CommandType = CommandType.StoredProcedure;
-                            command.Parameters.Add("@RequestID", SqlDbType.Int).Value = item.RequestID;
-                            command.Parameters.Add("@TemplateID", SqlDbType.Int).Value = item.TemplateID;
+                            command.Parameters.Add("@RequestID", SqlDbType.Int).Value = requestID;
+                            command.Parameters.Add("@TemplateID", SqlDbType.Int).Value = item.ID;
                             command.Parameters.Add("@CreatedBy", SqlDbType.NVarChar).Value = userName;
 
                             command.ExecuteNonQuery();
