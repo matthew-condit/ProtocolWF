@@ -124,13 +124,13 @@
   <data name="RemoveTemplateButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAFuSURBVDhPnVM9S8RAEM0fEPwBFlYWVoKV3XVWgpWFlYVg
-        G9AfEP0Bam8RbMRCEQutDoIWCiocNoIoiMrlEOFWIR/lOm8yYzayUfDBwN7OvHdvZicBYIwZzfM8LorC
-        Uhg6h5z4AbqPpIaDfs9rInw+79q96TGOtHdVJwllWY4ToXe7s213J0bsw8kh8pGkWSC52dzgJOJ4bsZ+
-        DFIyxs5CnM/WljmHOhI7EmoFdaACiIv1VW7n/fGeBXEHETiBsFAr4AKJu/24IYJ/Q0s4qyu0I7Qm2kQQ
-        EPl8G1gid6TcDxkWW3UFIEptxlLmh07a5+CgM/m7/SzLpohsMDiX6M7gdHGWByiUGkr22QbBfQV5mS2h
-        VoC17spCg4yFoUJ+a7K9hBo4UGGax/eSBbpdGr63hksiPSGHlvrXl5SWvCvQuigE3JFIgnq0NOy/JJwY
-        pq+842K7Vm4BZoBvAZtLgpEqh4i/yArMBW4QcvVfBMEXm/LQdgGlN/UAAAAASUVORK5CYII=
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAFvSURBVDhPnVM9S8RAEM0fEPwBFlYWVoKV3XVWgpWFlYVg
+        G9AfEP0Bam8RbA4LRSy0Oji0UBThsBFEQVJcDlFZJV/lOm8yYzaSKPhgYG9n3rs3sxMPMMaMZ1kW5nlu
+        KQydfU78AN0HUsNBvxc14UcXPdudneCIBzdVklAUxSQRBnd7u3Z/asw+nh4hH0iaBfq321ucRJwszNmP
+        UUzG2JmP8/nGKudQR2LHQi2hDlQAcbm5zu28Pj2wIO4gAicQFmoJXCBxfxDWRPBvaAlndYV2hFZHmwgC
+        Ip8vI0vkjpQ3Q4bFVl0BiFKboZQ1Qyfd5OCwM/27/TRNZ4hsMDiX6M7gbHmeByiUCkpusg2C+wryMjtC
+        LQFrvbWlGhkLQ4X81mR7BTVwoMI0j+8l83S7NJreGi6TJHlGDi0Nr68oLXlXoHVRCLjDxqIeLb0Poz4n
+        3uKId1xsV8otwAzwLWBzSTBQZR/xF1mBucANQq7+C8/7Ao6a0GiYPWQIAAAAAElFTkSuQmCC
 </value>
   </data>
   <data name="AddEventButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">

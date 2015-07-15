@@ -36,11 +36,6 @@ namespace Toxikon.ProtocolManager.Controllers
         public void LoadView()
         {
             SetUserList();
-            Item customItem = new Item();
-            customItem.Name = "RequestedBy";
-            customItem.Text = "Bichngoc McCulley";
-            customItem.Value = "bmcculley";
-            this.userList.Add(customItem);
             if(this.userList.Count != 0)
             {
                 AddUserListToView();

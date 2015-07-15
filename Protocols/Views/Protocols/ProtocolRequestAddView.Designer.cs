@@ -36,6 +36,7 @@ namespace Toxikon.ProtocolManager.Views.Protocols
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.SubmitButton = new System.Windows.Forms.ToolStripButton();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.RequestForm = new Toxikon.ProtocolManager.Views.RequestForms.RequestFormAdd();
             this.TitleDataGridView = new System.Windows.Forms.DataGridView();
             this.IDCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TitleCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -43,7 +44,6 @@ namespace Toxikon.ProtocolManager.Views.Protocols
             this.toolStripLabel2 = new System.Windows.Forms.ToolStripLabel();
             this.TemplateGroupComboBox = new System.Windows.Forms.ToolStripComboBox();
             this.FindTemplateButton = new System.Windows.Forms.ToolStripButton();
-            this.RequestForm = new Toxikon.ProtocolManager.Views.RequestForms.RequestFormAdd();
             this.toolStrip1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.TitleDataGridView)).BeginInit();
@@ -85,7 +85,7 @@ namespace Toxikon.ProtocolManager.Views.Protocols
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Padding = new System.Windows.Forms.Padding(0, 4, 1, 4);
-            this.toolStrip1.Size = new System.Drawing.Size(900, 33);
+            this.toolStrip1.Size = new System.Drawing.Size(1024, 33);
             this.toolStrip1.TabIndex = 0;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -113,77 +113,8 @@ namespace Toxikon.ProtocolManager.Views.Protocols
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 345F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 28F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 53F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(900, 496);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1024, 567);
             this.tableLayoutPanel1.TabIndex = 3;
-            // 
-            // TitleDataGridView
-            // 
-            this.TitleDataGridView.AllowUserToAddRows = false;
-            this.TitleDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.TitleDataGridView.BackgroundColor = System.Drawing.Color.White;
-            this.TitleDataGridView.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.TitleDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.TitleDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.IDCol,
-            this.TitleCol});
-            this.TitleDataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.TitleDataGridView.Location = new System.Drawing.Point(3, 376);
-            this.TitleDataGridView.MultiSelect = false;
-            this.TitleDataGridView.Name = "TitleDataGridView";
-            this.TitleDataGridView.ReadOnly = true;
-            this.TitleDataGridView.Size = new System.Drawing.Size(894, 117);
-            this.TitleDataGridView.TabIndex = 48;
-            this.TitleDataGridView.RowsRemoved += new System.Windows.Forms.DataGridViewRowsRemovedEventHandler(this.TitleDataGridView_RowsRemoved);
-            // 
-            // IDCol
-            // 
-            this.IDCol.FillWeight = 20.30457F;
-            this.IDCol.HeaderText = "ID";
-            this.IDCol.Name = "IDCol";
-            this.IDCol.ReadOnly = true;
-            // 
-            // TitleCol
-            // 
-            this.TitleCol.FillWeight = 179.6954F;
-            this.TitleCol.HeaderText = "Titles";
-            this.TitleCol.Name = "TitleCol";
-            this.TitleCol.ReadOnly = true;
-            // 
-            // toolStrip2
-            // 
-            this.toolStrip2.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
-            this.toolStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripLabel2,
-            this.TemplateGroupComboBox,
-            this.FindTemplateButton});
-            this.toolStrip2.Location = new System.Drawing.Point(0, 345);
-            this.toolStrip2.Name = "toolStrip2";
-            this.toolStrip2.Size = new System.Drawing.Size(900, 25);
-            this.toolStrip2.TabIndex = 50;
-            this.toolStrip2.Text = "toolStrip2";
-            // 
-            // toolStripLabel2
-            // 
-            this.toolStripLabel2.Name = "toolStripLabel2";
-            this.toolStripLabel2.Size = new System.Drawing.Size(101, 22);
-            this.toolStripLabel2.Text = "Template Groups:";
-            // 
-            // TemplateGroupComboBox
-            // 
-            this.TemplateGroupComboBox.BackColor = System.Drawing.Color.LemonChiffon;
-            this.TemplateGroupComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.TemplateGroupComboBox.Name = "TemplateGroupComboBox";
-            this.TemplateGroupComboBox.Size = new System.Drawing.Size(300, 25);
-            this.TemplateGroupComboBox.SelectedIndexChanged += new System.EventHandler(this.TemplateGroupComboBox_SelectedIndexChanged);
-            // 
-            // FindTemplateButton
-            // 
-            this.FindTemplateButton.Image = global::Toxikon.ProtocolManager.Properties.Resources.ZoomNeutral_16xlG;
-            this.FindTemplateButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.FindTemplateButton.Name = "FindTemplateButton";
-            this.FindTemplateButton.Size = new System.Drawing.Size(103, 22);
-            this.FindTemplateButton.Text = "Find Template";
-            this.FindTemplateButton.Click += new System.EventHandler(this.FindTemplateButton_Click);
             // 
             // RequestForm
             // 
@@ -211,11 +142,80 @@ namespace Toxikon.ProtocolManager.Views.Protocols
             this.RequestForm.RequestedBy = "Requested By";
             this.RequestForm.RequestedDate = "Requested Date";
             this.RequestForm.SendVia = "";
-            this.RequestForm.Size = new System.Drawing.Size(894, 337);
+            this.RequestForm.Size = new System.Drawing.Size(1018, 337);
             this.RequestForm.SponsorName = "Sponsor";
             this.RequestForm.State = "State";
             this.RequestForm.TabIndex = 49;
             this.RequestForm.ZipCode = "Zip Code";
+            // 
+            // TitleDataGridView
+            // 
+            this.TitleDataGridView.AllowUserToAddRows = false;
+            this.TitleDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.TitleDataGridView.BackgroundColor = System.Drawing.Color.White;
+            this.TitleDataGridView.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.TitleDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.TitleDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.IDCol,
+            this.TitleCol});
+            this.TitleDataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.TitleDataGridView.Location = new System.Drawing.Point(3, 376);
+            this.TitleDataGridView.MultiSelect = false;
+            this.TitleDataGridView.Name = "TitleDataGridView";
+            this.TitleDataGridView.ReadOnly = true;
+            this.TitleDataGridView.Size = new System.Drawing.Size(1018, 188);
+            this.TitleDataGridView.TabIndex = 48;
+            this.TitleDataGridView.RowsRemoved += new System.Windows.Forms.DataGridViewRowsRemovedEventHandler(this.TitleDataGridView_RowsRemoved);
+            // 
+            // IDCol
+            // 
+            this.IDCol.FillWeight = 20.30457F;
+            this.IDCol.HeaderText = "ID";
+            this.IDCol.Name = "IDCol";
+            this.IDCol.ReadOnly = true;
+            // 
+            // TitleCol
+            // 
+            this.TitleCol.FillWeight = 179.6954F;
+            this.TitleCol.HeaderText = "Titles";
+            this.TitleCol.Name = "TitleCol";
+            this.TitleCol.ReadOnly = true;
+            // 
+            // toolStrip2
+            // 
+            this.toolStrip2.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
+            this.toolStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripLabel2,
+            this.TemplateGroupComboBox,
+            this.FindTemplateButton});
+            this.toolStrip2.Location = new System.Drawing.Point(0, 345);
+            this.toolStrip2.Name = "toolStrip2";
+            this.toolStrip2.Size = new System.Drawing.Size(1024, 25);
+            this.toolStrip2.TabIndex = 50;
+            this.toolStrip2.Text = "toolStrip2";
+            // 
+            // toolStripLabel2
+            // 
+            this.toolStripLabel2.Name = "toolStripLabel2";
+            this.toolStripLabel2.Size = new System.Drawing.Size(101, 22);
+            this.toolStripLabel2.Text = "Template Groups:";
+            // 
+            // TemplateGroupComboBox
+            // 
+            this.TemplateGroupComboBox.BackColor = System.Drawing.Color.LemonChiffon;
+            this.TemplateGroupComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.TemplateGroupComboBox.Name = "TemplateGroupComboBox";
+            this.TemplateGroupComboBox.Size = new System.Drawing.Size(300, 25);
+            this.TemplateGroupComboBox.SelectedIndexChanged += new System.EventHandler(this.TemplateGroupComboBox_SelectedIndexChanged);
+            // 
+            // FindTemplateButton
+            // 
+            this.FindTemplateButton.Image = global::Toxikon.ProtocolManager.Properties.Resources.ZoomNeutral_16xlG;
+            this.FindTemplateButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.FindTemplateButton.Name = "FindTemplateButton";
+            this.FindTemplateButton.Size = new System.Drawing.Size(103, 22);
+            this.FindTemplateButton.Text = "Find Template";
+            this.FindTemplateButton.Click += new System.EventHandler(this.FindTemplateButton_Click);
             // 
             // ProtocolRequestAddView
             // 
@@ -228,7 +228,7 @@ namespace Toxikon.ProtocolManager.Views.Protocols
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.MaximumSize = new System.Drawing.Size(1024, 600);
             this.Name = "ProtocolRequestAddView";
-            this.Size = new System.Drawing.Size(900, 529);
+            this.Size = new System.Drawing.Size(1024, 600);
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
             this.tableLayoutPanel1.ResumeLayout(false);

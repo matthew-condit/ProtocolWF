@@ -62,8 +62,6 @@ namespace Toxikon.ProtocolManager.Models
                 log.WriteLine(e.ToString());
 
                 log.Close();
-
-                SendEmailToSupport(e);
             }
             catch(UnauthorizedAccessException accessEx)
             {

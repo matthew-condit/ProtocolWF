@@ -62,7 +62,7 @@
             this.DownloadReportButton});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(850, 38);
+            this.toolStrip1.Size = new System.Drawing.Size(1024, 38);
             this.toolStrip1.TabIndex = 1;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -126,7 +126,7 @@
             this.RequestForm.FaxNumber = "Fax";
             this.RequestForm.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.RequestForm.Guidelines = "Guidelines";
-            this.RequestForm.Location = new System.Drawing.Point(3, 335);
+            this.RequestForm.Location = new System.Drawing.Point(3, 228);
             this.RequestForm.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.RequestForm.Name = "RequestForm";
             this.RequestForm.PhoneNumber = "Phone Number";
@@ -135,7 +135,7 @@
             this.RequestForm.RequestedBy = "Requested By";
             this.RequestForm.RequestedDate = "Requested Date";
             this.RequestForm.SendVia = "Via";
-            this.RequestForm.Size = new System.Drawing.Size(844, 314);
+            this.RequestForm.Size = new System.Drawing.Size(1018, 314);
             this.RequestForm.SponsorName = "Sponsor";
             this.RequestForm.State = "State";
             this.RequestForm.TabIndex = 0;
@@ -159,7 +159,7 @@
             this.TitlesListView.GridLines = true;
             this.TitlesListView.Location = new System.Drawing.Point(3, 3);
             this.TitlesListView.Name = "TitlesListView";
-            this.TitlesListView.Size = new System.Drawing.Size(844, 325);
+            this.TitlesListView.Size = new System.Drawing.Size(1018, 218);
             this.TitlesListView.TabIndex = 45;
             this.TitlesListView.UseCompatibleStateImageBehavior = false;
             this.TitlesListView.View = System.Windows.Forms.View.Details;
@@ -209,16 +209,16 @@
             // tableLayoutPanel1
             // 
             this.tableLayoutPanel1.ColumnCount = 1;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.Controls.Add(this.RequestForm, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.TitlesListView, 0, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 38);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 2;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(850, 662);
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 40F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 60F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1024, 562);
             this.tableLayoutPanel1.TabIndex = 47;
             // 
             // ProtocolRequestReadOnlyView
@@ -230,8 +230,9 @@
             this.Controls.Add(this.toolStrip1);
             this.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.MaximumSize = new System.Drawing.Size(1024, 600);
             this.Name = "ProtocolRequestReadOnlyView";
-            this.Size = new System.Drawing.Size(850, 700);
+            this.Size = new System.Drawing.Size(1024, 600);
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
             this.tableLayoutPanel1.ResumeLayout(false);

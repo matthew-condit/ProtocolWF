@@ -86,7 +86,7 @@
             this.OpenFileButton});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(999, 38);
+            this.toolStrip1.Size = new System.Drawing.Size(1024, 38);
             this.toolStrip1.TabIndex = 0;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -240,7 +240,7 @@
             this.TitlesListView.GridLines = true;
             this.TitlesListView.Location = new System.Drawing.Point(3, 3);
             this.TitlesListView.Name = "TitlesListView";
-            this.TitlesListView.Size = new System.Drawing.Size(993, 258);
+            this.TitlesListView.Size = new System.Drawing.Size(1018, 162);
             this.TitlesListView.TabIndex = 45;
             this.TitlesListView.UseCompatibleStateImageBehavior = false;
             this.TitlesListView.View = System.Windows.Forms.View.Details;
@@ -300,9 +300,9 @@
             this.MainTableLayoutPanel.Location = new System.Drawing.Point(0, 38);
             this.MainTableLayoutPanel.Name = "MainTableLayoutPanel";
             this.MainTableLayoutPanel.RowCount = 2;
-            this.MainTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 40F));
-            this.MainTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 60F));
-            this.MainTableLayoutPanel.Size = new System.Drawing.Size(999, 662);
+            this.MainTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 30F));
+            this.MainTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 70F));
+            this.MainTableLayoutPanel.Size = new System.Drawing.Size(1024, 562);
             this.MainTableLayoutPanel.TabIndex = 46;
             // 
             // panel2
@@ -310,9 +310,9 @@
             this.panel2.Controls.Add(this.RequestForm);
             this.panel2.Controls.Add(this.toolStrip2);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(3, 267);
+            this.panel2.Location = new System.Drawing.Point(3, 171);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(993, 392);
+            this.panel2.Size = new System.Drawing.Size(1018, 388);
             this.panel2.TabIndex = 46;
             // 
             // RequestForm
@@ -342,7 +342,7 @@
             this.RequestForm.RequestedBy = "Requested By";
             this.RequestForm.RequestedDate = "Requested Date";
             this.RequestForm.SendVia = "";
-            this.RequestForm.Size = new System.Drawing.Size(993, 346);
+            this.RequestForm.Size = new System.Drawing.Size(1018, 346);
             this.RequestForm.SponsorName = "Sponsor";
             this.RequestForm.State = "State";
             this.RequestForm.TabIndex = 2;
@@ -358,7 +358,7 @@
             this.DownloadReportButton});
             this.toolStrip2.Location = new System.Drawing.Point(0, 0);
             this.toolStrip2.Name = "toolStrip2";
-            this.toolStrip2.Size = new System.Drawing.Size(993, 38);
+            this.toolStrip2.Size = new System.Drawing.Size(1018, 38);
             this.toolStrip2.TabIndex = 1;
             this.toolStrip2.Text = "toolStrip2";
             // 
@@ -401,7 +401,7 @@
             this.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "ProtocolRequestEditView";
-            this.Size = new System.Drawing.Size(999, 700);
+            this.Size = new System.Drawing.Size(1024, 600);
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
             this.MainTableLayoutPanel.ResumeLayout(false);

@@ -15,7 +15,7 @@
     <PublishUrl>\\toxx\c%24\www\ToxikonProtocolManager\publish\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Web</InstallFrom>
-    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateEnabled>true</UpdateEnabled>
     <UpdateMode>Foreground</UpdateMode>
     <UpdateInterval>7</UpdateInterval>
     <UpdateIntervalUnits>Days</UpdateIntervalUnits>
@@ -28,7 +28,7 @@
     <PublisherName>Toxikon</PublisherName>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>index.html</WebPage>
-    <ApplicationRevision>3</ApplicationRevision>
+    <ApplicationRevision>13</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -64,6 +64,9 @@
   </PropertyGroup>
   <PropertyGroup>
     <SignManifests>true</SignManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>TPMLogo4.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.Office.Interop.Excel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
@@ -391,6 +394,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="TPMLogo.ico" />
+    <Content Include="TPMLogo2.ico" />
+    <Content Include="TPMLogo3.ico" />
+    <Content Include="TPMLogo4.ico" />
     <None Include="Resources\Open_6296.png" />
     <None Include="Resources\ZoomNeutral_16xlG.png" />
     <None Include="Resources\Security_Shields_Complete_and_ok_16xLG_color.png" />
@@ -401,27 +408,11 @@
     <None Include="Resources\StatusAnnotations_Complete_and_ok_16xLG_color.png" />
     <None Include="Resources\PencilAngled_16xLG_color.png" />
     <None Include="Resources\save_16xLG.png" />
-    <None Include="Resources\RGreen.png" />
-    <None Include="Resources\IGreen.png" />
-    <None Include="Resources\CGreen.png" />
     <None Include="Resources\action_add_16xLG.png" />
     <None Include="Resources\Bubble_16xLG.png" />
     <None Include="Resources\checkbox_16xLG.png" />
     <None Include="Resources\color_wheel_16xLG.png" />
     <None Include="Resources\house_16xLG.png" />
-    <Content Include="Resources\Images\CGray.png" />
-    <Content Include="Resources\Images\CGreen.png" />
-    <Content Include="Resources\Images\CRed.png" />
-    <Content Include="Resources\Images\IGray.png" />
-    <Content Include="Resources\Images\IGreen.png" />
-    <Content Include="Resources\Images\IRed.png" />
-    <Content Include="Resources\Images\NGray.png" />
-    <Content Include="Resources\Images\NGreen.png" />
-    <Content Include="Resources\Images\NRed.png" />
-    <Content Include="Resources\Images\RGray.png" />
-    <Content Include="Resources\Images\RGreen.png" />
-    <Content Include="Resources\Images\RRed.png" />
-    <None Include="Resources\NGreen.png" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.5">
