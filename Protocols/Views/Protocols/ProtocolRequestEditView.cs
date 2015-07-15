@@ -92,12 +92,12 @@ namespace Toxikon.ProtocolManager.Views.Protocols
 
         private void AddTitleButton_Click(object sender, EventArgs e)
         {
-            this.controller.AddTitleButtonClicked();
+            this.controller.AddTemplateButtonClicked();
         }
 
-        private void EditTitleButton_Click(object sender, EventArgs e)
+        private void RemoveTitleButton_Click(object sender, EventArgs e)
         {
-            this.controller.EditTitleButtonClicked();
+            this.controller.RemoveTemplateButtonClicked();
         }
 
         private void AddEventButton_Click(object sender, EventArgs e)

@@ -17,18 +17,20 @@ namespace Toxikon.ProtocolManager.Controllers.Protocols
 {
     public class ProtocolRequestReadOnlyController
     {
-        IProtocolRequestReadOnlyView view;
-        ProtocolRequest request;
-        SponsorContact sponsor;
-        LoginInfo loginInfo;
-        RequestFormController requestFormController;
-        string SelectOneMessage = "Please select one title and try it again.";
+        private IProtocolRequestReadOnlyView view;
+        private ProtocolRequest request;
+        private IList templates;
+        private SponsorContact sponsor;
+        private LoginInfo loginInfo;
+        private RequestFormController requestFormController;
+        private string SelectOneMessage = "Please select one title and try it again.";
 
         public ProtocolRequestReadOnlyController(IProtocolRequestReadOnlyView view)
         {
             this.view = view;
             this.view.SetController(this);
             loginInfo = LoginInfo.GetInstance();
+            this.templates = new ArrayList();
             this.requestFormController = new RequestFormController(this.view.GetRequestForm);
             requestFormController.ClearForm();
         }
@@ -47,10 +49,9 @@ namespace Toxikon.ProtocolManager.Controllers.Protocols
             this.view.ClearView();
         }
 
-        private void AddTilesToView()
+        private void AddTemplatesToView()
         {
-            this.view.ClearProtocolTitleListView();
-            foreach (ProtocolTemplate item in request.Templates)
+            foreach (ProtocolTemplate item in this.templates)
             {
                 this.view.AddTitleToView(item);
             }
@@ -58,15 +59,22 @@ namespace Toxikon.ProtocolManager.Controllers.Protocols
 
         private void RefreshTitleListView()
         {
-            this.request.RefreshProtocolTitles();
-            AddTilesToView();
+            this.templates.Clear();
+            this.view.ClearProtocolTitleListView();
+            LoadRequestTemplates();
+            AddTemplatesToView();
             this.view.SetListViewAutoResizeColumns();
+        }
+
+        private void LoadRequestTemplates()
+        {
+            this.templates = QProtocolRequestTemplates.SelectItems(this.request.ID);
         }
 
         private ProtocolTemplate GetSelectedTitleFromView()
         {
             int selectedIndex = Convert.ToInt32(this.view.SelectedTitleIndexes[0]);
-            ProtocolTemplate title = this.request.Templates[selectedIndex];
+            ProtocolTemplate title = this.templates[selectedIndex] as ProtocolTemplate;
             return title;
         }
 

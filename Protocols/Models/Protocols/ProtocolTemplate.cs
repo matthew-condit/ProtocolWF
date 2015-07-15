@@ -45,19 +45,6 @@ namespace Toxikon.ProtocolManager.Models
             this.Description = description;
         }
 
-        public void Submit()
-        {
-            LoginInfo loginInfo = LoginInfo.GetInstance();
-            QProtocolRequestTemplates.InsertItem(this, loginInfo.UserName);
-        }
-
-        public void UpdateDescription(string description)
-        {
-            this.Description = description;
-            LoginInfo loginInfo = LoginInfo.GetInstance();
-            //QProtocolRequestTemplates.UpdateTitle(this, loginInfo.UserName);
-        }
-
         public void UpdateFileInfo(string filePath)
         {
             this.FileName = Path.GetFileName(filePath);

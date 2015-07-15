@@ -43,7 +43,7 @@ namespace Toxikon.ProtocolManager.Queries
             }
         }
 
-        public static void InsertItem(ProtocolTemplate item, string userName)
+        public static void InsertItem(int requestID, int templateID, string userName)
         {
             try
             {
@@ -53,8 +53,8 @@ namespace Toxikon.ProtocolManager.Queries
                     using (SqlCommand command = new SqlCommand("prt_insert_template", connection))
                     {
                         command.CommandType = CommandType.StoredProcedure;
-                        command.Parameters.Add("@RequestID", SqlDbType.Int).Value = item.RequestID;
-                        command.Parameters.Add("@TemplateID", SqlDbType.Int).Value = item.TemplateID;
+                        command.Parameters.Add("@RequestID", SqlDbType.Int).Value = requestID;
+                        command.Parameters.Add("@TemplateID", SqlDbType.Int).Value = templateID;
                         command.Parameters.Add("@CreatedBy", SqlDbType.NVarChar).Value = userName;
 
                         command.ExecuteNonQuery();
@@ -95,6 +95,31 @@ namespace Toxikon.ProtocolManager.Queries
             return results;
         }
 
+        public static void SetIsActive(int requestID, int templateID, bool isActive, string userName)
+        {
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    connection.Open();
+                    using (SqlCommand command = new SqlCommand("prt_update_template_isactive", connection))
+                    {
+                        command.CommandType = CommandType.StoredProcedure;
+                        command.Parameters.Add("@RequestID", SqlDbType.Int).Value = requestID;
+                        command.Parameters.Add("@TemplateID", SqlDbType.Int).Value = templateID;
+                        command.Parameters.Add("@IsActive", SqlDbType.Bit).Value = isActive;
+                        command.Parameters.Add("@UpdatedBy", SqlDbType.NVarChar).Value = userName;
+
+                        int result = command.ExecuteNonQuery();
+                    }
+                }
+            }
+            catch (SqlException e)
+            {
+                ErrorHandler.CreateLogFile(ErrorFormName, "SetIsActive", e);
+            }
+        }
+
         private static ProtocolTemplate CreateNewProtocolTemplate(int protocolRequestID, SqlDataReader reader)
         {
             ProtocolTemplate template = new ProtocolTemplate();
@@ -128,7 +153,7 @@ namespace Toxikon.ProtocolManager.Queries
                     {
                         command.CommandType = CommandType.StoredProcedure;
                         command.Parameters.Add("@RequestID", SqlDbType.Int).Value = title.RequestID;
-                        command.Parameters.Add("@TitleID", SqlDbType.Int).Value = title.TemplateID;
+                        command.Parameters.Add("@TemplateID", SqlDbType.Int).Value = title.TemplateID;
                         command.Parameters.Add("@FileName", SqlDbType.NVarChar).Value = title.FileName;
                         command.Parameters.Add("@FilePath", SqlDbType.NVarChar).Value = title.FilePath;
                         command.Parameters.Add("@UpdatedBy", SqlDbType.NVarChar).Value = userName;
@@ -154,7 +179,7 @@ namespace Toxikon.ProtocolManager.Queries
                     {
                         command.CommandType = CommandType.StoredProcedure;
                         command.Parameters.Add("@RequestID", SqlDbType.Int).Value = title.RequestID;
-                        command.Parameters.Add("@TitleID", SqlDbType.Int).Value = title.TemplateID;
+                        command.Parameters.Add("@TemplateID", SqlDbType.Int).Value = title.TemplateID;
                         command.Parameters.Add("@ProjectNumber", SqlDbType.NVarChar).Value = title.ProjectNumber;
                         command.Parameters.Add("@UpdatedBy", SqlDbType.NVarChar).Value = userName;
 
@@ -179,7 +204,7 @@ namespace Toxikon.ProtocolManager.Queries
                     {
                         command.CommandType = CommandType.StoredProcedure;
                         command.Parameters.Add("@RequestID", SqlDbType.Int).Value = title.RequestID;
-                        command.Parameters.Add("@TitleID", SqlDbType.Int).Value = title.TemplateID;
+                        command.Parameters.Add("@TemplateID", SqlDbType.Int).Value = title.TemplateID;
                         command.Parameters.Add("@DepartmentID", SqlDbType.NVarChar).Value = title.Department.ID;
                         command.Parameters.Add("@UpdatedBy", SqlDbType.NVarChar).Value = userName;
 

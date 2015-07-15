@@ -113,6 +113,7 @@ namespace Toxikon.ProtocolManager.Views.Templates
         private void AddUserToListView(User user)
         {
             ListViewItem item = this.MainListView.Items.Add(user.UserName);
+            item.SubItems.Add(user.FullName);
             item.SubItems.Add(user.Department.Name);
             item.SubItems.Add(user.Role.RoleName);
             item.SubItems.Add(user.IsActive.ToString());

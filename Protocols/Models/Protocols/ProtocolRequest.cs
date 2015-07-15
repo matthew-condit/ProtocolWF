@@ -18,7 +18,6 @@ namespace Toxikon.ProtocolManager.Models
         public string Guidelines { get; set; }
         public string Compliance { get; set; }
         public string ProtocolType { get; set; }
-        public List<ProtocolTemplate> Templates { get; private set; }
         public DateTime DueDate { get; set; }
         public string SendVia { get; set; }
         public string BillTo { get; set; }
@@ -44,7 +43,6 @@ namespace Toxikon.ProtocolManager.Models
             this.Guidelines = "";
             this.Compliance = "";
             this.ProtocolType = "";
-            this.Templates = new List<ProtocolTemplate>() { };
             this.DueDate = DateTime.Now;
             this.BillTo = "Toxikon";
             this.Cost = "";
@@ -73,27 +71,6 @@ namespace Toxikon.ProtocolManager.Models
         {
             this.Contact.ContactCode = contactCode;
             this.Contact = QMatrix.GetSponsorByContactCode(contactCode);
-        }
-
-        public void SetTitles(List<string> titleDescriptions)
-        {
-            foreach(string item in titleDescriptions)
-            {
-                ProtocolTemplate protocolTitle = new ProtocolTemplate();
-                protocolTitle.Description = item;
-                this.Templates.Add(protocolTitle);
-            }
-        }
-
-        public void SetTitles(List<ProtocolTemplate> items)
-        {
-            this.Templates = new List<ProtocolTemplate>(items);
-        }
-
-        public void RefreshProtocolTitles()
-        {
-            this.Templates.Clear();
-            this.Templates = (List<ProtocolTemplate>)QProtocolRequestTemplates.SelectItems(this.ID);
         }
        
         public void CloseRequest()

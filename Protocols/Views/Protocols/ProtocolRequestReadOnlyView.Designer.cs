@@ -120,10 +120,11 @@
             this.RequestForm.Comments = "Comments";
             this.RequestForm.Compliance = "Compliance";
             this.RequestForm.ContactName = "Contact";
+            this.RequestForm.Cost = "Cost";
             this.RequestForm.DueDate = new System.DateTime(2015, 6, 25, 0, 0, 0, 0);
             this.RequestForm.Email = "Email";
             this.RequestForm.FaxNumber = "Fax";
-            this.RequestForm.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.RequestForm.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.RequestForm.Guidelines = "Guidelines";
             this.RequestForm.Location = new System.Drawing.Point(3, 335);
             this.RequestForm.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);

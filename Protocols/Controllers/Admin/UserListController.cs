@@ -33,7 +33,7 @@ namespace Toxikon.ProtocolManager.Controllers.Admin
             this.userList.Clear();
             view.ClearView();
 
-            IList columns = new ArrayList() { "Username", "Department", "Role Name", "Active" };
+            IList columns = new ArrayList() { "Username", "Full Name", "Department", "Role Name", "Active" };
             this.view.AddListViewColumns(columns);
             this.view.ListTitle = "Users";
 
@@ -55,7 +55,8 @@ namespace Toxikon.ProtocolManager.Controllers.Admin
             this.view.SetListViewAutoResizeColumns(0, ColumnHeaderAutoResizeStyle.ColumnContent);
             this.view.SetListViewAutoResizeColumns(1, ColumnHeaderAutoResizeStyle.ColumnContent);
             this.view.SetListViewAutoResizeColumns(2, ColumnHeaderAutoResizeStyle.ColumnContent);
-            this.view.SetListViewAutoResizeColumns(3, ColumnHeaderAutoResizeStyle.HeaderSize);
+            this.view.SetListViewAutoResizeColumns(3, ColumnHeaderAutoResizeStyle.ColumnContent);
+            this.view.SetListViewAutoResizeColumns(4, ColumnHeaderAutoResizeStyle.HeaderSize);
         }
 
         public override void ListViewSelectedIndexChanged(int selectedIndex)

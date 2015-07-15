@@ -33,6 +33,14 @@ namespace Toxikon.ProtocolManager.Models
             this.CreatedBy = createdBy;
         }
 
+        public ProtocolActivity(int requestID, int templateID, int eventID, string createdBy)
+        {
+            this.RequestID = requestID;
+            this.TemplateID = templateID;
+            this.ProtocolEvent = new ProtocolEvent(eventID);
+            this.CreatedBy = createdBy;
+        }
+
         public void Submit()
         {
             QProtocolActivities.InsertItem(this);

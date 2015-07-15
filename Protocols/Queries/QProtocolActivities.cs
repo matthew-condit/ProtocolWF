@@ -44,7 +44,7 @@ namespace Toxikon.ProtocolManager.Queries
             }
         }
 
-        public static void InsertItem(ProtocolRequest request, string userName)
+        public static void InsertItem(ProtocolRequest request, IList templates, string userName)
         {
             try
             {
@@ -54,11 +54,11 @@ namespace Toxikon.ProtocolManager.Queries
                     using (SqlCommand command = new SqlCommand("pa_insert_activity", connection))
                     {
                         command.CommandType = CommandType.StoredProcedure;
-                        foreach (ProtocolTemplate title in request.Templates)
+                        foreach (Item item in templates)
                         {
                             command.Parameters.Clear();
                             command.Parameters.Add("@RequestID", SqlDbType.Int).Value = request.ID;
-                            command.Parameters.Add("@TitleID", SqlDbType.Int).Value = title.TemplateID;
+                            command.Parameters.Add("@TemplateID", SqlDbType.Int).Value = item.ID;
                             command.Parameters.Add("@EventID", SqlDbType.Int).Value = 1;
                             command.Parameters.Add("@CreatedBy", SqlDbType.NVarChar).Value = userName;
 
@@ -84,7 +84,7 @@ namespace Toxikon.ProtocolManager.Queries
                     {
                         command.CommandType = CommandType.StoredProcedure;
                         command.Parameters.Add("@RequestID", SqlDbType.Int).Value = activity.RequestID;
-                        command.Parameters.Add("@TitleID", SqlDbType.Int).Value = activity.TemplateID;
+                        command.Parameters.Add("@TemplateID", SqlDbType.Int).Value = activity.TemplateID;
                         command.Parameters.Add("@EventID", SqlDbType.Int).Value = activity.ProtocolEvent.ID;
                         command.Parameters.Add("@CreatedBy", SqlDbType.NVarChar).Value = activity.CreatedBy;
 

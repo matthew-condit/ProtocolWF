@@ -37,7 +37,7 @@ namespace Toxikon.ProtocolManager.Views.Protocols
 
         public Control ParentControl
         {
-            get { return this.ParentForm; }
+            get { return this; }
         }
 
         public void AddItemToComboBox(Item item)

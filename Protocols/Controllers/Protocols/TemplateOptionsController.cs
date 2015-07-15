@@ -70,7 +70,7 @@ namespace Toxikon.ProtocolManager.Controllers.Protocols
         {
             if (selectedIndex > -1 && selectedIndex < this.templates.Count)
             {
-                this.SelectedTemplateGroup = this.templates[selectedIndex] as Item;
+                this.SelectedTemplate = this.templates[selectedIndex] as Item;
             }
         }
 

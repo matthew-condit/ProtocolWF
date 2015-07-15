@@ -31,7 +31,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ProtocolRequestEditView));
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.AddTitleButton = new System.Windows.Forms.ToolStripButton();
-            this.EditTitleButton = new System.Windows.Forms.ToolStripButton();
+            this.RemoveTemplateButton = new System.Windows.Forms.ToolStripButton();
             this.AddEventButton = new System.Windows.Forms.ToolStripButton();
             this.ViewEventsButton = new System.Windows.Forms.ToolStripButton();
             this.AddCommentButton = new System.Windows.Forms.ToolStripButton();
@@ -73,7 +73,7 @@
             this.toolStrip1.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.AddTitleButton,
-            this.EditTitleButton,
+            this.RemoveTemplateButton,
             this.AddEventButton,
             this.ViewEventsButton,
             this.AddCommentButton,
@@ -101,16 +101,16 @@
             this.AddTitleButton.ToolTipText = "Add new title";
             this.AddTitleButton.Click += new System.EventHandler(this.AddTitleButton_Click);
             // 
-            // EditTitleButton
+            // RemoveTemplateButton
             // 
-            this.EditTitleButton.Image = global::Toxikon.ProtocolManager.Properties.Resources.PencilAngled_16xLG_color;
-            this.EditTitleButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.EditTitleButton.Name = "EditTitleButton";
-            this.EditTitleButton.Size = new System.Drawing.Size(57, 35);
-            this.EditTitleButton.Text = "Edit Title";
-            this.EditTitleButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.EditTitleButton.ToolTipText = "Edit selected title";
-            this.EditTitleButton.Click += new System.EventHandler(this.EditTitleButton_Click);
+            this.RemoveTemplateButton.Image = ((System.Drawing.Image)(resources.GetObject("RemoveTemplateButton.Image")));
+            this.RemoveTemplateButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.RemoveTemplateButton.Name = "RemoveTemplateButton";
+            this.RemoveTemplateButton.Size = new System.Drawing.Size(80, 35);
+            this.RemoveTemplateButton.Text = "Remove Title";
+            this.RemoveTemplateButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.RemoveTemplateButton.ToolTipText = "Edit selected title";
+            this.RemoveTemplateButton.Click += new System.EventHandler(this.RemoveTitleButton_Click);
             // 
             // AddEventButton
             // 
@@ -420,7 +420,7 @@
         private System.Windows.Forms.ToolStripButton AddCommentButton;
         private System.Windows.Forms.ToolStripButton AddEventButton;
         private System.Windows.Forms.ToolStripButton AddTitleButton;
-        private System.Windows.Forms.ToolStripButton EditTitleButton;
+        private System.Windows.Forms.ToolStripButton RemoveTemplateButton;
         private System.Windows.Forms.ListView TitlesListView;
         private System.Windows.Forms.ColumnHeader TitleCol;
         private System.Windows.Forms.ColumnHeader StatusCol;

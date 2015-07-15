@@ -117,7 +117,7 @@ namespace Toxikon.ProtocolManager.Controllers.Protocols
             ListBoxForm popup = new ListBoxForm();
             ListBoxOptionsController popupController = new ListBoxOptionsController(popup, items);
             popupController.LoadView();
-            DialogResult dialogResult = popup.ShowDialog(this.view.ParentControl);
+            DialogResult dialogResult = popup.ShowDialog();
             if(dialogResult == DialogResult.OK)
             {
                 result = popupController.SelectedIndex;
@@ -204,6 +204,7 @@ namespace Toxikon.ProtocolManager.Controllers.Protocols
             if (dialogResult == DialogResult.Yes)
             {
                 this.requestFormController.SubmitRequest();
+                QProtocolActivities.InsertItem(this.request, this.selectedTemplates, loginInfo.UserName);
                 QProtocolRequestTemplates.InsertItems(this.request.ID, this.selectedTemplates, loginInfo.UserName);
                 this.requestFormController.ClearForm();
                 this.Clear();

@@ -19,11 +19,12 @@ namespace Toxikon.ProtocolManager.Controllers.Protocols
 {
     public class ProtocolRequestEditController
     {
-        IProtocolRequestEditView view;
-        ProtocolRequest request;
-        SponsorContact contact;
-        LoginInfo loginInfo;
-        RequestFormController requestFormController;
+        private IProtocolRequestEditView view;
+        private ProtocolRequest request;
+        private IList templates;
+        private SponsorContact contact;
+        private LoginInfo loginInfo;
+        private RequestFormController requestFormController;
         string SelectOneMessage = "Please select one title and try it again.";
 
         public ProtocolRequestEditController(IProtocolRequestEditView view)
@@ -31,6 +32,7 @@ namespace Toxikon.ProtocolManager.Controllers.Protocols
             this.view = view;
             this.view.SetController(this);
             loginInfo = LoginInfo.GetInstance();
+            this.templates = new ArrayList();
             this.requestFormController = new RequestFormController(this.view.GetRequestForm);
         }
 
@@ -39,50 +41,60 @@ namespace Toxikon.ProtocolManager.Controllers.Protocols
             this.request = protocolRequest;
             this.contact = protocolRequest.Contact;
             this.requestFormController.LoadView(this.request);
-            this.RefreshTitleListView();
+            this.RefreshTemplateListView();
         }
 
-        private void AddTilesToView()
+        private void LoadRequestTemplates()
         {
-            this.view.ClearProtocolTitleListView();
-            foreach(ProtocolTemplate item in request.Templates)
+            this.templates = QProtocolRequestTemplates.SelectItems(this.request.ID);
+        }
+
+        private void AddTemplatesToView()
+        {
+            foreach(ProtocolTemplate item in this.templates)
             {
                 this.view.AddTitleToView(item);
             }
         }
 
-        private void RefreshTitleListView()
+        private void RefreshTemplateListView()
         {
-            this.request.RefreshProtocolTitles();
-            AddTilesToView();
+            this.templates.Clear();
+            this.view.ClearProtocolTitleListView();
+            LoadRequestTemplates();
+            AddTemplatesToView();
             this.view.SetListViewAutoResizeColumns();
         }
 
-        private ProtocolTemplate GetSelectedTitleFromView()
+        private ProtocolTemplate GetSelectedTemplateFromView()
         {
             int selectedIndex = Convert.ToInt32(this.view.SelectedTitleIndexes[0]);
-            ProtocolTemplate title = this.request.Templates[selectedIndex];
+            ProtocolTemplate title = this.templates[selectedIndex] as ProtocolTemplate;
             return title;
         }
 
-        public void AddTitleButtonClicked()
+        public void AddTemplateButtonClicked()
         {
-            string description = TemplatesController.ShowOneTextBoxForm("Title: ", "", this.view.ParentControl);
-            if(description != String.Empty)
+            TemplateOptionsForm form = new TemplateOptionsForm();
+            TemplateOptionsController formController = new TemplateOptionsController(form);
+            formController.LoadView();
+            DialogResult dialogResult = form.ShowDialog(this.view.ParentControl);
+            if(dialogResult == DialogResult.OK)
             {
-                ProtocolTemplate title = new ProtocolTemplate(this.request.ID, description);
-                title.Submit();
-                ProtocolActivity activity = new ProtocolActivity(title, 1, loginInfo.UserName);
-                activity.Submit();
-                RefreshTitleListView();
+                QProtocolRequestTemplates.InsertItem(this.request.ID, formController.SelectedTemplate.ID, 
+                                                     loginInfo.UserName);
+                ProtocolActivity protocolActivity = new ProtocolActivity(this.request.ID, 
+                                                    formController.SelectedTemplate.ID, 1, loginInfo.UserName);
+                QProtocolActivities.InsertItem(protocolActivity);
+                RefreshTemplateListView();
             }
         }
 
-        public void EditTitleButtonClicked()
+        public void RemoveTemplateButtonClicked()
         {
             if(this.view.SelectedTitleIndexes.Count == 1)
             {
-                EditSelectedTitleDescription();
+                RemoveSelectedTemplate();
             }
             else
             {
@@ -90,16 +102,26 @@ namespace Toxikon.ProtocolManager.Controllers.Protocols
             }
         }
 
-        private void EditSelectedTitleDescription()
+        private void RemoveSelectedTemplate()
         {
-            ProtocolTemplate title = GetSelectedTitleFromView();
-            string description = TemplatesController.ShowOneTextBoxForm("Title: ", title.Description,
-                                 this.view.ParentControl);
-            if (description != String.Empty)
+            int selectedIndex = Convert.ToInt32(this.view.SelectedTitleIndexes[0]);
+            if(selectedIndex > - 1 && selectedIndex < this.templates.Count)
             {
-                title.UpdateDescription(description);
-                RefreshTitleListView();
+                ProtocolTemplate selectedTemplate = this.templates[selectedIndex] as ProtocolTemplate;
+                DialogResult dialogResult = ShowConfirmation("Are you sure you want to remove this template?");
+                if(dialogResult == DialogResult.Yes)
+                {
+                    QProtocolRequestTemplates.SetIsActive(this.request.ID, selectedTemplate.TemplateID, 
+                                                          false, loginInfo.UserName);
+                    RefreshTemplateListView();
+                }
             }
+        }
+
+        private DialogResult ShowConfirmation(string message)
+        {
+            DialogResult dialogResult = MessageBox.Show(message, "Confirmation", MessageBoxButtons.YesNo);
+            return dialogResult;
         }
 
         public void AddEventButtonClicked()
@@ -121,8 +143,7 @@ namespace Toxikon.ProtocolManager.Controllers.Protocols
             {
                 IList protocolActivities = CreateProtocolActivityList(popupResult.ID);
                 QProtocolActivities.InsertItems(protocolActivities);
-                MessageBox.Show("Submitted!");
-                RefreshTitleListView();
+                RefreshTemplateListView();
             }
         }
 
@@ -145,7 +166,7 @@ namespace Toxikon.ProtocolManager.Controllers.Protocols
             IList protocolActivities = new List<ProtocolActivity>() { };
             foreach (int titleIndex in this.view.SelectedTitleIndexes)
             {
-                ProtocolTemplate title = this.request.Templates[titleIndex];
+                ProtocolTemplate title = this.templates[titleIndex] as ProtocolTemplate;
                 ProtocolActivity protocolActivity = new ProtocolActivity(title, eventID, loginInfo.UserName);
                 protocolActivities.Add(protocolActivity);
             }
@@ -166,7 +187,7 @@ namespace Toxikon.ProtocolManager.Controllers.Protocols
 
         private void ShowSelectedTitleEvents()
         {
-            ProtocolTemplate title = GetSelectedTitleFromView();
+            ProtocolTemplate title = GetSelectedTemplateFromView();
             IList events = QProtocolActivities.SelectItems(this.request.ID, title.TemplateID);
             IList columns = new ArrayList() { "Date", "User", "Event" };
             TemplatesController.ShowReadOnlyListViewForm(columns, events, view.ParentControl);
@@ -190,9 +211,9 @@ namespace Toxikon.ProtocolManager.Controllers.Protocols
                                      this.view.ParentControl);
             if (popupResult != String.Empty)
             {
-                ProtocolTemplate title = GetSelectedTitleFromView();
+                ProtocolTemplate title = GetSelectedTemplateFromView();
                 QProtocolComments.InsertItem(title, popupResult, loginInfo.UserName);
-                RefreshTitleListView();
+                RefreshTemplateListView();
             }
         }
 
@@ -210,7 +231,7 @@ namespace Toxikon.ProtocolManager.Controllers.Protocols
 
         private void ShowSelectedTitleComments()
         {
-            ProtocolTemplate title = GetSelectedTitleFromView();
+            ProtocolTemplate title = GetSelectedTemplateFromView();
             IList comments = QProtocolComments.SelectItems(title);
             IList columns = new ArrayList() { "Date", "User", "Comments" };
             TemplatesController.ShowReadOnlyListViewForm(columns, comments, view.ParentControl);
@@ -221,7 +242,7 @@ namespace Toxikon.ProtocolManager.Controllers.Protocols
             if(this.view.SelectedTitleIndexes.Count == 1)
             {
                 AssignProtocolNumberToSelectedTitle();
-                this.RefreshTitleListView();
+                this.RefreshTemplateListView();
             }
             else
             {
@@ -231,7 +252,7 @@ namespace Toxikon.ProtocolManager.Controllers.Protocols
 
         private void AssignProtocolNumberToSelectedTitle()
         {
-            ProtocolTemplate title = GetSelectedTitleFromView();
+            ProtocolTemplate title = GetSelectedTemplateFromView();
             title.AddProtocolNumber(this.request.ProtocolType);
         }
 
@@ -249,12 +270,11 @@ namespace Toxikon.ProtocolManager.Controllers.Protocols
 
         private void ReviseSelectedTitleProtocolNumber()
         {
-            ProtocolTemplate title = GetSelectedTitleFromView();
+            ProtocolTemplate title = GetSelectedTemplateFromView();
             if (title.ProtocolNumber.FullCode != String.Empty)
             {
                 title.ProtocolNumber.Update();
-                this.RefreshTitleListView();
-                MessageBox.Show("Updated!");
+                this.RefreshTemplateListView();               
             }
             else
             {
@@ -267,7 +287,7 @@ namespace Toxikon.ProtocolManager.Controllers.Protocols
             if (this.view.SelectedTitleIndexes.Count == 1)
             {
                 UpdateSelectedTitleFilePath(filePath);
-                this.RefreshTitleListView();
+                this.RefreshTemplateListView();
             }
             else
             {
@@ -277,7 +297,7 @@ namespace Toxikon.ProtocolManager.Controllers.Protocols
 
         private void UpdateSelectedTitleFilePath(string filePath)
         {
-            ProtocolTemplate title = GetSelectedTitleFromView();
+            ProtocolTemplate title = GetSelectedTemplateFromView();
             title.UpdateFileInfo(filePath);
         }
 
@@ -285,7 +305,7 @@ namespace Toxikon.ProtocolManager.Controllers.Protocols
         {
             if (this.view.SelectedTitleIndexes.Count == 1)
             {
-                ProtocolTemplate title = GetSelectedTitleFromView();
+                ProtocolTemplate title = GetSelectedTemplateFromView();
                 title.OpenFile();
             }
             else
@@ -308,13 +328,13 @@ namespace Toxikon.ProtocolManager.Controllers.Protocols
 
         private void UpdateSelectedTitleProjectNumber()
         {
-            ProtocolTemplate title = GetSelectedTitleFromView();
+            ProtocolTemplate title = GetSelectedTemplateFromView();
             string projectNumber = TemplatesController.ShowOneTextBoxForm("Project Number: ",
                                    title.ProjectNumber, this.view.ParentControl);
             if (projectNumber != String.Empty)
             {
                 title.AddProjectNumber(projectNumber);
-                this.RefreshTitleListView();
+                this.RefreshTemplateListView();
             }
         }
 
@@ -323,7 +343,7 @@ namespace Toxikon.ProtocolManager.Controllers.Protocols
             if (this.view.SelectedTitleIndexes.Count == 1)
             {
                 UpdateSelectedTitleDepartment();
-                this.RefreshTitleListView();
+                this.RefreshTemplateListView();
             }
             else
             {
@@ -336,7 +356,7 @@ namespace Toxikon.ProtocolManager.Controllers.Protocols
             Item selectedItem = SelectDepartmentFromOptions();
             if (selectedItem.Value != "")
             {
-                ProtocolTemplate title = GetSelectedTitleFromView();
+                ProtocolTemplate title = GetSelectedTemplateFromView();
                 title.UpdateDepartment(Convert.ToInt32(selectedItem.Value));
             }
         }

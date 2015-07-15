@@ -43,7 +43,7 @@
             this.OptionsCheckedListBox.FormattingEnabled = true;
             this.OptionsCheckedListBox.Location = new System.Drawing.Point(0, 0);
             this.OptionsCheckedListBox.Name = "OptionsCheckedListBox";
-            this.OptionsCheckedListBox.Size = new System.Drawing.Size(284, 264);
+            this.OptionsCheckedListBox.Size = new System.Drawing.Size(284, 256);
             this.OptionsCheckedListBox.TabIndex = 0;
             // 
             // toolStrip1

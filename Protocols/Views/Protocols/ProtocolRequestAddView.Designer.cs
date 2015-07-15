@@ -97,6 +97,7 @@ namespace Toxikon.ProtocolManager.Views.Protocols
             this.SubmitButton.Name = "SubmitButton";
             this.SubmitButton.Size = new System.Drawing.Size(65, 22);
             this.SubmitButton.Text = "Submit";
+            this.SubmitButton.Click += new System.EventHandler(this.SubmitButton_Click);
             // 
             // tableLayoutPanel1
             // 
@@ -225,7 +226,7 @@ namespace Toxikon.ProtocolManager.Views.Protocols
             this.Controls.Add(this.toolStrip1);
             this.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.MaximumSize = new System.Drawing.Size(900, 706);
+            this.MaximumSize = new System.Drawing.Size(1024, 600);
             this.Name = "ProtocolRequestAddView";
             this.Size = new System.Drawing.Size(900, 529);
             this.toolStrip1.ResumeLayout(false);

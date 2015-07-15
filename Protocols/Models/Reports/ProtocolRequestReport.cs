@@ -8,6 +8,7 @@ using ExcelWorksheet = Microsoft.Office.Interop.Excel.Worksheet;
 using ExcelRange = Microsoft.Office.Interop.Excel.Range;
 using Toxikon.ProtocolManager.Queries;
 using System.Data;
+using System.Collections;
 
 namespace Toxikon.ProtocolManager.Models.Reports
 {
@@ -16,10 +17,13 @@ namespace Toxikon.ProtocolManager.Models.Reports
         private string filePath;
         private string fileName;
         private ProtocolRequest protocolRequest;
+        private IList templates;
 
         public ProtocolRequestReport(ProtocolRequest request)
         {
             this.protocolRequest = request;
+            this.templates = new ArrayList();
+            this.templates = QProtocolRequestTemplates.SelectItems(request.ID);
             this.filePath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) +
                            "\\TPM-ToxikonProtocolManager\\";
             this.fileName = protocolRequest.Contact.SponsorName + '-' + protocolRequest.RequestedBy + '-' +
@@ -138,9 +142,9 @@ namespace Toxikon.ProtocolManager.Models.Reports
 
         private void CreateProtocolTitleSheets(ExcelTemplate excelTemplate)
         {
-            for(int i = 0; i < this.protocolRequest.Templates.Count; i++)
+            for(int i = 0; i < this.templates.Count; i++)
             {
-                ProtocolTemplate title = this.protocolRequest.Templates[i];
+                ProtocolTemplate title = this.templates[i] as ProtocolTemplate;
                 ExcelWorksheet worksheet = CreateNewWorksheet(excelTemplate, i + 1);
                 InsertProtocolTitleSheetHeader(worksheet, title);
                 InsertProtocolEventsDataTable(excelTemplate, worksheet, title);

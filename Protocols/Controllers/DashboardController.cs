@@ -26,7 +26,6 @@ namespace Toxikon.ProtocolManager.Controllers
         public void LoadView()
         {
             LoadProtocolRequestsByUserRole();
-            LoadProtocolTitles();
             AddProtocolRequestsToView();
         }
 
@@ -46,14 +45,6 @@ namespace Toxikon.ProtocolManager.Controllers
                     break;
                 default:
                     break;
-            }
-        }
-
-        private void LoadProtocolTitles()
-        {
-            foreach (ProtocolRequest request in protocolRequests)
-            {
-                request.SetTitles((List<ProtocolTemplate>)QProtocolRequestTemplates.SelectItems(request.ID));
             }
         }
 
