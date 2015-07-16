@@ -28,6 +28,12 @@ namespace Toxikon.ProtocolManager.Views.Protocols
             this.controller = controller;
         }
 
+        public string CustomTemplate
+        {
+            get { return this.CustomTemplateTextBox.Text; }
+            set { this.CustomTemplateTextBox.Text = value; }
+        }
+
         public void AddItemToListBox1(Item item)
         {
             this.ListBox1.Items.Add(item.Value);

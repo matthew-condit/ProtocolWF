@@ -41,8 +41,6 @@ namespace Toxikon.ProtocolManager.Views.Protocols
             this.IDCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TitleCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.toolStrip2 = new System.Windows.Forms.ToolStrip();
-            this.toolStripLabel2 = new System.Windows.Forms.ToolStripLabel();
-            this.TemplateGroupComboBox = new System.Windows.Forms.ToolStripComboBox();
             this.FindTemplateButton = new System.Windows.Forms.ToolStripButton();
             this.toolStrip1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -185,28 +183,12 @@ namespace Toxikon.ProtocolManager.Views.Protocols
             // 
             this.toolStrip2.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
             this.toolStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripLabel2,
-            this.TemplateGroupComboBox,
             this.FindTemplateButton});
             this.toolStrip2.Location = new System.Drawing.Point(0, 345);
             this.toolStrip2.Name = "toolStrip2";
             this.toolStrip2.Size = new System.Drawing.Size(1024, 25);
             this.toolStrip2.TabIndex = 50;
             this.toolStrip2.Text = "toolStrip2";
-            // 
-            // toolStripLabel2
-            // 
-            this.toolStripLabel2.Name = "toolStripLabel2";
-            this.toolStripLabel2.Size = new System.Drawing.Size(101, 22);
-            this.toolStripLabel2.Text = "Template Groups:";
-            // 
-            // TemplateGroupComboBox
-            // 
-            this.TemplateGroupComboBox.BackColor = System.Drawing.Color.LemonChiffon;
-            this.TemplateGroupComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.TemplateGroupComboBox.Name = "TemplateGroupComboBox";
-            this.TemplateGroupComboBox.Size = new System.Drawing.Size(300, 25);
-            this.TemplateGroupComboBox.SelectedIndexChanged += new System.EventHandler(this.TemplateGroupComboBox_SelectedIndexChanged);
             // 
             // FindTemplateButton
             // 
@@ -251,8 +233,6 @@ namespace Toxikon.ProtocolManager.Views.Protocols
         private System.Windows.Forms.DataGridView TitleDataGridView;
         private RequestForms.RequestFormAdd RequestForm;
         private System.Windows.Forms.ToolStrip toolStrip2;
-        private System.Windows.Forms.ToolStripLabel toolStripLabel2;
-        private System.Windows.Forms.ToolStripComboBox TemplateGroupComboBox;
         private System.Windows.Forms.ToolStripButton FindTemplateButton;
         private System.Windows.Forms.DataGridViewTextBoxColumn IDCol;
         private System.Windows.Forms.DataGridViewTextBoxColumn TitleCol;

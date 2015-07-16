@@ -23,11 +23,12 @@ namespace Toxikon.ProtocolManager.Queries
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
                     connection.Open();
-                    foreach (Item item in items)
+                    using (SqlCommand command = new SqlCommand("prt_insert_template", connection))
                     {
-                        using (SqlCommand command = new SqlCommand("prt_insert_template", connection))
+                        command.CommandType = CommandType.StoredProcedure;
+                        foreach (Item item in items)
                         {
-                            command.CommandType = CommandType.StoredProcedure;
+                            command.Parameters.Clear();
                             command.Parameters.Add("@RequestID", SqlDbType.Int).Value = requestID;
                             command.Parameters.Add("@TemplateID", SqlDbType.Int).Value = item.ID;
                             command.Parameters.Add("@CreatedBy", SqlDbType.NVarChar).Value = userName;

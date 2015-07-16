@@ -14,8 +14,6 @@ namespace Toxikon.ProtocolManager.Interfaces.Protocols
     public interface IProtocolRequestAddView
     {
         void SetController(ProtocolRequestAddController controller);
-        void AddItemToComboBox(Item item);
-        void SetComboBoxSelectedIndex(int selectedIndex);
         void AddItemToDataGrid(Item item);
         void ClearView();
 

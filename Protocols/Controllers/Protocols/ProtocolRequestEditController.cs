@@ -75,19 +75,26 @@ namespace Toxikon.ProtocolManager.Controllers.Protocols
 
         public void AddTemplateButtonClicked()
         {
+            ShowTemplateOptionsPopup();
+        }
+
+        private void ShowTemplateOptionsPopup()
+        {
             TemplateOptionsForm form = new TemplateOptionsForm();
             TemplateOptionsController formController = new TemplateOptionsController(form);
+            formController.SubmitSelectedItemDelegate = new
+                TemplateOptionsController.SubmitSelectedItem(this.SubmitSelectedTemplate);
             formController.LoadView();
             DialogResult dialogResult = form.ShowDialog(this.view.ParentControl);
-            if(dialogResult == DialogResult.OK)
-            {
-                QProtocolRequestTemplates.InsertItem(this.request.ID, formController.SelectedTemplate.ID, 
-                                                     loginInfo.UserName);
-                ProtocolActivity protocolActivity = new ProtocolActivity(this.request.ID, 
-                                                    formController.SelectedTemplate.ID, 1, loginInfo.UserName);
-                QProtocolActivities.InsertItem(protocolActivity);
-                RefreshTemplateListView();
-            }
+            form.Dispose();
+        }
+
+        private void SubmitSelectedTemplate(Item item)
+        {
+            QProtocolRequestTemplates.InsertItem(this.request.ID, item.ID, loginInfo.UserName);
+            ProtocolActivity protocolActivity = new ProtocolActivity(this.request.ID, item.ID, 1, loginInfo.UserName);
+            QProtocolActivities.InsertItem(protocolActivity);
+            RefreshTemplateListView();
         }
 
         public void RemoveTemplateButtonClicked()

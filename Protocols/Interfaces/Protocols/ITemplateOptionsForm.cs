@@ -16,5 +16,7 @@ namespace Toxikon.ProtocolManager.Interfaces.Protocols
         void AddItemToListBox2(Item item);
         void ClearListBox2();
         void SetDialogResult(DialogResult dialogResult);
+
+        string CustomTemplate { get; set; }
     }
 }

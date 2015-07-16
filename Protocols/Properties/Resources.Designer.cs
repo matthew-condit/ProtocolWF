@@ -203,6 +203,26 @@ namespace Toxikon.ProtocolManager.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap StatusAnnotations_Required_16xMD_color {
+            get {
+                object obj = ResourceManager.GetObject("StatusAnnotations_Required_16xMD_color", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap StatusAnnotations_Required_32xSM_color {
+            get {
+                object obj = ResourceManager.GetObject("StatusAnnotations_Required_32xSM_color", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap ZoomNeutral_16xlG {
             get {
                 object obj = ResourceManager.GetObject("ZoomNeutral_16xlG", resourceCulture);

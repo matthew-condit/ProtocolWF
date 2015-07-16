@@ -28,7 +28,7 @@
     <PublisherName>Toxikon</PublisherName>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>index.html</WebPage>
-    <ApplicationRevision>13</ApplicationRevision>
+    <ApplicationRevision>15</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -187,6 +187,12 @@
     <Compile Include="Views\RequestForms\RequestFormAdd.Designer.cs">
       <DependentUpon>RequestFormAdd.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\RequestForms\RequestFormAdd2.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\RequestForms\RequestFormAdd2.Designer.cs">
+      <DependentUpon>RequestFormAdd2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\RequestForms\RequestFormEdit.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -325,6 +331,9 @@
     <EmbeddedResource Include="Views\RequestForms\RequestFormAdd.resx">
       <DependentUpon>RequestFormAdd.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Views\RequestForms\RequestFormAdd2.resx">
+      <DependentUpon>RequestFormAdd2.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\RequestForms\RequestFormEdit.resx">
       <DependentUpon>RequestFormEdit.cs</DependentUpon>
     </EmbeddedResource>
@@ -394,6 +403,8 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\StatusAnnotations_Required_32xSM_color.png" />
+    <None Include="Resources\StatusAnnotations_Required_16xMD_color.png" />
     <Content Include="TPMLogo.ico" />
     <Content Include="TPMLogo2.ico" />
     <Content Include="TPMLogo3.ico" />

@@ -11,6 +11,7 @@ using System.Windows;
 using System.Windows.Forms;
 using Toxikon.ProtocolManager.Views.Templates;
 using Toxikon.ProtocolManager.Controllers.Templates;
+using Toxikon.ProtocolManager.Views.Protocols;
 
 namespace Toxikon.ProtocolManager.Controllers.Protocols
 {
@@ -19,9 +20,6 @@ namespace Toxikon.ProtocolManager.Controllers.Protocols
         private IProtocolRequestAddView view;
         private IList sponsorContacts;
         private ProtocolRequest request;
-        private IList templateGroups;
-        private IList templates;
-        private Item selectedTemplateGroup;
         private IList selectedTemplates;
 
         private RequestFormController requestFormController;
@@ -34,15 +32,13 @@ namespace Toxikon.ProtocolManager.Controllers.Protocols
             this.sponsorContacts = new ArrayList();
             this.request = new ProtocolRequest();
             this.requestFormController = new RequestFormController(this.view.GetRequestForm);
-            this.templateGroups = new ArrayList();
-            this.selectedTemplates = new ArrayList();
             this.loginInfo = LoginInfo.GetInstance();
+            this.selectedTemplates = new ArrayList();
         }
 
         public void LoadView()
         {
             InitProtocolRequest();
-            LoadTemplateGroups();
         }
 
         private void InitProtocolRequest()
@@ -50,24 +46,6 @@ namespace Toxikon.ProtocolManager.Controllers.Protocols
             LoginInfo loginInfo = LoginInfo.GetInstance();
             this.request.RequestedBy = loginInfo.FullName;
             this.request.RequestedDate = DateTime.Now;
-        }
-
-        private void LoadTemplateGroups()
-        {
-            this.templateGroups = QTemplateGroups.GetActiveItems();
-            if(this.templateGroups.Count != 0)
-            {
-                AddTemplateGroupsToComboBox();
-            }
-        }
-
-        private void AddTemplateGroupsToComboBox()
-        {
-            foreach (Item item in templateGroups)
-            {
-                this.view.AddItemToComboBox(item);
-            }
-            this.view.SetComboBoxSelectedIndex(0);
         }
 
         public void SearchButtonClicked()
@@ -134,43 +112,27 @@ namespace Toxikon.ProtocolManager.Controllers.Protocols
             }
         }
 
-        public void TemplateGroups_SelectedIndexChanged(int selectedIndex)
-        {
-            if (selectedIndex >= 0 && selectedIndex < this.templateGroups.Count)
-            {
-                this.selectedTemplateGroup = this.templateGroups[selectedIndex] as Item;
-            }
-        }
-
         public void FindTemplateButtonClicked()
         {
-            if(this.selectedTemplateGroup != null)
-            {
-                this.templates = QTemplates.GetItemsByGroupID(this.selectedTemplateGroup.ID);
-                ShowTemplatesPopup();
-            }
+            ShowTemplateOptionsPopup();
         }
 
-        private void ShowTemplatesPopup()
+        private void ShowTemplateOptionsPopup()
         {
-            CheckedListBoxForm popup = new CheckedListBoxForm();
-            CheckBoxOptionsController popupController = new CheckBoxOptionsController(popup, this.templates);
-            popupController.LoadView();
-            DialogResult dialogResult = popup.ShowDialog();
-            if(dialogResult == DialogResult.OK)
-            {
-                AddSelectedItemsToDataGrid(popupController.SelectedIndices);
-            }
+            TemplateOptionsForm form = new TemplateOptionsForm();
+            TemplateOptionsController formController = new TemplateOptionsController(form);
+            formController.SubmitSelectedItemDelegate = new 
+                TemplateOptionsController.SubmitSelectedItem(this.AddSelectedItemToDataGrid);
+            formController.LoadView();
+            DialogResult dialogResult = form.ShowDialog(this.view.ParentControl);
+            
+            form.Dispose();
         }
 
-        private void AddSelectedItemsToDataGrid(IList selectedIndices)
+        private void AddSelectedItemToDataGrid(Item item)
         {
-            foreach (int index in selectedIndices)
-            {
-                Item item = this.templates[index] as Item;
-                this.selectedTemplates.Add(item);
-                this.view.AddItemToDataGrid(item);
-            }
+            this.selectedTemplates.Add(item);
+            this.view.AddItemToDataGrid(item);
         }
 
         public void RemoveItemFromTemplates(int selectedIndex)

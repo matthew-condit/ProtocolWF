@@ -19,6 +19,9 @@ namespace Toxikon.ProtocolManager.Controllers.Protocols
         public Item SelectedTemplateGroup {get; private set; }
         public Item SelectedTemplate { get; private set; }
 
+        public delegate void SubmitSelectedItem(Item Item);
+        public SubmitSelectedItem SubmitSelectedItemDelegate;
+
         public TemplateOptionsController(ITemplateOptionsForm view)
         {
             this.view = view;
@@ -76,14 +79,52 @@ namespace Toxikon.ProtocolManager.Controllers.Protocols
 
         public void SubmitButtonClicked()
         {
-            if(this.SelectedTemplate == null || this.SelectedTemplateGroup == null)
+            if(this.view.CustomTemplate.Trim() != String.Empty)
+            {
+                SubmitCustomTemplate();
+            }
+            else
+            {
+                SubmitSelectedTemplate();
+            }
+            this.SelectedTemplate = null;
+        }
+
+        private void SubmitCustomTemplate()
+        {
+            this.SelectedTemplate = CreateCustomTemplate();
+            if (this.SubmitSelectedItemDelegate != null)
+            {
+                this.SubmitSelectedItemDelegate(this.SelectedTemplate);
+            }
+            this.view.CustomTemplate = "";
+        }
+
+        private Item CreateCustomTemplate()
+        {
+            Item item = new Item();
+            int groupID = 4;
+            string title = this.view.CustomTemplate;
+            LoginInfo loginInfo = LoginInfo.GetInstance();
+            item.ID = QTemplates.InsertItem(groupID, title, loginInfo.UserName);
+            item.Value = title;
+
+            return item;
+        }
+
+        private void SubmitSelectedTemplate()
+        {
+            if (this.SelectedTemplate == null || this.SelectedTemplateGroup == null)
             {
                 MessageBox.Show("Invalid selected item.");
                 this.view.SetDialogResult(DialogResult.Retry);
             }
             else
             {
-                this.view.SetDialogResult(DialogResult.OK);
+                if (this.SubmitSelectedItemDelegate != null)
+                {
+                    this.SubmitSelectedItemDelegate(this.SelectedTemplate);
+                }
             }
         }
     }

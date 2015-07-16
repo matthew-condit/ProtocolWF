@@ -114,7 +114,7 @@ namespace Toxikon.ProtocolManager.Controllers.Admin
         private void InsertNewTemplate()
         {
             LoginInfo loginInfo = LoginInfo.GetInstance();
-            QTemplates.InsertItem(this.comboBoxSelectedItem.ID, this.view.TextBoxValue, loginInfo.UserName);
+            int templateID = QTemplates.InsertItem(this.comboBoxSelectedItem.ID, this.view.TextBoxValue, loginInfo.UserName);
         }
 
         public void UpdateButtonClicked()

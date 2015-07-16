@@ -189,5 +189,13 @@ namespace Toxikon.ProtocolManager.Views.RequestForms
         {
             this.controller.ChangeContactButtonClicked();
         }
+
+        private void EmailLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            if(this.Email != "Email" && this.Email.Trim() != String.Empty)
+            {
+                System.Diagnostics.Process.Start("mailto:" + this.Email);
+            }
+        }
     }
 }

@@ -15,8 +15,9 @@ namespace Toxikon.ProtocolManager.Queries
         private static string connectionString = Utility.GetTPMConnectionString();
         private static string className = "QTemplates";
 
-        public static void InsertItem(int groupID, string title, string userName)
+        public static int InsertItem(int groupID, string title, string userName)
         {
+            int result = 0;
             try
             {
                 using(SqlConnection connection = new SqlConnection(connectionString))
@@ -28,7 +29,7 @@ namespace Toxikon.ProtocolManager.Queries
                         command.Parameters.Add("@GroupID", SqlDbType.Int).Value = groupID;
                         command.Parameters.Add("@Title", SqlDbType.NVarChar).Value = title;
                         command.Parameters.Add("@CreatedBy", SqlDbType.NVarChar).Value = userName;
-                        int result = command.ExecuteNonQuery();
+                        result = Convert.ToInt32(command.ExecuteScalar());
                     }
                 }
             }
@@ -36,6 +37,7 @@ namespace Toxikon.ProtocolManager.Queries
             {
                 ErrorHandler.CreateLogFile(className, "InsertItem", ex);
             }
+            return result;
         }
 
         public static IList GetItemsByGroupID(int groupID)

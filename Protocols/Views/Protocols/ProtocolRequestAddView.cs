@@ -22,7 +22,6 @@ namespace Toxikon.ProtocolManager.Views.Protocols
         public ProtocolRequestAddView()
         {
             InitializeComponent();
-            this.TemplateGroupComboBox.ComboBox.DisplayMember = "Value";
         }
 
         public RequestFormAdd GetRequestForm
@@ -40,19 +39,9 @@ namespace Toxikon.ProtocolManager.Views.Protocols
             get { return this; }
         }
 
-        public void AddItemToComboBox(Item item)
-        {
-            this.TemplateGroupComboBox.Items.Add(item);
-        }
-
         public void AddItemToDataGrid(Item item)
         {
             this.TitleDataGridView.Rows.Add(item.ID, item.Value);
-        }
-
-        public void SetComboBoxSelectedIndex(int selectedIndex)
-        {
-            this.TemplateGroupComboBox.SelectedIndex = selectedIndex;
         }
 
         public void ClearView()
@@ -80,11 +69,6 @@ namespace Toxikon.ProtocolManager.Views.Protocols
         private void FindTemplateButton_Click(object sender, EventArgs e)
         {
             this.controller.FindTemplateButtonClicked();
-        }
-
-        private void TemplateGroupComboBox_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            this.controller.TemplateGroups_SelectedIndexChanged(this.TemplateGroupComboBox.SelectedIndex);
         }
 
         private void TitleDataGridView_RowsRemoved(object sender, DataGridViewRowsRemovedEventArgs e)
