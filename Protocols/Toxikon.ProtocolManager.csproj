@@ -91,6 +91,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controllers\Admin\ListNameController.cs" />
+    <Compile Include="Controllers\Admin\ProtocolNumberUpdateController.cs" />
     <Compile Include="Controllers\Admin\TemplateGroupsController.cs" />
     <Compile Include="Controllers\Admin\TemplateListController.cs" />
     <Compile Include="Controllers\Controller.cs" />
@@ -119,6 +120,7 @@
     <Compile Include="Controllers\Templates\OneTextBoxTrueFalseFormController.cs" />
     <Compile Include="Controllers\Templates\UCTemplate2Controller.cs" />
     <Compile Include="Interfaces\Admin\IListNameView.cs" />
+    <Compile Include="Interfaces\Admin\IProtocolNumberUpdateView.cs" />
     <Compile Include="Interfaces\IHistoryView.cs" />
     <Compile Include="Interfaces\IRequestForm.cs" />
     <Compile Include="Interfaces\Protocols\IProtocolRequestReadOnlyView.cs" />
@@ -155,6 +157,7 @@
     <Compile Include="Models\Reports\ProtocolRequestReport.cs" />
     <Compile Include="Models\Protocols\RequestStatuses.cs" />
     <Compile Include="Models\Admin\UserRoles.cs" />
+    <Compile Include="Queries\QLastSequenceNumber.cs" />
     <Compile Include="Queries\QListItems.cs" />
     <Compile Include="Queries\QListNames.cs" />
     <Compile Include="Queries\QProtocolActivities.cs" />
@@ -169,6 +172,12 @@
     <Compile Include="Queries\QTemplates.cs" />
     <Compile Include="Queries\QUsers.cs" />
     <Compile Include="Queries\QTMS.cs" />
+    <Compile Include="Views\Admin\ProtocolNumberUpdateView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\Admin\ProtocolNumberUpdateView.Designer.cs">
+      <DependentUpon>ProtocolNumberUpdateView.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\HistoryView.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -322,6 +331,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="Views\Admin\ProtocolNumberUpdateView.resx">
+      <DependentUpon>ProtocolNumberUpdateView.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\HistoryView.resx">
       <DependentUpon>HistoryView.cs</DependentUpon>
     </EmbeddedResource>

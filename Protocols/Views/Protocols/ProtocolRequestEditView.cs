@@ -61,7 +61,8 @@ namespace Toxikon.ProtocolManager.Views.Protocols
 
         public void AddTitleToView(ProtocolTemplate title)
         {
-            ListViewItem item = this.TitlesListView.Items.Add(title.Description);
+            ListViewItem item = this.TitlesListView.Items.Add(title.TemplateID.ToString());
+            item.SubItems.Add(title.Description);
             item.SubItems.Add(title.LatestActivity.ProtocolEvent.Description);
             item.SubItems.Add(title.LatestActivity.CreatedDate.ToString("MM/dd/yyyy"));
             item.SubItems.Add(title.LatestActivity.CreatedBy);
@@ -76,13 +77,14 @@ namespace Toxikon.ProtocolManager.Views.Protocols
         {
             this.TitlesListView.Columns[0].AutoResize(ColumnHeaderAutoResizeStyle.ColumnContent);
             this.TitlesListView.Columns[1].AutoResize(ColumnHeaderAutoResizeStyle.ColumnContent);
-            this.TitlesListView.Columns[2].AutoResize(ColumnHeaderAutoResizeStyle.HeaderSize);
+            this.TitlesListView.Columns[2].AutoResize(ColumnHeaderAutoResizeStyle.ColumnContent);
             this.TitlesListView.Columns[3].AutoResize(ColumnHeaderAutoResizeStyle.HeaderSize);
             this.TitlesListView.Columns[4].AutoResize(ColumnHeaderAutoResizeStyle.HeaderSize);
             this.TitlesListView.Columns[5].AutoResize(ColumnHeaderAutoResizeStyle.HeaderSize);
             this.TitlesListView.Columns[6].AutoResize(ColumnHeaderAutoResizeStyle.HeaderSize);
             this.TitlesListView.Columns[7].AutoResize(ColumnHeaderAutoResizeStyle.HeaderSize);
             this.TitlesListView.Columns[8].AutoResize(ColumnHeaderAutoResizeStyle.HeaderSize);
+            this.TitlesListView.Columns[9].AutoResize(ColumnHeaderAutoResizeStyle.HeaderSize);
         }
 
         public void ClearProtocolTitleListView()

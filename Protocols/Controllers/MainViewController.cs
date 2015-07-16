@@ -179,5 +179,12 @@ namespace Toxikon.ProtocolManager.Controllers
 
             view.AddControlToMainPanel(subView);
         }
+
+        public void LoadProtocolNumberUpdateView()
+        {
+            ProtocolNumberUpdateView subView = new ProtocolNumberUpdateView();
+            ProtocolNumberUpdateController subViewController = new ProtocolNumberUpdateController(subView);
+            view.AddControlToMainPanel(subView);
+        }
     }
 }

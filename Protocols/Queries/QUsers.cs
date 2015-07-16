@@ -12,7 +12,7 @@ namespace Toxikon.ProtocolManager.Queries
 {
     public class QUsers
     {
-        private static string CONNECTION_STRING = Utility.GetTPMConnectionString();
+        private static string connectionString = Utility.GetTPMConnectionString();
         private const string ErrorFormName = "QUsers";
 
         public static Int32 InsertItem(User user, string userName)
@@ -20,7 +20,7 @@ namespace Toxikon.ProtocolManager.Queries
             Int32 result = 0;
             try
             {
-                using (SqlConnection connection = new SqlConnection(CONNECTION_STRING))
+                using (SqlConnection connection = new SqlConnection(connectionString))
                 {
                     connection.Open();
                     using (SqlCommand command = new SqlCommand("u_insert_user", connection))
@@ -53,7 +53,7 @@ namespace Toxikon.ProtocolManager.Queries
             IList results = new ArrayList();
             try
             {
-                using (SqlConnection connection = new SqlConnection(CONNECTION_STRING))
+                using (SqlConnection connection = new SqlConnection(connectionString))
                 {
                     connection.Open();
                     using (SqlCommand command = new SqlCommand("u_select_all_users", connection))
@@ -75,12 +75,34 @@ namespace Toxikon.ProtocolManager.Queries
             return results;
         }
 
+        public static IList GetToxikonContacts()
+        {
+            IList results = new ArrayList();
+            try
+            {
+                using(SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    connection.Open();
+                    using(SqlCommand command = new SqlCommand("u_select_contact_users", connection))
+                    {
+                        command.CommandType = CommandType.StoredProcedure;
+                        
+                    }
+                }
+            }
+            catch(SqlException ex)
+            {
+                ErrorHandler.CreateLogFile(ErrorFormName, "GetToxikonContacts", ex);
+            }
+            return results;
+        }
+
         public static IList SelectUsersByRoleID(int roleID)
         {
             IList results = new ArrayList();
             try
             {
-                using (SqlConnection connection = new SqlConnection(CONNECTION_STRING))
+                using (SqlConnection connection = new SqlConnection(connectionString))
                 {
                     connection.Open();
                     using (SqlCommand command = new SqlCommand("u_select_users_by_roleid", connection))
@@ -112,7 +134,7 @@ namespace Toxikon.ProtocolManager.Queries
             User user = new User();
             try
             {
-                using (SqlConnection connection = new SqlConnection(CONNECTION_STRING))
+                using (SqlConnection connection = new SqlConnection(connectionString))
                 {
                     connection.Open();
                     using (SqlCommand command = new SqlCommand("u_select_user_by_username", connection))
@@ -156,7 +178,7 @@ namespace Toxikon.ProtocolManager.Queries
         {
             try
             {
-                using (SqlConnection connection = new SqlConnection(CONNECTION_STRING))
+                using (SqlConnection connection = new SqlConnection(connectionString))
                 {
                     connection.Open();
                     using (SqlCommand command = new SqlCommand("u_update_user", connection))

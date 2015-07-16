@@ -60,6 +60,7 @@
             this.SaveChangesButton = new System.Windows.Forms.ToolStripButton();
             this.CloseRequestButton = new System.Windows.Forms.ToolStripButton();
             this.DownloadReportButton = new System.Windows.Forms.ToolStripButton();
+            this.IDCol = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.toolStrip1.SuspendLayout();
             this.MainTableLayoutPanel.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -225,6 +226,7 @@
             // TitlesListView
             // 
             this.TitlesListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.IDCol,
             this.TitleCol,
             this.StatusCol,
             this.StatusDate,
@@ -392,6 +394,10 @@
             this.DownloadReportButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.DownloadReportButton.Click += new System.EventHandler(this.DownloadReportButton_Click);
             // 
+            // IDCol
+            // 
+            this.IDCol.Text = "ID";
+            // 
             // ProtocolRequestEditView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
@@ -447,5 +453,6 @@
         private System.Windows.Forms.ToolStripButton CloseRequestButton;
         private System.Windows.Forms.ToolStripButton DownloadReportButton;
         private RequestForms.RequestFormEdit RequestForm;
+        private System.Windows.Forms.ColumnHeader IDCol;
     }
 }

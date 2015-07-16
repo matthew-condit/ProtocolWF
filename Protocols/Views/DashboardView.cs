@@ -34,12 +34,11 @@ namespace Toxikon.ProtocolManager.Views
 
         public void AddProtocolRequestToView(ProtocolRequest request)
         {
-            int rowIndex = this.RequestDataGridView.Rows.Add(request.RequestedDate.ToString("MM/dd/yyyy"),
+            int rowIndex = this.RequestDataGridView.Rows.Add(
+                request.ID,
+                 request.RequestedDate.ToString("MM/dd/yyyy"),
                  request.RequestedBy,
                  request.Contact.SponsorName);
-            /*DataGridViewRow row = this.RequestDataGridView.Rows[rowIndex];
-            row.Height = 40;
-            SetDataGridViewCheckBoxCell_BackColor(request, rowIndex);*/
         }
 
         private void RequestDataGridView_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)

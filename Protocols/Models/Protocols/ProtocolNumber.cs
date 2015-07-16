@@ -38,7 +38,7 @@ namespace Toxikon.ProtocolManager.Models
 
         public void Create(ProtocolTemplate title, string type)
         {
-            this.SequenceNumber = QProtocolNumbers.InsertLastSequenceNumber();
+            this.SequenceNumber = QLastSequenceNumber.InsertLastSequenceNumber();
             this.RequestID = title.RequestID;
             this.TemplateID = title.TemplateID;
             this.ProtocolType = type == "File Copy" ? "A" : "B";

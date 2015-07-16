@@ -46,6 +46,7 @@
             this.PNCol = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.DepartmentCol = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.IDCol = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.toolStrip1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
@@ -144,6 +145,7 @@
             // TitlesListView
             // 
             this.TitlesListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.IDCol,
             this.TitleCol,
             this.StatusCol,
             this.StatusDate,
@@ -221,6 +223,10 @@
             this.tableLayoutPanel1.Size = new System.Drawing.Size(1024, 562);
             this.tableLayoutPanel1.TabIndex = 47;
             // 
+            // IDCol
+            // 
+            this.IDCol.Text = "ID";
+            // 
             // ProtocolRequestReadOnlyView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
@@ -260,5 +266,6 @@
         private System.Windows.Forms.ColumnHeader PNCol;
         private System.Windows.Forms.ColumnHeader DepartmentCol;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        private System.Windows.Forms.ColumnHeader IDCol;
     }
 }

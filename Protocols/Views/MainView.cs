@@ -159,5 +159,10 @@ namespace Toxikon.ProtocolManager.Views
         {
             this.controller.LoadTemplatesView();
         }
+
+        private void UpdateProtocolNumberButton_Click(object sender, EventArgs e)
+        {
+            this.controller.LoadProtocolNumberUpdateView();
+        }
     }
 }
