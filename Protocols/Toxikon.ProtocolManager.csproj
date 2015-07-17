@@ -152,6 +152,7 @@
     <Compile Include="Models\Protocols\ProtocolEvent.cs" />
     <Compile Include="Models\Protocols\ProtocolNumber.cs" />
     <Compile Include="Models\Protocols\ProtocolTemplate.cs" />
+    <Compile Include="Models\Protocols\Sponsor.cs" />
     <Compile Include="Models\Reports\ExcelDataTable.cs" />
     <Compile Include="Models\Reports\ExcelTemplate.cs" />
     <Compile Include="Models\Reports\ProtocolRequestReport.cs" />

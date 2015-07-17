@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 using Toxikon.ProtocolManager.Controllers.Protocols;
 using Toxikon.ProtocolManager.Interfaces;
 using Toxikon.ProtocolManager.Models;
@@ -14,7 +15,7 @@ namespace Toxikon.ProtocolManager.Controllers
     public class HistoryController
     {
         IHistoryView view;
-        IList userList;
+        IList sponsors;
         IList requestList;
         Item selectedItem;
         ProtocolRequest selectedRequest;
@@ -28,87 +29,65 @@ namespace Toxikon.ProtocolManager.Controllers
             this.view = view;
             this.view.SetController(this);
             this.requestViewController = new ProtocolRequestReadOnlyController(this.view.GetRequestView);
-            this.userList = new ArrayList();
             this.requestList = new ArrayList();
+            this.sponsors = new ArrayList();
             this.loginInfo = LoginInfo.GetInstance();
         }
 
         public void LoadView()
         {
-            SetUserList();
-            if(this.userList.Count != 0)
-            {
-                AddUserListToView();
-                this.view.SetRequestedByComboBox_SelectedIndex(0);
-            }
-        }
-
-        private void SetUserList()
-        {
-            switch(loginInfo.Role.RoleID)
-            {
-                case UserRoles.IT:
-                    this.userList = QUsers.SelectUsersByRoleID(UserRoles.CSR);
-                    this.view.SearchLabelText = SearchTypes.RequestedBy.ToString();
-                    break;
-                case UserRoles.CSR:
-                    this.userList = QUsers.SelectUsersByRoleID(UserRoles.DocControl);
-                    this.view.SearchLabelText = SearchTypes.AssignedTo.ToString();
-                    break;
-                case UserRoles.DocControl:
-                    this.userList = QUsers.SelectUsersByRoleID(UserRoles.CSR);
-                    this.view.SearchLabelText = SearchTypes.RequestedBy.ToString();
-                    break;
-                default:
-                    break;
-            }
-        }
-
-        private void AddUserListToView()
-        {
-            foreach(Item item in userList)
-            {
-                this.view.AddItemToRequestedByComboBox(item);
-            }
-        }
-
-        public void RequestedByComboBox_SelectedIndexChanged(int selectedIndex)
-        {
-            if(selectedIndex > -1 && selectedIndex < this.userList.Count)
-            {
-                this.selectedItem = this.userList[selectedIndex] as Item;
-            }
+            this.view.SponsorName = "";
         }
 
         public void SearchButtonClicked()
         {
-            this.requestList.Clear();
-            this.view.ClearListView();
-            this.requestViewController.ClearView();
-            if(this.selectedItem != null)
+            this.Clear();
+            if(this.view.SponsorName.Trim() != String.Empty)
             {
-                SetRequestList();
+                GetSponsors();
+                GetSelectedSponsorRequests();
                 AddRequestListToView();
+            }
+            else
+            {
+                MessageBox.Show("Sponsor Name is required.");
             }
         }
 
-        private void SetRequestList()
+        private void Clear()
         {
-            switch(loginInfo.Role.RoleID)
+            this.selectedItem = null;
+            this.sponsors.Clear();
+            this.requestList.Clear();
+            this.view.ClearListView();
+            this.requestViewController.ClearView();
+        }
+
+        private void GetSponsors()
+        {
+            sponsors = QProtocolRequests.GetSponsorCodes();
+            QMatrix.GetSponsorNames(sponsors);
+        }
+
+        private void GetSelectedSponsorRequests()
+        {
+            if(this.sponsors.Count != 0)
             {
-                case UserRoles.IT:
-                    this.requestList = QProtocolRequests.AdminSelectClosedRequests(this.selectedItem.Value);
-                    break;
-                case UserRoles.CSR:
-                    this.requestList = QProtocolRequests.SelectClosedRequests(loginInfo.UserName, 
-                                       this.selectedItem.Value);
-                    break;
-                case UserRoles.DocControl:
-                    this.requestList = QProtocolRequests.SelectClosedRequests(this.selectedItem.Value, 
-                                       loginInfo.UserName);
-                    break;
-                default:
-                    break;
+                this.selectedItem = TemplatesController.ShowListBoxOptionsForm(this.sponsors, this.view.ParentControl);
+                GetRequests();
+            }
+            else
+            {
+                MessageBox.Show("No records found.");
+            }
+        }
+
+        private void GetRequests()
+        {
+            if(this.selectedItem != null)
+            {
+                this.view.SponsorName = this.selectedItem.Text;
+                this.requestList = QProtocolRequests.GetProtocolRequests_BySponsorCode(this.selectedItem.Name);
             }
         }
 

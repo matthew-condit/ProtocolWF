@@ -8,6 +8,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Toxikon.ProtocolManager.Models.Protocols;
 
 namespace Toxikon.ProtocolManager.Queries
 {
@@ -54,6 +55,14 @@ namespace Toxikon.ProtocolManager.Queries
             WHERE Submitters.SubmitterCode = @ContactCode
             AND Submitters.RecordStatus = 1
             AND Submitters.SubmitterClass = 'Contact'";
+
+        private const string SelectSponsorNames = @"
+            SELECT Submitters.SubmitterText1 AS SponsorCode,
+	               Submitters.SubmitterName AS SponsorName
+            FROM Submitters
+            WHERE Submitters.SubmitterCode = @SponsorCode
+            AND Submitters.RecordStatus = 1
+            AND Submitters.SubmitterClass = 'Sponsor'";
 
         public static IList GetSponsorContacts(string sponsorName)
         {
@@ -143,6 +152,36 @@ namespace Toxikon.ProtocolManager.Queries
                 ErrorHandler.CreateLogFile(ErrorFormName, "GetSponsorByContactCode", sqlEx);
             }
             return result;
+        }
+
+        public static void GetSponsorNames(IList sponsors)
+        {
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(CONNECTION_STRING))
+                {
+                    connection.Open();
+                    using (SqlCommand command = new SqlCommand(SelectSponsorNames, connection))
+                    {
+                        command.CommandType = CommandType.Text;
+                        foreach(Item item in sponsors)
+                        {
+                            command.Parameters.Clear();
+                            command.Parameters.Add("@SponsorCode", SqlDbType.NVarChar).Value = item.Name;
+                            SqlDataReader reader = command.ExecuteReader();
+                            while (reader.Read())
+                            {
+                                item.Text = reader[1].ToString().Trim();
+                            }
+                            reader.Close();
+                        }
+                    }
+                }
+            }
+            catch (SqlException sqlEx)
+            {
+                ErrorHandler.CreateLogFile(ErrorFormName, "GetSponsorNames", sqlEx);
+            }
         }
 
         private static SponsorContact CreateNewSponsor(SqlDataReader reader)

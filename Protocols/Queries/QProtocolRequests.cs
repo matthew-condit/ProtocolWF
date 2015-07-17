@@ -8,6 +8,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Toxikon.ProtocolManager.Models.Protocols;
 
 namespace Toxikon.ProtocolManager.Queries
 {
@@ -222,6 +223,64 @@ namespace Toxikon.ProtocolManager.Queries
             catch (SqlException e)
             {
                 ErrorHandler.CreateLogFile(ErrorFormName, "AdminSelectClosedRequests", e);
+            }
+            return results;
+        }
+
+        public static IList GetSponsorCodes()
+        {
+            IList results = new ArrayList();
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    connection.Open();
+                    using (SqlCommand command = new SqlCommand("pr_select_sponsorcodes", connection))
+                    {
+                        command.CommandType = CommandType.StoredProcedure;
+
+                        SqlDataReader reader = command.ExecuteReader();
+                        while (reader.Read())
+                        {
+                            Item item = new Item();
+                            item.Name = reader[0].ToString();
+                            results.Add(item);
+                        }
+                    }
+                }
+            }
+            catch (SqlException e)
+            {
+                ErrorHandler.CreateLogFile(ErrorFormName, "GetSponsorCodes", e);
+            }
+            return results;
+        }
+
+        public static IList GetProtocolRequests_BySponsorCode(string sponsorCode)
+        {
+            IList results = new ArrayList();
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    connection.Open();
+                    using (SqlCommand command = new SqlCommand("pr_select_requests_by_sponsorcode", connection))
+                    {
+                        command.CommandType = CommandType.StoredProcedure;
+                        command.Parameters.Add("@SponsorCode", SqlDbType.NVarChar).Value = sponsorCode;
+
+                        SqlDataReader reader = command.ExecuteReader();
+                        while (reader.Read())
+                        {
+                            ProtocolRequest request = CreateNewProtocolRequest(reader);
+                            results.Add(request);
+                        }
+                    }
+                }
+            }
+            catch (SqlException e)
+            {
+                ErrorHandler.CreateLogFile(ErrorFormName, "GetProtocolRequests_BySponsorCode", e);
             }
             return results;
         }

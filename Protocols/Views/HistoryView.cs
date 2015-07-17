@@ -28,26 +28,16 @@ namespace Toxikon.ProtocolManager.Views
             this.controller = controller;
         }
 
-        public string SearchLabelText
+        public Control ParentControl
         {
-            get { return this.SearchLabel.Text; }
-            set { this.SearchLabel.Text = value; }
-        }
-
-        public void AddItemToRequestedByComboBox(Item item)
-        {
-            this.RequestedByComboBox.Items.Add(item.Text);
-        }
-        
-        public void SetRequestedByComboBox_SelectedIndex(int index)
-        {
-            this.RequestedByComboBox.SelectedIndex = index;
+            get { return this.ParentForm; }
         }
         
         public void AddItemToListView(ProtocolRequest request)
         {
             ListViewItem item = this.RequestListView.Items.Add(request.RequestedDate.ToString("MM/dd/yyyy"));
-            item.SubItems.Add(request.Contact.SponsorName);
+            item.SubItems.Add(request.RequestedBy);
+            item.SubItems.Add(request.AssignedTo);
         }
 
         public void ClearListView()
@@ -63,11 +53,6 @@ namespace Toxikon.ProtocolManager.Views
         private void SearchButton_Click(object sender, EventArgs e)
         {
             this.controller.SearchButtonClicked();
-        }
-
-        private void RequestedByComboBox_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            this.controller.RequestedByComboBox_SelectedIndexChanged(this.RequestedByComboBox.SelectedIndex);
         }
 
         private void RequestListView_SelectedIndexChanged(object sender, EventArgs e)

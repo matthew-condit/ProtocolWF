@@ -32,11 +32,10 @@
             this.LeftPanel = new System.Windows.Forms.Panel();
             this.RequestListView = new System.Windows.Forms.ListView();
             this.DateCol = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.SponsorCol = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.RequestedByCol = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.SearchLabel = new System.Windows.Forms.ToolStripLabel();
-            this.RequestedByComboBox = new System.Windows.Forms.ToolStripComboBox();
             this.SearchButton = new System.Windows.Forms.ToolStripButton();
+            this.AssignedToCol = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.ProtocolRequestDetail = new Toxikon.ProtocolManager.Views.Protocols.ProtocolRequestReadOnlyView();
             this.MainTablePanel.SuspendLayout();
             this.LeftPanel.SuspendLayout();
@@ -76,11 +75,13 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.RequestListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.DateCol,
-            this.SponsorCol});
+            this.RequestedByCol,
+            this.AssignedToCol});
             this.RequestListView.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.RequestListView.FullRowSelect = true;
             this.RequestListView.GridLines = true;
             this.RequestListView.Location = new System.Drawing.Point(0, 48);
+            this.RequestListView.Margin = new System.Windows.Forms.Padding(3, 0, 3, 3);
             this.RequestListView.Name = "RequestListView";
             this.RequestListView.Size = new System.Drawing.Size(339, 712);
             this.RequestListView.TabIndex = 1;
@@ -93,17 +94,15 @@
             this.DateCol.Text = "Date";
             this.DateCol.Width = 98;
             // 
-            // SponsorCol
+            // RequestedByCol
             // 
-            this.SponsorCol.Text = "Sponsor";
-            this.SponsorCol.Width = 213;
+            this.RequestedByCol.Text = "Requested By";
+            this.RequestedByCol.Width = 112;
             // 
             // toolStrip1
             // 
             this.toolStrip1.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.SearchLabel,
-            this.RequestedByComboBox,
             this.SearchButton});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
@@ -111,29 +110,20 @@
             this.toolStrip1.TabIndex = 0;
             this.toolStrip1.Text = "toolStrip1";
             // 
-            // SearchLabel
-            // 
-            this.SearchLabel.Name = "SearchLabel";
-            this.SearchLabel.Size = new System.Drawing.Size(81, 35);
-            this.SearchLabel.Text = "Requested By:";
-            // 
-            // RequestedByComboBox
-            // 
-            this.RequestedByComboBox.BackColor = System.Drawing.Color.LemonChiffon;
-            this.RequestedByComboBox.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.RequestedByComboBox.Name = "RequestedByComboBox";
-            this.RequestedByComboBox.Size = new System.Drawing.Size(200, 38);
-            this.RequestedByComboBox.SelectedIndexChanged += new System.EventHandler(this.RequestedByComboBox_SelectedIndexChanged);
-            // 
             // SearchButton
             // 
             this.SearchButton.Image = global::Toxikon.ProtocolManager.Properties.Resources.ZoomNeutral_16xlG;
             this.SearchButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.SearchButton.Name = "SearchButton";
-            this.SearchButton.Size = new System.Drawing.Size(46, 35);
-            this.SearchButton.Text = "Search";
+            this.SearchButton.Size = new System.Drawing.Size(80, 35);
+            this.SearchButton.Text = "Find Sponsor";
             this.SearchButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.SearchButton.Click += new System.EventHandler(this.SearchButton_Click);
+            // 
+            // AssignedToCol
+            // 
+            this.AssignedToCol.Text = "Assigned To";
+            this.AssignedToCol.Width = 108;
             // 
             // ProtocolRequestDetail
             // 
@@ -142,8 +132,9 @@
             this.ProtocolRequestDetail.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ProtocolRequestDetail.Location = new System.Drawing.Point(348, 4);
             this.ProtocolRequestDetail.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.ProtocolRequestDetail.MaximumSize = new System.Drawing.Size(1024, 600);
             this.ProtocolRequestDetail.Name = "ProtocolRequestDetail";
-            this.ProtocolRequestDetail.Size = new System.Drawing.Size(799, 762);
+            this.ProtocolRequestDetail.Size = new System.Drawing.Size(799, 600);
             this.ProtocolRequestDetail.TabIndex = 1;
             // 
             // HistoryView
@@ -169,13 +160,12 @@
         private System.Windows.Forms.TableLayoutPanel MainTablePanel;
         private System.Windows.Forms.Panel LeftPanel;
         private System.Windows.Forms.ToolStrip toolStrip1;
-        private System.Windows.Forms.ToolStripLabel SearchLabel;
-        private System.Windows.Forms.ToolStripComboBox RequestedByComboBox;
         private System.Windows.Forms.ToolStripButton SearchButton;
         private System.Windows.Forms.ListView RequestListView;
         private System.Windows.Forms.ColumnHeader DateCol;
-        private System.Windows.Forms.ColumnHeader SponsorCol;
+        private System.Windows.Forms.ColumnHeader RequestedByCol;
         private Protocols.ProtocolRequestReadOnlyView ProtocolRequestDetail;
+        private System.Windows.Forms.ColumnHeader AssignedToCol;
 
     }
 }
