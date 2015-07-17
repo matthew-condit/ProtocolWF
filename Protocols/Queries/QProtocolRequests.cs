@@ -30,6 +30,8 @@ namespace Toxikon.ProtocolManager.Queries
 
                         command.Parameters.Add("@RequestedBy", SqlDbType.NVarChar).Value = userName;
                         command.Parameters.Add("@SponsorCode", SqlDbType.NVarChar).Value = 
+                                                request.Contact.SponsorCode;
+                        command.Parameters.Add("@ContactCode", SqlDbType.NVarChar).Value =
                                                 request.Contact.ContactCode;
                         command.Parameters.Add("@Guidelines", SqlDbType.NVarChar).Value = request.Guidelines;
                         command.Parameters.Add("@Compliance", SqlDbType.NVarChar).Value = request.Compliance;
@@ -228,7 +230,7 @@ namespace Toxikon.ProtocolManager.Queries
         {
             ProtocolRequest request = new ProtocolRequest();
             request.ID = Convert.ToInt32(reader[0].ToString());
-            request.SetContact(reader[1].ToString());
+            request.SetContact(reader[17].ToString().Trim());
             request.Guidelines = reader[2].ToString();
             request.Compliance = reader[3].ToString();
             request.ProtocolType = reader[4].ToString();
@@ -256,7 +258,7 @@ namespace Toxikon.ProtocolManager.Queries
                     {
                         command.CommandType = CommandType.StoredProcedure;
                         command.Parameters.Add("@ProtocolRequestID", SqlDbType.Int).Value = request.ID;
-                        command.Parameters.Add("@SponsorCode", SqlDbType.NVarChar).Value = 
+                        command.Parameters.Add("@ContactCode", SqlDbType.NVarChar).Value = 
                                            request.Contact.ContactCode;
                         command.Parameters.Add("@Guidelines", SqlDbType.NVarChar).Value = request.Guidelines;
                         command.Parameters.Add("@Compliance", SqlDbType.NVarChar).Value = request.Compliance;
