@@ -26,6 +26,7 @@ namespace Toxikon.ProtocolManager.Queries
                         command.CommandType = CommandType.StoredProcedure;
                         command.Parameters.Add("@RequestID", SqlDbType.Int).Value = item.RequestID;
                         command.Parameters.Add("@TemplateID", SqlDbType.Int).Value = item.TemplateID;
+                        command.Parameters.Add("@SponsorCode", SqlDbType.NVarChar).Value = item.SponsorCode;
                         command.Parameters.Add("@ProtocolNumber", SqlDbType.NVarChar).Value = item.FullCode;
                         command.Parameters.Add("@YearNumber", SqlDbType.Int).Value = item.YearNumber;
                         command.Parameters.Add("@SequenceNumber", SqlDbType.Int).Value = item.SequenceNumber;
@@ -63,8 +64,9 @@ namespace Toxikon.ProtocolManager.Queries
                             item.YearNumber = Convert.ToInt32(reader[1].ToString());
                             item.SequenceNumber = Convert.ToInt32(reader[2].ToString());
                             item.RevisedNumber = Convert.ToInt32(reader[3].ToString());
-                            item.ProtocolType = reader[4].ToString();
+                            item.ProtocolType = reader[4].ToString().Trim();
                             item.IsActive = Convert.ToBoolean(reader[5].ToString());
+                            item.SponsorCode = reader[6].ToString().Trim();
                         }
                     }
                 }
@@ -72,6 +74,35 @@ namespace Toxikon.ProtocolManager.Queries
             catch (SqlException ex)
             {
                 ErrorHandler.CreateLogFile(ErrorFormName, "SetProtocolNumber", ex);
+            }
+        }
+
+        public static void GetExistSequenceNumber(ProtocolNumber item)
+        {
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    connection.Open();
+                    using (SqlCommand command = new SqlCommand("pn_select_exist_protocol_number", connection))
+                    {
+                        command.CommandType = CommandType.StoredProcedure;
+                        command.Parameters.Add("@TemplateID", SqlDbType.Int).Value = item.TemplateID;
+                        command.Parameters.Add("@SponsorCode", SqlDbType.NVarChar).Value = item.SponsorCode;
+                        command.Parameters.Add("@ProtocolType", SqlDbType.NChar).Value = item.ProtocolType;
+                        command.Parameters.Add("@YearNumber", SqlDbType.Int).Value = item.YearNumber;
+
+                        SqlDataReader reader = command.ExecuteReader();
+                        while (reader.Read())
+                        {
+                            item.SequenceNumber = Convert.ToInt32(reader[1].ToString());
+                        }
+                    }
+                }
+            }
+            catch (SqlException ex)
+            {
+                ErrorHandler.CreateLogFile(ErrorFormName, "GetExistingProtocolNumber", ex);
             }
         }
 

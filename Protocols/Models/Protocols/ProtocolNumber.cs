@@ -11,6 +11,7 @@ namespace Toxikon.ProtocolManager.Models
     {
         public int RequestID { get; set; }
         public int TemplateID { get; set; }
+        public string SponsorCode { get; set; }
         public string FullCode { get; set; }
         public int YearNumber { get; set; }
         public int SequenceNumber { get; set; }
@@ -22,28 +23,34 @@ namespace Toxikon.ProtocolManager.Models
         {
             this.RequestID = 0;
             this.TemplateID = 0;
+            this.SponsorCode = "";
             this.FullCode = "";
             this.ProtocolType = "A";
-            this.SequenceNumber = 0;
+            this.SequenceNumber = -1;
             this.RevisedNumber = 0;
             this.IsActive = false;
             this.YearNumber = Convert.ToInt32(DateTime.Now.ToString("yy"));
         }
 
-        public void SetFullCode()
+        private void SetFullCode()
         {
             this.FullCode = "P" + this.YearNumber.ToString() + "-" + this.SequenceNumber.ToString("0000") + "-" +
                             this.RevisedNumber.ToString("00") + this.ProtocolType;
         }
 
-        public void Create(ProtocolTemplate title, string type)
+        public void Create(ProtocolTemplate title, string type, string sponsorCode)
         {
-            this.SequenceNumber = QLastSequenceNumber.InsertLastSequenceNumber();
             this.RequestID = title.RequestID;
             this.TemplateID = title.TemplateID;
+            this.SponsorCode = sponsorCode;
             this.ProtocolType = type == "File Copy" ? "A" : "B";
             this.RevisedNumber = 0;
             this.IsActive = true;
+            QProtocolNumbers.GetExistSequenceNumber(this);
+            if(this.SequenceNumber == -1)
+            {
+                this.SequenceNumber = QLastSequenceNumber.InsertLastSequenceNumber();
+            }
             this.SetFullCode();
         }
 

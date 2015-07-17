@@ -260,7 +260,7 @@ namespace Toxikon.ProtocolManager.Controllers.Protocols
         private void AssignProtocolNumberToSelectedTitle()
         {
             ProtocolTemplate title = GetSelectedTemplateFromView();
-            title.AddProtocolNumber(this.request.ProtocolType);
+            title.AddProtocolNumber(this.request.ProtocolType, this.contact.SponsorCode);
         }
 
         public void ReviseProtocolButtonClicked()

@@ -53,7 +53,7 @@ namespace Toxikon.ProtocolManager.Models
             QProtocolRequestTemplates.UpdateFileInfo(this, loginInfo.UserName);
         }
 
-        public void AddProtocolNumber(string protocolType)
+        public void AddProtocolNumber(string protocolType, string sponsorCode)
         {
             if (this.ProtocolNumber.FullCode != String.Empty)
             {
@@ -62,7 +62,7 @@ namespace Toxikon.ProtocolManager.Models
             else
             {
                 this.ProtocolNumber = new ProtocolNumber();
-                this.ProtocolNumber.Create(this, protocolType);
+                this.ProtocolNumber.Create(this, protocolType, sponsorCode);
                 LoginInfo loginInfo = LoginInfo.GetInstance();
                 QProtocolNumbers.InsertItem(this.ProtocolNumber, loginInfo.UserName);
             }

@@ -83,11 +83,11 @@
             this.PhoneNumberLabel = new System.Windows.Forms.Label();
             this.FaxNumberLabel = new System.Windows.Forms.Label();
             this.BottomRightPanel = new System.Windows.Forms.FlowLayoutPanel();
+            this.flowLayoutPanel5 = new System.Windows.Forms.FlowLayoutPanel();
             this.label22 = new System.Windows.Forms.Label();
+            this.AddToxContactButton = new System.Windows.Forms.Button();
             this.ToxContactDGV = new System.Windows.Forms.DataGridView();
             this.NameCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.flowLayoutPanel5 = new System.Windows.Forms.FlowLayoutPanel();
-            this.AddToxContactButton = new System.Windows.Forms.Button();
             this.MainTableLayoutPanel.SuspendLayout();
             this.LeftTable.SuspendLayout();
             this.flowLayoutPanel2.SuspendLayout();
@@ -96,8 +96,8 @@
             this.flowLayoutPanel4.SuspendLayout();
             this.TopRightTable.SuspendLayout();
             this.BottomRightPanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ToxContactDGV)).BeginInit();
             this.flowLayoutPanel5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ToxContactDGV)).BeginInit();
             this.SuspendLayout();
             // 
             // MainTableLayoutPanel
@@ -124,7 +124,7 @@
             this.LeftTable.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
             this.LeftTable.ColumnCount = 2;
             this.LeftTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 102F));
-            this.LeftTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 279F));
+            this.LeftTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 283F));
             this.LeftTable.Controls.Add(this.label15, 0, 11);
             this.LeftTable.Controls.Add(this.label11, 0, 10);
             this.LeftTable.Controls.Add(this.label1, 0, 0);
@@ -494,7 +494,7 @@
             this.TopRightTable.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
             this.TopRightTable.ColumnCount = 2;
             this.TopRightTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 109F));
-            this.TopRightTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 198F));
+            this.TopRightTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 202F));
             this.TopRightTable.Controls.Add(this.label10, 0, 8);
             this.TopRightTable.Controls.Add(this.label4, 0, 0);
             this.TopRightTable.Controls.Add(this.SponsorContactLabel, 1, 0);
@@ -527,7 +527,7 @@
             this.TopRightTable.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.TopRightTable.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.TopRightTable.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.TopRightTable.Size = new System.Drawing.Size(313, 217);
+            this.TopRightTable.Size = new System.Drawing.Size(313, 218);
             this.TopRightTable.TabIndex = 1;
             // 
             // label10
@@ -728,21 +728,43 @@
             this.BottomRightPanel.Controls.Add(this.flowLayoutPanel5);
             this.BottomRightPanel.Controls.Add(this.ToxContactDGV);
             this.BottomRightPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.BottomRightPanel.Location = new System.Drawing.Point(390, 220);
+            this.BottomRightPanel.Location = new System.Drawing.Point(387, 218);
+            this.BottomRightPanel.Margin = new System.Windows.Forms.Padding(0);
             this.BottomRightPanel.Name = "BottomRightPanel";
-            this.BottomRightPanel.Size = new System.Drawing.Size(307, 117);
+            this.BottomRightPanel.Size = new System.Drawing.Size(313, 122);
             this.BottomRightPanel.TabIndex = 2;
+            // 
+            // flowLayoutPanel5
+            // 
+            this.flowLayoutPanel5.Controls.Add(this.label22);
+            this.flowLayoutPanel5.Controls.Add(this.AddToxContactButton);
+            this.flowLayoutPanel5.Location = new System.Drawing.Point(3, 3);
+            this.flowLayoutPanel5.Name = "flowLayoutPanel5";
+            this.flowLayoutPanel5.Size = new System.Drawing.Size(304, 24);
+            this.flowLayoutPanel5.TabIndex = 2;
             // 
             // label22
             // 
             this.label22.AutoSize = true;
             this.label22.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label22.Location = new System.Drawing.Point(3, 0);
+            this.label22.Location = new System.Drawing.Point(0, 0);
+            this.label22.Margin = new System.Windows.Forms.Padding(0);
             this.label22.Name = "label22";
             this.label22.Padding = new System.Windows.Forms.Padding(0, 4, 0, 4);
             this.label22.Size = new System.Drawing.Size(102, 23);
             this.label22.TabIndex = 0;
             this.label22.Text = "Toxikon Contacts:";
+            // 
+            // AddToxContactButton
+            // 
+            this.AddToxContactButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("AddToxContactButton.BackgroundImage")));
+            this.AddToxContactButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.AddToxContactButton.Location = new System.Drawing.Point(102, 2);
+            this.AddToxContactButton.Margin = new System.Windows.Forms.Padding(0, 2, 0, 0);
+            this.AddToxContactButton.Name = "AddToxContactButton";
+            this.AddToxContactButton.Size = new System.Drawing.Size(20, 18);
+            this.AddToxContactButton.TabIndex = 13;
+            this.AddToxContactButton.UseVisualStyleBackColor = true;
             // 
             // ToxContactDGV
             // 
@@ -763,26 +785,6 @@
             this.NameCol.HeaderText = "Name";
             this.NameCol.Name = "NameCol";
             this.NameCol.ReadOnly = true;
-            // 
-            // flowLayoutPanel5
-            // 
-            this.flowLayoutPanel5.Controls.Add(this.label22);
-            this.flowLayoutPanel5.Controls.Add(this.AddToxContactButton);
-            this.flowLayoutPanel5.Location = new System.Drawing.Point(3, 3);
-            this.flowLayoutPanel5.Name = "flowLayoutPanel5";
-            this.flowLayoutPanel5.Size = new System.Drawing.Size(304, 24);
-            this.flowLayoutPanel5.TabIndex = 2;
-            // 
-            // AddToxContactButton
-            // 
-            this.AddToxContactButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("AddToxContactButton.BackgroundImage")));
-            this.AddToxContactButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.AddToxContactButton.Location = new System.Drawing.Point(108, 2);
-            this.AddToxContactButton.Margin = new System.Windows.Forms.Padding(0, 2, 0, 0);
-            this.AddToxContactButton.Name = "AddToxContactButton";
-            this.AddToxContactButton.Size = new System.Drawing.Size(20, 18);
-            this.AddToxContactButton.TabIndex = 13;
-            this.AddToxContactButton.UseVisualStyleBackColor = true;
             // 
             // RequestFormAdd2
             // 
@@ -806,9 +808,9 @@
             this.TopRightTable.ResumeLayout(false);
             this.TopRightTable.PerformLayout();
             this.BottomRightPanel.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.ToxContactDGV)).EndInit();
             this.flowLayoutPanel5.ResumeLayout(false);
             this.flowLayoutPanel5.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ToxContactDGV)).EndInit();
             this.ResumeLayout(false);
 
         }
