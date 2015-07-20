@@ -33,9 +33,9 @@
             this.RequestListView = new System.Windows.Forms.ListView();
             this.DateCol = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.RequestedByCol = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.AssignedToCol = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.SearchButton = new System.Windows.Forms.ToolStripButton();
-            this.AssignedToCol = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.ProtocolRequestDetail = new Toxikon.ProtocolManager.Views.Protocols.ProtocolRequestReadOnlyView();
             this.MainTablePanel.SuspendLayout();
             this.LeftPanel.SuspendLayout();
@@ -99,6 +99,11 @@
             this.RequestedByCol.Text = "Requested By";
             this.RequestedByCol.Width = 112;
             // 
+            // AssignedToCol
+            // 
+            this.AssignedToCol.Text = "Assigned To";
+            this.AssignedToCol.Width = 108;
+            // 
             // toolStrip1
             // 
             this.toolStrip1.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
@@ -119,11 +124,6 @@
             this.SearchButton.Text = "Find Sponsor";
             this.SearchButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.SearchButton.Click += new System.EventHandler(this.SearchButton_Click);
-            // 
-            // AssignedToCol
-            // 
-            this.AssignedToCol.Text = "Assigned To";
-            this.AssignedToCol.Width = 108;
             // 
             // ProtocolRequestDetail
             // 

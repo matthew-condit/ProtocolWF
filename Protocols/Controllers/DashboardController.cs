@@ -43,6 +43,9 @@ namespace Toxikon.ProtocolManager.Controllers
                 case UserRoles.DocControl:
                     this.protocolRequests = QProtocolRequests.SelectItemsByAssignedTo(loginInfo.UserName);
                     break;
+                case UserRoles.Manager:
+                    this.protocolRequests = QProtocolRequests.SelectAllNewRequests();
+                    break;
                 default:
                     break;
             }

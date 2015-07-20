@@ -20,15 +20,13 @@ namespace Toxikon.ProtocolManager.Controllers
         Item selectedItem;
         ProtocolRequest selectedRequest;
         LoginInfo loginInfo;
-        ProtocolRequestReadOnlyController requestViewController;
-
-        enum SearchTypes { RequestedBy, AssignedTo };
+        RequestDetailController requestViewController;
 
         public HistoryController(IHistoryView view)
         {
             this.view = view;
             this.view.SetController(this);
-            this.requestViewController = new ProtocolRequestReadOnlyController(this.view.GetRequestView);
+            this.requestViewController = new RequestDetailController(this.view.GetRequestView);
             this.requestList = new ArrayList();
             this.sponsors = new ArrayList();
             this.loginInfo = LoginInfo.GetInstance();
@@ -36,22 +34,15 @@ namespace Toxikon.ProtocolManager.Controllers
 
         public void LoadView()
         {
-            this.view.SponsorName = "";
+            
         }
 
         public void SearchButtonClicked()
         {
             this.Clear();
-            if(this.view.SponsorName.Trim() != String.Empty)
-            {
-                GetSponsors();
-                GetSelectedSponsorRequests();
-                AddRequestListToView();
-            }
-            else
-            {
-                MessageBox.Show("Sponsor Name is required.");
-            }
+            GetSponsors();
+            GetSelectedSponsorRequests();
+            AddRequestListToView();
         }
 
         private void Clear()
@@ -65,7 +56,7 @@ namespace Toxikon.ProtocolManager.Controllers
 
         private void GetSponsors()
         {
-            sponsors = QProtocolRequests.GetSponsorCodes();
+            sponsors = QProtocolRequests.GetSponsorCodes(RequestStatuses.Closed);
             QMatrix.GetSponsorNames(sponsors);
         }
 
@@ -73,7 +64,8 @@ namespace Toxikon.ProtocolManager.Controllers
         {
             if(this.sponsors.Count != 0)
             {
-                this.selectedItem = TemplatesController.ShowListBoxOptionsForm(this.sponsors, this.view.ParentControl);
+                this.selectedItem = TemplatesController.ShowListBoxOptionsForm(this.sponsors, 
+                                    this.view.ParentControl);
                 GetRequests();
             }
             else
@@ -86,7 +78,6 @@ namespace Toxikon.ProtocolManager.Controllers
         {
             if(this.selectedItem != null)
             {
-                this.view.SponsorName = this.selectedItem.Text;
                 this.requestList = QProtocolRequests.GetProtocolRequests_BySponsorCode(this.selectedItem.Name);
             }
         }

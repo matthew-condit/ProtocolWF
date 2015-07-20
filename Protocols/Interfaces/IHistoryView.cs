@@ -17,7 +17,6 @@ namespace Toxikon.ProtocolManager.Interfaces
         void ClearListView();
 
         ProtocolRequestReadOnlyView GetRequestView { get; }
-        string SponsorName { get; set; }
         Control ParentControl { get; }
     }
 }

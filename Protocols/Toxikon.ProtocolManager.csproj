@@ -90,6 +90,7 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controllers\RequestDetailController.cs" />
     <Compile Include="Controllers\Admin\ListNameController.cs" />
     <Compile Include="Controllers\Admin\ProtocolNumberUpdateController.cs" />
     <Compile Include="Controllers\Admin\TemplateGroupsController.cs" />
@@ -98,7 +99,6 @@
     <Compile Include="Controllers\Protocols\TemplateOptionsController.cs" />
     <Compile Include="Controllers\Templates\UCToolStripListView1Controller.cs" />
     <Compile Include="Controllers\HistoryController.cs" />
-    <Compile Include="Controllers\Protocols\ProtocolRequestReadOnlyController.cs" />
     <Compile Include="Controllers\RequestFormController.cs" />
     <Compile Include="Controllers\TemplatesController.cs" />
     <Compile Include="Controllers\Templates\CheckBoxOptionsController.cs" />
@@ -113,7 +113,6 @@
     <Compile Include="Controllers\Admin\ProtocolEventEditController.cs" />
     <Compile Include="Controllers\Admin\ProtocolEventsController.cs" />
     <Compile Include="Controllers\Protocols\ProtocolRequestAddController.cs" />
-    <Compile Include="Controllers\Protocols\ProtocolRequestEditController.cs" />
     <Compile Include="Controllers\Admin\RoleListController.cs" />
     <Compile Include="Controllers\Admin\UserEditController.cs" />
     <Compile Include="Controllers\Admin\UserListController.cs" />
@@ -122,8 +121,10 @@
     <Compile Include="Interfaces\Admin\IListNameView.cs" />
     <Compile Include="Interfaces\Admin\IProtocolNumberUpdateView.cs" />
     <Compile Include="Interfaces\IHistoryView.cs" />
+    <Compile Include="Views\RequestDetailView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Include="Interfaces\IRequestForm.cs" />
-    <Compile Include="Interfaces\Protocols\IProtocolRequestReadOnlyView.cs" />
     <Compile Include="Interfaces\Templates\ICheckedListBoxForm.cs" />
     <Compile Include="Interfaces\IDashboardView.cs" />
     <Compile Include="Interfaces\Admin\IDepartmentListView.cs" />
@@ -135,7 +136,6 @@
     <Compile Include="Interfaces\Protocols\IProtocolEventAddView.cs" />
     <Compile Include="Interfaces\Admin\IProtocolEventEditView.cs" />
     <Compile Include="Interfaces\Protocols\IProtocolEventsView.cs" />
-    <Compile Include="Interfaces\Protocols\IProtocolRequestEditView.cs" />
     <Compile Include="Interfaces\Admin\IRoleListView.cs" />
     <Compile Include="Interfaces\Admin\IUserEditView.cs" />
     <Compile Include="Interfaces\Admin\IUserListView.cs" />
@@ -185,6 +185,12 @@
     <Compile Include="Views\HistoryView.Designer.cs">
       <DependentUpon>HistoryView.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\Protocols\ProtocolRequestManagerView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\Protocols\ProtocolRequestManagerView.Designer.cs">
+      <DependentUpon>ProtocolRequestManagerView.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\Protocols\ProtocolRequestReadOnlyView.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -208,6 +214,12 @@
     </Compile>
     <Compile Include="Views\RequestForms\RequestFormEdit.Designer.cs">
       <DependentUpon>RequestFormEdit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\RequestForms\RequestFormManagerView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\RequestForms\RequestFormManagerView.Designer.cs">
+      <DependentUpon>RequestFormManagerView.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\RequestForms\RequestFormReadOnly.cs">
       <SubType>UserControl</SubType>
@@ -338,6 +350,9 @@
     <EmbeddedResource Include="Views\HistoryView.resx">
       <DependentUpon>HistoryView.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Views\Protocols\ProtocolRequestManagerView.resx">
+      <DependentUpon>ProtocolRequestManagerView.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\Protocols\ProtocolRequestReadOnlyView.resx">
       <DependentUpon>ProtocolRequestReadOnlyView.cs</DependentUpon>
     </EmbeddedResource>
@@ -349,6 +364,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\RequestForms\RequestFormEdit.resx">
       <DependentUpon>RequestFormEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\RequestForms\RequestFormManagerView.resx">
+      <DependentUpon>RequestFormManagerView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\RequestForms\RequestFormReadOnly.resx">
       <DependentUpon>RequestFormReadOnly.cs</DependentUpon>

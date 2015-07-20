@@ -43,6 +43,7 @@
             this.UpdateFilePathButton = new System.Windows.Forms.ToolStripButton();
             this.OpenFileButton = new System.Windows.Forms.ToolStripButton();
             this.TitlesListView = new System.Windows.Forms.ListView();
+            this.IDCol = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.TitleCol = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.StatusCol = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.StatusDate = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -55,12 +56,11 @@
             this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.MainTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.RequestForm = new Toxikon.ProtocolManager.Views.RequestForms.RequestFormEdit();
+            this.RequestFormEditView = new Toxikon.ProtocolManager.Views.RequestForms.RequestFormEdit();
             this.toolStrip2 = new System.Windows.Forms.ToolStrip();
             this.SaveChangesButton = new System.Windows.Forms.ToolStripButton();
             this.CloseRequestButton = new System.Windows.Forms.ToolStripButton();
             this.DownloadReportButton = new System.Windows.Forms.ToolStripButton();
-            this.IDCol = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.toolStrip1.SuspendLayout();
             this.MainTableLayoutPanel.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -248,6 +248,10 @@
             this.TitlesListView.View = System.Windows.Forms.View.Details;
             this.TitlesListView.Leave += new System.EventHandler(this.TitlesListView_Leave);
             // 
+            // IDCol
+            // 
+            this.IDCol.Text = "ID";
+            // 
             // TitleCol
             // 
             this.TitleCol.Text = "Titles";
@@ -309,7 +313,7 @@
             // 
             // panel2
             // 
-            this.panel2.Controls.Add(this.RequestForm);
+            this.panel2.Controls.Add(this.RequestFormEditView);
             this.panel2.Controls.Add(this.toolStrip2);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(3, 171);
@@ -317,38 +321,38 @@
             this.panel2.Size = new System.Drawing.Size(1018, 388);
             this.panel2.TabIndex = 46;
             // 
-            // RequestForm
+            // RequestFormEditView
             // 
-            this.RequestForm.Address = "Address";
-            this.RequestForm.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.RequestFormEditView.Address = "Address";
+            this.RequestFormEditView.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.RequestForm.AssignedTo = "";
-            this.RequestForm.BackColor = System.Drawing.Color.White;
-            this.RequestForm.BillTo = "";
-            this.RequestForm.City = "City";
-            this.RequestForm.Comments = "Comments";
-            this.RequestForm.Compliance = "";
-            this.RequestForm.ContactName = "Contact";
-            this.RequestForm.Cost = "";
-            this.RequestForm.DueDate = new System.DateTime(2015, 7, 6, 17, 11, 19, 859);
-            this.RequestForm.Email = "Email";
-            this.RequestForm.FaxNumber = "Fax";
-            this.RequestForm.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.RequestForm.Guidelines = "";
-            this.RequestForm.Location = new System.Drawing.Point(0, 42);
-            this.RequestForm.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.RequestForm.Name = "RequestForm";
-            this.RequestForm.PhoneNumber = "Phone Number";
-            this.RequestForm.PONumber = "PO";
-            this.RequestForm.ProtocolType = "";
-            this.RequestForm.RequestedBy = "Requested By";
-            this.RequestForm.RequestedDate = "Requested Date";
-            this.RequestForm.SendVia = "";
-            this.RequestForm.Size = new System.Drawing.Size(1018, 346);
-            this.RequestForm.SponsorName = "Sponsor";
-            this.RequestForm.State = "State";
-            this.RequestForm.TabIndex = 2;
-            this.RequestForm.ZipCode = "Zip Code";
+            this.RequestFormEditView.AssignedTo = "";
+            this.RequestFormEditView.BackColor = System.Drawing.Color.White;
+            this.RequestFormEditView.BillTo = "";
+            this.RequestFormEditView.City = "City";
+            this.RequestFormEditView.Comments = "Comments";
+            this.RequestFormEditView.Compliance = "";
+            this.RequestFormEditView.ContactName = "Contact";
+            this.RequestFormEditView.Cost = "";
+            this.RequestFormEditView.DueDate = new System.DateTime(2015, 7, 6, 17, 11, 19, 859);
+            this.RequestFormEditView.Email = "Email";
+            this.RequestFormEditView.FaxNumber = "Fax";
+            this.RequestFormEditView.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.RequestFormEditView.Guidelines = "";
+            this.RequestFormEditView.Location = new System.Drawing.Point(0, 42);
+            this.RequestFormEditView.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.RequestFormEditView.Name = "RequestFormEditView";
+            this.RequestFormEditView.PhoneNumber = "Phone Number";
+            this.RequestFormEditView.PONumber = "PO";
+            this.RequestFormEditView.ProtocolType = "";
+            this.RequestFormEditView.RequestedBy = "Requested By";
+            this.RequestFormEditView.RequestedDate = "Requested Date";
+            this.RequestFormEditView.SendVia = "";
+            this.RequestFormEditView.Size = new System.Drawing.Size(1018, 346);
+            this.RequestFormEditView.SponsorName = "Sponsor";
+            this.RequestFormEditView.State = "State";
+            this.RequestFormEditView.TabIndex = 2;
+            this.RequestFormEditView.ZipCode = "Zip Code";
             // 
             // toolStrip2
             // 
@@ -393,10 +397,6 @@
             this.DownloadReportButton.Text = "Download Report";
             this.DownloadReportButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.DownloadReportButton.Click += new System.EventHandler(this.DownloadReportButton_Click);
-            // 
-            // IDCol
-            // 
-            this.IDCol.Text = "ID";
             // 
             // ProtocolRequestEditView
             // 
@@ -452,7 +452,7 @@
         private System.Windows.Forms.ToolStripButton SaveChangesButton;
         private System.Windows.Forms.ToolStripButton CloseRequestButton;
         private System.Windows.Forms.ToolStripButton DownloadReportButton;
-        private RequestForms.RequestFormEdit RequestForm;
+        private RequestForms.RequestFormEdit RequestFormEditView;
         private System.Windows.Forms.ColumnHeader IDCol;
     }
 }

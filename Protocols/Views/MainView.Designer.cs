@@ -41,8 +41,8 @@
             this.AdminProtocolEventsButton = new System.Windows.Forms.ToolStripMenuItem();
             this.TemplatesGroupsMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.TemplatesMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.MainPanel = new System.Windows.Forms.Panel();
             this.UpdateProtocolNumberButton = new System.Windows.Forms.ToolStripMenuItem();
+            this.MainPanel = new System.Windows.Forms.Panel();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -159,14 +159,6 @@
             this.TemplatesMenuItem.Text = "Templates";
             this.TemplatesMenuItem.Click += new System.EventHandler(this.TemplatesMenuItem_Click);
             // 
-            // MainPanel
-            // 
-            this.MainPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.MainPanel.Location = new System.Drawing.Point(0, 29);
-            this.MainPanel.Name = "MainPanel";
-            this.MainPanel.Size = new System.Drawing.Size(1008, 533);
-            this.MainPanel.TabIndex = 1;
-            // 
             // UpdateProtocolNumberButton
             // 
             this.UpdateProtocolNumberButton.Name = "UpdateProtocolNumberButton";
@@ -174,15 +166,23 @@
             this.UpdateProtocolNumberButton.Text = "Update Protocol Number";
             this.UpdateProtocolNumberButton.Click += new System.EventHandler(this.UpdateProtocolNumberButton_Click);
             // 
+            // MainPanel
+            // 
+            this.MainPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.MainPanel.Location = new System.Drawing.Point(0, 29);
+            this.MainPanel.Name = "MainPanel";
+            this.MainPanel.Size = new System.Drawing.Size(1008, 603);
+            this.MainPanel.TabIndex = 1;
+            // 
             // MainView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1008, 562);
+            this.ClientSize = new System.Drawing.Size(1008, 632);
             this.Controls.Add(this.MainPanel);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
-            this.MinimumSize = new System.Drawing.Size(1024, 600);
+            this.MinimumSize = new System.Drawing.Size(1024, 670);
             this.Name = "MainView";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "TPM - Toxikon Protocol Manager";

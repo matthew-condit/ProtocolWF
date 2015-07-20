@@ -227,7 +227,7 @@ namespace Toxikon.ProtocolManager.Queries
             return results;
         }
 
-        public static IList GetSponsorCodes()
+        public static IList GetSponsorCodes(string requestStatus)
         {
             IList results = new ArrayList();
             try
@@ -238,6 +238,7 @@ namespace Toxikon.ProtocolManager.Queries
                     using (SqlCommand command = new SqlCommand("pr_select_sponsorcodes", connection))
                     {
                         command.CommandType = CommandType.StoredProcedure;
+                        command.Parameters.Add("@RequestStatus", SqlDbType.NVarChar).Value = requestStatus;
 
                         SqlDataReader reader = command.ExecuteReader();
                         while (reader.Read())

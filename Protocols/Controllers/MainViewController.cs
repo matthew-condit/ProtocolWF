@@ -112,16 +112,27 @@ namespace Toxikon.ProtocolManager.Controllers
                 case UserRoles.DocControl:
                     LoadProtocolRequestEditView(request);
                     break;
+                case UserRoles.Manager:
+                    LoadRequestDetail_ManagerView(request);
+                    break;
                 default:
                     LoadProtocolRequestReadOnlyView(request);
                     break;
             }
         }
 
+        private void LoadRequestDetail_ManagerView(ProtocolRequest request)
+        {
+            ProtocolRequestManagerView subView = new ProtocolRequestManagerView();
+            RequestDetailController subViewController = new RequestDetailController(subView);
+            subViewController.LoadView(request);
+            view.AddControlToMainPanel(subView);
+        }
+
         public void LoadProtocolRequestReadOnlyView(ProtocolRequest request)
         {
             ProtocolRequestReadOnlyView subView = new ProtocolRequestReadOnlyView();
-            ProtocolRequestReadOnlyController subViewController = new ProtocolRequestReadOnlyController(subView);
+            RequestDetailController subViewController = new RequestDetailController(subView);
             subViewController.LoadView(request);
 
             view.AddControlToMainPanel(subView);
@@ -130,7 +141,7 @@ namespace Toxikon.ProtocolManager.Controllers
         public void LoadProtocolRequestEditView(ProtocolRequest request)
         {
             ProtocolRequestEditView subView = new ProtocolRequestEditView();
-            ProtocolRequestEditController subViewController = new ProtocolRequestEditController(subView);
+            RequestDetailController subViewController = new RequestDetailController(subView);
             subViewController.LoadView(request);
 
             view.AddControlToMainPanel(subView);
