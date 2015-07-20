@@ -23,7 +23,11 @@ namespace Toxikon.ProtocolManager.Views.Protocols
             InitializeComponent();
             this.TemplateListView = this.TitlesListView;
             this.RequestForm = this.RequestFormReadOnly;
-            this.ParentControl = this.ParentForm;
+        }
+
+        public override Control ParentControl
+        {
+            get { return this.ParentForm; }
         }
 
         private void ViewCommentsButton_Click(object sender, EventArgs e)

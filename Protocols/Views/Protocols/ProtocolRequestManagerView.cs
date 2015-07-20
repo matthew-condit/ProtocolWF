@@ -21,7 +21,11 @@ namespace Toxikon.ProtocolManager.Views.Protocols
             InitializeComponent();
             this.TemplateListView = this.TitlesListView;
             this.RequestForm = this.RequestFormManagerView;
-            this.ParentControl = this.ParentForm;
+        }
+
+        public override Control ParentControl
+        {
+            get { return this.ParentForm; }
         }
 
         private void ViewEventsButton_Click(object sender, EventArgs e)

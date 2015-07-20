@@ -56,7 +56,7 @@
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Padding = new System.Windows.Forms.Padding(10, 0, 1, 0);
-            this.toolStrip1.Size = new System.Drawing.Size(640, 38);
+            this.toolStrip1.Size = new System.Drawing.Size(1024, 38);
             this.toolStrip1.TabIndex = 0;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -71,7 +71,7 @@
             this.ListNameComboBox.BackColor = System.Drawing.SystemColors.Info;
             this.ListNameComboBox.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ListNameComboBox.Name = "ListNameComboBox";
-            this.ListNameComboBox.Size = new System.Drawing.Size(150, 38);
+            this.ListNameComboBox.Size = new System.Drawing.Size(250, 38);
             this.ListNameComboBox.SelectedIndexChanged += new System.EventHandler(this.ListNameComboBox_SelectedIndexChanged);
             // 
             // toolStripLabel2
@@ -121,7 +121,7 @@
             this.ItemsListView.Location = new System.Drawing.Point(0, 44);
             this.ItemsListView.MultiSelect = false;
             this.ItemsListView.Name = "ItemsListView";
-            this.ItemsListView.Size = new System.Drawing.Size(640, 193);
+            this.ItemsListView.Size = new System.Drawing.Size(1024, 193);
             this.ItemsListView.TabIndex = 1;
             this.ItemsListView.UseCompatibleStateImageBehavior = false;
             this.ItemsListView.View = System.Windows.Forms.View.Details;
@@ -146,7 +146,7 @@
             this.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "ListItemsView";
-            this.Size = new System.Drawing.Size(640, 240);
+            this.Size = new System.Drawing.Size(1024, 240);
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
             this.ResumeLayout(false);

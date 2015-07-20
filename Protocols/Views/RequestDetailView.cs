@@ -16,7 +16,7 @@ namespace Toxikon.ProtocolManager.Views
         protected RequestDetailController controller;
         protected ListView TemplateListView;
         public IRequestForm RequestForm { get; set; }
-        public Control ParentControl { get; protected set; }
+        public virtual Control ParentControl { get; protected set; }
 
         public RequestDetailView()
         {

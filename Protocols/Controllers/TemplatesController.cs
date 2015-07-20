@@ -51,6 +51,21 @@ namespace Toxikon.ProtocolManager.Controllers
             return result;
         }
 
+        public static Controller ShowTwoTextBoxTrueFalseForm(Item textBox1, Item textBox2, Item trueFalse,
+                                                       Control parentControl)
+        {
+            Item result = new Item();
+            TwoTextBoxTrueFalseForm popup = new TwoTextBoxTrueFalseForm();
+            TwoTextBoxTrueFalseFormController popupController = new TwoTextBoxTrueFalseFormController(popup);
+            popupController.SetLabelTexts(textBox1.Name, textBox2.Name, trueFalse.Name);
+            popupController.SetTextBoxTexts(textBox1.Value, textBox2.Value);
+            popupController.SetTrueFalseValue(Convert.ToBoolean(trueFalse.Value));
+
+            DialogResult dialogResult = popup.ShowDialog(parentControl);
+            popup.Dispose();
+            return popupController;
+        }
+
         public static void ShowReadOnlyListViewForm(IList columns, IList items, Control parentControl)
         {
             if(items.Count > 0)

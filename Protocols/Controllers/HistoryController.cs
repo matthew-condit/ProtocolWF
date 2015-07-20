@@ -51,7 +51,8 @@ namespace Toxikon.ProtocolManager.Controllers
             this.sponsors.Clear();
             this.requestList.Clear();
             this.view.ClearListView();
-            this.requestViewController.ClearView();
+            this.requestViewController.ClearListView();
+            this.requestViewController.ClearRequestForm();
         }
 
         private void GetSponsors()

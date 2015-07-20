@@ -19,13 +19,16 @@ namespace Toxikon.ProtocolManager.Views.Protocols
 {
     public partial class ProtocolRequestEditView : RequestDetailView
     {
-
         public ProtocolRequestEditView()
         {
             InitializeComponent();
             this.TemplateListView = this.TitlesListView;
             this.RequestForm = this.RequestFormEditView;
-            this.ParentControl = this.ParentForm;
+        }
+
+        public override Control ParentControl
+        {
+            get { return this.ParentForm; }
         }
 
         private void AddTitleButton_Click(object sender, EventArgs e)

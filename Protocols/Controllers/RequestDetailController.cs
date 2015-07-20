@@ -43,10 +43,15 @@ namespace Toxikon.ProtocolManager.Controllers
             this.RefreshTemplateListView();
         }
 
-        public void ClearView()
+        public void ClearListView()
         {
             this.templates.Clear();
             this.view.ClearListView();
+        }
+
+        public void ClearRequestForm()
+        {
+            this.requestFormController.ClearForm();
         }
 
         private void LoadRequestTemplates()
@@ -64,7 +69,7 @@ namespace Toxikon.ProtocolManager.Controllers
 
         private void RefreshTemplateListView()
         {
-            this.ClearView();
+            this.ClearListView();
             LoadRequestTemplates();
             AddTemplatesToView();
             this.view.SetListViewAutoResizeColumns();
@@ -395,7 +400,7 @@ namespace Toxikon.ProtocolManager.Controllers
             if (dialogResult == DialogResult.Yes)
             {
                 this.request.CloseRequest();
-                MainView mainView = (MainView)this.view.ParentControl;
+                MainView mainView = (MainView)view.ParentControl;
                 mainView.Invoke(mainView.LoadProtocolRequestViewDelegate, new object[] { this.request });
             }
         }

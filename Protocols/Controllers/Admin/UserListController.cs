@@ -91,8 +91,11 @@ namespace Toxikon.ProtocolManager.Controllers.Admin
             else
             {
                 this.selectedUser = ShowPopup(this.selectedUser);
-                UpdateSelectedUser();
-                LoadView();
+                if(this.selectedUser.UserName != String.Empty)
+                {
+                    UpdateSelectedUser();
+                    LoadView();
+                }
             }
         }
 
@@ -102,6 +105,10 @@ namespace Toxikon.ProtocolManager.Controllers.Admin
             UserEditController popupController = new UserEditController(popup, user);
             popupController.LoadView();
             DialogResult dialogResult = popup.ShowDialog(view.ParentControl);
+            if(dialogResult != DialogResult.OK)
+            {
+                popupController.User.UserName = "";
+            }
             popup.Dispose();
             return popupController.User;
         }
