@@ -55,7 +55,7 @@ namespace Toxikon.ProtocolManager.Queries
                         SqlDataReader reader = command.ExecuteReader();
                         while(reader.Read())
                         {
-                            Item item = CreateItem(reader);
+                            Template item = CreateItem(groupID, reader);
                             results.Add(item);
                         }
                     }
@@ -68,17 +68,18 @@ namespace Toxikon.ProtocolManager.Queries
             return results;
         }
 
-        private static Item CreateItem(SqlDataReader reader)
+        private static Template CreateItem(int groupID, SqlDataReader reader)
         {
             if (reader == null) throw new ArgumentNullException();
-            Item item = new Item();
+            Template item = new Template();
             item.ID = Convert.ToInt32(reader[0].ToString());
-            item.Text = reader[1].ToString();
-            item.Value = reader[1].ToString();
+            item.GroupID = groupID;
+            item.Title = reader[1].ToString();
+            item.IsActive = true;
             return item;
         }
 
-        public static void UpdateItem(Item item, string userName)
+        public static void UpdateItem(Template item, string userName)
         {
             try
             {
@@ -89,7 +90,8 @@ namespace Toxikon.ProtocolManager.Queries
                     {
                         command.CommandType = CommandType.StoredProcedure;
                         command.Parameters.Add("@ID", SqlDbType.Int).Value = item.ID;
-                        command.Parameters.Add("@Title", SqlDbType.NVarChar).Value = item.Value;
+                        command.Parameters.Add("@GroupID", SqlDbType.Int).Value = item.GroupID;
+                        command.Parameters.Add("@Title", SqlDbType.NVarChar).Value = item.Title;
                         command.Parameters.Add("@IsActive", SqlDbType.Bit).Value = item.IsActive;
                         command.Parameters.Add("@UpdatedBy", SqlDbType.NVarChar).Value = userName;
 

@@ -54,7 +54,7 @@ namespace Toxikon.ProtocolManager.Queries
                     using (SqlCommand command = new SqlCommand("pa_insert_activity", connection))
                     {
                         command.CommandType = CommandType.StoredProcedure;
-                        foreach (Item item in templates)
+                        foreach (Template item in templates)
                         {
                             command.Parameters.Clear();
                             command.Parameters.Add("@RequestID", SqlDbType.Int).Value = request.ID;

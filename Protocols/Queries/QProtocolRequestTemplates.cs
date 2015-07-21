@@ -26,7 +26,7 @@ namespace Toxikon.ProtocolManager.Queries
                     using (SqlCommand command = new SqlCommand("prt_insert_template", connection))
                     {
                         command.CommandType = CommandType.StoredProcedure;
-                        foreach (Item item in items)
+                        foreach (Template item in items)
                         {
                             command.Parameters.Clear();
                             command.Parameters.Add("@RequestID", SqlDbType.Int).Value = requestID;

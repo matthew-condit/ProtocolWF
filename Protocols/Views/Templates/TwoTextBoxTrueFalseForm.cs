@@ -75,5 +75,10 @@ namespace Toxikon.ProtocolManager.Views.Templates
                 this.FalseRadioButton.Checked = value == true ? false : true;
             }
         }
+
+        private void SubmitButton_Click(object sender, EventArgs e)
+        {
+            this.controller.SubmitButtonClicked();
+        }
     }
 }

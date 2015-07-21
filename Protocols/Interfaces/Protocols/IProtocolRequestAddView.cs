@@ -14,7 +14,7 @@ namespace Toxikon.ProtocolManager.Interfaces.Protocols
     public interface IProtocolRequestAddView
     {
         void SetController(ProtocolRequestAddController controller);
-        void AddItemToDataGrid(Item item);
+        void AddItemToDataGrid(Template item);
         void ClearView();
 
         string SearchSponsorName { get; set; }

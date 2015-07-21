@@ -13,7 +13,7 @@ namespace Toxikon.ProtocolManager.Interfaces.Protocols
     {
         void SetController(Controller controller);
         void AddItemToListBox1(Item item);
-        void AddItemToListBox2(Item item);
+        void AddItemToListBox2(Template item);
         void ClearListBox2();
         void SetDialogResult(DialogResult dialogResult);
 

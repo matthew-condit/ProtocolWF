@@ -39,9 +39,9 @@ namespace Toxikon.ProtocolManager.Views.Protocols
             get { return this; }
         }
 
-        public void AddItemToDataGrid(Item item)
+        public void AddItemToDataGrid(Template item)
         {
-            this.TitleDataGridView.Rows.Add(item.ID, item.Value);
+            this.TitleDataGridView.Rows.Add(item.ID, item.Title);
         }
 
         public void ClearView()

@@ -17,9 +17,9 @@ namespace Toxikon.ProtocolManager.Controllers.Protocols
         private IList templateGroups;
         private IList templates;
         public Item SelectedTemplateGroup {get; private set; }
-        public Item SelectedTemplate { get; private set; }
+        public Template SelectedTemplate { get; private set; }
 
-        public delegate void SubmitSelectedItem(Item Item);
+        public delegate void SubmitSelectedItem(Template Item);
         public SubmitSelectedItem SubmitSelectedItemDelegate;
 
         public TemplateOptionsController(ITemplateOptionsForm view)
@@ -52,7 +52,7 @@ namespace Toxikon.ProtocolManager.Controllers.Protocols
 
         private void AddTemplatesToListBox2()
         {
-            foreach(Item item in templates)
+            foreach(Template item in templates)
             {
                 this.view.AddItemToListBox2(item);
             }
@@ -73,7 +73,7 @@ namespace Toxikon.ProtocolManager.Controllers.Protocols
         {
             if (selectedIndex > -1 && selectedIndex < this.templates.Count)
             {
-                this.SelectedTemplate = this.templates[selectedIndex] as Item;
+                this.SelectedTemplate = this.templates[selectedIndex] as Template;
             }
         }
 
@@ -100,14 +100,14 @@ namespace Toxikon.ProtocolManager.Controllers.Protocols
             this.view.CustomTemplate = "";
         }
 
-        private Item CreateCustomTemplate()
+        private Template CreateCustomTemplate()
         {
-            Item item = new Item();
+            Template item = new Template();
             int groupID = 4;
             string title = this.view.CustomTemplate;
             LoginInfo loginInfo = LoginInfo.GetInstance();
             item.ID = QTemplates.InsertItem(groupID, title, loginInfo.UserName);
-            item.Value = title;
+            item.Title = title;
 
             return item;
         }

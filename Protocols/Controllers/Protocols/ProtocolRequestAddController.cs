@@ -129,7 +129,7 @@ namespace Toxikon.ProtocolManager.Controllers.Protocols
             form.Dispose();
         }
 
-        private void AddSelectedItemToDataGrid(Item item)
+        private void AddSelectedItemToDataGrid(Template item)
         {
             this.selectedTemplates.Add(item);
             this.view.AddItemToDataGrid(item);

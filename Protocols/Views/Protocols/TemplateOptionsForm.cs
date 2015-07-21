@@ -39,9 +39,9 @@ namespace Toxikon.ProtocolManager.Views.Protocols
             this.ListBox1.Items.Add(item.Value);
         }
 
-        public void AddItemToListBox2(Item item)
+        public void AddItemToListBox2(Template item)
         {
-            this.ListBox2.Items.Add(item.Value);
+            this.ListBox2.Items.Add(item.Title);
         }
 
         public void ClearListBox2()

@@ -98,7 +98,7 @@ namespace Toxikon.ProtocolManager.Controllers
             form.Dispose();
         }
 
-        private void SubmitSelectedTemplate(Item item)
+        private void SubmitSelectedTemplate(Template item)
         {
             QProtocolRequestTemplates.InsertItem(this.request.ID, item.ID, loginInfo.UserName);
             ProtocolActivity protocolActivity = new ProtocolActivity(this.request.ID, item.ID, 1, loginInfo.UserName);

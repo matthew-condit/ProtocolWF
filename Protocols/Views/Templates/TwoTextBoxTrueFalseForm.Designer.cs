@@ -35,11 +35,11 @@
             this.Label1 = new System.Windows.Forms.Label();
             this.TextBox1 = new System.Windows.Forms.TextBox();
             this.Label3 = new System.Windows.Forms.Label();
+            this.Label2 = new System.Windows.Forms.Label();
+            this.TextBox2 = new System.Windows.Forms.TextBox();
             this.TrueFalseRadioButtonGroup = new System.Windows.Forms.FlowLayoutPanel();
             this.TrueRadioButton = new System.Windows.Forms.RadioButton();
             this.FalseRadioButton = new System.Windows.Forms.RadioButton();
-            this.Label2 = new System.Windows.Forms.Label();
-            this.TextBox2 = new System.Windows.Forms.TextBox();
             this.toolStrip1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.TrueFalseRadioButtonGroup.SuspendLayout();
@@ -65,6 +65,7 @@
             this.SubmitButton.Name = "SubmitButton";
             this.SubmitButton.Size = new System.Drawing.Size(65, 22);
             this.SubmitButton.Text = "Submit";
+            this.SubmitButton.Click += new System.EventHandler(this.SubmitButton_Click);
             // 
             // tableLayoutPanel1
             // 
@@ -115,6 +116,22 @@
             this.Label3.TabIndex = 2;
             this.Label3.Text = "Active:";
             // 
+            // Label2
+            // 
+            this.Label2.AutoSize = true;
+            this.Label2.Location = new System.Drawing.Point(3, 29);
+            this.Label2.Name = "Label2";
+            this.Label2.Size = new System.Drawing.Size(47, 15);
+            this.Label2.TabIndex = 4;
+            this.Label2.Text = "Label 3:";
+            // 
+            // TextBox2
+            // 
+            this.TextBox2.Location = new System.Drawing.Point(134, 32);
+            this.TextBox2.Name = "TextBox2";
+            this.TextBox2.Size = new System.Drawing.Size(447, 23);
+            this.TextBox2.TabIndex = 5;
+            // 
             // TrueFalseRadioButtonGroup
             // 
             this.TrueFalseRadioButtonGroup.Controls.Add(this.TrueRadioButton);
@@ -146,22 +163,6 @@
             this.FalseRadioButton.Text = "False";
             this.FalseRadioButton.UseVisualStyleBackColor = true;
             // 
-            // Label2
-            // 
-            this.Label2.AutoSize = true;
-            this.Label2.Location = new System.Drawing.Point(3, 29);
-            this.Label2.Name = "Label2";
-            this.Label2.Size = new System.Drawing.Size(47, 15);
-            this.Label2.TabIndex = 4;
-            this.Label2.Text = "Label 3:";
-            // 
-            // TextBox2
-            // 
-            this.TextBox2.Location = new System.Drawing.Point(134, 32);
-            this.TextBox2.Name = "TextBox2";
-            this.TextBox2.Size = new System.Drawing.Size(447, 23);
-            this.TextBox2.TabIndex = 5;
-            // 
             // TwoTextBoxTrueFalseForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -170,6 +171,7 @@
             this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.toolStrip1);
             this.Name = "TwoTextBoxTrueFalseForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "TwoTextBoxTrueFalseForm";
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();

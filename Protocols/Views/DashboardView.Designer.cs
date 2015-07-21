@@ -35,6 +35,7 @@
             this.IDCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.RequestedDateCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.RequestedByCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.AssignedToCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SponsorCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.RequestDataGridView)).BeginInit();
             this.toolStrip1.SuspendLayout();
@@ -55,6 +56,7 @@
             this.IDCol,
             this.RequestedDateCol,
             this.RequestedByCol,
+            this.AssignedToCol,
             this.SponsorCol});
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
@@ -93,27 +95,33 @@
             // 
             // IDCol
             // 
-            this.IDCol.FillWeight = 51.9797F;
+            this.IDCol.FillWeight = 62.12653F;
             this.IDCol.HeaderText = "Request ID";
             this.IDCol.Name = "IDCol";
             // 
             // RequestedDateCol
             // 
-            this.RequestedDateCol.FillWeight = 51.9797F;
+            this.RequestedDateCol.FillWeight = 62.12653F;
             this.RequestedDateCol.HeaderText = "Requested Date";
             this.RequestedDateCol.Name = "RequestedDateCol";
             this.RequestedDateCol.ReadOnly = true;
             // 
             // RequestedByCol
             // 
-            this.RequestedByCol.FillWeight = 51.9797F;
+            this.RequestedByCol.FillWeight = 62.12653F;
             this.RequestedByCol.HeaderText = "Requested By";
             this.RequestedByCol.Name = "RequestedByCol";
             this.RequestedByCol.ReadOnly = true;
             // 
+            // AssignedToCol
+            // 
+            this.AssignedToCol.FillWeight = 62.12653F;
+            this.AssignedToCol.HeaderText = "Assigned To";
+            this.AssignedToCol.Name = "AssignedToCol";
+            // 
             // SponsorCol
             // 
-            this.SponsorCol.FillWeight = 285.8883F;
+            this.SponsorCol.FillWeight = 341.6959F;
             this.SponsorCol.HeaderText = "Sponsor";
             this.SponsorCol.Name = "SponsorCol";
             this.SponsorCol.ReadOnly = true;
@@ -146,6 +154,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn IDCol;
         private System.Windows.Forms.DataGridViewTextBoxColumn RequestedDateCol;
         private System.Windows.Forms.DataGridViewTextBoxColumn RequestedByCol;
+        private System.Windows.Forms.DataGridViewTextBoxColumn AssignedToCol;
         private System.Windows.Forms.DataGridViewTextBoxColumn SponsorCol;
     }
 }

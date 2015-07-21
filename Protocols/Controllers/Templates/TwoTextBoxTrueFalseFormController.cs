@@ -19,6 +19,9 @@ namespace Toxikon.ProtocolManager.Controllers.Templates
         {
             this.view = view;
             this.view.SetController(this);
+            this.TextBox1Value = "";
+            this.TextBox2Value = "";
+            this.TrueFalseValue = true;
         }
 
         public void SetLabelTexts(string label1, string label2, string label3)
