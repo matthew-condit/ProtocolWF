@@ -18,6 +18,8 @@ namespace Toxikon.ProtocolManager.Controllers
     {
         protected IRequestForm view;
         protected ProtocolRequest request;
+        public List<string> changedFields { get; private set; }
+        public List<string> changedValues { get; private set; }
         LoginInfo loginInfo;
 
         enum OptionFields { Guidelines, Compliance, ProtocolType, AssignedTo, Contact };
@@ -28,6 +30,8 @@ namespace Toxikon.ProtocolManager.Controllers
             this.view.SetController(this);
             this.request = new ProtocolRequest();
             loginInfo = LoginInfo.GetInstance();
+            this.changedFields = new List<string>();
+            this.changedValues = new List<string>();
         }
 
         public void LoadView(ProtocolRequest protocolRequest)
@@ -76,6 +80,25 @@ namespace Toxikon.ProtocolManager.Controllers
             this.request.Cost = this.view.Cost;
             this.request.PO = this.view.PONumber;
             this.request.Comments = this.view.Comments;
+            CreateTextBoxChangedFields();
+        }
+
+        private void CheckAndAddToChangedFields(string fieldName, string oldValue, string newValue)
+        {
+            if(oldValue.Trim() != newValue.Trim())
+            {
+                this.changedFields.Add(fieldName);
+                this.changedValues.Add(newValue);
+            }
+        }
+
+        private void CreateTextBoxChangedFields()
+        {
+            CheckAndAddToChangedFields("DueDate", this.request.DueDate.ToString(), this.view.DueDate.ToString());
+            CheckAndAddToChangedFields("SendVia", this.request.SendVia, this.view.SendVia);
+            CheckAndAddToChangedFields("BillTo", this.request.BillTo, this.view.BillTo);
+            CheckAndAddToChangedFields("Cost", this.request.Cost, this.view.Cost);
+            CheckAndAddToChangedFields("PO", this.request.PO, this.view.PONumber);
         }
 
         public void GuidelinesButtonClicked()
@@ -85,6 +108,7 @@ namespace Toxikon.ProtocolManager.Controllers
             if (selectedItems.Count != 0)
             {
                 string itemsString = String.Join(", ", selectedItems);
+                CheckAndAddToChangedFields("Guidelines", this.request.Guidelines, itemsString);
                 this.request.Guidelines = itemsString;
                 this.view.Guidelines = itemsString;
             }
@@ -96,6 +120,7 @@ namespace Toxikon.ProtocolManager.Controllers
             Item selectedItem = TemplatesController.ShowListBoxOptionsForm(items, view.ParentControl);
             if(selectedItem.Name != "")
             {
+                CheckAndAddToChangedFields("Compliance", this.request.Guidelines, selectedItem.Value);
                 this.request.Compliance = selectedItem.Value;
                 this.view.Compliance = selectedItem.Value;
             }
@@ -118,6 +143,7 @@ namespace Toxikon.ProtocolManager.Controllers
             Item selectedItem = TemplatesController.ShowListBoxOptionsForm(items, view.ParentControl);
             if (selectedItem.Value != "")
             {
+                CheckAndAddToChangedFields("AssignedTo", this.request.AssignedTo, selectedItem.Value);
                 this.request.AssignedTo = selectedItem.Value;
                 this.view.AssignedTo = selectedItem.Text;
             }
@@ -149,6 +175,12 @@ namespace Toxikon.ProtocolManager.Controllers
         {
             this.request.Refresh();
             this.view.ClearView();
+        }
+
+        public void RefreshChangedFields()
+        {
+            this.changedFields.Clear();
+            this.changedValues.Clear();
         }
     }
 }

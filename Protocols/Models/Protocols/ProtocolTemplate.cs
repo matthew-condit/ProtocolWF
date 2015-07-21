@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Toxikon.ProtocolManager.Models.Admin;
 using Toxikon.ProtocolManager.Queries;
 
 namespace Toxikon.ProtocolManager.Models

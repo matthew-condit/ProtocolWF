@@ -12,7 +12,7 @@ namespace Toxikon.ProtocolManager.Models.Admin
     {
         private static string connectionString = Utility.GetTPMConnectionString();
 
-        public static void InsertAuditItem(AuditItem item)
+        private static void InsertAuditItem(AuditItem item)
         {
             try
             {
@@ -40,6 +40,123 @@ namespace Toxikon.ProtocolManager.Models.Admin
             {
                 ErrorHandler.CreateLogFile("AuditHandler", "InsertAuditItem", sqlEx);
             }
+        }
+
+        public static void Insert_RemoveTitle_AuditItem(int requestID, int templateID, string userName)
+        {
+            AuditItem item = new AuditItem();
+            item.TableName = "ProtocolRequestTemplates";
+            item.Type = "U";
+            item.PK = "RequestID,TemplateID";
+            item.PKValue = requestID + "," + templateID;
+            item.FieldName = "IsActive";
+            item.OldValue = "true";
+            item.NewValue = "false";
+            item.UpdatedBy = userName;
+            item.Reason = "Remove Title button clicked.";
+
+            InsertAuditItem(item);
+        }
+
+        public static void Insert_ProtocolNumber_AuditItem(ProtocolNumber protocolNumber, string userName)
+        {
+            AuditItem item = new AuditItem();
+            item.TableName = "ProtocolNumbers";
+            item.Type = "I";
+            item.PK = "RequestID,TemplateID";
+            item.PKValue = protocolNumber.RequestID + "," + protocolNumber.TemplateID;
+            item.FieldName = "ProtocolNumber";
+            item.OldValue = "N/A";
+            item.NewValue = protocolNumber.FullCode;
+            item.UpdatedBy = userName;
+            item.Reason = "Protocol Number button clicked.";
+
+            InsertAuditItem(item);
+        }
+
+        public static void Insert_ReviseProtocol_AuditItem(string oldValue, 
+                      ProtocolNumber protocolNumber, string userName)
+        {
+            AuditItem item = new AuditItem();
+            item.TableName = "ProtocolNumbers";
+            item.Type = "U";
+            item.PK = "RequestID,TemplateID";
+            item.PKValue = protocolNumber.RequestID + "," + protocolNumber.TemplateID;
+            item.FieldName = "ProtocolNumber";
+            item.OldValue = oldValue;
+            item.NewValue = protocolNumber.FullCode;
+            item.UpdatedBy = userName;
+            item.Reason = "Revise Protocol button clicked.";
+
+            InsertAuditItem(item);
+        }
+
+        public static void Insert_Department_AuditItem(string oldValue, ProtocolTemplate template, 
+                                string userName)
+        {
+            AuditItem item = new AuditItem();
+            item.TableName = "ProtocolRequestTemplates";
+            item.Type = "U";
+            item.PK = "RequestID,TemplateID";
+            item.PKValue = template.RequestID + "," + template.TemplateID;
+            item.FieldName = "DepartmentID";
+            item.OldValue = oldValue == String.Empty ? "N/A" : oldValue;
+            item.NewValue = template.Department.ID.ToString();
+            item.UpdatedBy = userName;
+            item.Reason = "Update using Department button.";
+
+            InsertAuditItem(item);
+        }
+
+        public static void Insert_ProjectNumber_AuditItem(string oldValue, ProtocolTemplate template,
+                                string userName)
+        {
+            AuditItem item = new AuditItem();
+            item.TableName = "ProtocolRequestTemplates";
+            item.Type = "U";
+            item.PK = "RequestID,TemplateID";
+            item.PKValue = template.RequestID + "," + template.TemplateID;
+            item.FieldName = "ProjectNumber";
+            item.OldValue = oldValue == String.Empty ? "N/A" : oldValue;
+            item.NewValue = template.ProjectNumber;
+            item.UpdatedBy = userName;
+            item.Reason = "Update using Project Number button.";
+
+            InsertAuditItem(item);
+        }
+
+        public static void Insert_UpdateFilePath_AuditItem(string oldValue, ProtocolTemplate template,
+                                string userName)
+        {
+            AuditItem item = new AuditItem();
+            item.TableName = "ProtocolRequestTemplates";
+            item.Type = "U";
+            item.PK = "RequestID,TemplateID";
+            item.PKValue = template.RequestID + "," + template.TemplateID;
+            item.FieldName = "FilePath";
+            item.OldValue = oldValue == String.Empty ? "N/A" : oldValue;
+            item.NewValue = template.FilePath;
+            item.UpdatedBy = userName;
+            item.Reason = "Update using Update File Path button.";
+
+            InsertAuditItem(item);
+        }
+
+        public static void Insert_SaveChanged_AuditItem(int ID, string fieldName, string oldValue, 
+                                string newValue, string userName)
+        {
+            AuditItem item = new AuditItem();
+            item.TableName = "ProtocolRequests";
+            item.Type = "U";
+            item.PK = "ID";
+            item.PKValue = ID.ToString();
+            item.FieldName = fieldName;
+            item.OldValue = oldValue == String.Empty ? "N/A" : oldValue;
+            item.NewValue = newValue;
+            item.UpdatedBy = userName;
+            item.Reason = "Update using Save Changes button.";
+
+            InsertAuditItem(item);
         }
     }
 }

@@ -9,6 +9,7 @@ using Toxikon.ProtocolManager.Controllers;
 using Toxikon.ProtocolManager.Controllers.Protocols;
 using Toxikon.ProtocolManager.Interfaces;
 using Toxikon.ProtocolManager.Models;
+using Toxikon.ProtocolManager.Models.Admin;
 using Toxikon.ProtocolManager.Models.Reports;
 using Toxikon.ProtocolManager.Queries;
 using Toxikon.ProtocolManager.Views;
@@ -110,7 +111,7 @@ namespace Toxikon.ProtocolManager.Controllers
         {
             if (this.view.ListViewSelectedIndexes.Count == 1)
             {
-                RemoveSelectedTemplate();
+                RemoveSelectedTemplateWithConfirmation();
             }
             else
             {
@@ -118,20 +119,27 @@ namespace Toxikon.ProtocolManager.Controllers
             }
         }
 
-        private void RemoveSelectedTemplate()
+        private void RemoveSelectedTemplateWithConfirmation()
         {
             int selectedIndex = Convert.ToInt32(this.view.ListViewSelectedIndexes[0]);
             if (selectedIndex > -1 && selectedIndex < this.templates.Count)
             {
                 ProtocolTemplate selectedTemplate = this.templates[selectedIndex] as ProtocolTemplate;
                 DialogResult dialogResult = ShowConfirmation("Are you sure you want to remove this template?");
-                if (dialogResult == DialogResult.Yes)
+                if(dialogResult == DialogResult.Yes)
                 {
-                    QProtocolRequestTemplates.SetIsActive(this.request.ID, selectedTemplate.TemplateID,
-                                                          false, loginInfo.UserName);
-                    RefreshTemplateListView();
+                    RemoveSelectedTemplate(selectedTemplate);
                 }
             }
+        }
+
+        private void RemoveSelectedTemplate(ProtocolTemplate selectedTemplate)
+        {
+            QProtocolRequestTemplates.SetIsActive(this.request.ID, selectedTemplate.TemplateID,
+                                                          false, loginInfo.UserName);
+            AuditHandler.Insert_RemoveTitle_AuditItem(this.request.ID,
+                         selectedTemplate.TemplateID, loginInfo.UserName);
+            RefreshTemplateListView();
         }
 
         private DialogResult ShowConfirmation(string message)
@@ -148,7 +156,7 @@ namespace Toxikon.ProtocolManager.Controllers
             }
             else
             {
-                MessageBox.Show("Please select at least one title and try it again.");
+                MessageBox.Show(this.SelectOneMessage);
             }
         }
 
@@ -270,6 +278,7 @@ namespace Toxikon.ProtocolManager.Controllers
         {
             ProtocolTemplate title = GetSelectedTemplateFromView();
             title.AddProtocolNumber(this.request.ProtocolType, this.contact.SponsorCode);
+            AuditHandler.Insert_ProtocolNumber_AuditItem(title.ProtocolNumber, loginInfo.UserName);
         }
 
         public void ReviseProtocolButtonClicked()
@@ -289,7 +298,9 @@ namespace Toxikon.ProtocolManager.Controllers
             ProtocolTemplate title = GetSelectedTemplateFromView();
             if (title.ProtocolNumber.FullCode != String.Empty)
             {
+                string oldValue = title.ProtocolNumber.FullCode;
                 title.ProtocolNumber.Update();
+                AuditHandler.Insert_ReviseProtocol_AuditItem(oldValue, title.ProtocolNumber, loginInfo.UserName);
                 this.RefreshTemplateListView();
             }
             else
@@ -314,7 +325,9 @@ namespace Toxikon.ProtocolManager.Controllers
         private void UpdateSelectedTitleFilePath(string filePath)
         {
             ProtocolTemplate title = GetSelectedTemplateFromView();
+            string oldValue = title.FilePath;
             title.UpdateFileInfo(filePath);
+            AuditHandler.Insert_UpdateFilePath_AuditItem(oldValue, title, loginInfo.UserName);
         }
 
         public void OpenFileButtonClicked()
@@ -345,11 +358,13 @@ namespace Toxikon.ProtocolManager.Controllers
         private void UpdateSelectedTitleProjectNumber()
         {
             ProtocolTemplate title = GetSelectedTemplateFromView();
+            string oldValue = title.ProjectNumber;
             string projectNumber = TemplatesController.ShowOneTextBoxForm("Project Number: ",
                                    title.ProjectNumber, this.view.ParentControl);
             if (projectNumber != String.Empty)
             {
                 title.AddProjectNumber(projectNumber);
+                AuditHandler.Insert_ProjectNumber_AuditItem(oldValue, title, loginInfo.UserName);
                 this.RefreshTemplateListView();
             }
         }
@@ -373,7 +388,9 @@ namespace Toxikon.ProtocolManager.Controllers
             if (selectedItem.Value != "")
             {
                 ProtocolTemplate title = GetSelectedTemplateFromView();
+                string oldValue = title.Department.ID.ToString();
                 title.UpdateDepartment(Convert.ToInt32(selectedItem.Value));
+                AuditHandler.Insert_Department_AuditItem(oldValue, title, loginInfo.UserName);
             }
         }
 
