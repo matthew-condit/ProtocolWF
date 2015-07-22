@@ -40,7 +40,7 @@ namespace Toxikon.ProtocolManager.Queries
             return result;
         }
 
-        public static IList GetItemsByGroupID(int groupID)
+        public static IList GetActiveItemsByGroupID(int groupID)
         {
             IList results = new ArrayList();
             try
@@ -65,6 +65,42 @@ namespace Toxikon.ProtocolManager.Queries
             {
                 ErrorHandler.CreateLogFile(className, "GetItemsByGroupID", ex);
             }
+            catch (FormatException fe)
+            {
+                ErrorHandler.CreateLogFile(className, "GetAllItemsByGroupID", fe);
+            }
+            return results;
+        }
+
+        public static IList GetAllItemsByGroupID(int groupID)
+        {
+            IList results = new ArrayList();
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    connection.Open();
+                    using (SqlCommand command = new SqlCommand("t_admin_select_templates_by_groupid", connection))
+                    {
+                        command.CommandType = CommandType.StoredProcedure;
+                        command.Parameters.Add("@GroupID", SqlDbType.Int).Value = groupID;
+                        SqlDataReader reader = command.ExecuteReader();
+                        while (reader.Read())
+                        {
+                            Template item = CreateItem(groupID, reader);
+                            results.Add(item);
+                        }
+                    }
+                }
+            }
+            catch (SqlException ex)
+            {
+                ErrorHandler.CreateLogFile(className, "GetAllItemsByGroupID", ex);
+            }
+            catch(FormatException fe)
+            {
+                ErrorHandler.CreateLogFile(className, "GetAllItemsByGroupID", fe);
+            }
             return results;
         }
 
@@ -75,7 +111,7 @@ namespace Toxikon.ProtocolManager.Queries
             item.ID = Convert.ToInt32(reader[0].ToString());
             item.GroupID = groupID;
             item.Title = reader[1].ToString();
-            item.IsActive = true;
+            item.IsActive = Convert.ToBoolean(reader[2].ToString());
             return item;
         }
 

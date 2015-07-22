@@ -11,6 +11,12 @@ namespace Toxikon.ProtocolManager.Models.Admin
     public class AuditHandler
     {
         private static string connectionString = Utility.GetTPMConnectionString();
+        private static List<AuditItem> auditItems;
+ 
+        public AuditHandler()
+        {
+            auditItems = new List<AuditItem>();
+        }
 
         private static void InsertAuditItem(AuditItem item)
         {

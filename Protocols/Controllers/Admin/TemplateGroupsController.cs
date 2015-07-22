@@ -9,6 +9,7 @@ using Toxikon.ProtocolManager.Controllers.Templates;
 using Toxikon.ProtocolManager.Interfaces.Admin;
 using Toxikon.ProtocolManager.Interfaces.Templates;
 using Toxikon.ProtocolManager.Models;
+using Toxikon.ProtocolManager.Models.Admin;
 using Toxikon.ProtocolManager.Queries;
 
 namespace Toxikon.ProtocolManager.Controllers.Admin
@@ -19,6 +20,7 @@ namespace Toxikon.ProtocolManager.Controllers.Admin
         private IList items;
         private Item selectedItem;
         private LoginInfo loginInfo;
+        private List<AuditItem> auditItems;
 
         public TemplateGroupsController(IUCToolStripListView1 view)
         {
@@ -26,6 +28,7 @@ namespace Toxikon.ProtocolManager.Controllers.Admin
             this.view.SetController(this);
             items = new ArrayList();
             loginInfo = LoginInfo.GetInstance();
+            this.auditItems = new List<AuditItem>();
         }
 
         public override void LoadView()
@@ -87,6 +90,7 @@ namespace Toxikon.ProtocolManager.Controllers.Admin
                 Item result = ShowPopup(this.selectedItem);
                 if (result.Value != String.Empty)
                 {
+                    SubmitAuditItem(result);
                     this.selectedItem.Value = result.Value;
                     this.selectedItem.IsActive = result.IsActive;
                     QTemplateGroups.UpdateItem(this.selectedItem, loginInfo.UserName);
@@ -102,6 +106,48 @@ namespace Toxikon.ProtocolManager.Controllers.Admin
             Item result = TemplatesController.ShowOneTextBoxTrueFalseForm(textBoxItem, trueFalseItem,
                                this.view.ParentControl);
             return result;
+        }
+
+        private void SubmitAuditItem(Item item)
+        {
+            CreateAuditItems(item);
+            if (this.auditItems.Count != 0)
+            {
+                AuditHandler.InsertAuditItems(this.auditItems);
+                this.auditItems.Clear();
+            }
+        }
+
+        private void CreateAuditItems(Item item)
+        {
+            CheckAndAddToAuditItems("Name", this.selectedItem.Value, item.Value);
+            CheckAndAddToAuditItems("IsActive", this.selectedItem.IsActive.ToString(),
+                                    item.IsActive.ToString());
+        }
+
+        private void CheckAndAddToAuditItems(string fieldName, string oldValue, string newValue)
+        {
+            if (oldValue.Trim() != newValue.Trim())
+            {
+                AuditItem item = CreateAuditItem(fieldName, oldValue, newValue);
+                this.auditItems.Add(item);
+            }
+        }
+
+        private AuditItem CreateAuditItem(string fieldName, string oldValue, string newValue)
+        {
+            AuditItem item = new AuditItem();
+            item.TableName = "TemplateGroups";
+            item.Type = "U";
+            item.PK = "ID";
+            item.PKValue = this.selectedItem.ID.ToString();
+            item.FieldName = fieldName;
+            item.OldValue = oldValue.Trim() == String.Empty ? "N/A" : oldValue;
+            item.NewValue = newValue;
+            item.UpdatedBy = loginInfo.UserName;
+            item.Reason = "Admin Template Group Update.";
+
+            return item;
         }
 
     }

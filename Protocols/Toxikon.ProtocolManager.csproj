@@ -123,6 +123,7 @@
     <Compile Include="Interfaces\Admin\IProtocolNumberUpdateView.cs" />
     <Compile Include="Interfaces\IHistoryView.cs" />
     <Compile Include="Interfaces\Templates\ITwoTextBoxTrueFalseForm.cs" />
+    <Compile Include="Models\Admin\AuditItemUtility.cs" />
     <Compile Include="Models\Template.cs" />
     <Compile Include="Views\RequestDetailView.cs">
       <SubType>UserControl</SubType>

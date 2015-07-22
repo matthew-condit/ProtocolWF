@@ -13,6 +13,7 @@ using System.Windows.Forms;
 using Toxikon.ProtocolManager.Views.Templates;
 using Toxikon.ProtocolManager.Controllers.Templates;
 using Toxikon.ProtocolManager.Interfaces.Templates;
+using Toxikon.ProtocolManager.Models.Admin;
 
 namespace Toxikon.ProtocolManager.Controllers.Admin
 {
@@ -22,6 +23,7 @@ namespace Toxikon.ProtocolManager.Controllers.Admin
         IList roles;
         Role selectedRole;
         LoginInfo loginInfo;
+        private List<AuditItem> auditItems;
 
         public RoleListController(IUCToolStripListView1 view)
         {
@@ -29,6 +31,7 @@ namespace Toxikon.ProtocolManager.Controllers.Admin
             this.view.SetController(this);
             roles = new ArrayList();
             loginInfo = LoginInfo.GetInstance();
+            auditItems = new List<AuditItem>();
         }
 
         public override void LoadView()
@@ -86,6 +89,7 @@ namespace Toxikon.ProtocolManager.Controllers.Admin
                 Item result = ShowPopup(this.selectedRole);
                 if (result.Value != String.Empty)
                 {
+                    SubmitAuditItem(result);
                     this.selectedRole.Update(result.Value, result.IsActive);
                     LoadView();
                 }
@@ -99,6 +103,48 @@ namespace Toxikon.ProtocolManager.Controllers.Admin
             Item result = TemplatesController.ShowOneTextBoxTrueFalseForm(textBoxItem, trueFalseItem,
                                this.view.ParentControl);
             return result;
+        }
+
+        private void SubmitAuditItem(Item item)
+        {
+            CreateAuditItems(item);
+            if (this.auditItems.Count != 0)
+            {
+                AuditHandler.InsertAuditItems(this.auditItems);
+                this.auditItems.Clear();
+            }
+        }
+
+        private void CreateAuditItems(Item item)
+        {
+            CheckAndAddToAuditItems("RoleName", this.selectedRole.RoleName, item.Value);
+            CheckAndAddToAuditItems("IsActive", this.selectedRole.IsActive.ToString(),
+                                    item.IsActive.ToString());
+        }
+
+        private void CheckAndAddToAuditItems(string fieldName, string oldValue, string newValue)
+        {
+            if (oldValue.Trim() != newValue.Trim())
+            {
+                AuditItem item = CreateAuditItem(fieldName, oldValue, newValue);
+                this.auditItems.Add(item);
+            }
+        }
+
+        private AuditItem CreateAuditItem(string fieldName, string oldValue, string newValue)
+        {
+            AuditItem item = new AuditItem();
+            item.TableName = "Roles";
+            item.Type = "U";
+            item.PK = "ID";
+            item.PKValue = this.selectedRole.RoleID.ToString();
+            item.FieldName = fieldName;
+            item.OldValue = oldValue.Trim() == String.Empty ? "N/A" : oldValue;
+            item.NewValue = newValue;
+            item.UpdatedBy = loginInfo.UserName;
+            item.Reason = "Admin Role Update.";
+
+            return item;
         }
     }
 }

@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Toxikon.ProtocolManager.Views.Templates;
 using Toxikon.ProtocolManager.Controllers.Templates;
+using Toxikon.ProtocolManager.Models.Admin;
 
 namespace Toxikon.ProtocolManager.Controllers.Admin
 {
@@ -20,6 +21,7 @@ namespace Toxikon.ProtocolManager.Controllers.Admin
         IList listItems;
         Item selectedItem;
         string selectedListName;
+        private List<AuditItem> auditItems;
 
         public ListItemsController(IListItemsView view)
         {
@@ -29,6 +31,7 @@ namespace Toxikon.ProtocolManager.Controllers.Admin
             listItems = new ArrayList();
             this.selectedItem = null;
             this.selectedListName = "";
+            this.auditItems = new List<AuditItem>();
         }
 
         public void LoadView()
@@ -102,6 +105,7 @@ namespace Toxikon.ProtocolManager.Controllers.Admin
                 Item result = ShowPopup();
                 if(result.Value.Trim() != String.Empty)
                 {
+                    SubmitAuditItem(result);
                     UpdateSelectedItem(oldItemValue, result);
                     LoadSelectedListNameItems();
                 }
@@ -116,7 +120,7 @@ namespace Toxikon.ProtocolManager.Controllers.Admin
         private void UpdateSelectedItem(string oldItemValue, Item result)
         {
             this.selectedItem.Text = result.Value;
-            this.selectedItem.Value = result.IsActive.ToString();
+            this.selectedItem.Value = result.Value;
             this.selectedItem.IsActive = result.IsActive;
             LoginInfo loginInfo = LoginInfo.GetInstance();
             QListItems.UpdateItem(this.selectedItem, oldItemValue, loginInfo.UserName);
@@ -129,6 +133,49 @@ namespace Toxikon.ProtocolManager.Controllers.Admin
             Item result = TemplatesController.ShowOneTextBoxTrueFalseForm(textBoxItem, trueFalseItem, 
                                view.ParentControl);
             return result;
+        }
+
+        private void SubmitAuditItem(Item item)
+        {
+            CreateAuditItems(item);
+            if (this.auditItems.Count != 0)
+            {
+                AuditHandler.InsertAuditItems(this.auditItems);
+                this.auditItems.Clear();
+            }
+        }
+
+        private void CreateAuditItems(Item item)
+        {
+            CheckAndAddToAuditItems("ItemName", this.selectedItem.Text, item.Value);
+            CheckAndAddToAuditItems("IsActive", this.selectedItem.IsActive.ToString(),
+                                    item.IsActive.ToString());
+        }
+
+        private void CheckAndAddToAuditItems(string fieldName, string oldValue, string newValue)
+        {
+            if (oldValue.Trim() != newValue.Trim())
+            {
+                AuditItem item = CreateAuditItem(fieldName, oldValue, newValue);
+                this.auditItems.Add(item);
+            }
+        }
+
+        private AuditItem CreateAuditItem(string fieldName, string oldValue, string newValue)
+        {
+            LoginInfo loginInfo = LoginInfo.GetInstance();
+            AuditItem item = new AuditItem();
+            item.TableName = "ListItems";
+            item.Type = "U";
+            item.PK = "ListName,ItemName";
+            item.PKValue = this.selectedListName + "," + this.selectedItem.Text;
+            item.FieldName = fieldName;
+            item.OldValue = oldValue.Trim() == String.Empty ? "N/A" : oldValue;
+            item.NewValue = newValue;
+            item.UpdatedBy = loginInfo.UserName;
+            item.Reason = "Admin List Item Update.";
+
+            return item;
         }
     }
 }

@@ -64,7 +64,7 @@ namespace Toxikon.ProtocolManager.Controllers.Protocols
             {
                 this.SelectedTemplateGroup = this.templateGroups[selectedIndex] as Item;
                 this.templates.Clear();
-                this.templates = QTemplates.GetItemsByGroupID(this.SelectedTemplateGroup.ID);
+                this.templates = QTemplates.GetActiveItemsByGroupID(this.SelectedTemplateGroup.ID);
                 this.LoadListBox2();
             }
         }

@@ -8,6 +8,7 @@ using System.Windows.Forms;
 using Toxikon.ProtocolManager.Controllers.Templates;
 using Toxikon.ProtocolManager.Interfaces.Templates;
 using Toxikon.ProtocolManager.Models;
+using Toxikon.ProtocolManager.Models.Admin;
 using Toxikon.ProtocolManager.Queries;
 using Toxikon.ProtocolManager.Views.Templates;
 
@@ -21,6 +22,7 @@ namespace Toxikon.ProtocolManager.Controllers.Admin
         private Item comboBoxSelectedItem;
         private Template selectedTemplate;
         private string className = "TemplateListController";
+        private List<AuditItem> auditItems;
 
         public TemplateListController(IUCTemplate2 view)
         {
@@ -28,6 +30,7 @@ namespace Toxikon.ProtocolManager.Controllers.Admin
             this.view.SetController(this);
             this.comboBoxItems = new ArrayList();
             this.listViewItems = new ArrayList();
+            this.auditItems = new List<AuditItem>();
         }
 
         public void LoadView()
@@ -70,7 +73,7 @@ namespace Toxikon.ProtocolManager.Controllers.Admin
         private void LoadListViewItems()
         {
             this.ClearListView();
-            this.listViewItems = QTemplates.GetItemsByGroupID(this.comboBoxSelectedItem.ID);
+            this.listViewItems = QTemplates.GetAllItemsByGroupID(this.comboBoxSelectedItem.ID);
             AddItemsToListView();
             SetColumnsHeaderSize();
         }
@@ -148,8 +151,11 @@ namespace Toxikon.ProtocolManager.Controllers.Admin
                 DialogResult dialogResult = popup.ShowDialog(this.view.ParentControl);
                 if(dialogResult == DialogResult.OK)
                 {
-                    SetSelectedTemplateValues(popupController.TextBox1Value,
-                        Convert.ToInt32(popupController.TextBox2Value), popupController.TrueFalseValue);
+                    string title = popupController.TextBox1Value;
+                    int groupID = Convert.ToInt32(popupController.TextBox2Value);
+                    bool isActive = popupController.TrueFalseValue;
+                    SubmitAuditItem(title, groupID, isActive);
+                    SetSelectedTemplateValues(title, groupID, isActive);
                     UpdateSelectedTemplate();
                 }
                 popup.Dispose();
@@ -175,6 +181,49 @@ namespace Toxikon.ProtocolManager.Controllers.Admin
             LoginInfo loginInfo = LoginInfo.GetInstance();
             QTemplates.UpdateItem(this.selectedTemplate, loginInfo.UserName);
             this.LoadListViewItems();
+        }
+
+        private void SubmitAuditItem(string title, int groupID, bool isActive)
+        {
+            CreateAuditItems(title, groupID, isActive);
+            if (this.auditItems.Count != 0)
+            {
+                AuditHandler.InsertAuditItems(this.auditItems);
+                this.auditItems.Clear();
+            }
+        }
+
+        private void CreateAuditItems(string title, int groupID, bool isActive)
+        {
+            CheckAndAddToAuditItems("GroupID", this.selectedTemplate.GroupID.ToString(), groupID.ToString());
+            CheckAndAddToAuditItems("Title", this.selectedTemplate.Title, title);
+            CheckAndAddToAuditItems("IsActive", this.selectedTemplate.IsActive.ToString(), isActive.ToString());
+        }
+
+        private void CheckAndAddToAuditItems(string fieldName, string oldValue, string newValue)
+        {
+            if (oldValue.Trim() != newValue.Trim())
+            {
+                AuditItem item = CreateAuditItem(fieldName, oldValue, newValue);
+                this.auditItems.Add(item);
+            }
+        }
+
+        private AuditItem CreateAuditItem(string fieldName, string oldValue, string newValue)
+        {
+            LoginInfo loginInfo = LoginInfo.GetInstance();
+            AuditItem item = new AuditItem();
+            item.TableName = "Templates";
+            item.Type = "U";
+            item.PK = "ID";
+            item.PKValue = this.selectedTemplate.ID.ToString();
+            item.FieldName = fieldName;
+            item.OldValue = oldValue.Trim() == String.Empty ? "N/A" : oldValue;
+            item.NewValue = newValue;
+            item.UpdatedBy = loginInfo.UserName;
+            item.Reason = "Admin Template Update.";
+
+            return item;
         }
     }
 }
