@@ -11,6 +11,7 @@ using System.Windows.Forms;
 using System.Collections;
 using Toxikon.ProtocolManager.Queries;
 using System.Diagnostics;
+using Toxikon.ProtocolManager.Models.Admin;
 
 namespace Toxikon.ProtocolManager.Controllers
 {
@@ -18,8 +19,7 @@ namespace Toxikon.ProtocolManager.Controllers
     {
         protected IRequestForm view;
         protected ProtocolRequest request;
-        public List<string> changedFields { get; private set; }
-        public List<string> changedValues { get; private set; }
+        private List<AuditItem> auditItems;
         LoginInfo loginInfo;
 
         enum OptionFields { Guidelines, Compliance, ProtocolType, AssignedTo, Contact };
@@ -30,8 +30,7 @@ namespace Toxikon.ProtocolManager.Controllers
             this.view.SetController(this);
             this.request = new ProtocolRequest();
             loginInfo = LoginInfo.GetInstance();
-            this.changedFields = new List<string>();
-            this.changedValues = new List<string>();
+            this.auditItems = new List<AuditItem>();
         }
 
         public void LoadView(ProtocolRequest protocolRequest)
@@ -74,31 +73,32 @@ namespace Toxikon.ProtocolManager.Controllers
 
         public void UpdateRequestWithViewValues()
         {
+            CreateTextBoxAuditItems();
             this.request.DueDate = this.view.DueDate;
             this.request.SendVia = this.view.SendVia;
             this.request.BillTo = this.view.BillTo;
             this.request.Cost = this.view.Cost;
             this.request.PO = this.view.PONumber;
             this.request.Comments = this.view.Comments;
-            CreateTextBoxChangedFields();
         }
 
-        private void CheckAndAddToChangedFields(string fieldName, string oldValue, string newValue)
+        private void CheckAndAddToAuditItems(string fieldName, string oldValue, string newValue)
         {
             if(oldValue.Trim() != newValue.Trim())
             {
-                this.changedFields.Add(fieldName);
-                this.changedValues.Add(newValue);
+                AuditItem item = CreateAuditItem(fieldName, oldValue, newValue);
+                this.auditItems.Add(item);
             }
         }
 
-        private void CreateTextBoxChangedFields()
+        private void CreateTextBoxAuditItems()
         {
-            CheckAndAddToChangedFields("DueDate", this.request.DueDate.ToString(), this.view.DueDate.ToString());
-            CheckAndAddToChangedFields("SendVia", this.request.SendVia, this.view.SendVia);
-            CheckAndAddToChangedFields("BillTo", this.request.BillTo, this.view.BillTo);
-            CheckAndAddToChangedFields("Cost", this.request.Cost, this.view.Cost);
-            CheckAndAddToChangedFields("PO", this.request.PO, this.view.PONumber);
+            CheckAndAddToAuditItems("DueDate", this.request.DueDate.ToString("MM/dd/yyyy"), 
+                                    this.view.DueDate.ToString("MM/dd/yyyy"));
+            CheckAndAddToAuditItems("SendVia", this.request.SendVia, this.view.SendVia);
+            CheckAndAddToAuditItems("BillTo", this.request.BillTo, this.view.BillTo);
+            CheckAndAddToAuditItems("Cost", this.request.Cost, this.view.Cost);
+            CheckAndAddToAuditItems("PO", this.request.PO, this.view.PONumber);
         }
 
         public void GuidelinesButtonClicked()
@@ -108,7 +108,7 @@ namespace Toxikon.ProtocolManager.Controllers
             if (selectedItems.Count != 0)
             {
                 string itemsString = String.Join(", ", selectedItems);
-                CheckAndAddToChangedFields("Guidelines", this.request.Guidelines, itemsString);
+                CheckAndAddToAuditItems("Guidelines", this.request.Guidelines, itemsString);
                 this.request.Guidelines = itemsString;
                 this.view.Guidelines = itemsString;
             }
@@ -120,7 +120,7 @@ namespace Toxikon.ProtocolManager.Controllers
             Item selectedItem = TemplatesController.ShowListBoxOptionsForm(items, view.ParentControl);
             if(selectedItem.Name != "")
             {
-                CheckAndAddToChangedFields("Compliance", this.request.Guidelines, selectedItem.Value);
+                CheckAndAddToAuditItems("Compliance", this.request.Guidelines, selectedItem.Value);
                 this.request.Compliance = selectedItem.Value;
                 this.view.Compliance = selectedItem.Value;
             }
@@ -132,6 +132,7 @@ namespace Toxikon.ProtocolManager.Controllers
             Item selectedItem = TemplatesController.ShowListBoxOptionsForm(items, view.ParentControl);
             if (selectedItem.Value != "")
             {
+                CheckAndAddToAuditItems("ProtocolType", this.request.ProtocolType, selectedItem.Value);
                 this.request.ProtocolType = selectedItem.Value;
                 this.view.ProtocolType = selectedItem.Value;
             }
@@ -143,7 +144,7 @@ namespace Toxikon.ProtocolManager.Controllers
             Item selectedItem = TemplatesController.ShowListBoxOptionsForm(items, view.ParentControl);
             if (selectedItem.Value != "")
             {
-                CheckAndAddToChangedFields("AssignedTo", this.request.AssignedTo, selectedItem.Value);
+                CheckAndAddToAuditItems("AssignedTo", this.request.AssignedTo, selectedItem.Text);
                 this.request.AssignedTo = selectedItem.Value;
                 this.view.AssignedTo = selectedItem.Text;
             }
@@ -155,6 +156,7 @@ namespace Toxikon.ProtocolManager.Controllers
             Item selectedItem = TemplatesController.ShowListBoxOptionsForm(items, view.ParentControl);
             if (selectedItem.Value != "")
             {
+                CheckAndAddToAuditItems("ContactCode", this.request.Contact.ContactCode, selectedItem.Value);
                 this.request.SetContact(selectedItem.Value);
                 UpdateViewWithSponsorContact();
             }
@@ -169,6 +171,16 @@ namespace Toxikon.ProtocolManager.Controllers
         public void UpdateRequest()
         {
             QProtocolRequests.UpdateItem(this.request, loginInfo.UserName);
+            SubmitAuditItems();
+        }
+
+        private void SubmitAuditItems()
+        {
+            if (auditItems.Count != 0)
+            {
+                AuditHandler.InsertAuditItems(auditItems);
+                this.auditItems.Clear();
+            }
         }
 
         public void ClearForm()
@@ -177,10 +189,20 @@ namespace Toxikon.ProtocolManager.Controllers
             this.view.ClearView();
         }
 
-        public void RefreshChangedFields()
+        private AuditItem CreateAuditItem(string fieldName, string oldValue, string newValue)
         {
-            this.changedFields.Clear();
-            this.changedValues.Clear();
+            AuditItem item = new AuditItem();
+            item.TableName = "ProtocolRequests";
+            item.Type = "U";
+            item.PK = "ID";
+            item.PKValue = this.request.ID.ToString();
+            item.FieldName = fieldName;
+            item.OldValue = oldValue.Trim() == String.Empty ? "N/A" : oldValue;
+            item.NewValue = newValue;
+            item.UpdatedBy = loginInfo.UserName;
+            item.Reason = "Update using Save Changes button.";
+
+            return item;
         }
     }
 }

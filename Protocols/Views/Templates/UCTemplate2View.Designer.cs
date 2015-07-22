@@ -54,7 +54,7 @@
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Padding = new System.Windows.Forms.Padding(10, 0, 1, 0);
-            this.toolStrip1.Size = new System.Drawing.Size(640, 38);
+            this.toolStrip1.Size = new System.Drawing.Size(1024, 38);
             this.toolStrip1.TabIndex = 1;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -69,7 +69,7 @@
             this.MainComboBox.BackColor = System.Drawing.SystemColors.Info;
             this.MainComboBox.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.MainComboBox.Name = "MainComboBox";
-            this.MainComboBox.Size = new System.Drawing.Size(150, 38);
+            this.MainComboBox.Size = new System.Drawing.Size(250, 38);
             this.MainComboBox.SelectedIndexChanged += new System.EventHandler(this.MainComboBox_SelectedIndexChanged);
             // 
             // toolStripLabel2
@@ -114,7 +114,7 @@
             this.ItemsListView.Location = new System.Drawing.Point(0, 38);
             this.ItemsListView.MultiSelect = false;
             this.ItemsListView.Name = "ItemsListView";
-            this.ItemsListView.Size = new System.Drawing.Size(640, 202);
+            this.ItemsListView.Size = new System.Drawing.Size(1024, 202);
             this.ItemsListView.TabIndex = 2;
             this.ItemsListView.UseCompatibleStateImageBehavior = false;
             this.ItemsListView.View = System.Windows.Forms.View.Details;
@@ -127,7 +127,7 @@
             this.Controls.Add(this.ItemsListView);
             this.Controls.Add(this.toolStrip1);
             this.Name = "UCTemplate2View";
-            this.Size = new System.Drawing.Size(640, 240);
+            this.Size = new System.Drawing.Size(1024, 240);
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
             this.ResumeLayout(false);

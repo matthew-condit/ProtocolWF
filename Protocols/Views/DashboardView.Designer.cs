@@ -30,13 +30,13 @@
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.RequestDataGridView = new System.Windows.Forms.DataGridView();
-            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
             this.IDCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.RequestedDateCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.RequestedByCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.AssignedToCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SponsorCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
             ((System.ComponentModel.ISupportInitialize)(this.RequestDataGridView)).BeginInit();
             this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -68,36 +68,18 @@
             this.RequestDataGridView.DefaultCellStyle = dataGridViewCellStyle1;
             this.RequestDataGridView.Location = new System.Drawing.Point(4, 34);
             this.RequestDataGridView.Name = "RequestDataGridView";
+            this.RequestDataGridView.ReadOnly = true;
             this.RequestDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.RequestDataGridView.Size = new System.Drawing.Size(654, 414);
             this.RequestDataGridView.TabIndex = 6;
             this.RequestDataGridView.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.RequestDataGridView_CellContentDoubleClick);
-            // 
-            // toolStrip1
-            // 
-            this.toolStrip1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.toolStrip1.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
-            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripLabel1});
-            this.toolStrip1.Location = new System.Drawing.Point(0, 9);
-            this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(661, 25);
-            this.toolStrip1.TabIndex = 7;
-            this.toolStrip1.Text = "toolStrip1";
-            // 
-            // toolStripLabel1
-            // 
-            this.toolStripLabel1.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.toolStripLabel1.ForeColor = System.Drawing.Color.SlateGray;
-            this.toolStripLabel1.Name = "toolStripLabel1";
-            this.toolStripLabel1.Size = new System.Drawing.Size(118, 22);
-            this.toolStripLabel1.Text = "Protocol Requests";
             // 
             // IDCol
             // 
             this.IDCol.FillWeight = 62.12653F;
             this.IDCol.HeaderText = "Request ID";
             this.IDCol.Name = "IDCol";
+            this.IDCol.ReadOnly = true;
             // 
             // RequestedDateCol
             // 
@@ -118,6 +100,7 @@
             this.AssignedToCol.FillWeight = 62.12653F;
             this.AssignedToCol.HeaderText = "Assigned To";
             this.AssignedToCol.Name = "AssignedToCol";
+            this.AssignedToCol.ReadOnly = true;
             // 
             // SponsorCol
             // 
@@ -125,6 +108,26 @@
             this.SponsorCol.HeaderText = "Sponsor";
             this.SponsorCol.Name = "SponsorCol";
             this.SponsorCol.ReadOnly = true;
+            // 
+            // toolStrip1
+            // 
+            this.toolStrip1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.toolStrip1.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
+            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripLabel1});
+            this.toolStrip1.Location = new System.Drawing.Point(0, 9);
+            this.toolStrip1.Name = "toolStrip1";
+            this.toolStrip1.Size = new System.Drawing.Size(661, 25);
+            this.toolStrip1.TabIndex = 7;
+            this.toolStrip1.Text = "toolStrip1";
+            // 
+            // toolStripLabel1
+            // 
+            this.toolStripLabel1.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.toolStripLabel1.ForeColor = System.Drawing.Color.SlateGray;
+            this.toolStripLabel1.Name = "toolStripLabel1";
+            this.toolStripLabel1.Size = new System.Drawing.Size(118, 22);
+            this.toolStripLabel1.Text = "Protocol Requests";
             // 
             // DashboardView
             // 

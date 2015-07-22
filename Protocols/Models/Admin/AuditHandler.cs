@@ -142,21 +142,38 @@ namespace Toxikon.ProtocolManager.Models.Admin
             InsertAuditItem(item);
         }
 
-        public static void Insert_SaveChanged_AuditItem(int ID, string fieldName, string oldValue, 
-                                string newValue, string userName)
+        public static void InsertAuditItems(List<AuditItem> auditItems)
         {
-            AuditItem item = new AuditItem();
-            item.TableName = "ProtocolRequests";
-            item.Type = "U";
-            item.PK = "ID";
-            item.PKValue = ID.ToString();
-            item.FieldName = fieldName;
-            item.OldValue = oldValue == String.Empty ? "N/A" : oldValue;
-            item.NewValue = newValue;
-            item.UpdatedBy = userName;
-            item.Reason = "Update using Save Changes button.";
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    connection.Open();
+                    using (SqlCommand command = new SqlCommand("audit_insert", connection))
+                    {
+                        command.CommandType = CommandType.StoredProcedure;
+                        foreach(AuditItem item in auditItems)
+                        {
+                            command.Parameters.Clear();
+                            command.Parameters.Add("@TableName", SqlDbType.NVarChar).Value = item.TableName;
+                            command.Parameters.Add("@Type", SqlDbType.NChar).Value = item.Type;
+                            command.Parameters.Add("@PK", SqlDbType.NVarChar).Value = item.PK;
+                            command.Parameters.Add("@PKValue", SqlDbType.NVarChar).Value = item.PKValue;
+                            command.Parameters.Add("@FieldName", SqlDbType.NVarChar).Value = item.FieldName;
+                            command.Parameters.Add("@OldValue", SqlDbType.NVarChar).Value = item.OldValue;
+                            command.Parameters.Add("@NewValue", SqlDbType.NVarChar).Value = item.NewValue;
+                            command.Parameters.Add("@UpdatedBy", SqlDbType.NVarChar).Value = item.UpdatedBy;
+                            command.Parameters.Add("@Reason", SqlDbType.NVarChar).Value = item.Reason;
 
-            InsertAuditItem(item);
+                            int dbResult = command.ExecuteNonQuery();
+                        }
+                    }
+                }
+            }
+            catch (SqlException sqlEx)
+            {
+                ErrorHandler.CreateLogFile("AuditHandler", "InsertAuditItems", sqlEx);
+            }
         }
     }
 }

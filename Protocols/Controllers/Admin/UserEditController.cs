@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Toxikon.ProtocolManager.Models.Admin;
 
 namespace Toxikon.ProtocolManager.Controllers.Admin
 {
@@ -16,6 +17,8 @@ namespace Toxikon.ProtocolManager.Controllers.Admin
         IUserEditView view;
         IList departments;
         IList roles;
+        List<AuditItem> auditItems;
+        private LoginInfo loginInfo;
         public User User { get; private set; }
 
         public UserEditController(IUserEditView view, User user)
@@ -25,6 +28,8 @@ namespace Toxikon.ProtocolManager.Controllers.Admin
             roles = new ArrayList();
             this.view = view;
             this.view.SetController(this);
+            auditItems = new List<AuditItem>();
+            loginInfo = LoginInfo.GetInstance();
         }
 
         public void LoadView()
@@ -147,6 +152,7 @@ namespace Toxikon.ProtocolManager.Controllers.Admin
         {
             try
             {
+                SubmitAuditItems();
                 UpdateUserWithViewValues();
                 view.SetDialogResult(DialogResult.OK);
             }
@@ -154,6 +160,53 @@ namespace Toxikon.ProtocolManager.Controllers.Admin
             {
                 MessageBox.Show(e.Message);
             }
+        }
+
+        private void SubmitAuditItems()
+        {
+            CreateAuditItems();
+            if(this.auditItems.Count != 0)
+            {
+                AuditHandler.InsertAuditItems(this.auditItems);
+                this.auditItems.Clear();
+            }
+        }
+
+        private void CreateAuditItems()
+        {
+            CheckAndAddToAuditItems("FirstName", this.User.FirstName, this.view.FirstName);
+            CheckAndAddToAuditItems("LastName", this.User.LastName, this.view.LastName);
+            CheckAndAddToAuditItems("FullName", this.User.FullName, this.view.FullName);
+            CheckAndAddToAuditItems("EmailAddress", this.User.EmailAddress, this.view.EmailAddress);
+            CheckAndAddToAuditItems("DepartmentID", this.User.Department.ID.ToString(),
+                                    this.view.Department.ID.ToString());
+            CheckAndAddToAuditItems("RoleID", this.User.Role.RoleID.ToString(), this.view.Role.RoleID.ToString());
+            CheckAndAddToAuditItems("IsActive", this.User.IsActive.ToString(), this.view.IsActive.ToString());
+        }
+
+        private void CheckAndAddToAuditItems(string fieldName, string oldValue, string newValue)
+        {
+            if (oldValue.Trim() != newValue.Trim())
+            {
+                AuditItem item = CreateAuditItem(fieldName, oldValue, newValue);
+                this.auditItems.Add(item);
+            }
+        }
+
+        private AuditItem CreateAuditItem(string fieldName, string oldValue, string newValue)
+        {
+            AuditItem item = new AuditItem();
+            item.TableName = "Users";
+            item.Type = "U";
+            item.PK = "UserName";
+            item.PKValue = this.User.UserName;
+            item.FieldName = fieldName;
+            item.OldValue = oldValue.Trim() == String.Empty ? "N/A" : oldValue;
+            item.NewValue = newValue;
+            item.UpdatedBy = loginInfo.UserName;
+            item.Reason = "Update using Save Changes button.";
+
+            return item;
         }
     }
 }

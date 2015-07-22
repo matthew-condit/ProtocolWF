@@ -91,7 +91,11 @@ namespace Toxikon.ProtocolManager.Queries
             }
             catch (SqlException e)
             {
-                ErrorHandler.CreateLogFile(ErrorFormName, "SelectByRequestID", e);
+                ErrorHandler.CreateLogFile(ErrorFormName, "SelectItems", e);
+            }
+            catch(FormatException fe)
+            {
+                ErrorHandler.CreateLogFile(ErrorFormName, "SelectItems", fe);
             }
             return results;
         }
@@ -139,6 +143,8 @@ namespace Toxikon.ProtocolManager.Queries
             template.FilePath = reader[8].ToString().Trim();
             template.ProjectNumber = reader[9].ToString().Trim();
             template.Department.Name = reader[10].ToString().Trim();
+            string departmentID = reader[11].ToString();
+            template.Department.ID = departmentID.Trim() != String.Empty ? Convert.ToInt32(departmentID) : 0;
 
             return template;
         }
