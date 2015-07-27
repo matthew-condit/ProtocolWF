@@ -44,6 +44,7 @@ namespace Toxikon.ProtocolManager.Models
             this.Compliance = "";
             this.ProtocolType = "";
             this.DueDate = DateTime.Now;
+            this.SendVia = "";
             this.BillTo = "Toxikon";
             this.Cost = "";
             this.Comments = "";

@@ -12,5 +12,6 @@ namespace Toxikon.ProtocolManager.Models
         public const int CSR = 2;
         public const int DocControl = 3;
         public const int Manager = 4;
+        public const int DepartmentDirector = 5;
     }
 }

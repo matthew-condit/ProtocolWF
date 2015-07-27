@@ -97,6 +97,7 @@ namespace Toxikon.ProtocolManager.Queries
         public static IList GetSponsorContacts_NameAndCodeOnly(string sponsorName)
         {
             IList results = new ArrayList();
+            sponsorName += "%";
             try
             {
                 using (SqlConnection connection = new SqlConnection(CONNECTION_STRING))
