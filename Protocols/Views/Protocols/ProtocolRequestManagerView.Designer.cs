@@ -223,7 +223,7 @@
             this.RequestFormManagerView.RequestedBy = "Requested By";
             this.RequestFormManagerView.RequestedDate = "Requested Date";
             this.RequestFormManagerView.SendVia = "Via";
-            this.RequestFormManagerView.Size = new System.Drawing.Size(1014, 295);
+            this.RequestFormManagerView.Size = new System.Drawing.Size(1014, 343);
             this.RequestFormManagerView.SponsorName = "Sponsor";
             this.RequestFormManagerView.State = "State";
             this.RequestFormManagerView.TabIndex = 2;

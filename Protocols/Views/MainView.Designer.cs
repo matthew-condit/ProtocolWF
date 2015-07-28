@@ -43,6 +43,7 @@
             this.TemplatesMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.UpdateProtocolNumberButton = new System.Windows.Forms.ToolStripMenuItem();
             this.MainPanel = new System.Windows.Forms.Panel();
+            this.DepartmentDirectorsMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -90,6 +91,7 @@
             // 
             this.AdminMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.AdminDepartmentsMenuItem,
+            this.DepartmentDirectorsMenuItem,
             this.AdminRolesMenuItem,
             this.AdminUsersMenuItem,
             this.ListNamesMenuItem,
@@ -174,6 +176,13 @@
             this.MainPanel.Size = new System.Drawing.Size(1008, 603);
             this.MainPanel.TabIndex = 1;
             // 
+            // DepartmentDirectorsMenuItem
+            // 
+            this.DepartmentDirectorsMenuItem.Name = "DepartmentDirectorsMenuItem";
+            this.DepartmentDirectorsMenuItem.Size = new System.Drawing.Size(207, 22);
+            this.DepartmentDirectorsMenuItem.Text = "Department Directors";
+            this.DepartmentDirectorsMenuItem.Click += new System.EventHandler(this.DepartmentDirectorsMenuItem_Click);
+            // 
             // MainView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -210,6 +219,7 @@
         private System.Windows.Forms.ToolStripMenuItem TemplatesGroupsMenuItem;
         private System.Windows.Forms.ToolStripMenuItem TemplatesMenuItem;
         private System.Windows.Forms.ToolStripMenuItem UpdateProtocolNumberButton;
+        private System.Windows.Forms.ToolStripMenuItem DepartmentDirectorsMenuItem;
     }
 }
 

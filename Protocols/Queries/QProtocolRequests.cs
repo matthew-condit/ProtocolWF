@@ -168,6 +168,34 @@ namespace Toxikon.ProtocolManager.Queries
             return results;
         }
 
+        public static IList SelectItemsByDirector(string userName)
+        {
+            IList results = new ArrayList();
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    connection.Open();
+                    using (SqlCommand command = new SqlCommand("pr_select_newrequests_bydirector", connection))
+                    {
+                        command.CommandType = CommandType.StoredProcedure;
+                        command.Parameters.Add("@UserName", SqlDbType.NVarChar).Value = userName;
+                        SqlDataReader reader = command.ExecuteReader();
+                        while (reader.Read())
+                        {
+                            ProtocolRequest request = CreateNewProtocolRequest(reader);
+                            results.Add(request);
+                        }
+                    }
+                }
+            }
+            catch (SqlException e)
+            {
+                ErrorHandler.CreateLogFile(ErrorFormName, "SelectProtocolRequestByAssignedTo", e);
+            }
+            return results;
+        }
+
         public static IList SelectClosedRequests(string requestedBy, string assignedTo)
         {
             IList results = new ArrayList();

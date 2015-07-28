@@ -19,7 +19,7 @@ namespace Toxikon.ProtocolManager.Controllers.Admin
         private IList departmentDirectors;
 
         private Department selectedDepartment;
-        private User selectedDirector;
+        private Item selectedDirector;
         private DepartmentDirector selectedDepartmentDirector;
 
         public DepartmentDirectorsController(IDepartmentDirectorsView view)
@@ -38,6 +38,12 @@ namespace Toxikon.ProtocolManager.Controllers.Admin
 
             AddDepartmentsToView();
             AddDirectorsToView();
+            RefreshDepartmentDirectors();
+        }
+
+        private void RefreshDepartmentDirectors()
+        {
+            this.departmentDirectors = QDepartmentDirectors.SelectAllItems();
             AddDepartmentDirectorsToView();
         }
 
@@ -60,7 +66,7 @@ namespace Toxikon.ProtocolManager.Controllers.Admin
 
         private void AddDirectorsToView()
         {
-            foreach(User user in this.directors)
+            foreach(Item user in this.directors)
             {
                 this.view.AddDirectorsToView(user);
             }
@@ -71,6 +77,22 @@ namespace Toxikon.ProtocolManager.Controllers.Admin
             foreach(DepartmentDirector item in departmentDirectors)
             {
                 this.view.AddItemToListView(item);
+            }
+        }
+
+        public void DepartmentsComboBox_SelectedIndexChanged(int selectedIndex)
+        {
+            if(selectedIndex > - 1 && selectedIndex < this.departments.Count)
+            {
+                this.selectedDepartment = (Department)this.departments[selectedIndex];
+            }
+        }
+
+        public void DirectorsComboBox_SelectedIndexChanged(int selectedIndex)
+        {
+            if (selectedIndex > -1 && selectedIndex < this.directors.Count)
+            {
+                this.selectedDirector = (Item)this.directors[selectedIndex];
             }
         }
 
@@ -86,9 +108,11 @@ namespace Toxikon.ProtocolManager.Controllers.Admin
         {
             DepartmentDirector item = new DepartmentDirector();
             item.DepartmentID = this.selectedDepartment.ID;
-            item.UserName = this.selectedDirector.UserName;
+            item.UserName = this.selectedDirector.Value;
 
             QDepartmentDirectors.InsertItem(item);
+            ClearView();
+            RefreshDepartmentDirectors();
         }
     }
 }

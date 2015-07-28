@@ -8,6 +8,7 @@ namespace Toxikon.ProtocolManager.Models.Admin
 {
     public class DepartmentDirector
     {
+        public int ID { get; set; }
         public int DepartmentID { get; set; }
         public string DepartmentName { get; set; }
         public string UserName { get; set; }
@@ -16,6 +17,7 @@ namespace Toxikon.ProtocolManager.Models.Admin
 
         public DepartmentDirector()
         {
+            this.ID = 0;
             this.DepartmentID = 0;
             this.DepartmentName = "";
             this.UserName = "";

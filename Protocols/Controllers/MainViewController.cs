@@ -115,10 +115,21 @@ namespace Toxikon.ProtocolManager.Controllers
                 case UserRoles.Manager:
                     LoadRequestDetail_ManagerView(request);
                     break;
+                case UserRoles.DepartmentDirector:
+                    LoadRequestDetail_DirectorView(request);
+                    break;
                 default:
                     LoadProtocolRequestReadOnlyView(request);
                     break;
             }
+        }
+
+        private void LoadRequestDetail_DirectorView(ProtocolRequest request)
+        {
+            ProtocolRequestDirectorView subView = new ProtocolRequestDirectorView();
+            RequestDetailController subViewController = new RequestDetailController(subView);
+            subViewController.LoadView(request);
+            view.AddControlToMainPanel(subView);
         }
 
         private void LoadRequestDetail_ManagerView(ProtocolRequest request)
@@ -195,6 +206,14 @@ namespace Toxikon.ProtocolManager.Controllers
         {
             ProtocolNumberUpdateView subView = new ProtocolNumberUpdateView();
             ProtocolNumberUpdateController subViewController = new ProtocolNumberUpdateController(subView);
+            view.AddControlToMainPanel(subView);
+        }
+
+        public void LoadDepartmentDirectorsView()
+        {
+            DepartmentDirectorsView subView = new DepartmentDirectorsView();
+            DepartmentDirectorsController subViewController = new DepartmentDirectorsController(subView);
+            subViewController.LoadView();
             view.AddControlToMainPanel(subView);
         }
     }

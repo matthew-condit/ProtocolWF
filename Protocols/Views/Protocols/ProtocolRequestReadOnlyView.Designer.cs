@@ -112,7 +112,8 @@
             // RequestFormReadOnly
             // 
             this.RequestFormReadOnly.Address = "Address";
-            this.RequestFormReadOnly.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.RequestFormReadOnly.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.RequestFormReadOnly.AssignedTo = "Assigned To";
             this.RequestFormReadOnly.BackColor = System.Drawing.Color.White;
@@ -136,7 +137,7 @@
             this.RequestFormReadOnly.RequestedBy = "Requested By";
             this.RequestFormReadOnly.RequestedDate = "Requested Date";
             this.RequestFormReadOnly.SendVia = "Via";
-            this.RequestFormReadOnly.Size = new System.Drawing.Size(1018, 314);
+            this.RequestFormReadOnly.Size = new System.Drawing.Size(1018, 330);
             this.RequestFormReadOnly.SponsorName = "Sponsor";
             this.RequestFormReadOnly.State = "State";
             this.RequestFormReadOnly.TabIndex = 0;
@@ -236,7 +237,6 @@
             this.Controls.Add(this.toolStrip1);
             this.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.MaximumSize = new System.Drawing.Size(1024, 600);
             this.Name = "ProtocolRequestReadOnlyView";
             this.Size = new System.Drawing.Size(1024, 600);
             this.toolStrip1.ResumeLayout(false);

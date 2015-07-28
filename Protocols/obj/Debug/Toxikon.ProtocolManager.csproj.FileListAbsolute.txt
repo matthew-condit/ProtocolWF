@@ -36,3 +36,5 @@ C:\Users\BMcCulley\Source\toxxwinapp\ProtocolsWF\Protocols\obj\Debug\ToxikonProt
 C:\Users\BMcCulley\Source\toxxwinapp\ProtocolsWF\Protocols\obj\Debug\ToxikonProtocolManager.exe
 C:\Users\BMcCulley\Source\toxxwinapp\ProtocolsWF\Protocols\obj\Debug\ToxikonProtocolManager.pdb
 C:\Users\BMcCulley\Source\toxxwinapp\ProtocolsWF\Protocols\obj\Debug\Toxikon.ProtocolManager.csprojResolveAssemblyReference.cache
+C:\Users\BMcCulley\Source\toxxwinapp\ProtocolsWF\Protocols\obj\Debug\Toxikon.ProtocolManager.Views.Admin.DepartmentDirectorsView.resources
+C:\Users\BMcCulley\Source\toxxwinapp\ProtocolsWF\Protocols\obj\Debug\Toxikon.ProtocolManager.Views.Protocols.ProtocolRequestDirectorView.resources

@@ -164,5 +164,10 @@ namespace Toxikon.ProtocolManager.Views
         {
             this.controller.LoadProtocolNumberUpdateView();
         }
+
+        private void DepartmentDirectorsMenuItem_Click(object sender, EventArgs e)
+        {
+            this.controller.LoadDepartmentDirectorsView();
+        }
     }
 }

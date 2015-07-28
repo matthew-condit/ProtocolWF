@@ -14,7 +14,7 @@ namespace Toxikon.ProtocolManager.Interfaces.Admin
     {
         void SetController(DepartmentDirectorsController controller);
         void AddDepartmentToView(Department department);
-        void AddDirectorsToView(User director);
+        void AddDirectorsToView(Item director);
         void AddItemToListView(DepartmentDirector item);
         void ClearView();
 

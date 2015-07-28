@@ -57,7 +57,15 @@ namespace Toxikon.ProtocolManager.Controllers
 
         private void LoadRequestTemplates()
         {
-            this.templates = QProtocolRequestTemplates.SelectItems(this.request.ID);
+            if(loginInfo.Role.RoleID != UserRoles.DepartmentDirector)
+            {
+                this.templates = QProtocolRequestTemplates.SelectItems(this.request.ID);
+            }
+            else
+            {
+                this.templates = QProtocolRequestTemplates.SelectItemsByDirector(this.request.ID, 
+                                 this.loginInfo.UserName);
+            }
         }
 
         private void AddTemplatesToView()

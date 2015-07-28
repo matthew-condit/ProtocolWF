@@ -129,6 +129,18 @@
     <Compile Include="Models\Admin\DepartmentDirector.cs" />
     <Compile Include="Models\Template.cs" />
     <Compile Include="Queries\QDepartmentDirectors.cs" />
+    <Compile Include="Views\Admin\DepartmentDirectorsView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\Admin\DepartmentDirectorsView.Designer.cs">
+      <DependentUpon>DepartmentDirectorsView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Protocols\ProtocolRequestDirectorView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\Protocols\ProtocolRequestDirectorView.Designer.cs">
+      <DependentUpon>ProtocolRequestDirectorView.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\RequestDetailView.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -358,11 +370,17 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="Views\Admin\DepartmentDirectorsView.resx">
+      <DependentUpon>DepartmentDirectorsView.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\Admin\ProtocolNumberUpdateView.resx">
       <DependentUpon>ProtocolNumberUpdateView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\HistoryView.resx">
       <DependentUpon>HistoryView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Protocols\ProtocolRequestDirectorView.resx">
+      <DependentUpon>ProtocolRequestDirectorView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Protocols\ProtocolRequestManagerView.resx">
       <DependentUpon>ProtocolRequestManagerView.cs</DependentUpon>

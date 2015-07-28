@@ -100,6 +100,39 @@ namespace Toxikon.ProtocolManager.Queries
             return results;
         }
 
+        public static IList SelectItemsByDirector(int protocolRequestID, string userName)
+        {
+            IList results = new List<ProtocolTemplate>() { };
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    connection.Open();
+                    using (SqlCommand command = new SqlCommand("prt_select_templates_bydirector", connection))
+                    {
+                        command.CommandType = CommandType.StoredProcedure;
+                        command.Parameters.Add("@RequestID", SqlDbType.Int).Value = protocolRequestID;
+                        command.Parameters.Add("@UserName", SqlDbType.NVarChar).Value = userName;
+                        SqlDataReader reader = command.ExecuteReader();
+                        while (reader.Read())
+                        {
+                            ProtocolTemplate item = CreateNewProtocolTemplate(protocolRequestID, reader);
+                            results.Add(item);
+                        }
+                    }
+                }
+            }
+            catch (SqlException e)
+            {
+                ErrorHandler.CreateLogFile(ErrorFormName, "SelectItems", e);
+            }
+            catch (FormatException fe)
+            {
+                ErrorHandler.CreateLogFile(ErrorFormName, "SelectItems", fe);
+            }
+            return results;
+        }
+
         public static void SetIsActive(int requestID, int templateID, bool isActive, string userName)
         {
             try
