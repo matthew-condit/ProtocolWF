@@ -38,7 +38,7 @@ namespace Toxikon.ProtocolManager.Views
                 request.ID,
                  request.RequestedDate.ToString("MM/dd/yyyy"),
                  request.RequestedBy,
-                 request.AssignedTo,
+                 request.AssignedTo.FullName,
                  request.Contact.SponsorName);
         }
 

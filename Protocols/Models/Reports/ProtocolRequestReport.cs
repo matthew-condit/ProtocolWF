@@ -94,7 +94,7 @@ namespace Toxikon.ProtocolManager.Models.Reports
             rowIndex += 1;
             InsertReportHeaderRow(worksheet, "A" + rowIndex, "A" + rowIndex, "Assigned To: ", true, false);
             InsertReportHeaderRow(worksheet, "B" + rowIndex, "G" + rowIndex,
-                                  this.protocolRequest.AssignedTo, false, false);
+                                  this.protocolRequest.AssignedTo.FullName, false, false);
             rowIndex += 2;
             InsertReportHeaderRow(worksheet, "A" + rowIndex, "A" + rowIndex, "Contact Name: ", true, false);
             InsertReportHeaderRow(worksheet, "B" + rowIndex, "G" + rowIndex,

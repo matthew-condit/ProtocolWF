@@ -328,10 +328,11 @@ namespace Toxikon.ProtocolManager.Queries
             request.Cost = reader[8].ToString().Trim();
             request.Comments = reader[9].ToString();
             request.PO = reader[10].ToString().Trim();
-            request.AssignedTo = reader[11].ToString();
+            request.AssignedTo.FullName = reader[11].ToString();
             request.RequestStatus = reader[12].ToString();
             request.RequestedBy = reader[13].ToString();
             request.RequestedDate = Convert.ToDateTime(reader[14].ToString());
+            request.AssignedTo.UserName = reader[18].ToString();
             return request;
         }
 
@@ -356,7 +357,7 @@ namespace Toxikon.ProtocolManager.Queries
                         command.Parameters.Add("@BillTo", SqlDbType.NVarChar).Value = request.BillTo;
                         command.Parameters.Add("@Cost", SqlDbType.NVarChar).Value = request.Cost;
                         command.Parameters.Add("@PO", SqlDbType.NVarChar).Value = request.PO;
-                        command.Parameters.Add("@AssignedTo", SqlDbType.NVarChar).Value = request.AssignedTo;
+                        command.Parameters.Add("@AssignedTo", SqlDbType.NVarChar).Value = request.AssignedTo.UserName;
                         command.Parameters.Add("@UpdatedBy", SqlDbType.NVarChar).Value = userName;
 
                         int result = command.ExecuteNonQuery();

@@ -37,7 +37,7 @@ namespace Toxikon.ProtocolManager.Views
         {
             ListViewItem item = this.RequestListView.Items.Add(request.RequestedDate.ToString("MM/dd/yyyy"));
             item.SubItems.Add(request.RequestedBy);
-            item.SubItems.Add(request.AssignedTo);
+            item.SubItems.Add(request.AssignedTo.FullName);
         }
 
         public void ClearListView()

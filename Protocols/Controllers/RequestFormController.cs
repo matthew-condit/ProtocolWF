@@ -52,7 +52,7 @@ namespace Toxikon.ProtocolManager.Controllers
             this.view.SendVia = request.SendVia;
             this.view.DueDate = request.DueDate;
             this.view.Comments = request.Comments;
-            this.view.AssignedTo = request.AssignedTo;
+            this.view.AssignedTo = request.AssignedTo.FullName;
 
             UpdateViewWithSponsorContact();
         }
@@ -144,8 +144,9 @@ namespace Toxikon.ProtocolManager.Controllers
             Item selectedItem = TemplatesController.ShowListBoxOptionsForm(items, view.ParentControl);
             if (selectedItem.Value != "")
             {
-                CheckAndAddToAuditItems("AssignedTo", this.request.AssignedTo, selectedItem.Text);
-                this.request.AssignedTo = selectedItem.Value;
+                CheckAndAddToAuditItems("AssignedTo", this.request.AssignedTo.FullName, selectedItem.Text);
+                this.request.AssignedTo.UserName = selectedItem.Value;
+                this.request.AssignedTo.FullName = selectedItem.Text;
                 this.view.AssignedTo = selectedItem.Text;
             }
         }

@@ -150,7 +150,7 @@ namespace Toxikon.ProtocolManager.Controllers.Protocols
             {
                 MessageBox.Show("No sponsor selected.");
             }
-            else if (this.request.AssignedTo == String.Empty)
+            else if (this.request.AssignedTo.UserName == String.Empty)
             {
                 MessageBox.Show("Assigned To is required.");
             }

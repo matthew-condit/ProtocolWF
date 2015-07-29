@@ -23,7 +23,7 @@ namespace Toxikon.ProtocolManager.Models
         public string BillTo { get; set; }
         public string Cost { get; set; }
         public string Comments { get; set; }
-        public string AssignedTo { get; set; }
+        public User AssignedTo { get; set; }
         public string PO { get; set; }
 
         public string RequestStatus { get; set; }
@@ -48,7 +48,7 @@ namespace Toxikon.ProtocolManager.Models
             this.BillTo = "Toxikon";
             this.Cost = "";
             this.Comments = "";
-            this.AssignedTo = "";
+            this.AssignedTo = new User();
             this.PO = "";
             this.IsActive = true;
         }
