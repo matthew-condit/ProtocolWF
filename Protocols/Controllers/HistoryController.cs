@@ -8,6 +8,7 @@ using System.Windows.Forms;
 using Toxikon.ProtocolManager.Controllers.Protocols;
 using Toxikon.ProtocolManager.Interfaces;
 using Toxikon.ProtocolManager.Models;
+using Toxikon.ProtocolManager.Models.Admin;
 using Toxikon.ProtocolManager.Queries;
 
 namespace Toxikon.ProtocolManager.Controllers
@@ -34,7 +35,15 @@ namespace Toxikon.ProtocolManager.Controllers
 
         public void LoadView()
         {
-            
+            if(loginInfo.Role.RoleID == UserRoles.DocControl ||
+               loginInfo.Role.RoleID == UserRoles.IT)
+            {
+                this.view.SetResetRequestVisible(true);
+            }
+            else
+            {
+                this.view.SetResetRequestVisible(false);
+            }
         }
 
         public void SearchButtonClicked()
@@ -43,6 +52,60 @@ namespace Toxikon.ProtocolManager.Controllers
             GetSponsors();
             GetSelectedSponsorRequests();
             AddRequestListToView();
+        }
+
+        public void ResetButtonClicked()
+        {
+            if(this.selectedRequest == null)
+            {
+                MessageBox.Show("Please select an item.");
+            }
+            else
+            {
+                ResetRequestWithConfirmation();
+            }
+        }
+
+        private void ResetRequestWithConfirmation()
+        {
+            DialogResult dialogResult = MessageBox.Show("Are you sure you want to reset this request?",
+                                        "Confirmation", MessageBoxButtons.YesNo);
+            if(dialogResult == DialogResult.Yes)
+            {
+                this.selectedRequest.RequestStatus = "New";
+                this.selectedRequest.IsActive = true;
+                QProtocolRequests.UpdateRequestStatus(this.selectedRequest, loginInfo.UserName);
+
+                AuditItem auditItem = CreateAuditItem("RequestStatus,IsActive", "Closed,0", "New,1");
+                AuditHandler.InsertAuditItem(auditItem);
+                this.requestList.Remove(this.selectedRequest);
+                this.selectedRequest = null;
+                ReloadRequestList();
+            }
+        }
+
+        private void ReloadRequestList()
+        {
+            this.view.ClearListView();
+            this.AddRequestListToView();
+            this.requestViewController.ClearListView();
+            this.requestViewController.ClearRequestForm();
+        }
+
+        private AuditItem CreateAuditItem(string fieldName, string oldValue, string newValue)
+        {
+            AuditItem item = new AuditItem();
+            item.TableName = "ProtocolRequests";
+            item.Type = "U";
+            item.PK = "ID";
+            item.PKValue = this.selectedRequest.ID.ToString();
+            item.FieldName = fieldName;
+            item.OldValue = oldValue.Trim() == String.Empty ? "N/A" : oldValue;
+            item.NewValue = newValue;
+            item.UpdatedBy = loginInfo.UserName;
+            item.Reason = "Reset request in History page.";
+
+            return item;
         }
 
         private void Clear()
@@ -96,7 +159,7 @@ namespace Toxikon.ProtocolManager.Controllers
             if(selectedIndex > -1 && selectedIndex < this.requestList.Count)
             {
                 this.selectedRequest = (ProtocolRequest)this.requestList[selectedIndex];
-                this.requestViewController.LoadView(this.selectedRequest);
+                this.requestViewController.LoadView(this.selectedRequest, RequestFormTypes.ReadOnly);
             }
         }
     }

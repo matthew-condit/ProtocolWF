@@ -13,6 +13,7 @@ namespace Toxikon.ProtocolManager.Interfaces
     public interface IHistoryView
     {
         void SetController(HistoryController controller);
+        void SetResetRequestVisible(bool value);
         void AddItemToListView(ProtocolRequest request);
         void ClearListView();
 

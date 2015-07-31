@@ -28,6 +28,11 @@ namespace Toxikon.ProtocolManager.Views
             this.controller = controller;
         }
 
+        public void SetResetRequestVisible(bool value)
+        {
+            this.ResetButton.Visible = value;
+        }
+
         public Control ParentControl
         {
             get { return this.ParentForm; }
@@ -61,6 +66,11 @@ namespace Toxikon.ProtocolManager.Views
             {
                 this.controller.RequestListView_SelectedIndexChanged(this.RequestListView.SelectedIndices[0]);
             }
+        }
+
+        private void ResetButton_Click(object sender, EventArgs e)
+        {
+            this.controller.ResetButtonClicked();
         }
     }
 }

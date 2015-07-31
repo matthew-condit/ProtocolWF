@@ -28,7 +28,7 @@
     <PublisherName>Toxikon</PublisherName>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>index.html</WebPage>
-    <ApplicationRevision>24</ApplicationRevision>
+    <ApplicationRevision>25</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -127,6 +127,7 @@
     <Compile Include="Interfaces\Templates\ITwoTextBoxTrueFalseForm.cs" />
     <Compile Include="Models\Admin\AuditItemUtility.cs" />
     <Compile Include="Models\Admin\DepartmentDirector.cs" />
+    <Compile Include="Models\RequestFormTypes.cs" />
     <Compile Include="Models\Template.cs" />
     <Compile Include="Queries\QDepartmentDirectors.cs" />
     <Compile Include="Views\Admin\DepartmentDirectorsView.cs">

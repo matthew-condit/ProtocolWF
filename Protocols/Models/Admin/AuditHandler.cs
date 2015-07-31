@@ -18,7 +18,7 @@ namespace Toxikon.ProtocolManager.Models.Admin
             auditItems = new List<AuditItem>();
         }
 
-        private static void InsertAuditItem(AuditItem item)
+        public static void InsertAuditItem(AuditItem item)
         {
             try
             {

@@ -26,6 +26,7 @@ namespace Toxikon.ProtocolManager.Controllers
         private LoginInfo loginInfo;
         private RequestFormController requestFormController;
         private string SelectOneMessage = "Please select one title and try it again.";
+        private string requestFormType;
 
         public RequestDetailController(RequestDetailView view)
         {
@@ -34,10 +35,20 @@ namespace Toxikon.ProtocolManager.Controllers
             loginInfo = LoginInfo.GetInstance();
             this.templates = new ArrayList();
             this.requestFormController = new RequestFormController(this.view.RequestForm);
+            this.requestFormType = RequestFormTypes.Edit;
         }
 
         public void LoadView(ProtocolRequest protocolRequest)
         {
+            this.request = protocolRequest;
+            this.contact = protocolRequest.Contact;
+            this.requestFormController.LoadView(this.request);
+            this.RefreshTemplateListView();
+        }
+
+        public void LoadView(ProtocolRequest protocolRequest, string requestFormType)
+        {
+            this.requestFormType = requestFormType;
             this.request = protocolRequest;
             this.contact = protocolRequest.Contact;
             this.requestFormController.LoadView(this.request);
@@ -57,14 +68,21 @@ namespace Toxikon.ProtocolManager.Controllers
 
         private void LoadRequestTemplates()
         {
-            if(loginInfo.Role.RoleID != UserRoles.DepartmentDirector)
+            if(this.requestFormType == RequestFormTypes.ReadOnly)
             {
                 this.templates = QProtocolRequestTemplates.SelectItems(this.request.ID);
             }
             else
             {
-                this.templates = QProtocolRequestTemplates.SelectItemsByDirector(this.request.ID, 
-                                 this.loginInfo.UserName);
+                if (loginInfo.Role.RoleID != UserRoles.DepartmentDirector)
+                {
+                    this.templates = QProtocolRequestTemplates.SelectItems(this.request.ID);
+                }
+                else
+                {
+                    this.templates = QProtocolRequestTemplates.SelectItemsByDirector(this.request.ID,
+                                     this.loginInfo.UserName);
+                }
             }
         }
 
