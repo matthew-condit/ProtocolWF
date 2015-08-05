@@ -10,6 +10,7 @@ namespace Toxikon.ProtocolManager.Interfaces.Admin
     public interface IProtocolNumberUpdateView
     {
         void SetController(ProtocolNumberUpdateController controller);
+        void SetAdminView(bool value);
         void ClearView();
 
         string RequestID { get; set; }

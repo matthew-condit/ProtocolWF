@@ -26,6 +26,13 @@ namespace Toxikon.ProtocolManager.Views.Admin
             this.controller = controller;
         }
 
+        public void SetAdminView(bool value)
+        {
+            this.ProtocolNumberTextBox.Enabled = value;
+            this.YearNumberTextBox.Enabled = value;
+            this.TrueFalseRadioButtonGroup.Enabled = value;
+        }
+
         public void ClearView()
         {
             this.RequestID = "";

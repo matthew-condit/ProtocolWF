@@ -43,7 +43,7 @@ namespace Toxikon.ProtocolManager.Queries
                         command.Parameters.Add("@Cost", SqlDbType.NVarChar).Value = request.Cost;
                         command.Parameters.Add("@Comments", SqlDbType.NVarChar).Value = request.Comments;
                         command.Parameters.Add("@PO", SqlDbType.NVarChar).Value = request.PO;
-                        command.Parameters.Add("@AssignedTo", SqlDbType.NVarChar).Value = request.AssignedTo;
+                        command.Parameters.Add("@AssignedTo", SqlDbType.NVarChar).Value = request.AssignedTo.UserName;
 
                         result = Convert.ToInt32(command.ExecuteScalar());
                     }

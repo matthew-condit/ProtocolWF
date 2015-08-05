@@ -25,6 +25,7 @@ namespace Toxikon.ProtocolManager.Controllers.Admin
             this.protocolNumber = new ProtocolNumber();
             loginInfo = LoginInfo.GetInstance();
             auditItems = new List<AuditItem>();
+            LoadViewByUserRole();
         }
 
         public void SearchButtonClicked()
@@ -52,15 +53,21 @@ namespace Toxikon.ProtocolManager.Controllers.Admin
             this.view.IsActive = this.protocolNumber.IsActive;
         }
 
+        private void LoadViewByUserRole()
+        {
+            bool isIT = loginInfo.Role.RoleID == UserRoles.IT ? true : false;
+            this.view.SetAdminView(isIT);
+        }
+
         private void UpdateProtocolNumber_WithViewValues()
         {
             try
             {
-                this.protocolNumber.FullCode = this.view.ProtocolNumber;
                 this.protocolNumber.YearNumber = Convert.ToInt32(this.view.YearNumber);
                 this.protocolNumber.SequenceNumber = Convert.ToInt32(this.view.SequenceNumber);
                 this.protocolNumber.RevisedNumber = Convert.ToInt32(this.view.RevisedNumber);
                 this.protocolNumber.ProtocolType = this.view.ProtocolType;
+                this.protocolNumber.SetFullCode();
                 this.protocolNumber.IsActive = this.view.IsActive;
             }
             catch(FormatException ex)

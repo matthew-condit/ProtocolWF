@@ -12,7 +12,7 @@
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <IsWebBootstrapper>true</IsWebBootstrapper>
-    <PublishUrl>\\toxx\c%24\www\ToxikonProtocolManager\publish\</PublishUrl>
+    <PublishUrl>\\toxx\c%24\www\ToxikonProtocolManager\test\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Web</InstallFrom>
     <UpdateEnabled>true</UpdateEnabled>
@@ -22,13 +22,13 @@
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
-    <InstallUrl>http://toxx.toxikon.com/ToxikonProtocolManager/publish/</InstallUrl>
+    <InstallUrl>http://toxx.toxikon.com/ToxikonProtocolManager/test/</InstallUrl>
     <TargetCulture>en</TargetCulture>
     <ProductName>Toxikon Protocol Manager</ProductName>
     <PublisherName>Toxikon</PublisherName>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>index.html</WebPage>
-    <ApplicationRevision>25</ApplicationRevision>
+    <ApplicationRevision>2</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -127,6 +127,7 @@
     <Compile Include="Interfaces\Templates\ITwoTextBoxTrueFalseForm.cs" />
     <Compile Include="Models\Admin\AuditItemUtility.cs" />
     <Compile Include="Models\Admin\DepartmentDirector.cs" />
+    <Compile Include="Models\Admin\EmailHandler.cs" />
     <Compile Include="Models\RequestFormTypes.cs" />
     <Compile Include="Models\Template.cs" />
     <Compile Include="Queries\QDepartmentDirectors.cs" />

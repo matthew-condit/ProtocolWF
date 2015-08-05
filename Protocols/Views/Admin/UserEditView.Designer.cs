@@ -39,7 +39,6 @@
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.label1 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.UserNameLabel = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.EmailTextBox = new System.Windows.Forms.TextBox();
             this.FirstNameTextBox = new System.Windows.Forms.TextBox();
@@ -47,6 +46,7 @@
             this.label4 = new System.Windows.Forms.Label();
             this.LastNameTextBox = new System.Windows.Forms.TextBox();
             this.FullNameTextBox = new System.Windows.Forms.TextBox();
+            this.UserNameTextBox = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.IsActiveRadioButtonGroup = new System.Windows.Forms.FlowLayoutPanel();
             this.TrueRadioButton = new System.Windows.Forms.RadioButton();
@@ -84,14 +84,14 @@
             // toolStripLabel1
             // 
             this.toolStripLabel1.Name = "toolStripLabel1";
-            this.toolStripLabel1.Size = new System.Drawing.Size(100, 21);
+            this.toolStripLabel1.Size = new System.Drawing.Size(90, 20);
             this.toolStripLabel1.Text = "TMS Username:";
             // 
             // SearchTextBox
             // 
             this.SearchTextBox.BackColor = System.Drawing.SystemColors.Info;
             this.SearchTextBox.Name = "SearchTextBox";
-            this.SearchTextBox.Size = new System.Drawing.Size(200, 24);
+            this.SearchTextBox.Size = new System.Drawing.Size(200, 23);
             this.SearchTextBox.ToolTipText = "Enter TMS username";
             // 
             // SearchButton
@@ -121,7 +121,7 @@
             this.SubmitButton.Image = ((System.Drawing.Image)(resources.GetObject("SubmitButton.Image")));
             this.SubmitButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.SubmitButton.Name = "SubmitButton";
-            this.SubmitButton.Size = new System.Drawing.Size(68, 22);
+            this.SubmitButton.Size = new System.Drawing.Size(65, 22);
             this.SubmitButton.Text = "Submit";
             this.SubmitButton.Click += new System.EventHandler(this.SubmitButton_Click);
             // 
@@ -151,7 +151,6 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 74.69287F));
             this.tableLayoutPanel1.Controls.Add(this.label1, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.label5, 0, 4);
-            this.tableLayoutPanel1.Controls.Add(this.UserNameLabel, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.label2, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.EmailTextBox, 1, 4);
             this.tableLayoutPanel1.Controls.Add(this.FirstNameTextBox, 1, 1);
@@ -159,6 +158,7 @@
             this.tableLayoutPanel1.Controls.Add(this.label4, 0, 3);
             this.tableLayoutPanel1.Controls.Add(this.LastNameTextBox, 1, 2);
             this.tableLayoutPanel1.Controls.Add(this.FullNameTextBox, 1, 3);
+            this.tableLayoutPanel1.Controls.Add(this.UserNameTextBox, 1, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 3);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -189,15 +189,6 @@
             this.label5.TabIndex = 0;
             this.label5.Text = "Email Address: ";
             // 
-            // UserNameLabel
-            // 
-            this.UserNameLabel.AutoSize = true;
-            this.UserNameLabel.Location = new System.Drawing.Point(106, 0);
-            this.UserNameLabel.Name = "UserNameLabel";
-            this.UserNameLabel.Size = new System.Drawing.Size(62, 15);
-            this.UserNameLabel.TabIndex = 1;
-            this.UserNameLabel.Text = "UserName";
-            // 
             // label2
             // 
             this.label2.AutoSize = true;
@@ -214,7 +205,7 @@
             this.EmailTextBox.Location = new System.Drawing.Point(106, 135);
             this.EmailTextBox.Name = "EmailTextBox";
             this.EmailTextBox.Size = new System.Drawing.Size(299, 23);
-            this.EmailTextBox.TabIndex = 4;
+            this.EmailTextBox.TabIndex = 5;
             // 
             // FirstNameTextBox
             // 
@@ -223,7 +214,7 @@
             this.FirstNameTextBox.Location = new System.Drawing.Point(106, 36);
             this.FirstNameTextBox.Name = "FirstNameTextBox";
             this.FirstNameTextBox.Size = new System.Drawing.Size(299, 23);
-            this.FirstNameTextBox.TabIndex = 3;
+            this.FirstNameTextBox.TabIndex = 2;
             // 
             // label3
             // 
@@ -250,7 +241,7 @@
             this.LastNameTextBox.Location = new System.Drawing.Point(106, 69);
             this.LastNameTextBox.Name = "LastNameTextBox";
             this.LastNameTextBox.Size = new System.Drawing.Size(299, 23);
-            this.LastNameTextBox.TabIndex = 6;
+            this.LastNameTextBox.TabIndex = 3;
             // 
             // FullNameTextBox
             // 
@@ -259,7 +250,14 @@
             this.FullNameTextBox.Location = new System.Drawing.Point(106, 102);
             this.FullNameTextBox.Name = "FullNameTextBox";
             this.FullNameTextBox.Size = new System.Drawing.Size(299, 23);
-            this.FullNameTextBox.TabIndex = 7;
+            this.FullNameTextBox.TabIndex = 4;
+            // 
+            // UserNameTextBox
+            // 
+            this.UserNameTextBox.Location = new System.Drawing.Point(106, 3);
+            this.UserNameTextBox.Name = "UserNameTextBox";
+            this.UserNameTextBox.Size = new System.Drawing.Size(299, 23);
+            this.UserNameTextBox.TabIndex = 1;
             // 
             // tableLayoutPanel2
             // 
@@ -297,7 +295,7 @@
             this.TrueRadioButton.Location = new System.Drawing.Point(3, 3);
             this.TrueRadioButton.Name = "TrueRadioButton";
             this.TrueRadioButton.Size = new System.Drawing.Size(49, 19);
-            this.TrueRadioButton.TabIndex = 0;
+            this.TrueRadioButton.TabIndex = 8;
             this.TrueRadioButton.TabStop = true;
             this.TrueRadioButton.Text = "True";
             this.TrueRadioButton.UseVisualStyleBackColor = true;
@@ -308,7 +306,7 @@
             this.FalseRadioButton.Location = new System.Drawing.Point(58, 3);
             this.FalseRadioButton.Name = "FalseRadioButton";
             this.FalseRadioButton.Size = new System.Drawing.Size(51, 19);
-            this.FalseRadioButton.TabIndex = 1;
+            this.FalseRadioButton.TabIndex = 9;
             this.FalseRadioButton.TabStop = true;
             this.FalseRadioButton.Text = "False";
             this.FalseRadioButton.UseVisualStyleBackColor = true;
@@ -344,10 +342,11 @@
             // 
             this.DepartmentComboBox.DisplayMember = "DepartmentName";
             this.DepartmentComboBox.FormattingEnabled = true;
+            this.DepartmentComboBox.ItemHeight = 15;
             this.DepartmentComboBox.Location = new System.Drawing.Point(108, 6);
             this.DepartmentComboBox.Name = "DepartmentComboBox";
             this.DepartmentComboBox.Size = new System.Drawing.Size(167, 23);
-            this.DepartmentComboBox.TabIndex = 8;
+            this.DepartmentComboBox.TabIndex = 6;
             // 
             // RoleComboBox
             // 
@@ -356,7 +355,7 @@
             this.RoleComboBox.Location = new System.Drawing.Point(108, 37);
             this.RoleComboBox.Name = "RoleComboBox";
             this.RoleComboBox.Size = new System.Drawing.Size(167, 23);
-            this.RoleComboBox.TabIndex = 9;
+            this.RoleComboBox.TabIndex = 7;
             // 
             // UserEditView
             // 
@@ -402,7 +401,6 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label UserNameLabel;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox EmailTextBox;
         private System.Windows.Forms.TextBox FirstNameTextBox;
@@ -419,5 +417,6 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.ComboBox DepartmentComboBox;
         private System.Windows.Forms.ComboBox RoleComboBox;
+        private System.Windows.Forms.TextBox UserNameTextBox;
     }
 }

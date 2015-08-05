@@ -34,6 +34,7 @@
             this.HistoryMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.AdminMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.AdminDepartmentsMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.DepartmentDirectorsMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.AdminRolesMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.AdminUsersMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ListNamesMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -42,8 +43,11 @@
             this.TemplatesGroupsMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.TemplatesMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.UpdateProtocolNumberButton = new System.Windows.Forms.ToolStripMenuItem();
+            this.UpdateMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.UpdateTemplateGroups = new System.Windows.Forms.ToolStripMenuItem();
+            this.UpdateTemplates = new System.Windows.Forms.ToolStripMenuItem();
+            this.UpdateProtocolNumber = new System.Windows.Forms.ToolStripMenuItem();
             this.MainPanel = new System.Windows.Forms.Panel();
-            this.DepartmentDirectorsMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -55,7 +59,8 @@
             this.HomeMenuItem,
             this.ProtocolRequestMenuItem,
             this.HistoryMenuItem,
-            this.AdminMenuItem});
+            this.AdminMenuItem,
+            this.UpdateMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(6, 5, 0, 5);
@@ -111,6 +116,13 @@
             this.AdminDepartmentsMenuItem.Size = new System.Drawing.Size(207, 22);
             this.AdminDepartmentsMenuItem.Text = "Departments";
             this.AdminDepartmentsMenuItem.Click += new System.EventHandler(this.AdminDepartmentsMenuItem_Click);
+            // 
+            // DepartmentDirectorsMenuItem
+            // 
+            this.DepartmentDirectorsMenuItem.Name = "DepartmentDirectorsMenuItem";
+            this.DepartmentDirectorsMenuItem.Size = new System.Drawing.Size(207, 22);
+            this.DepartmentDirectorsMenuItem.Text = "Department Directors";
+            this.DepartmentDirectorsMenuItem.Click += new System.EventHandler(this.DepartmentDirectorsMenuItem_Click);
             // 
             // AdminRolesMenuItem
             // 
@@ -168,6 +180,38 @@
             this.UpdateProtocolNumberButton.Text = "Update Protocol Number";
             this.UpdateProtocolNumberButton.Click += new System.EventHandler(this.UpdateProtocolNumberButton_Click);
             // 
+            // UpdateMenuItem
+            // 
+            this.UpdateMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.UpdateTemplateGroups,
+            this.UpdateTemplates,
+            this.UpdateProtocolNumber});
+            this.UpdateMenuItem.ForeColor = System.Drawing.Color.White;
+            this.UpdateMenuItem.Name = "UpdateMenuItem";
+            this.UpdateMenuItem.Size = new System.Drawing.Size(63, 19);
+            this.UpdateMenuItem.Text = "UPDATE";
+            // 
+            // UpdateTemplateGroups
+            // 
+            this.UpdateTemplateGroups.Name = "UpdateTemplateGroups";
+            this.UpdateTemplateGroups.Size = new System.Drawing.Size(166, 22);
+            this.UpdateTemplateGroups.Text = "Template Groups";
+            this.UpdateTemplateGroups.Click += new System.EventHandler(this.TemplatesGroupsMenuItem_Click);
+            // 
+            // UpdateTemplates
+            // 
+            this.UpdateTemplates.Name = "UpdateTemplates";
+            this.UpdateTemplates.Size = new System.Drawing.Size(166, 22);
+            this.UpdateTemplates.Text = "Templates";
+            this.UpdateTemplates.Click += new System.EventHandler(this.TemplatesMenuItem_Click);
+            // 
+            // UpdateProtocolNumber
+            // 
+            this.UpdateProtocolNumber.Name = "UpdateProtocolNumber";
+            this.UpdateProtocolNumber.Size = new System.Drawing.Size(166, 22);
+            this.UpdateProtocolNumber.Text = "Protocol Number";
+            this.UpdateProtocolNumber.Click += new System.EventHandler(this.UpdateProtocolNumberButton_Click);
+            // 
             // MainPanel
             // 
             this.MainPanel.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -175,13 +219,6 @@
             this.MainPanel.Name = "MainPanel";
             this.MainPanel.Size = new System.Drawing.Size(1008, 603);
             this.MainPanel.TabIndex = 1;
-            // 
-            // DepartmentDirectorsMenuItem
-            // 
-            this.DepartmentDirectorsMenuItem.Name = "DepartmentDirectorsMenuItem";
-            this.DepartmentDirectorsMenuItem.Size = new System.Drawing.Size(207, 22);
-            this.DepartmentDirectorsMenuItem.Text = "Department Directors";
-            this.DepartmentDirectorsMenuItem.Click += new System.EventHandler(this.DepartmentDirectorsMenuItem_Click);
             // 
             // MainView
             // 
@@ -220,6 +257,10 @@
         private System.Windows.Forms.ToolStripMenuItem TemplatesMenuItem;
         private System.Windows.Forms.ToolStripMenuItem UpdateProtocolNumberButton;
         private System.Windows.Forms.ToolStripMenuItem DepartmentDirectorsMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem UpdateMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem UpdateTemplateGroups;
+        private System.Windows.Forms.ToolStripMenuItem UpdateTemplates;
+        private System.Windows.Forms.ToolStripMenuItem UpdateProtocolNumber;
     }
 }
 

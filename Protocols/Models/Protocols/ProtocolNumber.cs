@@ -32,7 +32,7 @@ namespace Toxikon.ProtocolManager.Models
             this.YearNumber = Convert.ToInt32(DateTime.Now.ToString("yy"));
         }
 
-        private void SetFullCode()
+        public void SetFullCode()
         {
             this.FullCode = "P" + this.YearNumber.ToString() + "-" + this.SequenceNumber.ToString("0000") + "-" +
                             this.RevisedNumber.ToString("00") + this.ProtocolType;

@@ -37,8 +37,8 @@ namespace Toxikon.ProtocolManager.Views.Admin
 
         public void SetNewMode()
         {
-            this.MainContainer.Panel1.Enabled = false;
-            this.SetIsActiveRadioButtonGroup_Enable(false);
+            this.MainContainer.Panel1.Enabled = true;
+            this.SetIsActiveRadioButtonGroup_Enable(true);
             this.SearchToolStrip.Enabled = true;
         }
 
@@ -64,8 +64,8 @@ namespace Toxikon.ProtocolManager.Views.Admin
 
         public string UserName
         {
-            get { return this.UserNameLabel.Text; }
-            set { this.UserNameLabel.Text = value; }
+            get { return this.UserNameTextBox.Text; }
+            set { this.UserNameTextBox.Text = value; }
         }
         public string FirstName
         {

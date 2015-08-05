@@ -75,18 +75,22 @@ namespace Toxikon.ProtocolManager.Views
                 case UserRoles.IT:
                     this.ProtocolRequestMenuItem.Visible = true;
                     this.AdminMenuItem.Visible = true;
+                    this.UpdateMenuItem.Visible = true;
                     break;
                 case UserRoles.CSR:
                     this.ProtocolRequestMenuItem.Visible = true;
                     this.AdminMenuItem.Visible = false;
+                    this.UpdateMenuItem.Visible = false;
                     break;
                 case UserRoles.DocControl:
                     this.ProtocolRequestMenuItem.Visible = false;
                     this.AdminMenuItem.Visible = false;
+                    this.UpdateMenuItem.Visible = true;
                     break;
                 default:
                     this.ProtocolRequestMenuItem.Visible = false;
                     this.AdminMenuItem.Visible = false;
+                    this.UpdateMenuItem.Visible = false;
                     break;
             }
         }

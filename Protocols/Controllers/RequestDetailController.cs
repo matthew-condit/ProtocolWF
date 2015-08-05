@@ -292,6 +292,7 @@ namespace Toxikon.ProtocolManager.Controllers
             if (this.view.ListViewSelectedIndexes.Count == 1)
             {
                 AssignProtocolNumberToSelectedTitle();
+                InsertProtocolActivity(28);
                 this.RefreshTemplateListView();
             }
             else
@@ -305,6 +306,13 @@ namespace Toxikon.ProtocolManager.Controllers
             ProtocolTemplate title = GetSelectedTemplateFromView();
             title.AddProtocolNumber(this.request.ProtocolType, this.contact.SponsorCode);
             AuditHandler.Insert_ProtocolNumber_AuditItem(title.ProtocolNumber, loginInfo.UserName);
+        }
+
+        private void InsertProtocolActivity(int eventID)
+        {
+            ProtocolTemplate title = GetSelectedTemplateFromView();
+            ProtocolActivity protocolActivity = new ProtocolActivity(title, eventID, loginInfo.UserName);
+            QProtocolActivities.InsertItem(protocolActivity);
         }
 
         public void ReviseProtocolButtonClicked()
