@@ -19,6 +19,8 @@ namespace Toxikon.ProtocolManager
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+            Application.ThreadException += new System.Threading.ThreadExceptionEventHandler(Application_ThreadException);
+            AppDomain.CurrentDomain.UnhandledException += new UnhandledExceptionEventHandler(AppDomain_UnhandledException);
 
             LoginInfo loginInfo = LoginInfo.GetInstance();
             if (loginInfo.UserName == "")
@@ -33,6 +35,18 @@ namespace Toxikon.ProtocolManager
 
                 Application.Run(mainView);
             }
+        }
+
+        static void Application_ThreadException(object sender, System.Threading.ThreadExceptionEventArgs args)
+        {
+            MessageBox.Show("Application_ThreadException:" + args.Exception.ToString());
+            //ErrorHandler.CreateLogFile("Program.cs", "Application_ThreadException", args.Exception);
+        }
+
+        static void AppDomain_UnhandledException(object sender, UnhandledExceptionEventArgs args)
+        {
+            MessageBox.Show("AppDomain_UnhandledException:" + ((Exception)args.ExceptionObject).ToString());
+            //ErrorHandler.CreateLogFile("Program.cs", "AppDomain_UnhandledException", (Exception)args.ExceptionObject);
         }
     }
 }

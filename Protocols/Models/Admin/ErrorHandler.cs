@@ -14,9 +14,9 @@ namespace Toxikon.ProtocolManager.Models
 {
     public class ErrorHandler
     {
-        private static string logFolder = @"\\toxx\toxxShared\TPMErrorLogs\";
-        /*Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) +
-                                          "\\TPMErrorLogFiles\\";*/
+        private static string logFolder = //@"\\toxx\toxxShared\TPMErrorLogs\";
+        Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) +
+                                          "\\TPMErrorLogFiles\\";
 
         public static void SendEmailToSupport(Exception catchedException)
         {

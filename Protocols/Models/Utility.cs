@@ -13,7 +13,7 @@ namespace Toxikon.ProtocolManager.Models
         {
             string result = "";
             ConnectionStringSettings settings =
-                ConfigurationManager.ConnectionStrings["Protocols.Properties.Settings.LIMSConnectionString"];
+                ConfigurationManager.ConnectionStrings["Toxikon.ProtocolManager.Properties.Settings.LIMSConnectionString"];
             if (settings != null)
             {
                 result = settings.ConnectionString;
@@ -25,7 +25,7 @@ namespace Toxikon.ProtocolManager.Models
         {
             string result = "";
             ConnectionStringSettings settings =
-                ConfigurationManager.ConnectionStrings["Protocols.Properties.Settings.TMSConnectionString"];
+                ConfigurationManager.ConnectionStrings["Toxikon.ProtocolManager.Properties.Settings.TMSConnectionString"];
             if (settings != null)
             {
                 result = settings.ConnectionString;
@@ -39,7 +39,7 @@ namespace Toxikon.ProtocolManager.Models
             string TPMTest = @"Toxikon.ProtocolManager.Properties.Settings.TPMTestConnectionString";
             string result = "";
             ConnectionStringSettings settings =
-                ConfigurationManager.ConnectionStrings[TPMTest];
+                ConfigurationManager.ConnectionStrings[TPM];
             if (settings != null)
             {
                 result = settings.ConnectionString;

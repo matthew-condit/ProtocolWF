@@ -26,8 +26,8 @@ namespace Toxikon.ProtocolManager.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=TOXDB;Initial Catalog=MATTOXIKONPLUS;Persist Security Info=True;User " +
-            "ID=cdma;Password=CDMAadmin")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=204.14.66.110;Initial Catalog=MATTOXIKONPLUS;Persist Security Info=Tr" +
+            "ue;User ID=sa;Password=T0xSuperUser")]
         public string LIMSConnectionString {
             get {
                 return ((string)(this["LIMSConnectionString"]));
@@ -37,8 +37,8 @@ namespace Toxikon.ProtocolManager.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=TOXBI\\BOE140;Initial Catalog=TMS;Persist Security Info=True;User ID=t" +
-            "msdbreader;Password=T0xSuperUser")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=204.14.66.106\\BOE140;Initial Catalog=TMS;Persist Security Info=True;U" +
+            "ser ID=tmsdbreader;Password=T0xSuperUser")]
         public string TMSConnectionString {
             get {
                 return ((string)(this["TMSConnectionString"]));
@@ -48,8 +48,8 @@ namespace Toxikon.ProtocolManager.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=TOXX\\DB1TOXX;Initial Catalog=TPMTest;Persist Security Info=True;User " +
-            "ID=TPMUser;Password=Misto0615")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=204.14.66.109\\DB1TOXX;Initial Catalog=TPMTest;Persist Security Info=T" +
+            "rue;User ID=TPMUser;Password=Misto0615")]
         public string TPMTestConnectionString {
             get {
                 return ((string)(this["TPMTestConnectionString"]));

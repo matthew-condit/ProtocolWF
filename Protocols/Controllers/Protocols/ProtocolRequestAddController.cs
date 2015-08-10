@@ -169,7 +169,7 @@ namespace Toxikon.ProtocolManager.Controllers.Protocols
                 this.requestFormController.SubmitRequest();
                 QProtocolActivities.InsertItem(this.request, this.selectedTemplates, loginInfo.UserName);
                 QProtocolRequestTemplates.InsertItems(this.request.ID, this.selectedTemplates, loginInfo.UserName);
-                EmailHandler.SendEmailTo_AssignedToUser(this.request, this.selectedTemplates);
+                //EmailHandler.SendEmailTo_AssignedToUser(this.request, this.selectedTemplates);
                 this.requestFormController.ClearForm();
                 this.Clear();
                 MessageBox.Show("Submitted!");

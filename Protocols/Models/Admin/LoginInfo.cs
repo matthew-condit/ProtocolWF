@@ -18,7 +18,7 @@ namespace Toxikon.ProtocolManager.Models
         {
             user = new User();
             user = QUsers.SelectUser(Environment.UserName);
-            //user.Role.RoleID = 2;
+            //user.Role.RoleID = 3;
             //user.UserName = "ctouch";//Environment.UserName;
             //user.FullName = "Bichngoc McCulley";// UserPrincipal.Current.DisplayName;*/
         }
