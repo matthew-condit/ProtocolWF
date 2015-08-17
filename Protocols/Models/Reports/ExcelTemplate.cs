@@ -103,8 +103,14 @@ namespace Toxikon.ProtocolManager.Models.Reports
             Range dataTableRange = worksheet.get_Range(excelDataTable.TopLeft + ":" + excelDataTable.BottomRight);
             worksheet.ListObjects.AddEx(XlListObjectSourceType.xlSrcRange, dataTableRange, Type.Missing,
                                         XlYesNoGuess.xlNo, Type.Missing).Name = excelDataTable.TableName;
+            ListObject listObj = worksheet.ListObjects.get_Item(excelDataTable.TableName);
             worksheet.ListObjects.get_Item(excelDataTable.TableName).TableStyle = excelDataTable.TableStyleName;
-            worksheet.ListObjects.get_Item(excelDataTable.TableName).ShowAutoFilterDropDown = false;
+            var type = listObj.GetType();
+            if(type.GetMethod("ShowAutoFilterDropDown") != null)
+            {
+                worksheet.ListObjects.get_Item(excelDataTable.TableName).ShowAutoFilterDropDown = false;
+            }
+            
         }
 
         private void InsertDataTableColumns(Worksheet worksheet, ExcelDataTable excelDataTable)

@@ -72,7 +72,7 @@
             this.RequestDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.RequestDataGridView.Size = new System.Drawing.Size(654, 414);
             this.RequestDataGridView.TabIndex = 6;
-            this.RequestDataGridView.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.RequestDataGridView_CellContentDoubleClick);
+            this.RequestDataGridView.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.RequestDataGridView_CellContentDoubleClick);
             // 
             // IDCol
             // 

@@ -38,7 +38,7 @@ namespace Toxikon.ProtocolManager.Controllers
                     this.protocolRequests = QProtocolRequests.SelectAllNewRequests();
                     break;
                 case UserRoles.CSR:
-                    this.protocolRequests = QProtocolRequests.SelectItemsByRequestedBy(loginInfo.UserName);
+                    this.protocolRequests = QProtocolRequests.SelectAllNewRequests();
                     break;
                 case UserRoles.DocControl:
                     this.protocolRequests = QProtocolRequests.SelectAllNewRequests();
@@ -64,10 +64,13 @@ namespace Toxikon.ProtocolManager.Controllers
 
         public void RequestDataGridViewCellDoubleClicked(int selectedIndex)
         {
-            ProtocolRequest request = (ProtocolRequest)this.protocolRequests[selectedIndex];
+            if(selectedIndex > - 1 && selectedIndex < this.protocolRequests.Count)
+            {
+                ProtocolRequest request = (ProtocolRequest)this.protocolRequests[selectedIndex];
 
-            MainView mainView = (MainView)this.view.ParentControl;
-            mainView.Invoke(mainView.LoadProtocolRequestViewDelegate, new object[] { request });
+                MainView mainView = (MainView)this.view.ParentControl;
+                mainView.Invoke(mainView.LoadProtocolRequestViewDelegate, new object[] { request });
+            }
         }
     }
 }

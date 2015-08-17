@@ -5,10 +5,10 @@
     <Setting Name="LIMSConnectionString" Type="(Connection string)" Scope="Application">
       <DesignTimeValue Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
 &lt;SerializableConnectionString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
-  &lt;ConnectionString&gt;Data Source=204.14.66.110;Initial Catalog=MATTOXIKONPLUS;Persist Security Info=True;User ID=sa;Password=T0xSuperUser&lt;/ConnectionString&gt;
+  &lt;ConnectionString&gt;Data Source=204.14.66.110;Initial Catalog=MATTOXIKONPLUS;Persist Security Info=True;User ID=cdma;Password=CDMAadmin&lt;/ConnectionString&gt;
   &lt;ProviderName&gt;System.Data.SqlClient&lt;/ProviderName&gt;
 &lt;/SerializableConnectionString&gt;</DesignTimeValue>
-      <Value Profile="(Default)">Data Source=204.14.66.110;Initial Catalog=MATTOXIKONPLUS;Persist Security Info=True;User ID=sa;Password=T0xSuperUser</Value>
+      <Value Profile="(Default)">Data Source=204.14.66.110;Initial Catalog=MATTOXIKONPLUS;Persist Security Info=True;User ID=cdma;Password=CDMAadmin</Value>
     </Setting>
     <Setting Name="TMSConnectionString" Type="(Connection string)" Scope="Application">
       <DesignTimeValue Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
@@ -29,10 +29,10 @@
     <Setting Name="TPMConnectionString" Type="(Connection string)" Scope="Application">
       <DesignTimeValue Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
 &lt;SerializableConnectionString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
-  &lt;ConnectionString&gt;Data Source=TOXX\DB1TOXX;Initial Catalog=TPM;Persist Security Info=True;User ID=TPMUser;Password=Misto0615&lt;/ConnectionString&gt;
+  &lt;ConnectionString&gt;Data Source=204.14.66.109\DB1TOXX;Initial Catalog=TPM;Persist Security Info=True;User ID=TPMUser;Password=Misto0615&lt;/ConnectionString&gt;
   &lt;ProviderName&gt;System.Data.SqlClient&lt;/ProviderName&gt;
 &lt;/SerializableConnectionString&gt;</DesignTimeValue>
-      <Value Profile="(Default)">Data Source=TOXX\DB1TOXX;Initial Catalog=TPM;Persist Security Info=True;User ID=TPMUser;Password=Misto0615</Value>
+      <Value Profile="(Default)">Data Source=204.14.66.109\DB1TOXX;Initial Catalog=TPM;Persist Security Info=True;User ID=TPMUser;Password=Misto0615</Value>
     </Setting>
   </Settings>
 </SettingsFile>

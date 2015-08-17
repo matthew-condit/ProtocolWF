@@ -8,6 +8,7 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Toxikon.ProtocolManager.Queries;
 using Outlook = Microsoft.Office.Interop.Outlook;
 
 
@@ -19,7 +20,8 @@ namespace Toxikon.ProtocolManager.Models.Admin
         {
             try
             {
-                string mailTo = "Bichngoc.McCulley@toxikon.com";
+                User assignedToUser = QUsers.SelectUser(request.AssignedTo.UserName);
+                string mailTo = assignedToUser.EmailAddress;
                 string subject = "Protocol Request #" + request.ID.ToString() + ": " + request.Contact.SponsorName;
                 string body = @"A new protocol request has been submitted." + "%0d%0A%0d%0A" +
                                     "Request Details:" + "%0d%0A" +

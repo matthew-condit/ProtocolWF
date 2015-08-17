@@ -85,6 +85,8 @@ namespace Toxikon.ProtocolManager.Models
 
         public void OpenFile()
         {
+            this.FilePath = this.FilePath.Replace(@"N:\SPONSORS\", @"\\toxfs\Protocol\SPONSORS\");
+            this.FilePath = this.FilePath.Replace(@"Z:\", @"\\toxfs\Pharma File\");
             if (this.FilePath != String.Empty && File.Exists(this.FilePath))
             {
                 System.Diagnostics.Process.Start(this.FilePath);

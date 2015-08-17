@@ -9,6 +9,7 @@ using ExcelRange = Microsoft.Office.Interop.Excel.Range;
 using Toxikon.ProtocolManager.Queries;
 using System.Data;
 using System.Collections;
+using System.Windows.Forms;
 
 namespace Toxikon.ProtocolManager.Models.Reports
 {
@@ -32,16 +33,24 @@ namespace Toxikon.ProtocolManager.Models.Reports
 
         public void Create()
         {
-            CreateReportDirectory();
-            ExcelTemplate excelTemplate = new ExcelTemplate(filePath, fileName);
-            excelTemplate.Open();
-            excelTemplate.AddNewWorkbook();
-            CreateProtocolRequestInfoSheet(excelTemplate);
-            CreateProtocolTitleSheets(excelTemplate);
+            System.Type officeType = System.Type.GetTypeFromProgID("Excel.Application");
+            if(officeType == null)
+            {
+                MessageBox.Show("Excel is not installed.");
+            }
+            else
+            {
+                CreateReportDirectory();
+                ExcelTemplate excelTemplate = new ExcelTemplate(filePath, fileName);
+                excelTemplate.Open();
+                excelTemplate.AddNewWorkbook();
+                CreateProtocolRequestInfoSheet(excelTemplate);
+                CreateProtocolTitleSheets(excelTemplate);
 
-            excelTemplate.Save();
-            excelTemplate.ShowExcelApp(true);
-            excelTemplate.Close();
+                excelTemplate.Save();
+                excelTemplate.ShowExcelApp(true);
+                excelTemplate.Close();
+            }
         }
 
         private void CreateReportDirectory()
