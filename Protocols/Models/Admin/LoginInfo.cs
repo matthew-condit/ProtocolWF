@@ -20,8 +20,8 @@ namespace Toxikon.ProtocolManager.Models
             //System.Windows.Forms.MessageBox.Show(UserPrincipal.Current.EmailAddress);
             user = QUsers.SelectUser(Environment.UserName);
             //user.Role.RoleID = 2;
-            //user.UserName = "kkennedy";//Environment.UserName;
-            //user.FullName = "Bichngoc McCulley";// UserPrincipal.Current.DisplayName;*/
+            //user.UserName = "jay";//Environment.UserName;
+            //user.FullName = "Jay McTaggart";// UserPrincipal.Current.DisplayName;*/
         }
 
         public static LoginInfo GetInstance()

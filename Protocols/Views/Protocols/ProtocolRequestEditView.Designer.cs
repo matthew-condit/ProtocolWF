@@ -61,10 +61,31 @@
             this.SaveChangesButton = new System.Windows.Forms.ToolStripButton();
             this.CloseRequestButton = new System.Windows.Forms.ToolStripButton();
             this.DownloadReportButton = new System.Windows.Forms.ToolStripButton();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.titleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.addTitleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.removeTitleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.protocolEventToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.addNewEventToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.viewAllEventsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.commentsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.addNewCommentsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.viewAllCommentsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.protocolsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.CreateProtocolButton = new System.Windows.Forms.ToolStripMenuItem();
+            this.updateFilePathToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.openFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.protocolNumberToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.assignProtocolNumberToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.reviseProtocolNumberToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.othersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.assignDepartmentToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.assignProjectNumberToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStrip1.SuspendLayout();
             this.MainTableLayoutPanel.SuspendLayout();
             this.panel2.SuspendLayout();
             this.toolStrip2.SuspendLayout();
+            this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // toolStrip1
@@ -242,7 +263,7 @@
             this.TitlesListView.GridLines = true;
             this.TitlesListView.Location = new System.Drawing.Point(3, 3);
             this.TitlesListView.Name = "TitlesListView";
-            this.TitlesListView.Size = new System.Drawing.Size(1018, 162);
+            this.TitlesListView.Size = new System.Drawing.Size(1018, 123);
             this.TitlesListView.TabIndex = 45;
             this.TitlesListView.UseCompatibleStateImageBehavior = false;
             this.TitlesListView.View = System.Windows.Forms.View.Details;
@@ -302,12 +323,14 @@
             this.MainTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.MainTableLayoutPanel.Controls.Add(this.TitlesListView, 0, 0);
             this.MainTableLayoutPanel.Controls.Add(this.panel2, 0, 1);
+            this.MainTableLayoutPanel.Controls.Add(this.menuStrip1, 0, 2);
             this.MainTableLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.MainTableLayoutPanel.Location = new System.Drawing.Point(0, 38);
             this.MainTableLayoutPanel.Name = "MainTableLayoutPanel";
-            this.MainTableLayoutPanel.RowCount = 2;
-            this.MainTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 30F));
-            this.MainTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 70F));
+            this.MainTableLayoutPanel.RowCount = 3;
+            this.MainTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 27.54159F));
+            this.MainTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 72.45841F));
+            this.MainTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 91F));
             this.MainTableLayoutPanel.Size = new System.Drawing.Size(1024, 562);
             this.MainTableLayoutPanel.TabIndex = 46;
             // 
@@ -316,9 +339,9 @@
             this.panel2.Controls.Add(this.RequestFormEditView);
             this.panel2.Controls.Add(this.toolStrip2);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(3, 171);
+            this.panel2.Location = new System.Drawing.Point(3, 132);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1018, 388);
+            this.panel2.Size = new System.Drawing.Size(1018, 335);
             this.panel2.TabIndex = 46;
             // 
             // RequestFormEditView
@@ -349,7 +372,7 @@
             this.RequestFormEditView.RequestedBy = "Requested By";
             this.RequestFormEditView.RequestedDate = "Requested Date";
             this.RequestFormEditView.SendVia = "";
-            this.RequestFormEditView.Size = new System.Drawing.Size(1018, 346);
+            this.RequestFormEditView.Size = new System.Drawing.Size(1018, 268);
             this.RequestFormEditView.SponsorName = "Sponsor";
             this.RequestFormEditView.State = "State";
             this.RequestFormEditView.TabIndex = 2;
@@ -399,6 +422,177 @@
             this.DownloadReportButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.DownloadReportButton.Click += new System.EventHandler(this.DownloadReportButton_Click);
             // 
+            // menuStrip1
+            // 
+            this.menuStrip1.BackColor = System.Drawing.SystemColors.Window;
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.titleToolStripMenuItem,
+            this.protocolEventToolStripMenuItem,
+            this.commentsToolStripMenuItem,
+            this.protocolNumberToolStripMenuItem,
+            this.protocolsToolStripMenuItem,
+            this.othersToolStripMenuItem});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 470);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(1024, 24);
+            this.menuStrip1.TabIndex = 47;
+            this.menuStrip1.Text = "menuStrip1";
+            // 
+            // titleToolStripMenuItem
+            // 
+            this.titleToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.addTitleToolStripMenuItem,
+            this.removeTitleToolStripMenuItem});
+            this.titleToolStripMenuItem.Name = "titleToolStripMenuItem";
+            this.titleToolStripMenuItem.Size = new System.Drawing.Size(42, 20);
+            this.titleToolStripMenuItem.Text = "Title";
+            // 
+            // addTitleToolStripMenuItem
+            // 
+            this.addTitleToolStripMenuItem.Image = global::Toxikon.ProtocolManager.Properties.Resources.action_add_16xLG;
+            this.addTitleToolStripMenuItem.Name = "addTitleToolStripMenuItem";
+            this.addTitleToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.addTitleToolStripMenuItem.Text = "Add Title";
+            this.addTitleToolStripMenuItem.Click += new System.EventHandler(this.AddTitleButton_Click);
+            // 
+            // removeTitleToolStripMenuItem
+            // 
+            this.removeTitleToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("removeTitleToolStripMenuItem.Image")));
+            this.removeTitleToolStripMenuItem.Name = "removeTitleToolStripMenuItem";
+            this.removeTitleToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.removeTitleToolStripMenuItem.Text = "Remove Title";
+            this.removeTitleToolStripMenuItem.Click += new System.EventHandler(this.RemoveTitleButton_Click);
+            // 
+            // protocolEventToolStripMenuItem
+            // 
+            this.protocolEventToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.addNewEventToolStripMenuItem,
+            this.viewAllEventsToolStripMenuItem});
+            this.protocolEventToolStripMenuItem.Name = "protocolEventToolStripMenuItem";
+            this.protocolEventToolStripMenuItem.Size = new System.Drawing.Size(96, 20);
+            this.protocolEventToolStripMenuItem.Text = "Protocol Event";
+            // 
+            // addNewEventToolStripMenuItem
+            // 
+            this.addNewEventToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("addNewEventToolStripMenuItem.Image")));
+            this.addNewEventToolStripMenuItem.Name = "addNewEventToolStripMenuItem";
+            this.addNewEventToolStripMenuItem.Size = new System.Drawing.Size(155, 22);
+            this.addNewEventToolStripMenuItem.Text = "Add New Event";
+            this.addNewEventToolStripMenuItem.Click += new System.EventHandler(this.AddEventButton_Click);
+            // 
+            // viewAllEventsToolStripMenuItem
+            // 
+            this.viewAllEventsToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("viewAllEventsToolStripMenuItem.Image")));
+            this.viewAllEventsToolStripMenuItem.Name = "viewAllEventsToolStripMenuItem";
+            this.viewAllEventsToolStripMenuItem.Size = new System.Drawing.Size(155, 22);
+            this.viewAllEventsToolStripMenuItem.Text = "View All Events";
+            this.viewAllEventsToolStripMenuItem.Click += new System.EventHandler(this.ViewEventsButton_Click);
+            // 
+            // commentsToolStripMenuItem
+            // 
+            this.commentsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.addNewCommentsToolStripMenuItem,
+            this.viewAllCommentsToolStripMenuItem});
+            this.commentsToolStripMenuItem.Name = "commentsToolStripMenuItem";
+            this.commentsToolStripMenuItem.Size = new System.Drawing.Size(78, 20);
+            this.commentsToolStripMenuItem.Text = "Comments";
+            // 
+            // addNewCommentsToolStripMenuItem
+            // 
+            this.addNewCommentsToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("addNewCommentsToolStripMenuItem.Image")));
+            this.addNewCommentsToolStripMenuItem.Name = "addNewCommentsToolStripMenuItem";
+            this.addNewCommentsToolStripMenuItem.Size = new System.Drawing.Size(185, 22);
+            this.addNewCommentsToolStripMenuItem.Text = "Add New Comments";
+            this.addNewCommentsToolStripMenuItem.Click += new System.EventHandler(this.AddCommentButton_Click);
+            // 
+            // viewAllCommentsToolStripMenuItem
+            // 
+            this.viewAllCommentsToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("viewAllCommentsToolStripMenuItem.Image")));
+            this.viewAllCommentsToolStripMenuItem.Name = "viewAllCommentsToolStripMenuItem";
+            this.viewAllCommentsToolStripMenuItem.Size = new System.Drawing.Size(185, 22);
+            this.viewAllCommentsToolStripMenuItem.Text = "View All Comments";
+            this.viewAllCommentsToolStripMenuItem.Click += new System.EventHandler(this.ViewCommentsButton_Click);
+            // 
+            // protocolsToolStripMenuItem
+            // 
+            this.protocolsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.CreateProtocolButton,
+            this.updateFilePathToolStripMenuItem,
+            this.openFileToolStripMenuItem});
+            this.protocolsToolStripMenuItem.Name = "protocolsToolStripMenuItem";
+            this.protocolsToolStripMenuItem.Size = new System.Drawing.Size(64, 20);
+            this.protocolsToolStripMenuItem.Text = "Protocol";
+            // 
+            // CreateProtocolButton
+            // 
+            this.CreateProtocolButton.Image = global::Toxikon.ProtocolManager.Properties.Resources.RSReport_16xLG;
+            this.CreateProtocolButton.Name = "CreateProtocolButton";
+            this.CreateProtocolButton.Size = new System.Drawing.Size(160, 22);
+            this.CreateProtocolButton.Text = "Create Protocol";
+            this.CreateProtocolButton.Click += new System.EventHandler(this.CreateProtocolButton_Click);
+            // 
+            // updateFilePathToolStripMenuItem
+            // 
+            this.updateFilePathToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("updateFilePathToolStripMenuItem.Image")));
+            this.updateFilePathToolStripMenuItem.Name = "updateFilePathToolStripMenuItem";
+            this.updateFilePathToolStripMenuItem.Size = new System.Drawing.Size(160, 22);
+            this.updateFilePathToolStripMenuItem.Text = "Update File Path";
+            this.updateFilePathToolStripMenuItem.Click += new System.EventHandler(this.UpdateFilePathButton_Click);
+            // 
+            // openFileToolStripMenuItem
+            // 
+            this.openFileToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("openFileToolStripMenuItem.Image")));
+            this.openFileToolStripMenuItem.Name = "openFileToolStripMenuItem";
+            this.openFileToolStripMenuItem.Size = new System.Drawing.Size(160, 22);
+            this.openFileToolStripMenuItem.Text = "Open File";
+            this.openFileToolStripMenuItem.Click += new System.EventHandler(this.OpenFileButton_Click);
+            // 
+            // protocolNumberToolStripMenuItem
+            // 
+            this.protocolNumberToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.assignProtocolNumberToolStripMenuItem,
+            this.reviseProtocolNumberToolStripMenuItem});
+            this.protocolNumberToolStripMenuItem.Name = "protocolNumberToolStripMenuItem";
+            this.protocolNumberToolStripMenuItem.Size = new System.Drawing.Size(111, 20);
+            this.protocolNumberToolStripMenuItem.Text = "Protocol Number";
+            // 
+            // assignProtocolNumberToolStripMenuItem
+            // 
+            this.assignProtocolNumberToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("assignProtocolNumberToolStripMenuItem.Image")));
+            this.assignProtocolNumberToolStripMenuItem.Name = "assignProtocolNumberToolStripMenuItem";
+            this.assignProtocolNumberToolStripMenuItem.Size = new System.Drawing.Size(204, 22);
+            this.assignProtocolNumberToolStripMenuItem.Text = "Assign Protocol Number";
+            // 
+            // reviseProtocolNumberToolStripMenuItem
+            // 
+            this.reviseProtocolNumberToolStripMenuItem.Image = global::Toxikon.ProtocolManager.Properties.Resources.PencilAngled_16xLG_color;
+            this.reviseProtocolNumberToolStripMenuItem.Name = "reviseProtocolNumberToolStripMenuItem";
+            this.reviseProtocolNumberToolStripMenuItem.Size = new System.Drawing.Size(204, 22);
+            this.reviseProtocolNumberToolStripMenuItem.Text = "Revise Protocol Number";
+            // 
+            // othersToolStripMenuItem
+            // 
+            this.othersToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.assignDepartmentToolStripMenuItem,
+            this.assignProjectNumberToolStripMenuItem});
+            this.othersToolStripMenuItem.Name = "othersToolStripMenuItem";
+            this.othersToolStripMenuItem.Size = new System.Drawing.Size(54, 20);
+            this.othersToolStripMenuItem.Text = "Others";
+            // 
+            // assignDepartmentToolStripMenuItem
+            // 
+            this.assignDepartmentToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("assignDepartmentToolStripMenuItem.Image")));
+            this.assignDepartmentToolStripMenuItem.Name = "assignDepartmentToolStripMenuItem";
+            this.assignDepartmentToolStripMenuItem.Size = new System.Drawing.Size(199, 22);
+            this.assignDepartmentToolStripMenuItem.Text = "Assign Department";
+            // 
+            // assignProjectNumberToolStripMenuItem
+            // 
+            this.assignProjectNumberToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("assignProjectNumberToolStripMenuItem.Image")));
+            this.assignProjectNumberToolStripMenuItem.Name = "assignProjectNumberToolStripMenuItem";
+            this.assignProjectNumberToolStripMenuItem.Size = new System.Drawing.Size(199, 22);
+            this.assignProjectNumberToolStripMenuItem.Text = "Update Project Number";
+            // 
             // ProtocolRequestEditView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
@@ -412,10 +606,13 @@
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
             this.MainTableLayoutPanel.ResumeLayout(false);
+            this.MainTableLayoutPanel.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.toolStrip2.ResumeLayout(false);
             this.toolStrip2.PerformLayout();
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -455,5 +652,25 @@
         private System.Windows.Forms.ToolStripButton DownloadReportButton;
         private RequestForms.RequestFormEdit RequestFormEditView;
         private System.Windows.Forms.ColumnHeader IDCol;
+        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem titleToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem addTitleToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem removeTitleToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem protocolEventToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem addNewEventToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem viewAllEventsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem commentsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem addNewCommentsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem viewAllCommentsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem protocolsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem CreateProtocolButton;
+        private System.Windows.Forms.ToolStripMenuItem updateFilePathToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem openFileToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem protocolNumberToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem assignProtocolNumberToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem reviseProtocolNumberToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem othersToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem assignDepartmentToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem assignProjectNumberToolStripMenuItem;
     }
 }

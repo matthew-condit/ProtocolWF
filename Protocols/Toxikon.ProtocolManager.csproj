@@ -28,7 +28,7 @@
     <PublisherName>Toxikon</PublisherName>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>index.html</WebPage>
-    <ApplicationRevision>32</ApplicationRevision>
+    <ApplicationRevision>34</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -69,6 +69,10 @@
     <ApplicationIcon>TPMLogo4.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="DocumentFormat.OpenXml, Version=2.5.5631.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\DocumentFormat.OpenXml.2.5\lib\DocumentFormat.OpenXml.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Office.Interop.Excel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </Reference>
@@ -91,6 +95,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controllers\Admin\DepartmentDirectorsController.cs" />
+    <Compile Include="Controllers\CreateProtocolController.cs" />
     <Compile Include="Controllers\RequestDetailController.cs" />
     <Compile Include="Controllers\Admin\ListNameController.cs" />
     <Compile Include="Controllers\Admin\ProtocolNumberUpdateController.cs" />
@@ -123,6 +128,7 @@
     <Compile Include="Interfaces\Admin\IDepartmentDirectorsView.cs" />
     <Compile Include="Interfaces\Admin\IListNameView.cs" />
     <Compile Include="Interfaces\Admin\IProtocolNumberUpdateView.cs" />
+    <Compile Include="Interfaces\ICreateProtocol.cs" />
     <Compile Include="Interfaces\IHistoryView.cs" />
     <Compile Include="Interfaces\Templates\ITwoTextBoxTrueFalseForm.cs" />
     <Compile Include="Models\Admin\AuditItemUtility.cs" />
@@ -130,6 +136,7 @@
     <Compile Include="Models\Admin\EmailHandler.cs" />
     <Compile Include="Models\RequestFormTypes.cs" />
     <Compile Include="Models\Template.cs" />
+    <Compile Include="Models\Templates\WordProtocol.cs" />
     <Compile Include="Queries\QDepartmentDirectors.cs" />
     <Compile Include="Views\Admin\DepartmentDirectorsView.cs">
       <SubType>UserControl</SubType>
@@ -137,11 +144,29 @@
     <Compile Include="Views\Admin\DepartmentDirectorsView.Designer.cs">
       <DependentUpon>DepartmentDirectorsView.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\CreateProtocolView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\CreateProtocolView.Designer.cs">
+      <DependentUpon>CreateProtocolView.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\Protocols\ProtocolRequestDirectorView.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Views\Protocols\ProtocolRequestDirectorView.Designer.cs">
       <DependentUpon>ProtocolRequestDirectorView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Protocols\ProtocolRequestEditView2.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\Protocols\ProtocolRequestEditView2.Designer.cs">
+      <DependentUpon>ProtocolRequestEditView2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Protocols\ProtocolRequestCSRView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\Protocols\ProtocolRequestCSRView.Designer.cs">
+      <DependentUpon>ProtocolRequestCSRView.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\RequestDetailView.cs">
       <SubType>UserControl</SubType>
@@ -242,6 +267,12 @@
     </Compile>
     <Compile Include="Views\RequestForms\RequestFormManagerView.Designer.cs">
       <DependentUpon>RequestFormManagerView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\RequestForms\RequestFormCSRView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\RequestForms\RequestFormCSRView.Designer.cs">
+      <DependentUpon>RequestFormCSRView.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\RequestForms\RequestFormReadOnly.cs">
       <SubType>UserControl</SubType>
@@ -378,14 +409,23 @@
     <EmbeddedResource Include="Views\Admin\ProtocolNumberUpdateView.resx">
       <DependentUpon>ProtocolNumberUpdateView.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Views\CreateProtocolView.resx">
+      <DependentUpon>CreateProtocolView.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\HistoryView.resx">
       <DependentUpon>HistoryView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Protocols\ProtocolRequestDirectorView.resx">
       <DependentUpon>ProtocolRequestDirectorView.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Views\Protocols\ProtocolRequestEditView2.resx">
+      <DependentUpon>ProtocolRequestEditView2.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\Protocols\ProtocolRequestManagerView.resx">
       <DependentUpon>ProtocolRequestManagerView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Protocols\ProtocolRequestCSRView.resx">
+      <DependentUpon>ProtocolRequestCSRView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Protocols\ProtocolRequestReadOnlyView.resx">
       <DependentUpon>ProtocolRequestReadOnlyView.cs</DependentUpon>
@@ -401,6 +441,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\RequestForms\RequestFormManagerView.resx">
       <DependentUpon>RequestFormManagerView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\RequestForms\RequestFormCSRView.resx">
+      <DependentUpon>RequestFormCSRView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\RequestForms\RequestFormReadOnly.resx">
       <DependentUpon>RequestFormReadOnly.cs</DependentUpon>
@@ -456,6 +499,7 @@
     <EmbeddedResource Include="Views\Templates\UCToolStripListView1.resx">
       <DependentUpon>UCToolStripListView1.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -473,6 +517,14 @@
   <ItemGroup>
     <None Include="Resources\StatusAnnotations_Required_32xSM_color.png" />
     <None Include="Resources\StatusAnnotations_Required_16xMD_color.png" />
+    <None Include="Resources\action_add_16xMD.png" />
+    <None Include="Resources\action_Cancel_16xMD.png" />
+    <None Include="Resources\view_16xMD.png" />
+    <None Include="Resources\PencilAngled_16xMD_color.png" />
+    <None Include="Resources\action_create_16xMD.png" />
+    <None Include="Resources\class_16xMD.png" />
+    <None Include="Resources\Ordered%28Numbered%29ListOL_5795_24x.png" />
+    <None Include="Resources\AddIndexer_5546.png" />
     <Content Include="TPMLogo.ico" />
     <Content Include="TPMLogo2.ico" />
     <Content Include="TPMLogo3.ico" />
@@ -509,6 +561,35 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="Microsoft.Office.Core">
+      <Guid>{2DF8D04C-5BFA-101B-BDE5-00AA0044DE52}</Guid>
+      <VersionMajor>2</VersionMajor>
+      <VersionMinor>7</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="Microsoft.Office.Interop.Word">
+      <Guid>{00020905-0000-0000-C000-000000000046}</Guid>
+      <VersionMajor>8</VersionMajor>
+      <VersionMinor>6</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="VBIDE">
+      <Guid>{0002E157-0000-0000-C000-000000000046}</Guid>
+      <VersionMajor>5</VersionMajor>
+      <VersionMinor>3</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

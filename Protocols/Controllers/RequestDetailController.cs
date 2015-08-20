@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,6 +12,7 @@ using Toxikon.ProtocolManager.Interfaces;
 using Toxikon.ProtocolManager.Models;
 using Toxikon.ProtocolManager.Models.Admin;
 using Toxikon.ProtocolManager.Models.Reports;
+using Toxikon.ProtocolManager.Models.Templates;
 using Toxikon.ProtocolManager.Queries;
 using Toxikon.ProtocolManager.Views;
 using Toxikon.ProtocolManager.Views.Protocols;
@@ -292,7 +294,7 @@ namespace Toxikon.ProtocolManager.Controllers
             if (this.view.ListViewSelectedIndexes.Count == 1)
             {
                 AssignProtocolNumberToSelectedTitle();
-                InsertProtocolActivity(28);
+                InsertProtocolActivity(30);
                 this.RefreshTemplateListView();
             }
             else
@@ -340,6 +342,40 @@ namespace Toxikon.ProtocolManager.Controllers
             else
             {
                 MessageBox.Show("Invalid Protocol Number.");
+            }
+        }
+
+        public void CreateProtocolButtonClicked()
+        {
+            if (this.view.ListViewSelectedIndexes.Count == 1)
+            {
+                CreateProtocol();
+            }
+            else
+            {
+                MessageBox.Show(this.SelectOneMessage);
+            }
+        }
+
+        private void CreateProtocol()
+        {
+            ProtocolTemplate title = GetSelectedTemplateFromView();
+            if(title.ProtocolNumber.FullCode != String.Empty)
+            {
+                CreateProtocolView popup = new CreateProtocolView();
+                CreateProtocolController popupController = new CreateProtocolController(popup);
+                if (popup.ShowDialog(this.view.ParentControl) == DialogResult.OK)
+                {
+                    Debug.WriteLine(popup.SourceFile, popup.DestFolder);
+                    string destFile = popup.DestFolder + "\\" + title.ProtocolNumber.FullCode + ".doc";
+                    WordProtocol protocol = new WordProtocol(request, title.ProtocolNumber.FullCode);
+                    protocol.Create(popup.SourceFile, destFile);
+                }
+                popup.Dispose();
+            }
+            else
+            {
+                MessageBox.Show("Invalid Protocol Number");
             }
         }
 

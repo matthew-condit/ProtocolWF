@@ -394,5 +394,29 @@ namespace Toxikon.ProtocolManager.Queries
                 ErrorHandler.CreateLogFile(ErrorFormName, "UpdateRequestStatus", sqlEx);
             }
         }
+
+        public static void UpdateRequestComments(ProtocolRequest request, string updatedBy)
+        {
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    connection.Open();
+                    using (SqlCommand command = new SqlCommand("pr_update_request_comments", connection))
+                    {
+                        command.CommandType = CommandType.StoredProcedure;
+                        command.Parameters.Add("@ProtocolRequestID", SqlDbType.Int).Value = request.ID;
+                        command.Parameters.Add("@Comments", SqlDbType.NVarChar).Value = request.Comments;
+                        command.Parameters.Add("@UpdatedBy", SqlDbType.NVarChar).Value = updatedBy;
+
+                        int result = command.ExecuteNonQuery();
+                    }
+                }
+            }
+            catch (SqlException sqlEx)
+            {
+                ErrorHandler.CreateLogFile(ErrorFormName, "UpdateRequestComments", sqlEx);
+            }
+        }
     }
 }

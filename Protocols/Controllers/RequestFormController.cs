@@ -163,6 +163,22 @@ namespace Toxikon.ProtocolManager.Controllers
             }
         }
 
+        public void UpdateCommentsButtonClicked()
+        {
+            OneTextBoxForm popup = new OneTextBoxForm();
+            OneTextBoxFormController popupController = new OneTextBoxFormController(popup);
+            popupController.TextBoxLabel = "Comments";
+            popupController.TextBoxValue = this.request.Comments;
+            popupController.LoadView();
+            if(popup.ShowDialog(this.view.ParentControl) == DialogResult.OK)
+            {
+                this.request.Comments = popupController.TextBoxValue;
+                this.view.Comments = popupController.TextBoxValue;
+                QProtocolRequests.UpdateRequestComments(request, loginInfo.UserName);
+            }
+            popup.Dispose();
+        }
+
         public void SubmitRequest()
         {
             this.request.RequestStatus = RequestStatuses.New;

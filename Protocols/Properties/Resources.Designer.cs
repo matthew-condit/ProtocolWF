@@ -73,6 +73,46 @@ namespace Toxikon.ProtocolManager.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap action_add_16xMD {
+            get {
+                object obj = ResourceManager.GetObject("action_add_16xMD", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap action_Cancel_16xMD {
+            get {
+                object obj = ResourceManager.GetObject("action_Cancel_16xMD", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap action_create_16xMD {
+            get {
+                object obj = ResourceManager.GetObject("action_create_16xMD", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap AddIndexer_5546 {
+            get {
+                object obj = ResourceManager.GetObject("AddIndexer_5546", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Bubble_16xLG {
             get {
                 object obj = ResourceManager.GetObject("Bubble_16xLG", resourceCulture);
@@ -86,6 +126,16 @@ namespace Toxikon.ProtocolManager.Properties {
         internal static System.Drawing.Bitmap checkbox_16xLG {
             get {
                 object obj = ResourceManager.GetObject("checkbox_16xLG", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap class_16xMD {
+            get {
+                object obj = ResourceManager.GetObject("class_16xMD", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -133,9 +183,29 @@ namespace Toxikon.ProtocolManager.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Ordered_Numbered_ListOL_5795_24x {
+            get {
+                object obj = ResourceManager.GetObject("Ordered_Numbered_ListOL_5795_24x", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap PencilAngled_16xLG_color {
             get {
                 object obj = ResourceManager.GetObject("PencilAngled_16xLG_color", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap PencilAngled_16xMD_color {
+            get {
+                object obj = ResourceManager.GetObject("PencilAngled_16xMD_color", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -216,6 +286,16 @@ namespace Toxikon.ProtocolManager.Properties {
         internal static System.Drawing.Bitmap StatusAnnotations_Required_32xSM_color {
             get {
                 object obj = ResourceManager.GetObject("StatusAnnotations_Required_32xSM_color", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap view_16xMD {
+            get {
+                object obj = ResourceManager.GetObject("view_16xMD", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

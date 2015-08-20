@@ -1,0 +1,7 @@
+C:\Users\BMcCulley\Source\toxxwinapp\ProtocolsWF\TPMUnitTest\bin\Debug\TPMUnitTest.dll
+C:\Users\BMcCulley\Source\toxxwinapp\ProtocolsWF\TPMUnitTest\bin\Debug\TPMUnitTest.pdb
+C:\Users\BMcCulley\Source\toxxwinapp\ProtocolsWF\TPMUnitTest\bin\Debug\ToxikonProtocolManager.exe
+C:\Users\BMcCulley\Source\toxxwinapp\ProtocolsWF\TPMUnitTest\bin\Debug\ToxikonProtocolManager.pdb
+C:\Users\BMcCulley\Source\toxxwinapp\ProtocolsWF\TPMUnitTest\obj\Debug\TPMUnitTest.csprojResolveAssemblyReference.cache
+C:\Users\BMcCulley\Source\toxxwinapp\ProtocolsWF\TPMUnitTest\obj\Debug\TPMUnitTest.dll
+C:\Users\BMcCulley\Source\toxxwinapp\ProtocolsWF\TPMUnitTest\obj\Debug\TPMUnitTest.pdb

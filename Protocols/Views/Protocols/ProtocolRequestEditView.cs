@@ -121,5 +121,10 @@ namespace Toxikon.ProtocolManager.Views.Protocols
         {
             this.controller.DepartmentButtonClicked();
         }
+
+        private void CreateProtocolButton_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
