@@ -165,6 +165,8 @@ namespace Toxikon.ProtocolManager.Controllers
         {
             QProtocolRequestTemplates.SetIsActive(this.request.ID, selectedTemplate.TemplateID,
                                                           false, loginInfo.UserName);
+            QProtocolNumbers.UpdateItem_IsActive(this.request.ID, selectedTemplate.TemplateID, 
+                                                 false, loginInfo.UserName);
             AuditHandler.Insert_RemoveTitle_AuditItem(this.request.ID,
                          selectedTemplate.TemplateID, loginInfo.UserName);
             RefreshTemplateListView();
@@ -367,7 +369,7 @@ namespace Toxikon.ProtocolManager.Controllers
                 if (popup.ShowDialog(this.view.ParentControl) == DialogResult.OK)
                 {
                     Debug.WriteLine(popup.SourceFile, popup.DestFolder);
-                    string destFile = popup.DestFolder + "\\" + title.ProtocolNumber.FullCode + ".doc";
+                    string destFile = popup.DestFolder + "\\" + title.ProtocolNumber.FullCode + ".docx";
                     WordProtocol protocol = new WordProtocol(request, title.ProtocolNumber.FullCode);
                     protocol.Create(popup.SourceFile, destFile);
                 }

@@ -333,6 +333,11 @@ namespace Toxikon.ProtocolManager.Queries
             request.RequestedBy = reader[13].ToString();
             request.RequestedDate = Convert.ToDateTime(reader[14].ToString());
             request.AssignedTo.UserName = reader[18].ToString();
+            if(reader.FieldCount > 20)
+            {
+                request.TemplateCount = Convert.ToInt32(reader[19].ToString());
+                request.AssignedPNCount = Convert.ToInt32(reader[20].ToString());
+            }
             return request;
         }
 

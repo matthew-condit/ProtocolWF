@@ -18,7 +18,8 @@ namespace Toxikon.ProtocolManager.Models.Templates
         public string SourceFile { get; set; }
         public string DestinationFile { get; set; }
 
-        public enum Bookmarks { PN, SponsorName, Address, City, State, ZipCode, HeaderPN }
+        public enum Bookmarks { PN, SponsorName, Address, City, State, ZipCode, HeaderPN,
+                                SponsorName2, Address2, City2, State2, ZipCode2 }
 
         private ProtocolRequest request;
         private string protocolNumber;
@@ -63,19 +64,26 @@ namespace Toxikon.ProtocolManager.Models.Templates
                     this.SearchAndReplaceHeader(document, headerKeyValues);
                 }
             }
+            catch(System.IO.FileFormatException ffEx)
+            {
+                MessageBox.Show("ERROR: " + ffEx.Message);
+                ErrorHandler.CreateLogFile("WordProtocol", "Create", ffEx);
+            }
             catch(System.IO.IOException ioEx)
             {
+                MessageBox.Show("ERROR: " + ioEx.Message);
                 ErrorHandler.CreateLogFile("WordProtocol", "Create", ioEx);
             }
             catch(System.Runtime.InteropServices.COMException comEx)
             {
+                MessageBox.Show("ERROR: " +  comEx.Message);
                 ErrorHandler.CreateLogFile("WordProtocol", "Create", comEx);
             }
         }
 
         public void OpenFileInWord(string filePath)
         {
-            WordApp.Application wordApp = new WordApp.Application();
+            var wordApp = new WordApp.Application();
             wordApp.Documents.Open(filePath);
             wordApp.Visible = true;
         }
@@ -84,11 +92,18 @@ namespace Toxikon.ProtocolManager.Models.Templates
         {
             Dictionary<string, string> keyValues = new Dictionary<string, string>();
             keyValues.Add(Bookmarks.PN.ToString("g"), this.protocolNumber);
+
             keyValues.Add(Bookmarks.SponsorName.ToString("g"), this.request.Contact.SponsorName);
             keyValues.Add(Bookmarks.Address.ToString("g"), this.request.Contact.Address);
             keyValues.Add(Bookmarks.City.ToString("g"), this.request.Contact.City);
             keyValues.Add(Bookmarks.State.ToString("g"), this.request.Contact.State);
             keyValues.Add(Bookmarks.ZipCode.ToString("g"), this.request.Contact.ZipCode);
+
+            keyValues.Add(Bookmarks.SponsorName2.ToString("g"), this.request.Contact.SponsorName);
+            keyValues.Add(Bookmarks.Address2.ToString("g"), this.request.Contact.Address);
+            keyValues.Add(Bookmarks.City2.ToString("g"), this.request.Contact.City);
+            keyValues.Add(Bookmarks.State2.ToString("g"), this.request.Contact.State);
+            keyValues.Add(Bookmarks.ZipCode2.ToString("g"), this.request.Contact.ZipCode);
             
             return keyValues;
         }

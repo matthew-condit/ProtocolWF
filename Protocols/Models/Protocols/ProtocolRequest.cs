@@ -29,6 +29,9 @@ namespace Toxikon.ProtocolManager.Models
         public string RequestStatus { get; set; }
         public bool IsActive { get; set; }
 
+        public int AssignedPNCount { get; set; }
+        public int TemplateCount { get; set; }
+
         public ProtocolRequest()
         {
             Refresh();

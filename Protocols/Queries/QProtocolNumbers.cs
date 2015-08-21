@@ -161,5 +161,30 @@ namespace Toxikon.ProtocolManager.Queries
                 ErrorHandler.CreateLogFile(ErrorFormName, "UpdateAdvancedItem", ex);
             }
         }
+
+        public static void UpdateItem_IsActive(int requestID, int templateID, bool isActive, string userName)
+        {
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    connection.Open();
+                    using (SqlCommand command = new SqlCommand("pn_update_isactive", connection))
+                    {
+                        command.CommandType = CommandType.StoredProcedure;
+                        command.Parameters.Add("@RequestID", SqlDbType.Int).Value = requestID;
+                        command.Parameters.Add("@TemplateID", SqlDbType.Int).Value = templateID;
+                        command.Parameters.Add("@IsActive", SqlDbType.Bit).Value = isActive;
+                        command.Parameters.Add("@UpdatedBy", SqlDbType.NVarChar).Value = userName;
+
+                        int result = command.ExecuteNonQuery();
+                    }
+                }
+            }
+            catch (SqlException e)
+            {
+                ErrorHandler.CreateLogFile(ErrorFormName, "UpdateItem_IsActive", e);
+            }
+        }
     }
 }

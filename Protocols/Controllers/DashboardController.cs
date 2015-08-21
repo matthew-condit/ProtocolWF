@@ -62,15 +62,12 @@ namespace Toxikon.ProtocolManager.Controllers
             }
         }
 
-        public void RequestDataGridViewCellDoubleClicked(int selectedIndex)
+        public void RequestDataGridViewCellDoubleClicked(int requestID)
         {
-            if(selectedIndex > - 1 && selectedIndex < this.protocolRequests.Count)
-            {
-                ProtocolRequest request = (ProtocolRequest)this.protocolRequests[selectedIndex];
-
-                MainView mainView = (MainView)this.view.ParentControl;
-                mainView.Invoke(mainView.LoadProtocolRequestViewDelegate, new object[] { request });
-            }
+            ProtocolRequest request = this.protocolRequests.Cast<ProtocolRequest>().
+                                      SingleOrDefault(x => x.ID == requestID);
+            MainView mainView = (MainView)this.view.ParentControl;
+            mainView.Invoke(mainView.LoadProtocolRequestViewDelegate, new object[] { request });
         }
     }
 }

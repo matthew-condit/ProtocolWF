@@ -20,6 +20,11 @@ namespace Toxikon.ProtocolManager.Views
         public DashboardView()
         {
             InitializeComponent();
+            this.RequestDataGridView.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            this.RequestDataGridView.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            this.RequestDataGridView.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            this.RequestDataGridView.Columns[3].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.RequestDataGridView.Columns[4].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
         }
 
         public void SetController(DashboardController controller)
@@ -33,18 +38,30 @@ namespace Toxikon.ProtocolManager.Views
         }
 
         public void AddProtocolRequestToView(ProtocolRequest request)
-        {
+        {           
             int rowIndex = this.RequestDataGridView.Rows.Add(
                 request.ID,
                  request.RequestedDate.ToString("MM/dd/yyyy"),
                  request.RequestedBy,
                  request.AssignedTo.FullName,
-                 request.Contact.SponsorName);
+                 request.Contact.SponsorName,
+                 request.AssignedPNCount.ToString() + "/" + request.TemplateCount.ToString());
         }
 
         private void RequestDataGridView_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            this.controller.RequestDataGridViewCellDoubleClicked(e.RowIndex);
+            if(e.RowIndex != -1)
+            {
+                try
+                {
+                    var requestID = Convert.ToInt32(this.RequestDataGridView.Rows[e.RowIndex].Cells[0].Value);
+                    this.controller.RequestDataGridViewCellDoubleClicked(requestID);
+                }
+                catch (FormatException fe)
+                {
+                    ErrorHandler.CreateLogFile("DashboardView", "RequestDataGridView_CellContentDoubleClick", fe);
+                }
+            }
         }
     }
 }
