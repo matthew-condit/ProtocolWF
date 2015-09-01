@@ -83,7 +83,7 @@ namespace Toxikon.ProtocolManager.Views
                     this.UpdateMenuItem.Visible = false;
                     break;
                 case UserRoles.DocControl:
-                    this.ProtocolRequestMenuItem.Visible = false;
+                    this.ProtocolRequestMenuItem.Visible = true;
                     this.AdminMenuItem.Visible = false;
                     this.UpdateMenuItem.Visible = true;
                     break;

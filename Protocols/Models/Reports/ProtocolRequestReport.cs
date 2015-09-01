@@ -42,14 +42,27 @@ namespace Toxikon.ProtocolManager.Models.Reports
             {
                 CreateReportDirectory();
                 ExcelTemplate excelTemplate = new ExcelTemplate(filePath, fileName);
-                excelTemplate.Open();
-                excelTemplate.AddNewWorkbook();
-                CreateProtocolRequestInfoSheet(excelTemplate);
-                CreateProtocolTitleSheets(excelTemplate);
+                try
+                {
+                    excelTemplate.Open();
+                    excelTemplate.AddNewWorkbook();
+                    CreateProtocolRequestInfoSheet(excelTemplate);
+                    CreateProtocolTitleSheets(excelTemplate);
 
-                excelTemplate.Save();
-                excelTemplate.ShowExcelApp(true);
-                excelTemplate.Close();
+                    excelTemplate.Save();
+                    excelTemplate.ShowExcelApp(true);
+                    excelTemplate.Close();
+                }
+                catch (System.Runtime.InteropServices.COMException ex)
+                {
+                    ErrorHandler.CreateLogFile("ProtocolRequestReport", "Create", ex);
+                    MessageBox.Show("Error: Please contact IT for more information.");
+                    excelTemplate.Close();
+                }
+                finally
+                {
+                    excelTemplate.Close();
+                }
             }
         }
 

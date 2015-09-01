@@ -79,6 +79,11 @@ namespace Toxikon.ProtocolManager.Models.Templates
                 MessageBox.Show("ERROR: " +  comEx.Message);
                 ErrorHandler.CreateLogFile("WordProtocol", "Create", comEx);
             }
+            catch(System.InvalidCastException icEx)
+            {
+                MessageBox.Show("ERROR: " + icEx.Message);
+                ErrorHandler.CreateLogFile("WordProtocol", "Create", icEx);
+            }
         }
 
         public void OpenFileInWord(string filePath)

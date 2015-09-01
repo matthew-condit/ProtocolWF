@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace Toxikon.ProtocolManager.Models.Reports
@@ -25,7 +26,7 @@ namespace Toxikon.ProtocolManager.Models.Reports
         public ExcelTemplate(string filePath, string fileName)
         {
             this.filePath = filePath;
-            this.fileName = fileName;
+            this.fileName = Regex.Replace(fileName, "[^0-9a-z-A-Z]+", "");
             worksheetDictionary = new Dictionary<string, Worksheet>() { };
         }
 

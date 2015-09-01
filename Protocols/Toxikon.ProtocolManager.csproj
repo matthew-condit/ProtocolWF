@@ -12,7 +12,7 @@
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <IsWebBootstrapper>true</IsWebBootstrapper>
-    <PublishUrl>\\toxx\c%24\www\ToxikonProtocolManager\remote\</PublishUrl>
+    <PublishUrl>\\toxx\c%24\www\ToxikonProtocolManager\publish\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Web</InstallFrom>
     <UpdateEnabled>true</UpdateEnabled>
@@ -22,13 +22,13 @@
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
-    <InstallUrl>http://toxx.toxikon.com/ToxikonProtocolManager/remote/</InstallUrl>
+    <InstallUrl>http://toxx.toxikon.com/ToxikonProtocolManager/publish/</InstallUrl>
     <TargetCulture>en</TargetCulture>
     <ProductName>Toxikon Protocol Manager</ProductName>
     <PublisherName>Toxikon</PublisherName>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>index.html</WebPage>
-    <ApplicationRevision>37</ApplicationRevision>
+    <ApplicationRevision>39</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>

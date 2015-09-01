@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
-    <PublishUrlHistory>\\toxx\c%24\www\ToxikonProtocolManager\remote\|\\toxx\c%24\www\ToxikonProtocolManager\publish\|\\toxx\c%24\www\ToxikonProtocolManager\test\|publish\</PublishUrlHistory>
-    <InstallUrlHistory>http://toxx.toxikon.com/ToxikonProtocolManager/remote/|http://toxx.toxikon.com/ToxikonProtocolManager/publish/|http://toxx.toxikon.com/ToxikonProtocolManager/test/|http://toxx.toxikon.com/ToxikonProtocolManager/</InstallUrlHistory>
+    <PublishUrlHistory>\\toxx\c%24\www\ToxikonProtocolManager\publish\|\\toxx\c%24\www\ToxikonProtocolManager\remote\|\\toxx\c%24\www\ToxikonProtocolManager\test\|publish\</PublishUrlHistory>
+    <InstallUrlHistory>http://toxx.toxikon.com/ToxikonProtocolManager/publish/|http://toxx.toxikon.com/ToxikonProtocolManager/remote/|http://toxx.toxikon.com/ToxikonProtocolManager/test/|http://toxx.toxikon.com/ToxikonProtocolManager/</InstallUrlHistory>
     <SupportUrlHistory />
     <UpdateUrlHistory />
     <BootstrapperUrlHistory />
