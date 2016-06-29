@@ -36,6 +36,7 @@
             this.RequestedByLabel = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
+            this.flowLayoutPanel5 = new System.Windows.Forms.FlowLayoutPanel();
             this.SponsorContactTextBox = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.SponsorNameLabel = new System.Windows.Forms.Label();
@@ -85,6 +86,7 @@
             this.flowLayoutPanel2.SuspendLayout();
             this.flowLayoutPanel3.SuspendLayout();
             this.flowLayoutPanel4.SuspendLayout();
+            this.flowLayoutPanel5.SuspendLayout();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -737,6 +739,7 @@
         private System.Windows.Forms.TextBox ProtocolTypeTextBox;
         private System.Windows.Forms.Button OpenProtocolTypeOptions;
         private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel5;
         private System.Windows.Forms.TextBox SponsorContactTextBox;
         private System.Windows.Forms.Label SponsorNameLabel;
         private System.Windows.Forms.Label AddressLabel;
