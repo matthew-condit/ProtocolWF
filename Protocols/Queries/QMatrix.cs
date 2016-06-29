@@ -133,7 +133,7 @@ namespace Toxikon.ProtocolManager.Queries
                         SqlDataReader reader = command.ExecuteReader();
                         while (reader.Read())
                         {
-                            SponsorContact sponsor = CreateNewSponsor(reader);
+                            SponsorContact sponsor = CreateNewSponsorNoContact(reader);
                             results.Add(sponsor);
                         }
                     }

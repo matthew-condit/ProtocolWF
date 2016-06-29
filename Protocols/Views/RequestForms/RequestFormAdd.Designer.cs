@@ -36,7 +36,7 @@
             this.RequestedByLabel = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
-            this.SponsorContactLabel = new System.Windows.Forms.Label();
+            this.SponsorContactTextBox = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.SponsorNameLabel = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
@@ -73,7 +73,7 @@
             this.label11 = new System.Windows.Forms.Label();
             this.CommentTextBox = new System.Windows.Forms.TextBox();
             this.POTextBox = new System.Windows.Forms.TextBox();
-            this.EmailLabel = new System.Windows.Forms.Label();
+            this.EmailTextBox = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.OpenGuidelinesOptions = new System.Windows.Forms.Button();
             this.OpenComplianceOptions = new System.Windows.Forms.Button();
@@ -102,7 +102,7 @@
             this.tableLayoutPanel1.Controls.Add(this.label2, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.label16, 2, 1);
             this.tableLayoutPanel1.Controls.Add(this.label4, 2, 0);
-            this.tableLayoutPanel1.Controls.Add(this.SponsorContactLabel, 3, 0);
+            this.tableLayoutPanel1.Controls.Add(this.SponsorContactTextBox, 3, 0);
             this.tableLayoutPanel1.Controls.Add(this.label3, 2, 2);
             this.tableLayoutPanel1.Controls.Add(this.SponsorNameLabel, 3, 2);
             this.tableLayoutPanel1.Controls.Add(this.label5, 2, 3);
@@ -136,7 +136,7 @@
             this.tableLayoutPanel1.Controls.Add(this.label11, 0, 10);
             this.tableLayoutPanel1.Controls.Add(this.CommentTextBox, 1, 11);
             this.tableLayoutPanel1.Controls.Add(this.POTextBox, 1, 10);
-            this.tableLayoutPanel1.Controls.Add(this.EmailLabel, 3, 1);
+            this.tableLayoutPanel1.Controls.Add(this.EmailTextBox, 3, 1);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
@@ -223,13 +223,14 @@
             // 
             // SponsorContactLabel
             // 
-            this.SponsorContactLabel.AutoSize = true;
-            this.SponsorContactLabel.Location = new System.Drawing.Point(483, 1);
-            this.SponsorContactLabel.Name = "SponsorContactLabel";
-            this.SponsorContactLabel.Padding = new System.Windows.Forms.Padding(0, 4, 0, 4);
-            this.SponsorContactLabel.Size = new System.Drawing.Size(49, 23);
-            this.SponsorContactLabel.TabIndex = 24;
-            this.SponsorContactLabel.Text = "Contact";
+            this.SponsorContactTextBox.AutoSize = true;
+            this.SponsorContactTextBox.Location = new System.Drawing.Point(483, 1);
+            this.SponsorContactTextBox.Name = "SponsorContactLabel";
+            this.SponsorContactTextBox.Padding = new System.Windows.Forms.Padding(0, 4, 0, 4);
+            this.SponsorContactTextBox.Size = new System.Drawing.Size(200, 23);
+            this.SponsorContactTextBox.ReadOnly = true;
+            this.SponsorContactTextBox.TabIndex = 24;
+            this.SponsorContactTextBox.Text = "Contact";
             // 
             // label3
             // 
@@ -587,13 +588,14 @@
             // 
             // EmailLabel
             // 
-            this.EmailLabel.AutoSize = true;
-            this.EmailLabel.Location = new System.Drawing.Point(483, 25);
-            this.EmailLabel.Name = "EmailLabel";
-            this.EmailLabel.Padding = new System.Windows.Forms.Padding(0, 4, 0, 4);
-            this.EmailLabel.Size = new System.Drawing.Size(36, 23);
-            this.EmailLabel.TabIndex = 50;
-            this.EmailLabel.Text = "Email";
+            this.EmailTextBox.AutoSize = true;
+            this.EmailTextBox.Location = new System.Drawing.Point(483, 25);
+            this.EmailTextBox.Name = "EmailLabel";
+            this.EmailTextBox.Padding = new System.Windows.Forms.Padding(0, 4, 0, 4);
+            this.EmailTextBox.Size = new System.Drawing.Size(200, 23);
+            this.EmailTextBox.ReadOnly = true;
+            this.EmailTextBox.TabIndex = 50;
+            this.EmailTextBox.Text = "Email";
             // 
             // label4
             // 
@@ -735,7 +737,7 @@
         private System.Windows.Forms.TextBox ProtocolTypeTextBox;
         private System.Windows.Forms.Button OpenProtocolTypeOptions;
         private System.Windows.Forms.Label label20;
-        private System.Windows.Forms.Label SponsorContactLabel;
+        private System.Windows.Forms.TextBox SponsorContactTextBox;
         private System.Windows.Forms.Label SponsorNameLabel;
         private System.Windows.Forms.Label AddressLabel;
         private System.Windows.Forms.Label StateLabel;
@@ -749,6 +751,6 @@
         private System.Windows.Forms.Label label21;
         private System.Windows.Forms.TextBox POTextBox;
         private System.Windows.Forms.TextBox CostTextBox;
-        private System.Windows.Forms.Label EmailLabel;
+        private System.Windows.Forms.TextBox EmailTextBox;
     }
 }

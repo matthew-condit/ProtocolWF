@@ -71,8 +71,8 @@ namespace Toxikon.ProtocolManager.Views.RequestForms
         }
         public string ContactName
         {
-            get { return this.SponsorContactLabel.Text; }
-            set { this.SponsorContactLabel.Text = value; }
+            get { return this.SponsorContactTextBox.Text; }
+            set { this.SponsorContactTextBox.Text = value; }
         }
         public string SponsorName
         {
@@ -81,8 +81,8 @@ namespace Toxikon.ProtocolManager.Views.RequestForms
         }
         public string Email
         {
-            get { return this.EmailLabel.Text; }
-            set { this.EmailLabel.Text = value; }
+            get { return this.EmailTextBox.Text; }
+            set { this.EmailTextBox.Text = value; }
         }
         public string Address
         {
