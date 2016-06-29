@@ -38,6 +38,8 @@ namespace Toxikon.ProtocolManager.Controllers.Protocols
         {
             foreach(string eventType in this.protocolEventTypes)
             {
+                //MATT MATT MATT MATT MATT MATT MATT MATT MATT MATT MATT MATT MATT MATT MATT MATT MATT MATT MATT MATT MATT MATT
+                //This is where I can modify it if they really don't want the options of having all the events they want?? 
                 this.view.AddProtocolEventTypeToView(eventType);
             }
         }

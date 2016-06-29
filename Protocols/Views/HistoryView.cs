@@ -72,5 +72,6 @@ namespace Toxikon.ProtocolManager.Views
         {
             this.controller.ResetButtonClicked();
         }
+
     }
 }

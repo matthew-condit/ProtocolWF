@@ -92,5 +92,10 @@ namespace Toxikon.ProtocolManager.Controllers
 
             return result;
         }
+
+        internal static object ShowOneTextBoxForm()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

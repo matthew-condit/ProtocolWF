@@ -36,6 +36,26 @@ namespace Toxikon.ProtocolManager.Queries
             AND Submitters.RecordStatus = 1
             AND Submitters.SubmitterClass = 'Contact'";
 
+        private const string GetAllSponsors = @"
+            SELECT Submitters.SubmitterText1 AS SponsorCode,
+		           Submitters.SubmitterCode AS ContactCode,
+	               Submitters.SubmitterName AS SponsorName,
+	               ISNULL(Submitters.SubmitterText2, '') + ' ' +
+	               ISNULL(Submitters.SubmitterText3, '') AS ContactName,
+	               ISNULL(Submitters.SubmitterAddress1, '') + 
+	               ISNULL(Submitters.SubmitterAddress2, '') AS PostalAddress,
+	               Submitters.SubmitterAddress4 AS City,
+	               Submitters.SubmitterAddress5 AS State,
+	               Submitters.SubmitterPostCode,
+	               Submitters.SubmitterAddress3 AS Country,
+	               Submitters.SubmitterTelephone AS PhoneNumber,
+	               Submitters.SubmitterFax AS Fax,
+                   Submitters.SubmitterTelex AS Email
+            FROM Submitters
+            WHERE Submitters.SubmitterName LIKE @SponsorName
+            AND Submitters.RecordStatus = 1
+            AND Submitters.SubmitterClass = 'Sponsor'";
+
         private const string ContactInfoByContactCode = @"
             SELECT Submitters.SubmitterText1 AS SponsorCode,
 		           Submitters.SubmitterCode AS ContactCode,
@@ -73,13 +93,13 @@ namespace Toxikon.ProtocolManager.Queries
                 using (SqlConnection connection = new SqlConnection(CONNECTION_STRING))
                 {
                     connection.Open();
-                    using(SqlCommand command = new SqlCommand(SelectSponsorContactsQuery, connection))
+                    using (SqlCommand command = new SqlCommand(SelectSponsorContactsQuery, connection))
                     {
                         command.CommandType = CommandType.Text;
                         command.Parameters.Add("@SponsorName", SqlDbType.NVarChar).Value = sponsorName;
 
                         SqlDataReader reader = command.ExecuteReader();
-                        while(reader.Read())
+                        while (reader.Read())
                         {
                             SponsorContact sponsor = CreateNewSponsor(reader);
                             results.Add(sponsor);
@@ -87,10 +107,43 @@ namespace Toxikon.ProtocolManager.Queries
                     }
                 }
             }
-            catch(SqlException sqlEx)
+            catch (SqlException sqlEx)
             {
                 ErrorHandler.CreateLogFile(ErrorFormName, "GetSponsorContacts", sqlEx);
             }
+
+            return results;
+        }
+
+        //THIS IS MY NEW VERSION SINCE UGH
+        public static IList GetSponsors(string sponsorName)
+        {
+            IList results = new ArrayList();
+            sponsorName += "%";
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(CONNECTION_STRING))
+                {
+                    connection.Open();
+                    using (SqlCommand command = new SqlCommand(GetAllSponsors, connection))
+                    {
+                        command.CommandType = CommandType.Text;
+                        command.Parameters.Add("@SponsorName", SqlDbType.NVarChar).Value = sponsorName;
+
+                        SqlDataReader reader = command.ExecuteReader();
+                        while (reader.Read())
+                        {
+                            SponsorContact sponsor = CreateNewSponsor(reader);
+                            results.Add(sponsor);
+                        }
+                    }
+                }
+            }
+            catch (SqlException sqlEx)
+            {
+                ErrorHandler.CreateLogFile(ErrorFormName, "GetSponsorContacts", sqlEx);
+            }
+
             return results;
         }
 
@@ -165,7 +218,7 @@ namespace Toxikon.ProtocolManager.Queries
                     using (SqlCommand command = new SqlCommand(SelectSponsorNames, connection))
                     {
                         command.CommandType = CommandType.Text;
-                        foreach(Item item in sponsors)
+                        foreach (Item item in sponsors)
                         {
                             command.Parameters.Clear();
                             command.Parameters.Add("@SponsorCode", SqlDbType.NVarChar).Value = item.Name;
@@ -199,6 +252,19 @@ namespace Toxikon.ProtocolManager.Queries
             sponsor.PhoneNumber = reader[9].ToString().Trim();
             sponsor.FaxNumber = reader[10].ToString().Trim();
             sponsor.Email = reader[11].ToString().Trim();
+            return sponsor;
+        }
+        private static SponsorContact CreateNewSponsorNoContact(SqlDataReader reader)
+        {
+            SponsorContact sponsor = new SponsorContact();
+            sponsor.SponsorCode = reader[0].ToString().Trim();
+            sponsor.SponsorName = reader[2].ToString().Trim();
+            sponsor.Address = reader[4].ToString().Trim();
+            sponsor.City = reader[5].ToString().Trim();
+            sponsor.State = reader[6].ToString().Trim();
+            sponsor.ZipCode = reader[7].ToString().Trim();
+            sponsor.PhoneNumber = reader[9].ToString().Trim();
+            sponsor.FaxNumber = reader[10].ToString().Trim();
             return sponsor;
         }
     }

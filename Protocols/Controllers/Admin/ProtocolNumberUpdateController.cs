@@ -55,7 +55,7 @@ namespace Toxikon.ProtocolManager.Controllers.Admin
 
         private void LoadViewByUserRole()
         {
-            bool isIT = loginInfo.Role.RoleID == UserRoles.IT ? true : false;
+            bool isIT = ((loginInfo.Role.RoleID == UserRoles.IT) || (loginInfo.Role.RoleID == UserRoles.DocControl)) ? true : false;
             this.view.SetAdminView(isIT);
         }
 

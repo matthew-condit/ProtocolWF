@@ -17,11 +17,26 @@ namespace Toxikon.ProtocolManager.Controllers
     {
         IHistoryView view;
         IList sponsors;
+        IList sortedsponsors;
         IList requestList;
         Item selectedItem;
         ProtocolRequest selectedRequest;
         LoginInfo loginInfo;
         RequestDetailController requestViewController;
+
+
+        public class mysortclass : IComparer
+        {
+            int IComparer.Compare(Object x, Object y)
+            {
+                Item sponsorA = (Item)x;
+                Item sponsorB = (Item)y;
+                return String.Compare(sponsorA.Text, sponsorB.Text);
+            }
+        }
+        public static IComparer sortalpha() {
+            return (IComparer) new mysortclass();
+        }
 
         public HistoryController(IHistoryView view)
         {
@@ -122,13 +137,17 @@ namespace Toxikon.ProtocolManager.Controllers
         {
             sponsors = QProtocolRequests.GetSponsorCodes(RequestStatuses.Closed);
             QMatrix.GetSponsorNames(sponsors);
+            ArrayList sortedsponsors = new ArrayList(sponsors);
+            sortedsponsors.Sort(HistoryController.sortalpha());
+            this.sortedsponsors = sortedsponsors;
         }
+
 
         private void GetSelectedSponsorRequests()
         {
             if(this.sponsors.Count != 0)
             {
-                this.selectedItem = TemplatesController.ShowListBoxOptionsForm(this.sponsors, 
+                this.selectedItem = TemplatesController.ShowListBoxOptionsForm(this.sortedsponsors, 
                                     this.view.ParentControl);
                 GetRequests();
             }

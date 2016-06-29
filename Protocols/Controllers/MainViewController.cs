@@ -59,7 +59,7 @@ namespace Toxikon.ProtocolManager.Controllers
 
             view.AddControlToMainPanel(subView);
         }
-
+        
         public void LoadUserListView()
         {
             UCToolStripListView1 subView = new UCToolStripListView1();

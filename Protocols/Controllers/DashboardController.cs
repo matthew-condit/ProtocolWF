@@ -1,4 +1,4 @@
-﻿using Toxikon.ProtocolManager.Interfaces;
+﻿ using Toxikon.ProtocolManager.Interfaces;
 using Toxikon.ProtocolManager.Models;
 using Toxikon.ProtocolManager.Queries;
 using Toxikon.ProtocolManager.Views;
@@ -53,7 +53,6 @@ namespace Toxikon.ProtocolManager.Controllers
                     break;
             }
         }
-
         private void AddProtocolRequestsToView()
         {
             foreach(ProtocolRequest request in protocolRequests)
@@ -64,6 +63,7 @@ namespace Toxikon.ProtocolManager.Controllers
 
         public void RequestDataGridViewCellDoubleClicked(int requestID)
         {
+            //This is where I should be saving the state of the column header to be loaded back later!!! If at all possible
             ProtocolRequest request = this.protocolRequests.Cast<ProtocolRequest>().
                                       SingleOrDefault(x => x.ID == requestID);
             MainView mainView = (MainView)this.view.ParentControl;

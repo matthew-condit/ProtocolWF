@@ -20,12 +20,31 @@ namespace Toxikon.ProtocolManager.Controllers.Protocols
     {
         private IProtocolRequestAddView view;
         private IList sponsorContacts;
+        private IList sortedSponsorContacts;
         private ProtocolRequest request;
         private IList selectedTemplates;
-
         private RequestFormController requestFormController;
         private LoginInfo loginInfo;
-        
+
+
+        //Sorting Class
+        public class mysortclass : IComparer
+        {
+            int IComparer.Compare(Object x, Object y)
+            {
+                SponsorContact sponsorA = (SponsorContact)x;
+                SponsorContact sponsorB = (SponsorContact)y;
+                return String.Compare(sponsorA.ContactName, sponsorB.ContactName);
+            }
+        }
+        public static IComparer sortalpha()
+        {
+            return (IComparer)new mysortclass();
+        }
+
+
+
+
         public ProtocolRequestAddController(IProtocolRequestAddView view)
         {
             this.view = view;
@@ -51,7 +70,7 @@ namespace Toxikon.ProtocolManager.Controllers.Protocols
 
         public void SearchButtonClicked()
         {
-            if(this.view.SearchSponsorName.Trim() == String.Empty)
+            if (this.view.SearchSponsorName.Trim() == String.Empty)
             {
                 MessageBox.Show("Sponsor name is required.");
             }
@@ -64,7 +83,11 @@ namespace Toxikon.ProtocolManager.Controllers.Protocols
         private void DoSearch()
         {
             this.sponsorContacts.Clear();
-            sponsorContacts = QMatrix.GetSponsorContacts(this.view.SearchSponsorName);
+            sponsorContacts = QMatrix.GetSponsors(this.view.SearchSponsorName);
+            ArrayList sorted = new ArrayList(sponsorContacts);
+            sorted.Sort(ProtocolRequestAddController.sortalpha());
+            this.sortedSponsorContacts = sorted;
+
             if (sponsorContacts.Count == 0)
             {
                 MessageBox.Show("No record found.");
@@ -81,10 +104,10 @@ namespace Toxikon.ProtocolManager.Controllers.Protocols
         private IList CreateContactList()
         {
             IList items = new ArrayList();
-            foreach(SponsorContact contact in this.sponsorContacts)
+            foreach (SponsorContact contact in this.sortedSponsorContacts)
             {
                 Item item = new Item();
-                item.Text = contact.ContactName;
+                item.Text = contact.SponsorName;
                 items.Add(item);
             }
             return items;
@@ -97,18 +120,18 @@ namespace Toxikon.ProtocolManager.Controllers.Protocols
             ListBoxOptionsController popupController = new ListBoxOptionsController(popup, items);
             popupController.LoadView();
             DialogResult dialogResult = popup.ShowDialog();
-            if(dialogResult == DialogResult.OK)
+            if (dialogResult == DialogResult.OK)
             {
                 result = popupController.SelectedIndex;
             }
             return result;
         }
-
+        //This is where I needed to change things to allow for sorted sponsor info to actually work!!!
         public void ContactListSelectedIndex(int selectedIndex)
         {
-            if(selectedIndex >= 0 && selectedIndex < this.sponsorContacts.Count)
+            if (selectedIndex >= 0 && selectedIndex < this.sortedSponsorContacts.Count)
             {
-                this.request.SetContact((SponsorContact)this.sponsorContacts[selectedIndex]);
+                this.request.SetContact((SponsorContact)this.sortedSponsorContacts[selectedIndex]);
                 this.requestFormController.LoadView(this.request);
             }
         }
@@ -122,11 +145,11 @@ namespace Toxikon.ProtocolManager.Controllers.Protocols
         {
             TemplateOptionsForm form = new TemplateOptionsForm();
             TemplateOptionsController formController = new TemplateOptionsController(form);
-            formController.SubmitSelectedItemDelegate = new 
+            formController.SubmitSelectedItemDelegate = new
                 TemplateOptionsController.SubmitSelectedItem(this.AddSelectedItemToDataGrid);
             formController.LoadView();
             DialogResult dialogResult = form.ShowDialog(this.view.ParentControl);
-            
+
             form.Dispose();
         }
 
@@ -138,7 +161,7 @@ namespace Toxikon.ProtocolManager.Controllers.Protocols
 
         public void RemoveItemFromTemplates(int selectedIndex)
         {
-            if(selectedIndex > -1 && selectedIndex < this.selectedTemplates.Count)
+            if (selectedIndex > -1 && selectedIndex < this.selectedTemplates.Count)
             {
                 this.selectedTemplates.RemoveAt(selectedIndex);
             }
