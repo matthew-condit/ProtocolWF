@@ -116,8 +116,24 @@ namespace Toxikon.ProtocolManager.Controllers
 
         public void ContactButtonClicked()
         {
-            IList items = new List<string>();//QMatrix.GetSponsorContacts();
-            
+
+            IList items = QMatrix.GetSponsorContacts_NameAndCodeOnly(this.view.SponsorName);
+            if (items != null)
+            {
+                Item selectedContact = TemplatesController.ShowListBoxOptionsForm(items, view.ParentControl);
+                Debug.WriteLine(selectedContact.Text);
+                Debug.WriteLine(selectedContact.Value);
+                if (selectedContact != null)
+                {
+                    this.request.Contact.ContactName = selectedContact.Text;
+                    this.view.ContactName = selectedContact.Text;
+                    this.request.Contact.Email = QMatrix.GetSponsorByContactCode(selectedContact.Value).Email;
+                    Debug.WriteLine(QMatrix.GetSponsorByContactCode(selectedContact.Value).Email);
+                    this.view.Email = this.request.Contact.Email;
+                }
+            }
+            else { MessageBox.Show("There are no contacts for this sponsor!"); }
+
         }
 
         public void ComplianceButtonClicked()

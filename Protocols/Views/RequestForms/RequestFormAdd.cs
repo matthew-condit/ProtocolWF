@@ -178,6 +178,9 @@ namespace Toxikon.ProtocolManager.Views.RequestForms
             this.controller.ComplianceButtonClicked();
         }
 
+        private void OpenContactOptions_Click(object sender, EventArgs e) {
+            this.controller.ContactButtonClicked();
+        }
         private void OpenProtocolTypeOptions_Click(object sender, EventArgs e)
         {
             this.controller.ProtocolTypeButtonClicked();

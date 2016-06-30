@@ -646,7 +646,7 @@
             this.OpenContactOptions.Size = new System.Drawing.Size(20, 18);
             this.OpenContactOptions.TabIndex = 0;
             this.OpenContactOptions.UseVisualStyleBackColor = true;
-            //this.OpenContactOptions.Click += new System.EventHandler(this.OpenContactOptions_Click);
+            this.OpenContactOptions.Click += new System.EventHandler(this.OpenContactOptions_Click);
 
             // 
             // OpenComplianceOptions

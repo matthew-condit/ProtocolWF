@@ -36,6 +36,26 @@ namespace Toxikon.ProtocolManager.Queries
             AND Submitters.RecordStatus = 1
             AND Submitters.SubmitterClass = 'Contact'
         ";
+        private const string SelectSponsorContactsByCodeQuery = @"
+            SELECT Submitters.SubmitterText1 AS SponsorCode,
+		           Submitters.SubmitterCode AS ContactCode,
+	               Submitters.SubmitterName AS SponsorName,
+	               ISNULL(Submitters.SubmitterText2, '') + ' ' +
+	               ISNULL(Submitters.SubmitterText3, '') AS ContactName,
+	               ISNULL(Submitters.SubmitterAddress1, '') + 
+	               ISNULL(Submitters.SubmitterAddress2, '') AS PostalAddress,
+	               Submitters.SubmitterAddress4 AS City,
+	               Submitters.SubmitterAddress5 AS State,
+	               Submitters.SubmitterPostCode,
+	               Submitters.SubmitterAddress3 AS Country,
+	               Submitters.SubmitterTelephone AS PhoneNumber,
+	               Submitters.SubmitterFax AS Fax,
+                   Submitters.SubmitterTelex AS Email
+            FROM Submitters
+            WHERE Submitters.SubmitterText1 LIKE @SponsorCode
+            AND Submitters.RecordStatus = 1
+            AND Submitters.SubmitterClass = 'Contact'
+        ";
 
         private const string GetEmail = @"
             SELECT Submitters.SubmitterTelex As Email
@@ -161,7 +181,7 @@ namespace Toxikon.ProtocolManager.Queries
         {
             try
             {
-                string email;
+                string email = "";
                 using (SqlConnection connection = new SqlConnection(CONNECTION_STRING))
                 {
                     connection.Open();
@@ -177,12 +197,13 @@ namespace Toxikon.ProtocolManager.Queries
                         
                     }
                 }
+                return email;
             }
             catch (SqlException sqlEx)
             {
                 ErrorHandler.CreateLogFile(ErrorFormName, "GetSponsorContacts_NameAndCodeOnly", sqlEx);
             }
-            return "";
+            return "N/a";
         }
 
         public static IList GetSponsorContacts_NameAndCodeOnly(string sponsorName)
@@ -198,6 +219,39 @@ namespace Toxikon.ProtocolManager.Queries
                     {
                         command.CommandType = CommandType.Text;
                         command.Parameters.Add("@SponsorName", SqlDbType.NVarChar).Value = sponsorName;
+
+                        SqlDataReader reader = command.ExecuteReader();
+                        while (reader.Read())
+                        {
+                            Item item = new Item();
+                            item.Name = "Contact";
+                            item.Value = reader[1].ToString();
+                            item.Text = reader[3].ToString();
+                            results.Add(item);
+                        }
+                    }
+                }
+            }
+            catch (SqlException sqlEx)
+            {
+                ErrorHandler.CreateLogFile(ErrorFormName, "GetSponsorContacts_NameAndCodeOnly", sqlEx);
+            }
+            return results;
+        }
+
+        //MINE
+        public static IList GetSponsorContacts_NameAndCodeOnlyBySponsorCode(string sponsorCode)
+        {
+            IList results = new ArrayList();
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(CONNECTION_STRING))
+                {
+                    connection.Open();
+                    using (SqlCommand command = new SqlCommand(SelectSponsorContactsByCodeQuery, connection))
+                    {
+                        command.CommandType = CommandType.Text;
+                        command.Parameters.Add("@SponsorCode", SqlDbType.NVarChar).Value = sponsorCode;
 
                         SqlDataReader reader = command.ExecuteReader();
                         while (reader.Read())
