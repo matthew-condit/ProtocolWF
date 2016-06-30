@@ -114,6 +114,12 @@ namespace Toxikon.ProtocolManager.Controllers
             }
         }
 
+        public void ContactButtonClicked()
+        {
+            IList items = new List<string>();//QMatrix.GetSponsorContacts();
+            
+        }
+
         public void ComplianceButtonClicked()
         {
             IList items = QListItems.SelectItems(OptionFields.Compliance.ToString());

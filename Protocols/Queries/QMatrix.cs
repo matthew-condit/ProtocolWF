@@ -34,7 +34,17 @@ namespace Toxikon.ProtocolManager.Queries
             FROM Submitters
             WHERE Submitters.SubmitterName LIKE @SponsorName
             AND Submitters.RecordStatus = 1
-            AND Submitters.SubmitterClass = 'Contact'";
+            AND Submitters.SubmitterClass = 'Contact'
+        ";
+
+        private const string GetEmail = @"
+            SELECT Submitters.SubmitterTelex As Email
+            FROM Submitters 
+            WHERE ISNULL(Submitters.SubmitterText2, '') + ' ' +
+	               ISNULL(Submitters.SubmitterText3, '') = @ContactName
+            AND Submitters.RecordStatus = 1
+            AND Submitters.SubmitterClass = 'Contact'
+        ";
 
         private const string GetAllSponsors = @"
             SELECT Submitters.SubmitterText1 AS SponsorCode,
@@ -145,6 +155,34 @@ namespace Toxikon.ProtocolManager.Queries
             }
 
             return results;
+        }
+
+        public static string FindEmailByContact(string contactName)
+        {
+            try
+            {
+                string email;
+                using (SqlConnection connection = new SqlConnection(CONNECTION_STRING))
+                {
+                    connection.Open();
+                    using (SqlCommand command = new SqlCommand(GetEmail, connection))
+                    {
+                        command.CommandType = CommandType.Text;
+                        command.Parameters.Add("@ContactName", SqlDbType.NVarChar).Value = contactName;
+                        SqlDataReader reader = command.ExecuteReader();
+                        while (reader.Read())
+                        {
+                            email = reader[0].ToString();
+                        }
+                        
+                    }
+                }
+            }
+            catch (SqlException sqlEx)
+            {
+                ErrorHandler.CreateLogFile(ErrorFormName, "GetSponsorContacts_NameAndCodeOnly", sqlEx);
+            }
+            return "";
         }
 
         public static IList GetSponsorContacts_NameAndCodeOnly(string sponsorName)

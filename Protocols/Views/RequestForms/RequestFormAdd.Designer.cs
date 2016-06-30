@@ -37,6 +37,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
             this.flowLayoutPanel5 = new System.Windows.Forms.FlowLayoutPanel();
+            this.OpenContactOptions = new System.Windows.Forms.Button();
             this.SponsorContactTextBox = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.SponsorNameLabel = new System.Windows.Forms.Label();
@@ -74,7 +75,7 @@
             this.label11 = new System.Windows.Forms.Label();
             this.CommentTextBox = new System.Windows.Forms.TextBox();
             this.POTextBox = new System.Windows.Forms.TextBox();
-            this.EmailTextBox = new System.Windows.Forms.TextBox();
+            this.EmailTextBox = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.OpenGuidelinesOptions = new System.Windows.Forms.Button();
             this.OpenComplianceOptions = new System.Windows.Forms.Button();
@@ -104,7 +105,7 @@
             this.tableLayoutPanel1.Controls.Add(this.label2, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.label16, 2, 1);
             this.tableLayoutPanel1.Controls.Add(this.label4, 2, 0);
-            this.tableLayoutPanel1.Controls.Add(this.SponsorContactTextBox, 3, 0);
+            this.tableLayoutPanel1.Controls.Add(this.flowLayoutPanel5, 3, 0);
             this.tableLayoutPanel1.Controls.Add(this.label3, 2, 2);
             this.tableLayoutPanel1.Controls.Add(this.SponsorNameLabel, 3, 2);
             this.tableLayoutPanel1.Controls.Add(this.label5, 2, 3);
@@ -222,14 +223,24 @@
             this.label16.Size = new System.Drawing.Size(42, 23);
             this.label16.TabIndex = 25;
             this.label16.Text = "Email: ";
+            //
+            // flowLayoutPanel5
+            //
+            this.flowLayoutPanel5.Controls.Add(this.SponsorContactTextBox);
+            this.flowLayoutPanel5.Controls.Add(this.OpenContactOptions);
+            this.flowLayoutPanel5.Location = new System.Drawing.Point();
+            this.flowLayoutPanel5.Margin = new System.Windows.Forms.Padding(0);
+            this.flowLayoutPanel5.Name = "flowLayoutPanel5";
+            this.flowLayoutPanel5.Size = new System.Drawing.Size(259, 25);
+            this.flowLayoutPanel5.TabIndex = 51;
+            //// 
+            // SponsorContactTextBox
             // 
-            // SponsorContactLabel
-            // 
-            this.SponsorContactTextBox.AutoSize = true;
-            this.SponsorContactTextBox.Location = new System.Drawing.Point(483, 1);
+            this.SponsorContactTextBox.BackColor = System.Drawing.Color.White;
+            this.SponsorContactTextBox.Location = new System.Drawing.Point(3, 3);
             this.SponsorContactTextBox.Name = "SponsorContactLabel";
             this.SponsorContactTextBox.Padding = new System.Windows.Forms.Padding(0, 4, 0, 4);
-            this.SponsorContactTextBox.Size = new System.Drawing.Size(200, 23);
+            this.SponsorContactTextBox.Size = new System.Drawing.Size(232, 23);
             this.SponsorContactTextBox.ReadOnly = true;
             this.SponsorContactTextBox.TabIndex = 24;
             this.SponsorContactTextBox.Text = "Contact";
@@ -595,7 +606,6 @@
             this.EmailTextBox.Name = "EmailLabel";
             this.EmailTextBox.Padding = new System.Windows.Forms.Padding(0, 4, 0, 4);
             this.EmailTextBox.Size = new System.Drawing.Size(200, 23);
-            this.EmailTextBox.ReadOnly = true;
             this.EmailTextBox.TabIndex = 50;
             this.EmailTextBox.Text = "Email";
             // 
@@ -625,6 +635,19 @@
             this.OpenGuidelinesOptions.TabIndex = 6;
             this.OpenGuidelinesOptions.UseVisualStyleBackColor = true;
             this.OpenGuidelinesOptions.Click += new System.EventHandler(this.OpenGuidelinesOptions_Click);
+            //
+            // OpenContactOptions
+            //
+            this.OpenContactOptions.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("OpenGuidelinesOptions.BackgroundImage")));
+            this.OpenContactOptions.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.OpenContactOptions.Location = new System.Drawing.Point(238, 4);
+            this.OpenContactOptions.Margin = new System.Windows.Forms.Padding(0, 4, 0, 0);
+            this.OpenContactOptions.Name = "OpenContactOptions";
+            this.OpenContactOptions.Size = new System.Drawing.Size(20, 18);
+            this.OpenContactOptions.TabIndex = 0;
+            this.OpenContactOptions.UseVisualStyleBackColor = true;
+            //this.OpenContactOptions.Click += new System.EventHandler(this.OpenContactOptions_Click);
+
             // 
             // OpenComplianceOptions
             // 
@@ -741,6 +764,7 @@
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel5;
         private System.Windows.Forms.TextBox SponsorContactTextBox;
+        private System.Windows.Forms.Button OpenContactOptions;
         private System.Windows.Forms.Label SponsorNameLabel;
         private System.Windows.Forms.Label AddressLabel;
         private System.Windows.Forms.Label StateLabel;
@@ -754,6 +778,6 @@
         private System.Windows.Forms.Label label21;
         private System.Windows.Forms.TextBox POTextBox;
         private System.Windows.Forms.TextBox CostTextBox;
-        private System.Windows.Forms.TextBox EmailTextBox;
+        private System.Windows.Forms.Label EmailTextBox;
     }
 }
