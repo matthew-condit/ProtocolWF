@@ -41,7 +41,7 @@ namespace Toxikon.ProtocolManager.Models
             ConnectionStringSettings settings =
                 ConfigurationManager.ConnectionStrings[TPM];
             if (settings != null)
-            {
+            { 
                 result = settings.ConnectionString;
             }
             return result;

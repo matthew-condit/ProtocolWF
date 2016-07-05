@@ -139,6 +139,7 @@
     <Compile Include="Models\Template.cs" />
     <Compile Include="Models\Templates\WordProtocol.cs" />
     <Compile Include="Queries\QDepartmentDirectors.cs" />
+    <Compile Include="Settings.cs" />
     <Compile Include="Views\Admin\DepartmentDirectorsView.cs">
       <SubType>UserControl</SubType>
     </Compile>

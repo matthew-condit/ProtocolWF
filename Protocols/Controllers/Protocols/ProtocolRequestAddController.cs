@@ -126,7 +126,7 @@ namespace Toxikon.ProtocolManager.Controllers.Protocols
             }
             return result;
         }
-        //This is where I needed to change things to allow for sorted sponsor info to actually work!!!
+        //This is where I changed things to allow for sorted sponsor info to actually work!!!
         public void ContactListSelectedIndex(int selectedIndex)
         {
             if (selectedIndex >= 0 && selectedIndex < this.sortedSponsorContacts.Count)

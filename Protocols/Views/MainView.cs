@@ -10,6 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Diagnostics;
 
 namespace Toxikon.ProtocolManager.Views
 {
@@ -70,6 +71,7 @@ namespace Toxikon.ProtocolManager.Views
 
         public void SetMenuStripItemVisibleByUserRole(int roleID)
         {
+            Debug.WriteLine("User Role is: " + roleID);
             switch(roleID)
             {
                 case UserRoles.IT:
