@@ -69,6 +69,7 @@ namespace Toxikon.ProtocolManager.Models
             this.Contact.PhoneNumber = contact.PhoneNumber;
             this.Contact.FaxNumber = contact.FaxNumber;
             this.Contact.Email = contact.Email;
+            System.Diagnostics.Debug.WriteLine("Successful sponsor assignment");
         }
 
         public void SetContact(string contactCode)

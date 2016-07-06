@@ -132,6 +132,7 @@ namespace Toxikon.ProtocolManager.Controllers.Protocols
             if (selectedIndex >= 0 && selectedIndex < this.sortedSponsorContacts.Count)
             {
                 this.request.SetContact((SponsorContact)this.sortedSponsorContacts[selectedIndex]);
+                System.Diagnostics.Debug.WriteLine(this.request.Contact.ContactCode);
                 this.requestFormController.LoadView(this.request);
             }
         }

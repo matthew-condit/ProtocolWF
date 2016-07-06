@@ -349,6 +349,7 @@ namespace Toxikon.ProtocolManager.Queries
         private static SponsorContact CreateNewSponsorNoContact(SqlDataReader reader)
         {
             SponsorContact sponsor = new SponsorContact();
+            sponsor.ContactCode = "0";
             sponsor.SponsorCode = reader[0].ToString().Trim();
             sponsor.SponsorName = reader[2].ToString().Trim();
             sponsor.Address = reader[4].ToString().Trim();

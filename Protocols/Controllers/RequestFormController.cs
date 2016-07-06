@@ -126,9 +126,9 @@ namespace Toxikon.ProtocolManager.Controllers
                 if (selectedContact != null)
                 {
                     this.request.Contact.ContactName = selectedContact.Text;
+                    this.request.Contact.ContactCode = selectedContact.Value;
                     this.view.ContactName = selectedContact.Text;
                     this.request.Contact.Email = QMatrix.GetSponsorByContactCode(selectedContact.Value).Email;
-                    Debug.WriteLine(QMatrix.GetSponsorByContactCode(selectedContact.Value).Email);
                     this.view.Email = this.request.Contact.Email;
                 }
             }

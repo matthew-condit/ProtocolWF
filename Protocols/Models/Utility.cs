@@ -39,7 +39,7 @@ namespace Toxikon.ProtocolManager.Models
             string TPMTest = @"Toxikon.ProtocolManager.Properties.Settings.TPMTestConnectionString";
             string result = "";
             ConnectionStringSettings settings =
-                ConfigurationManager.ConnectionStrings[TPM];
+                ConfigurationManager.ConnectionStrings[TPMTest];
             if (settings != null)
             { 
                 result = settings.ConnectionString;
