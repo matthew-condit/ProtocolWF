@@ -39,6 +39,8 @@ namespace Toxikon.ProtocolManager.Controllers
             UpdateViewWithRequestValues();
         }
 
+
+        //Part 2 to fix the issue of incorrect addresses!!!!
         protected void UpdateViewWithRequestValues()
         {
             this.view.RequestedBy = request.RequestedBy;

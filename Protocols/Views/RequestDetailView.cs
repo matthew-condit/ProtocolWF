@@ -73,5 +73,17 @@ namespace Toxikon.ProtocolManager.Views
             this.TemplateListView.Columns[8].AutoResize(ColumnHeaderAutoResizeStyle.HeaderSize);
             this.TemplateListView.Columns[9].AutoResize(ColumnHeaderAutoResizeStyle.HeaderSize);
         }
+
+        private void InitializeComponent()
+        {
+            this.SuspendLayout();
+            // 
+            // RequestDetailView
+            // 
+            this.Name = "RequestDetailView";
+            this.Size = new System.Drawing.Size(153, 150);
+            this.ResumeLayout(false);
+
+        }
     }
 }

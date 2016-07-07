@@ -67,7 +67,7 @@ namespace Toxikon.ProtocolManager.Queries
         ";
 
         private const string GetAllSponsors = @"
-            SELECT Submitters.SubmitterText1 AS SponsorCode,
+            SELECT Submitters.SubmitterCode AS SponsorCode,
 		           Submitters.SubmitterCode AS ContactCode,
 	               Submitters.SubmitterName AS SponsorName,
 	               ISNULL(Submitters.SubmitterText2, '') + ' ' +
@@ -351,6 +351,7 @@ namespace Toxikon.ProtocolManager.Queries
             SponsorContact sponsor = new SponsorContact();
             sponsor.ContactCode = "0";
             sponsor.SponsorCode = reader[0].ToString().Trim();
+            Debug.WriteLine(sponsor.SponsorCode);
             sponsor.SponsorName = reader[2].ToString().Trim();
             sponsor.Address = reader[4].ToString().Trim();
             sponsor.City = reader[5].ToString().Trim();

@@ -55,14 +55,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="ToxikonProtocolManager.exe" size="556544">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="ToxikonProtocolManager.exe" size="557056">
       <assemblyIdentity name="ToxikonProtocolManager" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>A7p11Xb/sUIDk6ExKDWO6buU5w/sz12RDlvckjMtVe0=</dsig:DigestValue>
+        <dsig:DigestValue>U7DZrN2uhlt9eQSd68oLpnsHQJ2gVGwwZbinAR2l4Ic=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

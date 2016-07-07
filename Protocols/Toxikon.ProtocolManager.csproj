@@ -432,6 +432,9 @@
     <EmbeddedResource Include="Views\Protocols\ProtocolRequestReadOnlyView.resx">
       <DependentUpon>ProtocolRequestReadOnlyView.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Views\RequestDetailView.resx">
+      <DependentUpon>RequestDetailView.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\RequestForms\RequestFormAdd.resx">
       <DependentUpon>RequestFormAdd.cs</DependentUpon>
     </EmbeddedResource>

@@ -84,6 +84,45 @@ namespace Toxikon.ProtocolManager.Queries
             return results;
         }
 
+        private const string GetNewRequests = @"
+            SELECT Submitters.SubmitterCode AS SponsorCode,
+		           Submitters.SubmitterCode AS ContactCode,
+	               Submitters.SubmitterName AS SponsorName,
+	               ISNULL(Submitters.SubmitterText2, '') + ' ' +
+	               ISNULL(Submitters.SubmitterText3, '') AS ContactName,
+	               ISNULL(Submitters.SubmitterAddress1, '') + 
+	               ISNULL(Submitters.SubmitterAddress2, '') AS PostalAddress,
+	               Submitters.SubmitterAddress4 AS City,
+	               Submitters.SubmitterAddress5 AS State,
+	               Submitters.SubmitterPostCode,
+	               Submitters.SubmitterAddress3 AS Country,
+	               Submitters.SubmitterTelephone AS PhoneNumber,
+	               Submitters.SubmitterFax AS Fax,
+                   Submitters.SubmitterTelex AS Email
+            FROM Submitters
+            WHERE Submitters.SubmitterName LIKE @SponsorName
+            AND Submitters.RecordStatus = 1
+            AND Submitters.SubmitterClass = 'Sponsor'";
+        private const string FindSponsorInfo = @"
+            SELECT Submitters.SubmitterCode AS SponsorCode,
+		           Submitters.SubmitterCode AS ContactCode,
+	               Submitters.SubmitterName AS SponsorName,
+	               ISNULL(Submitters.SubmitterText2, '') + ' ' +
+	               ISNULL(Submitters.SubmitterText3, '') AS ContactName,
+	               ISNULL(Submitters.SubmitterAddress1, '') + 
+	               ISNULL(Submitters.SubmitterAddress2, '') AS PostalAddress,
+	               Submitters.SubmitterAddress4 AS City,
+	               Submitters.SubmitterAddress5 AS State,
+	               Submitters.SubmitterPostCode,
+	               Submitters.SubmitterAddress3 AS Country,
+	               Submitters.SubmitterTelephone AS PhoneNumber,
+	               Submitters.SubmitterFax AS Fax,
+                   Submitters.SubmitterTelex AS Email
+            FROM Submitters
+            WHERE Submitters.SubmitterName LIKE @SponsorName
+            AND Submitters.RecordStatus = 1
+            AND Submitters.SubmitterClass = 'Sponsor'";
+        //This is where I need to modify things so that the loaded protocols are accurate, using sponsor AND contact codes
         public static IList SelectAllNewRequests()
         {
             IList results = new ArrayList();

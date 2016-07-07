@@ -136,3 +136,4 @@ C:\Users\mcondit\Documents\Development\NewDevProtocolsWF\Protocols\obj\Debug\Tox
 C:\Users\mcondit\Documents\Development\NewDevProtocolsWF\Protocols\obj\Debug\ToxikonProtocolManager.application
 C:\Users\mcondit\Documents\Development\NewDevProtocolsWF\Protocols\obj\Debug\ToxikonProtocolManager.exe
 C:\Users\mcondit\Documents\Development\NewDevProtocolsWF\Protocols\obj\Debug\ToxikonProtocolManager.pdb
+C:\Users\mcondit\Documents\Development\NewDevProtocolsWF\Protocols\obj\Debug\Toxikon.ProtocolManager.Views.RequestDetailView.resources
