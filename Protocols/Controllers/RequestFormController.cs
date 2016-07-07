@@ -119,7 +119,7 @@ namespace Toxikon.ProtocolManager.Controllers
         public void ContactButtonClicked()
         {
 
-            IList items = QMatrix.GetSponsorContacts_NameAndCodeOnly(this.view.SponsorName);
+            IList items = QMatrix.GetSponsorContacts_NameAndCodeOnly(this.request.Contact.SponsorCode);
             if (items != null)
             {
                 Item selectedContact = TemplatesController.ShowListBoxOptionsForm(items, view.ParentControl);
@@ -177,7 +177,7 @@ namespace Toxikon.ProtocolManager.Controllers
 
         public void ChangeContactButtonClicked()
         {
-            IList items = QMatrix.GetSponsorContacts_NameAndCodeOnly(this.request.Contact.SponsorName);
+            IList items = QMatrix.GetSponsorContacts_NameAndCodeOnly(this.request.Contact.SponsorCode);
             Item selectedItem = TemplatesController.ShowListBoxOptionsForm(items, view.ParentControl);
             if (selectedItem.Value != "")
             {

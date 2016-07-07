@@ -32,7 +32,7 @@ namespace Toxikon.ProtocolManager.Queries
 	               Submitters.SubmitterFax AS Fax,
                    Submitters.SubmitterTelex AS Email
             FROM Submitters
-            WHERE Submitters.SubmitterName LIKE @SponsorName
+            WHERE Submitters.SubmitterText1 LIKE @SponsorCode
             AND Submitters.RecordStatus = 1
             AND Submitters.SubmitterClass = 'Contact'
         ";
@@ -218,10 +218,10 @@ namespace Toxikon.ProtocolManager.Queries
             return "N/a";
         }
 
-        public static IList GetSponsorContacts_NameAndCodeOnly(string sponsorName)
+        public static IList GetSponsorContacts_NameAndCodeOnly(string sponsorCode)
         {
             IList results = new ArrayList();
-            sponsorName += "%";
+            sponsorCode += "%";
             try
             {
                 using (SqlConnection connection = new SqlConnection(CONNECTION_STRING))
@@ -230,7 +230,7 @@ namespace Toxikon.ProtocolManager.Queries
                     using (SqlCommand command = new SqlCommand(SelectSponsorContactsQuery, connection))
                     {
                         command.CommandType = CommandType.Text;
-                        command.Parameters.Add("@SponsorName", SqlDbType.NVarChar).Value = sponsorName;
+                        command.Parameters.Add("@SponsorCode", SqlDbType.NVarChar).Value = sponsorCode;
 
                         SqlDataReader reader = command.ExecuteReader();
                         while (reader.Read())
