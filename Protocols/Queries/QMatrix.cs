@@ -114,6 +114,18 @@ namespace Toxikon.ProtocolManager.Queries
             AND Submitters.RecordStatus = 1
             AND Submitters.SubmitterClass = 'Sponsor'";
 
+        public const string SponsorInfoBySponsorCode = @"
+            SELECT  Submitters.SubmitterName As SponsorName, 
+                    ISNULL(Submitters.SubmitterAddress1, '') + 
+	                ISNULL(Submitters.SubmitterAddress2, '') AS PostalAddress,
+                    Submitters.SubmitterAddress4 AS City,
+	                Submitters.SubmitterAddress5 AS State,
+	                Submitters.SubmitterPostCode
+            FROM Submitters
+            WHERE Submitters.SubmitterCode = @SponsorCode
+            AND Submitters.RecordStatus = 1 
+            AND Submitters.SubmitterClass = 'Sponsor'";
+
         public static IList GetSponsorContacts(string sponsorName)
         {
             IList results = new ArrayList();
@@ -291,6 +303,26 @@ namespace Toxikon.ProtocolManager.Queries
                         while (reader.Read())
                         {
                             result = CreateNewSponsor(reader);
+
+                        }
+                    }
+                }
+                using (SqlConnection connection = new SqlConnection(CONNECTION_STRING))
+                {
+                    connection.Open();
+                    using (SqlCommand command = new SqlCommand(SponsorInfoBySponsorCode, connection))
+                    {
+                        command.CommandType = CommandType.Text;
+                        command.Parameters.Add("@SponsorCode", SqlDbType.NVarChar).Value = result.SponsorCode;
+
+                        SqlDataReader reader = command.ExecuteReader();
+                        while (reader.Read())
+                        {
+                            result.SponsorName = reader[0].ToString();
+                            result.Address = reader[1].ToString();
+                            result.City = reader[2].ToString();
+                            result.State = reader[3].ToString();
+                            result.ZipCode = reader[4].ToString();
                         }
                     }
                 }
