@@ -75,7 +75,7 @@ namespace Toxikon.ProtocolManager.Models
         public void SetContact(string contactCode)
         {
             this.Contact.ContactCode = contactCode;
-            this.Contact = QMatrix.GetSponsorByContactCode(contactCode);
+            this.Contact = QMatrix.GetSponsorByContactCodeFixed(contactCode);
         }
        
         public void CloseRequest()

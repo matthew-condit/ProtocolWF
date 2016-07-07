@@ -103,7 +103,7 @@ namespace Toxikon.ProtocolManager.Queries
             WHERE Submitters.SubmitterName LIKE @SponsorName
             AND Submitters.RecordStatus = 1
             AND Submitters.SubmitterClass = 'Sponsor'";
-        private const string FindSponsorInfo = @"
+        private const string GetAllSponsors = @"
             SELECT Submitters.SubmitterCode AS SponsorCode,
 		           Submitters.SubmitterCode AS ContactCode,
 	               Submitters.SubmitterName AS SponsorName,

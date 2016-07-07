@@ -272,6 +272,37 @@ namespace Toxikon.ProtocolManager.Queries
             return results;
         }
 
+
+        //This is Matt's version, this makes sure most of the sponsor info is pulled in by sponsor code and not by contact info
+        public static SponsorContact GetSponsorByContactCodeFixed(string contactCode)
+        {
+            SponsorContact result = new SponsorContact();
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(CONNECTION_STRING))
+                {
+                    connection.Open();
+                    using (SqlCommand command = new SqlCommand(ContactInfoByContactCode, connection))
+                    {
+                        command.CommandType = CommandType.Text;
+                        command.Parameters.Add("@ContactCode", SqlDbType.NVarChar).Value = contactCode;
+
+                        SqlDataReader reader = command.ExecuteReader();
+                        while (reader.Read())
+                        {
+                            result = CreateNewSponsor(reader);
+                        }
+                    }
+                }
+            }
+            catch (SqlException sqlEx)
+            {
+                ErrorHandler.CreateLogFile(ErrorFormName, "GetSponsorByContactCode", sqlEx);
+            }
+            return result;
+        }
+
+
         public static SponsorContact GetSponsorByContactCode(string contactCode)
         {
             SponsorContact result = new SponsorContact();
